@@ -2,7 +2,7 @@
 let mapleader = "\<Space>"
 
 " Split edit your vimrc. Type space, v, r in sequence to trigger
-nmap <leader>vd :vsp $MYVIMRC<cr>
+nmap <leader>vr :vsp $MYVIMRC<cr>
 nmap <leader>vb :vsp ~/.vimrc.bundles
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nmap <leader>so :source $MYVIMRC<cr>
