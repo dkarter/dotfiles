@@ -1,5 +1,23 @@
-" Leader
-let mapleader = " "
+" Use the space key as our leader. Put this near the top of your vimrc
+let mapleader = "\<Space>"
+
+" Split edit your vimrc. Type space, v, r in sequence to trigger
+nmap <leader>vd :vsp $MYVIMRC<cr>
+nmap <leader>vb :vsp ~/.vimrc.bundles
+" Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nmap <leader>so :source $MYVIMRC<cr>
+
+" Easy Motion
+nmap <leader>em <Plug>(easymotion-s)
+
+
+" Insert Mode Mappings
+imap jk <esc>     " exits insert mode
+imap kj <esc>     " exits insert mode
+
+" Insert Empty Lines
+nmap oo o<Esc>k
+nmap OO O<Esc>j
 
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
