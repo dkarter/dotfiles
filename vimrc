@@ -97,6 +97,9 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+" nowrap by default
+set nowrap
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
