@@ -29,6 +29,8 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set ignorecase    " ignore case in searches
+set smartcase     " will use case sensitive if capital letter present or \C
 
 " Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
 let g:molokai_original=1
