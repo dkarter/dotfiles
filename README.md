@@ -1,5 +1,6 @@
-thoughtbot dotfiles
+Dorian's dotfiles
 ===================
+Based on the ThoughtBot base configuration but customized to my needs
 
 Requirements
 ------------
