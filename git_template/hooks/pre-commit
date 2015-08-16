@@ -18,29 +18,39 @@
 # You should have received a copy of the GNU General Public License
 # along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
 
-LC_ALL=C
-export LC_ALL
-
-exec >&2
-
-. git-sh-setup
-
-git_diff='git diff --cached --name-only --diff-filter=A'
-ok_chars='\0+[=-=]./0-9A-Z_a-z'
-nbadchars=`$git_diff -z HEAD | tr -d "$ok_chars" | wc -c`
-
-if test "$nbadchars" -ne 0; then
-  echo "File name does not consist of -+./_ or ASCII letters or digits."
-  exit 1
-fi
-
-new_names=`$git_diff HEAD` || exit
-case "
-$new_names" in
-  */-* | *'
-'-*)
-    echo "File name component begins with '-'."
-    exit 1;;
-esac
-
-exec git diff-index --check --cached HEAD --
+# LC_ALL=C
+# export LC_ALL
+#
+# exec >&2
+#
+# . git-sh-setup
+#
+# echo 'before first git diff'
+#
+# git_diff='git diff --cached --name-only --diff-filter=A'
+# ok_chars='\0+[=-=]./0-9A-Z_a-z'
+# nbadchars=`$git_diff -z HEAD | tr -d "$ok_chars" | wc -c`
+#
+# echo 'after first git diff'
+#
+# if test "$nbadchars" -ne 0; then
+#   echo "File name does not consist of -+./_ or ASCII letters or digits."
+#   exit 1
+# fi
+#
+# echo 'before second git diff'
+#
+# new_names=`$git_diff HEAD` || exit
+# echo 'after second git diff'
+#
+# case "
+# $new_names" in
+#   */-* | *'
+# '-*)
+#     echo "File name component begins with '-'."
+#     exit 1;;
+# esac
+#
+# echo 'before git index-diff'
+# exec git diff-index --check --cached HEAD --
+# echo 'after git index-diff'
