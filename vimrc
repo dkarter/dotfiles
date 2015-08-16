@@ -219,6 +219,10 @@ set diffopt+=vertical
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
+
+" set shell to zsh
+set shell=/bin/zsh
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
