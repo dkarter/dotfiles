@@ -44,10 +44,51 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
+" NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'
+" Better markdown editing
 Plug 'gabrielelana/vim-markdown'
-Plug 'terryma/vim-multiple-cursors'
+" Multiple cursor emulation (a la Sublime Text) using ctrl-n
+Plug 'terryma/vim-multiple-cursors' 
+" asynchronous build and test dispatcher https://vimeo.com/63116209
 Plug 'tpope/vim-dispatch'
+" Emmet, nuff said.
+Plug 'mattn/emmet-vim' 
+" highlights all search results and allows tabbing between them
+Plug 'haya14busa/incsearch.vim' 
+" syntax highlighting for rspec
+Plug 'keith/rspec.vim' 
+" show the class structure in a tree (using ctags)
+Plug 'majutsushi/tagbar'
+" auto sorts ascii tables and aligns code neatly
+Plug 'godlygeek/tabular'
+" easily convert ruby blocks to single line block/multiline block
+Plug 'jgdavey/vim-blockle'
+" Vim snippets ...
+Plug 'honza/vim-snippets'
+" Visual git gutter
+Plug 'airblade/vim-gitgutter'
+" vim slime for tmux integration
+Plug 'jpalardy/vim-slime'
+" vim rake by Tim Pope - like rails.vim but for plain ruby
+Plug 'tpope/vim-rake'
+" vim projectionist required by vim rake
+Plug 'tpope/vim-projectionist'
+" vim cucumber for easy cuke navigation
+Plug 'tpope/vim-cucumber'
+" gutter coverage report for ruby using simplecov
+Plug 'killphi/vim-legend'
+" .tmux.conf syntax highlighting
+Plug 'keith/tmux.vim'
+" get docs for command under cursor (with Dash or web)
+Plug 'keith/investigate.vim'
+" show trailing white spaces and allow deleting them
+Plug 'ntpeters/vim-better-whitespace'
+" modern snippets for vim
+Plug 'SirVer/ultisnips'
+
+" Plug 'scrooloose/nerdcommenter' " not sure if I need this yet
+" Plug 'pangloss/vim-javascript' " not sure if I need this yet
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
