@@ -226,6 +226,9 @@ set shell=/bin/zsh
 " TagBar plugin toggle
 nmap <F8> :TagbarToggle<CR>
 
+" vim slime
+let g:slime_target="tmux"
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
