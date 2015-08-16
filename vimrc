@@ -8,7 +8,8 @@ nmap <leader>vb :vsp ~/.vimrc.bundles<cr>
 nmap <leader>so :source $MYVIMRC<cr>
 
 " Easy Motion
-nmap <leader>em <Plug>(easymotion-s)
+nmap <leader>\ <Plug>(easymotion-s)
+nmap <leader>w <Plug>(easymotion-w)
 
 
 " Insert Mode Mappings
