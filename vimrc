@@ -223,6 +223,9 @@ python del powerline_setup
 " set shell to zsh
 set shell=/bin/zsh
 
+" TagBar plugin toggle
+nmap <F8> :TagbarToggle<CR>
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
