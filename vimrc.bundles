@@ -27,7 +27,7 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
-Plug 'Lokaltog/vim-easymotion',      { 'on': '<Plug>(easymotion-s)' }
+Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-run-interactive'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ctrlpvim/ctrlp.vim'
