@@ -22,6 +22,12 @@ nmap <S-Space> i
 nmap oo o<Esc>k
 nmap OO O<Esc>j
 
+" command typo mapping
+cmap WQ wq
+cmap Wq wq
+cmap W w
+cmap Q q
+
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
