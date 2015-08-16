@@ -215,11 +215,12 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
+" For powerline python support
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
