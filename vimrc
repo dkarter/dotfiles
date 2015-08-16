@@ -12,9 +12,11 @@ nmap <leader>\ <Plug>(easymotion-s)
 nmap <leader>w <Plug>(easymotion-w)
 
 
-" Insert Mode Mappings
+" Easy esc/insert
 imap jk <esc>     " exits insert mode
 imap kj <esc>     " exits insert mode
+imap <S-Space> <Esc>
+nmap <S-Space> i
 
 " Insert Empty Lines
 nmap oo o<Esc>k
