@@ -90,9 +90,12 @@ Plug 'SirVer/ultisnips'
 Plug 'rking/ag.vim'
 " vim unimpaired fixes daily annoyences see docs for more info
 Plug 'tpope/vim-unimpaired'
+" JavaScript support (required by vim-jsx)
+Plug 'pangloss/vim-javascript'
+" JSX support for react components
+Plug 'mxw/vim-jsx'
 
 " Plug 'scrooloose/nerdcommenter' " not sure if I need this yet
-" Plug 'pangloss/vim-javascript' " not sure if I need this yet
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
