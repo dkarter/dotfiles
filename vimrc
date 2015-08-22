@@ -111,6 +111,12 @@ set nowrap
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
+
+" Note that remapping C-s requires flow control to be disabled
+" (e.g. in .bashrc or .zshrc)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
