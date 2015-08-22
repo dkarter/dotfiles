@@ -100,9 +100,10 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# make sure rvm is loaded
-[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
-
+# ---- Added by Dorian ----
+# customizations config
+[[ -f ~/.zshrc-dorian ]] && source ~/.zshrc-dorian
+# ---- /Added by Dorian ----
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

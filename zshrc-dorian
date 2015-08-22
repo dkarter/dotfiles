@@ -1,0 +1,104 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+ZSH_THEME="crunch-twoliner"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to  shown in the command execution time stamp 
+# in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
+# yyyy-mm-dd
+HIST_STAMPS="mm/dd/yyyy"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+plugins=(rvm ruby rails rake rake-fast gem bundler heroku git github dircycle postgres sublime xcode osx brew bower npm node cp colorize pj sniffsniff)
+
+source $ZSH/oh-my-zsh.sh
+
+
+# zsh syntax highlighting
+# pre-requisite: `brew install zsh-syntax-highlighting`
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh history search
+# pre-requisite `brew install zsh-history-substring-search`
+# NOTE: must be placed after zsh-syntax-highlighting if used together
+# readme: /usr/local/opt/zsh-history-substring-search/README.md
+source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+
+# zsh completions
+# pre-requisite: `brew install zsh-completions`
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
+
+# Editor for git commits, rebases etc
+export GIT_EDITOR=vim
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# For GO
+export CC=clang
+export GOPATH="<<--[[CHANGEINLOCALZSHRC]]-->>"
+
+# HomeBrew
+export HOMEBREW_GITHUB_API_TOKEN="<<--[[CHANGEINLOCALZSHRC]]-->>"
+
+#Key shortcuts
+bindkey "^[f" forward-word
+bindkey "^[b" backward-word
+
+# vi navigation for the prompt
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+# function zle-line-init zle-keymap-select {
+#     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
+#     zle reset-prompt
+# }
+
+# zle -N zle-line-init
+# zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+# Always TMUX ----------------------------
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
+# ----------------------------------------
+
+export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# For PostgreSQL
+export PGDATA="/Library/PostgreSQL/9.3/data"
+
+# make sure rvm is loaded
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
