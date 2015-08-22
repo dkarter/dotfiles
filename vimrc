@@ -46,6 +46,7 @@ set ignorecase    " ignore case in searches
 set smartcase     " will use case sensitive if capital letter present or \C
 set cursorline    " highight current line where cursor is
 
+syntax on
 
 " Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
 let g:molokai_original=1
@@ -62,11 +63,6 @@ for scheme in [ 'gruvbox', 'solarized', 'molokai', 'desert' ]
 endfor
 
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
