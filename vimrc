@@ -133,6 +133,9 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Remove trailing whitespace on save for ruby files.
+au BufWritePre *.rb :%s/\s\+$//e
+
 " Make it obvious where 80 characters is
 set textwidth=80
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
