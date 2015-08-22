@@ -53,16 +53,7 @@ let g:molokai_original=1
 let g:rehash256=1
 
 " Use the first available colorscheme in this list
-for scheme in [ 'gruvbox', 'solarized', 'molokai', 'desert' ]
-  try
-    execute 'colorscheme '.scheme
-    break
-  catch
-    continue
-  endtry
-endfor
-
-
+colorscheme molokai
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
