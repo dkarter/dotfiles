@@ -152,6 +152,7 @@ set numberwidth=5
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
+set wildmenu
 set wildmode=list:longest,list:full
 function! InsertTabWrapper()
     let col = col('.') - 1
