@@ -117,6 +117,10 @@ set list listchars=tab:»·,trail:·,nbsp:·
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
+" easier new tab
+map <C-t> <esc>:tabnew<CR>
+map <C-c> <esc>:tabclose<CR>
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
