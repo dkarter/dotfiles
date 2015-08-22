@@ -136,8 +136,8 @@ endif
 " Make it obvious where 80 characters is
 set textwidth=80
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn=join(range(81,999),",")
-let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn=join(range(80,999),",")
+" let &colorcolumn="80,".join(range(120,999),",")
 
 " Numbers
 set number
