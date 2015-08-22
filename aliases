@@ -17,3 +17,10 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+# ZSH aliases
+alias zshconfig="subl ~/.oh-my-zsh ~/.zshrc"
+alias ohmyzsh="subl ~/.oh-my-zsh ~/.zshrc"
+
+# Typos
+alias quit="exit"
