@@ -187,6 +187,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 " vim-rspec command - make it use dispatch
 let g:rspec_command="Dispatch rspec {spec}"
