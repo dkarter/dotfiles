@@ -26,7 +26,7 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 
 call plug#begin('~/.vim/bundle')
 
-" Define bundles via Github repos
+" List Plugins =====================================
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-run-interactive'
 Plug 'kchmck/vim-coffee-script'
@@ -88,7 +88,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'SirVer/ultisnips'
 " The Silver Searcher (Ag) vim integration
 Plug 'rking/ag.vim'
-" vim unimpaired fixes daily annoyences see docs for more info
+" vim unimpaired fixes daily annoyences
 Plug 'tpope/vim-unimpaired'
 " JavaScript support (required by vim-jsx)
 Plug 'pangloss/vim-javascript'
@@ -96,8 +96,17 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 " seamless tmux/vim pane navigation
 Plug 'christoomey/vim-tmux-navigator'
-
-" Plug 'scrooloose/nerdcommenter' " not sure if I need this yet
+" run commands from vim in tmux
+Plug 'christoomey/vim-tmux-runner'
+" Indentation guide
+Plug 'nathanaelkane/vim-indent-guides'
+" Create github gists from vim
+Plug 'keith/gist.vim'
+" Relative Line Numbers
+Plug 'myusuf3/numbers.vim'
+" markdown folding
+Plug 'nelstrom/vim-markdown-folding'
+" ==================================================
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
