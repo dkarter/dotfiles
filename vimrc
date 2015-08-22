@@ -245,6 +245,9 @@ set shell=/bin/zsh
 " TagBar plugin toggle
 nmap <F8> :TagbarToggle<CR>
 
+" Relative Numbers on/off
+nnoremap <F3> :NumbersToggle<CR>
+
 " vim slime
 let g:slime_target="tmux"
 
