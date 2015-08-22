@@ -17,6 +17,7 @@ imap jk <esc>     " exits insert mode
 imap kj <esc>     " exits insert mode
 imap <S-Space> <Esc>
 nmap <S-Space> i
+inoremap <C-C> <Esc>`^
 
 " Insert Empty Lines
 nmap oo o<Esc>k
