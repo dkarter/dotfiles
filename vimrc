@@ -29,6 +29,9 @@ cmap Wq wq
 cmap W w
 cmap Q q
 
+" copy to end of line
+map Y y$
+
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
