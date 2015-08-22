@@ -108,6 +108,10 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
+" eliminate delays when opening new lines (may cause issues on slow connections
+" if needed switch back to 1000)
+set timeoutlen=100 ttimeoutlen=0
+
 " nowrap by default
 set nowrap
 

@@ -20,6 +20,9 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
+# 10ms for key sequences
+KEYTIMEOUT=1
+
 # makes color constants available
 autoload -U colors
 colors
