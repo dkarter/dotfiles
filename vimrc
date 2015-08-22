@@ -236,6 +236,9 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
+" Gist.vim 
+map <leader>gst :Gist<cr>
+
 " set shell to zsh
 set shell=/bin/zsh
 
