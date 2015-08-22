@@ -190,7 +190,7 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 " vim-rspec command - make it use dispatch
-let g:rspec_command="Dispatch rspec {spec}"
+let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
