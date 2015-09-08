@@ -111,6 +111,16 @@ Plug 'jlanzarotta/bufexplorer'
 " abolish.vim: easily search for, substitute, and abbreviate multiple variants
 " of a word
 Plug 'tpope/vim-abolish'
+" JSON manipulation
+Plug 'tpope/vim-jdaddy'
+" elm editing and compilation in vim
+Plug 'ElmCast/elm-vim'
+" vim color schemes
+Plug 'flazz/vim-colorschemes'
+" open images ASCII representation in vim
+Plug 'ashisha/image.vim'
+" auto close delimiters (parens, quotes etc..)
+Plug 'Raimondi/delimitMate'
 " ==================================================
 
 if filereadable(expand("~/.vimrc.bundles.local"))
