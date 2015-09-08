@@ -10,10 +10,10 @@
 ####################################################################
 
 --type-add
-ruby=.erb,.rake,Gemfile
+ruby=.erb,.haml,.rake,Gemfile
 
 --type-add
-js=.coffee,.coffeescript,.ejs
+js=.coffee,.ejs,.coffeescript
 
 --type-add
 css=.sass,.scss
@@ -23,3 +23,6 @@ markdown=.markdown,.md,.mkd,.mdown
 
 --type-set
 cucumber=.feature
+
+# Do not search these directories for quicker lookup
+--ignore-dir=log,tags,tmp
