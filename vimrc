@@ -11,6 +11,8 @@ nmap <leader>so :source $MYVIMRC<cr>
 nmap <leader>\ <Plug>(easymotion-s)
 nmap <leader>w <Plug>(easymotion-w)
 
+" change dir to current file's dir
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Easy esc/insert
 imap jk <esc>     " exits insert mode
