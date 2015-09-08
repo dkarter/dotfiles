@@ -1,3 +1,7 @@
+"=======================================
+"    Key Mappings
+"=======================================
+
 " Use the space key as our leader. Put this near the top of your vimrc
 let mapleader = "\<Space>"
 
@@ -33,7 +37,13 @@ cmap Q q
 
 " copy to end of line
 map Y y$
+"=======================================
+"    / Key Mappings
+"=======================================
 
+"=======================================
+"    Behavior Modification
+"=======================================
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -46,20 +56,55 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set ignorecase    " ignore case in searches
 set smartcase     " will use case sensitive if capital letter present or \C
-set cursorline    " highight current line where cursor is
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+"=======================================
+"    / Behavior Modification
+"=======================================
 
 syntax on
+
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+
+" ==================================================
+"         UI Customizations
+" ==================================================
 
 " Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
 let g:molokai_original=1
 let g:rehash256=1
 
-" Use the first available colorscheme in this list
+" default color scheme
 colorscheme molokai
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
+" Make it obvious where 80 characters is
+set textwidth=80
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn=join(range(80,999),",")
+" let &colorcolumn="80,".join(range(120,999),",")
+
+" visual bell for errors
+set visualbell
+
+" Numbers
+set number
+set numberwidth=1
+
+" nowrap by default
+set nowrap
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+
+set cursorline    " highight current line where cursor is
+" ==================================================
+"         End UI Customizations
+" ==================================================
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
@@ -97,21 +142,11 @@ augroup vimrcEx
   autocmd FileType css,scss,sass setlocal iskeyword+=-
 augroup END
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
 
 " eliminate delays when opening new lines (may cause issues on slow connections
 " if needed switch back to 1000)
 set timeoutlen=1000 ttimeoutlen=0
 
-" nowrap by default
-set nowrap
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
 
 
 " Note that remapping C-s requires flow control to be disabled
@@ -138,18 +173,6 @@ endif
 " Remove trailing whitespace on save for ruby files.
 au BufWritePre *.rb :%s/\s\+$//e
 
-" Make it obvious where 80 characters is
-set textwidth=80
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn=join(range(80,999),",")
-" let &colorcolumn="80,".join(range(120,999),",")
-
-" visual bell for errors
-set visualbell
-
-" Numbers
-set number
-set numberwidth=5
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -238,23 +261,32 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-" Gist.vim 
+" Gist.vim
 map <leader>gst :Gist<cr>
 
 " set shell to zsh
 set shell=/bin/zsh
 
-" TagBar plugin toggle
-nmap <F8> :TagbarToggle<CR>
+"=======================================
+"    Function Keys
+"=======================================
 
 " Relative Numbers on/off
 nnoremap <F3> :NumbersToggle<CR>
 
-" vim slime
-let g:slime_target="tmux"
 " re-indent file and jump back to where the cursor was
 map <F7> mzgg=G`z
 
+" TagBar plugin toggle
+nmap <F8> :TagbarToggle<CR>
+
+"=======================================
+"    / Function Keys
+"=======================================
+
+"=======================================
+"    Snippets (UltiSnips)
+"=======================================
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -263,6 +295,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+"=======================================
+"    / Snippets (UltiSnips)
+"=======================================
+
+" vim slime
+let g:slime_target="tmux"
 
 " Vim/tmux layout rebalancing
 " automatically rebalance windows on vim resize
