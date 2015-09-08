@@ -100,5 +100,8 @@ export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scriptin
 # For PostgreSQL
 export PGDATA="/Library/PostgreSQL/9.3/data"
 
+# autojump (requires brew install autojump)
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
 # make sure rvm is loaded
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
