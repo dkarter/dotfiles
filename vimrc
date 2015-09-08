@@ -252,6 +252,8 @@ nnoremap <F3> :NumbersToggle<CR>
 
 " vim slime
 let g:slime_target="tmux"
+" re-indent file and jump back to where the cursor was
+map <F7> mzgg=G`z
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
