@@ -295,14 +295,17 @@ set shell=/bin/zsh
 "    Function Keys
 "=======================================
 
-" Relative Numbers on/off
-nnoremap <F3> :NumbersToggle<CR>
+" Pasting support
+set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal
 
 " re-indent file and jump back to where the cursor was
 map <F7> mzgg=G`z
 
 " TagBar plugin toggle
 nmap <F8> :TagbarToggle<CR>
+
+" toggle Vim Legend
+nmap <F9> :LegendToggle<CR>
 
 "=======================================
 "    / Function Keys
