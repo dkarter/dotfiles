@@ -346,6 +346,33 @@ nnoremap <leader>fr :VtrFocusRunner<cr>
 nnoremap <leader>dr :VtrDetachRunner<cr>
 nnoremap <leader>ap :VtrAttachToPane
 
+" Alignment stuff
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+"=======================================
+"    indentation
+"=======================================
+" Tab/shift-tab to indent/outdent in visual mode.
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+" Keep selection when indenting/outdenting.
+vnoremap > >gv
+vnoremap < <gv
+"=======================================
+"    / indentation
+"=======================================
+
+" Better split management, kept in sync with tmux' mappings of (<prefix>| and <prefix>-)
+"" noremap <leader>- :sp<CR><C-w>j
+"" noremap <leader>\| :vsp<CR><C-w>l
+
+" better emmet leader key (must be followed with ,)
+let g:user_emmet_leader_key='<C-e>'
+
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
