@@ -34,9 +34,9 @@ nmap <S-Space> i
 inoremap <C-C> <Esc>`^
 
 " Insert Empty Lines
-nmap oo o<Esc>k
-nmap OO O<Esc>j
-
+" nmap oo o<Esc>k
+" nmap OO O<Esc>j
+"
 " command typo mapping
 cmap WQ wq
 cmap Wq wq
