@@ -19,8 +19,8 @@ alias path='echo $PATH | tr -s ":" "\n"'
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
 
 # ZSH aliases
-alias zshconfig="subl ~/.oh-my-zsh ~/.zshrc"
-alias ohmyzsh="subl ~/.oh-my-zsh ~/.zshrc"
+alias zshconfig="vim ~/.oh-my-zsh ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh ~/.zshrc"
 
 # Typos
 alias quit="exit"
