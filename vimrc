@@ -45,6 +45,22 @@ cmap Q q
 
 " copy to end of line
 map Y y$
+
+" Note that remapping C-s requires flow control to be disabled
+" (e.g. in .bashrc or .zshrc)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" easier new tab
+map <C-t> <esc>:tabnew<CR>
+map <C-c> <esc>:tabclose<CR>
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
 "=======================================
 "    / Key Mappings
 "=======================================
@@ -75,9 +91,23 @@ set expandtab
 
 syntax on
 
+" set vim-legend to disabled by default
+let g:legend_active_auto = 0
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
+
+
+" ==================================================
+"    Plugin Modifications (after loading bundles)
+" ==================================================
+
+" call ToggleStripWhitespaceOnSave()
+
+" ==================================================
+"    / Plugin Modifications (after loading bundles)
+" ==================================================
 
 " ==================================================
 "         UI Customizations
@@ -157,14 +187,6 @@ set timeoutlen=1000 ttimeoutlen=0
 
 
 
-" Note that remapping C-s requires flow control to be disabled
-" (e.g. in .bashrc or .zshrc)
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-
-" easier new tab
-map <C-t> <esc>:tabnew<CR>
-map <C-c> <esc>:tabclose<CR>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -208,13 +230,7 @@ map <Leader>ct :!ctags -R .<CR>
 nnoremap <leader><leader> <c-^>
 
 " NerdTree
-map <Leader>nt :NERDTree<CR>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+map <Leader>nt :NERDTreeToggle<CR>
 
 " vim-rspec mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
@@ -309,6 +325,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 " vim slime
 let g:slime_target="tmux"
+
 
 " Vim/tmux layout rebalancing
 " automatically rebalance windows on vim resize
