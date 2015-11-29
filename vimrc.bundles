@@ -27,17 +27,24 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
+" easiest way to move in vim
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-run-interactive'
+" coffee script highlighting
 Plug 'kchmck/vim-coffee-script'
+" fuzzy find files
 Plug 'ctrlpvim/ctrlp.vim'
+" make a new dir in vim
 Plug 'pbrisbin/vim-mkdir'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim'
+" do rspec things and highlight syntax
 Plug 'thoughtbot/vim-rspec'
+" interact with ruby bundler gem
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
+" git awesomeness
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
