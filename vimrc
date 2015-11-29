@@ -11,6 +11,9 @@ nmap <leader>vb :vsp ~/.vimrc.bundles<cr>
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nmap <leader>so :source $MYVIMRC<cr>
 
+"split edit your tmux conf
+nmap <leader>mux :vsp ~/.tmux.conf<cr>
+
 " Easy Motion
 nmap <leader>\ <Plug>(easymotion-s)
 nmap <leader>w <Plug>(easymotion-w)
