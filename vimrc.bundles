@@ -126,6 +126,10 @@ Plug 'ashisha/image.vim'
 Plug 'ap/vim-css-color'
 " syntax for apple scripts
 Plug 'vim-scripts/applescript.vim'
+" Create custom text objects (required by vim textobj rubyblock)
+Plug 'kana/vim-textobj-user'
+" Text object for ruby blocks
+Plug 'nelstrom/vim-textobj-rubyblock'
 " ==================================================
 
 if filereadable(expand("~/.vimrc.bundles.local"))
