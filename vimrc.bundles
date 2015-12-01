@@ -134,6 +134,8 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'fatih/vim-go'
 " SpaceGray theme
 Plug 'ajh17/Spacegray.vim'
+" tab completion for insert
+Plug 'ervandew/supertab'
 " ==================================================
 
 if filereadable(expand("~/.vimrc.bundles.local"))
