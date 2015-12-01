@@ -26,17 +26,6 @@ let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 " change dir to current file's dir
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" Easy esc/insert
-imap jk <esc>     " exits insert mode
-imap kj <esc>     " exits insert mode
-imap <S-Space> <Esc>
-nmap <S-Space> i
-inoremap <C-C> <Esc>`^
-
-" Insert Empty Lines
-" nmap oo o<Esc>k
-" nmap OO O<Esc>j
-"
 " command typo mapping
 cmap WQ wq
 cmap Wq wq
@@ -316,7 +305,7 @@ nmap <F9> :LegendToggle<CR>
 "=======================================
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
