@@ -98,13 +98,12 @@ export PGDATA="/Library/PostgreSQL/9.3/data"
 # autojump (requires brew install autojump)
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-# make sure rvm is loaded
-[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
-
 # add autocomplete for lunchy - gem install lunchy
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh fi
+if `gem list lunchy -i`; then
+  LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+  if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+    . $LUNCHY_DIR/lunchy-completion.zsh fi
+  fi
 fi
 
 # color man pages
