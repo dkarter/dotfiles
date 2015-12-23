@@ -61,12 +61,37 @@ Plug 'tpope/vim-fugitive'
 " Rails and ruby support
 Plug 'tpope/vim-rails'
 
+Plug 'vim-ruby/vim-ruby'
+
 " allow (non-native) plugins to use the . command
 Plug 'tpope/vim-repeat'
 
 " Surround text with closures
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
+
+" asynchronous build and test dispatcher https://vimeo.com/63116209
+Plug 'tpope/vim-dispatch'
+
+" vim rake by Tim Pope - like rails.vim but for plain ruby
+Plug 'tpope/vim-rake'
+
+" vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
+Plug 'tpope/vim-projectionist'
+
+" vim cucumber for easy cuke navigation
+Plug 'tpope/vim-cucumber'
+
+" vim unimpaired fixes daily annoyences
+Plug 'tpope/vim-unimpaired'
+
+" abolish.vim: easily search for, substitute, and abbreviate multiple variants
+" of a word
+Plug 'tpope/vim-abolish'
+
+" Support emacs keybindings in insert mode
+Plug 'tpope/vim-rsi'
+
+" Comment out code easily
 Plug 'vim-scripts/tComment'
 
 " NERDTree... tree explorer for vim
@@ -77,9 +102,6 @@ Plug 'gabrielelana/vim-markdown'
 
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
-" asynchronous build and test dispatcher https://vimeo.com/63116209
-Plug 'tpope/vim-dispatch'
-" Emmet, nuff said.
 
 " Emmet generate html tags, autocomplete css
 Plug 'mattn/emmet-vim'
@@ -89,8 +111,6 @@ Plug 'haya14busa/incsearch.vim'
 
 " syntax highlighting for rspec
 Plug 'keith/rspec.vim'
-" show the class structure in a tree (using ctags)
-" Plug 'majutsushi/tagbar'
 
 " auto sorts ascii tables and aligns code neatly
 Plug 'godlygeek/tabular'
@@ -106,12 +126,6 @@ Plug 'airblade/vim-gitgutter'
 
 " vim slime for tmux integration
 Plug 'jpalardy/vim-slime'
-" vim rake by Tim Pope - like rails.vim but for plain ruby
-Plug 'tpope/vim-rake'
-" vim projectionist required by vim rake
-Plug 'tpope/vim-projectionist'
-" vim cucumber for easy cuke navigation
-Plug 'tpope/vim-cucumber'
 
 " gutter coverage report for ruby using simplecov
 " Plug 'killphi/vim-legend'
@@ -130,8 +144,6 @@ Plug 'SirVer/ultisnips'
 
 " The Silver Searcher (Ag) vim integration
 Plug 'rking/ag.vim'
-" vim unimpaired fixes daily annoyences
-Plug 'tpope/vim-unimpaired'
 
 " JavaScript support (required by vim-jsx)
 Plug 'pangloss/vim-javascript'
@@ -147,14 +159,9 @@ Plug 'christoomey/vim-tmux-runner'
 
 " Indentation guide
 Plug 'nathanaelkane/vim-indent-guides'
-" markdown folding
-" Plug 'nelstrom/vim-markdown-folding'
 
 " quick buffer switching
 Plug 'jlanzarotta/bufexplorer'
-" abolish.vim: easily search for, substitute, and abbreviate multiple variants
-" of a word
-Plug 'tpope/vim-abolish'
 
 " JSON manipulation
 Plug 'tpope/vim-jdaddy'
@@ -164,8 +171,6 @@ Plug 'ElmCast/elm-vim'
 
 " vim color schemes
 Plug 'flazz/vim-colorschemes'
-" open images ASCII representation in vim
-Plug 'ashisha/image.vim'
 
 " highlight colors in css
 Plug 'ap/vim-css-color'
@@ -187,6 +192,12 @@ Plug 'ajh17/Spacegray.vim'
 
 " tab completion for insert
 Plug 'ervandew/supertab'
+
+" support for jade templates (node.js server templates - like haml for ruby)
+Plug 'digitaltoad/vim-jade'
+
+" vim rubocop
+Plug 'ngmy/vim-rubocop'
 " ==================================================
 
 if filereadable(expand("~/.vimrc.bundles.local"))
