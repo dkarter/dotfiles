@@ -92,7 +92,8 @@ endif
 "    Plugin Modifications (after loading bundles)
 " ==================================================
 
-" call ToggleStripWhitespaceOnSave()
+" Use Dash.app for documentation of word under cursor
+let g:investigate_use_dash=1
 
 " ==================================================
 "    / Plugin Modifications (after loading bundles)
