@@ -26,15 +26,21 @@ source $ZSH/oh-my-zsh.sh
 
 # zsh syntax highlighting
 # pre-requisite: `brew install zsh-syntax-highlighting`
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+syntax_plug=/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f $syntax_plug ]; then
+  source $syntax_plug
+fi
 
 # zsh history search
 # pre-requisite `brew install zsh-history-substring-search`
 # NOTE: must be placed after zsh-syntax-highlighting if used together
 # readme: /usr/local/opt/zsh-history-substring-search/README.md
-source /usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+hist_plug=/usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
+if [ -f $hist_plug ]; then
+  source $hist_plug
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
 
 
 # zsh completions
