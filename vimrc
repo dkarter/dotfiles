@@ -108,7 +108,7 @@ let g:molokai_original=1
 let g:rehash256=1
 
 " default color scheme
-colorscheme molokai
+colorscheme spacegray
 
 " Make it obvious where 80 characters is
 set textwidth=80
