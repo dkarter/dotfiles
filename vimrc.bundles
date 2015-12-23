@@ -29,52 +29,81 @@ call plug#begin('~/.vim/bundle')
 " List Plugins =====================================
 " easiest way to move in vim
 Plug 'easymotion/vim-easymotion'
+
 Plug 'christoomey/vim-run-interactive'
+
 " coffee script highlighting
 Plug 'kchmck/vim-coffee-script'
+
 " fuzzy find files
 Plug 'ctrlpvim/ctrlp.vim'
+
 " make a new dir in vim
 Plug 'pbrisbin/vim-mkdir'
+
 Plug 'scrooloose/syntastic'
+
 Plug 'slim-template/vim-slim'
+
 " do rspec things and highlight syntax
 Plug 'thoughtbot/vim-rspec'
+
 " interact with ruby bundler gem
 Plug 'tpope/vim-bundler'
+
 Plug 'tpope/vim-endwise'
+
 Plug 'tpope/vim-eunuch'
+
 " git awesomeness
 Plug 'tpope/vim-fugitive'
+
+" Rails and ruby support
 Plug 'tpope/vim-rails'
+
+" allow (non-native) plugins to use the . command
 Plug 'tpope/vim-repeat'
+
+" Surround text with closures
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/tComment'
+
 " NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'
+
 " Better markdown editing
 Plug 'gabrielelana/vim-markdown'
+
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
 " asynchronous build and test dispatcher https://vimeo.com/63116209
 Plug 'tpope/vim-dispatch'
 " Emmet, nuff said.
+
+" Emmet generate html tags, autocomplete css
 Plug 'mattn/emmet-vim'
+
 " highlights all search results and allows tabbing between them
 Plug 'haya14busa/incsearch.vim'
+
 " syntax highlighting for rspec
 Plug 'keith/rspec.vim'
 " show the class structure in a tree (using ctags)
 " Plug 'majutsushi/tagbar'
+
 " auto sorts ascii tables and aligns code neatly
 Plug 'godlygeek/tabular'
+
 " easily convert ruby blocks to single line block/multiline block
 Plug 'jgdavey/vim-blockle'
+
 " Vim snippets ...
 Plug 'honza/vim-snippets'
+
 " Visual git gutter
 Plug 'airblade/vim-gitgutter'
+
 " vim slime for tmux integration
 Plug 'jpalardy/vim-slime'
 " vim rake by Tim Pope - like rails.vim but for plain ruby
@@ -83,57 +112,79 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
 " vim cucumber for easy cuke navigation
 Plug 'tpope/vim-cucumber'
+
 " gutter coverage report for ruby using simplecov
 " Plug 'killphi/vim-legend'
+"
 " .tmux.conf syntax highlighting
 Plug 'keith/tmux.vim'
+
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
+
 " show trailing white spaces and allow deleting them
 Plug 'ntpeters/vim-better-whitespace'
+
 " modern snippets for vim
 Plug 'SirVer/ultisnips'
+
 " The Silver Searcher (Ag) vim integration
 Plug 'rking/ag.vim'
 " vim unimpaired fixes daily annoyences
 Plug 'tpope/vim-unimpaired'
+
 " JavaScript support (required by vim-jsx)
 Plug 'pangloss/vim-javascript'
+
 " JSX support for react components
 Plug 'mxw/vim-jsx'
+
 " seamless tmux/vim pane navigation
 Plug 'christoomey/vim-tmux-navigator'
+
 " run commands from vim in tmux
 Plug 'christoomey/vim-tmux-runner'
+
 " Indentation guide
 Plug 'nathanaelkane/vim-indent-guides'
 " markdown folding
 " Plug 'nelstrom/vim-markdown-folding'
+
 " quick buffer switching
 Plug 'jlanzarotta/bufexplorer'
 " abolish.vim: easily search for, substitute, and abbreviate multiple variants
 " of a word
 Plug 'tpope/vim-abolish'
+
 " JSON manipulation
 Plug 'tpope/vim-jdaddy'
+
 " elm editing and compilation in vim
 Plug 'ElmCast/elm-vim'
+
 " vim color schemes
 Plug 'flazz/vim-colorschemes'
 " open images ASCII representation in vim
 Plug 'ashisha/image.vim'
+
 " highlight colors in css
 Plug 'ap/vim-css-color'
+
 " syntax for apple scripts
 Plug 'vim-scripts/applescript.vim'
+
 " Create custom text objects (required by vim textobj rubyblock)
 Plug 'kana/vim-textobj-user'
+
 " Text object for ruby blocks
 Plug 'nelstrom/vim-textobj-rubyblock'
+
 " Vim Go
 Plug 'fatih/vim-go'
+
 " SpaceGray theme
 Plug 'ajh17/Spacegray.vim'
+
 " tab completion for insert
 Plug 'ervandew/supertab'
 " ==================================================
