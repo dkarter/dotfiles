@@ -106,8 +106,10 @@ export PATH="/usr/local/bin:$PATH"
 # For PostgreSQL
 export PGDATA="/Library/PostgreSQL/9.3/data"
 
-# autojump (requires brew install autojump)
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if `command -v brew >/dev/null`; then
+  # autojump (requires brew install autojump)
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+fi
 
 # add autocomplete for lunchy - gem install lunchy
 if `gem list lunchy -i`; then
