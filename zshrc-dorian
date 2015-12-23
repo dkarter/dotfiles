@@ -2,7 +2,12 @@
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="crunch-twoliner"
+custom_theme=$HOME/.oh-my-zsh/themes/crunch-twoliner.zsh-theme
+if [ -f $custom_theme ]; then
+  ZSH_THEME="crunch-twoliner"
+else
+  ZSH_THEME="robbyrussell"
+fi
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
