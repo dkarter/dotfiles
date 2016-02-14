@@ -97,8 +97,8 @@ Plug 'vim-scripts/tComment'
 " NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'
 
-" Better markdown editing
-Plug 'gabrielelana/vim-markdown'
+" " Better markdown editing
+" Plug 'gabrielelana/vim-markdown'
 
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
@@ -115,10 +115,7 @@ Plug 'keith/rspec.vim'
 " auto sorts ascii tables and aligns code neatly
 Plug 'godlygeek/tabular'
 
-" easily convert ruby blocks to single line block/multiline block
-Plug 'jgdavey/vim-blockle'
-
-" Vim snippets ...
+" vim snippets ...
 Plug 'honza/vim-snippets'
 
 " Visual git gutter
@@ -198,6 +195,46 @@ Plug 'digitaltoad/vim-jade'
 
 " vim rubocop
 Plug 'ngmy/vim-rubocop'
+
+" Jekyll blog commands
+Plug 'parkr/vim-jekyll'
+
+" Gitv - for browsing a file's history in git
+Plug 'gregsexton/gitv'
+
+" Vim Web API (required by gist-vim)
+Plug 'mattn/webapi-vim'
+
+" Vim GitHub gist integration
+Plug 'mattn/gist-vim'
+
+" Gundo - visualize git's undo tree (requires python)
+Plug 'sjl/gundo.vim'
+
+" Hashrocket keybinding
+Plug 'hashrocket/vim-hashrocket'
+
+" Convert code to multiline
+Plug 'AndrewRadev/splitjoin.vim'
+
+" Toggle between different language verbs or syntax styles
+Plug 'AndrewRadev/switch.vim'
+
+" Interact with web apis (required by postal)
+Plug 'mattn/webapi-vim'
+
+" vim plugin for writing vim plugins
+Plug 'tpope/vim-scriptease'
+
+
+" fancy vim start page
+Plug 'mhinz/vim-startify'
+
+" OWN PLUGINS: --------------------------- {{{
+" automatic bulleted lists
+Plug 'dkarter/bullets.vim'
+" /OWN PLUGINS --------------------------- }}}
+
 " ==================================================
 
 if filereadable(expand("~/.vimrc.bundles.local"))
