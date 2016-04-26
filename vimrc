@@ -331,7 +331,7 @@ nnoremap <leader>= :wincmd =<cr>
 nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'irb'}<cr>
 nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
 nnoremap <leader>or :VtrOpenRunner<cr>
-nnoremap <leader>sl :VtrSendLinesToRunner<cr>
+vnoremap <leader>sl :VtrSendLinesToRunner<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
 nnoremap <leader>dr :VtrDetachRunner<cr>
 nnoremap <leader>ap :VtrAttachToPane
