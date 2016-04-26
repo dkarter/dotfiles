@@ -35,6 +35,10 @@ alias gnap='git add -N . && gap && gref'
 # disable zsh git plugin
 alias gsr='gst'
 
+# fancy weather
+alias wttr='curl -4 http://wttr.in/chicago'
+
+
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
 # Include machine specific aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
