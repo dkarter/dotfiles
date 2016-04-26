@@ -458,7 +458,10 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
+nnoremap <Leader>ri :RunInInteractiveShell<space>
+
+" Reload current vim plugin
+nnoremap <Leader>rr :Runtime<cr>
 
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
