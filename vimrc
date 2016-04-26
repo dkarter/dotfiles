@@ -166,6 +166,16 @@ if has('python')
   python del powerline_setup
 endif
 
+" for go-vim
+augroup CustomGoVimMappings
+  autocmd!
+
+  autocmd FileType go setlocal nolist listchars=tab:>-,trail:·,nbsp:·
+  autocmd FileType go nmap <buffer> <leader>r <Plug>(go-run)
+  autocmd FileType go nmap <buffer> <leader>b <Plug>(go-build)
+  autocmd FileType go nmap <buffer> <leader>t <Plug>(go-test)
+  autocmd FileType go nmap <buffer> <leader>c <Plug>(go-coverage)
+augroup END
 " }}}
 
 " UI Customizations --------------------------------{{{
