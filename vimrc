@@ -256,6 +256,13 @@ augroup vimrcEx
   " automatically rebalance windows on vim resize
   autocmd VimResized * :wincmd =
 augroup END
+
+augroup AutoSaveFolds
+  autocmd!
+  " add file types as needed
+  autocmd BufWinLeave *.c,*.rb mkview
+  autocmd BufWinEnter *.c,*.rb silent loadview
+augroup END
 " }}}
 
 " Vim Script file settings ------------------------ {{{
