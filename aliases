@@ -15,8 +15,6 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-# Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
 
 # ZSH aliases
 alias zshconfig="vim ~/.oh-my-zsh ~/.zshrc"
@@ -31,3 +29,7 @@ alias gap="git add -p"
 alias gnap='git add -N . && git add -p'
 # disable zsh git plugin
 alias gsr='gst'
+
+# KEEP AT BOTTOM TO ALLOW OVERRIDE
+# Include machine specific aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
