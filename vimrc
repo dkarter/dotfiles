@@ -472,6 +472,7 @@ map g/ <Plug>(incsearch-stay)
 " --------------------- Key Mappings ---------------------------- }}}
 
 "    Abbreviations --------------------------------------- {{{
+
 iabbrev @@ dkarter@gmail.com
 iabbrev ccopy Copyleft 2016 Dorian Karter.
 

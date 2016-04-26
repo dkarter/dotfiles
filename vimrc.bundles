@@ -230,6 +230,28 @@ Plug 'tpope/vim-scriptease'
 " fancy vim start page
 Plug 'mhinz/vim-startify'
 
+" copy code as rtf
+Plug 'zerowidth/vim-copy-as-rtf' 
+
+" postgres sql highlighting
+Plug 'exu/pgsql.vim'
+
+" distraction free writing (like iA Writer)
+Plug 'laktek/distraction-free-writing-vim'
+
+" Elixir support
+Plug 'elixir-lang/vim-elixir'
+
+" Rust support
+Plug 'rust-lang/rust.vim'
+
+" fzf greatness (fuzzy finding)
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+
+" Vim plugin for Flow (js static type checker)
+Plug 'flowtype/vim-flow'
+
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists
 Plug 'dkarter/bullets.vim'
