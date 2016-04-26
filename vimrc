@@ -56,6 +56,7 @@ let g:markdown_fenced_languages = [
       \ 'js=javascript',
       \ 'python',
       \ 'ruby',
+      \ 'sql',
       \ 'bash=sh'
       \ ]
 
