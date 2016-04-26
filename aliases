@@ -24,9 +24,14 @@ alias ohmyzsh="vim ~/.oh-my-zsh ~/.zshrc"
 alias quit="exit"
 alias cd..="cd .."
 
+# git reset empty files
+gref() {
+  command git --no-pager diff --cached --stat | command grep " |\s*0$" | awk '{system("command git reset " $1)}'
+}
+
 # Git
 alias gap="git add -p"
-alias gnap='git add -N . && git add -p'
+alias gnap='git add -N . && gap && gref'
 # disable zsh git plugin
 alias gsr='gst'
 
