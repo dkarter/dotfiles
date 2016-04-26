@@ -127,7 +127,7 @@ let g:investigate_use_dash=1
 " set vim-legend to disabled by default
 let g:legend_active_auto = 0
 
-" vim header for startify
+" vim header (startify)
 let g:startify_custom_header = [
         \ '                                 ________  __ __        ',
         \ '            __                  /\_____  \/\ \\ \       ',
@@ -140,7 +140,8 @@ let g:startify_custom_header = [
         \ '',
         \ ]
 let g:startify_custom_header +=  map(split(system('fortune | cowsay -f $(cowsay -l | tail -n +2 | tr " " "\n" | gshuf -n1)'), '\n'), '"   ". v:val') + ['','']
-"Change cursor on insert mode
+
+"Change cursor on insert mode (vim-hashrocket)
 let g:use_cursor_shapes = 1
 
 " ----------------------------------------------------- }}}
