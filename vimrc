@@ -66,6 +66,9 @@ let g:sh_fold_enabled=1
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0 
+
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
