@@ -400,6 +400,11 @@ noremap gy "*y
 " copy whole file to system clipboard
 nnoremap gY gg"*yG
 
+" FZF shortcuts
+nnoremap <C-p> :FZF<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-m> :Maps<CR>
+
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
 noremap <C-s> <esc>:w<CR>
@@ -476,6 +481,8 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
+" leader leader to open commands fzf
+nnoremap <leader><leader> :Commands<CR>
 
 " --------------------- Key Mappings ---------------------------- }}}
 
