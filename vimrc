@@ -147,8 +147,13 @@ let g:startify_custom_header = [
         \ ]
 let g:startify_custom_header +=  map(split(system('fortune | cowsay -f $(cowsay -l | tail -n +2 | tr " " "\n" | gshuf -n1)'), '\n'), '"   ". v:val') + ['','']
 
+let g:startify_files_number = 5
+
 "Change cursor on insert mode (vim-hashrocket)
 let g:use_cursor_shapes = 1
+
+" elm vim - add support for elm-format
+let g:elm_format_autosave=1
 
 " ----------------------------------------------------- }}}
 
@@ -380,6 +385,11 @@ augroup ScratchToggle
   autocmd FileType scratch nnoremap <buffer> <leader><space> :q<CR>
 augroup END
 
+" Vim Plug
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pc :PlugClean<CR>
+
 " change dir to current file's dir
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -466,7 +476,7 @@ map <Leader>nt :NERDTreeToggle<CR>
 
 " vim-rspec mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>T :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
