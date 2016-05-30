@@ -255,6 +255,13 @@ if `command -v fzf >/dev/null`; then
   }
 fi
 
+function clonecd() {
+  # find a way to pass the rest of the arguments to
+  # git clone in a variadic style to allow still using
+  # --depth=1 etc
+  git clone git@github.com:"$1" && cd "${1#*/}";
+}
+
 # color man pages
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
