@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<root>
+  <appdef>
+    <appname>QUIVER</appname>
+    <equal>com.happenapps.Quiver</equal>
+  </appdef>
+
+  <item>
+    <name>Switch between cells with cmd-j, cmd-k in Quiver</name>
+    <identifier>private.quiver_switch_between_cells</identifier>
+
+    <only>QUIVER</only>
+
+    <autogen>
+      __KeyToKey__
+      KeyCode::J, ModifierFlag::COMMAND_L,
+      KeyCode::CURSOR_DOWN, KeyCode::COMMAND_L
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::K, ModifierFlag::COMMAND_L,
+      KeyCode::CURSOR_UP, KeyCode::COMMAND_L
+    </autogen>
+  </item>
+  <item>
+    <name>Use Option+HJKL as arrow keys</name>
+    <identifier>private.use_option_hjkl_as_arrow_keys</identifier>
+
+    <autogen>
+      __KeyToKey__
+      KeyCode::J, ModifierFlag::OPTION_L,
+      KeyCode::CURSOR_DOWN
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::K, ModifierFlag::OPTION_L,
+      KeyCode::CURSOR_UP
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::H, ModifierFlag::OPTION_L,
+      KeyCode::CURSOR_LEFT
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::L, ModifierFlag::OPTION_L,
+      KeyCode::CURSOR_RIGHT
+    </autogen>
+  </item>
+</root>
