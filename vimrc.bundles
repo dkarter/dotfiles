@@ -27,16 +27,11 @@ com! -nargs=+  -bar Bundle call VundleToPlug("Bundle", <args>)
 call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
-" easiest way to move in vim
-Plug 'easymotion/vim-easymotion'
-
+" what does this do
 Plug 'christoomey/vim-run-interactive'
 
 " coffee script highlighting
 Plug 'kchmck/vim-coffee-script'
-
-" fuzzy find files
-Plug 'ctrlpvim/ctrlp.vim'
 
 " make a new dir in vim
 Plug 'pbrisbin/vim-mkdir'
