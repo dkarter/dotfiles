@@ -67,6 +67,14 @@ let g:sh_fold_enabled=1
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
+" Bullets.vim
+let g:bullets_enabled_file_types = [
+    \ 'markdown', 
+    \ 'text', 
+    \ 'gitcommit',
+    \ 'scratch'
+    \]
+
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0 
 
@@ -84,6 +92,9 @@ endif
 
 " vim slime
 let g:slime_target="tmux"
+
+" scratch.vim
+let g:scratch_no_mappings=1
 
 " better emmet leader key (must be followed with ,)
 let g:user_emmet_leader_key='<C-e>'
@@ -371,7 +382,12 @@ nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
 " Easy Motion
 nnoremap <leader>\ <Plug>(easymotion-s)
 nnoremap <leader>w <Plug>(easymotion-w)
+" Scratch
+nnoremap <leader><space> :Scratch<CR>
 
+augroup ScratchToggle
+  autocmd FileType scratch nnoremap <buffer> <leader><space> :q<CR>
+augroup END
 
 " change dir to current file's dir
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
