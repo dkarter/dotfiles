@@ -17,6 +17,9 @@ set tabstop=2    " Softtabs or die! 2 spaces FTW!
 set shiftwidth=2 " Number of spaces to use for each step of (auto)indent.
 set shiftround   " Round indent to multiple of 'shiftwidth'
 set expandtab    " insert tab with right amount of spacing
+set gdefault     " Use 'g' flag by default with :s/foo/bar/.
+set magic        " Use 'magic' patterns (extended regular expressions).
+
 
 " set where swap file and undo/backup files are saved
 set backupdir=~/.vim/tmp,.
