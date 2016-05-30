@@ -1,11 +1,9 @@
 syntax on
 
-" Set leader keys -------------------------------------- {{{
-let mapleader = "\<Space>"
-let maplocalleader = "\\"
-" Set leader keys -------------------------------------- }}}
 
 "  Behavior Modification ----------------------  {{{
+let mapleader="\\"
+
 set backspace=2  " Backspace deletes like most programs in insert mode
 set history=100  " how many : commands to save in history
 set ruler        " show the cursor position all the time
