@@ -36,6 +36,9 @@ alias gnap='git add -N . && gap && gref'
 # disable zsh git plugin
 alias gsr='gst'
 
+# hashrocket uses gpr and I like gup, this prevents typos
+alias gpr='gup'
+
 # fancy weather
 alias wttr='curl -4 http://wttr.in/chicago'
 
