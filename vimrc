@@ -69,14 +69,14 @@ let g:sh_fold_enabled=1
 
 " Bullets.vim
 let g:bullets_enabled_file_types = [
-    \ 'markdown', 
-    \ 'text', 
+    \ 'markdown',
+    \ 'text',
     \ 'gitcommit',
     \ 'scratch'
     \]
 
 " Allow JSX in normal JS files
-let g:jsx_ext_required = 0 
+let g:jsx_ext_required = 0
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -333,6 +333,10 @@ nmap <F8> :TagbarToggle<CR>
 nmap <F9> :LegendToggle<CR>
 
 " }}}
+
+" Allow j and k to work on visual lines (when wrapping)
+nnoremap k gk
+nnoremap j gj
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
