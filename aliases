@@ -42,9 +42,15 @@ alias gpr='gup'
 # fancy weather
 alias wttr='curl -4 http://wttr.in/chicago'
 
+# fuzzy commands with fzf
 alias fta='tmux attach -t `tl | fzf | tr ":" "\n" | head -n1`'
 alias gcorb='gco --track `git branch -r |fzf`'
 alias gcob='gco `git branch |fzf`'
+
+fkill() {
+  kill -9 `ps ax | fzf | awk '{ print $1 }'`
+}
+
 alias brewup='brew update && brew upgrade && brew cleanup'
 
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
