@@ -54,6 +54,24 @@ fkill() {
 
 alias brewup='brew update && brew upgrade && brew cleanup'
 
+alias dcd='cd dev'
+alias hcd='cd dev/hashrocket'
+
+# quick config
+alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
+alias muxconfig='vim ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias sshconfig='vim ~/.ssh/config'
+alias aliasconfig='vim ~/.aliases && source ~/.aliases'
+
+# curl
+# usage postjson '{"key": "value"}' http://example.com/create_record
+alias postjson='curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '
+# usage postjson http://example.com/record/1
+alias getjson='curl -i -H "Accept: application/json" -H "Content-Type: application/json"'
+
+# elixir
+alias extwiki='mix ecto.migrate && mix ecto.rollback && mix ecto.migrate'
+
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
 # Include machine specific aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
