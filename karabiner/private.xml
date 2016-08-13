@@ -22,29 +22,4 @@
       KeyCode::CURSOR_UP, KeyCode::COMMAND_L
     </autogen>
   </item>
-  <item>
-    <name>Use Option+HJKL as arrow keys</name>
-    <identifier>private.use_option_hjkl_as_arrow_keys</identifier>
-
-    <autogen>
-      __KeyToKey__
-      KeyCode::J, ModifierFlag::OPTION_L,
-      KeyCode::CURSOR_DOWN
-    </autogen>
-    <autogen>
-      __KeyToKey__
-      KeyCode::K, ModifierFlag::OPTION_L,
-      KeyCode::CURSOR_UP
-    </autogen>
-    <autogen>
-      __KeyToKey__
-      KeyCode::H, ModifierFlag::OPTION_L,
-      KeyCode::CURSOR_LEFT
-    </autogen>
-    <autogen>
-      __KeyToKey__
-      KeyCode::L, ModifierFlag::OPTION_L,
-      KeyCode::CURSOR_RIGHT
-    </autogen>
-  </item>
 </root>
