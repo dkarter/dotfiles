@@ -19,7 +19,7 @@ HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(zsh_reload tmux tmuxinator vi-mode rbenv ruby rails rake rake-fast gem bundler heroku git github dircycle postgres sublime xcode osx brew npm node cp colorize pj sniffsniff)
+plugins=(zsh_reload tmux tmuxinator mix vi-mode rbenv ruby rails rake rake-fast gem bundler heroku git github dircycle postgres sublime xcode osx brew npm node cp colorize pj sniffsniff)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,17 +87,17 @@ bindkey '^r' history-incremental-search-backward
 export KEYTIMEOUT=1
 
 # Always TMUX ----------------------------
-if `command -v tmux >/dev/null`; then
-  _not_inside_tmux() { [[ -z "$TMUX" ]] }
-
-  ensure_tmux_is_running() {
-    if _not_inside_tmux; then
-      tat
-    fi
-  }
-
-  ensure_tmux_is_running
-fi
+# if `command -v tmux >/dev/null`; then
+#   _not_inside_tmux() { [[ -z "$TMUX" ]] }
+#
+#   ensure_tmux_is_running() {
+#     if _not_inside_tmux; then
+#       tat
+#     fi
+#   }
+#
+#   ensure_tmux_is_running
+# fi
 # ----------------------------------------
 
 # add rbenv

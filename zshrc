@@ -1,12 +1,4 @@
-# modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  current_branch=$(git current-branch 2> /dev/null)
-  if [[ -n $current_branch ]]; then
-    echo " %{$fg_bold[green]%}$current_branch%{$reset_color%}"
-  fi
-}
 setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
@@ -47,9 +39,12 @@ setopt extendedglob
 unsetopt nomatch
 
 # vi mode
+# bindkey -v
+# bindkey "^F" vi-cmd-mode
+# bindkey jj vi-cmd-mode
+
+# emacs mode
 bindkey -v
-bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -109,3 +104,5 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
