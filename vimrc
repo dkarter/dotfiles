@@ -1,8 +1,10 @@
 syntax on
-
+filetype plugin indent on
 
 "  Behavior Modification ----------------------  {{{
 let mapleader="\\"
+" alias for leader key
+nmap <space> \
 
 set backspace=2  " Backspace deletes like most programs in insert mode
 set history=100  " how many : commands to save in history
@@ -20,7 +22,19 @@ set expandtab    " insert tab with right amount of spacing
 set gdefault     " Use 'g' flag by default with :s/foo/bar/.
 set magic        " Use 'magic' patterns (extended regular expressions).
 
+" visual bell for errors
+set visualbell
 
+set textwidth=80
+
+" Numbers
+set number
+set numberwidth=1
+set nowrap " nowrap by default
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+set cursorline    " highight current line where cursor is
+set cursorcolumn  " highight current column where cursor is
 " set where swap file and undo/backup files are saved
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
@@ -30,7 +44,7 @@ set splitbelow
 set splitright
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
+" Dropbox or kept in Git
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Autocomplete with dictionary words when spell check is on
@@ -41,10 +55,6 @@ set diffopt+=vertical
 
 " set shell to zsh
 set shell=/bin/zsh
-
-" eliminate delays when opening new lines (may cause issues on slow connections
-" if needed switch back to 1000)
-set timeoutlen=1000 ttimeoutlen=0
 
 set wildmenu
 set wildmode=list:longest,list:full
@@ -67,6 +77,10 @@ let g:sh_fold_enabled=1
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
+" setup airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
 " Bullets.vim
 let g:bullets_enabled_file_types = [
     \ 'markdown',
@@ -75,10 +89,17 @@ let g:bullets_enabled_file_types = [
     \ 'scratch'
     \]
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --smart-case'
+endif
+
+let g:fzf_files_options =
+  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" Use The Silver Searcher for grep https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -101,6 +122,9 @@ let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+" vim flowjs
+let g:flow#autoclose = 1
 
 " syntastic ---------------------------------------------------------- {{{
 " configure syntastic syntax checking to check on open as well as save
@@ -129,23 +153,10 @@ let g:syntastic_warning_symbol = "⚠"
 
 " Use Dash.app for documentation of word under cursor
 let g:investigate_use_dash=1
+let g:investigate_syntax_for_rspec="ruby"
 
 " set vim-legend to disabled by default
 let g:legend_active_auto = 0
-
-" vim header (startify)
-let g:startify_custom_header = [
-        \ '                                 ________  __ __        ',
-        \ '            __                  /\_____  \/\ \\ \       ',
-        \ '    __  __ /\_\    ___ ___      \/___//''/''\ \ \\ \    ',
-        \ '   /\ \/\ \\/\ \ /'' __` __`\        /'' /''  \ \ \\ \_ ',
-        \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \      /'' /''__  \ \__ ,__\',
-        \ '    \ \___/  \ \_\ \_\ \_\ \_\    /\_/ /\_\  \/_/\_\_/  ',
-        \ '     \/__/    \/_/\/_/\/_/\/_/    \//  \/_/     \/_/    ',
-        \ '',
-        \ '',
-        \ ]
-let g:startify_custom_header +=  map(split(system('fortune | cowsay -f $(cowsay -l | tail -n +2 | tr " " "\n" | gshuf -n1)'), '\n'), '"   ". v:val') + ['','']
 
 let g:startify_files_number = 5
 
@@ -153,7 +164,46 @@ let g:startify_files_number = 5
 let g:use_cursor_shapes = 1
 
 " elm vim - add support for elm-format
-let g:elm_format_autosave=1
+" let g:elm_format_autosave=1
+"
+" Nerdtree
+let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
+
+
+" ----------------------------------------------------------------------------
+" goyo.vim + limelight.vim
+" ----------------------------------------------------------------------------
+let g:limelight_paragraph_span = 1
+let g:limelight_priority = -1
+
+function! s:goyo_enter()
+  if has('gui_running')
+    set fullscreen
+    set background=light
+    set linespace=7
+  elseif exists('$TMUX')
+    silent !tmux set status off
+  endif
+  " hi NonText ctermfg=101
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  if has('gui_running')
+    set nofullscreen
+    set background=dark
+    set linespace=0
+  elseif exists('$TMUX')
+    silent !tmux set status on
+  endif
+  Limelight!
+endfunction
+
+augroup GOYO
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
+
 
 " ----------------------------------------------------- }}}
 
@@ -169,13 +219,6 @@ endif
 " }}}
 
 "  Plugin Modifications (AFTER loading bundles) ----- {{{
-
-" For powerline python support
-if has('python')
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
-endif
 
 " for go-vim
 augroup CustomGoVimMappings
@@ -201,25 +244,11 @@ let g:rehash256=1
 colorscheme spacegray
 
 " Make it obvious where 80 characters is
-set textwidth=80
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn=join(range(80,999),",")
 " let &colorcolumn="80,".join(range(120,999),",")
 
-" visual bell for errors
-set visualbell
 
-" Numbers
-set number
-set numberwidth=1
-
-" nowrap by default
-set nowrap
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
-set cursorline    " highight current line where cursor is
 
 if has("gui_running")
    let s:uname = system("uname")
@@ -228,8 +257,6 @@ if has("gui_running")
    endif
 endif
 " -----------------------------------------------------    }}}
-
-filetype plugin indent on
 
 " Auto commands ------------------------------------------------- {{{
 augroup vimrcEx
@@ -326,36 +353,18 @@ set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting fr
 " re-indent file and jump back to where the cursor was
 map <F7> mzgg=G`z
 
-" TagBar plugin toggle
-nmap <F8> :TagbarToggle<CR>
-
-" toggle Vim Legend
-nmap <F9> :LegendToggle<CR>
-
 " }}}
 
 " Allow j and k to work on visual lines (when wrapping)
 nnoremap k gk
 nnoremap j gj
 
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
 
-" vim tmux runner
-nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'irb'}<cr>
-nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
-nnoremap <leader>or :VtrOpenRunner<cr>
-vnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>fr :VtrFocusRunner<cr>
-nnoremap <leader>dr :VtrDetachRunner<cr>
-nnoremap <leader>ap :VtrAttachToPane
+" Inspired by sublime text
+" Move lines up or down in visual mode (not fully working yet)
+" vnoremap <C-j> dp`[v`]
+" vnoremap <C-k> dkP`[v`]
 
-" Alignment stuff
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
 
 "    indentation ------------------------------------------ {{{
 " Tab/shift-tab to indent/outdent in visual mode.
@@ -373,9 +382,22 @@ command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 command! BreakLineAtComma :normal! f,.
 " }}}
 
+" Leadershit ------------------------------------------------------ {{{
+
+
+fun! OpenConfigFile(file)
+  if (&ft == 'startify')
+    execute "e " . a:file
+  else
+    execute "tabe " . a:file
+  endif
+endfun
+
 " Split edit your vimrc. Type space, v, r in sequence to trigger
-nnoremap <leader>vr :vsp $MYVIMRC<cr>
-nnoremap <leader>vb :vsp ~/.vimrc.bundles<cr>
+" TODO: make this smarter check if empty buffer or startify first before
+" splitting, if so use that otherwise use 
+nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
+nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nnoremap <leader>so :source $MYVIMRC<cr>
 
@@ -383,10 +405,10 @@ nnoremap <leader>so :source $MYVIMRC<cr>
 nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
 
 " Scratch
-nnoremap <leader><space> :Scratch<CR>
+nnoremap <leader>sc :Scratch<CR>
 
 augroup ScratchToggle
-  autocmd FileType scratch nnoremap <buffer> <leader><space> :q<CR>
+  autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
 augroup END
 
 " Vim Plug
@@ -397,6 +419,53 @@ nnoremap <leader>pc :PlugClean<CR>
 " change dir to current file's dir
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+" Alignment stuff
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+" close all other windows with <leader>o
+nnoremap <leader>wo <c-w>o
+
+" vim tmux runner
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'irb'}<cr>
+nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
+nnoremap <leader>or :VtrOpenRunner<cr>
+vnoremap <leader>sl :VtrSendLinesToRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+nnoremap <leader>dr :VtrDetachRunner<cr>
+nnoremap <leader>ap :VtrAttachToPane
+
+" Gist.vim
+map <leader>gst :Gist<cr>
+
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!ctags -R .<CR>
+
+" Switch between the last two files
+nnoremap <tab><tab> <c-^>
+
+" NerdTree
+map <Leader>nt :NERDTreeToggle<CR>
+
+" vim-rspec mappings
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>T :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>sa :call RunAllSpecs()<CR>
+
+
+" Run commands that require an interactive shell
+nnoremap <Leader>ri :RunInInteractiveShell<space>
+
+" Reload current vim plugin
+nnoremap <Leader>rr :Runtime<cr>
+
+" }}}
 
 " Command prompt mappings ------------------------- {{{
 " command typo mapping
@@ -414,15 +483,35 @@ noremap gy "*y
 " copy whole file to system clipboard
 nnoremap gY gg"*yG
 
-" FZF shortcuts
-nnoremap <C-p> :FZF<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-m> :Maps<CR>
+" Goyo
+nnoremap <Leader>G :Goyo<CR>
 
-" Note that remapping C-s requires flow control to be disabled
-" (e.g. in .bashrc or .zshrc)
-noremap <C-s> <esc>:w<CR>
-inoremap <C-s> <esc>:w<CR>
+" FZF shortcuts
+fun! FzfOmniFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GitFiles --cached --exclude-standard --other
+  endif
+endfun
+
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <C-f>c :Commands<CR>
+nnoremap <C-f>l :BLines<CR>
+nnoremap <C-p> :call FzfOmniFiles()<CR>
+
+" FZF Insert mode
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+
+" CtrlSF shortcuts
+nnoremap <C-F>f :CtrlSF
+nnoremap <C-F>g :CtrlSF<CR>
 
 " easier new tab
 noremap <C-t> <esc>:tabnew<CR>
@@ -433,17 +522,6 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
-" function! DeleteSurroundDorian()
-"   let first_char = :`<
-"   echo first_char
-"   " call :normal! viw<esc>lxbhxe
-" endfunction
-
-" vimsurround in a nutshell
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <leader>d" viw<esc>lxbhxe
-vnoremap <leader>" :s/\v<(.*)/"\1"/<cr>
 
 " Insert mode mappings ------------------------ {{{
 " last typed word to lower case
@@ -460,8 +538,6 @@ inoremap <C-w>t <esc>bvgU<esc>A
 inoremap <C-g>t <esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A
 " ---------------- Insert mode mappings ------- }}}
 
-" Gist.vim
-map <leader>gst :Gist<cr>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -469,34 +545,12 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-" NerdTree
-map <Leader>nt :NERDTreeToggle<CR>
-
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>T :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>sa :call RunAllSpecs()<CR>
-
-" Run commands that require an interactive shell
-nnoremap <Leader>ri :RunInInteractiveShell<space>
-
-" Reload current vim plugin
-nnoremap <Leader>rr :Runtime<cr>
 
 " Incsearch Vim Plugin
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-" leader leader to open commands fzf
-nnoremap <leader><leader> :Commands<CR>
 
 " --------------------- Key Mappings ---------------------------- }}}
 
@@ -511,3 +565,46 @@ if filereadable($HOME . "/.vimrc.local")
 endif
 " -------- Abbreviations ---------------------------------- }}}
 
+" For NeoVim ----------------------------------------------------- {{{
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif
+" }}}
+
+" Change branches
+
+fun! s:change_branch(e)
+  let res = system("git checkout " . a:e)
+  :e!
+  :AirlineRefresh
+  echom "Changed branch to" . a:e
+endfun
+
+command! Gbranch call fzf#run(
+      \ {
+      \ 'source': 'git branch',
+      \ 'sink': function('<sid>change_branch'),
+      \ 'options': '-m',
+      \ 'down': '20%'
+      \ })
+
+fun! s:change_remote_branch(e)
+  let res = system("git checkout --track " . a:e)
+  :e!
+  :AirlineRefresh
+  echom "Changed to remote branch" . a:e
+endfun
+
+command! Grbranch call fzf#run(
+      \ {
+      \ 'source': 'git branch -r',
+      \ 'sink': function('<sid>change_remote_branch'),
+      \ 'options': '-m',
+      \ 'down': '20%'
+      \ })
+" Temporary
+
+" testing for bullets.vim
+" nnoremap <leader>m :vs test.md<cr>
+" nnoremap <leader>q :q!<cr>
