@@ -64,6 +64,12 @@ Plug 'tpope/vim-abolish'
 " Support emacs keybindings in insert mode
 Plug 'tpope/vim-rsi'
 
+" Clojure REPL in Vim
+Plug 'tpope/vim-fireplace'
+
+" save vim sessions
+Plug 'tpope/vim-obsession'
+
 " Comment out code easily
 Plug 'vim-scripts/tComment'
 
@@ -75,6 +81,9 @@ Plug 'scrooloose/nerdtree'
 
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
+
+" Sublime text like search results
+Plug 'dyng/ctrlsf.vim'
 
 " Emmet generate html tags, autocomplete css
 Plug 'mattn/emmet-vim'
@@ -103,6 +112,9 @@ Plug 'jpalardy/vim-slime'
 " .tmux.conf syntax highlighting
 Plug 'keith/tmux.vim'
 
+" even better tmux plugin
+Plug 'tmux-plugins/vim-tmux'
+
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
 
@@ -113,7 +125,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'SirVer/ultisnips'
 
 " The Silver Searcher (Ag) vim integration
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 
 " JavaScript support (required by vim-jsx)
 Plug 'pangloss/vim-javascript'
@@ -160,7 +172,10 @@ Plug 'fatih/vim-go'
 " SpaceGray theme
 Plug 'ajh17/Spacegray.vim'
 
-" tab completion for insert
+" Dracula theme
+Plug 'dracula/vim'
+
+" tab completion (autocomplete) for insert
 Plug 'ervandew/supertab'
 
 " support for jade templates (node.js server templates - like haml for ruby)
@@ -174,6 +189,9 @@ Plug 'parkr/vim-jekyll'
 
 " Gitv - for browsing a file's history in git
 Plug 'gregsexton/gitv'
+
+" A better Gitv:
+Plug 'junegunn/gv.vim'
 
 " Vim Web API (required by gist-vim)
 Plug 'mattn/webapi-vim'
@@ -212,8 +230,14 @@ Plug 'exu/pgsql.vim'
 " distraction free writing (like iA Writer)
 Plug 'laktek/distraction-free-writing-vim'
 
+" yet another distraction free writing tool
+Plug 'reedes/vim-pencil'
+
 " Elixir support
 Plug 'elixir-lang/vim-elixir'
+
+" Alchemist for extended elixir support
+Plug 'slashmili/alchemist.vim'
 
 " Rust support
 Plug 'rust-lang/rust.vim'
@@ -222,11 +246,33 @@ Plug 'rust-lang/rust.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
+" Distraction free writing in vim
+Plug 'junegunn/goyo.vim'
+
+" Highlight current paragraph (works well with goyo)
+Plug 'junegunn/limelight.vim'
+
+" Browse github
+Plug 'junegunn/vim-github-dashboard'
+
+" peek at registers and macros before running them
+Plug 'junegunn/vim-peekaboo'
+
 " Vim plugin for Flow (js static type checker)
 Plug 'flowtype/vim-flow'
 
 " Scratch buffers
 Plug 'mtth/scratch.vim'
+
+" Auto close matching pairs {} "", etc..
+Plug 'jiangmiao/auto-pairs'
+
+" Airline - like powerline but light as air
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" One Dark (atom colorscheme)
+Plug 'joshdick/onedark.vim'
 
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists
