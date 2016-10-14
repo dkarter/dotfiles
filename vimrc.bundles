@@ -5,36 +5,48 @@ end
 call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
-" what does this do
-Plug 'christoomey/vim-run-interactive'
-
 " coffee script highlighting
-Plug 'kchmck/vim-coffee-script'
-
-" make a new dir in vim
-Plug 'pbrisbin/vim-mkdir'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 Plug 'scrooloose/syntastic'
-
-Plug 'slim-template/vim-slim'
+" Plug 'neomake/neomake'
 
 " do rspec things and highlight syntax
 Plug 'thoughtbot/vim-rspec'
 
 " interact with ruby bundler gem
-Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rspec'] }
 
-Plug 'tpope/vim-endwise'
+" add `end` automatically when creating a new method in ruby
+Plug 'tpope/vim-endwise', { 'for': ['ruby', 'rspec', 'elixir'] }
 
+" vim rake by Tim Pope - like rails.vim but for plain ruby
+Plug 'tpope/vim-rake', { 'for': ['ruby', 'rspec'] }
+
+" support for ruby
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rspec']}
+
+" vim cucumber for easy cuke navigation
+Plug 'tpope/vim-cucumber', { 'for': ['gherkin', 'ruby'] }
+
+" syntax highlighting for rspec
+Plug 'keith/rspec.vim', { 'for': 'rspec' }
+
+" show code coverage in vim
+Plug 'killphi/vim-legend', { 'for': 'ruby' }
+
+" " vim rubocop
+" Plug 'ngmy/vim-rubocop', { 'for': ['ruby', 'rspec']}
+
+" Rails and ruby support (loaded automatically for rails apps)
+Plug 'tpope/vim-rails'
+
+" Vim sugar for the UNIX shell commands that need it the most.
 Plug 'tpope/vim-eunuch'
 
 " git awesomeness
 Plug 'tpope/vim-fugitive'
 
-" Rails and ruby support
-Plug 'tpope/vim-rails'
-
-Plug 'vim-ruby/vim-ruby'
 
 " allow (non-native) plugins to use the . command
 Plug 'tpope/vim-repeat'
@@ -42,17 +54,8 @@ Plug 'tpope/vim-repeat'
 " Surround text with closures
 Plug 'tpope/vim-surround'
 
-" asynchronous build and test dispatcher https://vimeo.com/63116209
-Plug 'tpope/vim-dispatch'
-
-" vim rake by Tim Pope - like rails.vim but for plain ruby
-Plug 'tpope/vim-rake'
-
 " vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
 Plug 'tpope/vim-projectionist'
-
-" vim cucumber for easy cuke navigation
-Plug 'tpope/vim-cucumber'
 
 " vim unimpaired fixes daily annoyences
 Plug 'tpope/vim-unimpaired'
@@ -65,7 +68,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-rsi'
 
 " Clojure REPL in Vim
-Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " save vim sessions
 Plug 'tpope/vim-obsession'
@@ -75,9 +78,6 @@ Plug 'vim-scripts/tComment'
 
 " NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'
-
-" " Better markdown editing
-" Plug 'gabrielelana/vim-markdown'
 
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
@@ -91,9 +91,6 @@ Plug 'mattn/emmet-vim'
 " highlights all search results and allows tabbing between them
 Plug 'haya14busa/incsearch.vim'
 
-" syntax highlighting for rspec
-Plug 'keith/rspec.vim'
-
 " auto sorts ascii tables and aligns code neatly
 Plug 'godlygeek/tabular'
 
@@ -106,9 +103,6 @@ Plug 'airblade/vim-gitgutter'
 " vim slime for tmux integration
 Plug 'jpalardy/vim-slime'
 
-" gutter coverage report for ruby using simplecov
-" Plug 'killphi/vim-legend'
-"
 " .tmux.conf syntax highlighting
 Plug 'keith/tmux.vim'
 
@@ -146,16 +140,16 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'jlanzarotta/bufexplorer'
 
 " JSON manipulation
-Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 
 " elm editing and compilation in vim
 Plug 'ElmCast/elm-vim'
 
 " vim color schemes
-Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes', { 'on': 'Colors' }
 
 " highlight colors in css
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
 
 " syntax for apple scripts
 Plug 'vim-scripts/applescript.vim'
@@ -167,22 +161,20 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
 " Vim Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " SpaceGray theme
-Plug 'ajh17/Spacegray.vim'
+Plug 'ajh17/Spacegray.vim', { 'on': 'Colors' }
 
 " Dracula theme
-Plug 'dracula/vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+" Seoul theme
+Plug 'junegunn/seoul256.vim'
 
 " tab completion (autocomplete) for insert
 Plug 'ervandew/supertab'
 
-" support for jade templates (node.js server templates - like haml for ruby)
-Plug 'digitaltoad/vim-jade'
-
-" vim rubocop
-Plug 'ngmy/vim-rubocop'
 
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'
@@ -222,7 +214,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'mhinz/vim-startify'
 
 " copy code as rtf
-Plug 'zerowidth/vim-copy-as-rtf' 
+Plug 'zerowidth/vim-copy-as-rtf'
 
 " postgres sql highlighting
 Plug 'exu/pgsql.vim'
@@ -230,36 +222,41 @@ Plug 'exu/pgsql.vim'
 " distraction free writing (like iA Writer)
 Plug 'laktek/distraction-free-writing-vim'
 
-" yet another distraction free writing tool
-Plug 'reedes/vim-pencil'
-
 " Elixir support
 Plug 'elixir-lang/vim-elixir'
+
+" Elixir support like rails.vim
+Plug 'avdgaag/vim-phoenix'
 
 " Alchemist for extended elixir support
 Plug 'slashmili/alchemist.vim'
 
 " Rust support
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " fzf greatness (fuzzy finding)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
+" when fzf is not available (gvim) use Command - T
+Plug 'wincent/command-t', {
+      \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+      \ }
+
 " Distraction free writing in vim
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
 " Highlight current paragraph (works well with goyo)
-Plug 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 " Browse github
-Plug 'junegunn/vim-github-dashboard'
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " peek at registers and macros before running them
 Plug 'junegunn/vim-peekaboo'
 
 " Vim plugin for Flow (js static type checker)
-Plug 'flowtype/vim-flow'
+Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript-jsx'] }
 
 " Scratch buffers
 Plug 'mtth/scratch.vim'
@@ -273,6 +270,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " One Dark (atom colorscheme)
 Plug 'joshdick/onedark.vim'
+
+" faster scrolling
+Plug 'yonchu/accelerated-smooth-scroll'
 
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists

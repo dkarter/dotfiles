@@ -1,3 +1,4 @@
+scriptencoding utf-8
 syntax on
 filetype plugin indent on
 
@@ -21,6 +22,11 @@ set shiftround   " Round indent to multiple of 'shiftwidth'
 set expandtab    " insert tab with right amount of spacing
 set gdefault     " Use 'g' flag by default with :s/foo/bar/.
 set magic        " Use 'magic' patterns (extended regular expressions).
+set guioptions=  " remove scrollbars on macvim
+set emoji        " treat emojis as full width
+
+set ttyfast      " should make scrolling faster
+set lazyredraw   " should make scrolling faster
 
 " visual bell for errors
 set visualbell
@@ -33,8 +39,8 @@ set numberwidth=1
 set nowrap " nowrap by default
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
-set cursorline    " highight current line where cursor is
-set cursorcolumn  " highight current column where cursor is
+" set cursorline    " highight current line where cursor is
+" set cursorcolumn  " highight current column where cursor is
 " set where swap file and undo/backup files are saved
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
@@ -77,9 +83,12 @@ let g:sh_fold_enabled=1
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
+" ====================================
 " setup airline
+" ====================================
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_buffers = 0
 
 " Bullets.vim
 let g:bullets_enabled_file_types = [
@@ -93,6 +102,11 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
+" =====================================
+"  FZF
+" =====================================
+" set fzf's default input to AG instead of find. This also removes gitignore etc
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 let g:fzf_files_options =
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
@@ -105,28 +119,45 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+" ----------------------------------------------------------------------------
 " vim slime
-let g:slime_target="tmux"
+" ----------------------------------------------------------------------------
+let g:slime_target='tmux'
 
-" scratch.vim
+" ----------------------------------------------------------------------------
+" Scratch.vim
+" ----------------------------------------------------------------------------
 let g:scratch_no_mappings=1
 
+" ----------------------------------------------------------------------------
+" Emmet
+" ----------------------------------------------------------------------------
 " better emmet leader key (must be followed with ,)
 let g:user_emmet_leader_key='<C-e>'
 
+" ----------------------------------------------------------------------------
+" Rail.vim
+" ----------------------------------------------------------------------------
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
+" ----------------------------------------------------------------------------
+" Vim RSpec
+" ----------------------------------------------------------------------------
 " vim-rspec command - make it use dispatch
-let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
+let g:rspec_command = 'VtrSendCommandToRunner! rspec {spec}'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" vim flowjs
+" ----------------------------------------------------------------------------
+" Vim Flow JS
+" ----------------------------------------------------------------------------
 let g:flow#autoclose = 1
 
-" syntastic ---------------------------------------------------------- {{{
+" ----------------------------------------------------------------------------
+" Syntastic
+" ----------------------------------------------------------------------------
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[]
@@ -140,35 +171,45 @@ let g:syntastic_html_tidy_ignore_errors = [
     \  '</head> isn''t allowed in <body> elements'
     \ ]
 let g:syntastic_eruby_ruby_quiet_messages =
-    \ {"regex": "possibly useless use of a variable in void context"}
+    \ {'regex': 'possibly useless use of a variable in void context'}
 let g:syntastic_ruby_mri_exec='~/.rvm/rubies/ruby-2.2.2/bin/ruby'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_shell = '/bin/sh'
 let g:syntastic_mode_map = { 'mode': 'active' }
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_cucumber_cucumber_args="--profile syntastic"
+let g:syntastic_cucumber_cucumber_args='--profile syntastic'
 let g:syntastic_cucumber_cucumber_exe='bin/cucumber'
-let g:syntastic_warning_symbol = "⚠"
-" ----------- syntastic -------------------------------}}}
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_vim_checkers = ['vint']
 
+" ----------------------------------------------------------------------------
+" Investigate
+" ----------------------------------------------------------------------------
 " Use Dash.app for documentation of word under cursor
 let g:investigate_use_dash=1
-let g:investigate_syntax_for_rspec="ruby"
+let g:investigate_syntax_for_rspec='ruby'
 
-" set vim-legend to disabled by default
-let g:legend_active_auto = 0
-
+" ----------------------------------------------------------------------------
+" Startify
+" ----------------------------------------------------------------------------
 let g:startify_files_number = 5
 
+
+" ----------------------------------------------------------------------------
+" Vim Hashrocket
+" ----------------------------------------------------------------------------
 "Change cursor on insert mode (vim-hashrocket)
 let g:use_cursor_shapes = 1
 
+" ----------------------------------------------------------------------------
 " elm vim - add support for elm-format
+" ----------------------------------------------------------------------------
 " let g:elm_format_autosave=1
-"
-" Nerdtree
-let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
 
+" ----------------------------------------------------------------------------
+" NERDTree
+" ----------------------------------------------------------------------------
+let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
 
 " ----------------------------------------------------------------------------
 " goyo.vim + limelight.vim
@@ -196,7 +237,7 @@ function! s:goyo_leave()
   elseif exists('$TMUX')
     silent !tmux set status on
   endif
-  Limelight!
+  execute 'Limelight!'
 endfunction
 
 augroup GOYO
@@ -205,10 +246,20 @@ augroup GOYO
 augroup END
 
 
+" ----------------------------------------------------------------------------
+" vim-legend
+" ----------------------------------------------------------------------------
+let g:legend_active_auto = 0
+let g:legend_hit_color = 'ctermfg=64 cterm=bold gui=bold guifg=Green'
+let g:legend_ignored_sign = '◌'
+let g:legend_ignored_color = 'ctermfg=234'
+let g:legend_mapping_toggle = '<Leader>cv'
+let g:legend_mapping_toggle_line = '<localleader>cv'
+
 " ----------------------------------------------------- }}}
 
 " Load all plugins ------------------------------- {{{
-if filereadable(expand("~/.vimrc.bundles"))
+if filereadable(expand('~/.vimrc.bundles'))
   source ~/.vimrc.bundles
 endif
 
@@ -241,18 +292,22 @@ let g:molokai_original=1
 let g:rehash256=1
 
 " default color scheme
-colorscheme spacegray
+colorscheme dracula
+
+" when on dracula
+let g:limelight_conceal_ctermfg = 59
+let g:limelight_conceal_guifg = '#43475b'
 
 " Make it obvious where 80 characters is
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn=join(range(80,999),",")
+let &colorcolumn=join(range(80,999),',')
 " let &colorcolumn="80,".join(range(120,999),",")
 
 
 
-if has("gui_running")
-   let s:uname = system("uname")
-   if s:uname == "Darwin\n"
+if has('gui_running')
+   let s:uname = system('uname')
+   if s:uname ==? 'Darwin\n'
       set guifont=Inconsolata\ for\ Powerline:h15
    endif
 endif
@@ -310,32 +365,30 @@ augroup filetype_vim
 augroup END
 " }}}
 
-" Tab completion ------------------------------------------- {{{
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
-" }}}
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~? '\k'
+"         return "\<tab>"
+"     else
+"         return "\<c-p>"
+"     endif
+" endfunction
+" inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+" inoremap <S-Tab> <c-n>
 
 "    Snippets (UltiSnips) -------------------------------- {{{
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
 
-let g:UltiSnipsExpandTrigger="<C-x>u"
-let g:UltiSnipsListSnippets="<c-.>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger='<C-x>u'
+let g:UltiSnipsListSnippets='<c-.>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit='vertical'
 " -------------   Snippets (UltiSnips) ------------------- }}}
 
 " Better split management, kept in sync with tmux' -- {{{
@@ -386,16 +439,14 @@ command! BreakLineAtComma :normal! f,.
 
 
 fun! OpenConfigFile(file)
-  if (&ft == 'startify')
-    execute "e " . a:file
+  if (&ft ==? 'startify')
+    execute 'e ' . a:file
   else
-    execute "tabe " . a:file
+    execute 'tabe ' . a:file
   endif
 endfun
 
 " Split edit your vimrc. Type space, v, r in sequence to trigger
-" TODO: make this smarter check if empty buffer or startify first before
-" splitting, if so use that otherwise use 
 nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
 nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
@@ -450,7 +501,7 @@ map <Leader>ct :!ctags -R .<CR>
 nnoremap <tab><tab> <c-^>
 
 " NerdTree
-map <Leader>nt :NERDTreeToggle<CR>
+nnoremap <Leader>nt :NERDTreeToggle<CR>
 
 " vim-rspec mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
@@ -459,12 +510,13 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 
+" VimScriptease
 " Run commands that require an interactive shell
 nnoremap <Leader>ri :RunInInteractiveShell<space>
-
 " Reload current vim plugin
 nnoremap <Leader>rr :Runtime<cr>
 
+nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
 " }}}
 
 " Command prompt mappings ------------------------- {{{
@@ -479,28 +531,18 @@ cnoremap Q! q!
 " copy to end of line
 nnoremap Y y$
 " copy to system clipboard
-noremap gy "*y
+noremap gy "+y
 " copy whole file to system clipboard
-nnoremap gY gg"*yG
+nnoremap gY gg"+yG
 
 " Goyo
 nnoremap <Leader>G :Goyo<CR>
 
-" FZF shortcuts
-fun! FzfOmniFiles()
-  let is_git = system('git status')
-  if v:shell_error
-    :Files
-  else
-    :GitFiles --cached --exclude-standard --other
-  endif
-endfun
-
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-g>g :Ag<CR>
-nnoremap <C-f>c :Commands<CR>
+nnoremap <C-g>c :Commands<CR>
 nnoremap <C-f>l :BLines<CR>
-nnoremap <C-p> :call FzfOmniFiles()<CR>
+nnoremap <C-p> :Files<CR>
 
 " FZF Insert mode
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -560,7 +602,7 @@ iabbrev @@ dkarter@gmail.com
 iabbrev ccopy Copyleft 2016 Dorian Karter.
 
 " Local config
-if filereadable($HOME . "/.vimrc.local")
+if filereadable($HOME . '/.vimrc.local')
   source ~/.vimrc.local
 endif
 " -------- Abbreviations ---------------------------------- }}}
@@ -572,13 +614,12 @@ if has('nvim')
 endif
 " }}}
 
-" Change branches
-
+" Custom FZF commands ----------------------------- {{{
 fun! s:change_branch(e)
-  let res = system("git checkout " . a:e)
+  let res = system('git checkout ' . a:e)
   :e!
   :AirlineRefresh
-  echom "Changed branch to" . a:e
+  echom 'Changed branch to' . a:e
 endfun
 
 command! Gbranch call fzf#run(
@@ -590,10 +631,10 @@ command! Gbranch call fzf#run(
       \ })
 
 fun! s:change_remote_branch(e)
-  let res = system("git checkout --track " . a:e)
+  let res = system('git checkout --track ' . a:e)
   :e!
   :AirlineRefresh
-  echom "Changed to remote branch" . a:e
+  echom 'Changed to remote branch' . a:e
 endfun
 
 command! Grbranch call fzf#run(
@@ -603,6 +644,8 @@ command! Grbranch call fzf#run(
       \ 'options': '-m',
       \ 'down': '20%'
       \ })
+" --------------------------------------------------}}}
+
 " Temporary
 
 " testing for bullets.vim
