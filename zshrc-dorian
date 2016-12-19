@@ -1,3 +1,13 @@
+
+#  ▄███████▄     ▄████████    ▄█    █▄
+# ██▀     ▄██   ███    ███   ███    ███
+#       ▄███▀   ███    █▀    ███    ███
+#  ▀█▀▄███▀▄▄   ███         ▄███▄▄▄▄███▄▄
+#   ▄███▀   ▀ ▀███████████ ▀▀███▀▀▀▀███▀
+# ▄███▀                ███   ███    ███
+# ███▄     ▄█    ▄█    ███   ███    ███
+#  ▀████████▀  ▄████████▀    ███    █▀
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -262,7 +272,11 @@ function clonecd() {
   # find a way to pass the rest of the arguments to
   # git clone in a variadic style to allow still using
   # --depth=1 etc
-  git clone git@github.com:"$1" && cd "${1#*/}";
+  git clone git@github.com:"$1.git" && cd "${1#*/}";
+}
+
+function shallowclone() {
+  git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}";
 }
 
 function initprj() {
@@ -302,3 +316,11 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
 
 # for android sdk (installed via homebrew)
 export ANDROID_HOME=/usr/local/opt/android-sdk
+export DO_API_TOKEN=d2a10413e31bf467a7594554224440cf03dd603a4d524422e00583bea3423f98
+export HASHROCKET_DO_TOKEN=5dbbca9792dd9021f13e01aec4c193c655692982f446fd364d18ba599daac113
+export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
+
+# for GRUVBOX theme in vim, enabling more colors
+  source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+  source "$HOME/dotfiles/scripts/term.sh"
+  export TERM=xterm-256color-italic
