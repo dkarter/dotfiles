@@ -8,8 +8,8 @@ call plug#begin('~/.vim/bundle')
 " coffee script highlighting
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
-Plug 'scrooloose/syntastic'
-" Plug 'neomake/neomake'
+" Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 
 " do rspec things and highlight syntax
 Plug 'thoughtbot/vim-rspec'
@@ -30,10 +30,16 @@ Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rspec']}
 Plug 'tpope/vim-cucumber', { 'for': ['gherkin', 'ruby'] }
 
 " syntax highlighting for rspec
-Plug 'keith/rspec.vim', { 'for': 'rspec' }
+Plug 'keith/rspec.vim' ", { 'for': 'rspec' }
 
 " show code coverage in vim
 Plug 'killphi/vim-legend', { 'for': 'ruby' }
+
+" terraform syntax
+Plug 'hashivim/vim-terraform'
+
+" ansible vim plugin
+Plug 'pearofducks/ansible-vim'
 
 " " vim rubocop
 " Plug 'ngmy/vim-rubocop', { 'for': ['ruby', 'rspec']}
@@ -94,8 +100,8 @@ Plug 'haya14busa/incsearch.vim'
 " auto sorts ascii tables and aligns code neatly
 Plug 'godlygeek/tabular'
 
-" vim snippets ...
-Plug 'honza/vim-snippets'
+" same as tabular but by Junegunn
+Plug 'junegunn/vim-easy-align'
 
 " Visual git gutter
 Plug 'airblade/vim-gitgutter'
@@ -118,6 +124,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " modern snippets for vim
 Plug 'SirVer/ultisnips'
 
+" vim snippets for UltiSnips ...
+Plug 'honza/vim-snippets'
+
 " The Silver Searcher (Ag) vim integration
 Plug 'mileszs/ack.vim'
 
@@ -133,8 +142,14 @@ Plug 'christoomey/vim-tmux-navigator'
 " run commands from vim in tmux
 Plug 'christoomey/vim-tmux-runner'
 
-" Indentation guide
-Plug 'nathanaelkane/vim-indent-guides'
+" " Indentation guide
+" Plug 'nathanaelkane/vim-indent-guides'
+
+" Indent lines
+Plug 'Yggdroot/indentLine'
+
+" Wipe and delete buffers
+Plug 'jbranchaud/vim-bdubs'
 
 " quick buffer switching
 Plug 'jlanzarotta/bufexplorer'
@@ -160,6 +175,9 @@ Plug 'kana/vim-textobj-user'
 " Text object for ruby blocks
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+" Swift support
+Plug 'keith/swift.vim', { 'for': 'swift' }
+
 " Vim Go
 Plug 'fatih/vim-go', { 'for': 'go' }
 
@@ -169,12 +187,14 @@ Plug 'ajh17/Spacegray.vim', { 'on': 'Colors' }
 " Dracula theme
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+" gruvbox theme
+Plug 'morhetz/gruvbox'
+
 " Seoul theme
 Plug 'junegunn/seoul256.vim'
 
 " tab completion (autocomplete) for insert
 Plug 'ervandew/supertab'
-
 
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'

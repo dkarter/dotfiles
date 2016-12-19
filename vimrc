@@ -1,87 +1,125 @@
-scriptencoding utf-8
+"  ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄
+" ███    ███ ███  ▄██▀▀▀███▀▀▀██▄
+" ███    ███ ███▌ ███   ███   ███
+" ███    ███ ███▌ ███   ███   ███
+" ███    ███ ███▌ ███   ███   ███
+" ███    ███ ███  ███   ███   ███
+" ███    ███ ███  ███   ███   ███
+"  ▀██████▀  █▀    ▀█   ███   █▀
+
+scriptencoding utf-16
 syntax on
 filetype plugin indent on
 
 "  Behavior Modification ----------------------  {{{
-let mapleader="\\"
-" alias for leader key
-nmap <space> \
+  let mapleader="\\"
+  " alias for leader key
+  nmap <space> \
 
-set backspace=2  " Backspace deletes like most programs in insert mode
-set history=100  " how many : commands to save in history
-set ruler        " show the cursor position all the time
-set showcmd      " display incomplete commands
-set incsearch    " do incremental searching
-set laststatus=2 " Always display the status line
-set autowrite    " Automatically :write before running commands
-set ignorecase   " ignore case in searches
-set smartcase    " will use case sensitive if capital letter present or \C
-set tabstop=2    " Softtabs or die! 2 spaces FTW!
-set shiftwidth=2 " Number of spaces to use for each step of (auto)indent.
-set shiftround   " Round indent to multiple of 'shiftwidth'
-set expandtab    " insert tab with right amount of spacing
-set gdefault     " Use 'g' flag by default with :s/foo/bar/.
-set magic        " Use 'magic' patterns (extended regular expressions).
-set guioptions=  " remove scrollbars on macvim
-set emoji        " treat emojis as full width
+  set background=dark " tell vim what the background color looks like
+  set backspace=2     " Backspace deletes like most programs in insert mode
+  set history=100     " how many : commands to save in history
+  set ruler           " show the cursor position all the time
+  set showcmd         " display incomplete commands
+  set incsearch       " do incremental searching
+  set laststatus=2    " Always display the status line
+  set autowrite       " Automatically :write before running commands
+  set ignorecase      " ignore case in searches
+  set smartcase       " will use case sensitive if capital letter present or \C
+  set tabstop=2       " Softtabs or die! 2 spaces FTW!
+  set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
+  set shiftround      " Round indent to multiple of 'shiftwidth'
+  set expandtab       " insert tab with right amount of spacing
+  set gdefault        " Use 'g' flag by default with :s/foo/bar/.
+  set magic           " Use 'magic' patterns (extended regular expressions).
+  set guioptions=     " remove scrollbars on macvim
+  set noshowmode      " don't show mode as airline already does
+  set showcmd         " show any commands
 
-set ttyfast      " should make scrolling faster
-set lazyredraw   " should make scrolling faster
+  if !has('nvim')     " does not work on neovim
+    set emoji         " treat emojis 😄  as full width characters
+    set termguicolors " enable true colors
+  end
 
-" visual bell for errors
-set visualbell
+  set ttyfast         " should make scrolling faster
+  set lazyredraw      " should make scrolling faster
 
-set textwidth=80
+  " visual bell for errors
+  set visualbell
 
-" Numbers
-set number
-set numberwidth=1
-set nowrap " nowrap by default
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-" set cursorline    " highight current line where cursor is
-" set cursorcolumn  " highight current column where cursor is
-" set where swap file and undo/backup files are saved
-set backupdir=~/.vim/tmp,.
-set directory=~/.vim/tmp,.
+  set textwidth=80
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
+  " Numbers
+  set number
+  set numberwidth=1
+  set nowrap " nowrap by default
 
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git
-set spellfile=$HOME/.vim-spell-en.utf-8.add
+  " Display extra whitespace
+  set list listchars=tab:»·,trail:·,nbsp:·
 
-" Autocomplete with dictionary words when spell check is on
-set complete+=kspell
+  " set where swap file and undo/backup files are saved
+  set backupdir=~/.vim/tmp,.
+  set directory=~/.vim/tmp,.
 
-" Always use vertical diffs
-set diffopt+=vertical
+  " Open new split panes to right and bottom, which feels more natural
+  set splitbelow
+  set splitright
 
-" set shell to zsh
-set shell=/bin/zsh
+  " Set spellfile to location that is guaranteed to exist, can be symlinked to
+  " Dropbox or kept in Git
+  set spellfile=$HOME/.vim-spell-en.utf-8.add
 
-set wildmenu
-set wildmode=list:longest,list:full
+  " Autocomplete with dictionary words when spell check is on
+  set complete+=kspell
 
-" " highlight fenced code blocks in markdown
-let g:markdown_fenced_languages = [
-      \ 'html',
-      \ 'elm',
-      \ 'vim',
-      \ 'js=javascript',
-      \ 'python',
-      \ 'ruby',
-      \ 'sql',
-      \ 'bash=sh'
-      \ ]
+  " Always use vertical diffs
+  set diffopt+=vertical
 
-" enable folding in bash files
-let g:sh_fold_enabled=1
+  " set shell to zsh
+  set shell=/bin/zsh
+
+  set wildmenu
+  set wildmode=list:longest,list:full
+
+  " " highlight fenced code blocks in markdown
+  let g:markdown_fenced_languages = [
+        \ 'html',
+        \ 'elm',
+        \ 'vim',
+        \ 'js=javascript',
+        \ 'python',
+        \ 'ruby',
+        \ 'sql',
+        \ 'bash=sh'
+        \ ]
+
+  " enable folding in bash files
+  let g:sh_fold_enabled=1
 " }}}
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
+
+" ====================================
+" Snippets (UltiSnips)
+" ====================================
+let g:UltiSnipsListSnippets                = '<c-.>'
+let g:UltiSnipsExpandTrigger               = '<tab>'
+let g:UltiSnipsJumpForwardTrigger          = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger         = '<s-tab>'
+
+" :UltiSnipsEdit opens in a vertical split
+let g:UltiSnipsEditSplit                   = 'vertical'
+let g:UltiSnipsSnippetsDir                 = ['~/dotfiles/vim/UltiSnips']
+
+" ====================================
+" indentLine
+" ====================================
+let g:indentLine_fileType = [
+      \ 'java',
+      \ 'ruby',
+      \ 'elixir',
+      \ 'javascript'
+      \ ]
 
 " ====================================
 " setup airline
@@ -159,28 +197,38 @@ let g:flow#autoclose = 1
 " Syntastic
 " ----------------------------------------------------------------------------
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[]
-let g:syntastic_html_tidy_ignore_errors = [
-    \ ' proprietary attribute \"ng-',
-    \  'plain text isn''t allowed in <head> elements',
-    \  '<base> escaping malformed URI reference',
-    \  'discarding unexpected <body>',
-    \  'escaping malformed URI reference',
-    \  'trimming empty <i>',
-    \  '</head> isn''t allowed in <body> elements'
-    \ ]
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {'regex': 'possibly useless use of a variable in void context'}
-let g:syntastic_ruby_mri_exec='~/.rvm/rubies/ruby-2.2.2/bin/ruby'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_shell = '/bin/sh'
-let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_cucumber_cucumber_args='--profile syntastic'
-let g:syntastic_cucumber_cucumber_exe='bin/cucumber'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_vim_checkers = ['vint']
+" let g:syntastic_check_on_open=1
+" let g:syntastic_html_tidy_ignore_errors=[]
+" let g:syntastic_html_tidy_ignore_errors = [
+"     \ ' proprietary attribute \"ng-',
+"     \  'plain text isn''t allowed in <head> elements',
+"     \  '<base> escaping malformed URI reference',
+"     \  'discarding unexpected <body>',
+"     \  'escaping malformed URI reference',
+"     \  'trimming empty <i>',
+"     \  '</head> isn''t allowed in <body> elements'
+"     \ ]
+" let g:syntastic_eruby_ruby_quiet_messages =
+"     \ {'regex': 'possibly useless use of a variable in void context'}
+" let g:syntastic_ruby_mri_exec='~/.rvm/rubies/ruby-2.2.2/bin/ruby'
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_shell = '/bin/sh'
+" let g:syntastic_mode_map = { 'mode': 'active' }
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_cucumber_cucumber_args='--profile syntastic'
+" let g:syntastic_cucumber_cucumber_exe='bin/cucumber'
+" let g:syntastic_warning_symbol = '⚠'
+" let g:syntastic_vim_checkers = ['vint']
+
+" ----------------------------------------------------------------------------
+" Neomake
+" ----------------------------------------------------------------------------
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+augroup NeomakeOnSave
+  au!
+  autocmd! BufWritePost * Neomake
+augroup END
 
 " ----------------------------------------------------------------------------
 " Investigate
@@ -199,7 +247,9 @@ let g:startify_files_number = 5
 " Vim Hashrocket
 " ----------------------------------------------------------------------------
 "Change cursor on insert mode (vim-hashrocket)
-let g:use_cursor_shapes = 1
+if !has('nvim')
+  let g:use_cursor_shapes = 1
+end
 
 " ----------------------------------------------------------------------------
 " elm vim - add support for elm-format
@@ -210,6 +260,12 @@ let g:use_cursor_shapes = 1
 " NERDTree
 " ----------------------------------------------------------------------------
 let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
+
+" ----------------------------------------------------------------------------
+" SuperTab
+" ----------------------------------------------------------------------------
+" let g:SuperTabMappingForward = '<c-k>'
+" let g:SuperTabMappingBackward = '<c-j>'
 
 " ----------------------------------------------------------------------------
 " goyo.vim + limelight.vim
@@ -225,7 +281,6 @@ function! s:goyo_enter()
   elseif exists('$TMUX')
     silent !tmux set status off
   endif
-  " hi NonText ctermfg=101
   Limelight
 endfunction
 
@@ -284,78 +339,81 @@ augroup END
 " }}}
 
 " UI Customizations --------------------------------{{{
+  " Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
+  let g:molokai_original=1
+  let g:rehash256=1
+
+  " Gruvbox colorscheme allow italics
+  let g:gruvbox_italic = 1
+  let g:gruvbox_invert_selection=0
+
+  " default color scheme
+  colorscheme gruvbox
+
+  " when on dracula
+  let g:limelight_conceal_ctermfg = 59
+  let g:limelight_conceal_guifg = '#43475b'
+
+  " Make it obvious where 80 characters is
+  highlight ColorColumn ctermbg=235 guibg=#2c2d27
+  let &colorcolumn=join(range(80,999),',')
 
 
 
-" Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
-let g:molokai_original=1
-let g:rehash256=1
-
-" default color scheme
-colorscheme dracula
-
-" when on dracula
-let g:limelight_conceal_ctermfg = 59
-let g:limelight_conceal_guifg = '#43475b'
-
-" Make it obvious where 80 characters is
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
-let &colorcolumn=join(range(80,999),',')
-" let &colorcolumn="80,".join(range(120,999),",")
-
-
-
-if has('gui_running')
-   let s:uname = system('uname')
-   if s:uname ==? 'Darwin\n'
-      set guifont=Inconsolata\ for\ Powerline:h15
-   endif
-endif
+  if has('gui_running')
+    let s:uname = system('uname')
+    if s:uname ==? 'Darwin\n'
+        set guifont=Inconsolata\ for\ Powerline:h15
+    endif
+  endif
 " -----------------------------------------------------    }}}
 
 " Auto commands ------------------------------------------------- {{{
-augroup vimrcEx
-  autocmd!
+  augroup vimrcEx
+    autocmd!
 
-  " Remove trailing whitespace on save for ruby files.
-  autocmd BufWritePre *.rb :%s/\s\+$//e
+    " Remove trailing whitespace on save for ruby files.
+    autocmd BufWritePre *.rb :%s/\s\+$//e
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it for commit messages, when the position is invalid, or when
+    " inside an event handler (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
 
-  " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+    " Set syntax highlighting for specific file types
+    autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-  " Enable spellchecking for Markdown
-  autocmd FileType markdown setlocal spell
+    " Enable spellchecking for Markdown
+    autocmd FileType markdown setlocal spell
 
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+    " Automatically wrap at 80 characters for Markdown
+    autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
-  " Automatically wrap at 72 characters and spell check git commit messages
-  autocmd FileType gitcommit setlocal textwidth=72
-  autocmd FileType gitcommit setlocal spell
+    " Automatically wrap at 72 characters and spell check git commit messages
+    autocmd FileType gitcommit setlocal textwidth=72
+    autocmd FileType gitcommit setlocal spell
 
-  " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
+    " Allow stylesheets to autocomplete hyphenated words
+    autocmd FileType css,scss,sass setlocal iskeyword+=-
 
-  " Vim/tmux layout rebalancing
-  " automatically rebalance windows on vim resize
-  autocmd VimResized * :wincmd =
-augroup END
+    " Use 4 spaces for java
+    " autocmd FileType java setlocal shiftwidth=4 tabstop=4
 
-augroup AutoSaveFolds
-  autocmd!
-  " add file types as needed
-  autocmd BufWinLeave *.c,*.rb mkview
-  autocmd BufWinEnter *.c,*.rb silent loadview
-augroup END
+    " Vim/tmux layout rebalancing
+    " automatically rebalance windows on vim resize
+    autocmd VimResized * :wincmd =
+  augroup END
+
+  augroup AutoSaveFolds
+    autocmd!
+    " add file types as needed
+    autocmd BufWinLeave *.c,*.rb mkview
+    autocmd BufWinEnter *.c,*.rb silent loadview
+  augroup END
 " }}}
 
 " Vim Script file settings ------------------------ {{{
@@ -364,32 +422,6 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
-
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~? '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-" inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-" inoremap <S-Tab> <c-n>
-
-"    Snippets (UltiSnips) -------------------------------- {{{
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-
-let g:UltiSnipsExpandTrigger='<C-x>u'
-let g:UltiSnipsListSnippets='<c-.>'
-let g:UltiSnipsJumpForwardTrigger='<c-b>'
-let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit='vertical'
-" -------------   Snippets (UltiSnips) ------------------- }}}
 
 " Better split management, kept in sync with tmux' -- {{{
 "" noremap <leader>- :sp<CR><C-w>j
@@ -593,6 +625,8 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
+" hlsearch toggle
+" nnoremap <silent> <esc> :set nohlsearch<CR>
 
 " --------------------- Key Mappings ---------------------------- }}}
 
@@ -616,7 +650,7 @@ endif
 
 " Custom FZF commands ----------------------------- {{{
 fun! s:change_branch(e)
-  let res = system('git checkout ' . a:e)
+  let l:_ = system('git checkout ' . a:e)
   :e!
   :AirlineRefresh
   echom 'Changed branch to' . a:e
@@ -631,7 +665,7 @@ command! Gbranch call fzf#run(
       \ })
 
 fun! s:change_remote_branch(e)
-  let res = system('git checkout --track ' . a:e)
+  let l:_ = system('git checkout --track ' . a:e)
   :e!
   :AirlineRefresh
   echom 'Changed to remote branch' . a:e
