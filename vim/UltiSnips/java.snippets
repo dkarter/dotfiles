@@ -1,0 +1,17 @@
+snippet co "constant" b
+public static final ${1:String} ${2:var} = $3;$0
+endsnippet
+
+snippet eql "implement equals" b
+@Override
+public boolean equals(Object obj) {
+  if (obj == null) return false;
+  if (!${1:CurrentClassSym}.class.isAssignableFrom(obj.getClass())) return false;
+
+  final ${1:CurrentClassSym} other = (Output) obj;
+  if (this.value == other.value && this.address == other.address)
+    return true;
+  else
+    return false;
+}
+endsnippet
