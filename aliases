@@ -41,7 +41,8 @@ alias gsr='gst'
 alias gpr='gup'
 
 # fancy weather
-alias wttr='curl -4 http://wttr.in/chicago'
+alias wttr='curl -4 http://wttr.in/chicago?m'
+alias moon='curl -4 http://wttr.in/Moon?m'
 
 # fuzzy commands with fzf
 alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
