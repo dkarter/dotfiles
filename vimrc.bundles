@@ -111,17 +111,30 @@ Plug 'airblade/vim-gitgutter'
   " vim slime for tmux integration (C-c, C-c to send selction to tmux)
   Plug 'jpalardy/vim-slime'
 
-  " even better tmux plugin
-  Plug 'tmux-plugins/vim-tmux'
-
   " seamless tmux/vim pane navigation
   Plug 'christoomey/vim-tmux-navigator'
 
   " run commands from vim in tmux
   Plug 'christoomey/vim-tmux-runner'
 
+  " yet another tmux plugin
+  Plug 'benmills/vimux'
+
+  " Vimux Related
+    " Run Golang tests in vimux
+    Plug 'benmills/vimux-golang'
+
+    " Run elixir mix tests in vimux
+    Plug 'spiegela/vimix'
+
+    " Run ruby and elixir tests
+    Plug 'jgdavey/vim-turbux'
+
 " .tmux.conf syntax highlighting
 Plug 'keith/tmux.vim'
+
+" tmux config file stuff
+Plug 'tmux-plugins/vim-tmux'
 
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
