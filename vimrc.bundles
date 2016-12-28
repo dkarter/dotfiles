@@ -106,14 +106,22 @@ Plug 'junegunn/vim-easy-align'
 " Visual git gutter
 Plug 'airblade/vim-gitgutter'
 
-" vim slime for tmux integration
-Plug 'jpalardy/vim-slime'
+" TMUX integration
+" ================
+  " vim slime for tmux integration (C-c, C-c to send selction to tmux)
+  Plug 'jpalardy/vim-slime'
+
+  " even better tmux plugin
+  Plug 'tmux-plugins/vim-tmux'
+
+  " seamless tmux/vim pane navigation
+  Plug 'christoomey/vim-tmux-navigator'
+
+  " run commands from vim in tmux
+  Plug 'christoomey/vim-tmux-runner'
 
 " .tmux.conf syntax highlighting
 Plug 'keith/tmux.vim'
-
-" even better tmux plugin
-Plug 'tmux-plugins/vim-tmux'
 
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
@@ -136,16 +144,7 @@ Plug 'pangloss/vim-javascript'
 " JSX support for react components
 Plug 'mxw/vim-jsx'
 
-" seamless tmux/vim pane navigation
-Plug 'christoomey/vim-tmux-navigator'
-
-" run commands from vim in tmux
-Plug 'christoomey/vim-tmux-runner'
-
-" " Indentation guide
-" Plug 'nathanaelkane/vim-indent-guides'
-
-" Indent lines
+" Indent lines (visual indication)
 Plug 'Yggdroot/indentLine'
 
 " Wipe and delete buffers
@@ -181,17 +180,14 @@ Plug 'keith/swift.vim', { 'for': 'swift' }
 " Vim Go
 Plug 'fatih/vim-go', { 'for': 'go' }
 
-" SpaceGray theme
-Plug 'ajh17/Spacegray.vim', { 'on': 'Colors' }
-
 " Dracula theme
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " gruvbox theme
 Plug 'morhetz/gruvbox'
 
-" Seoul theme
-Plug 'junegunn/seoul256.vim'
+" highlight open and close tabs
+Plug 'valloric/matchtagalways'
 
 " tab completion (autocomplete) for insert
 Plug 'ervandew/supertab'
@@ -211,10 +207,13 @@ Plug 'mattn/webapi-vim'
 " Vim GitHub gist integration
 Plug 'mattn/gist-vim'
 
+" Improve in buffer search
+Plug 'junegunn/vim-slash'
+
 " Gundo - visualize git's undo tree (requires python)
 Plug 'sjl/gundo.vim'
 
-" Hashrocket keybinding
+" Hashrocket keybindings and more
 Plug 'hashrocket/vim-hashrocket'
 
 " Convert code to multiline
@@ -228,7 +227,6 @@ Plug 'mattn/webapi-vim'
 
 " vim plugin for writing vim plugins
 Plug 'tpope/vim-scriptease'
-
 
 " fancy vim start page
 Plug 'mhinz/vim-startify'
@@ -281,18 +279,12 @@ Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript-jsx'] }
 " Scratch buffers
 Plug 'mtth/scratch.vim'
 
-" Auto close matching pairs {} "", etc..
+" Auto close matching pairs {} \"\", etc..
 Plug 'jiangmiao/auto-pairs'
 
 " Airline - like powerline but light as air
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" One Dark (atom colorscheme)
-Plug 'joshdick/onedark.vim'
-
-" faster scrolling
-Plug 'yonchu/accelerated-smooth-scroll'
 
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists
@@ -301,7 +293,7 @@ Plug 'dkarter/bullets.vim'
 
 " ==================================================
 
-if filereadable(expand("~/.vimrc.bundles.local"))
+if filereadable(expand('~/.vimrc.bundles.local'))
   source ~/.vimrc.bundles.local
 endif
 

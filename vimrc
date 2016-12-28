@@ -7,18 +7,23 @@
 " ███    ███ ███  ███   ███   ███
 "  ▀██████▀  █▀    ▀█   ███   █▀
 
-scriptencoding utf-16
-syntax on
-filetype plugin indent on
+" General settings
+  scriptencoding utf-16      " allow emojis in vimrc
+  set nocompatible           " vim, not vi
+  syntax on                  " syntax highlighting
+  filetype plugin indent on  " try to recognize filetypes and load rel' plugins
 
 "  Behavior Modification ----------------------  {{{
-  let mapleader="\\"
+
+  " set leader key
+    let mapleader="\\"
+
   " alias for leader key
-  nmap <space> \
+    nmap <space> \
 
   set background=dark " tell vim what the background color looks like
   set backspace=2     " Backspace deletes like most programs in insert mode
-  set history=100     " how many : commands to save in history
+  set history=200     " how many : commands to save in history
   set ruler           " show the cursor position all the time
   set showcmd         " display incomplete commands
   set incsearch       " do incremental searching
@@ -26,7 +31,7 @@ filetype plugin indent on
   set autowrite       " Automatically :write before running commands
   set ignorecase      " ignore case in searches
   set smartcase       " will use case sensitive if capital letter present or \C
-  set tabstop=2       " Softtabs or die! 2 spaces FTW!
+  set tabstop=2       " Softtabs or die! use 2 spaces for tabs.
   set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
   set shiftround      " Round indent to multiple of 'shiftwidth'
   set expandtab       " insert tab with right amount of spacing
@@ -35,6 +40,7 @@ filetype plugin indent on
   set guioptions=     " remove scrollbars on macvim
   set noshowmode      " don't show mode as airline already does
   set showcmd         " show any commands
+
 
   if !has('nvim')     " does not work on neovim
     set emoji         " treat emojis 😄  as full width characters
@@ -45,43 +51,44 @@ filetype plugin indent on
   set lazyredraw      " should make scrolling faster
 
   " visual bell for errors
-  set visualbell
+    set visualbell
 
-  set textwidth=80
+  " wildmenu
+    set wildmenu                        " enable wildmenu
+    set wildmode=list:longest,list:full " configure wildmenu
+
+  " text appearance
+    set textwidth=80
+    set nowrap                          " nowrap by default
+    set list                            " show invisible characters
+    set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 
   " Numbers
-  set number
-  set numberwidth=1
-  set nowrap " nowrap by default
-
-  " Display extra whitespace
-  set list listchars=tab:»·,trail:·,nbsp:·
+    set number
+    set numberwidth=1
 
   " set where swap file and undo/backup files are saved
-  set backupdir=~/.vim/tmp,.
-  set directory=~/.vim/tmp,.
+    set backupdir=~/.vim/tmp,.
+    set directory=~/.vim/tmp,.
 
   " Open new split panes to right and bottom, which feels more natural
-  set splitbelow
-  set splitright
+    set splitbelow
+    set splitright
 
   " Set spellfile to location that is guaranteed to exist, can be symlinked to
   " Dropbox or kept in Git
-  set spellfile=$HOME/.vim-spell-en.utf-8.add
+    set spellfile=$HOME/.vim-spell-en.utf-8.add
 
   " Autocomplete with dictionary words when spell check is on
-  set complete+=kspell
+    set complete+=kspell
 
   " Always use vertical diffs
-  set diffopt+=vertical
+    set diffopt+=vertical
 
   " set shell to zsh
-  set shell=/bin/zsh
+    set shell=/bin/zsh
 
-  set wildmenu
-  set wildmode=list:longest,list:full
-
-  " " highlight fenced code blocks in markdown
+  " highlight fenced code blocks in markdown
   let g:markdown_fenced_languages = [
         \ 'html',
         \ 'elm',
@@ -94,7 +101,7 @@ filetype plugin indent on
         \ ]
 
   " enable folding in bash files
-  let g:sh_fold_enabled=1
+    let g:sh_fold_enabled=1
 " }}}
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
@@ -260,6 +267,7 @@ end
 " NERDTree
 " ----------------------------------------------------------------------------
 let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
+let NERDTreeShowHidden=1
 
 " ----------------------------------------------------------------------------
 " SuperTab
@@ -440,10 +448,12 @@ map <F7> mzgg=G`z
 
 " }}}
 
-" Allow j and k to work on visual lines (when wrapping)
-nnoremap k gk
-nnoremap j gj
+  " Allow j and k to work on visual lines (when wrapping)
+    nnoremap k gk
+    nnoremap j gj
 
+  " prevent entering ex mode accidentally
+    nnoremap Q <Nop>
 
 " Inspired by sublime text
 " Move lines up or down in visual mode (not fully working yet)
@@ -680,8 +690,8 @@ command! Grbranch call fzf#run(
       \ })
 " --------------------------------------------------}}}
 
-" Temporary
+" Temporary"{{{
 
 " testing for bullets.vim
 " nnoremap <leader>m :vs test.md<cr>
-" nnoremap <leader>q :q!<cr>
+" nnoremap <leader>q :q!<cr>"}}}
