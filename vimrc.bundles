@@ -8,51 +8,56 @@ call plug#begin('~/.vim/bundle')
 " coffee script highlighting
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
-" Plug 'scrooloose/syntastic'
+" staticly check code and highlight errors (async syntastic replacement)
 Plug 'neomake/neomake'
 
-" do rspec things and highlight syntax
-Plug 'thoughtbot/vim-rspec'
+" Ruby:
+  " do rspec things and highlight syntax
+  Plug 'thoughtbot/vim-rspec'
 
-" interact with ruby bundler gem
-Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rspec'] }
+  " interact with ruby bundler gem
+  Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rspec'] }
 
-" add `end` automatically when creating a new method in ruby
-Plug 'tpope/vim-endwise', { 'for': ['ruby', 'rspec', 'elixir'] }
+  " vim rake by Tim Pope - like rails.vim but for plain ruby
+  Plug 'tpope/vim-rake', { 'for': ['ruby', 'rspec'] }
 
-" vim rake by Tim Pope - like rails.vim but for plain ruby
-Plug 'tpope/vim-rake', { 'for': ['ruby', 'rspec'] }
+  " support for ruby
+  Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rspec']}
 
-" support for ruby
-Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rspec']}
+  " vim cucumber for easy cuke navigation
+  Plug 'tpope/vim-cucumber', { 'for': ['gherkin', 'ruby'] }
 
-" vim cucumber for easy cuke navigation
-Plug 'tpope/vim-cucumber', { 'for': ['gherkin', 'ruby'] }
+  " syntax highlighting for rspec
+  Plug 'keith/rspec.vim' ", { 'for': 'rspec' }
 
-" syntax highlighting for rspec
-Plug 'keith/rspec.vim' ", { 'for': 'rspec' }
+  " show code coverage in vim
+  Plug 'killphi/vim-legend', { 'for': 'ruby' }
 
-" show code coverage in vim
-Plug 'killphi/vim-legend', { 'for': 'ruby' }
+  " Rails and ruby support (loaded automatically for rails apps)
+  Plug 'tpope/vim-rails'
 
-" terraform syntax
-Plug 'hashivim/vim-terraform'
+  " Create custom text objects (required by vim textobj rubyblock)
+  Plug 'kana/vim-textobj-user'
 
-" ansible vim plugin
-Plug 'pearofducks/ansible-vim'
+  " Text object for ruby blocks
+  Plug 'nelstrom/vim-textobj-rubyblock'
 
-" " vim rubocop
-" Plug 'ngmy/vim-rubocop', { 'for': ['ruby', 'rspec']}
+" add `end` automatically when creating a closure in many languages
+Plug 'tpope/vim-endwise'
 
-" Rails and ruby support (loaded automatically for rails apps)
-Plug 'tpope/vim-rails'
+" Terraform:
+  " terraform syntax
+  Plug 'hashivim/vim-terraform'
+
+" Ansible:
+  " ansible vim plugin
+  Plug 'pearofducks/ansible-vim'
 
 " Vim sugar for the UNIX shell commands that need it the most.
 Plug 'tpope/vim-eunuch'
 
 " git awesomeness
 Plug 'tpope/vim-fugitive'
-
 
 " allow (non-native) plugins to use the . command
 Plug 'tpope/vim-repeat'
@@ -88,26 +93,35 @@ Plug 'scrooloose/nerdtree'
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
 
-" Sublime text like search results
-Plug 'dyng/ctrlsf.vim'
-
 " Emmet generate html tags, autocomplete css
 Plug 'mattn/emmet-vim'
 
-" highlights all search results and allows tabbing between them
-Plug 'haya14busa/incsearch.vim'
+" Searching:
+  " highlights all search results and allows tabbing between them
+  Plug 'haya14busa/incsearch.vim'
 
-" auto sorts ascii tables and aligns code neatly
-Plug 'godlygeek/tabular'
+  " Sublime text like search results
+  Plug 'dyng/ctrlsf.vim'
 
-" same as tabular but by Junegunn
-Plug 'junegunn/vim-easy-align'
+
+" Align Code:
+  " auto sorts ascii tables and aligns code neatly
+  Plug 'godlygeek/tabular'
+
+  " same as tabular but by Junegunn
+  Plug 'junegunn/vim-easy-align'
 
 " Visual git gutter
 Plug 'airblade/vim-gitgutter'
 
-" TMUX integration
-" ================
+
+" TMUX:
+  " .tmux.conf syntax highlighting
+  Plug 'keith/tmux.vim'
+
+  " tmux config file stuff
+  Plug 'tmux-plugins/vim-tmux'
+
   " vim slime for tmux integration (C-c, C-c to send selction to tmux)
   Plug 'jpalardy/vim-slime'
 
@@ -120,7 +134,7 @@ Plug 'airblade/vim-gitgutter'
   " yet another tmux plugin
   Plug 'benmills/vimux'
 
-  " Vimux Related
+  " Vimux Related:
     " Run Golang tests in vimux
     Plug 'benmills/vimux-golang'
 
@@ -130,11 +144,6 @@ Plug 'airblade/vim-gitgutter'
     " Run ruby and elixir tests
     Plug 'jgdavey/vim-turbux'
 
-" .tmux.conf syntax highlighting
-Plug 'keith/tmux.vim'
-
-" tmux config file stuff
-Plug 'tmux-plugins/vim-tmux'
 
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
@@ -142,38 +151,53 @@ Plug 'keith/investigate.vim'
 " show trailing white spaces and allow deleting them
 Plug 'ntpeters/vim-better-whitespace'
 
-" modern snippets for vim
-Plug 'SirVer/ultisnips'
+" Snippets:
+  " modern snippets for vim
+  Plug 'SirVer/ultisnips'
 
-" vim snippets for UltiSnips ...
-Plug 'honza/vim-snippets'
+  " vim snippets for UltiSnips ...
+  Plug 'honza/vim-snippets'
 
-" The Silver Searcher (Ag) vim integration
+" Ack vim integration
 Plug 'mileszs/ack.vim'
 
-" JavaScript support (required by vim-jsx)
-Plug 'pangloss/vim-javascript'
+" JavaScript:
+  " JavaScript support (required by vim-jsx)
+  Plug 'pangloss/vim-javascript'
 
-" JSX support for react components
-Plug 'mxw/vim-jsx'
+  " JSX support for react components
+  Plug 'mxw/vim-jsx'
+
+  " Vim plugin for Flow (js static type checker)
+  Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript-jsx'] }
+
+  " JSON manipulation
+  Plug 'tpope/vim-jdaddy', { 'for': 'json' }
+
+" Vim Buffer Manipulation:
+
+  " Wipe and delete buffers
+  Plug 'jbranchaud/vim-bdubs'
+
+  " quick buffer switching
+  Plug 'jlanzarotta/bufexplorer'
+
+" Elm:
+  " elm editing and compilation in vim
+  Plug 'ElmCast/elm-vim'
 
 " Indent lines (visual indication)
 Plug 'Yggdroot/indentLine'
 
-" Wipe and delete buffers
-Plug 'jbranchaud/vim-bdubs'
+" ColorSchemes:
+  " vim color schemes
+  Plug 'flazz/vim-colorschemes', { 'on': 'Colors' }
 
-" quick buffer switching
-Plug 'jlanzarotta/bufexplorer'
+  " gruvbox theme
+  Plug 'morhetz/gruvbox'
 
-" JSON manipulation
-Plug 'tpope/vim-jdaddy', { 'for': 'json' }
-
-" elm editing and compilation in vim
-Plug 'ElmCast/elm-vim'
-
-" vim color schemes
-Plug 'flazz/vim-colorschemes', { 'on': 'Colors' }
+  " Dracula theme
+  " Plug 'dracula/vim', { 'as': 'dracula' }
 
 " highlight colors in css
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
@@ -181,23 +205,12 @@ Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
 " syntax for apple scripts
 Plug 'vim-scripts/applescript.vim'
 
-" Create custom text objects (required by vim textobj rubyblock)
-Plug 'kana/vim-textobj-user'
-
-" Text object for ruby blocks
-Plug 'nelstrom/vim-textobj-rubyblock'
 
 " Swift support
 Plug 'keith/swift.vim', { 'for': 'swift' }
 
 " Vim Go
 Plug 'fatih/vim-go', { 'for': 'go' }
-
-" Dracula theme
-" Plug 'dracula/vim', { 'as': 'dracula' }
-
-" gruvbox theme
-Plug 'morhetz/gruvbox'
 
 " highlight open and close tabs
 Plug 'valloric/matchtagalways'
@@ -285,9 +298,6 @@ Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " peek at registers and macros before running them
 Plug 'junegunn/vim-peekaboo'
-
-" Vim plugin for Flow (js static type checker)
-Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript-jsx'] }
 
 " Scratch buffers
 Plug 'mtth/scratch.vim'

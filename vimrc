@@ -16,7 +16,7 @@
 "  Behavior Modification ----------------------  {{{
 
   " set leader key
-    let mapleader="\\"
+    let g:mapleader="\\"
 
   " alias for leader key
     nmap <space> \
@@ -190,7 +190,7 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Vim RSpec
 " ----------------------------------------------------------------------------
 " vim-rspec command - make it use dispatch
-let g:rspec_command = 'VtrSendCommandToRunner! rspec {spec}'
+" let g:rspec_command = 'VtrSendCommandToRunner! rspec {spec}'
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -233,7 +233,7 @@ let g:flow#autoclose = 1
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 augroup NeomakeOnSave
-  au!
+  autocmd!
   autocmd! BufWritePost * Neomake
 augroup END
 
@@ -376,6 +376,13 @@ augroup END
   endif
 " -----------------------------------------------------    }}}
 
+" Own commands --------------------------------------------- {{{
+command! PrettyPrintJSON %!python -m json.tool
+command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
+command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
+command! BreakLineAtComma :normal! f,.
+" }}}
+
 " Auto commands ------------------------------------------------- {{{
   augroup vimrcEx
     autocmd!
@@ -438,15 +445,13 @@ augroup END
 
 "  Key Mappings -------------------------------------------------- {{{
 
-"  Function Keys ------------------------------- {{{
 
-" Pasting support
-set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when pasting from clipboard into terminal
+  " Pasting support
+    set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when
+                          " pasting from clipboard into terminal
 
-" re-indent file and jump back to where the cursor was
-map <F7> mzgg=G`z
-
-" }}}
+  " re-indent file and jump back to where the cursor was
+    map <F7> mzgg=G`z
 
   " Allow j and k to work on visual lines (when wrapping)
     nnoremap k gk
@@ -455,188 +460,183 @@ map <F7> mzgg=G`z
   " prevent entering ex mode accidentally
     nnoremap Q <Nop>
 
-" Inspired by sublime text
-" Move lines up or down in visual mode (not fully working yet)
-" vnoremap <C-j> dp`[v`]
-" vnoremap <C-k> dkP`[v`]
+  " Tab/shift-tab to indent/outdent in visual mode.
+    vnoremap <Tab> >gv
+    vnoremap <S-Tab> <gv
+
+  " Keep selection when indenting/outdenting.
+    vnoremap > >gv
+    vnoremap < <gv
+
+    fun! OpenConfigFile(file)
+      if (&ft ==? 'startify')
+        execute 'e ' . a:file
+      else
+        execute 'tabe ' . a:file
+      endif
+    endfun
+
+  " Split edit your vimrc. Type space, v, r in sequence to trigger
+    nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
+    nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
+
+  " Source (reload) your vimrc. Type space, s, o in sequence to trigger
+    nnoremap <leader>so :source $MYVIMRC<cr>
+
+  "split edit your tmux conf
+    nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
+
+  " Scratch:
+    nnoremap <leader>sc :Scratch<CR>
+
+    augroup ScratchToggle
+      autocmd!
+      autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
+    augroup END
+
+  " Elm:
+    augroup ElmMappings
+      autocmd!
+      autocmd FileType elm nnoremap <silent> <buffer> <leader>f :ElmFormat<cr>
+    augroup END
+
+  " VimPlug:
+    nnoremap <leader>pi :PlugInstall<CR>
+    nnoremap <leader>pu :PlugUpdate<CR>
+    nnoremap <leader>pc :PlugClean<CR>
+
+  " change dir to current file's dir
+    nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+  " Tabularize: text alignment
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+
+  " zoom a vim pane, <C-w>= to re-balance
+    nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+    nnoremap <leader>= :wincmd =<cr>
+
+  " close all other windows with <leader>o
+    nnoremap <leader>wo <c-w>o
+
+  " Vim Tmux Runner:
+    nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
+    nnoremap <leader>or :VtrOpenRunner<cr>
+    vnoremap <leader>sl :VtrSendLinesToRunner<cr>
+    nnoremap <leader>fr :VtrFocusRunner<cr>
+    nnoremap <leader>dr :VtrDetachRunner<cr>
+    nnoremap <leader>ap :VtrAttachToPane
+
+  " Gist:
+    map <leader>gst :Gist<cr>
+
+  " Index ctags from any project, including those outside Rails
+    map <Leader>ct :!ctags -R .<CR>
+
+  " Switch between the last two files
+    nnoremap <tab><tab> <c-^>
+
+  " NerdTree:
+    nnoremap <Leader>nt :NERDTreeToggle<CR>
+
+  " Vim Rspec:
+    nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+    nnoremap <Leader>T :call RunNearestSpec()<CR>
+    nnoremap <Leader>l :call RunLastSpec()<CR>
+    nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 
-"    indentation ------------------------------------------ {{{
-" Tab/shift-tab to indent/outdent in visual mode.
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-" Keep selection when indenting/outdenting.
-vnoremap > >gv
-vnoremap < <gv
-" }}}
+  " Vim Scriptease:
+    " Run commands that require an interactive shell
+      nnoremap <Leader>ri :RunInInteractiveShell<space>
 
-" Own commands --------------------------------------------- {{{
-command! PrettyPrintJSON %!python -m json.tool
-command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
-command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
-command! BreakLineAtComma :normal! f,.
-" }}}
+    " Reload current vim plugin
+      nnoremap <Leader>rr :Runtime<cr>
 
-" Leadershit ------------------------------------------------------ {{{
+  " CopyRTF: Copy code as RTF
+    nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
 
+  " command typo mapping
+    cnoremap WQ wq
+    cnoremap Wq wq
+    cnoremap QA qa
+    cnoremap qA qa
+    cnoremap Q! q!
 
-fun! OpenConfigFile(file)
-  if (&ft ==? 'startify')
-    execute 'e ' . a:file
-  else
-    execute 'tabe ' . a:file
-  endif
-endfun
+  " copy to end of line
+    nnoremap Y y$
 
-" Split edit your vimrc. Type space, v, r in sequence to trigger
-nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
-nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
-" Source (reload) your vimrc. Type space, s, o in sequence to trigger
-nnoremap <leader>so :source $MYVIMRC<cr>
+  " copy to system clipboard
+    noremap gy "+y
 
-"split edit your tmux conf
-nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
+  " copy whole file to system clipboard
+    nnoremap gY gg"+yG
 
-" Scratch
-nnoremap <leader>sc :Scratch<CR>
-
-augroup ScratchToggle
-  autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
-augroup END
-
-" Vim Plug
-nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>pu :PlugUpdate<CR>
-nnoremap <leader>pc :PlugClean<CR>
-
-" change dir to current file's dir
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" Alignment stuff
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
-" close all other windows with <leader>o
-nnoremap <leader>wo <c-w>o
-
-" vim tmux runner
-nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'irb'}<cr>
-nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
-nnoremap <leader>or :VtrOpenRunner<cr>
-vnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>fr :VtrFocusRunner<cr>
-nnoremap <leader>dr :VtrDetachRunner<cr>
-nnoremap <leader>ap :VtrAttachToPane
-
-" Gist.vim
-map <leader>gst :Gist<cr>
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
-
-" Switch between the last two files
-nnoremap <tab><tab> <c-^>
-
-" NerdTree
-nnoremap <Leader>nt :NERDTreeToggle<CR>
-
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>T :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>sa :call RunAllSpecs()<CR>
+  " Goyo:
+    nnoremap <Leader>G :Goyo<CR>
 
 
-" VimScriptease
-" Run commands that require an interactive shell
-nnoremap <Leader>ri :RunInInteractiveShell<space>
-" Reload current vim plugin
-nnoremap <Leader>rr :Runtime<cr>
+  " FZF:
+    nnoremap <C-b> :Buffers<CR>
+    nnoremap <C-g>g :Ag<CR>
+    nnoremap <C-g>c :Commands<CR>
+    nnoremap <C-f>l :BLines<CR>
+    nnoremap <C-p> :Files<CR>
 
-nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
-" }}}
-
-" Command prompt mappings ------------------------- {{{
-" command typo mapping
-cnoremap WQ wq
-cnoremap Wq wq
-cnoremap QA qa
-cnoremap qA qa
-cnoremap Q! q!
-" --------- Command prompt mapping ---------------- }}}
-
-" copy to end of line
-nnoremap Y y$
-" copy to system clipboard
-noremap gy "+y
-" copy whole file to system clipboard
-nnoremap gY gg"+yG
-
-" Goyo
-nnoremap <Leader>G :Goyo<CR>
-
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
-nnoremap <C-g>c :Commands<CR>
-nnoremap <C-f>l :BLines<CR>
-nnoremap <C-p> :Files<CR>
-
-" FZF Insert mode
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+    " Insert Mode:
+      imap <c-x><c-k> <plug>(fzf-complete-word)
+      imap <c-x><c-f> <plug>(fzf-complete-path)
+      imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+      imap <c-x><c-l> <plug>(fzf-complete-line)
 
 
-" CtrlSF shortcuts
-nnoremap <C-F>f :CtrlSF
-nnoremap <C-F>g :CtrlSF<CR>
+  " CtrlSF:
+    nnoremap <C-F>f :CtrlSF
+    nnoremap <C-F>g :CtrlSF<CR>
 
-" easier new tab
-noremap <C-t> <esc>:tabnew<CR>
-noremap <C-c> <esc>:tabclose<CR>
+  " easier new tab
+    noremap <C-t> <esc>:tabnew<CR>
+    noremap <C-c> <esc>:tabclose<CR>
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+  " Get off my lawn: disable arrow keys in normal mode
+    nnoremap <Left> :echoe "Use h"<CR>
+    nnoremap <Right> :echoe "Use l"<CR>
+    nnoremap <Up> :echoe "Use k"<CR>
+    nnoremap <Down> :echoe "Use j"<CR>
 
-" Insert mode mappings ------------------------ {{{
-" last typed word to lower case
-inoremap <C-w>u <esc>guawA
-" last typed word to UPPER CASE
-inoremap <C-w>U <esc>gUawA
-" entire line to lower case
-inoremap <C-g>u <esc>guuA
-" entire line to UPPER CASE
-inoremap <C-g>U <esc>gUUA
-" last word to title case
-inoremap <C-w>t <esc>bvgU<esc>A
-" current line to title case
-inoremap <C-g>t <esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A
-" ---------------- Insert mode mappings ------- }}}
+  " last typed word to lower case
+    inoremap <C-w>u <esc>guawA
 
+  " last typed word to UPPER CASE
+    inoremap <C-w>U <esc>gUawA
+    
+  " entire line to lower case
+    inoremap <C-g>u <esc>guuA
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+  " entire line to UPPER CASE
+    inoremap <C-g>U <esc>gUUA
 
+  " last word to title case
+    inoremap <C-w>t <esc>bvgU<esc>A
 
-" Incsearch Vim Plugin
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+  " current line to title case
+    inoremap <C-g>t <esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A
 
-" hlsearch toggle
-" nnoremap <silent> <esc> :set nohlsearch<CR>
+  " Quicker window movement
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-l> <C-w>l
+
+  " Incsearch:
+    map /  <Plug>(incsearch-forward)
+    map ?  <Plug>(incsearch-backward)
+    map g/ <Plug>(incsearch-stay)
+
+  " hlsearch toggle
+    " nnoremap <silent> <esc> :set nohlsearch<CR>
 
 " --------------------- Key Mappings ---------------------------- }}}
 
