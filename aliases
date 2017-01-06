@@ -10,6 +10,9 @@ alias v="$VISUAL"
 # Bundler
 alias b="bundle"
 
+# SSH fix for working with xterm-color256-italic
+alias ssh="TERM=xterm-256color ssh"
+
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate"
 alias s="rspec"
