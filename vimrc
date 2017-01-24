@@ -21,6 +21,9 @@
   " alias for leader key
     nmap <space> \
 
+  " disable bracketed paste
+  set t_BE=0
+
   set background=dark " tell vim what the background color looks like
   set backspace=2     " Backspace deletes like most programs in insert mode
   set history=200     " how many : commands to save in history
