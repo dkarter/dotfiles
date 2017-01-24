@@ -97,8 +97,10 @@
         \ 'elm',
         \ 'vim',
         \ 'js=javascript',
+        \ 'json',
         \ 'python',
         \ 'ruby',
+        \ 'elixir',
         \ 'sql',
         \ 'bash=sh'
         \ ]
@@ -128,7 +130,8 @@ let g:indentLine_fileType = [
       \ 'java',
       \ 'ruby',
       \ 'elixir',
-      \ 'javascript'
+      \ 'javascript',
+      \ 'vim'
       \ ]
 
 " ====================================
