@@ -474,6 +474,10 @@ augroup END
     vnoremap > >gv
     vnoremap < <gv
 
+  " Search for selected text
+    vnoremap * y/<C-R>"<CR>
+
+  " Split edit your vimrc. Type space, v, r in sequence to trigger
     fun! OpenConfigFile(file)
       if (&ft ==? 'startify')
         execute 'e ' . a:file
@@ -482,7 +486,6 @@ augroup END
       endif
     endfun
 
-  " Split edit your vimrc. Type space, v, r in sequence to trigger
     nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
     nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
 
