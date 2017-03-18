@@ -697,6 +697,16 @@ command! Grbranch call fzf#run(
       \ 'options': '-m',
       \ 'down': '20%'
       \ })
+      
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+      
+command! -bang -nargs=? -complete=dir GFiles
+      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+      
+command! -bang -nargs=? -complete=dir Buffers
+      \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
+  
 " --------------------------------------------------}}}
 
 " Temporary"{{{
