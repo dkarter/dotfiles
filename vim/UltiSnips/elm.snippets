@@ -1,20 +1,70 @@
 snippet muv "Model View Update Boilerplate" b
+module Main exposing (..)
+
+import Html exposing (Html, div, text, program)
+
+
 -- MODEL
 
-type alias Model = { ... }
+
+type alias Model =
+    String
+
+
+init : ( Model, Cmd Msg )
+init =
+    ( "Hello", Cmd.none )
+
+
+
+-- MESSAGES
+
+
+type Msg
+    = NoOp
+
+
+
+-- VIEW
+
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ text model ]
+
+
 
 -- UPDATE
 
-type Action = Reset | ...
 
-update : Action -> Model -> Model
-update action model =
-  case action of
-    Reset -> ...
-    ...
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        NoOp ->
+            ( model, Cmd.none )
 
--- VIEW
-view : Model -> Html
-view =
-  ...
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+
+-- MAIN
+
+
+main : Program Never Model Msg
+main =
+    program
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
 endsnippet
+
