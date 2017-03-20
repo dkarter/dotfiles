@@ -5,6 +5,18 @@ end
 call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
+" Elixir:
+  " Elixir support
+  Plug 'elixir-lang/vim-elixir'
+
+  " pulls info on hex packages (requires mattn/webapi-vim)
+  Plug 'lucidstack/hex.vim'
+
+  " Alchemist for extended elixir support
+  Plug 'slashmili/alchemist.vim'
+
+  Plug 'c-brenn/phoenix.vim'
+
 " coffee script highlighting
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
@@ -14,6 +26,9 @@ Plug 'neomake/neomake'
 " Ruby:
   " do rspec things and highlight syntax
   Plug 'thoughtbot/vim-rspec'
+
+  " get gem info and insert latest gem version into Gemfile
+  Plug 'alexbel/vim-rubygems'
 
   " interact with ruby bundler gem
   Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rspec'] }
@@ -90,11 +105,17 @@ Plug 'vim-scripts/tComment'
 " NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'
 
+" auto-generate ctags on save
+Plug 'ludovicchabant/vim-gutentags'
+
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
 
-" Emmet generate html tags, autocomplete css
+" Emmet: generates html tags, autocomplete css
 Plug 'mattn/emmet-vim'
+
+" RagTag: Auto-close html tags + mappings for template scripting languages
+Plug 'tpope/vim-ragtag'
 
 " Searching:
   " highlights all search results and allows tabbing between them
@@ -190,11 +211,14 @@ Plug 'mileszs/ack.vim'
 Plug 'Yggdroot/indentLine'
 
 " ColorSchemes:
-  " vim color schemes
-  Plug 'flazz/vim-colorschemes', { 'on': 'Colors' }
+  " " vim color schemes
+  " Plug 'flazz/vim-colorschemes', { 'on': 'Colors' }
 
   " gruvbox theme
   Plug 'morhetz/gruvbox'
+
+  " Seoul 256 by Junegunn
+  " Plug 'junegunn/seoul256.vim'
 
   " Dracula theme
   " Plug 'dracula/vim', { 'as': 'dracula' }
@@ -227,6 +251,9 @@ Plug 'gregsexton/gitv'
 " A better Gitv:
 Plug 'junegunn/gv.vim'
 
+" Integration testing for vim plugins
+Plug 'junegunn/vader.vim'
+
 " Vim Web API (required by gist-vim)
 Plug 'mattn/webapi-vim'
 
@@ -234,7 +261,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 
 " Improve in buffer search
-Plug 'junegunn/vim-slash'
+" Plug 'junegunn/vim-slash'
 
 " Gundo - visualize git's undo tree (requires python)
 Plug 'sjl/gundo.vim'
@@ -266,26 +293,12 @@ Plug 'exu/pgsql.vim'
 " distraction free writing (like iA Writer)
 Plug 'laktek/distraction-free-writing-vim'
 
-" Elixir support
-Plug 'elixir-lang/vim-elixir'
-
-" Elixir support like rails.vim
-Plug 'avdgaag/vim-phoenix'
-
-" Alchemist for extended elixir support
-Plug 'slashmili/alchemist.vim'
-
 " Rust support
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " fzf greatness (fuzzy finding)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-
-" when fzf is not available (gvim) use Command - T
-Plug 'wincent/command-t', {
-      \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
-      \ }
 
 " Distraction free writing in vim
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -312,6 +325,9 @@ Plug 'vim-airline/vim-airline-themes'
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists
 Plug 'dkarter/bullets.vim'
+
+" snip helpers - assorted functions for snippets
+Plug 'dkarter/sniphelpers.vim'
 " /OWN PLUGINS --------------------------- }}}
 
 " ==================================================
