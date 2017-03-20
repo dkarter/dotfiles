@@ -329,6 +329,6 @@ export HASHROCKET_DO_TOKEN=5dbbca9792dd9021f13e01aec4c193c655692982f446fd364d18b
 export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 
 # for GRUVBOX theme in vim, enabling more colors
-  source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-  source "$HOME/dotfiles/scripts/term.sh"
-  export TERM=xterm-256color-italic
+  # source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+  # source "$HOME/dotfiles/scripts/term.sh"
+  # export TERM=xterm-256color-italic
