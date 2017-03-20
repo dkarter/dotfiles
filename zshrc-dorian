@@ -29,7 +29,7 @@ HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(zsh_reload tmux tmuxinator mix vi-mode rbenv ruby rails rake rake-fast gem bundler heroku git github dircycle postgres sublime xcode osx brew npm node cp colorize pj sniffsniff)
+plugins=(yarn elm zsh_reload tmux tmuxinator mix vi-mode rbenv ruby rails rake rake-fast gem bundler heroku git github dircycle postgres sublime xcode osx brew npm node cp colorize pj sniffsniff)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,10 +75,10 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # For GO
 export CC=clang
-export GOPATH="<<--[[CHANGEINLOCALZSHRC]]-->>"
+export GOPATH="<<-[[CHANGEINLOCALZSHRC]]->>"
 
 # HomeBrew
-export HOMEBREW_GITHUB_API_TOKEN="<<--[[CHANGEINLOCALZSHRC]]-->>"
+export HOMEBREW_GITHUB_API_TOKEN="<<-[[CHANGEINLOCALZSHRC]]->>"
 
 #Key shortcuts
 bindkey "^[f" forward-word
