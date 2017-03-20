@@ -20,7 +20,6 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-
 # ZSH aliases
 alias ohmyzsh="vim ~/.oh-my-zsh ~/.zshrc"
 
@@ -77,7 +76,7 @@ freethousand() {
   fi
 }
 
-alias brewup='brew update && brew upgrade --cleanup TERM=xterm-256color'
+alias brewup='brew update && brew upgrade --cleanup'
 
 alias d='cd ~/dev'
 alias fd='cd ~/dev/$(ls ~/dev/ --color=never | fzf)'
@@ -92,9 +91,11 @@ alias muxconfig='vim ~/.tmux.conf && tmux source-file ~/.tmux.conf'
 alias sshconfig='vim ~/.ssh/config'
 alias aliasconfig='vim ~/.aliases && source ~/.aliases'
 alias hostsconfig='sudo vim /etc/hosts'
-alias zshconfig="vim -o ~/.zshrc-dorian ~/.oh-my-zsh && source ~/.zshrc-dorian"
+alias zshconfig="vim -o ~/.zshrc-dorian && source ~/.zshrc-dorian"
 alias zshplugins="vim ~/.oh-my-zsh"
 
+# ripgrep - rg is taken by rails generate alias from the oh-my-zsh rails plugin
+alias rgrep='command rg'
 
 # curl
 # usage postjson '{"key": "value"}' http://example.com/create_record
