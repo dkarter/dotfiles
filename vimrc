@@ -22,36 +22,36 @@
     nmap <space> \
 
   " disable bracketed paste
-  set t_BE=0
+  " set t_BE=
 
-  set background=dark " tell vim what the background color looks like
-  set backspace=2     " Backspace deletes like most programs in insert mode
-  set history=200     " how many : commands to save in history
-  set ruler           " show the cursor position all the time
-  set showcmd         " display incomplete commands
-  set incsearch       " do incremental searching
-  set laststatus=2    " Always display the status line
-  set autowrite       " Automatically :write before running commands
-  set ignorecase      " ignore case in searches
-  set smartcase       " will use case sensitive if capital letter present or \C
-  set tabstop=2       " Softtabs or die! use 2 spaces for tabs.
-  set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
-  set shiftround      " Round indent to multiple of 'shiftwidth'
-  set expandtab       " insert tab with right amount of spacing
-  set gdefault        " Use 'g' flag by default with :s/foo/bar/.
-  set magic           " Use 'magic' patterns (extended regular expressions).
-  set guioptions=     " remove scrollbars on macvim
-  set noshowmode      " don't show mode as airline already does
-  set showcmd         " show any commands
+  set background=dark   " tell vim what the background color looks like
+  set backspace=2       " Backspace deletes like most programs in insert mode
+  set history=200       " how many : commands to save in history
+  set ruler             " show the cursor position all the time
+  set showcmd           " display incomplete commands
+  set incsearch         " do incremental searching
+  set laststatus=2      " Always display the status line
+  set autowrite         " Automatically :write before running commands
+  set ignorecase        " ignore case in searches
+  set smartcase         " will use case sensitive if capital letter present or \C
+  set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
+  set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
+  set shiftround        " Round indent to multiple of 'shiftwidth'
+  set expandtab         " insert tab with right amount of spacing
+  set magic             " Use 'magic' patterns (extended regular expressions).
+  set guioptions=       " remove scrollbars on macvim
+  set noshowmode        " don't show mode as airline already does
+  set showcmd           " show any commands
+  set foldmethod=manual " set folds by syntax of current language
 
 
-  if !has('nvim')     " does not work on neovim
-    set emoji         " treat emojis 😄  as full width characters
-    set termguicolors " enable true colors
+  if !has('nvim')       " does not work on neovim
+    set emoji           " treat emojis 😄  as full width characters
+    set termguicolors   " enable true colors
   end
 
-  set ttyfast         " should make scrolling faster
-  set lazyredraw      " should make scrolling faster
+  set ttyfast           " should make scrolling faster
+  set lazyredraw        " should make scrolling faster
 
   " visual bell for errors
     set visualbell
@@ -112,6 +112,26 @@
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
 " ====================================
+" MatchTagAlways
+" ====================================
+let g:mta_filetypes = {
+      \ 'jinja': 1,
+      \ 'xhtml': 1,
+      \ 'xml': 1,
+      \ 'html': 1,
+      \ 'django': 1,
+      \ 'javascript.jsx': 1,
+      \ 'eruby': 1,
+      \ }
+
+" ====================================
+" Sensible.vim
+" ====================================
+if !has('nvim')
+  let g:loaded_sensible = 1
+endif
+
+" ====================================
 " Snippets (UltiSnips)
 " ====================================
 let g:UltiSnipsListSnippets                = '<c-.>'
@@ -121,7 +141,7 @@ let g:UltiSnipsJumpBackwardTrigger         = '<s-tab>'
 
 " :UltiSnipsEdit opens in a vertical split
 let g:UltiSnipsEditSplit                   = 'vertical'
-let g:UltiSnipsSnippetsDir                 = ['~/dotfiles/vim/UltiSnips']
+let g:UltiSnipsSnippetsDir                 = $HOME . '/dotfiles/vim/UltiSnips'
 
 " ====================================
 " indentLine
@@ -149,25 +169,31 @@ let g:bullets_enabled_file_types = [
     \ 'scratch'
     \]
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
-endif
-
 " =====================================
 "  FZF
 " =====================================
 " set fzf's default input to AG instead of find. This also removes gitignore etc
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
 let g:fzf_files_options =
-  \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+  \ '--preview "(rougify {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
+" =====================================
+"  JSX
+" =====================================
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0
+
+" =====================================
+"  Ack + Ag
+" =====================================
 
 " Use The Silver Searcher for grep https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
+  " Use Ag for Ack
+  let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
 " ----------------------------------------------------------------------------
@@ -207,36 +233,14 @@ let g:html_indent_tags = 'li\|p'
 let g:flow#autoclose = 1
 
 " ----------------------------------------------------------------------------
-" Syntastic
-" ----------------------------------------------------------------------------
-" configure syntastic syntax checking to check on open as well as save
-" let g:syntastic_check_on_open=1
-" let g:syntastic_html_tidy_ignore_errors=[]
-" let g:syntastic_html_tidy_ignore_errors = [
-"     \ ' proprietary attribute \"ng-',
-"     \  'plain text isn''t allowed in <head> elements',
-"     \  '<base> escaping malformed URI reference',
-"     \  'discarding unexpected <body>',
-"     \  'escaping malformed URI reference',
-"     \  'trimming empty <i>',
-"     \  '</head> isn''t allowed in <body> elements'
-"     \ ]
-" let g:syntastic_eruby_ruby_quiet_messages =
-"     \ {'regex': 'possibly useless use of a variable in void context'}
-" let g:syntastic_ruby_mri_exec='~/.rvm/rubies/ruby-2.2.2/bin/ruby'
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_shell = '/bin/sh'
-" let g:syntastic_mode_map = { 'mode': 'active' }
-" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-" let g:syntastic_cucumber_cucumber_args='--profile syntastic'
-" let g:syntastic_cucumber_cucumber_exe='bin/cucumber'
-" let g:syntastic_warning_symbol = '⚠'
-" let g:syntastic_vim_checkers = ['vint']
-
-" ----------------------------------------------------------------------------
 " Neomake
 " ----------------------------------------------------------------------------
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_elm_elm_lint_maker = {
+      \ 'exe': 'elm_lint',
+      \ 'errorformat': '%f:%l:%c [%t] %m'
+      \ }
+let g:neomake_elm_enabled_makers = ['elm_lint']
 
 augroup NeomakeOnSave
   autocmd!
@@ -268,18 +272,13 @@ end
 " elm vim - add support for elm-format
 " ----------------------------------------------------------------------------
 " let g:elm_format_autosave=1
+let g:elm_detailed_complete = 1
 
 " ----------------------------------------------------------------------------
 " NERDTree
 " ----------------------------------------------------------------------------
-let NERDTreeIgnore=['\.vim$', '\~$', '\.beam', 'elm-stuff']
-let NERDTreeShowHidden=1
-
-" ----------------------------------------------------------------------------
-" SuperTab
-" ----------------------------------------------------------------------------
-" let g:SuperTabMappingForward = '<c-k>'
-" let g:SuperTabMappingBackward = '<c-j>'
+let g:NERDTreeIgnore = ['\.vim$', '\~$', '\.beam', 'elm-stuff']
+let g:NERDTreeShowHidden = 1
 
 " ----------------------------------------------------------------------------
 " goyo.vim + limelight.vim
@@ -353,33 +352,21 @@ augroup END
 " }}}
 
 " UI Customizations --------------------------------{{{
-  " Tweaks for Molokai colorscheme (ignored if Molokai isn't used)
-  let g:molokai_original=1
-  let g:rehash256=1
-
-  " Gruvbox colorscheme allow italics
-  let g:gruvbox_italic = 1
+  " " Gruvbox colorscheme allow italics
+  " let g:gruvbox_italic = 1
   let g:gruvbox_invert_selection=0
 
   " default color scheme
   colorscheme gruvbox
 
   " when on dracula
-  let g:limelight_conceal_ctermfg = 59
-  let g:limelight_conceal_guifg = '#43475b'
+  " let g:limelight_conceal_ctermfg = 59
+  " let g:limelight_conceal_guifg = '#43475b'
 
   " Make it obvious where 80 characters is
   highlight ColorColumn ctermbg=235 guibg=#2c2d27
   let &colorcolumn=join(range(80,999),',')
 
-
-
-  if has('gui_running')
-    let s:uname = system('uname')
-    if s:uname ==? 'Darwin\n'
-        set guifont=Operator\ Mono:h15
-    endif
-  endif
 " -----------------------------------------------------    }}}
 
 " Own commands --------------------------------------------- {{{
@@ -394,7 +381,7 @@ command! BreakLineAtComma :normal! f,.
     autocmd!
 
     " Remove trailing whitespace on save for ruby files.
-    autocmd BufWritePre *.rb :%s/\s\+$//e
+    autocmd BufWritePre *.rb,*.ex,*.exs :%s/\s\+$//e
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it for commit messages, when the position is invalid, or when
@@ -435,6 +422,18 @@ command! BreakLineAtComma :normal! f,.
     autocmd BufWinLeave *.c,*.rb mkview
     autocmd BufWinEnter *.c,*.rb silent loadview
   augroup END
+
+  augroup PrettierJs
+    autocmd!
+    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --print-width\ 80\ --single-quote\ --trailing-comma\ es5
+    autocmd BufWritePre *.js,*.jsx silent exe "normal! gggqG\<C-o>\<C-o>"
+  augroup END
+
+  augroup Elm
+    autocmd!
+    autocmd FileType elm setlocal tabstop=4
+    autocmd BufWritePre *.elm :ElmFormat
+  augroup END
 " }}}
 
 " Vim Script file settings ------------------------ {{{
@@ -460,8 +459,26 @@ augroup END
     map <F7> mzgg=G`z
 
   " Allow j and k to work on visual lines (when wrapping)
-    nnoremap k gk
-    nnoremap j gj
+    noremap <silent> <Leader>w :call ToggleWrap()<CR>
+    function! ToggleWrap()
+      if &wrap
+        echo 'Wrap OFF'
+        setlocal nowrap
+        set virtualedit=all
+        silent! nunmap <buffer> j
+        silent! nunmap <buffer> k
+      else
+        echo 'Wrap ON'
+        setlocal wrap linebreak nolist
+        set virtualedit=
+        setlocal display+=lastline
+        noremap  <buffer> <silent> k   gk
+        noremap  <buffer> <silent> j gj
+        inoremap <buffer> <silent> <Up>   <C-o>gk
+        inoremap <buffer> <silent> <Down> <C-o>gj
+      endif
+    endfunction
+
 
   " prevent entering ex mode accidentally
     nnoremap Q <Nop>
@@ -475,11 +492,11 @@ augroup END
     vnoremap < <gv
 
   " Search for selected text
-    vnoremap * y/<C-R>"<CR>
+    vnoremap * "xy/<C-R>x<CR>
 
   " Split edit your vimrc. Type space, v, r in sequence to trigger
     fun! OpenConfigFile(file)
-      if (&ft ==? 'startify')
+      if (&filetype ==? 'startify')
         execute 'e ' . a:file
       else
         execute 'tabe ' . a:file
@@ -620,7 +637,7 @@ augroup END
 
   " last typed word to UPPER CASE
     inoremap <C-w>U <esc>gUawA
-    
+
   " entire line to lower case
     inoremap <C-g>u <esc>guuA
 
@@ -702,5 +719,5 @@ command! Grbranch call fzf#run(
 " Temporary"{{{
 
 " testing for bullets.vim
-" nnoremap <leader>m :vs test.md<cr>
-" nnoremap <leader>q :q!<cr>"}}}
+nnoremap <leader>m :vs test.md<cr>
+nnoremap <leader>q :q!<cr>"}}}
