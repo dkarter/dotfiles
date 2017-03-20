@@ -7,7 +7,9 @@ set guioptions-=T
 " Use console dialogs
 set guioptions+=c
 
-set guifont=Source\ Code\ Pro\ for\ Powerline:h24
+set guifont=Fira\ Code:h15
+set guifontwide=Fira\ Code:h15
+set macligatures
 
 " Local config
 if filereadable($HOME . '/.gvimrc.local')
