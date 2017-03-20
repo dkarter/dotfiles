@@ -123,6 +123,9 @@ export PATH="/usr/local/bin:$PATH"
 # set cabal on path
 export PATH="$HOME/.cabal/bin:$PATH"
 
+# set yarn binaries on path
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # For PostgreSQL
 export PGDATA="/Library/PostgreSQL/9.3/data"
 
