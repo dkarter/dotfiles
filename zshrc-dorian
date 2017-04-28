@@ -119,6 +119,9 @@ bindkey "^[b" backward-word
 
 bindkey '^r' history-incremental-search-backward
 
+# ctrl-space accepts suggestions
+bindkey '^ ' autosuggest-accept
+
 export KEYTIMEOUT=1
 
 function mux() {
