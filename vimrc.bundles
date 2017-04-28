@@ -293,18 +293,18 @@ Plug 'exu/pgsql.vim'
 " distraction free writing (like iA Writer)
 Plug 'laktek/distraction-free-writing-vim'
 
+" Distraction free writing in vim
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+
+" Highlight current paragraph (works well with goyo)
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+
 " Rust support
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " fzf greatness (fuzzy finding)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-
-" Distraction free writing in vim
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-
-" Highlight current paragraph (works well with goyo)
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 " Browse github
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
