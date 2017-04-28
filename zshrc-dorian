@@ -22,14 +22,47 @@ fi
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(yarn elm zsh_reload tmux tmuxinator mix vi-mode rbenv ruby rails rake rake-fast gem bundler heroku git github dircycle postgres sublime xcode osx brew npm node cp colorize pj sniffsniff)
+plugins=(
+  brew
+  bundler
+  colorize
+  cp
+  dircycle
+  dotenv
+  elm
+  gem
+  git
+  github
+  go
+  heroku
+  mix
+  node
+  npm
+  osx
+  pj
+  postgres
+  rails
+  rake
+  rake-fast
+  rbenv
+  react-native
+  ruby
+  tmux
+  tmuxinator
+  vagrant
+  vi-mode
+  xcode
+  yarn
+  zsh-autosuggestions
+  zsh_reload
+  )
 
 source $ZSH/oh-my-zsh.sh
 
