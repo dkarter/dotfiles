@@ -112,6 +112,11 @@
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
 " ====================================
+" NeoFormat
+" ====================================
+let g:neoformat_try_formatprg = 1
+
+" ====================================
 " MatchTagAlways
 " ====================================
 let g:mta_filetypes = {
@@ -426,7 +431,7 @@ command! BreakLineAtComma :normal! f,.
   augroup PrettierJs
     autocmd!
     autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --print-width\ 80\ --single-quote\ --trailing-comma\ es5
-    autocmd BufWritePre *.js,*.jsx silent exe "normal! gggqG\<C-o>\<C-o>"
+    autocmd BufWritePre *.js,*.jsx Neoformat
   augroup END
 
   augroup Elm
