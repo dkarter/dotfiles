@@ -142,13 +142,13 @@ function mux() {
     cols="$(tput cols)"
     tmux new-session -d -n 'code' -s $session_name -x${cols-150} -y50 'reattach-to-user-namespace -l zsh'
 
-    source tmux split-window -t $session_name:0 \; \
-      new-window -a -d -n 'server' -t $session_name:0 \; \
-      select-layout -t $session_name main-vertical &>/dev/null \; \
-      send-keys -t $session_name:0.1 'vim .' C-m
+    # source tmux split-window -t $session_name:0 \; \
+    #   new-window -a -d -n 'server' -t $session_name:0 \; \
+    #   select-layout -t $session_name main-vertical &>/dev/null \; \
+    #   send-keys -t $session_name:0.1 'vim .' C-m
   fi
 
-  exec tmux attach-session -t $session_name
+  exec reattach-to-user-namespace tmux attach-session -t $session_name
 }
 
 # add rbenv
