@@ -99,8 +99,10 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " save vim sessions
 Plug 'tpope/vim-obsession'
 
-" Comment out code easily
-Plug 'vim-scripts/tComment'
+" " Comment out code easily
+" Plug 'vim-scripts/tComment'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 
 " NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'

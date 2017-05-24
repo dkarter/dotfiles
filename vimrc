@@ -112,6 +112,14 @@
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
 " ====================================
+" SplitJoin
+" ====================================
+let g:splitjoin_align = 1
+let g:splitjoin_trailing_comma = 1
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
+
+" ====================================
 " NeoFormat
 " ====================================
 let g:neoformat_try_formatprg = 1
@@ -379,6 +387,7 @@ command! PrettyPrintJSON %!python -m json.tool
 command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
 command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 command! BreakLineAtComma :normal! f,.
+command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
 " }}}
 
 " Auto commands ------------------------------------------------- {{{
@@ -428,10 +437,13 @@ command! BreakLineAtComma :normal! f,.
     autocmd BufWinEnter *.c,*.rb silent loadview
   augroup END
 
-  augroup PrettierJs
+  augroup NeoformatAutoFormat
     autocmd!
     autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --print-width\ 80\ --single-quote\ --trailing-comma\ es5
+    autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
     autocmd BufWritePre *.js,*.jsx Neoformat
+    autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
+    autocmd BufWritePre *.css,*.scss Neoformat stylefmt
   augroup END
 
   augroup Elm
@@ -454,7 +466,6 @@ augroup END
 " }}}
 
 "  Key Mappings -------------------------------------------------- {{{
-
 
   " Pasting support
     set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when
@@ -519,6 +530,9 @@ augroup END
 
   " Scratch:
     nnoremap <leader>sc :Scratch<CR>
+
+  " Neoformat:
+    nnoremap <leader>nf :Neoformat<CR>
 
     augroup ScratchToggle
       autocmd!
@@ -686,6 +700,16 @@ endif
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+  " Navigate neovim + neovim terminal emulator
+    tnoremap <A-h> <C-\><C-n><C-w>h
+    tnoremap <A-j> <C-\><C-n><C-w>j
+    tnoremap <A-k> <C-\><C-n><C-w>k
+    tnoremap <A-l> <C-\><C-n><C-w>l
+    nnoremap <A-h> <C-w>h
+    nnoremap <A-j> <C-w>j
+    nnoremap <A-k> <C-w>k
+    nnoremap <A-l> <C-w>l
 endif
 " }}}
 

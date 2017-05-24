@@ -1,4 +1,3 @@
-
 #  ▄███████▄     ▄████████    ▄█    █▄
 # ██▀     ▄██   ███    ███   ███    ███
 #       ▄███▀   ███    █▀    ███    ███
@@ -62,10 +61,9 @@ plugins=(
   yarn
   zsh-autosuggestions
   zsh_reload
-  )
+)
 
 source $ZSH/oh-my-zsh.sh
-
 
 # zsh syntax highlighting
 # pre-requisite: `brew install zsh-syntax-highlighting`
@@ -84,7 +82,6 @@ if [ -f $hist_plug ]; then
   bindkey "$terminfo[kcuu1]" history-substring-search-up
   bindkey "$terminfo[kcud1]" history-substring-search-down
 fi
-
 
 # zsh completions
 # pre-requisite: `brew install zsh-completions`
@@ -130,8 +127,8 @@ function mux() {
     return 1
   fi
 
-  if [ -z "$1" ]; then;
-    session_name="$(basename `pwd` | sed -e 's/\./-/g')"
+  if [ -z "$1" ]; then
+    session_name="$(basename $(pwd) | sed -e 's/\./-/g')"
   else
     session_name=$1
   fi
@@ -165,14 +162,14 @@ export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # For PostgreSQL
 export PGDATA="/Library/PostgreSQL/9.3/data"
 
-if `command -v brew >/dev/null`; then
+if $(command -v brew >/dev/null); then
   # autojump (requires brew install autojump)
   [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 fi
 
 # add autocomplete for lunchy - gem install lunchy
-if `gem list lunchy -i`; then
-  LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if $(gem list lunchy -i); then
+  LUNCHY_DIR=$(dirname $(gem which lunchy))/../extras
   if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
     . $LUNCHY_DIR/lunchy-completion.zsh fi
   fi
@@ -185,7 +182,7 @@ mkcd() {
 
 # fzf stuff
 
-if `command -v fzf >/dev/null`; then
+if $(command -v fzf >/dev/null); then
   # fo [FUZZY PATTERN] - Open the selected file with the default editor
   #   - Bypass fuzzy finder if there's only one match (--select-1)
   #   - Exit if there's no match (--exit-0)
@@ -194,8 +191,8 @@ if `command -v fzf >/dev/null`; then
   fo() {
     local out file key
     out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
-    key=$(head -1 <<< "$out")
-    file=$(head -2 <<< "$out" | tail -1)
+    key=$(head -1 <<<"$out")
+    file=$(head -2 <<<"$out" | tail -1)
     if [ -n "$file" ]; then
       [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
     fi
@@ -205,16 +202,15 @@ if `command -v fzf >/dev/null`; then
   fcd() {
     local dir
     dir=$(find ${1:-*} -path '*/\.*' -prune \
-                    -o -type d -print 2> /dev/null | fzf +m) &&
-    cd "$dir"
+      -o -type d -print 2>/dev/null | fzf +m) &&
+      cd "$dir"
   }
 
   # fcda - including hidden directories
   fcda() {
     local dir
-    dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+    dir=$(find ${1:-.} -type d 2>/dev/null | fzf +m) && cd "$dir"
   }
-
 
   # cdf - cd into the directory of the selected file
   fcdf() {
@@ -232,8 +228,7 @@ if `command -v fzf >/dev/null`; then
   fkill() {
     pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
-    if [ "x$pid" != "x" ]
-    then
+    if [ "x$pid" != "x" ]; then
       kill -${1:-9} $pid
     fi
   }
@@ -242,14 +237,20 @@ if `command -v fzf >/dev/null`; then
   fgco() {
     local tags branches target
     tags=$(
-      git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+      git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
+    ) || return
     branches=$(
-      git branch --all | grep -v HEAD             |
-      sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
-      sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+      git branch --all | grep -v HEAD |
+        sed "s/.* //" | sed "s#remotes/[^/]*/##" |
+        sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+    ) || return
     target=$(
-      (echo "$tags"; echo "$branches") |
-      fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+      (
+        echo "$tags"
+        echo "$branches"
+      ) |
+        fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
+    ) || return
     git checkout $(echo "$target" | awk '{print $2}')
   }
 
@@ -257,15 +258,15 @@ if `command -v fzf >/dev/null`; then
   fgcoc() {
     local commits commit
     commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
-    commit=$(echo "$commits" | fzf --tac +s +m -e) &&
-    git checkout $(echo "$commit" | sed "s/ .*//")
+      commit=$(echo "$commits" | fzf --tac +s +m -e) &&
+      git checkout $(echo "$commit" | sed "s/ .*//")
   }
 
   # fgshow - git commit browser
   fgshow() {
     git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
         --bind "ctrl-m:execute:
                   (grep -o '[a-f0-9]\{7\}' | head -1 |
                   xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
@@ -278,8 +279,8 @@ if `command -v fzf >/dev/null`; then
   fgcs() {
     local commits commit
     commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-    commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-    echo -n $(echo "$commit" | sed "s/ .*//")
+      commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
+      echo -n $(echo "$commit" | sed "s/ .*//")
   }
 
   # fgstash - easier way to deal with stashes
@@ -291,10 +292,10 @@ if `command -v fzf >/dev/null`; then
     local out q k sha
     while out=$(
       git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
-      fzf --ansi --no-sort --query="$q" --print-query \
-          --expect=ctrl-d,ctrl-b);
-    do
-      mapfile -t out <<< "$out"
+        fzf --ansi --no-sort --query="$q" --print-query \
+          --expect=ctrl-d,ctrl-b
+    ); do
+      mapfile -t out <<<"$out"
       q="${out[0]}"
       k="${out[1]}"
       sha="${out[-1]}"
@@ -304,7 +305,7 @@ if `command -v fzf >/dev/null`; then
         git diff $sha
       elif [[ "$k" == 'ctrl-b' ]]; then
         git stash branch "stash-$sha" $sha
-        break;
+        break
       else
         git stash show -p $sha
       fi
@@ -316,46 +317,20 @@ function clonecd() {
   # find a way to pass the rest of the arguments to
   # git clone in a variadic style to allow still using
   # --depth=1 etc
-  git clone git@github.com:"$1.git" && cd "${1#*/}";
+  git clone git@github.com:"$1.git" && cd "${1#*/}"
 }
 
 function shallowclone() {
-  git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}";
-}
-
-function initprj() {
-  if [[ "$1" != "." ]]; then
-    mkcd $1
-  fi
-
-  # setup git
-  git init
-
-  # setup remote repo on github
-  hub create
-
-  # setup base files (readme and license)
-  touch README.md
-  touch .gitignore
-
-  cat <<-EOF > LICENSE
-	Copyright (c) $(date +"%Y") Dorian Karter
-
-	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-	EOF
+  git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}"
 }
 
 # color man pages
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
-export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
-export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m')     # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode – yellow
-export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
 
 # for android sdk (installed via homebrew)
@@ -365,6 +340,6 @@ export HASHROCKET_DO_TOKEN=5dbbca9792dd9021f13e01aec4c193c655692982f446fd364d18b
 export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 
 # for GRUVBOX theme in vim, enabling more colors
-  # source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-  # source "$HOME/dotfiles/scripts/term.sh"
-  # export TERM=xterm-256color-italic
+# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+# source "$HOME/dotfiles/scripts/term.sh"
+# export TERM=xterm-256color-italic
