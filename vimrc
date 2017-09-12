@@ -587,6 +587,7 @@ augroup END
 
   " NerdTree:
     nnoremap <Leader>nt :NERDTreeToggle<CR>
+    nnoremap <leader>d :e %:h<CR>
 
   " Vim Rspec:
     nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
