@@ -339,7 +339,18 @@ export DO_API_TOKEN=d2a10413e31bf467a7594554224440cf03dd603a4d524422e00583bea342
 export HASHROCKET_DO_TOKEN=5dbbca9792dd9021f13e01aec4c193c655692982f446fd364d18ba599daac113
 export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 
+# for erl/iex history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+if brew command command-not-found-init >/dev/null 2>&1; then
+  eval "$(brew command-not-found-init)"
+fi
+
+# asdf global version manager
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+
 # for GRUVBOX theme in vim, enabling more colors
-# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-# source "$HOME/dotfiles/scripts/term.sh"
-# export TERM=xterm-256color-italic
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+bindkey -s "^Xi" "^[Iiex -S ^[A"
