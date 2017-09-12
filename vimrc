@@ -39,6 +39,7 @@
   set noshowmode        " don't show mode as airline already does
   set showcmd           " show any commands
   set foldmethod=manual " set folds by syntax of current language
+  set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
 
   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
