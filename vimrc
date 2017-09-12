@@ -595,6 +595,8 @@ augroup END
     nnoremap <Leader>l :call RunLastSpec()<CR>
     nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
+  " Grep selection with Ag
+    xnoremap <leader>g y :Ag "<CR>
 
   " Vim Scriptease:
     " Run commands that require an interactive shell
@@ -639,6 +641,9 @@ augroup END
       imap <c-x><c-j> <plug>(fzf-complete-file-ag)
       imap <c-x><c-l> <plug>(fzf-complete-line)
 
+  " Prettier:
+    " shows you the output from prettier - useful when you have a syntax error
+    nnoremap <leader>p :!prettier %<CR>
 
   " CtrlSF:
     nnoremap <C-F>f :CtrlSF

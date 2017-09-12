@@ -15,6 +15,7 @@ call plug#begin('~/.vim/bundle')
   " Alchemist for extended elixir support
   Plug 'slashmili/alchemist.vim'
 
+  " shortcuts for the Phoenix framework
   Plug 'c-brenn/phoenix.vim'
 
 " coffee script highlighting
@@ -67,6 +68,14 @@ Plug 'tpope/vim-endwise'
 " Ansible:
   " ansible vim plugin
   Plug 'pearofducks/ansible-vim'
+
+ " Caddy:
+  " syntax highlighting for caddyfile
+  Plug 'isobit/vim-caddyfile'
+
+" WebAssembly:
+  " Syntax Highlighting:
+  Plug 'rhysd/vim-wasm'
 
 " Vim sugar for the UNIX shell commands that need it the most.
 Plug 'tpope/vim-eunuch'
@@ -175,6 +184,12 @@ Plug 'keith/investigate.vim'
 Plug 'ntpeters/vim-better-whitespace'
 
 " Snippets:
+  " ES2015 code snippets (Optional)
+  Plug 'epilande/vim-es2015-snippets'
+
+  " React code snippets
+  Plug 'epilande/vim-react-snippets'
+
   " modern snippets for vim
   Plug 'SirVer/ultisnips'
 
@@ -190,6 +205,9 @@ Plug 'mileszs/ack.vim'
 
   " JSX support for react components
   Plug 'mxw/vim-jsx'
+
+  " Automatically import js modules
+  Plug 'Galooshi/vim-import-js'
 
   " Vim plugin for Flow (js static type checker)
   Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript-jsx'] }
@@ -241,8 +259,12 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " highlight open and close tabs
 Plug 'valloric/matchtagalways'
 
-" tab completion (autocomplete) for insert
-Plug 'ervandew/supertab'
+" Autocomplete:
+  " tab completion (autocomplete) for insert
+  Plug 'ervandew/supertab'
+
+  " autocomplete using text from tmux
+  Plug 'wellle/tmux-complete.vim'
 
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'
@@ -289,17 +311,22 @@ Plug 'mhinz/vim-startify'
 " copy code as rtf
 Plug 'zerowidth/vim-copy-as-rtf'
 
-" postgres sql highlighting
-Plug 'exu/pgsql.vim'
+" Postgres:
+  " postgres sql highlighting
+  Plug 'exu/pgsql.vim'
 
-" distraction free writing (like iA Writer)
-Plug 'laktek/distraction-free-writing-vim'
+  " show table description in vim
+  Plug 'hashrocket/vim-hr-psql'
 
-" Distraction free writing in vim
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+" Writing:
+  " distraction free writing (like iA Writer)
+  Plug 'laktek/distraction-free-writing-vim'
 
-" Highlight current paragraph (works well with goyo)
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+  " Distraction free writing in vim
+  Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+
+  " Highlight current paragraph (works well with goyo)
+  Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 " Rust support
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
