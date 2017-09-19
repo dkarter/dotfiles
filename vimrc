@@ -126,6 +126,29 @@ let g:splitjoin_ruby_hanging_args = 0
 " ====================================
 let g:neoformat_try_formatprg = 1
 
+let g:neoformat_only_msg_on_error = 1
+
+" ONLY PRETTIER (don't run any other formatters for these file types)
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_css = ['prettier']
+let g:neoformat_enabled_scss = ['prettier']
+let g:neoformat_enabled_json = ['prettier']
+
+let g:neoformat_javascript_prettier = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--stdin', '--print-width 80', '--single-quote', '--trailing-comma es5'],
+      \ 'stdin': 1,
+      \ }
+
+
+augroup NeoformatAutoFormat
+  autocmd!
+  autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
+  autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json Neoformat
+  autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
+  " autocmd BufWritePre *.css,*.scss Neoformat stylefmt
+augroup END
+
 " ====================================
 " MatchTagAlways
 " ====================================
@@ -261,33 +284,6 @@ augroup NeomakeOnSave
   autocmd!
   autocmd! BufWritePost * Neomake
 augroup END
-
-" ----------------------------------------------------------------------------
-" NeoFormat
-" ----------------------------------------------------------------------------
-
-  let g:neoformat_only_msg_on_error = 1
-
-  " ONLY PRETTIER (don't run any other formatters for these file types)
-  let g:neoformat_enabled_javascript = ['prettier']
-  let g:neoformat_enabled_css = ['prettier']
-  let g:neoformat_enabled_scss = ['prettier']
-  let g:neoformat_enabled_json = ['prettier']
-
-  let g:neoformat_javascript_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin', '--print-width 80', '--single-quote', '--trailing-comma es5'],
-        \ 'stdin': 1,
-        \ }
-
-
-  augroup NeoformatAutoFormat
-    autocmd!
-    autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
-    autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json Neoformat
-    autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
-    " autocmd BufWritePre *.css,*.scss Neoformat stylefmt
-  augroup END
 
 " ----------------------------------------------------------------------------
 " Investigate
