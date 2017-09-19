@@ -1,10 +1,11 @@
-if &compatible
-  set nocompatible
-end
-
 call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
+
+" Dependencies:
+  " Create custom text objects (required by rubyblock,xmlattr)
+  Plug 'kana/vim-textobj-user'
+
 " Elixir:
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
@@ -52,8 +53,6 @@ Plug 'neomake/neomake'
   " Rails and ruby support (loaded automatically for rails apps)
   Plug 'tpope/vim-rails'
 
-  " Create custom text objects (required by vim textobj rubyblock)
-  Plug 'kana/vim-textobj-user'
 
   " Text object for ruby blocks
   Plug 'nelstrom/vim-textobj-rubyblock'
@@ -108,6 +107,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " save vim sessions
 Plug 'tpope/vim-obsession'
 
+" session management
+" Plug 'wting/gitsessions.vim'
+
 " " Comment out code easily
 " Plug 'vim-scripts/tComment'
 "Plug 'scrooloose/nerdcommenter'
@@ -122,11 +124,15 @@ Plug 'ludovicchabant/vim-gutentags'
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
 
-" Emmet: generates html tags, autocomplete css
-Plug 'mattn/emmet-vim'
+" HTML:
+  " Emmet: generates html tags, autocomplete css
+  Plug 'mattn/emmet-vim'
 
-" RagTag: Auto-close html tags + mappings for template scripting languages
-Plug 'tpope/vim-ragtag'
+  " RagTag: Auto-close html tags + mappings for template scripting languages
+  Plug 'tpope/vim-ragtag'
+
+  " add text object for HTML attributes
+  Plug 'whatyouhide/vim-textobj-xmlattr'
 
 " Searching:
   " highlights all search results and allows tabbing between them
@@ -231,9 +237,6 @@ Plug 'mileszs/ack.vim'
 Plug 'Yggdroot/indentLine'
 
 " ColorSchemes:
-  " " vim color schemes
-  " Plug 'flazz/vim-colorschemes', { 'on': 'Colors' }
-
   " gruvbox theme
   Plug 'morhetz/gruvbox'
 
@@ -241,7 +244,7 @@ Plug 'Yggdroot/indentLine'
   " Plug 'junegunn/seoul256.vim'
 
   " Dracula theme
-  " Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'dracula/vim', { 'as': 'dracula' }
 
 " highlight colors in css
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }

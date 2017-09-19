@@ -263,6 +263,33 @@ augroup NeomakeOnSave
 augroup END
 
 " ----------------------------------------------------------------------------
+" NeoFormat
+" ----------------------------------------------------------------------------
+
+  let g:neoformat_only_msg_on_error = 1
+
+  " ONLY PRETTIER (don't run any other formatters for these file types)
+  let g:neoformat_enabled_javascript = ['prettier']
+  let g:neoformat_enabled_css = ['prettier']
+  let g:neoformat_enabled_scss = ['prettier']
+  let g:neoformat_enabled_json = ['prettier']
+
+  let g:neoformat_javascript_prettier = {
+        \ 'exe': 'prettier',
+        \ 'args': ['--stdin', '--print-width 80', '--single-quote', '--trailing-comma es5'],
+        \ 'stdin': 1,
+        \ }
+
+
+  augroup NeoformatAutoFormat
+    autocmd!
+    autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
+    autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json Neoformat
+    autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
+    " autocmd BufWritePre *.css,*.scss Neoformat stylefmt
+  augroup END
+
+" ----------------------------------------------------------------------------
 " Investigate
 " ----------------------------------------------------------------------------
 " Use Dash.app for documentation of word under cursor
@@ -303,8 +330,6 @@ let g:limelight_priority = -1
 
 function! s:goyo_enter()
   if has('gui_running')
-    set fullscreen
-    set background=light
     set linespace=7
   elseif exists('$TMUX')
     silent !tmux set status off
@@ -314,8 +339,6 @@ endfunction
 
 function! s:goyo_leave()
   if has('gui_running')
-    set nofullscreen
-    set background=dark
     set linespace=0
   elseif exists('$TMUX')
     silent !tmux set status on
@@ -369,10 +392,10 @@ augroup END
 " UI Customizations --------------------------------{{{
   " " Gruvbox colorscheme allow italics
   " let g:gruvbox_italic = 1
-  let g:gruvbox_invert_selection=0
+  " let g:gruvbox_invert_selection=0
 
   " default color scheme
-  colorscheme gruvbox
+  colorscheme dracula
 
   " when on dracula
   " let g:limelight_conceal_ctermfg = 59
@@ -439,15 +462,6 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     autocmd BufWinEnter *.c,*.rb silent loadview
   augroup END
 
-  augroup NeoformatAutoFormat
-    autocmd!
-    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --print-width\ 80\ --single-quote\ --trailing-comma\ es5
-    autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
-    autocmd BufWritePre *.js,*.jsx Neoformat
-    autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
-    autocmd BufWritePre *.css,*.scss Neoformat stylefmt
-  augroup END
-
   augroup Elm
     autocmd!
     autocmd FileType elm setlocal tabstop=4
@@ -468,6 +482,9 @@ augroup END
 " }}}
 
 "  Key Mappings -------------------------------------------------- {{{
+
+  " sort selected lines
+    vmap gs :sort<CR>
 
   " Pasting support
     set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when
