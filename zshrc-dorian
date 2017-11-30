@@ -134,7 +134,7 @@ function mux() {
     session_name=$1
   fi
 
-  if ! $(tmux has-session -t $name &>/dev/null); then
+  if ! $(tmux has-session -t $session_name &>/dev/null); then
     echo "creating session $session_name"
     # tmux new-session -s $session_name -n 'main'
     cols="$(tput cols)"
@@ -146,7 +146,8 @@ function mux() {
     #   send-keys -t $session_name:0.1 'vim .' C-m
   fi
 
-  exec reattach-to-user-namespace tmux attach-session -t $session_name
+  echo "attaching session $session_name"
+  reattach-to-user-namespace tmux attach-session -t $session_name
 }
 
 # add rbenv
@@ -343,6 +344,7 @@ export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 # for erl/iex history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# show if a command is available as a homebrew package if cannot find it
 if brew command command-not-found-init >/dev/null 2>&1; then
   eval "$(brew command-not-found-init)"
 fi
@@ -352,6 +354,7 @@ source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
 # for GRUVBOX theme in vim, enabling more colors
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
+# add iex before a command with <c-x> i
 bindkey -s "^Xi" "^[Iiex -S ^[A"
