@@ -39,16 +39,16 @@
   set noshowmode        " don't show mode as airline already does
   set showcmd           " show any commands
   set foldmethod=manual " set folds by syntax of current language
-  set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
 
   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
   set expandtab         " insert tab with right amount of spacing
   set shiftround        " Round indent to multiple of 'shiftwidth'
 
-  if !has('nvim')       " does not work on neovim
-    set emoji           " treat emojis 😄  as full width characters
-    set termguicolors   " enable true colors
+  if !has('nvim')             " does not work on neovim
+    set emoji                 " treat emojis 😄  as full width characters
+    set termguicolors         " enable true colors
+    set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
   end
 
   set ttyfast           " should make scrolling faster
@@ -68,7 +68,7 @@
     set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 
   " Numbers
-    set number
+    set relativenumber number
     set numberwidth=1
 
   " set where swap file and undo/backup files are saved
@@ -114,7 +114,67 @@
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
 " ====================================
-" SplitJoin
+" Deoplete:
+" ====================================
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr> <TAB>
+         \ pumvisible() ? "\<C-n>" :
+         \ <SID>check_back_space() ? "\<TAB>" :
+         \ deoplete#mappings#manual_complete()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+"Add extra filetypes
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx'
+                \ ]
+
+
+" ====================================
+" Vim Tmux Runner:
+" ====================================
+nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
+nnoremap <leader>or :VtrOpenRunner<cr>
+vnoremap <leader>sl :VtrSendLinesToRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+nnoremap <leader>dr :VtrDetachRunner<cr>
+nnoremap <leader>ap :VtrAttachToPane
+
+" ====================================
+" Gist:
+" ====================================
+map <leader>gst :Gist<cr>
+
+
+" ====================================
+" Tabularize:
+" ====================================
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+" ====================================
+" Vim Scriptease:
+" ====================================
+" Run commands that require an interactive shell
+nnoremap <Leader>ri :RunInInteractiveShell<space>
+
+" Reload current vim plugin
+nnoremap <Leader>rr :Runtime<cr>
+
+" ====================================
+" CopyRTF: Copy code as RTF
+" ====================================
+nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
+
+" ====================================
+" SplitJoin:
 " ====================================
 let g:splitjoin_align = 1
 let g:splitjoin_trailing_comma = 1
@@ -122,7 +182,7 @@ let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
 
 " ====================================
-" NeoFormat
+" NeoFormat:
 " ====================================
 let g:neoformat_try_formatprg = 1
 
@@ -149,8 +209,11 @@ augroup NeoformatAutoFormat
   " autocmd BufWritePre *.css,*.scss Neoformat stylefmt
 augroup END
 
+nnoremap <leader>nf :Neoformat<CR>
+
+
 " ====================================
-" MatchTagAlways
+" MatchTagAlways:
 " ====================================
 let g:mta_filetypes = {
       \ 'jinja': 1,
@@ -163,14 +226,14 @@ let g:mta_filetypes = {
       \ }
 
 " ====================================
-" Sensible.vim
+" Sensible.vim:
 " ====================================
 if !has('nvim')
   let g:loaded_sensible = 1
 endif
 
 " ====================================
-" Snippets (UltiSnips)
+" Snippets (UltiSnips):
 " ====================================
 let g:UltiSnipsListSnippets                = '<c-.>'
 let g:UltiSnipsExpandTrigger               = '<tab>'
@@ -215,6 +278,49 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
 let g:fzf_files_options =
   \ '--preview "(rougify {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <C-g>c :Commands<CR>
+nnoremap <C-f>l :BLines<CR>
+nnoremap <C-p> :Files<CR>
+
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Custom FZF commands ----------------------------- {{{
+fun! s:change_branch(e)
+  let l:_ = system('git checkout ' . a:e)
+  :e!
+  :AirlineRefresh
+  echom 'Changed branch to' . a:e
+endfun
+
+command! Gbranch call fzf#run(
+      \ {
+      \ 'source': 'git branch',
+      \ 'sink': function('<sid>change_branch'),
+      \ 'options': '-m',
+      \ 'down': '20%'
+      \ })
+
+fun! s:change_remote_branch(e)
+  let l:_ = system('git checkout --track ' . a:e)
+  :e!
+  :AirlineRefresh
+  echom 'Changed to remote branch' . a:e
+endfun
+
+command! Grbranch call fzf#run(
+      \ {
+      \ 'source': 'git branch -r',
+      \ 'sink': function('<sid>change_remote_branch'),
+      \ 'options': '-m',
+      \ 'down': '20%'
+      \ })
+" --------------------------------------------------}}}
+
 " =====================================
 "  JSX
 " =====================================
@@ -225,6 +331,9 @@ let g:jsx_ext_required = 0
 " =====================================
 "  Ack + Ag
 " =====================================
+
+" Grep selection with Ag
+xnoremap <leader>g y :Ag "<CR>
 
 " Use The Silver Searcher for grep https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -244,6 +353,13 @@ let g:slime_target='tmux'
 " ----------------------------------------------------------------------------
 let g:scratch_no_mappings=1
 
+nnoremap <leader>sc :Scratch<CR>
+
+augroup ScratchToggle
+  autocmd!
+  autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
+augroup END
+
 " ----------------------------------------------------------------------------
 " Emmet
 " ----------------------------------------------------------------------------
@@ -259,11 +375,13 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " ----------------------------------------------------------------------------
 " Vim RSpec
 " ----------------------------------------------------------------------------
-" vim-rspec command - make it use dispatch
-" let g:rspec_command = 'VtrSendCommandToRunner! rspec {spec}'
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>T :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 " ----------------------------------------------------------------------------
 " Vim Flow JS
@@ -307,16 +425,45 @@ if !has('nvim')
 end
 
 " ----------------------------------------------------------------------------
-" elm vim - add support for elm-format
+" Elm-vim - add support for elm-format
 " ----------------------------------------------------------------------------
 " let g:elm_format_autosave=1
 let g:elm_detailed_complete = 1
+
+augroup ElmMappings
+  autocmd!
+  autocmd FileType elm nnoremap <silent> <buffer> <leader>f :ElmFormat<cr>
+augroup END
 
 " ----------------------------------------------------------------------------
 " NERDTree
 " ----------------------------------------------------------------------------
 let g:NERDTreeIgnore = ['\.vim$', '\~$', '\.beam', 'elm-stuff']
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeWinSize=45
+let g:NERDTreeAutoDeleteBuffer=1
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>d :e %:h<CR>
+
+
+" ----------------------------------------------------------------------------
+" WebDevIcons
+" ----------------------------------------------------------------------------
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+
+" ----------------------------------------------------------------------------
+" vim-go
+" ----------------------------------------------------------------------------
+augroup CustomGoVimMappings
+  autocmd!
+
+  autocmd FileType go setlocal nolist listchars=tab:>-,trail:·,nbsp:·
+  autocmd FileType go nmap <buffer> <leader>r <Plug>(go-run)
+  autocmd FileType go nmap <buffer> <leader>b <Plug>(go-build)
+  autocmd FileType go nmap <buffer> <leader>t <Plug>(go-test)
+  autocmd FileType go nmap <buffer> <leader>c <Plug>(go-coverage)
+augroup END
 
 " ----------------------------------------------------------------------------
 " goyo.vim + limelight.vim
@@ -347,7 +494,6 @@ augroup GOYO
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
-
 " ----------------------------------------------------------------------------
 " vim-legend
 " ----------------------------------------------------------------------------
@@ -369,20 +515,6 @@ endif
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
-" }}}
-
-"  Plugin Modifications (AFTER loading bundles) ----- {{{
-
-" for go-vim
-augroup CustomGoVimMappings
-  autocmd!
-
-  autocmd FileType go setlocal nolist listchars=tab:>-,trail:·,nbsp:·
-  autocmd FileType go nmap <buffer> <leader>r <Plug>(go-run)
-  autocmd FileType go nmap <buffer> <leader>b <Plug>(go-build)
-  autocmd FileType go nmap <buffer> <leader>t <Plug>(go-test)
-  autocmd FileType go nmap <buffer> <leader>c <Plug>(go-coverage)
-augroup END
 " }}}
 
 " UI Customizations --------------------------------{{{
@@ -479,6 +611,12 @@ augroup END
 
 "  Key Mappings -------------------------------------------------- {{{
 
+  " normal mode can jump to command without having to use shift
+    nnoremap ; :
+
+  " remove highlighting on escape
+    map <silent> <esc> :noh<cr>
+
   " sort selected lines
     vmap gs :sort<CR>
 
@@ -543,22 +681,6 @@ augroup END
   "split edit your tmux conf
     nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
 
-  " Scratch:
-    nnoremap <leader>sc :Scratch<CR>
-
-  " Neoformat:
-    nnoremap <leader>nf :Neoformat<CR>
-
-    augroup ScratchToggle
-      autocmd!
-      autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
-    augroup END
-
-  " Elm:
-    augroup ElmMappings
-      autocmd!
-      autocmd FileType elm nnoremap <silent> <buffer> <leader>f :ElmFormat<cr>
-    augroup END
 
   " VimPlug:
     nnoremap <leader>pi :PlugInstall<CR>
@@ -568,12 +690,6 @@ augroup END
   " change dir to current file's dir
     nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-  " Tabularize: text alignment
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
-
   " zoom a vim pane, <C-w>= to re-balance
     nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
     nnoremap <leader>= :wincmd =<cr>
@@ -581,45 +697,12 @@ augroup END
   " close all other windows with <leader>o
     nnoremap <leader>wo <c-w>o
 
-  " Vim Tmux Runner:
-    nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
-    nnoremap <leader>or :VtrOpenRunner<cr>
-    vnoremap <leader>sl :VtrSendLinesToRunner<cr>
-    nnoremap <leader>fr :VtrFocusRunner<cr>
-    nnoremap <leader>dr :VtrDetachRunner<cr>
-    nnoremap <leader>ap :VtrAttachToPane
-
-  " Gist:
-    map <leader>gst :Gist<cr>
 
   " Index ctags from any project, including those outside Rails
     map <Leader>ct :!ctags -R .<CR>
 
   " Switch between the last two files
     nnoremap <tab><tab> <c-^>
-
-  " NerdTree:
-    nnoremap <Leader>nt :NERDTreeToggle<CR>
-    nnoremap <leader>d :e %:h<CR>
-
-  " Vim Rspec:
-    nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-    nnoremap <Leader>T :call RunNearestSpec()<CR>
-    nnoremap <Leader>l :call RunLastSpec()<CR>
-    nnoremap <Leader>sa :call RunAllSpecs()<CR>
-
-  " Grep selection with Ag
-    xnoremap <leader>g y :Ag "<CR>
-
-  " Vim Scriptease:
-    " Run commands that require an interactive shell
-      nnoremap <Leader>ri :RunInInteractiveShell<space>
-
-    " Reload current vim plugin
-      nnoremap <Leader>rr :Runtime<cr>
-
-  " CopyRTF: Copy code as RTF
-    nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
 
   " command typo mapping
     cnoremap WQ wq
@@ -637,23 +720,6 @@ augroup END
   " copy whole file to system clipboard
     nnoremap gY gg"+yG
 
-  " Goyo:
-    nnoremap <Leader>G :Goyo<CR>
-
-
-  " FZF:
-    nnoremap <C-b> :Buffers<CR>
-    nnoremap <C-g>g :Ag<CR>
-    nnoremap <C-g>c :Commands<CR>
-    nnoremap <C-f>l :BLines<CR>
-    nnoremap <C-p> :Files<CR>
-
-    " Insert Mode:
-      imap <c-x><c-k> <plug>(fzf-complete-word)
-      imap <c-x><c-f> <plug>(fzf-complete-path)
-      imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-      imap <c-x><c-l> <plug>(fzf-complete-line)
-
   " Prettier:
     " shows you the output from prettier - useful when you have a syntax error
     nnoremap <leader>p :!prettier %<CR>
@@ -666,7 +732,7 @@ augroup END
     noremap <C-t> <esc>:tabnew<CR>
     noremap <C-c> <esc>:tabclose<CR>
 
-  " Get off my lawn: disable arrow keys in normal mode
+  " disable arrow keys in normal mode
     nnoremap <Left> :echoe "Use h"<CR>
     nnoremap <Right> :echoe "Use l"<CR>
     nnoremap <Up> :echoe "Use k"<CR>
@@ -701,8 +767,9 @@ augroup END
     map ?  <Plug>(incsearch-backward)
     map g/ <Plug>(incsearch-stay)
 
-  " hlsearch toggle
-    " nnoremap <silent> <esc> :set nohlsearch<CR>
+  " Open files relative to current path:
+  nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
+  nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 " --------------------- Key Mappings ---------------------------- }}}
 
@@ -720,9 +787,11 @@ endif
 " For NeoVim ----------------------------------------------------- {{{
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+        \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+        \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-  " Navigate neovim + neovim terminal emulator
+  " Navigate neovim + neovim terminal emulator with alt+direction
     tnoremap <A-h> <C-\><C-n><C-w>h
     tnoremap <A-j> <C-\><C-n><C-w>j
     tnoremap <A-k> <C-\><C-n><C-w>k
@@ -731,40 +800,11 @@ if has('nvim')
     nnoremap <A-j> <C-w>j
     nnoremap <A-k> <C-w>k
     nnoremap <A-l> <C-w>l
+
+  " easily escape terminal
+    tnoremap <leader><esc> <C-\><C-n><esc><cr>
 endif
 " }}}
-
-" Custom FZF commands ----------------------------- {{{
-fun! s:change_branch(e)
-  let l:_ = system('git checkout ' . a:e)
-  :e!
-  :AirlineRefresh
-  echom 'Changed branch to' . a:e
-endfun
-
-command! Gbranch call fzf#run(
-      \ {
-      \ 'source': 'git branch',
-      \ 'sink': function('<sid>change_branch'),
-      \ 'options': '-m',
-      \ 'down': '20%'
-      \ })
-
-fun! s:change_remote_branch(e)
-  let l:_ = system('git checkout --track ' . a:e)
-  :e!
-  :AirlineRefresh
-  echom 'Changed to remote branch' . a:e
-endfun
-
-command! Grbranch call fzf#run(
-      \ {
-      \ 'source': 'git branch -r',
-      \ 'sink': function('<sid>change_remote_branch'),
-      \ 'options': '-m',
-      \ 'down': '20%'
-      \ })
-" --------------------------------------------------}}}
 
 " Temporary"{{{
 

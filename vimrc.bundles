@@ -6,6 +6,27 @@ call plug#begin('~/.vim/bundle')
   " Create custom text objects (required by rubyblock,xmlattr)
   Plug 'kana/vim-textobj-user'
 
+" File icons in vim
+Plug 'ryanoasis/vim-devicons'
+
+" Deoplete:
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+
+  " include ctags? for deoplete... not really sure
+  Plug 'Shougo/neoinclude.vim'
+
+  " autocompletion for vimscript with deoplete
+  Plug 'Shougo/neco-vim'
+
+  " javascript auto completion
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
 " Elixir:
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
@@ -118,6 +139,9 @@ Plug 'tpope/vim-commentary'
 " NERDTree... tree explorer for vim
 Plug 'scrooloose/nerdtree'
 
+" Nerdtree show git status
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " auto-generate ctags on save
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -196,11 +220,11 @@ Plug 'ntpeters/vim-better-whitespace'
   " React code snippets
   Plug 'epilande/vim-react-snippets'
 
-  " modern snippets for vim
-  Plug 'SirVer/ultisnips'
-
   " vim snippets for UltiSnips ...
   Plug 'honza/vim-snippets'
+
+  " modern snippets for vim
+  " Plug 'SirVer/ultisnips'
 
 " Ack vim integration
 Plug 'mileszs/ack.vim'
@@ -259,13 +283,10 @@ Plug 'keith/swift.vim', { 'for': 'swift' }
 " Vim Go
 Plug 'fatih/vim-go', { 'for': 'go' }
 
-" highlight open and close tabs
+" highlight open and close html tags
 Plug 'valloric/matchtagalways'
 
 " Autocomplete:
-  " tab completion (autocomplete) for insert
-  Plug 'ervandew/supertab'
-
   " autocomplete using text from tmux
   Plug 'wellle/tmux-complete.vim'
 
