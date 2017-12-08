@@ -27,6 +27,26 @@ Plug 'ryanoasis/vim-devicons'
   " javascript auto completion
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
+  " ruby sources for deoplete
+  Plug 'fishbullet/deoplete-ruby'
+
+" Neovim:
+  if has('nvim')
+    " abstraction on top of neovim terminal
+    Plug 'kassio/neoterm'
+
+    " run tests at the speed of thought
+    Plug 'janko-m/vim-test'
+
+    " if using terminal in neovim set neovim as $EDITOR
+    Plug 'rliang/termedit.nvim'
+
+    if !exists('$TMUX')
+      " use neovim as tmux
+      Plug 'hkupty/nvimux'
+    endif
+  endif
+
 " Elixir:
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
@@ -45,6 +65,10 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " staticly check code and highlight errors (async syntastic replacement)
 Plug 'neomake/neomake'
+
+" Highlight Yanked String
+Plug 'machakann/vim-highlightedyank'
+
 
 " Ruby:
   " do rspec things and highlight syntax
@@ -143,7 +167,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " auto-generate ctags on save
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'jsfaint/gen_tags.vim'
 
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
@@ -178,33 +202,35 @@ Plug 'airblade/vim-gitgutter'
 
 
 " TMUX:
-  " .tmux.conf syntax highlighting
-  Plug 'keith/tmux.vim'
+  if !has('nvim')
+    " .tmux.conf syntax highlighting
+    Plug 'keith/tmux.vim'
 
-  " tmux config file stuff
-  Plug 'tmux-plugins/vim-tmux'
+    " tmux config file stuff
+    Plug 'tmux-plugins/vim-tmux'
 
-  " vim slime for tmux integration (C-c, C-c to send selction to tmux)
-  Plug 'jpalardy/vim-slime'
+    " vim slime for tmux integration (C-c, C-c to send selction to tmux)
+    Plug 'jpalardy/vim-slime'
 
-  " seamless tmux/vim pane navigation
-  Plug 'christoomey/vim-tmux-navigator'
+    " seamless tmux/vim pane navigation
+    Plug 'christoomey/vim-tmux-navigator'
 
-  " run commands from vim in tmux
-  Plug 'christoomey/vim-tmux-runner'
+    " run commands from vim in tmux
+    Plug 'christoomey/vim-tmux-runner'
 
-  " yet another tmux plugin
-  Plug 'benmills/vimux'
+    " yet another tmux plugin
+    Plug 'benmills/vimux'
 
-  " Vimux Related:
-    " Run Golang tests in vimux
-    Plug 'benmills/vimux-golang'
+    " Vimux Related:
+      " Run Golang tests in vimux
+      Plug 'benmills/vimux-golang'
 
-    " Run elixir mix tests in vimux
-    Plug 'spiegela/vimix'
+      " Run elixir mix tests in vimux
+      Plug 'spiegela/vimix'
 
-    " Run ruby and elixir tests
-    Plug 'jgdavey/vim-turbux'
+      " Run ruby and elixir tests
+      Plug 'jgdavey/vim-turbux'
+  endif
 
 
 " get docs for command under cursor (with Dash or web)
@@ -363,7 +389,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " peek at registers and macros before running them
-Plug 'junegunn/vim-peekaboo'
+" Plug 'junegunn/vim-peekaboo'
 
 " Scratch buffers
 Plug 'mtth/scratch.vim'

@@ -44,7 +44,7 @@ unsetopt nomatch
 # bindkey jj vi-cmd-mode
 
 # emacs mode
-bindkey -v
+bindkey -e
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -92,10 +92,371 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# ---- Added by Dorian ----
-# customizations config
-[[ -f ~/.zshrc-dorian ]] && source ~/.zshrc-dorian
-# ---- /Added by Dorian ----
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#  ▄███████▄     ▄████████    ▄█    █▄
+# ██▀     ▄██   ███    ███   ███    ███
+#       ▄███▀   ███    █▀    ███    ███
+#  ▀█▀▄███▀▄▄   ███         ▄███▄▄▄▄███▄▄
+#   ▄███▀   ▀ ▀███████████ ▀▀███▀▀▀▀███▀
+# ▄███▀                ███   ███    ███
+# ███▄     ▄█    ▄█    ███   ███    ███
+#  ▀████████▀  ▄████████▀    ███    █▀
+
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+custom_theme=$HOME/.oh-my-zsh/themes/crunch-twoliner.zsh-theme
+if [ -f $custom_theme ]; then
+  ZSH_THEME="crunch-twoliner"
+else
+  ZSH_THEME="robbyrussell"
+fi
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to  shown in the command execution time stamp
+# in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
+# yyyy-mm-dd
+HIST_STAMPS="mm/dd/yyyy"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+plugins=(
+  brew
+  bundler
+  colorize
+  cp
+  dircycle
+  dotenv
+  elm
+  gem
+  git
+  github
+  go
+  heroku
+  mix
+  node
+  npm
+  osx
+  pj
+  postgres
+  rails
+  rake
+  rake-fast
+  rbenv
+  react-native
+  ruby
+  tmux
+  tmuxinator
+  vagrant
+  vi-mode
+  xcode
+  yarn
+  zsh-autosuggestions
+  zsh-completions
+  zsh_reload
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# zsh syntax highlighting
+# pre-requisite: `brew install zsh-syntax-highlighting`
+syntax_plug=/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f $syntax_plug ]; then
+  source $syntax_plug
+fi
+
+# zsh history search
+# pre-requisite `brew install zsh-history-substring-search`
+# NOTE: must be placed after zsh-syntax-highlighting if used together
+# readme: /usr/local/opt/zsh-history-substring-search/README.md
+hist_plug=/usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
+if [ -f $hist_plug ]; then
+  source $hist_plug
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
+
+# zsh completions
+# pre-requisite: `brew install zsh-completions`
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
+
+# Editor for git commits, rebases etc
+export GIT_EDITOR=nvim
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# For GO
+export CC=clang
+export GOPATH="<<-[[CHANGEINLOCALZSHRC]]->>"
+
+# HomeBrew
+export HOMEBREW_GITHUB_API_TOKEN="<<-[[CHANGEINLOCALZSHRC]]->>"
+
+#Key shortcuts
+bindkey "^[f" forward-word
+bindkey "^[b" backward-word
+
+bindkey '^r' history-incremental-search-backward
+
+# ctrl-space accepts suggestions
+bindkey '^ ' autosuggest-accept
+
+export KEYTIMEOUT=1
+
+function mux() {
+  if [ -n "$TMUX" ]; then
+    echo "ERROR: You're already in a tmux session. Nesting tmux sessions is a bad idea." >&2
+    return 1
+  fi
+
+  if [ -z "$1" ]; then
+    session_name="$(basename $(pwd) | sed -e 's/\./-/g')"
+  else
+    session_name=$1
+  fi
+
+  if ! $(tmux has-session -t $session_name &>/dev/null); then
+    echo "creating session $session_name"
+    # tmux new-session -s $session_name -n 'main'
+    cols="$(tput cols)"
+    tmux new-session -d -n 'code' -s $session_name -x${cols-150} -y50 'reattach-to-user-namespace -l zsh'
+
+    # source tmux split-window -t $session_name:0 \; \
+    #   new-window -a -d -n 'server' -t $session_name:0 \; \
+    #   select-layout -t $session_name main-vertical &>/dev/null \; \
+    #   send-keys -t $session_name:0.1 'vim .' C-m
+  fi
+
+  echo "attaching session $session_name"
+  reattach-to-user-namespace tmux attach-session -t $session_name
+}
+
+# add rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+# set homebrew on path
+export PATH="/usr/local/bin:$PATH"
+
+# set cabal on path
+export PATH="$HOME/.cabal/bin:$PATH"
+
+# set yarn binaries on path
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# For PostgreSQL
+export PGDATA="/Library/PostgreSQL/9.3/data"
+
+if $(command -v brew >/dev/null); then
+  # autojump (requires brew install autojump)
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+fi
+
+# add autocomplete for lunchy - gem install lunchy
+if $(gem list lunchy -i); then
+  LUNCHY_DIR=$(dirname $(gem which lunchy))/../extras
+  if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+    . $LUNCHY_DIR/lunchy-completion.zsh fi
+  fi
+fi
+
+# mkdir and cd into it
+mkcd() {
+  mkdir -p $1 && cd $1
+}
+
+# fzf stuff
+
+if $(command -v fzf >/dev/null); then
+  # fo [FUZZY PATTERN] - Open the selected file with the default editor
+  #   - Bypass fuzzy finder if there's only one match (--select-1)
+  #   - Exit if there's no match (--exit-0)
+  #   - CTRL-O to open with `open` command,
+  #   - CTRL-E or Enter key to open with the $EDITOR
+  fo() {
+    local out file key
+    out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
+    key=$(head -1 <<<"$out")
+    file=$(head -2 <<<"$out" | tail -1)
+    if [ -n "$file" ]; then
+      [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+    fi
+  }
+
+  # fcd - cd to selected directory
+  fcd() {
+    local dir
+    dir=$(find ${1:-*} -path '*/\.*' -prune \
+      -o -type d -print 2>/dev/null | fzf +m) &&
+      cd "$dir"
+  }
+
+  # fcda - including hidden directories
+  fcda() {
+    local dir
+    dir=$(find ${1:-.} -type d 2>/dev/null | fzf +m) && cd "$dir"
+  }
+
+  # cdf - cd into the directory of the selected file
+  fcdf() {
+    local file
+    local dir
+    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+  }
+
+  # fh - repeat history
+  fh() {
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+  }
+
+  # fkill - kill process
+  fkill() {
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+    if [ "x$pid" != "x" ]; then
+      kill -${1:-9} $pid
+    fi
+  }
+
+  # fgco - checkout git branch/tag
+  fgco() {
+    local tags branches target
+    tags=$(
+      git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
+    ) || return
+    branches=$(
+      git branch --all | grep -v HEAD |
+        sed "s/.* //" | sed "s#remotes/[^/]*/##" |
+        sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+    ) || return
+    target=$(
+      (
+        echo "$tags"
+        echo "$branches"
+      ) |
+        fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
+    ) || return
+    git checkout $(echo "$target" | awk '{print $2}')
+  }
+
+  # fgcoc - checkout git commit
+  fgcoc() {
+    local commits commit
+    commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+      commit=$(echo "$commits" | fzf --tac +s +m -e) &&
+      git checkout $(echo "$commit" | sed "s/ .*//")
+  }
+
+  # fgshow - git commit browser
+  fgshow() {
+    git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+        --bind "ctrl-m:execute:
+                  (grep -o '[a-f0-9]\{7\}' | head -1 |
+                  xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                  {}
+  FZF-EOF"
+  }
+
+  # fgcs - get git commit sha
+  # example usage: git rebase -i `fcs`
+  fgcs() {
+    local commits commit
+    commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+      commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
+      echo -n $(echo "$commit" | sed "s/ .*//")
+  }
+
+  # fgstash - easier way to deal with stashes
+  # type fstash to get a list of your stashes
+  # enter shows you the contents of the stash
+  # ctrl-d shows a diff of the stash against your current HEAD
+  # ctrl-b checks the stash out as a branch, for easier merging
+  fgstash() {
+    local out q k sha
+    while out=$(
+      git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
+        fzf --ansi --no-sort --query="$q" --print-query \
+          --expect=ctrl-d,ctrl-b
+    ); do
+      mapfile -t out <<<"$out"
+      q="${out[0]}"
+      k="${out[1]}"
+      sha="${out[-1]}"
+      sha="${sha%% *}"
+      [[ -z "$sha" ]] && continue
+      if [[ "$k" == 'ctrl-d' ]]; then
+        git diff $sha
+      elif [[ "$k" == 'ctrl-b' ]]; then
+        git stash branch "stash-$sha" $sha
+        break
+      else
+        git stash show -p $sha
+      fi
+    done
+  }
+fi
+
+function clonecd() {
+  # find a way to pass the rest of the arguments to
+  # git clone in a variadic style to allow still using
+  # --depth=1 etc
+  git clone git@github.com:"$1.git" && cd "${1#*/}"
+}
+
+function shallowclone() {
+  git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}"
+}
+
+# color man pages
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
+export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
+export LESS_TERMCAP_me=$(printf '\e[0m')     # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m')     # leave standout mode
+export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode – yellow
+export LESS_TERMCAP_ue=$(printf '\e[0m')     # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode – cyan
+
+# for android sdk (installed via homebrew)
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
+
+# for erl/iex history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+# show if a command is available as a homebrew package if cannot find it
+if brew command command-not-found-init >/dev/null 2>&1; then
+  eval "$(brew command-not-found-init)"
+fi
+
+# asdf global version manager
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+
+# for GRUVBOX theme in vim, enabling more colors
+# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+# add iex before a command with <c-x> i
+bindkey -s "^Xi" "^[Iiex -S ^[A"
+
+# enable direnv
+eval "$(direnv hook zsh)"
 
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
@@ -104,5 +465,3 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

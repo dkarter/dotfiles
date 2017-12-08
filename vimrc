@@ -7,11 +7,12 @@
 " ███    ███ ███  ███   ███   ███
 "  ▀██████▀  █▀    ▀█   ███   █▀
 
-" General settings
+" General settings {{{
   scriptencoding utf-16      " allow emojis in vimrc
   set nocompatible           " vim, not vi
   syntax on                  " syntax highlighting
   filetype plugin indent on  " try to recognize filetypes and load rel' plugins
+" }}}
 
 "  Behavior Modification ----------------------  {{{
 
@@ -124,8 +125,8 @@ inoremap <silent><expr> <TAB>
          \ deoplete#mappings#manual_complete()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  let l:col = col('.') - 1
+  return !l:col || getline('.')[l:col - 1]  =~? '\s'
 endfunction
 
 "Add extra filetypes
@@ -141,7 +142,6 @@ let g:deoplete#sources#ternjs#filetypes = [
 nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
 nnoremap <leader>or :VtrOpenRunner<cr>
 vnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>fr :VtrFocusRunner<cr>
 nnoremap <leader>dr :VtrDetachRunner<cr>
 nnoremap <leader>ap :VtrAttachToPane
 
@@ -258,11 +258,13 @@ let g:indentLine_fileType = [
 " ====================================
 " setup airline
 " ====================================
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#show_buffers = 0
 
-" Bullets.vim
+" ====================================
+" Bullets.vim:
+" ====================================
 let g:bullets_enabled_file_types = [
     \ 'markdown',
     \ 'text',
@@ -342,6 +344,8 @@ if executable('ag')
   " Use Ag for Ack
   let g:ackprg = 'ag --vimgrep --smart-case'
 endif
+
+nnoremap <leader>f :Ack!<Space>
 
 " ----------------------------------------------------------------------------
 " vim slime
@@ -425,22 +429,26 @@ if !has('nvim')
 end
 
 " ----------------------------------------------------------------------------
-" Elm-vim - add support for elm-format
+" Elm-vim
 " ----------------------------------------------------------------------------
 " let g:elm_format_autosave=1
 let g:elm_detailed_complete = 1
 
-augroup ElmMappings
-  autocmd!
-  autocmd FileType elm nnoremap <silent> <buffer> <leader>f :ElmFormat<cr>
-augroup END
-
 " ----------------------------------------------------------------------------
 " NERDTree
 " ----------------------------------------------------------------------------
-let g:NERDTreeIgnore = ['\.vim$', '\~$', '\.beam', 'elm-stuff']
+let g:NERDTreeIgnore = [
+      \ '\.vim$',
+      \ '\~$',
+      \ '\.beam',
+      \ 'elm-stuff',
+      \ 'deps',
+      \ '_build',
+      \ '.git',
+      \ 'node_modules'
+      \ ]
+
 let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinSize=45
 let g:NERDTreeAutoDeleteBuffer=1
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>d :e %:h<CR>
@@ -517,6 +525,36 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 " }}}
 
+"  Plugin Modifications (AFTER loading bundles) ----- {{{
+if has('nvim') && !exists('$TMUX')
+" ------------------------------------
+" NVIMUX:
+" ------------------------------------
+
+lua << EOF
+local nvimux = require('nvimux')
+
+-- Nvimux configuration
+nvimux.config.set_all{
+  prefix = '<C-z>',
+  open_term_by_default = true,
+  new_window_buffer = 'single',
+  quickterm_direction = 'botright',
+  quickterm_orientation = 'vertical',
+  -- Use 'g' for global quickterm
+  quickterm_scope = 't',
+  quickterm_size = '80',
+}
+
+-- Nvimux custom bindings
+nvimux.bindings.bind_all{
+  {'s', ':NvimuxHorizontalSplit', {'n', 'v', 'i', 't'}},
+  {'v', ':NvimuxVerticalSplit', {'n', 'v', 'i', 't'}},
+}
+EOF
+endif
+" }}}
+
 " UI Customizations --------------------------------{{{
   " " Gruvbox colorscheme allow italics
   " let g:gruvbox_italic = 1
@@ -533,7 +571,7 @@ endif
   highlight ColorColumn ctermbg=235 guibg=#2c2d27
   let &colorcolumn=join(range(80,999),',')
 
-" -----------------------------------------------------    }}}
+"  }}}
 
 " Own commands --------------------------------------------- {{{
 command! PrettyPrintJSON %!python -m json.tool
@@ -583,13 +621,6 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     autocmd VimResized * :wincmd =
   augroup END
 
-  augroup AutoSaveFolds
-    autocmd!
-    " add file types as needed
-    autocmd BufWinLeave *.c,*.rb mkview
-    autocmd BufWinEnter *.c,*.rb silent loadview
-  augroup END
-
   augroup Elm
     autocmd!
     autocmd FileType elm setlocal tabstop=4
@@ -610,9 +641,6 @@ augroup END
 " }}}
 
 "  Key Mappings -------------------------------------------------- {{{
-
-  " normal mode can jump to command without having to use shift
-    nnoremap ; :
 
   " remove highlighting on escape
     map <silent> <esc> :noh<cr>
@@ -690,7 +718,7 @@ augroup END
   " change dir to current file's dir
     nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-  " zoom a vim pane, <C-w>= to re-balance
+  " zoom a vim pane, <C-w> = to re-balance
     nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
     nnoremap <leader>= :wincmd =<cr>
 
@@ -790,6 +818,7 @@ if has('nvim')
   set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
         \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
         \,sm:block-blinkwait175-blinkoff150-blinkon175
+  set inccommand=nosplit " interactive find replace preview
 
   " Navigate neovim + neovim terminal emulator with alt+direction
     tnoremap <A-h> <C-\><C-n><C-w>h
@@ -803,6 +832,23 @@ if has('nvim')
 
   " easily escape terminal
     tnoremap <leader><esc> <C-\><C-n><esc><cr>
+    tnoremap <C-o> <C-\><C-n><esc><cr>
+
+  " quickly toggle term
+    nnoremap <silent> <leader><space> :Ttoggle<cr><C-w>j
+    tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
+
+  " pasting works quite well in neovim as is so disabling yo
+    nnoremap <silent> yo o
+    nnoremap <silent> yO O
+
+  " run tests with neoterm in vim-test
+    let g:test#strategy = 'neoterm'
+    nmap <silent> <leader>T :TestNearest<CR>
+    nmap <silent> <leader>t :TestFile<CR>
+    nmap <silent> <leader>a :TestSuite<CR>
+    nmap <silent> <leader>l :TestLast<CR>
+    nmap <silent> <leader>g :TestVisit<CR>
 endif
 " }}}
 
