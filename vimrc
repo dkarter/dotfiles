@@ -573,6 +573,9 @@ nvimux.bindings.bind_all{
   {'s', ':NvimuxHorizontalSplit', {'n', 'v', 'i', 't'}},
   {'v', ':NvimuxVerticalSplit', {'n', 'v', 'i', 't'}},
 }
+
+-- Required so nvimux sets the mappings correctly
+nvimux.bootstrap()
 EOF
 endif
 
@@ -901,11 +904,13 @@ function! PlugGx()
   let l:line = getline('.')
   let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
 
-  if (&filetype ==# 'vim-plug') 
+  if (&filetype ==# 'vim-plug')
+    " inside vim plug splits such as :PlugStatus
     let l:name = empty(l:sha)
                   \ ? matchstr(l:line, '^[-x+] \zs[^:]\+\ze:')
                   \ : getline(search('^- .*:$', 'bn'))[2:-2]
   else
+    " in .vimrc.bundles
     let l:name = matchlist(l:line, '\v/([A-Za-z0-9\-_\.]+)')[1]
   endif
 
