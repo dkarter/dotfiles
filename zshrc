@@ -126,42 +126,6 @@ HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(
-  brew
-  bundler
-  colorize
-  cp
-  dircycle
-  dotenv
-  elm
-  gem
-  git
-  github
-  go
-  heroku
-  mix
-  node
-  npm
-  osx
-  pj
-  postgres
-  rails
-  rake
-  rake-fast
-  rbenv
-  react-native
-  ruby
-  tmux
-  tmuxinator
-  vagrant
-  vi-mode
-  xcode
-  yarn
-  zsh-autosuggestions
-  zsh-completions
-  zsh_reload
-)
-
 source $ZSH/oh-my-zsh.sh
 
 # zsh syntax highlighting
@@ -457,6 +421,8 @@ bindkey -s "^Xi" "^[Iiex -S ^[A"
 
 # enable direnv
 eval "$(direnv hook zsh)"
+
+[ -f ~/.antigenrc ] && source ~/.antigenrc
 
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
