@@ -18,17 +18,23 @@ Plug 'ryanoasis/vim-devicons'
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
-  " include ctags? for deoplete... not really sure
+  " autocompletion from syntax files for each language
+  Plug 'Shougo/neco-syntax'
+
+  " include ctags for deoplete
   Plug 'Shougo/neoinclude.vim'
 
   " autocompletion for vimscript with deoplete
-  Plug 'Shougo/neco-vim'
+  Plug 'Shougo/neco-vim', { 'for': 'vim' }
+
+  " completion for Elm
+  Plug 'pbogut/deoplete-elm', { 'for': 'elm' }
 
   " javascript auto completion
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
   " ruby sources for deoplete
-  Plug 'fishbullet/deoplete-ruby'
+  Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
 
 " Neovim:
   if has('nvim')
@@ -69,6 +75,8 @@ Plug 'neomake/neomake'
 " Highlight Yanked String
 Plug 'machakann/vim-highlightedyank'
 
+" Language Server Protocol (LSP) support for vim and neovim
+Plug 'autozimu/LanguageClient-neovim'
 
 " Ruby:
   " do rspec things and highlight syntax
@@ -101,6 +109,9 @@ Plug 'machakann/vim-highlightedyank'
 
   " Text object for ruby blocks
   Plug 'nelstrom/vim-textobj-rubyblock'
+
+  " refactoring tools for ruby/rspec
+  Plug 'pablobfonseca/vim-ruby-refactoring', { 'for': 'ruby' }
 
 " add `end` automatically when creating a closure in many languages
 Plug 'tpope/vim-endwise'
@@ -200,38 +211,33 @@ Plug 'terryma/vim-multiple-cursors'
 " Visual git gutter
 Plug 'airblade/vim-gitgutter'
 
+" TMUX: {{{
+  " .tmux.conf syntax highlighting
+  Plug 'keith/tmux.vim'
 
-" TMUX:
-  if !has('nvim')
-    " .tmux.conf syntax highlighting
-    Plug 'keith/tmux.vim'
+  " tmux config file stuff
+  Plug 'tmux-plugins/vim-tmux', { 'on': 'Mux' }
 
-    " tmux config file stuff
-    Plug 'tmux-plugins/vim-tmux'
+  " vim slime for tmux integration (C-c, C-c to send selction to tmux)
+  Plug 'jpalardy/vim-slime', { 'on': 'Mux' }
 
-    " vim slime for tmux integration (C-c, C-c to send selction to tmux)
-    Plug 'jpalardy/vim-slime'
+  " seamless tmux/vim pane navigation
+  Plug 'christoomey/vim-tmux-navigator', { 'on': 'Mux' }
 
-    " seamless tmux/vim pane navigation
-    Plug 'christoomey/vim-tmux-navigator'
+  " yet another tmux plugin
+  Plug 'benmills/vimux', { 'on': 'Mux' }
+    " Run Golang tests in vimux
+    Plug 'benmills/vimux-golang', { 'on': 'Mux' }
 
-    " run commands from vim in tmux
-    Plug 'christoomey/vim-tmux-runner'
+    " Run elixir mix tests in vimux
+    Plug 'spiegela/vimix', { 'on': 'Mux' }
 
-    " yet another tmux plugin
-    Plug 'benmills/vimux'
+    " Run ruby and elixir tests
+    Plug 'jgdavey/vim-turbux', { 'on': 'Mux' }
 
-    " Vimux Related:
-      " Run Golang tests in vimux
-      Plug 'benmills/vimux-golang'
-
-      " Run elixir mix tests in vimux
-      Plug 'spiegela/vimix'
-
-      " Run ruby and elixir tests
-      Plug 'jgdavey/vim-turbux'
-  endif
-
+  " autocomplete using text from tmux
+  Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
+" }}}
 
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
@@ -241,16 +247,16 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " Snippets:
   " ES2015 code snippets (Optional)
-  Plug 'epilande/vim-es2015-snippets'
+  Plug 'epilande/vim-es2015-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
   " React code snippets
-  Plug 'epilande/vim-react-snippets'
+  Plug 'epilande/vim-react-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
   " vim snippets for UltiSnips ...
   Plug 'honza/vim-snippets'
 
   " modern snippets for vim
-  " Plug 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
 
 " Ack vim integration
 Plug 'mileszs/ack.vim'
@@ -259,14 +265,22 @@ Plug 'mileszs/ack.vim'
   " JavaScript support (required by vim-jsx)
   Plug 'pangloss/vim-javascript'
 
-  " JSX support for react components
-  Plug 'mxw/vim-jsx'
 
   " Automatically import js modules
   Plug 'Galooshi/vim-import-js'
 
   " Vim plugin for Flow (js static type checker)
-  Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript-jsx'] }
+  Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
+
+  " React:
+    " JSX support for react components
+    Plug 'mxw/vim-jsx'
+
+    " A Vim plugin that provides functions that modify React source files 
+    Plug 'mvolkmann/vim-react', { 'for': 'javascript.jsx' }
+
+    " extract partial render, rename tag, select self close tags
+    Plug 'samuelsimoes/vim-jsx-utils', { 'for': 'javascript.jsx' }
 
   " JSON manipulation
   Plug 'tpope/vim-jdaddy', { 'for': 'json' }
@@ -291,7 +305,7 @@ Plug 'Yggdroot/indentLine'
   Plug 'morhetz/gruvbox'
 
   " Seoul 256 by Junegunn
-  " Plug 'junegunn/seoul256.vim'
+  Plug 'junegunn/seoul256.vim'
 
   " Dracula theme
   Plug 'dracula/vim', { 'as': 'dracula' }
@@ -312,10 +326,6 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " highlight open and close html tags
 Plug 'valloric/matchtagalways'
 
-" Autocomplete:
-  " autocomplete using text from tmux
-  Plug 'wellle/tmux-complete.vim'
-
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'
 
@@ -334,11 +344,8 @@ Plug 'mattn/webapi-vim'
 " Vim GitHub gist integration
 Plug 'mattn/gist-vim'
 
-" Improve in buffer search
-" Plug 'junegunn/vim-slash'
-
-" Gundo - visualize git's undo tree (requires python)
-Plug 'sjl/gundo.vim'
+" visualize git's undo tree
+Plug 'mbbill/undotree'
 
 " Hashrocket keybindings and more
 Plug 'hashrocket/vim-hashrocket'
@@ -403,6 +410,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Auto format code
 Plug 'sbdchd/neoformat'
+
+" resize windows in vim naturally
+Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists

@@ -115,7 +115,7 @@ alias postjson='curl -i -H "Accept: application/json" -H "Content-Type: applicat
 alias getjson='curl -i -H "Accept: application/json" -H "Content-Type: application/json"'
 
 # rails
-alias twiki='rake db:migrate && rake db:rollback && rake db:migrate'
+alias twiki='bundle exec rake db:migrate && bundle exec rake db:rollback && bundle exec rake db:migrate'
 
 # elixir
 alias extwiki='mix ecto.migrate && mix ecto.rollback && mix ecto.migrate'

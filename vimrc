@@ -34,12 +34,13 @@
   set laststatus=2      " Always display the status line
   set autowrite         " Automatically :write before running commands
   set ignorecase        " ignore case in searches
-  set smartcase         " will use case sensitive if capital letter present or \C
+  set smartcase         " use case sensitive if capital letter present or \C
   set magic             " Use 'magic' patterns (extended regular expressions).
   set guioptions=       " remove scrollbars on macvim
   set noshowmode        " don't show mode as airline already does
   set showcmd           " show any commands
   set foldmethod=manual " set folds by syntax of current language
+  set mouse=a           " enable mouse (selection, resizing windows)
 
   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
@@ -69,7 +70,7 @@
     set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 
   " Numbers
-    set relativenumber number
+    set number
     set numberwidth=1
 
   " set where swap file and undo/backup files are saved
@@ -113,6 +114,15 @@
 " }}}
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
+" ====================================
+" WinResizer:
+" ====================================
+nnoremap <C-w>r :WinResizerStartResize<CR>
+
+" ====================================
+" UndoTree:
+" ====================================
+nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 " ====================================
 " Deoplete:
@@ -135,21 +145,31 @@ let g:deoplete#sources#ternjs#filetypes = [
                 \ 'javascript.jsx'
                 \ ]
 
+" ====================================
+" Vim multiple cursors + DEOPLETE:
+" ====================================
+augroup VimMultiCursors
+  autocmd!
+  autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
+  autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+augroup END
 
 " ====================================
-" Vim Tmux Runner:
+" NeoTerm:
 " ====================================
-nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 33, 'cmd': 'pry'}<cr>
-nnoremap <leader>or :VtrOpenRunner<cr>
-vnoremap <leader>sl :VtrSendLinesToRunner<cr>
-nnoremap <leader>dr :VtrDetachRunner<cr>
-nnoremap <leader>ap :VtrAttachToPane
+let g:neoterm_position = 'vertical'
+let g:neoterm_repl_ruby = 'pry'
 
 " ====================================
 " Gist:
 " ====================================
 map <leader>gst :Gist<cr>
 
+" ====================================
+" GitGutter:
+" ====================================
+nnoremap <silent> <cr> :GitGutterNextHunk<cr>
+nnoremap <silent> <backspace> :GitGutterPrevHunk<cr>
 
 " ====================================
 " Tabularize:
@@ -226,17 +246,9 @@ let g:mta_filetypes = {
       \ }
 
 " ====================================
-" Sensible.vim:
-" ====================================
-if !has('nvim')
-  let g:loaded_sensible = 1
-endif
-
-" ====================================
 " Snippets (UltiSnips):
 " ====================================
-let g:UltiSnipsListSnippets                = '<c-.>'
-let g:UltiSnipsExpandTrigger               = '<tab>'
+let g:UltiSnipsExpandTrigger               = '<C-l>'
 let g:UltiSnipsJumpForwardTrigger          = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger         = '<s-tab>'
 
@@ -369,6 +381,16 @@ augroup END
 " ----------------------------------------------------------------------------
 " better emmet leader key (must be followed with ,)
 let g:user_emmet_leader_key='<C-e>'
+
+
+" ----------------------------------------------------------------------------
+" Switch.vim
+" ----------------------------------------------------------------------------
+let g:switch_custom_definitions =
+  \ [
+  \   ['up', 'down', 'change'],
+  \   ['add', 'drop', 'remove'],
+  \ ]
 
 " ----------------------------------------------------------------------------
 " Rail.vim
@@ -553,6 +575,7 @@ nvimux.bindings.bind_all{
 }
 EOF
 endif
+
 " }}}
 
 " UI Customizations --------------------------------{{{
@@ -561,7 +584,8 @@ endif
   " let g:gruvbox_invert_selection=0
 
   " default color scheme
-  colorscheme dracula
+  " colorscheme dracula
+  colorscheme gruvbox
 
   " when on dracula
   " let g:limelight_conceal_ctermfg = 59
@@ -641,6 +665,9 @@ augroup END
 " }}}
 
 "  Key Mappings -------------------------------------------------- {{{
+
+  " replace word under cursor, globally, with confirmation
+    nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
   " remove highlighting on escape
     map <silent> <esc> :noh<cr>
@@ -849,11 +876,61 @@ if has('nvim')
     nmap <silent> <leader>a :TestSuite<CR>
     nmap <silent> <leader>l :TestLast<CR>
     nmap <silent> <leader>g :TestVisit<CR>
+
+  " use neovim-remote (pip3 install neovim-remote) allows 
+  " opening a new split inside neovim instead of nesting
+  " neovim processes
+    let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 " }}}
 
-" Temporary"{{{
+" For TMux {{{
+function! Mux()
+  echom 'Loaded TMux plugins'
+endfunction
+
+command! Mux :call Mux()
+
+if exists('$TMUX')
+  :Mux
+endif
+" }}}
+
+" For VimPlug {{{
+function! PlugGx()
+  let l:line = getline('.')
+  let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
+
+  if (&filetype ==# 'vim-plug') 
+    let l:name = empty(l:sha)
+                  \ ? matchstr(l:line, '^[-x+] \zs[^:]\+\ze:')
+                  \ : getline(search('^- .*:$', 'bn'))[2:-2]
+  else
+    let l:name = matchlist(l:line, '\v/([A-Za-z0-9\-_\.]+)')[1]
+  endif
+
+  let l:uri  = get(get(g:plugs, l:name, {}), 'uri', '')
+  if l:uri !~? 'github.com'
+    return
+  endif
+  let l:repo = matchstr(l:uri, '[^:/]*/'.l:name)
+  let l:url  = empty(l:sha)
+              \ ? 'https://github.com/'.l:repo
+              \ : printf('https://github.com/%s/commit/%s', l:repo, l:sha)
+  call netrw#BrowseX(l:url, 0)
+endfunction
+
+augroup PlugGxGroup
+  autocmd!
+  autocmd BufRead,BufNewFile .vimrc.bundles nnoremap <buffer> <silent> gx :call PlugGx()<cr>
+  autocmd FileType vim-plug nnoremap <buffer> <silent> gx :call PlugGx()<cr>
+augroup END
+" }}}
+
+" Temporary {{{
 
 " testing for bullets.vim
 nnoremap <leader>m :vs test.md<cr>
-nnoremap <leader>q :q!<cr>"}}}
+nnoremap <leader>q :q!<cr>
+
+"}}}

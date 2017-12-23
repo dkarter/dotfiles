@@ -38,11 +38,6 @@ setopt extendedglob
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
-# vi mode
-# bindkey -v
-# bindkey "^F" vi-cmd-mode
-# bindkey jj vi-cmd-mode
-
 # emacs mode
 bindkey -e
 
@@ -201,19 +196,12 @@ function mux() {
     # tmux new-session -s $session_name -n 'main'
     cols="$(tput cols)"
     tmux new-session -d -n 'code' -s $session_name -x${cols-150} -y50 'reattach-to-user-namespace -l zsh'
-
-    # source tmux split-window -t $session_name:0 \; \
-    #   new-window -a -d -n 'server' -t $session_name:0 \; \
-    #   select-layout -t $session_name main-vertical &>/dev/null \; \
-    #   send-keys -t $session_name:0.1 'vim .' C-m
   fi
 
   echo "attaching session $session_name"
   reattach-to-user-namespace tmux attach-session -t $session_name
 }
 
-# add rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
 # set homebrew on path
 export PATH="/usr/local/bin:$PATH"
 
@@ -239,11 +227,6 @@ if $(gem list lunchy -i); then
   fi
 fi
 
-# mkdir and cd into it
-mkcd() {
-  mkdir -p $1 && cd $1
-}
-
 # fzf stuff
 
 if $(command -v fzf >/dev/null); then
@@ -258,7 +241,7 @@ if $(command -v fzf >/dev/null); then
     key=$(head -1 <<<"$out")
     file=$(head -2 <<<"$out" | tail -1)
     if [ -n "$file" ]; then
-      [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+      [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-nvim} "$file"
     fi
   }
 
@@ -414,7 +397,7 @@ source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
 # for GRUVBOX theme in vim, enabling more colors
-# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # add iex before a command with <c-x> i
 bindkey -s "^Xi" "^[Iiex -S ^[A"
