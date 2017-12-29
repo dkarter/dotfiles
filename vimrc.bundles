@@ -9,35 +9,49 @@ call plug#begin('~/.vim/bundle')
 " File icons in vim
 Plug 'ryanoasis/vim-devicons'
 
-" Deoplete:
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+" VIM 8 - Neovim plugin compatibility:
+if !has('nvim')
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'roxma/nvim-yarp'
+endif
 
-  " autocompletion from syntax files for each language
-  Plug 'Shougo/neco-syntax'
+"   if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+"   else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+"   endif
 
-  " include ctags for deoplete
-  Plug 'Shougo/neoinclude.vim'
-
-  " autocompletion for vimscript with deoplete
-  Plug 'Shougo/neco-vim', { 'for': 'vim' }
-
-  " completion for Elm
-  Plug 'pbogut/deoplete-elm', { 'for': 'elm' }
-
-  " javascript auto completion
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-
-  " ruby sources for deoplete
-  Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
+" Gtags: tools for working with gtags + completions
+Plug 'jsfaint/gen_tags.vim'
 
 " Neovim:
   if has('nvim')
+    " NCM: nvim-completion-manager {{{
+      Plug 'roxma/nvim-completion-manager'
+
+      " vimscript completions
+      Plug 'Shougo/neco-vim', { 'for': 'vim' }
+
+      " JS Completions
+      Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+
+      " Ruby completions ( rcodetools source for nvim-completion-manager )
+      Plug 'roxma/ncm-rct-complete'
+
+      " CSS completions
+      Plug 'calebeby/ncm-css'
+
+      " github completions
+      Plug 'roxma/ncm-github'
+
+      " other buffers completions
+      Plug 'fgrsnau/ncm-otherbuf'
+
+      " C lang completions
+      Plug 'roxma/ncm-clang'
+    " }}}
+
     " abstraction on top of neovim terminal
     Plug 'kassio/neoterm'
 
@@ -176,9 +190,6 @@ Plug 'scrooloose/nerdtree'
 
 " Nerdtree show git status
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" auto-generate ctags on save
-Plug 'jsfaint/gen_tags.vim'
 
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
