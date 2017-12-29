@@ -175,7 +175,7 @@ bindkey "^[b" backward-word
 bindkey '^r' history-incremental-search-backward
 
 # ctrl-space accepts suggestions
-bindkey '^ ' autosuggest-accept
+# bindkey '^t' autosuggest-accept
 
 export KEYTIMEOUT=1
 
