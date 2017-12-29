@@ -23,7 +23,7 @@
 -- Use best available output format
 \x auto
 \set VERBOSITY verbose
-\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTFILE ~/tmp/.psql_history/.psql_history- :DBNAME
 \set HISTCONTROL ignoredups
 \set COMP_KEYWORD_CASE upper
 \unset QUIET
