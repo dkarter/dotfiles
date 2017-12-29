@@ -41,6 +41,7 @@
   set showcmd           " show any commands
   set foldmethod=manual " set folds by syntax of current language
   set mouse=a           " enable mouse (selection, resizing windows)
+  set iskeyword+=-      " treat dash separated words as a word text object
 
   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
