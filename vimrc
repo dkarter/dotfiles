@@ -125,18 +125,35 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 " ====================================
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
+" ====================================
+" Deoplete:
+" ====================================
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr> <TAB>
+         \ pumvisible() ? "\<C-n>" :
+         \ <SID>check_back_space() ? "\<TAB>" :
+         \ deoplete#mappings#manual_complete()
+
+function! s:check_back_space() abort
+  let l:col = col('.') - 1
+  return !l:col || getline('.')[l:col - 1]  =~? '\s'
+endfunction
+
+"Add extra filetypes
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx'
+                \ ]
 
 " ====================================
-" NeovimCompletionManager:
+" Vim multiple cursors + DEOPLETE:
 " ====================================
-
-" use tab to cycle through completions
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" use enter to complete snippets - not working
-" imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+augroup VimMultiCursors
+  autocmd!
+  autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
+  autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+augroup END
 
 " ====================================
 " NeoTerm:
