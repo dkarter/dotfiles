@@ -2,14 +2,15 @@ call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
 
-" Dependencies:
+" Dependencies: ------------------------------ {{{
   " Create custom text objects (required by rubyblock,xmlattr)
   Plug 'kana/vim-textobj-user'
 
-" File icons in vim
-Plug 'ryanoasis/vim-devicons'
+  " Vim Web API (required by gist-vim)
+  Plug 'mattn/webapi-vim'
+" }}}
 
-" Deoplete:
+" Deoplete: dark powered autocompletion for neovim --- {{{
   if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
   else
@@ -35,8 +36,9 @@ Plug 'ryanoasis/vim-devicons'
 
   " ruby sources for deoplete
   Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
+" }}}
 
-" Neovim:
+" Neovim: ------------- {{{
   if has('nvim')
     " abstraction on top of neovim terminal
     Plug 'kassio/neoterm'
@@ -47,43 +49,39 @@ Plug 'ryanoasis/vim-devicons'
     " if using terminal in neovim set neovim as $EDITOR
     Plug 'rliang/termedit.nvim'
 
+    " Highlight Yanked String
+    Plug 'machakann/vim-highlightedyank'
+
+    " Language Server Protocol (LSP) support for vim and neovim
+    Plug 'autozimu/LanguageClient-neovim'
+
     if !exists('$TMUX')
-      " use neovim as tmux
+      " simulate tmux shortcuts in neovim
       Plug 'hkupty/nvimux'
     endif
   endif
+" }}}
 
-" Elixir:
+" Elixir: ------------------ {{{
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
 
   " pulls info on hex packages (requires mattn/webapi-vim)
-  Plug 'lucidstack/hex.vim'
+  Plug 'lucidstack/hex.vim', { 'for': 'elixir'}
 
   " Alchemist for extended elixir support
   Plug 'slashmili/alchemist.vim'
 
   " shortcuts for the Phoenix framework
   Plug 'c-brenn/phoenix.vim'
+" }}}
 
-" coffee script highlighting
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-
-" staticly check code and highlight errors (async syntastic replacement)
-Plug 'neomake/neomake'
-
-" Highlight Yanked String
-Plug 'machakann/vim-highlightedyank'
-
-" Language Server Protocol (LSP) support for vim and neovim
-Plug 'autozimu/LanguageClient-neovim'
-
-" Ruby:
+" Ruby: ---------------------------------------- {{{
   " do rspec things and highlight syntax
-  Plug 'thoughtbot/vim-rspec'
+  Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'rspec'] }
 
   " get gem info and insert latest gem version into Gemfile
-  Plug 'alexbel/vim-rubygems'
+  Plug 'alexbel/vim-rubygems', { 'for': 'ruby' }
 
   " interact with ruby bundler gem
   Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rspec'] }
@@ -98,7 +96,7 @@ Plug 'autozimu/LanguageClient-neovim'
   Plug 'tpope/vim-cucumber', { 'for': ['gherkin', 'ruby'] }
 
   " syntax highlighting for rspec
-  Plug 'keith/rspec.vim' ", { 'for': 'rspec' }
+  Plug 'keith/rspec.vim', { 'for': ['ruby', 'rspec'] }
 
   " show code coverage in vim
   Plug 'killphi/vim-legend', { 'for': 'ruby' }
@@ -106,71 +104,50 @@ Plug 'autozimu/LanguageClient-neovim'
   " Rails and ruby support (loaded automatically for rails apps)
   Plug 'tpope/vim-rails'
 
-
   " Text object for ruby blocks
   Plug 'nelstrom/vim-textobj-rubyblock'
 
   " refactoring tools for ruby/rspec
   Plug 'pablobfonseca/vim-ruby-refactoring', { 'for': 'ruby' }
+" }}}
 
-" add `end` automatically when creating a closure in many languages
-Plug 'tpope/vim-endwise'
+" TimPope: ------------------------------------- {{{
+  " Vim sugar for the UNIX shell commands that need it the most.
+  Plug 'tpope/vim-eunuch'
 
-" Terraform:
-  " terraform syntax
-  Plug 'hashivim/vim-terraform'
+  " git awesomeness
+  Plug 'tpope/vim-fugitive'
 
-" Ansible:
-  " ansible vim plugin
-  Plug 'pearofducks/ansible-vim'
+  " allow (non-native) plugins to use the . command
+  Plug 'tpope/vim-repeat'
 
- " Caddy:
-  " syntax highlighting for caddyfile
-  Plug 'isobit/vim-caddyfile'
+  " Surround text with closures
+  Plug 'tpope/vim-surround'
 
-" WebAssembly:
-  " Syntax Highlighting:
-  Plug 'rhysd/vim-wasm'
+  " vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
+  Plug 'tpope/vim-projectionist'
 
-" Vim sugar for the UNIX shell commands that need it the most.
-Plug 'tpope/vim-eunuch'
+  " vim unimpaired fixes daily annoyences
+  Plug 'tpope/vim-unimpaired'
 
-" git awesomeness
-Plug 'tpope/vim-fugitive'
+  " abolish.vim: easily search for, substitute, and abbreviate multiple variants
+  " of a word
+  Plug 'tpope/vim-abolish'
 
-" allow (non-native) plugins to use the . command
-Plug 'tpope/vim-repeat'
+  " Support emacs keybindings in insert mode
+  Plug 'tpope/vim-rsi'
 
-" Surround text with closures
-Plug 'tpope/vim-surround'
+  " Clojure REPL in Vim
+  Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
-Plug 'tpope/vim-projectionist'
+  " save vim sessions
+  Plug 'tpope/vim-obsession'
 
-" vim unimpaired fixes daily annoyences
-Plug 'tpope/vim-unimpaired'
+  " " Comment out code easily
+  Plug 'tpope/vim-commentary'
+" }}}
 
-" abolish.vim: easily search for, substitute, and abbreviate multiple variants
-" of a word
-Plug 'tpope/vim-abolish'
-
-" Support emacs keybindings in insert mode
-Plug 'tpope/vim-rsi'
-
-" Clojure REPL in Vim
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" save vim sessions
-Plug 'tpope/vim-obsession'
-
-" session management
-" Plug 'wting/gitsessions.vim'
-
-" " Comment out code easily
-Plug 'tpope/vim-commentary'
-
-" NERDTree:
-
+" NERDTree: ------------------ {{{
   " NERDTree... tree explorer for vim
   Plug 'scrooloose/nerdtree'
 
@@ -179,45 +156,43 @@ Plug 'tpope/vim-commentary'
 
   " highlight file icons with different colors
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" }}}
 
-
-" auto-generate ctags on save
-Plug 'jsfaint/gen_tags.vim'
-
-" Multiple cursor emulation (a la Sublime Text) using ctrl-n
-Plug 'terryma/vim-multiple-cursors'
-
-" HTML:
+" HTML: ------------------ {{{
   " Emmet: generates html tags, autocomplete css
   Plug 'mattn/emmet-vim'
 
   " RagTag: Auto-close html tags + mappings for template scripting languages
   Plug 'tpope/vim-ragtag'
 
-  " add text object for HTML attributes
+  " add text object for HTML attributes - allows dax cix etc
   Plug 'whatyouhide/vim-textobj-xmlattr'
+" }}}
 
-" Searching:
+" WebAssembly: ------------------------------- {{{
+  " Syntax Highlighting:
+  Plug 'rhysd/vim-wasm', { 'for': 'wasm' }
+" }}}
+
+" Searching: -------------------------- {{{
   " highlights all search results and allows tabbing between them
   Plug 'haya14busa/incsearch.vim'
 
   " Sublime text like search results
-  Plug 'dyng/ctrlsf.vim'
+  Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }
 
+  " Ack/Ag vim integration
+  Plug 'mileszs/ack.vim'
+" }}}
 
-" Align Code:
-  " auto sorts ascii tables and aligns code neatly
-  Plug 'godlygeek/tabular'
-
+" Align Code: -------------------------- {{{
   " same as tabular but by Junegunn
   Plug 'junegunn/vim-easy-align'
+" }}}
 
-" Visual git gutter
-Plug 'airblade/vim-gitgutter'
-
-" TMUX: {{{
+" TMUX: ------------------------ {{{
   " .tmux.conf syntax highlighting
-  Plug 'keith/tmux.vim'
+  Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
   " tmux config file stuff
   Plug 'tmux-plugins/vim-tmux', { 'on': 'Mux' }
@@ -243,13 +218,7 @@ Plug 'airblade/vim-gitgutter'
   Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
 " }}}
 
-" get docs for command under cursor (with Dash or web)
-Plug 'keith/investigate.vim'
-
-" show trailing white spaces and allow deleting them
-Plug 'ntpeters/vim-better-whitespace'
-
-" Snippets:
+" Snippets: ------------------------- {{{
   " ES2015 code snippets (Optional)
   Plug 'epilande/vim-es2015-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
@@ -261,17 +230,14 @@ Plug 'ntpeters/vim-better-whitespace'
 
   " modern snippets for vim
   Plug 'SirVer/ultisnips'
+" }}}
 
-" Ack vim integration
-Plug 'mileszs/ack.vim'
-
-" JavaScript:
+" JavaScript: ---------------------------- {{{
   " JavaScript support (required by vim-jsx)
   Plug 'pangloss/vim-javascript'
 
-
   " Automatically import js modules
-  Plug 'Galooshi/vim-import-js'
+  Plug 'Galooshi/vim-import-js', { 'for': ['javascript', 'javascript.jsx'] }
 
   " Vim plugin for Flow (js static type checker)
   Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
@@ -288,38 +254,92 @@ Plug 'mileszs/ack.vim'
 
   " JSON manipulation
   Plug 'tpope/vim-jdaddy', { 'for': 'json' }
+" }}}
 
-" Vim Buffer Manipulation:
-
-  " Wipe and delete buffers
-  Plug 'jbranchaud/vim-bdubs'
-
-  " quick buffer switching
-  Plug 'jlanzarotta/bufexplorer'
-
-" Elm:
+" Elm: -------------------------------------------- {{{
   " elm editing and compilation in vim
   Plug 'ElmCast/elm-vim'
+" }}}
+
+" ColorSchemes: --------------------- {{{
+  " One Dark
+  Plug 'joshdick/onedark.vim'
+
+  " " gruvbox theme
+  " Plug 'morhetz/gruvbox'
+
+  " " Dracula theme
+  " Plug 'dracula/vim', { 'as': 'dracula' }
+" }}}
+
+" Postgres: ------------------------- {{{
+  " postgres sql highlighting
+  Plug 'exu/pgsql.vim'
+
+  " show table description in vim
+  Plug 'hashrocket/vim-hr-psql'
+" }}}
+
+" Writing: ---------------------------- {{{
+  " distraction free writing (like iA Writer)
+  Plug 'laktek/distraction-free-writing-vim'
+
+  " Distraction free writing in vim
+  Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+
+  " Highlight current paragraph (works well with goyo)
+  Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+" }}}
+
+" Terraform: ---------------------------- {{{
+  " terraform syntax
+  Plug 'hashivim/vim-terraform' 
+" }}}
+
+" Ansible: ----------------------------- {{{
+  " ansible vim plugin
+  Plug 'pearofducks/ansible-vim'
+" }}}
+
+" Caddy: -------------------------------- {{{
+  " syntax highlighting for caddyfile
+  Plug 'isobit/vim-caddyfile', { 'for': 'Caddyfile' }
+" }}}
+
+" coffee script highlighting
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+
+" staticly check code and highlight errors (async syntastic replacement)
+Plug 'neomake/neomake'
+
+" add `end` automatically when creating a closure in many languages
+Plug 'tpope/vim-endwise'
+
+" auto-generate ctags on save
+Plug 'jsfaint/gen_tags.vim'
+
+" Multiple cursor emulation (a la Sublime Text) using ctrl-n
+Plug 'terryma/vim-multiple-cursors'
+
+" Visual git gutter
+Plug 'airblade/vim-gitgutter'
+" get docs for command under cursor (with Dash or web)
+Plug 'keith/investigate.vim'
+
+" show trailing white spaces and allow deleting them
+Plug 'ntpeters/vim-better-whitespace'
 
 " Indent lines (visual indication)
 Plug 'Yggdroot/indentLine'
 
-" ColorSchemes:
-  " gruvbox theme
-  Plug 'morhetz/gruvbox'
-
-  " Seoul 256 by Junegunn
-  Plug 'junegunn/seoul256.vim'
-
-  " Dracula theme
-  Plug 'dracula/vim', { 'as': 'dracula' }
+" highlight open and close html tags
+Plug 'valloric/matchtagalways'
 
 " highlight colors in css
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
 
 " syntax for apple scripts
-Plug 'vim-scripts/applescript.vim'
-
+Plug 'vim-scripts/applescript.vim', { 'for': ['scpt', 'applescript', 'scptd'] }
 
 " Swift support
 Plug 'keith/swift.vim', { 'for': 'swift' }
@@ -327,23 +347,17 @@ Plug 'keith/swift.vim', { 'for': 'swift' }
 " Vim Go
 Plug 'fatih/vim-go', { 'for': 'go' }
 
-" highlight open and close html tags
-Plug 'valloric/matchtagalways'
-
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'
 
 " Gitv - for browsing a file's history in git
 Plug 'gregsexton/gitv'
 
-" A better Gitv:
+" A better Gitv?
 Plug 'junegunn/gv.vim'
 
 " Integration testing for vim plugins
 Plug 'junegunn/vader.vim'
-
-" Vim Web API (required by gist-vim)
-Plug 'mattn/webapi-vim'
 
 " Vim GitHub gist integration
 Plug 'mattn/gist-vim'
@@ -371,23 +385,6 @@ Plug 'mhinz/vim-startify'
 
 " copy code as rtf
 Plug 'zerowidth/vim-copy-as-rtf'
-
-" Postgres:
-  " postgres sql highlighting
-  Plug 'exu/pgsql.vim'
-
-  " show table description in vim
-  Plug 'hashrocket/vim-hr-psql'
-
-" Writing:
-  " distraction free writing (like iA Writer)
-  Plug 'laktek/distraction-free-writing-vim'
-
-  " Distraction free writing in vim
-  Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-
-  " Highlight current paragraph (works well with goyo)
-  Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
 " Rust support
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -417,6 +414,9 @@ Plug 'sbdchd/neoformat'
 
 " resize windows in vim naturally
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
+
+" File icons in vim --- keep at the bottom, below airline, nerdtree and startify
+Plug 'ryanoasis/vim-devicons'
 
 " OWN PLUGINS: --------------------------- {{{
 " automatic bulleted lists

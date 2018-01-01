@@ -183,14 +183,6 @@ nnoremap <silent> <cr> :GitGutterNextHunk<cr>
 nnoremap <silent> <backspace> :GitGutterPrevHunk<cr>
 
 " ====================================
-" Tabularize:
-" ====================================
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-
-" ====================================
 " Vim Scriptease:
 " ====================================
 " Run commands that require an interactive shell
@@ -277,6 +269,8 @@ let g:indentLine_fileType = [
       \ 'javascript',
       \ 'vim'
       \ ]
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 240
 
 " ====================================
 " setup airline
@@ -284,6 +278,8 @@ let g:indentLine_fileType = [
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 " ====================================
 " Bullets.vim:
@@ -536,10 +532,16 @@ nnoremap <leader>d :e %:h<CR>
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
 let g:WebDevIconsOS = 'Darwin'
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ex'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jsx'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
 
 " after a re-source, fix syntax matching issues (concealing brackets):
 if exists('g:loaded_webdevicons')
@@ -554,7 +556,7 @@ let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeExtensionHighlightColor = {}
 let g:NERDTreeExtensionHighlightColor['ex'] = '834F79'
-let g:NERDTreeExtensionHighlightColor['exs'] = '5f5fd7'
+let g:NERDTreeExtensionHighlightColor['exs'] = 'c57bd8'
 
 
 " ----------------------------------------------------------------------------
@@ -669,7 +671,7 @@ endif
 
   " default color scheme
   " colorscheme dracula
-  colorscheme gruvbox
+  colorscheme onedark
 
   " when on dracula
   " let g:limelight_conceal_ctermfg = 59
@@ -680,6 +682,11 @@ endif
   highlight ColorColumn ctermbg=236 guibg=#303030
   let &colorcolumn=join(range(80,999),',')
 
+  " solid window border requires FuraCode Nerd Font
+  set fillchars+=vert:│
+
+  " hide vertical split
+  hi vertsplit guifg=fg guibg=bg
 "  }}}
 
 " Own commands --------------------------------------------- {{{
