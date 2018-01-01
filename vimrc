@@ -169,6 +169,7 @@ let g:LanguageClient_serverCommands = {
 " ====================================
 let g:neoterm_position = 'vertical'
 let g:neoterm_repl_ruby = 'pry'
+let g:neoterm_autoscroll = 1
 
 " ====================================
 " Gist:
