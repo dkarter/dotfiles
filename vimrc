@@ -156,6 +156,15 @@ augroup VimMultiCursors
 augroup END
 
 " ====================================
+" LanguageClient-neovim:
+" ====================================
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ }
+
+" ====================================
 " NeoTerm:
 " ====================================
 let g:neoterm_position = 'vertical'
