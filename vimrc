@@ -47,10 +47,10 @@
   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
   set expandtab         " insert tab with right amount of spacing
   set shiftround        " Round indent to multiple of 'shiftwidth'
+  set termguicolors     " enable true colors
 
   if !has('nvim')             " does not work on neovim
     set emoji                 " treat emojis 😄  as full width characters
-    set termguicolors         " enable true colors
     set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
   end
 
