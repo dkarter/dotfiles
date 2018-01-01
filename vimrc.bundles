@@ -167,15 +167,19 @@ Plug 'tpope/vim-obsession'
 " Plug 'wting/gitsessions.vim'
 
 " " Comment out code easily
-" Plug 'vim-scripts/tComment'
-"Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 
-" NERDTree... tree explorer for vim
-Plug 'scrooloose/nerdtree'
+" NERDTree:
 
-" Nerdtree show git status
-Plug 'Xuyuanp/nerdtree-git-plugin'
+  " NERDTree... tree explorer for vim
+  Plug 'scrooloose/nerdtree'
+
+  " Nerdtree show git status
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+
+  " highlight file icons with different colors
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 
 " auto-generate ctags on save
 Plug 'jsfaint/gen_tags.vim'

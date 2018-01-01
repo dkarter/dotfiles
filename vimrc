@@ -300,19 +300,62 @@ let g:bullets_enabled_file_types = [
 " =====================================
 " set fzf's default input to AG instead of find. This also removes gitignore etc
 let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
-let g:fzf_files_options =
-  \ '--preview "(rougify {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
-nnoremap <C-g>c :Commands<CR>
-nnoremap <C-f>l :BLines<CR>
-nnoremap <C-p> :Files<CR>
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+
+nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <C-g>g :call FZFOpen(':Ag')<CR>
+nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
+nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
+nnoremap <silent> <C-p> :call FZFOpen(':call Fzf_dev()')<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" ======================================
+" FZF + DevIcons
+" ======================================
+
+" Files + devicons
+function! Fzf_dev()
+  let l:fzf_files_options =
+        \ '--preview "echo {} | tr -s \" \" \"\n\" | tail -1 | xargs rougify | head -'.&lines.'"'
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
+
+    return l:result
+  endfunction
+
+  function! s:edit_file(item)
+    let l:parts = split(a:item, ' ')
+    let l:file_path = get(l:parts, 1, '')
+    execute 'silent e' l:file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'down':    '40%' })
+endfunction
 
 " Custom FZF commands ----------------------------- {{{
 fun! s:change_branch(e)
@@ -492,6 +535,27 @@ nnoremap <leader>d :e %:h<CR>
 " ----------------------------------------------------------------------------
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsOS = 'Darwin'
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ex'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
+
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
+" ----------------------------------------------------------------------------
+"  vim-nerdtree-syntax-highlight:
+" ----------------------------------------------------------------------------
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeExtensionHighlightColor = {}
+let g:NERDTreeExtensionHighlightColor['ex'] = '834F79'
+let g:NERDTreeExtensionHighlightColor['exs'] = '5f5fd7'
+
 
 " ----------------------------------------------------------------------------
 " vim-go
@@ -544,6 +608,12 @@ let g:legend_ignored_sign = '◌'
 let g:legend_ignored_color = 'ctermfg=234'
 let g:legend_mapping_toggle = '<Leader>cv'
 let g:legend_mapping_toggle_line = '<localleader>cv'
+
+" --------------------------------------------
+"  vim-ruby:
+" --------------------------------------------
+" support ruby on rails omnicompletions
+let g:rubycomplete_rails = 1
 
 " ----------------------------------------------------- }}}
 
@@ -606,7 +676,8 @@ endif
   " let g:limelight_conceal_guifg = '#43475b'
 
   " Make it obvious where 80 characters is
-  highlight ColorColumn ctermbg=235 guibg=#2c2d27
+  " cheatsheet https://jonasjacek.github.io/colors/
+  highlight ColorColumn ctermbg=236 guibg=#303030
   let &colorcolumn=join(range(80,999),',')
 
 "  }}}
