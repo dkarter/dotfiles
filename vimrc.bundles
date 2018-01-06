@@ -375,7 +375,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'mhinz/vim-startify'
 
 " copy code as rtf
-Plug 'zerowidth/vim-copy-as-rtf'
+Plug 'zerowidth/vim-copy-as-rtf', { 'on': 'CopyRTF' }
 
 " Rust support
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
