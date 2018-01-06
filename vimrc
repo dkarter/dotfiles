@@ -923,9 +923,10 @@ augroup END
 " --------------------- Key Mappings ---------------------------- }}}
 
 "    Abbreviations --------------------------------------- {{{
-
 iabbrev @@ dkarter@gmail.com
 iabbrev ccopy Copyleft 2016 Dorian Karter.
+iabbrev bpry require 'pry'; binding.pry;
+iabbrev ipry require IEx; IEx.pry;
 
 " Local config
 if filereadable($HOME . '/.vimrc.local')
