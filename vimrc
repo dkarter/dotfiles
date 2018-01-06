@@ -543,6 +543,9 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jsx'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
 
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*vimrc.*'] = ''
+
 " after a re-source, fix syntax matching issues (concealing brackets):
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
