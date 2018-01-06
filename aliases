@@ -102,7 +102,7 @@ alias muxconfig='vim ~/.tmux.conf && tmux source-file ~/.tmux.conf'
 alias sshconfig='vim ~/.ssh/config'
 alias aliasconfig='vim ~/.aliases && source ~/.aliases'
 alias hostsconfig='sudo vim /etc/hosts'
-alias zshconfig="vim -o ~/.zshrc-dorian && source ~/.zshrc-dorian"
+alias zshconfig="vim -o ~/.zshrc && source ~/.zshrc"
 alias zshplugins="vim ~/.oh-my-zsh"
 
 # ripgrep - rg is taken by rails generate alias from the oh-my-zsh rails plugin
