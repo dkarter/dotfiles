@@ -674,6 +674,7 @@ endif
 
   " default color scheme
   " colorscheme dracula
+  set background=dark
   colorscheme onedark
 
   " when on dracula
@@ -716,7 +717,8 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
       \ endif
 
     " Set syntax highlighting for specific file types
-    autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+    autocmd BufRead,BufNewFile Appraisals,*.rabl set filetype=ruby
+    autocmd BufRead,BufNewFile .babelrc set filetype=json
     autocmd BufRead,BufNewFile *.md set filetype=markdown
 
     " Enable spellchecking for Markdown
@@ -731,9 +733,6 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
 
     " Allow stylesheets to autocomplete hyphenated words
     autocmd FileType css,scss,sass setlocal iskeyword+=-
-
-    " Use 4 spaces for java
-    " autocmd FileType java setlocal shiftwidth=4 tabstop=4
 
     " Vim/tmux layout rebalancing
     " automatically rebalance windows on vim resize
