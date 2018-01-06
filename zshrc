@@ -396,9 +396,6 @@ fi
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
-# for GRUVBOX theme in vim, enabling more colors
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-
 # add iex before a command with <c-x> i
 bindkey -s "^Xi" "^[Iiex -S ^[A"
 
