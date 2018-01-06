@@ -264,12 +264,6 @@ call plug#begin('~/.vim/bundle')
 " ColorSchemes: --------------------- {{{
   " One Dark
   Plug 'joshdick/onedark.vim'
-
-  " " gruvbox theme
-  " Plug 'morhetz/gruvbox'
-
-  " " Dracula theme
-  " Plug 'dracula/vim', { 'as': 'dracula' }
 " }}}
 
 " Postgres: ------------------------- {{{
@@ -364,9 +358,6 @@ Plug 'mattn/gist-vim'
 
 " visualize git's undo tree
 Plug 'mbbill/undotree'
-
-" Hashrocket keybindings and more
-Plug 'hashrocket/vim-hashrocket'
 
 " Convert code to multiline
 Plug 'AndrewRadev/splitjoin.vim'
