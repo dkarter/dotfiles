@@ -347,7 +347,8 @@ nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
 nnoremap <silent> <C-g>g :call FZFOpen(':Ag')<CR>
 nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
 nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
-nnoremap <silent> <C-p> :call FZFOpen(':call Fzf_dev()')<CR>
+nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
+" nnoremap <silent> <C-p> :call FZFOpen(':call Fzf_dev()')<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -381,13 +382,20 @@ function! Fzf_dev()
   function! s:edit_file(item)
     let l:parts = split(a:item, ' ')
     let l:file_path = get(l:parts, 1, '')
-    execute 'silent e' l:file_path
+    " TODO: not working
+    let l:cmd = get({
+               \ 'ctrl-x': 'split',
+               \ 'ctrl-v': 'vertical split',
+               \ 'ctrl-t': 'tabe'
+               \ }, a:item[0], 'e')
+    execute 'silent ' . l:cmd . ' ' . l:file_path
   endfunction
 
   call fzf#run({
         \ 'source': <sid>files(),
         \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
+        \            l:fzf_files_options,
         \ 'down':    '40%' })
 endfunction
 
@@ -398,6 +406,27 @@ fun! s:change_branch(e)
   :AirlineRefresh
   echom 'Changed branch to' . a:e
 endfun
+
+ fun! s:parse_pivotal_story(entry)
+    let l:stories = pivotaltracker#stories('', '')
+    let l:filtered = filter(l:stories, {_idx, val -> val.menu == a:entry[0]})
+    return l:filtered[0].word
+ endfun
+
+ inoremap <expr> <c-x># fzf#complete(
+       \ {
+       \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
+       \ 'reducer': function('<sid>parse_pivotal_story'),
+       \ 'options': '-m',
+       \ 'down': '20%'
+       \ })
+
+ inoremap <expr> <c-x>t fzf#complete(
+       \ {
+       \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
+       \ 'options': '-m',
+       \ 'down': '20%'
+       \ })
 
 command! Gbranch call fzf#run(
       \ {
