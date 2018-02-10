@@ -533,19 +533,16 @@ nnoremap <Leader>sa :call RunAllSpecs()<CR>
 let g:flow#autoclose = 1
 
 " ----------------------------------------------------------------------------
-" Neomake
+" ALE
 " ----------------------------------------------------------------------------
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_elm_elm_lint_maker = {
-      \ 'exe': 'elm_lint',
-      \ 'errorformat': '%f:%l:%c [%t] %m'
-      \ }
-let g:neomake_elm_enabled_makers = ['elm_lint']
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+highlight link ALEWarningSign Directory
+highlight link ALEErrorSign WarningMsg
+nnoremap <silent> <leader>ne :ALENextWrap<CR>
+nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
 
-augroup NeomakeOnSave
-  autocmd!
-  autocmd! BufWritePost * Neomake
-augroup END
 
 " ----------------------------------------------------------------------------
 " Investigate
