@@ -582,7 +582,8 @@ let g:NERDTreeIgnore = [
       \ 'deps',
       \ '_build',
       \ '.git',
-      \ 'node_modules'
+      \ 'node_modules',
+      \ 'tags',
       \ ]
 
 let g:NERDTreeShowHidden = 1
