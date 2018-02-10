@@ -756,7 +756,6 @@ nvimux.bindings.bind_all{
 nvimux.bootstrap()
 EOF
 endif
-
 " }}}
 
 " UI Customizations --------------------------------{{{
@@ -766,12 +765,15 @@ endif
 
   " default color scheme
   " colorscheme dracula
+  let g:one_allow_italics = 1
   set background=dark
-  colorscheme onedark
+  colorscheme one
+  call one#highlight('elixirInclude', 'e06c75', '', 'none')
+  call one#highlight('elixirOperator', 'd19a66', '', 'none')
+  call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
 
-  " when on dracula
-  " let g:limelight_conceal_ctermfg = 59
-  " let g:limelight_conceal_guifg = '#43475b'
+  let g:limelight_conceal_ctermfg = '#454d5a'
+  let g:limelight_conceal_guifg = '#454d5a'
 
   " Make it obvious where 80 characters is
   " cheatsheet https://jonasjacek.github.io/colors/
