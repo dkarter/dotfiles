@@ -205,8 +205,8 @@ function mux() {
 # set homebrew on path
 export PATH="/usr/local/bin:$PATH"
 
-# set cabal on path
-export PATH="$HOME/.cabal/bin:$PATH"
+# set cabal and haskell binaries on path
+export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
 
 # set yarn binaries on path
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
