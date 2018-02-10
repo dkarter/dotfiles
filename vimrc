@@ -793,6 +793,8 @@ command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
 command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 command! BreakLineAtComma :normal! f,.
 command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
+" command! ToggleDistractionFreeWriting :call ToggleDistractionFreeWriting()<CR>
+" map <F4> :ToggleDistractionFreeWriting<CR>
 " }}}
 
 " Auto commands ------------------------------------------------- {{{
