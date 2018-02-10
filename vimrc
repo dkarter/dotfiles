@@ -507,6 +507,7 @@ let g:switch_custom_definitions =
   \ [
   \   ['up', 'down', 'change'],
   \   ['add', 'drop', 'remove'],
+  \   ['create', 'drop'],
   \ ]
 
 " ----------------------------------------------------------------------------
