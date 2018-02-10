@@ -65,6 +65,24 @@ call plug#begin('~/.vim/bundle')
   endif
 " }}}
 
+" Git: {{{
+  " Asynchronously control git repositories in Neovim/Vim 8
+  Plug 'lambdalisue/gina.vim'
+
+  " Visual git gutter
+  Plug 'airblade/vim-gitgutter'
+
+  " Gitv - for browsing a file's history in git
+  Plug 'gregsexton/gitv'
+
+  " A better Gitv?
+  Plug 'junegunn/gv.vim'
+
+  " git awesomeness
+  Plug 'tpope/vim-fugitive'
+
+" }}}
+
 " Elixir: ------------------ {{{
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
@@ -117,9 +135,6 @@ call plug#begin('~/.vim/bundle')
 " TimPope: ------------------------------------- {{{
   " Vim sugar for the UNIX shell commands that need it the most.
   Plug 'tpope/vim-eunuch'
-
-  " git awesomeness
-  Plug 'tpope/vim-fugitive'
 
   " allow (non-native) plugins to use the . command
   Plug 'tpope/vim-repeat'
@@ -259,6 +274,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 " }}}
 
+" TypeScript: {{{
+Plug 'leafgarland/typescript-vim'
+"}}}
+
 " Elm: -------------------------------------------- {{{
   " elm editing and compilation in vim
   Plug 'ElmCast/elm-vim'
@@ -267,6 +286,9 @@ call plug#begin('~/.vim/bundle')
 " ColorSchemes: --------------------- {{{
   " One Dark
   Plug 'joshdick/onedark.vim'
+
+  " vim one
+  Plug 'rakr/vim-one'
 " }}}
 
 " Postgres: ------------------------- {{{
@@ -279,13 +301,25 @@ call plug#begin('~/.vim/bundle')
 
 " Writing: ---------------------------- {{{
   " distraction free writing (like iA Writer)
-  Plug 'laktek/distraction-free-writing-vim'
+  Plug 'laktek/distraction-free-writing-vim', { 'on': 'ToggleDistractionFreeWriting' }
 
   " Distraction free writing in vim
   Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
   " Highlight current paragraph (works well with goyo)
   Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+
+  function! BuildComposer(info)
+    if a:info.status !=# 'unchanged' || a:info.force
+      if has('nvim')
+        !cargo build --release
+      else
+        !cargo build --release --no-default-features --features json-rpc
+      endif
+    endif
+  endfunction
+
+  Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " }}}
 
 " Terraform: ---------------------------- {{{
@@ -303,11 +337,26 @@ call plug#begin('~/.vim/bundle')
   Plug 'isobit/vim-caddyfile', { 'for': 'Caddyfile' }
 " }}}
 
+" GITHUB: {{{
+  " Browse github
+  Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+
+  " Vim GitHub gist integration
+  Plug 'mattn/gist-vim', { 'on': 'Gist' }
+" }}}
+
+" Airline - like powerline but light as air {{{
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'enricobacis/vim-airline-clock'
+" }}}
+
 " coffee script highlighting
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " staticly check code and highlight errors (async syntastic replacement)
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
+" Plug 'neomake/neomake'
 
 " add `end` automatically when creating a closure in many languages
 Plug 'tpope/vim-endwise'
@@ -318,8 +367,6 @@ Plug 'jsfaint/gen_tags.vim'
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
 
-" Visual git gutter
-Plug 'airblade/vim-gitgutter'
 " get docs for command under cursor (with Dash or web)
 Plug 'keith/investigate.vim'
 
@@ -347,19 +394,10 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'
 
-" Gitv - for browsing a file's history in git
-Plug 'gregsexton/gitv'
-
-" A better Gitv?
-Plug 'junegunn/gv.vim'
-
 " Integration testing for vim plugins
 Plug 'junegunn/vader.vim'
 
-" Vim GitHub gist integration
-Plug 'mattn/gist-vim'
-
-" visualize git's undo tree
+" The ultimate undo history visualizer for VIM
 Plug 'mbbill/undotree'
 
 " Convert code to multiline
@@ -387,21 +425,11 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-" Browse github
-Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
-
-" peek at registers and macros before running them
-" Plug 'junegunn/vim-peekaboo'
-
 " Scratch buffers
 Plug 'mtth/scratch.vim'
 
 " Auto close matching pairs {} \"\", etc..
 Plug 'jiangmiao/auto-pairs'
-
-" Airline - like powerline but light as air
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Auto format code
 Plug 'sbdchd/neoformat'
