@@ -608,9 +608,28 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jsx'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rabl'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yaml'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yml'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['svg'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
 
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*vimrc.*'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.ruby-version'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.ruby-gemset'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.rspec'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['Rakefile'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['application.rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['environment.rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['routes.rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['spring.rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.keep'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['package.json'] = ''
+
+" Useful alternatives:           
 
 " after a re-source, fix syntax matching issues (concealing brackets):
 if exists('g:loaded_webdevicons')
@@ -626,6 +645,9 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeExtensionHighlightColor = {}
 let g:NERDTreeExtensionHighlightColor['ex'] = '834F79'
 let g:NERDTreeExtensionHighlightColor['exs'] = 'c57bd8'
+let g:NERDTreeExtensionHighlightColor['rabl'] = 'ac4142'
+let g:NERDTreeExtensionHighlightColor['yml'] = 'f4bf70'
+let g:NERDTreeExtensionHighlightColor['yaml'] = 'f4bf70'
 
 
 " ----------------------------------------------------------------------------
