@@ -1023,8 +1023,14 @@ augroup END
 "    Abbreviations --------------------------------------- {{{
 iabbrev @@ dkarter@gmail.com
 iabbrev ccopy Copyleft 2016 Dorian Karter.
-iabbrev bpry require 'pry'; binding.pry;
-iabbrev ipry require IEx; IEx.pry;
+
+augroup DebuggerBrevs
+  autocmd!
+  autocmd FileType ruby,eruby iabbrev <buffer> bpry require 'pry'; binding.pry;
+  autocmd FileType javascript iabbrev <buffer> bpry debugger;
+  autocmd FileType elixir iabbrev <buffer> bpry require IEx; IEx.pry;
+  autocmd FileType elixir iabbrev <buffer> ipry require IEx; IEx.pry;
+augroup END
 
 " Local config
 if filereadable($HOME . '/.vimrc.local')
@@ -1034,7 +1040,6 @@ endif
 
 " For NeoVim ----------------------------------------------------- {{{
 if has('nvim')
-  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
         \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
         \,sm:block-blinkwait175-blinkoff150-blinkon175
