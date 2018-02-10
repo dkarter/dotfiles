@@ -10,33 +10,33 @@ call plug#begin('~/.vim/bundle')
   Plug 'mattn/webapi-vim'
 " }}}
 
-" Deoplete: dark powered autocompletion for neovim --- {{{
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+    " NCM: nvim-completion-manager {{{
+      Plug 'roxma/nvim-completion-manager'
 
-  " autocompletion from syntax files for each language
-  Plug 'Shougo/neco-syntax'
+      " vimscript completions
+      Plug 'Shougo/neco-vim', { 'for': 'vim' }
 
-  " include ctags for deoplete
-  Plug 'Shougo/neoinclude.vim'
+      " JS Completions
+      Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
-  " autocompletion for vimscript with deoplete
-  Plug 'Shougo/neco-vim', { 'for': 'vim' }
+      " Ruby completions ( rcodetools source for nvim-completion-manager )
+      Plug 'roxma/ncm-rct-complete'
 
-  " completion for Elm
-  Plug 'pbogut/deoplete-elm', { 'for': 'elm' }
+      " CSS completions
+      Plug 'calebeby/ncm-css'
 
-  " javascript auto completion
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+      " github completions
+      Plug 'roxma/ncm-github'
 
-  " ruby sources for deoplete
-  Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
-" }}}
+      " other buffers completions
+      Plug 'fgrsnau/ncm-otherbuf'
+
+      " C lang completions
+      Plug 'roxma/ncm-clang'
+
+      " Complete pivotal tracker stories
+      Plug 'hauleth/pivotaltracker.vim'
+    " }}}
 
 " Neovim: ------------- {{{
   if has('nvim')
