@@ -1,8 +1,14 @@
 {
-  "plugins": [
-    "stylelint-order"
-  ],
+  "plugins": ["stylelint-order"],
   "rules": {
+    "order/order": [
+      "declarations",
+      "dollar-variables",
+      "custom-properties",
+      "at-variables",
+      "at-rules",
+      "rules"
+    ],
     "order/properties-alphabetical-order": true,
     "indentation": 2
   }
