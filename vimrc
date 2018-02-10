@@ -260,7 +260,7 @@ let g:neoformat_javascript_prettier = {
 augroup NeoformatAutoFormat
   autocmd!
   autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
-  autocmd BufWritePre *.js,*.jsx,*.css,*.scss,*.json Neoformat
+  autocmd BufWritePre *.{js,jsx,css,scss,json,ex,exs} Neoformat
   autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
   " autocmd BufWritePre *.css,*.scss Neoformat stylefmt
 augroup END
