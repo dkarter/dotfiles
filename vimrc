@@ -78,7 +78,12 @@
   " set where swap file and undo/backup files are saved
     set backupdir=~/.vim/tmp,.
     set directory=~/.vim/tmp,.
-    set undodir=~/.vim/tmp,.
+
+  " persistent undo between file reloads
+    if has('persistent_undo')
+      set undofile
+      set undodir=~/.vim/tmp,.
+    endif
 
   " Open new split panes to right and bottom, which feels more natural
     set splitbelow
