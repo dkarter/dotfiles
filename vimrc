@@ -300,10 +300,15 @@ let g:indentLine_fileType = [
       \ 'ruby',
       \ 'elixir',
       \ 'javascript',
+      \ 'javascript.jsx',
+      \ 'html',
+      \ 'eruby',
       \ 'vim'
       \ ]
+
 let g:indentLine_char = '│'
-let g:indentLine_color_term = 240
+let g:indentLine_color_term = 238
+let g:indentLine_color_gui = '#454C5A'
 
 " ====================================
 " setup airline
