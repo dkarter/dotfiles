@@ -48,6 +48,7 @@
   set expandtab         " insert tab with right amount of spacing
   set shiftround        " Round indent to multiple of 'shiftwidth'
   set termguicolors     " enable true colors
+  set hidden            " enable hidden unsaved buffers
 
   if !has('nvim')             " does not work on neovim
     set emoji                 " treat emojis 😄  as full width characters
