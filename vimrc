@@ -669,7 +669,10 @@ augroup END
 let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
 
+let g:background_before_goyo = &background
+
 function! s:goyo_enter()
+  let g:background_before_goyo = &background
   if has('gui_running')
     set linespace=7
   elseif exists('$TMUX')
@@ -685,6 +688,7 @@ function! s:goyo_leave()
     silent !tmux set status on
   endif
   execute 'Limelight!'
+  execute 'set background=' . g:background_before_goyo
 endfunction
 
 augroup GOYO
