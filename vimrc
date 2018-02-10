@@ -132,43 +132,70 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 " ====================================
-" Deoplete:
+" NeovimCompletionManager:
 " ====================================
-let g:deoplete#enable_at_startup = 1
 
-inoremap <silent><expr> <TAB>
-         \ pumvisible() ? "\<C-n>" :
-         \ <SID>check_back_space() ? "\<TAB>" :
-         \ deoplete#mappings#manual_complete()
+" use tab to cycle through completions
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-function! s:check_back_space() abort
-  let l:col = col('.') - 1
-  return !l:col || getline('.')[l:col - 1]  =~? '\s'
-endfunction
-
-"Add extra filetypes
-let g:deoplete#sources#ternjs#filetypes = [
-                                        \ 'javascript.jsx',
-                                        \ 'javascript',
-                                        \ ]
+" use enter to complete snippets - not working
+" imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
+" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
 
 " ====================================
-" Vim multiple cursors + DEOPLETE:
+" PivotalTracker.vim:
 " ====================================
-augroup VimMultiCursors
+
+augroup PivotalTracker
   autocmd!
-  autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
-  autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+  autocmd FileType gitcommit setlocal completefunc=pivotaltracker#stories
+  autocmd FileType gitcommit setlocal omnifunc=pivotaltracker#stories
 augroup END
+
+
+" ====================================
+" Alchemist.vim
+" ====================================
+let g:alchemist#elixir_erlang_src = "/Users/dkarter/dev/forks/elixir+otp"
+
+augroup ElixirIex
+  autocmd!
+  autocmd FileType elixir nnoremap <silent> <buffer> <leader>x :IEx<CR>
+augroup END
+
+" for toggling from terminal
+if has('nvim')
+  tnoremap <silent> <leader>x <C-\><C-n>:IEx<CR>
+endif
 
 " ====================================
 " LanguageClient-neovim:
 " ====================================
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'haskell': ['hie', '--lsp'],
+    \ 'elixir': ['elixir-ls'],
     \ }
+
+" let g:lsp_servers = [
+"             \ {
+"             \   'name': 'elixir-ls',
+"             \   'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=/Users/hauleth/Workspace/JakeBecker/elixir-ls/lsp mix elixir_ls.language_server']},
+"             \   'whitelist': ['elixir'],
+"             \ },
+"             \ {
+"             \   'name': 'rls',
+"             \   'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+"             \   'whitelist': ['rust'],
+"             \ },
+"             \ {
+"             \   'name': 'vue-language-server',
+"             \   'cmd': {server_info->['vls']},
+"             \   'whitelist': ['vue'],
+"             \ }
+" \ ]
 
 " ====================================
 " NeoTerm:
