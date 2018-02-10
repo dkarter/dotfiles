@@ -14,9 +14,12 @@ alias b="bundle"
 # SSH fix for working with xterm-color256-italic
 alias ssh="TERM=xterm-256color ssh"
 
+alias yg='you-get'
+
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate"
 alias s="rspec"
+alias rof="rspec --only-failures"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
@@ -32,7 +35,7 @@ alias fap='gap'
 
 # git reset empty files
 gref() {
-  command git --no-pager diff --cached --stat | command grep " |\s*0$" | awk '{system("command git reset " $1)}'
+  command git --no-pager diff --cached --stat | command grep " |\\s*0$" | awk '{system("command git reset " $1)}'
 }
 
 # Git
