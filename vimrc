@@ -858,6 +858,9 @@ augroup END
   " replace word under cursor, globally, with confirmation
     nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
+  " insert frozen string literal comment at the top of the file (ruby)
+    map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>
+
   " remove highlighting on escape
     map <silent> <esc> :noh<cr>
 
