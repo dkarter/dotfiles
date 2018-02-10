@@ -968,8 +968,8 @@ augroup END
     nnoremap gY gg"+yG
 
   " Prettier:
-    " shows you the output from prettier - useful when you have a syntax error
-    nnoremap <leader>p :!prettier %<CR>
+    " shows the output from prettier - useful for syntax errors
+    nnoremap <leader>pt :!prettier %<CR>
 
   " CtrlSF:
     nnoremap <C-F>f :CtrlSF
