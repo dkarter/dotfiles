@@ -814,6 +814,7 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     autocmd BufRead,BufNewFile Appraisals,*.rabl set filetype=ruby
     autocmd BufRead,BufNewFile .babelrc set filetype=json
     autocmd BufRead,BufNewFile *.md set filetype=markdown
+    autocmd BufRead,BufNewFile .eslintrc set filetype=json
 
     " Enable spellchecking for Markdown
     autocmd FileType markdown setlocal spell
