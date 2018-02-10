@@ -53,7 +53,10 @@ call plug#begin('~/.vim/bundle')
     Plug 'machakann/vim-highlightedyank'
 
     " Language Server Protocol (LSP) support for vim and neovim
-    Plug 'autozimu/LanguageClient-neovim'
+    Plug 'autozimu/LanguageClient-neovim', {
+          \ 'branch': 'next',
+          \ 'do': 'bash install.sh',
+          \ }
 
     if !exists('$TMUX')
       " simulate tmux shortcuts in neovim
