@@ -100,16 +100,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # ███▄     ▄█    ▄█    ███   ███    ███
 #  ▀████████▀  ▄████████▀    ███    █▀
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-custom_theme=$HOME/.oh-my-zsh/themes/crunch-twoliner.zsh-theme
-if [ -f $custom_theme ]; then
-  ZSH_THEME="crunch-twoliner"
-else
-  ZSH_THEME="robbyrussell"
-fi
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -118,10 +108,6 @@ COMPLETION_WAITING_DOTS="true"
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-source $ZSH/oh-my-zsh.sh
 
 # zsh syntax highlighting
 # pre-requisite: `brew install zsh-syntax-highlighting`
@@ -228,7 +214,6 @@ if $(gem list lunchy -i); then
 fi
 
 # fzf stuff
-
 if $(command -v fzf >/dev/null); then
   # fo [FUZZY PATTERN] - Open the selected file with the default editor
   #   - Bypass fuzzy finder if there's only one match (--select-1)
