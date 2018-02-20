@@ -345,6 +345,7 @@ if $(command -v fzf >/dev/null); then
   }
 fi
 
+# git functions
 function clonecd() {
   # find a way to pass the rest of the arguments to
   # git clone in a variadic style to allow still using
@@ -354,6 +355,25 @@ function clonecd() {
 
 function shallowclone() {
   git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}"
+}
+
+# checkout a PR from github
+pr () {
+  local origin pr
+  if [[ $# == 0 ]]
+  then
+    echo "usage: pr [remote] <ref>"
+    return 1
+  elif [[ $# == 1 ]]
+  then
+    origin=$(git config branch.master.remote || echo origin)
+    pr=$1
+  else
+    origin=$1
+    pr=$2
+  fi
+  git fetch $origin refs/pull/${pr}/head || return
+  git checkout -q FETCH_HEAD
 }
 
 # color man pages
