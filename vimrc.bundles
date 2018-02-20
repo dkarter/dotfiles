@@ -165,6 +165,10 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-commentary'
 " }}}
 
+" Navigation: {{{
+  Plug 'tpope/vim-vinegar'
+" }}}
+
 " NERDTree: ------------------ {{{
   " NERDTree... tree explorer for vim
   Plug 'scrooloose/nerdtree'
@@ -309,17 +313,21 @@ Plug 'leafgarland/typescript-vim'
   " Highlight current paragraph (works well with goyo)
   Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
-  function! BuildComposer(info)
-    if a:info.status !=# 'unchanged' || a:info.force
-      if has('nvim')
-        !cargo build --release
-      else
-        !cargo build --release --no-default-features --features json-rpc
-      endif
-    endif
-  endfunction
+  " function! BuildComposer(info)
+  "   if a:info.status !=# 'unchanged' || a:info.force
+  "     if has('nvim')
+  "       !cargo build --release
+  "     else
+  "       !cargo build --release --no-default-features --features json-rpc
+  "     endif
+  "   endif
+  " endfunction
 
-  Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+  " " live preview markdown files
+  " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer'), 'for': 'markdown' }
+
+  " integration with Deckset macOS app
+  Plug 'bwmcadams/vim-deckset', { 'for': 'markdown' }
 " }}}
 
 " Terraform: ---------------------------- {{{
@@ -351,12 +359,30 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
 " }}}
 
-" coffee script highlighting
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+" Crystal: {{{
+  Plug 'rhysd/vim-crystal'
+" }}}
 
-" staticly check code and highlight errors (async syntastic replacement)
-Plug 'w0rp/ale'
-" Plug 'neomake/neomake'
+" Haskell: {{{
+  Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+" }}}
+
+" Swift: {{{
+  Plug 'keith/swift.vim', { 'for': 'swift' }
+" }}}
+
+" Golang: {{{
+  Plug 'fatih/vim-go', { 'for': 'go' }
+" }}}
+
+" Format+Lint: {{{
+  " Auto format code
+  Plug 'sbdchd/neoformat'
+
+  " staticly check code and highlight errors (async syntastic replacement)
+  Plug 'w0rp/ale'
+
+" }}}
 
 " add `end` automatically when creating a closure in many languages
 Plug 'tpope/vim-endwise'
@@ -367,7 +393,7 @@ Plug 'jsfaint/gen_tags.vim'
 " Multiple cursor emulation (a la Sublime Text) using ctrl-n
 Plug 'terryma/vim-multiple-cursors'
 
-" get docs for command under cursor (with Dash or web)
+" get docs for command under cursor (with Dash or web) (mapped to gK)
 Plug 'keith/investigate.vim'
 
 " show trailing white spaces and allow deleting them
@@ -385,12 +411,6 @@ Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
 " syntax for apple scripts
 Plug 'vim-scripts/applescript.vim', { 'for': ['scpt', 'applescript', 'scptd'] }
 
-" Swift support
-Plug 'keith/swift.vim', { 'for': 'swift' }
-
-" Vim Go
-Plug 'fatih/vim-go', { 'for': 'go' }
-
 " Jekyll blog commands
 Plug 'parkr/vim-jekyll'
 
@@ -405,9 +425,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Toggle between different language verbs or syntax styles
 Plug 'AndrewRadev/switch.vim'
-
-" Interact with web apis (required by postal)
-Plug 'mattn/webapi-vim'
 
 " vim plugin for writing vim plugins
 Plug 'tpope/vim-scriptease'
@@ -431,9 +448,6 @@ Plug 'mtth/scratch.vim'
 " Auto close matching pairs {} \"\", etc..
 Plug 'jiangmiao/auto-pairs'
 
-" Auto format code
-Plug 'sbdchd/neoformat'
-
 " resize windows in vim naturally
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
@@ -446,6 +460,9 @@ Plug 'dkarter/bullets.vim'
 
 " snip helpers - assorted functions for snippets
 Plug 'dkarter/sniphelpers.vim'
+
+" routes for rails, phoenix etc
+Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
 " /OWN PLUGINS --------------------------- }}}
 
 " ==================================================

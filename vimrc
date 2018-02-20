@@ -132,12 +132,15 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 " ====================================
-" NeovimCompletionManager:
+" NeovimCompletionManager (NCM):
 " ====================================
 
 " use tab to cycle through completions
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:cm_sources_override = {
+    \ 'cm-ultisnips': { 'enable': 0 }
+    \ }
 
 " use enter to complete snippets - not working
 " imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
@@ -241,7 +244,6 @@ let g:splitjoin_ruby_hanging_args = 0
 " NeoFormat:
 " ====================================
 let g:neoformat_try_formatprg = 1
-
 let g:neoformat_only_msg_on_error = 1
 
 " ONLY PRETTIER (don't run any other formatters for these file types)
@@ -256,13 +258,14 @@ let g:neoformat_javascript_prettier = {
       \ 'stdin': 1,
       \ }
 
+" ONLY RuboCop 🚔
+let g:neoformat_enabled_ruby = ['rubocop']
 
 augroup NeoformatAutoFormat
   autocmd!
   autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
-  autocmd BufWritePre *.{js,jsx,css,scss,json,ex,exs} Neoformat
+  autocmd BufWritePre *.{js,jsx,css,scss,json,ex,exs,rb} Neoformat
   autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
-  " autocmd BufWritePre *.css,*.scss Neoformat stylefmt
 augroup END
 
 nnoremap <leader>nf :Neoformat<CR>
@@ -588,8 +591,20 @@ let g:NERDTreeIgnore = [
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeAutoDeleteBuffer=1
+" keep alternate files and jumps
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+
 nnoremap <Leader>nt :NERDTreeToggle<CR>
+
+" not necessarily NTree related but uses NERDTree because I have it setup
 nnoremap <leader>d :e %:h<CR>
+
+augroup NERDTreeAuCmds
+  autocmd!
+  autocmd FileType nerdtree nmap <buffer> <expr> - g:NERDTreeMapUpdir
+augroup END
+" move up a directory with "-" like using vim-vinegar (usually "u" does that)
+
 
 
 " ----------------------------------------------------------------------------
@@ -655,13 +670,20 @@ let g:NERDTreeExtensionHighlightColor['yaml'] = 'f4bf70'
 " ----------------------------------------------------------------------------
 augroup CustomGoVimMappings
   autocmd!
-
   autocmd FileType go setlocal nolist listchars=tab:>-,trail:·,nbsp:·
   autocmd FileType go nmap <buffer> <leader>r <Plug>(go-run)
   autocmd FileType go nmap <buffer> <leader>b <Plug>(go-build)
   autocmd FileType go nmap <buffer> <leader>t <Plug>(go-test)
   autocmd FileType go nmap <buffer> <leader>c <Plug>(go-coverage)
+  autocmd Filetype go
+    \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
+
+let g:go_fmt_autosave = 1
+let g:go_term_mode = 'vsplit'
+let g:go_fmt_command='goimports'
 
 " ----------------------------------------------------------------------------
 " goyo.vim + limelight.vim
@@ -1019,6 +1041,10 @@ augroup END
   " Open files relative to current path:
   nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
   nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+
+  " move lines up and down in visual mode
+  xnoremap K :move '<-2<CR>gv=gv
+  xnoremap J :move '>+1<CR>gv=gv
 
 " --------------------- Key Mappings ---------------------------- }}}
 
