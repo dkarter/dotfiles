@@ -9,6 +9,9 @@ alias rmf='rm -rf'
 alias rmrf='rm -rf'
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias sp="nvr -cc split"
+alias vs="nvr -cc vsplit"
+alias tree="tree -C"
 
 # Bundler
 alias b="bundle"
@@ -89,6 +92,7 @@ freethousand() {
 }
 
 alias vim='nvim'
+alias legacyvim='command vim'
 
 alias brewup='brew upgrade --cleanup'
 
