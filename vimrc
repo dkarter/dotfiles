@@ -264,7 +264,7 @@ let g:neoformat_enabled_ruby = ['rubocop']
 augroup NeoformatAutoFormat
   autocmd!
   autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
-  autocmd BufWritePre *.{js,jsx,css,scss,json,ex,exs,rb} Neoformat
+  autocmd BufWritePre *.{js,jsx,css,scss,json,ex,exs,rb,rabl,rake} Neoformat
   autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
 augroup END
 
@@ -316,6 +316,7 @@ let g:indentLine_color_gui = '#454C5A'
 " ====================================
 " setup airline
 " ====================================
+let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -335,8 +336,8 @@ let g:bullets_enabled_file_types = [
 " =====================================
 "  FZF
 " =====================================
-" set fzf's default input to AG instead of find. This also removes gitignore etc
-let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
+" set fzf's default input to ripgrep instead of find. This also removes gitignore etc
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
 
 function! FZFOpen(command_str)
@@ -363,44 +364,44 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " ======================================
 
 " Files + devicons
-function! Fzf_dev()
-  let l:fzf_files_options =
-        \ '--preview "echo {} | tr -s \" \" \"\n\" | tail -1 | xargs rougify | head -'.&lines.'"'
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
+" function! Fzf_dev()
+"   let l:fzf_files_options =
+"         \ '--preview "echo {} | tr -s \" \" \"\n\" | tail -1 | xargs rougify | head -'.&lines.'"'
+"   function! s:files()
+"     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+"     return s:prepend_icon(l:files)
+"   endfunction
 
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
+"   function! s:prepend_icon(candidates)
+"     let l:result = []
+"     for l:candidate in a:candidates
+"       let l:filename = fnamemodify(l:candidate, ':p:t')
+"       let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+"       call add(l:result, printf('%s %s', l:icon, l:candidate))
+"     endfor
 
-    return l:result
-  endfunction
+"     return l:result
+"   endfunction
 
-  function! s:edit_file(item)
-    let l:parts = split(a:item, ' ')
-    let l:file_path = get(l:parts, 1, '')
-    " TODO: not working
-    let l:cmd = get({
-               \ 'ctrl-x': 'split',
-               \ 'ctrl-v': 'vertical split',
-               \ 'ctrl-t': 'tabe'
-               \ }, a:item[0], 'e')
-    execute 'silent ' . l:cmd . ' ' . l:file_path
-  endfunction
+"   function! s:edit_file(item)
+"     let l:parts = split(a:item, ' ')
+"     let l:file_path = get(l:parts, 1, '')
+"     " TODO: not working
+"     let l:cmd = get({
+"                \ 'ctrl-x': 'split',
+"                \ 'ctrl-v': 'vertical split',
+"                \ 'ctrl-t': 'tabe'
+"                \ }, a:item[0], 'e')
+"     execute 'silent ' . l:cmd . ' ' . l:file_path
+"   endfunction
 
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
-        \            l:fzf_files_options,
-        \ 'down':    '40%' })
-endfunction
+"   call fzf#run({
+"         \ 'source': <sid>files(),
+"         \ 'sink':   function('s:edit_file'),
+"         \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
+"         \            l:fzf_files_options,
+"         \ 'down':    '40%' })
+" endfunction
 
 " Custom FZF commands ----------------------------- {{{
 fun! s:change_branch(e)
@@ -511,6 +512,8 @@ let g:switch_custom_definitions =
   \   ['up', 'down', 'change'],
   \   ['add', 'drop', 'remove'],
   \   ['create', 'drop'],
+  \   ['row', 'column'],
+  \   ['first', 'second', 'third', 'fourth', 'fifth'],
   \ ]
 
 " ----------------------------------------------------------------------------
@@ -740,11 +743,6 @@ let g:rubycomplete_rails = 1
 if filereadable(expand('~/.vimrc.bundles'))
   source ~/.vimrc.bundles
 endif
-
-" Load matchit.vim, but only if the user hasn't installed a newer version.
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
 " }}}
 
 "  Plugin Modifications (AFTER loading bundles) ----- {{{
@@ -946,6 +944,17 @@ augroup END
     nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
     nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
 
+  " toggle background light / dark
+    fun! ToggleBackground()
+      if (&background ==? 'dark')
+        set background=light
+      else
+        set background=dark
+      endif
+    endfun
+
+    nnoremap <silent> <F10> :call ToggleBackground()<CR>
+
   " Source (reload) your vimrc. Type space, s, o in sequence to trigger
     nnoremap <leader>so :source $MYVIMRC<cr>
 
@@ -1094,8 +1103,12 @@ if has('nvim')
     tnoremap <C-o> <C-\><C-n><esc><cr>
 
   " quickly toggle term
-    nnoremap <silent> <leader><space> :Ttoggle<cr><C-w>j
+    nnoremap <silent> <leader><space> :Ttoggle<cr><C-w>l
     tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
+
+  " send stuff to REPL using NeoTerm
+    nnoremap <silent> <c-s>r :TREPLSendLine<CR>
+    vnoremap <silent> <c-s>r :TREPLSendSelection<CR>
 
   " pasting works quite well in neovim as is so disabling yo
     nnoremap <silent> yo o

@@ -8,6 +8,10 @@ call plug#begin('~/.vim/bundle')
 
   " Vim Web API (required by gist-vim)
   Plug 'mattn/webapi-vim'
+
+  " fzf greatness (fuzzy finding)
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
 " }}}
 
     " NCM: nvim-completion-manager {{{
@@ -45,9 +49,6 @@ call plug#begin('~/.vim/bundle')
 
     " run tests at the speed of thought
     Plug 'janko-m/vim-test'
-
-    " if using terminal in neovim set neovim as $EDITOR
-    Plug 'rliang/termedit.nvim'
 
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
@@ -167,6 +168,8 @@ call plug#begin('~/.vim/bundle')
 
 " Navigation: {{{
   Plug 'tpope/vim-vinegar'
+
+  Plug 'easymotion/vim-easymotion'
 " }}}
 
 " NERDTree: ------------------ {{{
@@ -189,6 +192,9 @@ call plug#begin('~/.vim/bundle')
 
   " add text object for HTML attributes - allows dax cix etc
   Plug 'whatyouhide/vim-textobj-xmlattr'
+
+  " highlight open and close html tags
+  Plug 'valloric/matchtagalways'
 " }}}
 
 " WebAssembly: ------------------------------- {{{
@@ -353,7 +359,7 @@ Plug 'leafgarland/typescript-vim'
   Plug 'mattn/gist-vim', { 'on': 'Gist' }
 " }}}
 
-" Airline - like powerline but light as air {{{
+" Airline {{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
@@ -375,6 +381,16 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'fatih/vim-go', { 'for': 'go' }
 " }}}
 
+" CSS/SCSS {{{
+  " highlight colors in css
+  Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'html', 'eruby'] }
+" }}}
+
+" VimScript: {{{
+  " vim plugin for writing vim plugins
+  Plug 'tpope/vim-scriptease'
+"}}}
+
 " Format+Lint: {{{
   " Auto format code
   Plug 'sbdchd/neoformat'
@@ -384,86 +400,77 @@ Plug 'enricobacis/vim-airline-clock'
 
 " }}}
 
-" add `end` automatically when creating a closure in many languages
-Plug 'tpope/vim-endwise'
+" Other: {{{
+  " replacement for matchit
+  Plug 'andymass/vim-matchup'
 
-" auto-generate ctags on save
-Plug 'jsfaint/gen_tags.vim'
+  " add `end` automatically when creating a closure in many languages
+  Plug 'tpope/vim-endwise'
 
-" Multiple cursor emulation (a la Sublime Text) using ctrl-n
-Plug 'terryma/vim-multiple-cursors'
+  " auto-generate ctags on save
+  Plug 'jsfaint/gen_tags.vim'
 
-" get docs for command under cursor (with Dash or web) (mapped to gK)
-Plug 'keith/investigate.vim'
+  " Multiple cursor emulation (a la Sublime Text) using ctrl-n
+  Plug 'terryma/vim-multiple-cursors'
 
-" show trailing white spaces and allow deleting them
-Plug 'ntpeters/vim-better-whitespace'
+  " get docs for command under cursor (with Dash or web) (mapped to gK)
+  Plug 'keith/investigate.vim'
 
-" Indent lines (visual indication)
-Plug 'Yggdroot/indentLine'
+  " show trailing white spaces and allow deleting them
+  Plug 'ntpeters/vim-better-whitespace'
 
-" highlight open and close html tags
-Plug 'valloric/matchtagalways'
+  " Indent lines (visual indication)
+  Plug 'Yggdroot/indentLine'
 
-" highlight colors in css
-Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
+  " syntax for apple scripts
+  Plug 'vim-scripts/applescript.vim', { 'for': ['scpt', 'applescript', 'scptd'] }
 
-" syntax for apple scripts
-Plug 'vim-scripts/applescript.vim', { 'for': ['scpt', 'applescript', 'scptd'] }
+  " Jekyll blog commands
+  Plug 'parkr/vim-jekyll'
 
-" Jekyll blog commands
-Plug 'parkr/vim-jekyll'
+  " Integration testing for vim plugins
+  Plug 'junegunn/vader.vim'
 
-" Integration testing for vim plugins
-Plug 'junegunn/vader.vim'
+  " The ultimate undo history visualizer for VIM
+  Plug 'mbbill/undotree'
 
-" The ultimate undo history visualizer for VIM
-Plug 'mbbill/undotree'
+  " Convert code to multiline
+  Plug 'AndrewRadev/splitjoin.vim'
 
-" Convert code to multiline
-Plug 'AndrewRadev/splitjoin.vim'
+  " Toggle between different language verbs or syntax styles
+  Plug 'AndrewRadev/switch.vim'
+  " fancy vim start page
+  Plug 'mhinz/vim-startify'
 
-" Toggle between different language verbs or syntax styles
-Plug 'AndrewRadev/switch.vim'
+  " copy code as rtf
+  Plug 'zerowidth/vim-copy-as-rtf', { 'on': 'CopyRTF' }
 
-" vim plugin for writing vim plugins
-Plug 'tpope/vim-scriptease'
+  " Rust support
+  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
-" fancy vim start page
-Plug 'mhinz/vim-startify'
+  " Scratch buffers
+  Plug 'mtth/scratch.vim'
 
-" copy code as rtf
-Plug 'zerowidth/vim-copy-as-rtf', { 'on': 'CopyRTF' }
+  " Auto close matching pairs {} \"\", etc..
+  Plug 'jiangmiao/auto-pairs'
 
-" Rust support
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+  " resize windows in vim naturally
+  Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
-" fzf greatness (fuzzy finding)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+  " File icons in vim --- keep at the bottom, below airline, nerdtree and startify
+  Plug 'ryanoasis/vim-devicons'
+"}}}
 
-" Scratch buffers
-Plug 'mtth/scratch.vim'
+" OWN PLUGINS: {{{
+  " automatic bulleted lists
+  Plug 'dkarter/bullets.vim'
 
-" Auto close matching pairs {} \"\", etc..
-Plug 'jiangmiao/auto-pairs'
+  " snip helpers - assorted functions for snippets
+  Plug 'dkarter/sniphelpers.vim'
 
-" resize windows in vim naturally
-Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
-
-" File icons in vim --- keep at the bottom, below airline, nerdtree and startify
-Plug 'ryanoasis/vim-devicons'
-
-" OWN PLUGINS: --------------------------- {{{
-" automatic bulleted lists
-Plug 'dkarter/bullets.vim'
-
-" snip helpers - assorted functions for snippets
-Plug 'dkarter/sniphelpers.vim'
-
-" routes for rails, phoenix etc
-Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
-" /OWN PLUGINS --------------------------- }}}
+  " routes for rails, phoenix etc
+  Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
+" }}}
 
 " ==================================================
 

@@ -359,7 +359,7 @@ function shallowclone() {
 }
 
 # checkout a PR from github
-pr () {
+function pr() {
   local origin pr
   if [[ $# == 0 ]]
   then
@@ -375,6 +375,17 @@ pr () {
   fi
   git fetch $origin refs/pull/${pr}/head || return
   git checkout -q FETCH_HEAD
+}
+
+# tree command ignoring gitignored files/dirs
+function gtree() {
+  git_ignore_file=$( git config --get core.excludesfile  )
+
+  if [[ -f ${git_ignore_file}  ]] ; then
+    tree -C -I"$( tr '\n' '\|' < "${git_ignore_file}"  )" "${@}"
+  else 
+    tree -C "${@}"
+  fi
 }
 
 # color man pages
