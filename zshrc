@@ -132,14 +132,15 @@ fi
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
-else
+if [ -z ${EDITOR+x} ]; then
   export EDITOR='nvim'
 fi
 
-# Editor for git commits, rebases etc
-export GIT_EDITOR=nvim
+# Editor for git commits, rebases etc (don't set it if it was set already...
+# i.e. by NeoVim)
+if [ -z ${GIT_EDITOR+x} ]; then
+  export GIT_EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

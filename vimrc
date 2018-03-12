@@ -1068,10 +1068,20 @@ endif
 
 " For NeoVim ----------------------------------------------------- {{{
 if has('nvim')
-  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-        \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-        \,sm:block-blinkwait175-blinkoff150-blinkon175
-  set inccommand=nosplit " interactive find replace preview
+  " use neovim-remote (pip3 install neovim-remote) allows 
+  " opening a new split inside neovim instead of nesting
+  " neovim processes for git commit
+    let $VISUAL     = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
+    let $GIT_EDITOR = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
+    let $EDITOR     = 'nvr -l'
+
+  " set cursor modes
+    set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+          \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+          \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+  " interactive find replace preview
+    set inccommand=nosplit
 
   " Navigate neovim + neovim terminal emulator with alt+direction
     tnoremap <c-h> <C-\><C-n><C-w>h
@@ -1098,11 +1108,6 @@ if has('nvim')
     nmap <silent> <leader>a :TestSuite<CR>
     nmap <silent> <leader>l :TestLast<CR>
     nmap <silent> <leader>g :TestVisit<CR>
-
-  " use neovim-remote (pip3 install neovim-remote) allows 
-  " opening a new split inside neovim instead of nesting
-  " neovim processes
-    let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 " }}}
 
