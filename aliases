@@ -7,11 +7,15 @@ alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias rmf='rm -rf'
 alias rmrf='rm -rf'
+
+# vim
 alias e="$EDITOR"
 alias v="$VISUAL"
 alias sp="nvr -cc split"
 alias vs="nvr -cc vsplit"
 alias tree="tree -C"
+alias :qa="nvr -cc ':qa'"
+alias :wq="nvr -cc ':wq'"
 
 # Bundler
 alias b="bundle"

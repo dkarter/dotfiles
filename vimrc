@@ -1080,9 +1080,10 @@ if has('nvim')
   " use neovim-remote (pip3 install neovim-remote) allows 
   " opening a new split inside neovim instead of nesting
   " neovim processes for git commit
-    let $VISUAL     = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
-    let $GIT_EDITOR = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
-    let $EDITOR     = 'nvr -l'
+    let $VISUAL      = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
+    let $GIT_EDITOR  = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
+    let $EDITOR      = 'nvr -l'
+    let $ECTO_EDITOR = 'nvr -l'
 
   " set cursor modes
     set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
