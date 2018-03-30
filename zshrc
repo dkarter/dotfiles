@@ -358,6 +358,15 @@ function shallowclone() {
   git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}"
 }
 
+# relative time
+in() {
+  if [ "$(uname)" == "Darwin" ]; then
+    gdate -d"$(gdate) +$1 $2" "+%Y-%m-%d"
+  else
+    date -d"$(date) +$1 $2" "+%Y-%m-%d"
+  fi
+}
+
 # checkout a PR from github
 function pr() {
   local origin pr

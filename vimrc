@@ -203,7 +203,6 @@ let g:LanguageClient_serverCommands = {
 " ====================================
 " NeoTerm:
 " ====================================
-let g:neoterm_position = 'vertical'
 let g:neoterm_repl_ruby = 'pry'
 let g:neoterm_autoscroll = 1
 
@@ -215,8 +214,8 @@ map <leader>gst :Gist<cr>
 " ====================================
 " GitGutter:
 " ====================================
-nnoremap <silent> <cr> :GitGutterNextHunk<cr>
-nnoremap <silent> <backspace> :GitGutterPrevHunk<cr>
+nnoremap <silent> + :GitGutterNextHunk<cr>
+nnoremap <silent> _ :GitGutterPrevHunk<cr>
 
 " ====================================
 " Vim Scriptease:
@@ -468,7 +467,8 @@ let g:jsx_ext_required = 0
 " =====================================
 
 " Grep selection with Ag
-xnoremap <leader>g y :Ag "<CR>
+xnoremap <leader>g y :Ack "<CR>
+nnoremap <Leader>g :Ack <C-r><C-w><CR>
 
 " Use The Silver Searcher for grep https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -1008,10 +1008,6 @@ augroup END
     nnoremap <C-F>f :CtrlSF
     nnoremap <C-F>g :CtrlSF<CR>
 
-  " easier new tab
-    noremap <C-t> <esc>:tabnew<CR>
-    noremap <C-c> <esc>:tabclose<CR>
-
   " disable arrow keys in normal mode
     nnoremap <Left> :echoe "Use h"<CR>
     nnoremap <Right> :echoe "Use l"<CR>
@@ -1104,7 +1100,11 @@ if has('nvim')
     tnoremap <C-o> <C-\><C-n><esc><cr>
 
   " quickly toggle term
-    nnoremap <silent> <leader><space> :Ttoggle<cr><C-w>l
+    nnoremap <silent> <leader>o :vertical Ttoggle<cr><C-w>l
+    nnoremap <silent> <leader>O :rightbelow Ttoggle<cr><C-w>j
+    nnoremap <silent> <leader><space> :vertical Ttoggle<cr><C-w>l
+    " close terminal
+    tnoremap <silent> <leader>o <C-\><C-n>:Ttoggle<cr>
     tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
 
   " send stuff to REPL using NeoTerm
@@ -1121,7 +1121,6 @@ if has('nvim')
     nmap <silent> <leader>t :TestFile<CR>
     nmap <silent> <leader>a :TestSuite<CR>
     nmap <silent> <leader>l :TestLast<CR>
-    nmap <silent> <leader>g :TestVisit<CR>
 endif
 " }}}
 
