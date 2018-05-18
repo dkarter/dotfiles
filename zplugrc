@@ -1,0 +1,48 @@
+# vim: ft=zsh
+zplug "plugins/brew", from:oh-my-zsh
+zplug "plugins/bundler", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/cp", from:oh-my-zsh
+zplug "plugins/dircycle", from:oh-my-zsh
+zplug "plugins/dotenv", from:oh-my-zsh
+zplug "plugins/elm", from:oh-my-zsh
+zplug "plugins/gem", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/github", from:oh-my-zsh
+zplug "plugins/go", from:oh-my-zsh
+zplug "plugins/heroku", from:oh-my-zsh
+zplug "plugins/mix", from:oh-my-zsh
+zplug "plugins/node", from:oh-my-zsh
+zplug "plugins/pj", from:oh-my-zsh
+zplug "plugins/postgres", from:oh-my-zsh
+zplug "plugins/rake", from:oh-my-zsh
+zplug "plugins/rake-fast", from:oh-my-zsh
+zplug "plugins/react-native", from:oh-my-zsh
+zplug "plugins/ruby", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/tmuxinator", from:oh-my-zsh
+zplug "plugins/vagrant", from:oh-my-zsh
+zplug "plugins/xcode", from:oh-my-zsh
+zplug "plugins/zsh_reload", from:oh-my-zsh
+zplug "themes/refined", from:oh-my-zsh
+
+# git calendar
+zplug "k4rthik/git-cal", as:command, frozen:1
+
+zplug "zsh-users/zsh-autosuggestions", depth:1
+zplug "zsh-users/zsh-completions", depth:1
+
+# docker completions
+zplug "docker/compose", use:contrib/completion/zsh, depth:1
+zplug "docker/cli", use:contrib/completion/zsh, depth:1
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load

@@ -427,7 +427,12 @@ bindkey -s "^Xi" "^[Iiex -S ^[A"
 # enable direnv
 eval "$(direnv hook zsh)"
 
-[ -f ~/.antigenrc ] && source ~/.antigenrc
+# enable thefuck
+eval $(thefuck --alias)
+
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+[ -f ~/.zplugrc ] && source ~/.zplugrc
 
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
