@@ -124,7 +124,7 @@ alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
 alias muxconfig='vim ~/.tmux.conf && tmux source-file ~/.tmux.conf'
 alias sshconfig='vim ~/.ssh/config'
 alias aliasconfig='vim ~/.aliases && source ~/.aliases'
-alias hostsconfig='sudo vim /etc/hosts'
+alias hostsconfig='sudo nvim /etc/hosts'
 alias zshconfig="vim -o ~/.zshrc && source ~/.zshrc"
 alias zshplugins="vim ~/.oh-my-zsh"
 
