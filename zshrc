@@ -418,6 +418,9 @@ fi
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
+# set yarn binaries on path
+export PATH="$(yarn global bin):$PATH"
+
 # add iex before a command with <c-x> i
 bindkey -s "^Xi" "^[Iiex -S ^[A"
 
