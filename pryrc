@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 # vim: ft=ruby
+
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'
   Pry.commands.alias_command 's', 'step'
@@ -6,12 +9,26 @@ if defined?(PryByebug)
   Pry.commands.alias_command 'f', 'finish'
   Pry.commands.alias_command 'u', 'up'
   Pry.commands.alias_command 'd', 'down'
+else
+  warn "can't load pry-byebug"
+end
+
+begin
+  require 'pry-clipboard'
+  # aliases
+  Pry.config.commands.alias_command 'ch', 'copy-history'
+  Pry.config.commands.alias_command 'cr', 'copy-result'
+rescue LoadError
+  warn "can't load pry-clipboard"
 end
 
 begin
   require 'awesome_print'
-rescue LoadError; end
+rescue LoadError
+  warn "can't load awesome_print"
+end
 
+# Show arguments for the current method
 class ArgsCommand < Pry::ClassCommand
   match '!args'
   group 'Inspector Gadgets'
@@ -34,7 +51,7 @@ class ArgsCommand < Pry::ClassCommand
   end
 
   def current_method_name
-    target.eval "__method__"
+    target.eval '__method__'
   end
 
   # 36 = light blue
@@ -53,4 +70,3 @@ class ArgsCommand < Pry::ClassCommand
 end
 
 Pry::Commands.add_command ArgsCommand
-
