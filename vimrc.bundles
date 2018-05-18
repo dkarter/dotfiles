@@ -2,7 +2,11 @@ call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
 
-" Dependencies: ------------------------------ {{{
+" Plugin Management {{{
+  " Plug 'semanser/vim-outdated-plugins'
+" }}}
+
+" Dependencies: {{{
   " Create custom text objects (required by rubyblock,xmlattr)
   Plug 'kana/vim-textobj-user'
 
@@ -42,7 +46,7 @@ call plug#begin('~/.vim/bundle')
       Plug 'hauleth/pivotaltracker.vim'
     " }}}
 
-" Neovim: ------------- {{{
+" Neovim: {{{
   if has('nvim')
     " abstraction on top of neovim terminal
     Plug 'kassio/neoterm'
@@ -84,7 +88,7 @@ call plug#begin('~/.vim/bundle')
 
 " }}}
 
-" Elixir: ------------------ {{{
+" Elixir: {{{
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
 
@@ -98,7 +102,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'c-brenn/phoenix.vim'
 " }}}
 
-" Ruby: ---------------------------------------- {{{
+" Ruby: {{{
   " do rspec things and highlight syntax
   Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'rspec'] }
 
@@ -133,7 +137,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'pablobfonseca/vim-ruby-refactoring', { 'for': 'ruby' }
 " }}}
 
-" TimPope: ------------------------------------- {{{
+" TimPope: {{{
   " Vim sugar for the UNIX shell commands that need it the most.
   Plug 'tpope/vim-eunuch'
 
@@ -172,7 +176,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'easymotion/vim-easymotion'
 " }}}
 
-" NERDTree: ------------------ {{{
+" NERDTree: {{{
   " NERDTree... tree explorer for vim
   Plug 'scrooloose/nerdtree'
 
@@ -183,7 +187,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " }}}
 
-" HTML: ------------------ {{{
+" HTML: {{{
   " Emmet: generates html tags, autocomplete css
   Plug 'mattn/emmet-vim'
 
@@ -192,17 +196,14 @@ call plug#begin('~/.vim/bundle')
 
   " add text object for HTML attributes - allows dax cix etc
   Plug 'whatyouhide/vim-textobj-xmlattr'
-
-  " highlight open and close html tags
-  Plug 'valloric/matchtagalways'
 " }}}
 
-" WebAssembly: ------------------------------- {{{
+" WebAssembly: {{{
   " Syntax Highlighting:
   Plug 'rhysd/vim-wasm', { 'for': 'wasm' }
 " }}}
 
-" Searching: -------------------------- {{{
+" Searching: {{{
   " highlights all search results and allows tabbing between them
   Plug 'haya14busa/incsearch.vim'
 
@@ -216,12 +217,12 @@ call plug#begin('~/.vim/bundle')
   Plug 'jremmen/vim-ripgrep'
 " }}}
 
-" Align Code: -------------------------- {{{
+" Align Code: {{{
   " same as tabular but by Junegunn
   Plug 'junegunn/vim-easy-align'
 " }}}
 
-" TMUX: ------------------------ {{{
+" TMUX: {{{
   " .tmux.conf syntax highlighting
   Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
@@ -249,7 +250,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
 " }}}
 
-" Snippets: ------------------------- {{{
+" Snippets: {{{
   " ES2015 code snippets (Optional)
   Plug 'epilande/vim-es2015-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
@@ -263,12 +264,9 @@ call plug#begin('~/.vim/bundle')
   Plug 'SirVer/ultisnips'
 " }}}
 
-" JavaScript: ---------------------------- {{{
+" JavaScript: {{{
   " JavaScript support (required by vim-jsx)
   Plug 'pangloss/vim-javascript'
-
-  " Automatically import js modules
-  Plug 'Galooshi/vim-import-js', { 'for': ['javascript', 'javascript.jsx'] }
 
   " Vim plugin for Flow (js static type checker)
   Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
@@ -285,18 +283,21 @@ call plug#begin('~/.vim/bundle')
 
   " JSON manipulation
   Plug 'tpope/vim-jdaddy', { 'for': 'json' }
+
+  " syntax highlighting for styled components
+  Plug 'styled-components/vim-styled-components', { 'for': 'javascript.jsx' }
 " }}}
 
 " TypeScript: {{{
 Plug 'leafgarland/typescript-vim'
 "}}}
 
-" Elm: -------------------------------------------- {{{
+" Elm: {{{
   " elm editing and compilation in vim
   Plug 'ElmCast/elm-vim'
 " }}}
 
-" ColorSchemes: --------------------- {{{
+" ColorSchemes: {{{
   " One Dark
   Plug 'joshdick/onedark.vim'
 
@@ -304,15 +305,15 @@ Plug 'leafgarland/typescript-vim'
   Plug 'rakr/vim-one'
 " }}}
 
-" Postgres: ------------------------- {{{
+" Postgres: {{{
   " postgres sql highlighting
   Plug 'exu/pgsql.vim'
 
   " show table description in vim
-  Plug 'hashrocket/vim-hr-psql'
+  Plug 'hashrocket/vim-hr-psql', { 'on': 'Pgtable' }
 " }}}
 
-" Writing: ---------------------------- {{{
+" Writing: {{{
   " distraction free writing (like iA Writer)
   Plug 'laktek/distraction-free-writing-vim', { 'on': 'ToggleDistractionFreeWriting' }
 
@@ -322,34 +323,25 @@ Plug 'leafgarland/typescript-vim'
   " Highlight current paragraph (works well with goyo)
   Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
-  " function! BuildComposer(info)
-  "   if a:info.status !=# 'unchanged' || a:info.force
-  "     if has('nvim')
-  "       !cargo build --release
-  "     else
-  "       !cargo build --release --no-default-features --features json-rpc
-  "     endif
-  "   endif
-  " endfunction
-
-  " " live preview markdown files
-  " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer'), 'for': 'markdown' }
-
   " integration with Deckset macOS app
   Plug 'bwmcadams/vim-deckset', { 'for': 'markdown' }
 " }}}
 
-" Terraform: ---------------------------- {{{
+" Terraform: {{{
   " terraform syntax
   Plug 'hashivim/vim-terraform' 
 " }}}
 
-" Ansible: ----------------------------- {{{
+" Docker {{{
+Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
+" }}}
+
+" Ansible: {{{
   " ansible vim plugin
   Plug 'pearofducks/ansible-vim'
 " }}}
 
-" Caddy: -------------------------------- {{{
+" Caddy: {{{
   " syntax highlighting for caddyfile
   Plug 'isobit/vim-caddyfile', { 'for': 'Caddyfile' }
 " }}}
@@ -395,17 +387,16 @@ Plug 'enricobacis/vim-airline-clock'
 "}}}
 
 " Format+Lint: {{{
-  " Auto format code
-  Plug 'sbdchd/neoformat'
-
   " staticly check code and highlight errors (async syntastic replacement)
   Plug 'w0rp/ale'
-
 " }}}
 
 " Other: {{{
   " replacement for matchit
   Plug 'andymass/vim-matchup'
+
+  " profiling vim startup
+  Plug 'tweekmonster/startuptime.vim'
 
   " add `end` automatically when creating a closure in many languages
   Plug 'tpope/vim-endwise'

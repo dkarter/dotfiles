@@ -121,6 +121,14 @@
 " }}}
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
+
+" ====================================
+" VimMatchUp:
+" ====================================
+
+let g:matchup_transmute_enabled = 1
+let g:matchup_matchparen_deferred = 1
+
 " ====================================
 " WinResizer:
 " ====================================
@@ -182,23 +190,7 @@ let g:LanguageClient_serverCommands = {
     \ 'elixir': ['elixir-ls'],
     \ }
 
-" let g:lsp_servers = [
-"             \ {
-"             \   'name': 'elixir-ls',
-"             \   'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=/Users/hauleth/Workspace/JakeBecker/elixir-ls/lsp mix elixir_ls.language_server']},
-"             \   'whitelist': ['elixir'],
-"             \ },
-"             \ {
-"             \   'name': 'rls',
-"             \   'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-"             \   'whitelist': ['rust'],
-"             \ },
-"             \ {
-"             \   'name': 'vue-language-server',
-"             \   'cmd': {server_info->['vls']},
-"             \   'whitelist': ['vue'],
-"             \ }
-" \ ]
+let g:LanguageClient_hasSnippetSupport = 0
 
 " ====================================
 " NeoTerm:
@@ -238,37 +230,6 @@ let g:splitjoin_align = 1
 let g:splitjoin_trailing_comma = 1
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
-
-" ====================================
-" NeoFormat:
-" ====================================
-let g:neoformat_try_formatprg = 1
-let g:neoformat_only_msg_on_error = 1
-
-" ONLY PRETTIER (don't run any other formatters for these file types)
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_css = ['prettier']
-let g:neoformat_enabled_scss = ['prettier']
-let g:neoformat_enabled_json = ['prettier']
-
-let g:neoformat_javascript_prettier = {
-      \ 'exe': 'prettier',
-      \ 'args': ['--stdin', '--print-width 80', '--single-quote', '--trailing-comma es5'],
-      \ 'stdin': 1,
-      \ }
-
-" ONLY RuboCop 🚔
-let g:neoformat_enabled_ruby = ['rubocop']
-
-augroup NeoformatAutoFormat
-  autocmd!
-  autocmd FileType zsh setlocal formatprg=shfmt\ -i\ 2
-  autocmd BufWritePre *.{js,jsx,css,scss,json,ex,exs,rb,rabl,rake} Neoformat
-  autocmd BufWritePre .zshrc-dorian,.zshrc,.aliases Neoformat
-augroup END
-
-nnoremap <leader>nf :Neoformat<CR>
-
 
 " ====================================
 " MatchTagAlways:
@@ -316,11 +277,25 @@ let g:indentLine_color_gui = '#454C5A'
 " setup airline
 " ====================================
 let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
 
 " ====================================
 " Bullets.vim:
@@ -548,6 +523,19 @@ highlight link ALEWarningSign Directory
 highlight link ALEErrorSign WarningMsg
 nnoremap <silent> <leader>ne :ALENextWrap<CR>
 nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
+
+let g:ale_fixers = {
+      \   'javascript': ['prettier'],
+      \   'javascript.jsx': ['prettier'],
+      \   'json': ['prettier'],
+      \   'scss': ['prettier'],
+      \   'ruby': ['rubocop'],
+      \   'bash': ['shfmt'],
+      \   'zsh': ['shfmt'],
+      \   'elixir': ['mix_format'],
+      \}
+
+let g:ale_fix_on_save = 1
 
 
 " ----------------------------------------------------------------------------
@@ -779,18 +767,21 @@ endif
 " }}}
 
 " UI Customizations --------------------------------{{{
+
   " " Gruvbox colorscheme allow italics
   " let g:gruvbox_italic = 1
   " let g:gruvbox_invert_selection=0
 
   " default color scheme
-  " colorscheme dracula
-  let g:one_allow_italics = 1
+  " let g:seoul256_background = 233
+  " colorscheme seoul256
+
   set background=dark
   colorscheme one
-  call one#highlight('elixirInclude', 'e06c75', '', 'none')
-  call one#highlight('elixirOperator', 'd19a66', '', 'none')
-  call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
+    let g:one_allow_italics = 1
+    call one#highlight('elixirInclude', 'e06c75', '', 'none')
+    call one#highlight('elixirOperator', 'd19a66', '', 'none')
+    call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
 
   let g:limelight_conceal_ctermfg = '#454d5a'
   let g:limelight_conceal_guifg = '#454d5a'
@@ -836,7 +827,7 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     autocmd BufRead,BufNewFile Appraisals,*.rabl set filetype=ruby
     autocmd BufRead,BufNewFile .babelrc set filetype=json
     autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufRead,BufNewFile .eslintrc set filetype=json
+    autocmd BufRead,BufNewFile .eslintrc,.prettierrc set filetype=json
 
     " Enable spellchecking for Markdown
     autocmd FileType markdown setlocal spell
@@ -1048,8 +1039,8 @@ augroup END
   nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
 
   " move lines up and down in visual mode
-  xnoremap K :move '<-2<CR>gv=gv
-  xnoremap J :move '>+1<CR>gv=gv
+  xnoremap <c-k> :move '<-2<CR>gv=gv
+  xnoremap <c-j> :move '>+1<CR>gv=gv
 
 " --------------------- Key Mappings ---------------------------- }}}
 
