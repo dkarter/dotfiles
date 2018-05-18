@@ -17,6 +17,10 @@ alias tree="tree -C"
 alias :qa="nvr -cc ':qa'"
 alias :wq="nvr -cc ':wq'"
 
+# yarn
+# disable emoji for yarn - breaking neovim term
+alias yarn='yarn --emoji false'
+
 # Bundler
 alias b="bundle"
 
