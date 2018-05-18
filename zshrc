@@ -68,17 +68,17 @@ _load_settings() {
 
     for config in "$_dir"/**/*(N-.); do
       case "$config" in
-        "$_dir"/pre/*)
-          :
-          ;;
-        "$_dir"/post/*)
-          :
-          ;;
-        *)
-          if [ -f $config ]; then
-            . $config
-          fi
-          ;;
+      "$_dir"/pre/*)
+        :
+        ;;
+      "$_dir"/post/*)
+        :
+        ;;
+      *)
+        if [ -f $config ]; then
+          . $config
+        fi
+        ;;
       esac
     done
 
@@ -91,8 +91,6 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 #  ▄███████▄     ▄████████    ▄█    █▄
@@ -103,7 +101,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # ▄███▀                ███   ███    ███
 # ███▄     ▄█    ▄█    ███   ███    ███
 #  ▀████████▀  ▄████████▀    ███    █▀
-
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -198,9 +195,6 @@ export PATH="/usr/local/bin:$PATH"
 
 # set cabal and haskell binaries on path
 export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
-
-# set yarn binaries on path
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # For PostgreSQL
 export PGDATA="/Library/PostgreSQL/9.3/data"
@@ -374,12 +368,10 @@ in() {
 # checkout a PR from github
 function pr() {
   local origin pr
-  if [[ $# == 0 ]]
-  then
+  if [[ $# == 0 ]]; then
     echo "usage: pr [remote] <ref>"
     return 1
-  elif [[ $# == 1 ]]
-  then
+  elif [[ $# == 1 ]]; then
     origin=$(git config branch.master.remote || echo origin)
     pr=$1
   else
@@ -392,11 +384,11 @@ function pr() {
 
 # tree command ignoring gitignored files/dirs
 function gtree() {
-  git_ignore_file=$( git config --get core.excludesfile  )
+  git_ignore_file=$(git config --get core.excludesfile)
 
-  if [[ -f ${git_ignore_file}  ]] ; then
-    tree -C -I"$( tr '\n' '\|' < "${git_ignore_file}"  )" "${@}"
-  else 
+  if [[ -f ${git_ignore_file} ]]; then
+    tree -C -I"$(tr '\n' '\|' <"${git_ignore_file}")" "${@}"
+  else
     tree -C "${@}"
   fi
 }
