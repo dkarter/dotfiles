@@ -51,6 +51,10 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
+# Bind Option-left-right to previous-next word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 # extra files in ~/.zsh/configs/pre , ~/.zsh/configs , and ~/.zsh/configs/post
 # these are loaded first, second, and third, respectively.
 _load_settings() {
