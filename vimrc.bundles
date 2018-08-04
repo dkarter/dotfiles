@@ -6,6 +6,16 @@ call plug#begin('~/.vim/bundle')
   " Plug 'semanser/vim-outdated-plugins'
 " }}}
 
+" Legacy Vim {{{
+
+" Compatibility for legacy vim with neovim's async api
+if !has('nvim')
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'roxma/nvim-yarp'
+endif
+
+" }}}
+
 " Dependencies: {{{
   " Create custom text objects (required by rubyblock,xmlattr)
   Plug 'kana/vim-textobj-user'
@@ -18,33 +28,24 @@ call plug#begin('~/.vim/bundle')
   Plug 'junegunn/fzf.vim'
 " }}}
 
-    " NCM: nvim-completion-manager {{{
-      Plug 'roxma/nvim-completion-manager'
+" Deoplete: {{{
+  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  Plug 'Shougo/neco-syntax'
+  Plug 'Shougo/neco-vim', { 'for': 'vim' }
+  Plug 'fszymanski/deoplete-emoji'
+  Plug 'zchee/deoplete-go'
+  Plug 'wokalski/autocomplete-flow'
 
-      " vimscript completions
-      Plug 'Shougo/neco-vim', { 'for': 'vim' }
+  " For func argument completion
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
 
-      " JS Completions
-      Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+  " include ctags for deoplete
+  Plug 'Shougo/neoinclude.vim'
 
-      " Ruby completions ( rcodetools source for nvim-completion-manager )
-      Plug 'roxma/ncm-rct-complete'
-
-      " CSS completions
-      Plug 'calebeby/ncm-css'
-
-      " github completions
-      Plug 'roxma/ncm-github'
-
-      " other buffers completions
-      Plug 'fgrsnau/ncm-otherbuf'
-
-      " C lang completions
-      Plug 'roxma/ncm-clang'
-
-      " Complete pivotal tracker stories
-      Plug 'hauleth/pivotaltracker.vim'
-    " }}}
+  " ruby sources for deoplete
+  Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
+" }}}
 
 " Neovim: {{{
   if has('nvim')
@@ -218,7 +219,7 @@ call plug#begin('~/.vim/bundle')
 " }}}
 
 " Align Code: {{{
-  " same as tabular but by Junegunn
+  " same as tabular but by Junegunn and way easier
   Plug 'junegunn/vim-easy-align'
 " }}}
 
@@ -268,9 +269,6 @@ call plug#begin('~/.vim/bundle')
   " JavaScript support (required by vim-jsx)
   Plug 'pangloss/vim-javascript'
 
-  " Vim plugin for Flow (js static type checker)
-  Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
-
   " React:
     " JSX support for react components
     Plug 'mxw/vim-jsx'
@@ -285,7 +283,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 
   " syntax highlighting for styled components
-  Plug 'styled-components/vim-styled-components', { 'for': 'javascript.jsx' }
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript.jsx' }
 " }}}
 
 " TypeScript: {{{
@@ -354,6 +352,11 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   Plug 'mattn/gist-vim', { 'on': 'Gist' }
 " }}}
 
+" PIVOTAL "{{{
+  " Complete pivotal tracker stories
+  Plug 'hauleth/pivotaltracker.vim'
+" }}}"
+
 " Airline {{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -378,7 +381,7 @@ Plug 'enricobacis/vim-airline-clock'
 
 " CSS/SCSS {{{
   " highlight colors in css
-  Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'html', 'eruby'] }
+  Plug 'ap/vim-css-color', { 'for': ['javascript.jsx', 'css', 'scss', 'sass', 'html', 'eruby'] }
 " }}}
 
 " VimScript: {{{
@@ -391,7 +394,21 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'w0rp/ale'
 " }}}
 
+" Find/Replace: {{{
+  Plug 'brooth/far.vim'
+" }}}
+
+" Quickfix List: {{{
+  Plug 'romainl/vim-qf'
+" }}}
+
 " Other: {{{
+  " open Finder / Terminal for file under the cursor
+  Plug 'justinmk/vim-gtfo'
+
+  " share code screenshots with Carbon Now
+  Plug 'kristijanhusak/vim-carbon-now-sh'
+
   " replacement for matchit
   Plug 'andymass/vim-matchup'
 
@@ -451,7 +468,7 @@ Plug 'enricobacis/vim-airline-clock'
   " resize windows in vim naturally
   Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
-  " File icons in vim --- keep at the bottom, below airline, nerdtree and startify
+  "' File icons in vim --- keep at the bottom, below airline, nerdtree and startify
   Plug 'ryanoasis/vim-devicons'
 "}}}
 
@@ -463,7 +480,7 @@ Plug 'enricobacis/vim-airline-clock'
   Plug 'dkarter/sniphelpers.vim'
 
   " routes for rails, phoenix etc
-  Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
+  " Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
 " }}}
 
 " ==================================================

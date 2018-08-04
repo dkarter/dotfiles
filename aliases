@@ -7,6 +7,7 @@ alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias rmf='rm -rf'
 alias rmrf='rm -rf'
+alias less='less -r'
 
 # vim
 alias e="$EDITOR"
@@ -30,9 +31,12 @@ alias ssh="TERM=xterm-256color ssh"
 alias yg='you-get'
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
+alias migrate="be rails db:migrate db:rollback && be rails db:migrate"
 alias s="rspec"
 alias rof="rspec --only-failures"
+
+# language servers
+alias sgraph="solargraph socket"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
@@ -79,6 +83,8 @@ alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
 alias ftk='tmux kill-session -t $(tl | fzf | tr ":" "\n" | head -n1)'
 alias gcorb='gco --track $(git branch -r | fzf)'
 alias gcob='gco $(git branch | fzf)'
+alias fz="fzf --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort' --preview '[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"
+alias vfz='vim $(fz)'
 
 # network utils
 alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo cache flushed'
@@ -107,7 +113,10 @@ freethousand() {
 alias vim='nvim'
 alias legacyvim='command vim'
 
-alias brewup='brew upgrade --cleanup'
+# HomeBrew
+alias brewup='brew upgrade --cleanup && brew cleanup'
+# Search installed packages usage brewg lsusb
+alias brewg='brew list | rg'
 
 alias d='cd ~/dev'
 alias fd='cd ~/dev/$(ls ~/dev/ --color=never | fzf)'
@@ -116,6 +125,7 @@ alias dt='cd ~/dotfiles'
 alias dot='cd ~/dotfiles'
 alias hcd='cd ~/dev/hashrocket'
 alias blog='cd ~/dev/sites/DorianKarter.com/blog'
+alias docs='cd ~/Dropbox/Documents'
 
 alias ss='imgur-screenshot.sh'
 
@@ -138,7 +148,8 @@ alias postjson='curl -i -H "Accept: application/json" -H "Content-Type: applicat
 alias getjson='curl -i -H "Accept: application/json" -H "Content-Type: application/json"'
 
 # rails
-alias twiki='bundle exec rake db:migrate && bundle exec rake db:rollback && bundle exec rake db:migrate'
+alias twiki='be rails db:migrate && be rails db:rollback && be rails db:migrate && be rails db:test:prepare'
+alias dtp='be rails db:test:prepare'
 
 # elixir
 alias extwiki='mix ecto.migrate && mix ecto.rollback && mix ecto.migrate'

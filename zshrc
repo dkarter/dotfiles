@@ -1,4 +1,15 @@
-setopt promptsubst
+# profiling top
+# zmodload zsh/datetime
+# setopt PROMPT_SUBST
+# PS4='+$EPOCHREALTIME %N:%i> '
+
+# logfile=~/zsh_profiling_result
+# echo "Logging to $logfile"
+# exec 3>&2 2>$logfile
+
+# setopt XTRACE
+# /profiling top
+
 
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
@@ -35,6 +46,9 @@ DIRSTACKSIZE=5
 # Enable extended globbing
 setopt extendedglob
 
+# case insensitive autocomplete
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 # Allow [ or ] whereever you want
 unsetopt nomatch
 
@@ -68,17 +82,17 @@ _load_settings() {
 
     for config in "$_dir"/**/*(N-.); do
       case "$config" in
-      "$_dir"/pre/*)
-        :
-        ;;
-      "$_dir"/post/*)
-        :
-        ;;
-      *)
-        if [ -f $config ]; then
-          . $config
-        fi
-        ;;
+        "$_dir"/pre/*)
+          :
+          ;;
+        "$_dir"/post/*)
+          :
+          ;;
+        *)
+          if [ -f $config ]; then
+            . $config
+          fi
+          ;;
       esac
     done
 
@@ -201,18 +215,13 @@ export PGDATA="/Library/PostgreSQL/9.3/data"
 
 if $(command -v brew >/dev/null); then
   # autojump (requires brew install autojump)
-  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-fi
-
-# add autocomplete for lunchy - gem install lunchy
-if $(gem list lunchy -i); then
-  LUNCHY_DIR=$(dirname $(gem which lunchy))/../extras
-  if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-    . $LUNCHY_DIR/lunchy-completion.zsh fi
-  fi
+  [[ -s "$BREW_PREFIX/etc/profile.d/autojump.sh" ]] && . "$BREW_PREFIX/etc/profile.d/autojump.sh"
 fi
 
 # fzf stuff
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 if $(command -v fzf >/dev/null); then
   # fo [FUZZY PATTERN] - Open the selected file with the default editor
   #   - Bypass fuzzy finder if there's only one match (--select-1)
@@ -342,6 +351,43 @@ if $(command -v fzf >/dev/null); then
       fi
     done
   }
+
+  # Install one or more versions of specified language
+  # e.g. `vmi rust` # => fzf multimode, tab to mark, enter to install
+  # if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
+  # Mnemonic [V]ersion [M]anager [I]nstall
+  vmi() {
+    local lang=${1}
+
+    if [[ ! $lang ]]; then
+      lang=$(asdf plugin-list | fzf)
+    fi
+
+    if [[ $lang ]]; then
+      local versions=$(asdf list-all $lang | fzf -m)
+      if [[ $versions ]]; then
+        for version in $(echo $versions);
+        do; asdf install $lang $version; done;
+      fi
+    fi
+  }
+
+  # fgst - pick files from `git status -s` 
+  is_in_git_repo() {
+    git rev-parse HEAD > /dev/null 2>&1
+  }
+
+  fgst() {
+    # "Nothing to see here, move along"
+    is_in_git_repo || return
+
+    local cmd="${FZF_CTRL_T_COMMAND:-"command git status -s"}"
+
+    eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | while read -r item; do
+      printf '%q ' "$item" | cut -d " " -f 2
+    done
+    echo
+  }
 fi
 
 # git functions
@@ -393,6 +439,13 @@ function gtree() {
   fi
 }
 
+# split strings
+# Usage: split "string" "delimiter"
+split() {
+   IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
+   printf '%s\n' "${arr[@]}"
+}
+
 # color man pages
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
@@ -410,14 +463,16 @@ export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # show if a command is available as a homebrew package if cannot find it
-if brew command command-not-found-init >/dev/null 2>&1; then
-  eval "$(brew command-not-found-init)"
-fi
+# disabling this because it slows down zsh initialization
+# if brew command command-not-found-init >/dev/null 2>&1; then
+#   eval "$(brew command-not-found-init)"
+# fi
 
 # asdf global version manager
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
+# TODO: can we do this with zsh-async
 # set yarn binaries on path
 export PATH="$(yarn global bin):$PATH"
 
@@ -427,8 +482,8 @@ bindkey -s "^Xi" "^[Iiex -S ^[A"
 # enable direnv
 eval "$(direnv hook zsh)"
 
-# enable thefuck
-eval $(thefuck --alias)
+# tell RipGrep where to look for it's config file
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -441,3 +496,9 @@ source $ZPLUG_HOME/init.zsh
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# profiling bottom
+# unsetopt XTRACE
+# exec 2>&3 3>&-
+# setopt promptsubst
+# /profiling bottom

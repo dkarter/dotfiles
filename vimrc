@@ -21,6 +21,7 @@
 
   " alias for leader key
     nmap <space> \
+    xmap <space> \
 
   " disable bracketed paste
   " set t_BE=
@@ -126,7 +127,7 @@
 " VimMatchUp:
 " ====================================
 
-let g:matchup_transmute_enabled = 1
+" let g:matchup_transmute_enabled = 1
 let g:matchup_matchparen_deferred = 1
 
 " ====================================
@@ -139,20 +140,65 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 " ====================================
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
+
 " ====================================
-" NeovimCompletionManager (NCM):
+" Deoplete:
 " ====================================
 
-" use tab to cycle through completions
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:cm_sources_override = {
-    \ 'cm-ultisnips': { 'enable': 0 }
-    \ }
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>
+         \ pumvisible() ? "\<C-n>" :
+         \ <SID>check_back_space() ? "\<TAB>" :
+         \ deoplete#mappings#manual_complete()
 
-" use enter to complete snippets - not working
-" imap <expr> <CR>  (pumvisible() ?  "\<c-y>\<Plug>(expand_or_nl)" : "\<CR>")
-" imap <expr> <Plug>(expand_or_nl) (cm#completed_is_snippet() ? "\<C-U>":"\<CR>")
+function! s:check_back_space() abort
+  let l:col = col('.') - 1
+  return !l:col || getline('.')[l:col - 1]  =~? '\s'
+endfunction
+
+" ====================================
+" Vim multiple cursors + DEOPLETE:
+" ====================================
+augroup VimMultiCursors
+  autocmd!
+  autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
+  autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+augroup END
+
+
+" ====================================
+" Carbon Now Screenshots (vim-carbon-now-sh)
+" ====================================
+vnoremap <F5> :CarbonNowSh<CR>
+
+" ====================================
+" Neosnippet:
+" ====================================
+
+let g:neosnippet#enable_completed_snippet = 1
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+
 
 " ====================================
 " PivotalTracker.vim:
@@ -184,13 +230,19 @@ endif
 " LanguageClient-neovim:
 " ====================================
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rls'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'haskell': ['hie', '--lsp'],
     \ 'elixir': ['elixir-ls'],
+    \ 'ruby': ['tcp://localhost:7658']
     \ }
 
-let g:LanguageClient_hasSnippetSupport = 0
+    " \ 'ruby': ['solargraph', 'stdio'],
+    " \ 'ruby': ['tcp://127.0.0.1:7658']
+
+" let g:LanguageClient_hasSnippetSupport = 0
+
+nnoremap <leader>; :call LanguageClient_contextMenu()<CR>
 
 " ====================================
 " NeoTerm:
@@ -326,6 +378,7 @@ nnoremap <silent> <C-g>g :call FZFOpen(':Ag')<CR>
 nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
 nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
 nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
+nnoremap <silent> <C-h> :call FZFOpen(':History')<CR>
 " nnoremap <silent> <C-p> :call FZFOpen(':call Fzf_dev()')<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -338,44 +391,44 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " ======================================
 
 " Files + devicons
-" function! Fzf_dev()
-"   let l:fzf_files_options =
-"         \ '--preview "echo {} | tr -s \" \" \"\n\" | tail -1 | xargs rougify | head -'.&lines.'"'
-"   function! s:files()
-"     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-"     return s:prepend_icon(l:files)
-"   endfunction
+function! Fzf_dev()
+  let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
 
-"   function! s:prepend_icon(candidates)
-"     let l:result = []
-"     for l:candidate in a:candidates
-"       let l:filename = fnamemodify(l:candidate, ':p:t')
-"       let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-"       call add(l:result, printf('%s %s', l:icon, l:candidate))
-"     endfor
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
 
-"     return l:result
-"   endfunction
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
 
-"   function! s:edit_file(item)
-"     let l:parts = split(a:item, ' ')
-"     let l:file_path = get(l:parts, 1, '')
-"     " TODO: not working
-"     let l:cmd = get({
-"                \ 'ctrl-x': 'split',
-"                \ 'ctrl-v': 'vertical split',
-"                \ 'ctrl-t': 'tabe'
-"                \ }, a:item[0], 'e')
-"     execute 'silent ' . l:cmd . ' ' . l:file_path
-"   endfunction
+    return l:result
+  endfunction
 
-"   call fzf#run({
-"         \ 'source': <sid>files(),
-"         \ 'sink':   function('s:edit_file'),
-"         \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
-"         \            l:fzf_files_options,
-"         \ 'down':    '40%' })
-" endfunction
+  function! s:edit_file(item)
+    let l:pos = stridx(a:item, ' ')
+    let l:file_path = a:item[pos+1:-1]
+    " TODO: not working
+    let l:cmd = get({
+               \ 'ctrl-x': 'split',
+               \ 'ctrl-v': 'vertical split',
+               \ 'ctrl-t': 'tabe'
+               \ }, a:item[0], 'e')
+    execute 'silent ' . l:cmd . ' ' . l:file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
+        \            l:fzf_files_options,
+        \ 'down':    '40%' })
+endfunction
 
 " Custom FZF commands ----------------------------- {{{
 fun! s:change_branch(e)
@@ -491,11 +544,6 @@ let g:switch_custom_definitions =
   \   ['first', 'second', 'third', 'fourth', 'fifth'],
   \ ]
 
-" ----------------------------------------------------------------------------
-" Rail.vim
-" ----------------------------------------------------------------------------
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 " ----------------------------------------------------------------------------
 " Vim RSpec
@@ -533,7 +581,10 @@ let g:ale_fixers = {
       \   'bash': ['shfmt'],
       \   'zsh': ['shfmt'],
       \   'elixir': ['mix_format'],
+      \   'rust': ['rustfmt'],
       \}
+
+let g:ale_sh_shfmt_options = '-i 2 -ci'
 
 let g:ale_fix_on_save = 1
 
@@ -861,15 +912,22 @@ augroup filetype_vim
 augroup END
 " }}}
 
-" Better split management, kept in sync with tmux' -- {{{
-"" noremap <leader>- :sp<CR><C-w>j
-"" noremap <leader>\| :vsp<CR><C-w>l
-" }}}
-
 "  Key Mappings -------------------------------------------------- {{{
+  " Delete current buffer without losing the split
+    nnoremap <silent> <C-x> :bp\|bd #<CR>
+
+  " open FZF in current file's directory
+    nnoremap <silent> <Leader>_ :Files <C-R>=expand('%:h')<CR><CR>
+
+  " fold file based on syntax
+    nnoremap <silent> <leader>zs :setlocal foldmethod=syntax<CR>
+
+  " rename current file
+    nnoremap <Leader>rn :Move <C-R>=expand("%")<CR>
 
   " replace word under cursor, globally, with confirmation
     nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+    vnoremap <Leader>k y :%s/"//gc<Left><Left><Left>
 
   " insert frozen string literal comment at the top of the file (ruby)
     map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>
@@ -1037,6 +1095,7 @@ augroup END
   " Open files relative to current path:
   nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
   nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+  nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
   " move lines up and down in visual mode
   xnoremap <c-k> :move '<-2<CR>gv=gv
@@ -1099,8 +1158,8 @@ if has('nvim')
     tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
 
   " send stuff to REPL using NeoTerm
-    nnoremap <silent> <c-s>r :TREPLSendLine<CR>
-    vnoremap <silent> <c-s>r :TREPLSendSelection<CR>
+    nnoremap <silent> <c-s>l :TREPLSendLine<CR>
+    vnoremap <silent> <c-s>s :TREPLSendSelection<CR>
 
   " pasting works quite well in neovim as is so disabling yo
     nnoremap <silent> yo o

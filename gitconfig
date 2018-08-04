@@ -24,6 +24,7 @@
   tr = log --graph --oneline --decorate --color
   add-untracked = !"git status --porcelain | awk '/\\?\\?/{ print $2 }' | xargs git add"
   snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+  reset-authors = commit --amend --reset-author -CHEAD
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
@@ -59,14 +60,9 @@
   singlekey = true
 [diff]
   algorithm = patience
-
-# need those here for tower and other tools that don't support include
 [user]
   name = Dorian Karter
 	email = dkarter@users.noreply.github.com
+	signingkey = E9A0BF0133FFBE79
 [github]
   user = dkarter
-# =====================================
-
-[include]
-  path = ~/.gitconfig.local

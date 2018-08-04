@@ -19,12 +19,11 @@ zplug "plugins/rake", from:oh-my-zsh
 zplug "plugins/rake-fast", from:oh-my-zsh
 zplug "plugins/react-native", from:oh-my-zsh
 zplug "plugins/ruby", from:oh-my-zsh
-zplug "plugins/tmux", from:oh-my-zsh
-zplug "plugins/tmuxinator", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
 zplug "plugins/xcode", from:oh-my-zsh
 zplug "plugins/zsh_reload", from:oh-my-zsh
-zplug "themes/refined", from:oh-my-zsh
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 # git calendar
 zplug "k4rthik/git-cal", as:command, frozen:1
@@ -40,7 +39,8 @@ zplug "docker/cli", use:contrib/completion/zsh, depth:1
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then
-    echo; zplug install
+    echo
+    zplug install
   fi
 fi
 
