@@ -30,6 +30,8 @@ zplug "k4rthik/git-cal", as:command, frozen:1
 
 zplug "zsh-users/zsh-autosuggestions", depth:1
 zplug "zsh-users/zsh-completions", depth:1
+# syntax highlighting of commands
+zplug "zsh-users/zsh-syntax-highlighting", depth:1, defer:2
 
 # docker completions
 zplug "docker/compose", use:contrib/completion/zsh, depth:1
