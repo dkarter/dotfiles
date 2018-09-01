@@ -483,7 +483,7 @@ bindkey -s "^Xi" "^[Iiex -S ^[A"
 eval "$(direnv hook zsh)"
 
 # tell RipGrep where to look for it's config file
-export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
