@@ -8,118 +8,115 @@
 "  ▀██████▀  █▀    ▀█   ███   █▀
 
 " General settings {{{
-  scriptencoding utf-16      " allow emojis in vimrc
-  set nocompatible           " vim, not vi
-  syntax on                  " syntax highlighting
-  filetype plugin indent on  " try to recognize filetypes and load rel' plugins
+ scriptencoding utf-16      " allow emojis in vimrc
+ set nocompatible           " vim, not vi
+ syntax on                  " syntax highlighting
+ filetype plugin indent on  " try to recognize filetypes and load rel' plugins
 " }}}
 
-"  Behavior Modification ----------------------  {{{
+ "  Behavior Modification ----------------------  {{{
 
-  " set leader key
-    let g:mapleader="\\"
+   " set leader key
+     let g:mapleader="\\"
 
-  " alias for leader key
-    nmap <space> \
-    xmap <space> \
+   " alias for leader key
+     nmap <space> \
+     xmap <space> \
 
-  " disable bracketed paste
-  " set t_BE=
+   " disable bracketed paste
+   " set t_BE=
 
-  set background=dark   " tell vim what the background color looks like
-  set backspace=2       " Backspace deletes like most programs in insert mode
-  set history=200       " how many : commands to save in history
-  set ruler             " show the cursor position all the time
-  set showcmd           " display incomplete commands
-  set incsearch         " do incremental searching
-  set laststatus=2      " Always display the status line
-  set autowrite         " Automatically :write before running commands
-  set ignorecase        " ignore case in searches
-  set smartcase         " use case sensitive if capital letter present or \C
-  set magic             " Use 'magic' patterns (extended regular expressions).
-  set guioptions=       " remove scrollbars on macvim
-  set noshowmode        " don't show mode as airline already does
-  set showcmd           " show any commands
-  set foldmethod=manual " set folds by syntax of current language
-  set mouse=a           " enable mouse (selection, resizing windows)
-  set iskeyword+=-      " treat dash separated words as a word text object
+   set background=dark   " tell vim what the background color looks like
+   set backspace=2       " Backspace deletes like most programs in insert mode
+   set history=200       " how many : commands to save in history
+   set ruler             " show the cursor position all the time
+   set showcmd           " display incomplete commands
+   set incsearch         " do incremental searching
+   set laststatus=2      " Always display the status line
+   set autowrite         " Automatically :write before running commands
+   set ignorecase        " ignore case in searches
+   set smartcase         " use case sensitive if capital letter present or \C
+   set magic             " Use 'magic' patterns (extended regular expressions).
+   set guioptions=       " remove scrollbars on macvim
+   set noshowmode        " don't show mode as airline already does
+   set showcmd           " show any commands
+   set foldmethod=manual " set folds by syntax of current language
+   set mouse=a           " enable mouse (selection, resizing windows)
+   set iskeyword+=-      " treat dash separated words as a word text object
 
-  set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
-  set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
-  set expandtab         " insert tab with right amount of spacing
-  set shiftround        " Round indent to multiple of 'shiftwidth'
-  set termguicolors     " enable true colors
-  set hidden            " enable hidden unsaved buffers
+   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
+   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
+   set expandtab         " insert tab with right amount of spacing
+   set shiftround        " Round indent to multiple of 'shiftwidth'
+   set termguicolors     " enable true colors
+   set hidden            " enable hidden unsaved buffers
 
-  if !has('nvim')             " does not work on neovim
-    set emoji                 " treat emojis 😄  as full width characters
-    set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
-  end
+   if !has('nvim')             " does not work on neovim
+     set emoji                 " treat emojis 😄  as full width characters
+     set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
+   end
 
-  set ttyfast           " should make scrolling faster
-  set lazyredraw        " should make scrolling faster
+   set ttyfast           " should make scrolling faster
+   set lazyredraw        " should make scrolling faster
 
-  " visual bell for errors
-    set visualbell
+   " visual bell for errors
+     set visualbell
 
-  " wildmenu
-    set wildmenu                        " enable wildmenu
-    set wildmode=list:longest,list:full " configure wildmenu
+   " wildmenu
+     set wildmenu                        " enable wildmenu
+     set wildmode=list:longest,list:full " configure wildmenu
 
-  " text appearance
-    set textwidth=80
-    set nowrap                          " nowrap by default
-    set list                            " show invisible characters
-    set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
+   " text appearance
+     set textwidth=80
+     set nowrap                          " nowrap by default
+     set list                            " show invisible characters
+     set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 
-  " Numbers
-    set number
-    set numberwidth=1
+   " Numbers
+     set number
+     set numberwidth=1
 
-  " set where swap file and undo/backup files are saved
-    set backupdir=~/.vim/tmp,.
-    set directory=~/.vim/tmp,.
+   " set where swap file and undo/backup files are saved
+     set backupdir=~/.vim/tmp,.
+     set directory=~/.vim/tmp,.
 
-  " persistent undo between file reloads
-    if has('persistent_undo')
-      set undofile
-      set undodir=~/.vim/tmp,.
-    endif
+   " persistent undo between file reloads
+     if has('persistent_undo')
+       set undofile
+       set undodir=~/.vim/tmp,.
+     endif
 
-  " Open new split panes to right and bottom, which feels more natural
-    set splitbelow
-    set splitright
+   " Open new split panes to right and bottom, which feels more natural
+     set splitbelow
+     set splitright
 
-  " Set spellfile to location that is guaranteed to exist, can be symlinked to
-  " Dropbox or kept in Git
-    set spellfile=$HOME/.vim-spell-en.utf-8.add
+   " Set spellfile to location that is guaranteed to exist, can be symlinked to
+   " Dropbox or kept in Git
+     set spellfile=$HOME/.vim-spell-en.utf-8.add
 
-  " Autocomplete with dictionary words when spell check is on
-    set complete+=kspell
+   " Autocomplete with dictionary words when spell check is on
+     set complete+=kspell
 
-  " Always use vertical diffs
-    set diffopt+=vertical
+   " Always use vertical diffs
+     set diffopt+=vertical
 
-  " set shell to zsh
-    set shell=/bin/zsh
+   " highlight fenced code blocks in markdown
+   let g:markdown_fenced_languages = [
+         \ 'html',
+         \ 'elm',
+         \ 'vim',
+         \ 'js=javascript',
+         \ 'json',
+         \ 'python',
+         \ 'ruby',
+         \ 'elixir',
+         \ 'sql',
+         \ 'bash=sh'
+         \ ]
 
-  " highlight fenced code blocks in markdown
-  let g:markdown_fenced_languages = [
-        \ 'html',
-        \ 'elm',
-        \ 'vim',
-        \ 'js=javascript',
-        \ 'json',
-        \ 'python',
-        \ 'ruby',
-        \ 'elixir',
-        \ 'sql',
-        \ 'bash=sh'
-        \ ]
-
-  " enable folding in bash files
-    let g:sh_fold_enabled=1
-" }}}
+   " enable folding in bash files
+     let g:sh_fold_enabled=1
+ " }}}
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
 
@@ -156,6 +153,11 @@ function! s:check_back_space() abort
   return !l:col || getline('.')[l:col - 1]  =~? '\s'
 endfunction
 
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.css   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni#input_patterns.scss   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni#input_patterns['javascript.jsx'] = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+
 " ====================================
 " Vim multiple cursors + DEOPLETE:
 " ====================================
@@ -185,17 +187,13 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ neosnippet#expandable_or_jumpable() ?
+      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
 
 let g:neosnippet#enable_snipmate_compatibility = 1
 
@@ -363,8 +361,10 @@ let g:bullets_enabled_file_types = [
 "  FZF
 " =====================================
 " set fzf's default input to ripgrep instead of find. This also removes gitignore etc
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-let g:fzf_files_options = '--preview "rougify {} | head -'.&lines.'"'
+" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always --exclude .git'
+let $FZF_DEFAULT_OPTS="--ansi"
+let g:fzf_files_options = '--preview "(head -'.&lines.' | rougify {} || bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
 
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
@@ -855,8 +855,6 @@ command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
 command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 command! BreakLineAtComma :normal! f,.
 command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
-" command! ToggleDistractionFreeWriting :call ToggleDistractionFreeWriting()<CR>
-" map <F4> :ToggleDistractionFreeWriting<CR>
 " }}}
 
 " Auto commands ------------------------------------------------- {{{
@@ -990,7 +988,7 @@ augroup END
       endif
     endfun
 
-    nnoremap <silent> <leader>vr :call OpenConfigFile($MYVIMRC)<cr>
+    nnoremap <silent> <leader>vr :call OpenConfigFile('~/.vimrc')<cr>
     nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
 
   " toggle background light / dark

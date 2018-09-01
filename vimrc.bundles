@@ -42,6 +42,8 @@ endif
   Plug 'fszymanski/deoplete-emoji'
   Plug 'zchee/deoplete-go'
   Plug 'wokalski/autocomplete-flow'
+  Plug 'racer-rust/vim-racer'
+  Plug 'zchee/deoplete-zsh', {'for': ['zsh', 'bash', 'sh']}
 
   " For func argument completion
   Plug 'Shougo/neosnippet'
@@ -389,6 +391,12 @@ Plug 'enricobacis/vim-airline-clock'
 " CSS/SCSS {{{
   " highlight colors in css
   Plug 'ap/vim-css-color', { 'for': ['javascript.jsx', 'css', 'scss', 'sass', 'html', 'eruby'] }
+
+  " up to date CSS3 syntax highlighting
+  Plug 'hail2u/vim-css3-syntax'
+
+  " css language server
+  Plug 'vscode-langservers/vscode-css-languageserver-bin'
 " }}}
 
 " VimScript: {{{
