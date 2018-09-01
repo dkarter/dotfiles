@@ -29,6 +29,7 @@
   excludesfile = ~/.gitignore
   autocrlf = input
   whitespace = warn
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [merge]
   ff = only
   summary = true
