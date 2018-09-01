@@ -10,7 +10,6 @@ zplug "plugins/gem", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/go", from:oh-my-zsh
-zplug "plugins/heroku", from:oh-my-zsh
 zplug "plugins/mix", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
 zplug "plugins/pj", from:oh-my-zsh
@@ -30,8 +29,12 @@ zplug "k4rthik/git-cal", as:command, frozen:1
 
 zplug "zsh-users/zsh-autosuggestions", depth:1
 zplug "zsh-users/zsh-completions", depth:1
+
 # syntax highlighting of commands
 zplug "zsh-users/zsh-syntax-highlighting", depth:1, defer:2
+
+# touch bar customization in iTerm
+zplug "zsh-users/zsh-apple-touchbar", depth:1
 
 # docker completions
 zplug "docker/compose", use:contrib/completion/zsh, depth:1
