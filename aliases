@@ -8,6 +8,8 @@ alias mkdir="mkdir -p"
 alias rmf='rm -rf'
 alias rmrf='rm -rf'
 alias less='less -r'
+alias top="sudo htop" # alias top and fix high sierra bug
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 # vim
 alias e="$EDITOR"
@@ -28,7 +30,11 @@ alias b="bundle"
 # SSH fix for working with xterm-color256-italic
 alias ssh="TERM=xterm-256color ssh"
 
+# You-Get
 alias yg='you-get'
+
+#PrettyPing
+alias pping='prettyping --nolegend'
 
 # Rails
 alias migrate="be rails db:migrate db:rollback && be rails db:migrate"
@@ -79,12 +85,13 @@ alias dkc='docker container'
 alias usbtree='ioreg -p IOUSB -l -w 0'
 
 # fuzzy commands with fzf
-alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
-alias ftk='tmux kill-session -t $(tl | fzf | tr ":" "\n" | head -n1)'
 alias gcorb='gco --track $(git branch -r | fzf)'
 alias gcob='gco $(git branch | fzf)'
 alias fz="fzf --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort' --preview '[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"
 alias vfz='vim $(fz)'
+alias preview="fzf --preview 'bat --color \"always\" --line-range 0:30 {}'"
+alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
+alias ftk='tmux kill-session -t $(tl | fzf | tr ":" "\n" | head -n1)'
 
 # network utils
 alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo cache flushed'
@@ -119,7 +126,6 @@ alias brewup='brew upgrade --cleanup && brew cleanup'
 alias brewg='brew list | rg'
 
 alias d='cd ~/dev'
-alias fd='cd ~/dev/$(ls ~/dev/ --color=never | fzf)'
 alias f='cd ~/dev/forks'
 alias dt='cd ~/dotfiles'
 alias dot='cd ~/dotfiles'
@@ -128,6 +134,9 @@ alias blog='cd ~/dev/sites/DorianKarter.com/blog'
 alias docs='cd ~/Dropbox/Documents'
 
 alias ss='imgur-screenshot.sh'
+
+# tldr (quicker to type help than tldr)
+alias help='tldr'
 
 # quick config
 alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
