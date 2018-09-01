@@ -499,8 +499,11 @@ source $ZPLUG_HOME/init.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
 # profiling bottom
 # unsetopt XTRACE
 # exec 2>&3 3>&-
 # setopt promptsubst
 # /profiling bottom
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
