@@ -1,5 +1,5 @@
 " No audible bell
-set vb
+set visualbell
 
 " No toolbar
 set guioptions-=T
@@ -15,4 +15,3 @@ set macligatures
 if filereadable($HOME . '/.gvimrc.local')
   source ~/.gvimrc.local
 endif
-

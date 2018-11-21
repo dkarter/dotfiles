@@ -137,7 +137,6 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 " ====================================
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
-
 " ====================================
 " Deoplete:
 " ====================================
@@ -153,10 +152,19 @@ function! s:check_back_space() abort
   return !l:col || getline('.')[l:col - 1]  =~? '\s'
 endfunction
 
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#sources = {}
+" let g:deoplete#sources._ = ['file', 'neosnippet']
 let g:deoplete#omni#input_patterns = {}
+
 let g:deoplete#omni#input_patterns.css   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
 let g:deoplete#omni#input_patterns.scss   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
 let g:deoplete#omni#input_patterns['javascript.jsx'] = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+
+" Elm support (https://github.com/ElmCast/elm-vim/issues/52)
+" let g:deoplete#omni#functions.elm = ['elm#Complete']
+" let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
+" let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
 
 " ====================================
 " Vim multiple cursors + DEOPLETE:
@@ -362,9 +370,9 @@ let g:bullets_enabled_file_types = [
 " =====================================
 " set fzf's default input to ripgrep instead of find. This also removes gitignore etc
 " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always --exclude .git'
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always --exclude .git --ignore-file ~/.gitignore'
 let $FZF_DEFAULT_OPTS="--ansi"
-let g:fzf_files_options = '--preview "(head -'.&lines.' | rougify {} || bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
+let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
 
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
@@ -577,12 +585,14 @@ let g:ale_fixers = {
       \   'javascript.jsx': ['prettier'],
       \   'json': ['prettier'],
       \   'scss': ['prettier'],
-      \   'ruby': ['rubocop'],
       \   'bash': ['shfmt'],
       \   'zsh': ['shfmt'],
       \   'elixir': ['mix_format'],
       \   'rust': ['rustfmt'],
+      \   'elm': ['elm-format'],
       \}
+      " \   'ruby': ['rubocop'], disabled since ALE is broken (see
+      " https://github.com/w0rp/ale/pull/2036) once fix is merged re-enable
 
 let g:ale_sh_shfmt_options = '-i 2 -ci'
 
@@ -895,12 +905,6 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     " automatically rebalance windows on vim resize
     autocmd VimResized * :wincmd =
   augroup END
-
-  augroup Elm
-    autocmd!
-    autocmd FileType elm setlocal tabstop=4
-    autocmd BufWritePre *.elm :ElmFormat
-  augroup END
 " }}}
 
 " Vim Script file settings ------------------------ {{{
@@ -925,7 +929,7 @@ augroup END
 
   " replace word under cursor, globally, with confirmation
     nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-    vnoremap <Leader>k y :%s/"//gc<Left><Left><Left>
+    vnoremap <Leader>k y :%s/<C-r>"//gc<Left><Left><Left>
 
   " insert frozen string literal comment at the top of the file (ruby)
     map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>

@@ -219,9 +219,10 @@ if $(command -v brew >/dev/null); then
 fi
 
 # fzf stuff
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
-# add support for ctrl+o to open selected file in VS Code
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+export FZF_DEFAULT_COMMAND='fd --type f --follow --color=always --exclude .git --exclude node_modules --exclude vendor --exclude build --exclude _build --exclude bundle --exclude Godeps'
+# add support for ctrl+o to open selected file in VS Code, also ansi for fd
+# color
+export FZF_DEFAULT_OPTS="--ansi --bind='ctrl-o:execute(code {})+abort'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if $(command -v fzf >/dev/null); then
@@ -497,13 +498,20 @@ source $ZPLUG_HOME/init.zsh
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+# add go path bin to path
+export PATH=$PATH:$GOPATH/bin
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# qt
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/qt/lib"
+export CPPFLAGS="-I/usr/local/opt/qt/include"
 
 # profiling bottom
 # unsetopt XTRACE
 # exec 2>&3 3>&-
 # setopt promptsubst
 # /profiling bottom
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
