@@ -371,7 +371,7 @@ let g:bullets_enabled_file_types = [
 " set fzf's default input to ripgrep instead of find. This also removes gitignore etc
 " let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always --exclude .git --ignore-file ~/.gitignore'
-let $FZF_DEFAULT_OPTS="--ansi"
+let $FZF_DEFAULT_OPTS='--ansi'
 let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
 
 function! FZFOpen(command_str)
@@ -381,8 +381,15 @@ function! FZFOpen(command_str)
   exe 'normal! ' . a:command_str . "\<cr>"
 endfunction
 
+command! -bang -nargs=* FzfRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
 nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
-nnoremap <silent> <C-g>g :call FZFOpen(':Ag')<CR>
+nnoremap <silent> <C-g>g :call FZFOpen(':FzfRg!')<CR>
 nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
 nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
 nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
@@ -935,7 +942,7 @@ augroup END
     map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>
 
   " remove highlighting on escape
-    map <silent> <esc> :noh<cr>
+    map <silent> <esc> :nohlsearch<cr>
 
   " sort selected lines
     vmap gs :sort<CR>
@@ -1012,7 +1019,6 @@ augroup END
   "split edit your tmux conf
     nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
 
-
   " VimPlug:
     nnoremap <leader>pi :PlugInstall<CR>
     nnoremap <leader>pu :PlugUpdate<CR>
@@ -1027,7 +1033,6 @@ augroup END
 
   " close all other windows with <leader>o
     nnoremap <leader>wo <c-w>o
-
 
   " Index ctags from any project, including those outside Rails
     map <Leader>ct :!ctags -R .<CR>
@@ -1095,13 +1100,13 @@ augroup END
     map g/ <Plug>(incsearch-stay)
 
   " Open files relative to current path:
-  nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
-  nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
-  nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+    nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
+    nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+    nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
   " move lines up and down in visual mode
-  xnoremap <c-k> :move '<-2<CR>gv=gv
-  xnoremap <c-j> :move '>+1<CR>gv=gv
+    xnoremap <c-k> :move '<-2<CR>gv=gv
+    xnoremap <c-j> :move '>+1<CR>gv=gv
 
 " --------------------- Key Mappings ---------------------------- }}}
 
