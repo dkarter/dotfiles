@@ -595,11 +595,10 @@ let g:ale_fixers = {
       \   'bash': ['shfmt'],
       \   'zsh': ['shfmt'],
       \   'elixir': ['mix_format'],
+      \   'ruby': ['rubocop'],
       \   'rust': ['rustfmt'],
       \   'elm': ['elm-format'],
       \}
-      " \   'ruby': ['rubocop'], disabled since ALE is broken (see
-      " https://github.com/w0rp/ale/pull/2036) once fix is merged re-enable
 
 let g:ale_sh_shfmt_options = '-i 2 -ci'
 
