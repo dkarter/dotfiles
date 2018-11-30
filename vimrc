@@ -1231,7 +1231,7 @@ augroup END
   if (getcwd() != expand('~')) && filereadable(getcwd() . '/.vimrc')
     echom '-------------> loading project specific local vimrc'
     set exrc
-    execute "source ".getcwd()."/.vimrc"
+    execute 'source ' . getcwd() . '/.vimrc'
   endif
 
 " }}}
