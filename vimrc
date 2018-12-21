@@ -123,8 +123,6 @@
 " ====================================
 " VimMatchUp:
 " ====================================
-
-" let g:matchup_transmute_enabled = 1
 let g:matchup_matchparen_deferred = 1
 
 " ====================================
@@ -152,19 +150,10 @@ function! s:check_back_space() abort
   return !l:col || getline('.')[l:col - 1]  =~? '\s'
 endfunction
 
-" let g:deoplete#omni#functions = {}
-" let g:deoplete#sources = {}
-" let g:deoplete#sources._ = ['file', 'neosnippet']
 let g:deoplete#omni#input_patterns = {}
-
-let g:deoplete#omni#input_patterns.css   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
-let g:deoplete#omni#input_patterns.scss   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni#input_patterns.css               = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni#input_patterns.scss              = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
 let g:deoplete#omni#input_patterns['javascript.jsx'] = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
-
-" Elm support (https://github.com/ElmCast/elm-vim/issues/52)
-" let g:deoplete#omni#functions.elm = ['elm#Complete']
-" let g:deoplete#omni#input_patterns.elm = '[^ \t]+'
-" let g:deoplete#sources.elm = ['omni'] + g:deoplete#sources._
 
 " ====================================
 " Vim multiple cursors + DEOPLETE:
@@ -239,14 +228,11 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rls'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'haskell': ['hie', '--lsp'],
-    \ 'elixir': ['elixir-ls'],
-    \ 'ruby': ['tcp://localhost:7658']
+    \ 'elixir': ['~/Tools/elixir-ls/release/language_server.sh'],
+    \ 'ruby': ['solargraph', 'stdio'],
     \ }
 
-    " \ 'ruby': ['solargraph', 'stdio'],
-    " \ 'ruby': ['tcp://127.0.0.1:7658']
-
-" let g:LanguageClient_hasSnippetSupport = 0
+let g:LanguageClient_hasSnippetSupport = 0
 
 nnoremap <leader>; :call LanguageClient_contextMenu()<CR>
 
@@ -305,9 +291,10 @@ let g:mta_filetypes = {
 " ====================================
 " Snippets (UltiSnips):
 " ====================================
-let g:UltiSnipsExpandTrigger               = '<C-l>'
-let g:UltiSnipsJumpForwardTrigger          = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger         = '<s-tab>'
+let g:UltiSnipsExpandTrigger="<NUL>"
+let g:UltiSnipsListSnippets="<NUL>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " :UltiSnipsEdit opens in a vertical split
 let g:UltiSnipsEditSplit                   = 'vertical'
@@ -835,14 +822,6 @@ endif
 
 " UI Customizations --------------------------------{{{
 
-  " " Gruvbox colorscheme allow italics
-  " let g:gruvbox_italic = 1
-  " let g:gruvbox_invert_selection=0
-
-  " default color scheme
-  " let g:seoul256_background = 233
-  " colorscheme seoul256
-
   set background=dark
   colorscheme one
     let g:one_allow_italics = 1
@@ -1129,7 +1108,7 @@ endif
 
 " For NeoVim ----------------------------------------------------- {{{
 if has('nvim')
-  " use neovim-remote (pip3 install neovim-remote) allows 
+  " use neovim-remote (pip3 install neovim-remote) allows
   " opening a new split inside neovim instead of nesting
   " neovim processes for git commit
     let $VISUAL      = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
@@ -1156,9 +1135,10 @@ if has('nvim')
     tnoremap <C-o> <C-\><C-n><esc><cr>
 
   " quickly toggle term
-    nnoremap <silent> <leader>o :vertical Ttoggle<cr><C-w>l
-    nnoremap <silent> <leader>O :rightbelow Ttoggle<cr><C-w>j
-    nnoremap <silent> <leader><space> :vertical Ttoggle<cr><C-w>l
+    nnoremap <silent> <leader>o :vertical botright Ttoggle<cr><C-w>l
+    nnoremap <silent> <leader>O :horizontal rightbelow Ttoggle<cr><C-w>j
+    nnoremap <silent> <leader><space> :vertical botright Ttoggle<cr><C-w>l
+
     " close terminal
     tnoremap <silent> <leader>o <C-\><C-n>:Ttoggle<cr>
     tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
