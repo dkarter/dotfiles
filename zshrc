@@ -11,12 +11,21 @@
 # /profiling top
 
 
+# zmodload zsh/zprof
+
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
-# completion
-autoload -U compinit
-compinit
+# completion only refresh once a day
+# autoload -U compinit
+# compinit
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+
+compinit -C
 
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
@@ -449,6 +458,11 @@ split() {
    printf '%s\n' "${arr[@]}"
 }
 
+# Easily jump to man page for a built-in command e.g. bashman fg
+bashman() {
+  man bash | less -p "^       $1 "
+}
+
 # color man pages
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
@@ -510,6 +524,7 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/qt/lib"
 export CPPFLAGS="-I/usr/local/opt/qt/include"
 
+# zprof
 # profiling bottom
 # unsetopt XTRACE
 # exec 2>&3 3>&-
