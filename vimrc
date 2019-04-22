@@ -148,6 +148,7 @@ augroup CocConfig
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
+
 " ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
 " ====================================
@@ -1097,11 +1098,6 @@ if has('nvim')
     let $GIT_EDITOR  = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
     let $EDITOR      = 'nvr -l'
     let $ECTO_EDITOR = 'nvr -l'
-
-  " set cursor modes
-    set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-          \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-          \,sm:block-blinkwait175-blinkoff150-blinkon175
 
   " interactive find replace preview
     set inccommand=nosplit
