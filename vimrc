@@ -291,7 +291,7 @@ let g:indentLine_color_gui = '#454C5A'
 " ====================================
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_left_sep = ''
