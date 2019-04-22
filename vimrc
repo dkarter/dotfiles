@@ -648,6 +648,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yaml'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yml'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['svg'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['elm'] = ''
 
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*vimrc.*'] = ''
@@ -681,6 +682,7 @@ let g:NERDTreeExtensionHighlightColor['exs'] = 'c57bd8'
 let g:NERDTreeExtensionHighlightColor['rabl'] = 'ac4142'
 let g:NERDTreeExtensionHighlightColor['yml'] = 'f4bf70'
 let g:NERDTreeExtensionHighlightColor['yaml'] = 'f4bf70'
+let g:NERDTreeExtensionHighlightColor['elm'] = '39B7CF'
 
 
 " ----------------------------------------------------------------------------
