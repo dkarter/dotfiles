@@ -96,6 +96,7 @@ alias fcd='cd $(fd --type d --exclude node_modules --exclude vendor --exclude bu
 
 # network utils
 alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo cache flushed'
+
 localip() {
   ifconfig en0 | rg inet | awk '{ print \$2 }'
 }
@@ -119,10 +120,11 @@ freethousand() {
 }
 
 alias vim='nvim'
+alias vimdiff='nvim -d'
 alias legacyvim='command vim'
 
 # HomeBrew
-alias brewup='brew upgrade --cleanup && brew cleanup'
+alias brewup='brew upgrade'
 # Search installed packages usage brewg lsusb
 alias brewg='brew list | rg'
 
