@@ -864,6 +864,13 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     " Vim/tmux layout rebalancing
     " automatically rebalance windows on vim resize
     autocmd VimResized * :wincmd =
+
+    " add support for comments in json (jsonc format used as configuration for
+    " many utilities)
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+
+    " notify if file changed outside of vim to avoid multiple versions
+    autocmd FocusGained * checktime
   augroup END
 " }}}
 
