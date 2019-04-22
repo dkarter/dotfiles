@@ -1133,7 +1133,7 @@ if has('nvim')
 
   " quickly toggle term
     nnoremap <silent> <leader>o :vertical botright Ttoggle<cr><C-w>l
-    nnoremap <silent> <leader>O :horizontal rightbelow Ttoggle<cr><C-w>j
+    nnoremap <silent> <leader>O :botright Ttoggle<cr><C-w>j
     nnoremap <silent> <leader><space> :vertical botright Ttoggle<cr><C-w>l
 
     " close terminal
