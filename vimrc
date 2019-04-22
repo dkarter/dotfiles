@@ -537,6 +537,11 @@ let g:flow#autoclose = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
+
+" ALE automatically updates the loclist which makes it impossible to use some
+" other plugins such as GV
+let g:ale_set_loclist = 0
+
 highlight link ALEWarningSign Directory
 highlight link ALEErrorSign WarningMsg
 nnoremap <silent> <leader>ne :ALENextWrap<CR>
