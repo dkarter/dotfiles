@@ -1106,6 +1106,21 @@ if has('nvim')
   " interactive find replace preview
     set inccommand=nosplit
 
+  " share data between nvim instances (registers etc)
+    augroup SHADA
+      autocmd!
+      autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
+            \ if exists(':rshada') | rshada | wshada | endif
+    augroup END
+
+  if has('nvim-0.4')
+    " set pum background visibility to 20 percent
+      set pumblend=20
+
+    " set file completion in command to use pum
+      set wildoptions=pum
+  endif
+
   " Navigate neovim + neovim terminal emulator with alt+direction
     tnoremap <c-h> <C-\><C-n><C-w>h
     tnoremap <c-j> <C-\><C-n><C-w>j
