@@ -485,6 +485,10 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 #   eval "$(brew command-not-found-init)"
 # fi
 
+# Compile erlang with OpenSSL from Homebrew via asdf
+export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl"
+export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl"
+
 # asdf global version manager
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
