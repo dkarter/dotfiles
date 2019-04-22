@@ -35,25 +35,16 @@ endif
   Plug 'junegunn/fzf.vim'
 " }}}
 
-" Deoplete: {{{
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-  Plug 'Shougo/neco-syntax'
-  Plug 'Shougo/neco-vim', { 'for': 'vim' }
-  Plug 'fszymanski/deoplete-emoji'
-  Plug 'zchee/deoplete-go'
-  Plug 'wokalski/autocomplete-flow'
-  Plug 'racer-rust/vim-racer'
-  Plug 'zchee/deoplete-zsh', {'for': ['zsh', 'bash', 'sh']}
+" COC {{{
+  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" }}}
 
+" Deoplete: {{{
+  Plug 'racer-rust/vim-racer'
   " For func argument completion
   Plug 'Shougo/neosnippet'
   Plug 'Shougo/neosnippet-snippets'
 
-  " include ctags for deoplete
-  Plug 'Shougo/neoinclude.vim'
-
-  " ruby sources for deoplete
-  Plug 'fishbullet/deoplete-ruby', { 'for': 'ruby' }
 " }}}
 
 " Neovim: {{{
@@ -66,12 +57,6 @@ endif
 
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
-
-    " Language Server Protocol (LSP) support for vim and neovim
-    Plug 'autozimu/LanguageClient-neovim', {
-          \ 'branch': 'next',
-          \ 'do': 'bash install.sh',
-          \ }
 
     if !exists('$TMUX')
       " simulate tmux shortcuts in neovim
@@ -272,6 +257,10 @@ endif
 
   " modern snippets for vim
   Plug 'SirVer/ultisnips'
+
+  " neosnippet snippets
+  Plug 'Shougo/neosnippet'
+  Plug 'Shougo/neosnippet-snippets'
 " }}}
 
 " JavaScript: {{{
@@ -389,9 +378,6 @@ Plug 'enricobacis/vim-airline-clock'
 " }}}
 
 " CSS/SCSS {{{
-  " highlight colors in css
-  Plug 'ap/vim-css-color', { 'for': ['javascript.jsx', 'css', 'scss', 'sass', 'html', 'eruby'] }
-
   " up to date CSS3 syntax highlighting
   Plug 'hail2u/vim-css3-syntax'
 

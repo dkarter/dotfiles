@@ -130,40 +130,23 @@ let g:matchup_matchparen_deferred = 1
 " ====================================
 nnoremap <C-w>r :WinResizerStartResize<CR>
 
-" ====================================
+"" ====================================
 " UndoTree:
 " ====================================
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 " ====================================
-" Deoplete:
+" COC
 " ====================================
 
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr> <TAB>
-         \ pumvisible() ? "\<C-n>" :
-         \ <SID>check_back_space() ? "\<TAB>" :
-         \ deoplete#mappings#manual_complete()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-function! s:check_back_space() abort
-  let l:col = col('.') - 1
-  return !l:col || getline('.')[l:col - 1]  =~? '\s'
-endfunction
-
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.css               = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
-let g:deoplete#omni#input_patterns.scss              = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
-let g:deoplete#omni#input_patterns['javascript.jsx'] = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
-
-" ====================================
-" Vim multiple cursors + DEOPLETE:
-" ====================================
-augroup VimMultiCursors
+augroup CocConfig
   autocmd!
-  autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
-  autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+  " coc-highlight: enable highlighting for symbol under cursor
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
-
 
 " ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
@@ -220,21 +203,6 @@ augroup END
 if has('nvim')
   tnoremap <silent> <leader>x <C-\><C-n>:IEx<CR>
 endif
-
-" ====================================
-" LanguageClient-neovim:
-" ====================================
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rls'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'haskell': ['hie', '--lsp'],
-    \ 'elixir': ['~/Tools/elixir-ls/release/language_server.sh'],
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ }
-
-let g:LanguageClient_hasSnippetSupport = 0
-
-nnoremap <leader>; :call LanguageClient_contextMenu()<CR>
 
 " ====================================
 " NeoTerm:
