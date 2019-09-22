@@ -23,10 +23,6 @@
      nmap <space> \
      xmap <space> \
 
-   " disable bracketed paste
-   " set t_BE=
-
-   set background=dark   " tell vim what the background color looks like
    set backspace=2       " Backspace deletes like most programs in insert mode
    set history=200       " how many : commands to save in history
    set ruler             " show the cursor position all the time
