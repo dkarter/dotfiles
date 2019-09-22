@@ -805,7 +805,12 @@ endif
 
 " UI Customizations --------------------------------{{{
 
-  set background=dark
+  if match($ITERM_PROFILE, 'light') >= 0
+    set background=light
+  else
+    set background=dark
+  endif
+
   colorscheme one
     let g:one_allow_italics = 1
     call one#highlight('elixirInclude', 'e06c75', '', 'none')
