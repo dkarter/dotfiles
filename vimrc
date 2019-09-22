@@ -150,6 +150,9 @@ augroup CocConfig
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
+" set coc as nvim man page provider for functions
+" TODO: maybe need to check if coc is enabled for file and do setlocal?
+set keywordprg=:call\ CocAction('doHover')
 
 " ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
