@@ -847,6 +847,11 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     " Remove trailing whitespace on save for ruby files.
     autocmd BufWritePre *.rb,*.ex,*.exs :%s/\s\+$//e
 
+    if exists('$ITERM_PROFILE')
+      " Preview images in vim (while in iterm)
+      autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
+    endif
+
     " When editing a file, always jump to the last known cursor position.
     " Don't do it for commit messages, when the position is invalid, or when
     " inside an event handler (happens when dropping a file on gvim).
