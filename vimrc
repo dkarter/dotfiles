@@ -1136,10 +1136,15 @@ if has('nvim')
   endif
 
   " Navigate neovim + neovim terminal emulator with alt+direction
-    tnoremap <c-h> <C-\><C-n><C-w>h
-    tnoremap <c-j> <C-\><C-n><C-w>j
-    tnoremap <c-k> <C-\><C-n><C-w>k
-    tnoremap <c-l> <C-\><C-n><C-w>l
+    tnoremap <silent><C-h> <C-\><C-n><C-w>h
+    tnoremap <silent><C-j> <C-\><C-n><C-w>j
+    tnoremap <silent><C-k> <C-\><C-n><C-w>k
+    tnoremap <silent><C-l> <C-\><C-n><C-w>l
+
+    tnoremap <silent><M-h> <C-\><C-N><C-w>h
+    tnoremap <silent><M-j> <C-\><C-N><C-w>j
+    tnoremap <silent><M-k> <C-\><C-N><C-w>k
+    tnoremap <silent><M-l> <C-\><C-N><C-w>l
 
   " easily escape terminal
     tnoremap <leader><esc> <C-\><C-n><esc><cr>
