@@ -554,6 +554,8 @@ nnoremap <silent> <leader>ne :ALENextWrap<CR>
 nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
 
 let g:ale_fixers = {
+      \   'typescript': ['prettier'],
+      \   'typescript.tsx': ['prettier'],
       \   'javascript': ['prettier'],
       \   'javascript.jsx': ['prettier'],
       \   'json': ['prettier'],
