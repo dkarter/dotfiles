@@ -493,6 +493,9 @@ export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl"
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
+# ruby-build -> configure readline path from homebrew
+export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
+
 # TODO: can we do this with zsh-async
 # set yarn binaries on path
 export PATH="$(yarn global bin):$PATH"
