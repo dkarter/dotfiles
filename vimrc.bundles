@@ -39,7 +39,36 @@ endif
 " }}}
 
 " COC {{{
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+  if executable('yarn') && executable('node')
+    let g:coc_global_extensions = [
+          \ 'coc-css',
+          \ 'coc-dictionary',
+          \ 'coc-elixir',
+          \ 'coc-eslint',
+          \ 'coc-git',
+          \ 'coc-github',
+          \ 'coc-gitignore',
+          \ 'coc-gocode',
+          \ 'coc-highlight',
+          \ 'coc-html',
+          \ 'coc-json',
+          \ 'coc-rls',
+          \ 'coc-sh',
+          \ 'coc-neosnippet',
+          \ 'coc-snippets',
+          \ 'coc-omni',
+          \ 'coc-solargraph',
+          \ 'coc-svg',
+          \ 'coc-syntax',
+          \ 'coc-tslint-plugin',
+          \ 'coc-tsserver',
+          \ 'coc-ultisnips',
+          \ 'coc-vimlsp',
+          \ 'coc-yaml',
+          \ 'coc-yank',
+          \ ]
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+  endif
 " }}}
 
 " Deoplete: {{{
