@@ -863,6 +863,7 @@ command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
     " Set syntax highlighting for specific file types
     autocmd BufRead,BufNewFile Appraisals,*.rabl set filetype=ruby
     autocmd BufRead,BufNewFile .babelrc set filetype=json
+    autocmd BufRead,BufNewFile *.yrl set filetype=erlang
     autocmd BufRead,BufNewFile *.md set filetype=markdown
     autocmd BufRead,BufNewFile .eslintrc,.prettierrc set filetype=json
 
