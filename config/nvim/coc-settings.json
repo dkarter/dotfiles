@@ -11,10 +11,17 @@
       "args": [],
       "filetypes": ["vim", "eruby", "markdown"]
     },
-    "elm": {
+    "elmLS": {
       "command": "elm-language-server",
-      "args": [],
-      "filetypes": ["elm"]
+      "args": ["--stdio"],
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "runtime": "node",
+        "elmPath": "elm",
+        "elmFormatPath": "elm-format",
+        "elmTestPath": "elm-test"
+      }
     }
   }
 }
