@@ -135,6 +135,10 @@ nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 " COC
 " ====================================
 
+" Tell is where node is because some projects I am working on refuse to upgrade
+" to an LTS up-to-date version of node :arghhhh:
+let g:coc_node_path = "/Users/dorian/.asdf/installs/nodejs/10.15.3/bin/node"
+
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
