@@ -1,7 +1,7 @@
 # vim: ft=sh
 # Unix
-alias l="ll"
-alias ll="lsd --group-dirs first -1lah"
+alias l="lsd --group-dirs first -ah"
+alias ll="l -l"
 alias ls="gls -F -G --color --group-directories-first"
 alias ln="ln -v"
 alias mkdir="mkdir -p"
