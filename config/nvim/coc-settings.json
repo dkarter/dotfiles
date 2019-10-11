@@ -20,8 +20,9 @@
         "runtime": "node",
         "elmPath": "elm",
         "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test"
+        "elmTestPath": "./node_modules/elm-test/bin/elm-test"
       }
     }
-  }
+  },
+  "coc.preferences.enableFloatHighlight": false
 }
