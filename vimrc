@@ -158,6 +158,9 @@ augroup CocConfig
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
 " set coc as nvim man page provider for functions
 " TODO: maybe need to check if coc is enabled for file and do setlocal?
 set keywordprg=:call\ CocAction('doHover')
