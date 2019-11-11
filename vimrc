@@ -550,19 +550,15 @@ let g:jsx_ext_required = 0
 "  Ack + Ag
 " =====================================
 
-" Grep selection with Ag
-xnoremap <leader>g y :Ack "<CR>
-nnoremap <Leader>g :Ack <C-r><C-w><CR>
+" Grep selection with Rg
+xnoremap <leader>g y :Rg "<CR>
+nnoremap <Leader>g :Rg <C-r><C-w><CR>
 
-" Use The Silver Searcher for grep https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use Ag for Ack
-  let g:ackprg = 'ag --vimgrep --smart-case'
+" Use RipGrep for grep https://www.wezm.net/technical/2016/09/ripgrep-with-vim/
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
-
-nnoremap <leader>f :Ack!<Space>
 
 " ----------------------------------------------------------------------------
 " vim slime
