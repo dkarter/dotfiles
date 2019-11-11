@@ -58,10 +58,6 @@
    " visual bell for errors
      set visualbell
 
-   " wildmenu
-     set wildmenu                        " enable wildmenu
-     set wildmode=list:longest,list:full " configure wildmenu
-
    " text appearance
      set textwidth=80
      set nowrap                          " nowrap by default
