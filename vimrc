@@ -354,10 +354,8 @@ let g:bullets_enabled_file_types = [
 " =====================================
 "  FZF
 " =====================================
-" set fzf's default input to ripgrep instead of find. This also removes gitignore etc
-" let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always --exclude .git --ignore-file ~/.gitignore'
-let $FZF_DEFAULT_OPTS='--ansi'
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always -E .git --ignore-file ~/.gitignore'
+let $FZF_DEFAULT_OPTS='--ansi --layout=reverse'
 let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
 
 function! FZFOpen(command_str)
