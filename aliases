@@ -178,6 +178,12 @@ alias mps='mix phx.server'
 alias mt='mix test'
 alias mdg='mix deps.get'
 alias mdca='mix deps.clean --all'
+function mix_cmd_app() {
+  mix cmd --app $1 mix
+}
+#  execute commands on umbrella apps
+alias ma='mix_cmd_app'
+
 
 # yarn
 alias yga='yarn global add'
