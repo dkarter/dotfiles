@@ -1190,9 +1190,9 @@ augroup END
     map g/ <Plug>(incsearch-stay)
 
   " Open files relative to current path:
-    nnoremap <leader>e :edit <C-R>=expand("%:p:h") . "/" <CR>
-    nnoremap <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
-    nnoremap <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+    nnoremap <leader>ed :edit <C-R>=expand("%:p:h") . "/" <CR>
+    nnoremap <leader>sp :split <C-R>=expand("%:p:h") . "/" <CR>
+    nnoremap <leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
   " move lines up and down in visual mode
     xnoremap <c-k> :move '<-2<CR>gv=gv
