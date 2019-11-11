@@ -195,4 +195,5 @@ alias yi='yarn install'
 
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
 # Include machine specific aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+
+[ -f ~/.aliases.local ] && source ~/.aliases.local
