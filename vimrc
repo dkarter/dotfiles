@@ -236,21 +236,6 @@ augroup END
 
 
 " ====================================
-" Alchemist.vim
-" ====================================
-let g:alchemist#elixir_erlang_src = "/Users/dkarter/dev/forks/elixir+otp"
-
-augroup ElixirIex
-  autocmd!
-  autocmd FileType elixir nnoremap <silent> <buffer> <leader>x :IEx<CR>
-augroup END
-
-" for toggling from terminal
-if has('nvim')
-  tnoremap <silent> <leader>x <C-\><C-n>:IEx<CR>
-endif
-
-" ====================================
 " NeoTerm:
 " ====================================
 let g:neoterm_repl_ruby = 'pry'
