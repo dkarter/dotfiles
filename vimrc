@@ -458,13 +458,6 @@ function! Fzf_dev()
 endfunction
 
 " Custom FZF commands ----------------------------- {{{
-fun! s:change_branch(e)
-  let l:_ = system('git checkout ' . a:e)
-  :e!
-  :AirlineRefresh
-  echom 'Changed branch to' . a:e
-endfun
-
  fun! s:parse_pivotal_story(entry)
     let l:stories = pivotaltracker#stories('', '')
     let l:filtered = filter(l:stories, {_idx, val -> val.menu == a:entry[0]})
@@ -486,28 +479,64 @@ endfun
        \ 'down': '20%'
        \ })
 
-command! Gbranch call fzf#run(
-      \ {
-      \ 'source': 'git branch',
-      \ 'sink': function('<sid>change_branch'),
-      \ 'options': '-m',
-      \ 'down': '20%'
-      \ })
+ " ------  CHANGE BRANCH (Gbranch) ------- {{{
+    fun! s:change_branch(e)
+      let l:_ = system('git checkout ' . a:e)
+      :e!
+      :AirlineRefresh
+      echom 'Changed branch to' . a:e
+    endfun
 
-fun! s:change_remote_branch(e)
-  let l:_ = system('git checkout --track ' . a:e)
-  :e!
-  :AirlineRefresh
-  echom 'Changed to remote branch' . a:e
-endfun
+    command! Gbranch call fzf#run(
+          \ {
+          \ 'source': 'git branch',
+          \ 'sink': function('<sid>change_branch'),
+          \ 'options': '-m',
+          \ 'window': 'call FloatingFZF()'
+          \ })
+ " ------  /CHANGE BRANCH (Gbranch) ------- }}}
 
-command! Grbranch call fzf#run(
-      \ {
-      \ 'source': 'git branch -r',
-      \ 'sink': function('<sid>change_remote_branch'),
-      \ 'options': '-m',
-      \ 'down': '20%'
-      \ })
+ " ------  CHANGE REMOTE BRANCH (Gbranch) ------- {{{
+    fun! s:change_remote_branch(e)
+      let l:_ = system('git checkout --track ' . a:e)
+      :e!
+      :AirlineRefresh
+      echom 'Changed to remote branch' . a:e
+    endfun
+
+    command! Grbranch call fzf#run(
+          \ {
+          \ 'source': 'git branch -r',
+          \ 'sink': function('<sid>change_remote_branch'),
+          \ 'options': '-m',
+          \ 'window': 'call FloatingFZF()'
+          \ })
+ " ------  /CHANGE REMOTE BRANCH (Gbranch) ------- }}}
+
+ " ------  JUMP TO GIT CONFLICTS (Gconflict) ------- {{{
+    fun! s:jump_to_first_conflict(file_path)
+      execute 'silent e ' . a:file_path
+      :call search('^<<<')
+    endfun
+
+    fun! s:gconflict_preview_cmd()
+      let l:first_conflict_line_num = "rg -I -n -m1 '^<<<<' {} | cut -f1 -d ':'"
+      let l:line_range = '--line-range \"\$(' . l:first_conflict_line_num . '):\"'
+      let l:bat_cmd = 'bat --color \"always\" ' . l:line_range . ' {}'
+      return '--preview "' . l:bat_cmd . '"'
+    endfun
+
+
+    command! Gconflict call fzf#run(
+          \ {
+          \ 'source': "rg -l '^(<<<|===|>>>)'",
+          \ 'sink': function('<sid>jump_to_first_conflict'),
+          \ 'options': '-m '. s:gconflict_preview_cmd(),
+          \ 'window': 'call FloatingFZF()'
+          \ })
+
+    nmap <leader>gc :Gconflict<CR>
+ " ------  /JUMP TO GIT CONFLICTS (Gconflict) ------- }}}
 " --------------------------------------------------}}}
 
 " =====================================
