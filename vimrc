@@ -94,16 +94,17 @@
 
    " highlight fenced code blocks in markdown
    let g:markdown_fenced_languages = [
-         \ 'html',
+         \ 'bash=sh',
+         \ 'elixir',
          \ 'elm',
-         \ 'vim',
+         \ 'graphql',
+         \ 'html',
          \ 'js=javascript',
          \ 'json',
          \ 'python',
          \ 'ruby',
-         \ 'elixir',
          \ 'sql',
-         \ 'bash=sh'
+         \ 'vim',
          \ ]
 
    " enable folding in bash files
