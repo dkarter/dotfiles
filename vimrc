@@ -405,6 +405,7 @@ nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
 nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
 nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
 nnoremap <silent> <C-h> :call FZFOpen(':History')<CR>
+nnoremap <silent> <C-t> :call FZFOpen(':BTags')<CR>
 " nnoremap <silent> <C-p> :call FZFOpen(':call Fzf_dev()')<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
