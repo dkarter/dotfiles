@@ -358,6 +358,33 @@ let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always -E .git
 let $FZF_DEFAULT_OPTS='--ansi --layout=reverse'
 let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
 
+autocmd! FileType fzf
+autocmd  FileType fzf set noshowmode noruler nonu
+
+if has('nvim') && exists('&winblend') && &termguicolors
+  set winblend=10
+
+  if exists('g:fzf_colors.bg')
+    call remove(g:fzf_colors, 'bg')
+  endif
+
+  function! FloatingFZF()
+    let width = float2nr(&columns * 0.8)
+    let height = float2nr(&lines * 0.6)
+    let opts = {
+          \  'relative': 'editor',
+          \  'row': (&lines - height) / 2,
+          \  'col': (&columns - width) / 2,
+          \  'width': width,
+          \  'height': height
+          \ }
+
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  endfunction
+
+  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+endif
+
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
     exe "normal! \<c-w>\<c-w>"
