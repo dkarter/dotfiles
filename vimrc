@@ -613,6 +613,36 @@ nnoremap <Leader>sa :call RunAllSpecs()<CR>
 " ----------------------------------------------------------------------------
 let g:flow#autoclose = 1
 
+
+" ----------------------------------------------------------------------------
+" Vim Test
+" ----------------------------------------------------------------------------
+
+if has('nvim')
+  " run tests with neoterm in vim-test
+  let g:test#strategy = 'neoterm'
+endif
+
+"  Support Elixir Umbrella Apps (pre 1.9) {{{
+  " https://github.com/janko/vim-test/issues/136
+  function! ElixirUmbrellaTransform(cmd) abort
+    if match(a:cmd, 'apps/') != -1
+      return substitute(a:cmd, 'mix test apps/\([^/]*\)/', 'mix cmd --app \1 mix test --color ', '')
+    else
+      return a:cmd
+    end
+  endfunction
+
+  let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+  let g:test#transformation = 'elixir_umbrella'
+" }}}
+
+nmap <silent> <leader>T :TestNearest<CR>
+nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+
+
 " ----------------------------------------------------------------------------
 " ALE
 " ----------------------------------------------------------------------------
@@ -1242,13 +1272,6 @@ if has('nvim')
   " pasting works quite well in neovim as is so disabling yo
     nnoremap <silent> yo o
     nnoremap <silent> yO O
-
-  " run tests with neoterm in vim-test
-    let g:test#strategy = 'neoterm'
-    nmap <silent> <leader>T :TestNearest<CR>
-    nmap <silent> <leader>t :TestFile<CR>
-    nmap <silent> <leader>a :TestSuite<CR>
-    nmap <silent> <leader>l :TestLast<CR>
 endif
 " }}}
 
