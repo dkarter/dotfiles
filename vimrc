@@ -464,20 +464,24 @@ endfunction
     return l:filtered[0].word
  endfun
 
- inoremap <expr> <c-x># fzf#complete(
-       \ {
-       \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
-       \ 'reducer': function('<sid>parse_pivotal_story'),
-       \ 'options': '-m',
-       \ 'down': '20%'
-       \ })
+  augroup PivotalTrackerCompletionMappings
+    autocmd!
 
- inoremap <expr> <c-x>t fzf#complete(
-       \ {
-       \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
-       \ 'options': '-m',
-       \ 'down': '20%'
-       \ })
+    autocmd FileType gitcommit inoremap <expr> <c-x># fzf#complete(
+          \ {
+          \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
+          \ 'reducer': function('<sid>parse_pivotal_story'),
+          \ 'options': '-m',
+          \ 'down': '20%'
+          \ })
+
+    autocmd FileType gitcommit inoremap <expr> <c-x>t fzf#complete(
+          \ {
+          \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
+          \ 'options': '-m',
+          \ 'down': '20%'
+          \ })
+  augroup END
 
  " ------  CHANGE BRANCH (Gbranch) ------- {{{
     fun! s:change_branch(e)
