@@ -531,6 +531,9 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/qt/lib"
 export CPPFLAGS="-I/usr/local/opt/qt/include"
 
+# z - autojump alternative
+source /usr/local/etc/profile.d/z.sh
+
 # zprof
 # profiling bottom
 # unsetopt XTRACE
