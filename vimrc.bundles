@@ -45,7 +45,6 @@ endif
           \ 'coc-github',
           \ 'coc-gitignore',
           \ 'coc-gocode',
-          \ 'coc-highlight',
           \ 'coc-html',
           \ 'coc-json',
           \ 'coc-neosnippet',
@@ -63,16 +62,8 @@ endif
           \ 'coc-yaml',
           \ 'coc-yank',
           \ ]
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
-" }}}
-
-" Deoplete: {{{
-  Plug 'racer-rust/vim-racer'
-  " For func argument completion
-  Plug 'Shougo/neosnippet'
-  Plug 'Shougo/neosnippet-snippets'
-
 " }}}
 
 " Neovim: {{{
@@ -98,7 +89,9 @@ endif
   Plug 'lambdalisue/gina.vim'
 
   " Visual git gutter
-  Plug 'airblade/vim-gitgutter'
+  " Plug 'airblade/vim-gitgutter'
+
+  Plug 'mhinz/vim-signify'
 
   " Gitv - for browsing a file's history in git
   Plug 'gregsexton/gitv'
@@ -130,9 +123,6 @@ endif
 
   " pulls info on hex packages (requires mattn/webapi-vim)
   Plug 'lucidstack/hex.vim', { 'for': 'elixir'}
-
-  " shortcuts for the Phoenix framework
-  Plug 'c-brenn/phoenix.vim'
 " }}}
 
 " Ruby: {{{
@@ -224,6 +214,8 @@ endif
 
   " highlight file icons with different colors
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+  Plug 'justinmk/vim-dirvish'
 " }}}
 
 " HTML: {{{

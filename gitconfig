@@ -32,7 +32,7 @@
   whitespace = warn
   pager = diff-so-fancy | less --tabs=4 -RFX
 [merge]
-  ff = only
+  ; ff = only
   summary = true
 [merge "bundlelock"]
   name = lock Gemfile

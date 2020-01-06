@@ -1,11 +1,17 @@
-"  ▄█    █▄   ▄█    ▄▄▄▄███▄▄▄▄
-" ███    ███ ███  ▄██▀▀▀███▀▀▀██▄
-" ███    ███ ███▌ ███   ███   ███
-" ███    ███ ███▌ ███   ███   ███
-" ███    ███ ███▌ ███   ███   ███
-" ███    ███ ███  ███   ███   ███
-" ███    ███ ███  ███   ███   ███
-"  ▀██████▀  █▀    ▀█   ███   █▀
+"
+"  ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓
+"  ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒
+" ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░
+" ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██
+" ▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒
+" ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░
+" ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░
+"    ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░
+"          ░    ░  ░    ░ ░        ░   ░         ░
+"                                 ░
+"
+"         - Dorian's NeoVim Configuration -
+
 
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
@@ -46,6 +52,7 @@
    set shiftround        " Round indent to multiple of 'shiftwidth'
    set termguicolors     " enable true colors
    set hidden            " enable hidden unsaved buffers
+   set foldcolumn=2      " display gutter markings for folds
 
    if !has('nvim')             " does not work on neovim
      set emoji                 " treat emojis 😄  as full width characters
@@ -249,8 +256,8 @@ map <leader>gst :Gist<cr>
 " ====================================
 " GitGutter:
 " ====================================
-nnoremap <silent> + :GitGutterNextHunk<cr>
-nnoremap <silent> _ :GitGutterPrevHunk<cr>
+" nnoremap <silent> + :GitGutterNextHunk<cr>
+" nnoremap <silent> _ :GitGutterPrevHunk<cr>
 
 " ====================================
 " Vim Scriptease:
@@ -418,8 +425,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " ======================================
 
 " Files + devicons
-function! Fzf_dev()
-  let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
+function! FzfIcons()
+  " let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
+  let l:fzf_files_options = '--preview "echo {} |  cut -f2 -d \" \" | xargs bat --color \"always\" --line-range 0:100"'
 
   function! s:files()
     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
@@ -446,14 +454,13 @@ function! Fzf_dev()
                \ 'ctrl-v': 'vertical split',
                \ 'ctrl-t': 'tabe'
                \ }, a:item[0], 'e')
-    execute 'silent ' . l:cmd . ' ' . l:file_path
+    execute 'silent ' . l:cmd . ' "' . l:file_path . '"'
   endfunction
 
   call fzf#run({
         \ 'source': <sid>files(),
         \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
-        \            l:fzf_files_options,
+        \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x ' . l:fzf_files_options,
         \ 'down':    '40%' })
 endfunction
 
@@ -1036,7 +1043,7 @@ augroup END
     map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>
 
   " remove highlighting on escape
-    map <silent> <esc> :nohlsearch<cr>
+    nnoremap <silent> <esc> :nohlsearch<cr>
 
   " sort selected lines
     vmap gs :sort<CR>
