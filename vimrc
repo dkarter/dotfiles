@@ -1278,13 +1278,11 @@ if has('nvim')
             \ if exists(':rshada') | rshada | wshada | endif
     augroup END
 
-  if has('nvim-0.4')
-    " set pum background visibility to 20 percent
-      set pumblend=20
+  " set pum background visibility to 20 percent
+    set pumblend=20
 
-    " set file completion in command to use pum
-      set wildoptions=pum
-  endif
+  " set file completion in command to use pum
+    set wildoptions=pum
 
   " Navigate neovim + neovim terminal emulator with alt+direction
     tnoremap <silent><C-h> <C-\><C-n><C-w>h
