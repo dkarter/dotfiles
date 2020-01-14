@@ -43,6 +43,7 @@
    set noshowmode        " don't show mode as airline already does
    set showcmd           " show any commands
    set foldmethod=manual " set folds by syntax of current language
+   set foldcolumn=2      " display gutter markings for folds
    set mouse=a           " enable mouse (selection, resizing windows)
    set iskeyword+=-      " treat dash separated words as a word text object
 
@@ -52,7 +53,6 @@
    set shiftround        " Round indent to multiple of 'shiftwidth'
    set termguicolors     " enable true colors
    set hidden            " enable hidden unsaved buffers
-   set foldcolumn=2      " display gutter markings for folds
 
    if !has('nvim')             " does not work on neovim
      set emoji                 " treat emojis 😄  as full width characters
@@ -1270,6 +1270,15 @@ if has('nvim')
 
   " interactive find replace preview
     set inccommand=nosplit
+
+    augroup TerminalMod
+      autocmd!
+      autocmd BufEnter *
+            \ if &buftype == 'terminal' |
+            \   setlocal foldcolumn=0 |
+            \ endif
+    augroup END
+
 
   " share data between nvim instances (registers etc)
     augroup SHADA
