@@ -963,6 +963,32 @@ command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
 command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
 command! BreakLineAtComma :normal! f,.
 command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
+
+" put result of fd command into quickfix list
+command! -bar -bang -complete=file -nargs=+ Cfd exe s:Grep(<q-bang>, <q-args>, 'fd', '')
+function! s:Grep(bang, args, prg, type) abort
+  let grepprg = &l:grepprg
+  let grepformat = &l:grepformat
+  let shellpipe = &shellpipe
+  try
+    let &l:grepprg = a:prg
+    setlocal grepformat=%f
+    if &shellpipe ==# '2>&1| tee' || &shellpipe ==# '|& tee'
+      let &shellpipe = "| tee"
+    endif
+    execute 'silent '.a:type.'grep! '.a:args
+    if empty(a:bang) && !empty(getqflist())
+      return 'cfirst'
+    else
+      return ''
+    endif
+  finally
+    let &l:grepprg = grepprg
+    let &l:grepformat = grepformat
+    let &shellpipe = shellpipe
+  endtry
+endfunction
+nnoremap <expr> <leader>fd ':Cfd '
 " }}}
 
 " Auto commands ------------------------------------------------- {{{
