@@ -558,12 +558,15 @@ endfunction
 let g:jsx_ext_required = 0
 
 " =====================================
-"  Ack + Ag
+"  Rg
 " =====================================
 
 " Grep selection with Rg
 xnoremap <leader>g y :Rg "<CR>
 nnoremap <Leader>g :Rg <C-r><C-w><CR>
+
+" Put cursor after :Rg command (a little faster than typing :Rg)
+nnoremap <expr> <leader>rg ':Rg '
 
 " Use RipGrep for grep https://www.wezm.net/technical/2016/09/ripgrep-with-vim/
 if executable("rg")
