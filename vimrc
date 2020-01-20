@@ -1277,6 +1277,7 @@ if has('nvim')
             \ if &buftype == 'terminal' |
             \   setlocal foldcolumn=0 |
             \ endif
+      autocmd TermEnter * setlocal foldcolumn=0
     augroup END
 
 
