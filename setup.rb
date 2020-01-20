@@ -32,7 +32,6 @@ files = %w[
   prettierrc
   pryrc
   psqlrc
-  ripgreprc
   stylelintrc
   tmux.conf
   vimrc
