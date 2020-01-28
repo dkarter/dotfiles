@@ -178,6 +178,8 @@ alias mps='mix phx.server'
 alias mt='mix test'
 alias mdg='mix deps.get'
 alias mdca='mix deps.clean --all'
+alias ecto.reset='mix ecto.drop && mix ecto.create && mix ecto.migrate && mix ecto.seed'
+alias killbeam='pgrep -f beam | xargs kill -9'
 function mix_cmd_app() {
   mix cmd --app $1 mix
 }
