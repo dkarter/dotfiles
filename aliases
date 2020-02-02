@@ -1,7 +1,16 @@
 # vim: ft=sh
 # Unix
+# short for ls
 alias l="ls"
+# just like l but a single column
+alias l1="l -1"
+# just like l but with git status
+alias lg="l --git"
+# full long list with permissions, size, ownership etc
 alias ll="l -l"
+# just like ll but with git status
+alias llg="ll --git"
+# use exa instead of system ls
 alias ls="exa -gahF --icons --group-directories-first"
 alias ln="ln -v"
 alias mkdir="mkdir -p"
