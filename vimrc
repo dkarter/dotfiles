@@ -515,7 +515,7 @@ endfunction
           \ 'source': 'git branch',
           \ 'sink': function('<sid>change_branch'),
           \ 'options': '-m',
-          \ 'window': 'call FloatingFZF()'
+          \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
           \ })
  " ------  /CHANGE BRANCH (Gbranch) ------- }}}
 
@@ -532,7 +532,7 @@ endfunction
           \ 'source': 'git branch -r',
           \ 'sink': function('<sid>change_remote_branch'),
           \ 'options': '-m',
-          \ 'window': 'call FloatingFZF()'
+          \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
           \ })
  " ------  /CHANGE REMOTE BRANCH (Gbranch) ------- }}}
 
@@ -555,7 +555,7 @@ endfunction
           \ 'source': "rg -l '^(<<<|===|>>>)'",
           \ 'sink': function('<sid>jump_to_first_conflict'),
           \ 'options': '-m '. s:gconflict_preview_cmd(),
-          \ 'window': 'call FloatingFZF()'
+          \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
           \ })
 
     nmap <leader>gc :Gconflict<CR>
