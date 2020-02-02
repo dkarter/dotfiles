@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
 def popen(cmd)
@@ -36,13 +38,14 @@ files = %w[
   tmux.conf
   vimrc
   vimrc.bundles
-  zplugrc
+  zinitrc
   zshenv
   zshrc
 ].freeze
 
 files.each do |source|
   raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
+
   target = "~/.#{source}"
   print "Creating symlink to #{target}..."
   link(source, target)

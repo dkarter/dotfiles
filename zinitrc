@@ -1,0 +1,29 @@
+# vim: ft=zsh
+
+# Load the pure theme, with zsh-async library that's bundled with it.
+# zinit ice pick"async.zsh" src"pure.zsh"
+# zinit light sindresorhus/pure
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
+
+# Load OMZ Git library
+zinit snippet OMZ::lib/git.zsh
+
+# Install OMZ git aliases
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+
+# Install OMZ elixir mix completions
+zinit ice as"completion"
+zinit snippet OMZ::plugins/mix/_mix
+
+zinit ice as"completion"
+zinit snippet OMZ::plugins/mix-fast/mix-fast.plugin.zsh
+
+# For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
+# coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
+zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+zinit light trapd00r/LS_COLORS

@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # profiling top
 # zmodload zsh/datetime
 # setopt PROMPT_SUBST
@@ -12,6 +19,9 @@
 
 
 # zmodload zsh/zprof
+
+# load zinit
+source ~/.zinit/bin/zinit.zsh
 
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
@@ -509,9 +519,7 @@ eval "$(direnv hook zsh)"
 # tell RipGrep where to look for it's config file
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-[ -f ~/.zplugrc ] && source ~/.zplugrc
+[ -f ~/.zinitrc ] && source ~/.zinitrc
 
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
@@ -531,12 +539,12 @@ export PATH="/usr/local/opt/qt/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/qt/lib"
 export CPPFLAGS="-I/usr/local/opt/qt/include"
 
-# z - autojump alternative
-source /usr/local/etc/profile.d/z.sh
-
 # zprof
 # profiling bottom
 # unsetopt XTRACE
 # exec 2>&3 3>&-
 # setopt promptsubst
 # /profiling bottom
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
