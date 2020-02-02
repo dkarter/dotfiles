@@ -12,6 +12,9 @@ call plug#begin('~/.vim/bundle')
 
 " List Plugins =====================================
 
+" delete unused buffers
+Plug 'schickling/vim-bufonly'
+
 " Legacy Vim {{{
 
 " Compatibility for legacy vim with neovim's async api
