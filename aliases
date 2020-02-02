@@ -79,6 +79,8 @@ alias gnap='git add -N . && gap && gref'
 # disable zsh git plugin
 alias gsr='gst'
 alias gcd1='git clone --depth=1'
+# only add deleted files
+alias gad='git ls-files --deleted | xargs git add'
 
 # hashrocket uses gpr and I like gup, this prevents typos
 alias gpr='gup'
