@@ -11,6 +11,9 @@ alias less='less -r'
 alias top="sudo htop" # alias top and fix high sierra bug
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
+# autojump & z
+alias z='j'
+
 # vim
 alias e="$EDITOR"
 alias v="$VISUAL"
