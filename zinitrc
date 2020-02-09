@@ -27,3 +27,6 @@ zinit snippet OMZ::plugins/mix-fast/mix-fast.plugin.zsh
 # coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
 zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
 zinit light trapd00r/LS_COLORS
+
+# Replace zsh's default completion selection menu with fzf!
+zinit light Aloxaf/fzf-tab
