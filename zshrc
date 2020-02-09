@@ -509,6 +509,7 @@ export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
 # TODO: can we do this with zsh-async
 # set yarn binaries on path
 export PATH="$(yarn global bin):$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # add iex before a command with <c-x> i
 bindkey -s "^Xi" "^[Iiex -S ^[A"
@@ -548,3 +549,6 @@ export CPPFLAGS="-I/usr/local/opt/qt/include"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
