@@ -37,11 +37,6 @@ done
 
 compinit -C
 
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
-
 # 10ms for key sequences
 KEYTIMEOUT=1
 
