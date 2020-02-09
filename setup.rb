@@ -2,25 +2,18 @@
 
 require 'fileutils'
 
-def popen(cmd)
-  IO.popen(cmd) do |io|
-    while (line = io.gets)
-      puts line
-    end
-  end
-end
+ASDF_INSTALL_DIR = '~/.asdf'
+GIT_TEMPLATE_INSTALL_DIR = '~/.git_template'
+ZINIT_INSTALL_DIR = '~/.zinit/bin'
 
-def link(source, target)
-  FileUtils.ln_sf(File.expand_path(source), File.expand_path(target))
-end
+DIRS = [
+  '~/.zinit',
+  '~/.vim',
+  '~/.vim/tmp',
+  '~/.config'
+].freeze
 
-def mkdir(path)
-  FileUtils.mkdir_p(File.expand_path(path))
-end
-
-puts '===== Symlinking dotfiles'
-
-files = %w[
+DOTFILES = %w[
   aliases
   asdfrc
   ctags
@@ -43,30 +36,14 @@ files = %w[
   zshrc
 ].freeze
 
-files.each do |source|
-  raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
+SYMLINK_DIRS = [
+  ['vim/UltiSnips', '~/.vim/'],
+  ['config/nvim', '~/.config/'],
+  ['config/kitty', '~/.config/'],
+  ['config/ripgrep', '~/.config/']
+].freeze
 
-  target = "~/.#{source}"
-  print "Creating symlink to #{target}..."
-  link(source, target)
-  puts 'Done'
-end
-
-puts '===== Creating dirs for nested dotfiles'
-
-mkdir('~/.vim')
-mkdir('~/.config')
-
-puts '===== Symlinking nested dotfiles'
-
-link('vim/UltiSnips',  '~/.vim/')
-link('config/nvim',    '~/.config/')
-link('config/kitty',   '~/.config/')
-link('config/ripgrep', '~/.config/')
-
-puts '===== Installing necessary gems'
-
-gems = [
+GEMS = [
   'pry',           # ruby debugger
   'pry-byebug',    # better debugging experience (required by .pryrc)
   'pry-clipboard', # easily copy and paste stuff from pry (required by .pryrc)
@@ -75,30 +52,216 @@ gems = [
   'neovim',        # for NeoVim ruby plugins
   'solargraph',    # ruby language server
   'pry',           # ruby debugging
-  'iStats',        # computer peripheral stats
-]
+  'iStats'         # computer peripheral stats
+].freeze
 
-cmd = "gem install #{gems.join(' ')}"
-puts cmd
-popen(cmd)
+PIPS3 = [
+  'neovim',       # NeoVim python3 support
+  'neovim-remote' # allow controlling neovim remotely
+].freeze
 
-puts '===== Installing python packages'
+ASDF_PLUGINS = %w[
+  elixir
+  elm
+  erlang
+  golang
+  nodejs
+  python
+  ruby
+].freeze
 
-pips3 = [
-  'neovim',        # NeoVim python3 support
-  'neovim-remote', # allow controlling neovim remotely
-]
+class Installer
+  def install
+    print_title
+    create_dirs
+    install_zinit
+    install_asdf
+    update_asdf
+    install_asdf_plugins
+    install_asdf_languages if confirm('Install asdf languages latest?')
+    install_git_template
+    symlink_dotfiles
+    symlink_nested_dotfiles
+    install_rubygems
+    install_python_packages
 
-cmd = "pip3 install #{pips3.join(' ')}"
-puts cmd
-popen(cmd)
+    puts '===== ALL DONE! ====='.green
+  end
 
-pips = [
-  'neovim', # NeoVim python2 support
-]
+  private
 
-cmd = "pip install #{pips.join(' ')}"
-puts cmd
-popen(cmd)
+  def print_title
+    puts <<~TITLE
 
-puts '===== ALL DONE! ====='
+
+
+      ▓█████▄  ▒█████  ▄▄▄█████▓  █████▒██▓ ██▓    ▓█████   ██████
+      ▒██▀ ██▌▒██▒  ██▒▓  ██▒ ▓▒▓██   ▒▓██▒▓██▒    ▓█   ▀ ▒██    ▒
+      ░██   █▌▒██░  ██▒▒ ▓██░ ▒░▒████ ░▒██▒▒██░    ▒███   ░ ▓██▄
+      ░▓█▄   ▌▒██   ██░░ ▓██▓ ░ ░▓█▒  ░░██░▒██░    ▒▓█  ▄   ▒   ██▒
+      ░▒████▓ ░ ████▓▒░  ▒██▒ ░ ░▒█░   ░██░░██████▒░▒████▒▒██████▒▒
+      ▒▒▓  ▒ ░ ▒░▒░▒░   ▒ ░░    ▒ ░   ░▓  ░ ▒░▓  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░
+      ░ ▒  ▒   ░ ▒ ▒░     ░     ░      ▒ ░░ ░ ▒  ░ ░ ░  ░░ ░▒  ░ ░
+      ░ ░  ░ ░ ░ ░ ▒    ░       ░ ░    ▒ ░  ░ ░      ░   ░  ░  ░
+        ░        ░ ░                   ░      ░  ░   ░  ░      ░
+      ░
+
+                  -- Dorian's Dotfiles Installer --
+
+
+    TITLE
+  end
+
+  def create_dirs
+    puts '===== Creating dirs'.yellow
+    DIRS.each do |dir|
+      mkdir(dir)
+    end
+  end
+
+  def install_zinit
+    puts '===== Installing zinit'.yellow
+
+    git_install('https://github.com/zdharma/zinit.git', ZINIT_INSTALL_DIR)
+  end
+
+  def install_asdf
+    puts '===== Installing asdf'.yellow
+
+    git_install('https://github.com/asdf-vm/asdf.git', ASDF_INSTALL_DIR)
+  end
+
+  def update_asdf
+    puts '===== Updating asdf to latest version'.yellow
+
+    popen ". #{ASDF_INSTALL_DIR}/asdf.sh && asdf update"
+  end
+
+  def install_asdf_plugins
+    puts '===== Installing asdf plugins'.yellow
+
+    ASDF_PLUGINS.each do |plugin|
+      puts "Installing #{plugin} plugin...".light_blue
+      popen(". #{ASDF_INSTALL_DIR}/asdf.sh && asdf plugin-add #{plugin}")
+    end
+  end
+
+  def install_asdf_languages
+    puts '===== Installing asdf languages latest version'.yellow
+    ASDF_PLUGINS.each do |plugin|
+      puts "Installing #{plugin}...".light_blue
+      popen(". #{ASDF_INSTALL_DIR}/asdf.sh && asdf install #{plugin} latest")
+    end
+  end
+
+  def install_git_template
+    puts '===== Installing git_template'.yellow
+
+    git_install(
+      'https://github.com/greg0ire/git_template',
+      GIT_TEMPLATE_INSTALL_DIR
+    )
+  end
+
+  def symlink_dotfiles
+    puts '===== Symlinking dotfiles'.yellow
+
+    DOTFILES.each do |source|
+      raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
+
+      target = "~/.#{source}"
+      print 'Symlinking '.light_blue + target.to_s + '...'.light_blue
+      link(source, target)
+      puts 'Done'.green
+    end
+  end
+
+  def symlink_nested_dotfiles
+    puts '===== Symlinking nested dotfiles'.yellow
+
+    SYMLINK_DIRS.each do |source, target|
+      print 'Symlinking '.light_blue + source + ' -> '.light_blue + target + '...'.light_blue
+      link(source, target)
+      puts 'Done'.green
+    end
+  end
+
+  def install_rubygems
+    puts '===== Installing necessary gems'.yellow
+
+    popen("gem install #{GEMS.join(' ')}")
+  end
+
+  def install_python_packages
+    puts '===== Installing python packages'.yellow
+
+    popen("pip3 install #{PIPS3.join(' ')}")
+  end
+
+  def popen(cmd)
+    puts 'Running: '.light_blue + cmd.to_s
+    IO.popen(cmd) do |io|
+      while (line = io.gets)
+        puts line
+      end
+    end
+  end
+
+  def link(source, target)
+    FileUtils.ln_sf(File.expand_path(source), File.expand_path(target))
+  end
+
+  def mkdir(path)
+    puts 'Creating '.light_blue + path
+    FileUtils.mkdir_p(File.expand_path(path))
+  end
+
+  def git_install(repo_url, install_dir)
+    install_dir = File.expand_path(install_dir)
+
+    if Dir.exist?(install_dir)
+      puts '...already installed.'.pink
+    else
+      popen("git clone #{repo_url} #{install_dir}")
+    end
+  end
+
+  def confirm(msg)
+    print "#{msg} (y/n) "
+    resp = gets.strip.downcase
+    puts ''
+    %w[y yes].include?(resp)
+  end
+end
+
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+
+  def green
+    colorize(32)
+  end
+
+  def yellow
+    colorize(33)
+  end
+
+  def blue
+    colorize(34)
+  end
+
+  def pink
+    colorize(35)
+  end
+
+  def light_blue
+    colorize(36)
+  end
+end
+
+Installer.new.install
