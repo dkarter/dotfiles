@@ -137,7 +137,7 @@ class Installer
   def update_asdf
     puts '===== Updating asdf to latest version'.yellow
 
-    popen ". #{ASDF_INSTALL_DIR}/asdf.sh && asdf update"
+    asdf_command('asdf update')
   end
 
   def install_asdf_plugins
@@ -145,7 +145,7 @@ class Installer
 
     ASDF_PLUGINS.each do |plugin|
       puts "Installing #{plugin} plugin...".light_blue
-      popen(". #{ASDF_INSTALL_DIR}/asdf.sh && asdf plugin-add #{plugin}")
+      asdf_command("asdf plugin-add #{plugin}")
     end
   end
 
@@ -153,7 +153,9 @@ class Installer
     puts '===== Installing asdf languages latest version'.yellow
     ASDF_PLUGINS.each do |plugin|
       puts "Installing #{plugin}...".light_blue
-      popen(". #{ASDF_INSTALL_DIR}/asdf.sh && asdf install #{plugin} latest")
+      asdf_command(
+        "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})"
+      )
     end
   end
 
@@ -207,6 +209,10 @@ class Installer
     puts '===== Installing python packages'.yellow
 
     popen("pip3 install #{PIPS3.join(' ')}")
+  end
+
+  def asdf_command(cmd)
+    popen(". #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}")
   end
 
   def popen(cmd)
