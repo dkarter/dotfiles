@@ -862,9 +862,9 @@ augroup GOYO
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
-" ----------------------------------------------------------------------------
+" --------------------------------------------
 " vim-legend
-" ----------------------------------------------------------------------------
+" --------------------------------------------
 let g:legend_active_auto = 0
 let g:legend_hit_color = 'ctermfg=64 cterm=bold gui=bold guifg=Green'
 let g:legend_ignored_sign = '◌'
@@ -877,6 +877,12 @@ let g:legend_mapping_toggle_line = '<localleader>cv'
 " --------------------------------------------
 " support ruby on rails omnicompletions
 let g:rubycomplete_rails = 1
+
+" --------------------------------------------
+" sideways.vim
+" --------------------------------------------
+nnoremap <M-h> :SidewaysLeft<cr>
+nnoremap <M-l> :SidewaysRight<cr>
 
 " ----------------------------------------------------- }}}
 
@@ -1290,11 +1296,6 @@ if has('nvim')
     tnoremap <silent><C-j> <C-\><C-n><C-w>j
     tnoremap <silent><C-k> <C-\><C-n><C-w>k
     tnoremap <silent><C-l> <C-\><C-n><C-w>l
-
-    tnoremap <silent><M-h> <C-\><C-N><C-w>h
-    tnoremap <silent><M-j> <C-\><C-N><C-w>j
-    tnoremap <silent><M-k> <C-\><C-N><C-w>k
-    tnoremap <silent><M-l> <C-\><C-N><C-w>l
 
   " easily escape terminal
     tnoremap <leader><esc> <C-\><C-n><esc><cr>
