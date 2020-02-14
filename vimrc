@@ -436,44 +436,19 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " FZF + DevIcons
 " ======================================
 
-" Files + devicons
 function! FzfIcons()
-  " let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
-  let l:fzf_files_options = '--preview "echo {} |  cut -f2 -d \" \" | xargs bat --color \"always\" --line-range 0:100"'
-
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
-
-    return l:result
-  endfunction
-
-  function! s:edit_file(item)
-    let l:pos = stridx(a:item, ' ')
-    let l:file_path = a:item[pos+1:-1]
-    " TODO: not working
-    let l:cmd = get({
-               \ 'ctrl-x': 'split',
-               \ 'ctrl-v': 'vertical split',
-               \ 'ctrl-t': 'tabe'
-               \ }, a:item[0], 'e')
-    execute 'silent ' . l:cmd . ' "' . l:file_path . '"'
+  let l:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
+   function! s:edit_devicon_prepended_file(item)
+    let l:file_path = a:item[4:-1]
+    execute 'silent e' l:file_path
   endfunction
 
   call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x ' . l:fzf_files_options,
-        \ 'down':    '40%' })
+        \ 'source': $FZF_DEFAULT_COMMAND . ' | devicon-lookup --color',
+        \ 'sink':   function('s:edit_devicon_prepended_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
+        \ })
 endfunction
 
 " Custom FZF commands ----------------------------- {{{
