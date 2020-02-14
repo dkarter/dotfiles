@@ -65,7 +65,12 @@ ASDF_PLUGINS = %w[
   nodejs
   python
   ruby
+  rust
 ].freeze
+
+CARGOS = %w[
+  devicon-lookup
+]
 
 class Installer
   def install
@@ -77,6 +82,7 @@ class Installer
     install_asdf_plugins
     install_asdf_languages if confirm('Install asdf languages latest?')
     install_git_template
+    install_rust_cargos
     symlink_dotfiles
     symlink_nested_dotfiles
     install_rubygems
@@ -158,6 +164,14 @@ class Installer
       'https://github.com/greg0ire/git_template',
       GIT_TEMPLATE_INSTALL_DIR
     )
+  end
+
+  def install_rust_cargos
+    puts '===== Installing Rust Cargos'.yellow
+
+    CARGOS.each do |cargo|
+      popen("cargo install #{cargo}")
+    end
   end
 
   def symlink_dotfiles
