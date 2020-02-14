@@ -48,11 +48,8 @@ GEMS = [
   'pry-byebug',    # better debugging experience (required by .pryrc)
   'pry-clipboard', # easily copy and paste stuff from pry (required by .pryrc)
   'awesome_print', # colorize output of pry (required by .pryrc)
-  'rouge',         # for syntax highlighting in fzf in vim
   'neovim',        # for NeoVim ruby plugins
   'solargraph',    # ruby language server
-  'pry',           # ruby debugging
-  'iStats'         # computer peripheral stats
 ].freeze
 
 PIPS3 = [
