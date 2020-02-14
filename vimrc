@@ -549,8 +549,12 @@ let g:jsx_ext_required = 0
 " =====================================
 
 " Grep selection with Rg
-xnoremap <leader>g y :Rg "<CR>
-nnoremap <Leader>g :Rg <C-r><C-w><CR>
+xnoremap <leader>gr y :Rg "<CR>
+nnoremap <Leader>gr :Rg <C-r><C-w><CR>
+
+" Grep selection with Rg (excluding tests and migrations)
+xnoremap <leader>gt y :Rg " -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>
+nnoremap <Leader>gt :Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>
 
 " Put cursor after :Rg command (a little faster than typing :Rg)
 nnoremap <expr> <leader>rg ':Rg '
