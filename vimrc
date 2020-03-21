@@ -97,7 +97,9 @@
      set complete+=kspell
 
    " Always use vertical diffs
-     set diffopt+=vertical
+    if has('nvim')
+      set diffopt+=vertical
+    endif
 
    " highlight fenced code blocks in markdown
    let g:markdown_fenced_languages = [
@@ -119,6 +121,48 @@
  " }}}
 
 "  Plugin Modifications (BEFORE loading bundles) ----- {{{
+" ====================================
+" Floaterm
+" ====================================
+let g:floaterm_position = 'center'
+let g:floaterm_background = '#272c35'
+let g:floaterm_winblend = 10
+
+
+hi FloatermNF       guibg=#272c35
+hi FloatermBorderNF guibg=#272c35 guifg=white
+
+command! -nargs=0 FT FloatermToggle
+
+" Use 90% width for floaterm. If error occurs, update the plugin
+let g:floaterm_width = 0.9
+let g:floaterm_height = 0.7
+
+function s:floatermSettings()
+    call SetColorColumn(0)
+endfunction
+
+augroup FloatermCustom
+  autocmd!
+
+  autocmd FileType floaterm call s:floatermSettings()
+  " <leader>h : Hide the floating terminal window
+  " <leader>q : Quit the floating terminal window
+  autocmd FileType floaterm tmap <buffer> <silent> <leader>q <C-\><C-n>:call SetColorColumn(1)<CR>:q<CR>
+  autocmd FileType floaterm tmap <buffer> <silent> <leader>h <C-\><C-n>:call SetColorColumn(1)<CR>:hide<CR>
+augroup END
+
+" function! floaterm#wrapper#lazygit() abort
+"   let cmd = 'lazygit'
+"   call SetColorColumn(0)
+"   return [cmd, {'on_exit': funcref('s:lazygit_callback')}, v:false]
+" endfunction
+
+" function! s:ranger_callback(...) abort
+"     call SetColorColumn(1)
+" endfunction
+
+nnoremap <silent> <leader>gg :FloatermNew lazygit<CR>
 
 " ====================================
 " VimMatchUp:
@@ -156,10 +200,24 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 augroup CocConfig
   autocmd!
   " coc-highlight: enable highlighting for symbol under cursor
   autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
 
 " Use `:Format` to format current buffer
@@ -168,6 +226,7 @@ command! -nargs=0 Format :call CocAction('format')
 " set coc as nvim man page provider for functions
 " TODO: maybe need to check if coc is enabled for file and do setlocal?
 set keywordprg=:call\ CocAction('doHover')
+
 
 " ====================================
 " Vista.vim
@@ -179,7 +238,7 @@ let g:vista_default_executive = 'coc'
 let g:vista_finder_alternative_executives = ['ctags']
 
 " enable fzf preview
-let g:vista_fzf_preview = ['right:50%']
+let g:vista_fzf_preview = []
 
 " enable icons (must have patched fonts)
 let g:vista#renderer#enable_icon = 1
@@ -368,41 +427,7 @@ let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100
 autocmd! FileType fzf
 autocmd  FileType fzf set noshowmode noruler nonu
 
-if has('nvim')
-  set winblend=10
-  function! FloatingFZF(width, height, border_highlight)
-    function! s:create_float(hl, opts)
-      let buf = nvim_create_buf(v:false, v:true)
-      let opts = extend({'relative': 'editor', 'style': 'minimal'}, a:opts)
-      let win = nvim_open_win(buf, v:true, opts)
-      call setwinvar(win, '&winhighlight', 'NormalFloat:'.a:hl)
-      call setwinvar(win, '&colorcolumn', '')
-      return buf
-    endfunction
-
-    " Size and position
-    let width = float2nr(&columns * a:width)
-    let height = float2nr(&lines * a:height)
-    let row = float2nr((&lines - height) / 2)
-    let col = float2nr((&columns - width) / 2)
-
-    " Border
-    let top = '╭' . repeat('─', width - 2) . '╮'
-    let mid = '│' . repeat(' ', width - 2) . '│'
-    let bot = '╰' . repeat('─', width - 2) . '╯'
-    let border = [top] + repeat([mid], height - 2) + [bot]
-
-    " Draw frame
-    let s:frame = s:create_float(a:border_highlight, {'row': row, 'col': col, 'width': width, 'height': height})
-    call nvim_buf_set_lines(s:frame, 0, -1, v:true, border)
-
-    " Draw viewport
-    call s:create_float('Normal', {'row': row + 1, 'col': col + 2, 'width': width - 4, 'height': height - 2})
-    autocmd BufWipeout <buffer> execute 'bwipeout' s:frame
-  endfunction
-
-  let g:fzf_layout = { 'window': 'call FloatingFZF(0.9, 0.6, "Comment")' }
-endif
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
@@ -447,8 +472,9 @@ function! FzfIcons()
         \ 'source': $FZF_DEFAULT_COMMAND . ' | devicon-lookup --color',
         \ 'sink':   function('s:edit_devicon_prepended_file'),
         \ 'options': '-m ' . l:fzf_files_options,
-        \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
+        \ 'window': { 'width': 0.9, 'height': 0.6 }
         \ })
+
 endfunction
 
 " Custom FZF commands ----------------------------- {{{
@@ -490,7 +516,7 @@ endfunction
           \ 'source': 'git branch',
           \ 'sink': function('<sid>change_branch'),
           \ 'options': '-m',
-          \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
+          \ 'window': { 'width': 0.9, 'height': 0.6 }
           \ })
  " ------  /CHANGE BRANCH (Gbranch) ------- }}}
 
@@ -507,7 +533,7 @@ endfunction
           \ 'source': 'git branch -r',
           \ 'sink': function('<sid>change_remote_branch'),
           \ 'options': '-m',
-          \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
+          \ 'window': { 'width': 0.9, 'height': 0.6 }
           \ })
  " ------  /CHANGE REMOTE BRANCH (Gbranch) ------- }}}
 
@@ -530,7 +556,7 @@ endfunction
           \ 'source': "rg -l '^(<<<|===|>>>)'",
           \ 'sink': function('<sid>jump_to_first_conflict'),
           \ 'options': '-m '. s:gconflict_preview_cmd(),
-          \ 'window': 'call FloatingFZF(0.9, 0.6, "Comment")'
+          \ 'window': { 'width': 0.9, 'height': 0.6 }
           \ })
 
     nmap <leader>gc :Gconflict<CR>
@@ -944,8 +970,16 @@ endif
 
   " Make it obvious where 80 characters is
   " cheatsheet https://jonasjacek.github.io/colors/
-  highlight ColorColumn ctermbg=236 guibg=#303030
-  let &colorcolumn=join(range(80,999),',')
+  fun! SetColorColumn(active)
+    if a:active
+      highlight ColorColumn ctermbg=236 guibg=#303030
+      let &colorcolumn=join(range(100,999),',')
+    else
+      highlight ColorColumn guibg=#272c35
+    endif
+  endfun
+
+  call SetColorColumn(1)
 
   " solid window border requires FuraCode Nerd Font
   set fillchars+=vert:│
@@ -953,6 +987,19 @@ endif
   " hide vertical split
   hi vertsplit guifg=fg guibg=bg
 "  }}}
+
+" Text Objects {{{
+augroup elixir_textobjs
+  autocmd!
+  autocmd FileType elixir call textobj#user#map('elixir', {
+        \   'map': {
+        \     'pattern': ['%{', '}'],
+        \     'select-a': '<buffer> aM',
+        \     'select-i': '<buffer> iM',
+        \   },
+        \ })
+augroup END
+" }}}
 
 " Own commands --------------------------------------------- {{{
 command! PrettyPrintJSON %!python -m json.tool
@@ -1039,6 +1086,12 @@ nnoremap <expr> <leader>fd ':Cfd '
     " notify if file changed outside of vim to avoid multiple versions
     autocmd FocusGained * checktime
   augroup END
+
+  " add operator pending mode for elixir maps - needs to support multiline map
+  augroup ElixirAutoCommands
+    autocmd!
+    autocmd FileType elixir,eelixir let b:surround_{char2nr("m")} = '%{ \r }'
+  augroup END
 " }}}
 
 " Vim Script file settings ------------------------ {{{
@@ -1050,7 +1103,7 @@ augroup END
 
 "  Key Mappings -------------------------------------------------- {{{
   " Delete current buffer without losing the split
-    nnoremap <silent> <C-x> :bp\|bd #<CR>
+    nnoremap <silent> <C-q> :bp\|bd #<CR>
 
   " open FZF in current file's directory
     nnoremap <silent> <Leader>_ :Files <C-R>=expand('%:h')<CR><CR>
@@ -1102,9 +1155,19 @@ augroup END
       endif
     endfunction
 
+    " qq to record, Q to replay
+    nnoremap Q @q
 
-  " prevent entering ex mode accidentally
-    nnoremap Q <Nop>
+    " Zoom
+    function! s:zoom()
+      if winnr('$') > 1
+        tab split
+      elseif len(filter(map(range(tabpagenr('$')), 'tabpagebuflist(v:val + 1)'),
+                      \ 'index(v:val, '.bufnr('').') >= 0')) > 1
+        tabclose
+      endif
+    endfunction
+    nnoremap <silent> <leader>z :call <sid>zoom()<cr> 
 
   " Tab/shift-tab to indent/outdent in visual mode.
     vnoremap <Tab> >gv
@@ -1128,6 +1191,9 @@ augroup END
 
     nnoremap <silent> <leader>vr :call OpenConfigFile('~/.vimrc')<cr>
     nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
+    "
+  " Source (reload) your vimrc. Type space, s, o in sequence to trigger
+    nnoremap <leader>so :source $MYVIMRC<cr>
 
   " toggle background light / dark
     fun! ToggleBackground()
@@ -1140,8 +1206,6 @@ augroup END
 
     nnoremap <silent> <F10> :call ToggleBackground()<CR>
 
-  " Source (reload) your vimrc. Type space, s, o in sequence to trigger
-    nnoremap <leader>so :source $MYVIMRC<cr>
 
   "split edit your tmux conf
     nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
@@ -1192,10 +1256,10 @@ augroup END
     nnoremap <C-F>g :CtrlSF<CR>
 
   " disable arrow keys in normal mode
-    nnoremap <Left> :echoe "Use h"<CR>
-    nnoremap <Right> :echoe "Use l"<CR>
-    nnoremap <Up> :echoe "Use k"<CR>
-    nnoremap <Down> :echoe "Use j"<CR>
+    nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
+    nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
+    nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
+    nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
 
   " last typed word to lower case
     inoremap <C-w>u <esc>guawA
@@ -1236,6 +1300,36 @@ augroup END
     xnoremap <c-j> :move '>+1<CR>gv=gv
 
 " --------------------- Key Mappings ---------------------------- }}}
+
+" Higher Order Immutable Funcs {{{
+fun! Map(list, fn)
+  let new_list = deepcopy(a:list)
+  call map(new_list, a:fn)
+  return new_list
+endfun
+
+fun! Filter(list, fn)
+  let new_list = deepcopy(a:list)
+  call filter(new_list, a:fn)
+  return new_list
+endfun
+
+fun! Find(list, fn)
+  let l:fn = substitute(a:fn, 'v:val', 'l:item', 'g')
+  for l:item in a:list
+    let l:new_item = deepcopy(l:item)
+    if execute('echon (' . l:fn . ')') ==# '1'
+      return l:new_item
+    endif
+  endfor
+
+  return 0
+endfun
+
+fun! HasItem(list, fn)
+  return !empty(Find(a:list, a:fn))
+endfun
+" }}}
 
 "    Abbreviations --------------------------------------- {{{
 iabbrev @@ dkarter@gmail.com

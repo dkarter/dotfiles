@@ -26,7 +26,7 @@ endif
 " }}}
 
 " Dependencies: {{{
-  " Create custom text objects (required by rubyblock,xmlattr)
+  " Create custom text objects (required by rubyblock,xmlattr, vim-textobj-elixir)
   Plug 'kana/vim-textobj-user'
 
   " Vim Web API (required by gist-vim)
@@ -38,16 +38,16 @@ endif
 " }}}
 
 " COC {{{
-  if executable('yarn') && executable('node')
+  if executable('yarn') && executable('node') " && has('nvim')
     let g:coc_global_extensions = [
           \ 'coc-css',
           \ 'coc-dictionary',
-          \ 'coc-elixir',
           \ 'coc-eslint',
           \ 'coc-git',
           \ 'coc-github',
           \ 'coc-gitignore',
           \ 'coc-gocode',
+          \ 'coc-highlight',
           \ 'coc-html',
           \ 'coc-json',
           \ 'coc-neosnippet',
@@ -69,13 +69,21 @@ endif
   endif
 " }}}
 
-" Neovim: {{{
-  if has('nvim')
+" Testing {{{
+    " run tests at the speed of thought
+    Plug 'janko-m/vim-test'
+" }}}
+
+" Terminal {{{
     " abstraction on top of neovim terminal
     Plug 'kassio/neoterm'
 
-    " run tests at the speed of thought
-    Plug 'janko-m/vim-test'
+    " floating terminal
+    Plug 'voldikss/vim-floaterm'
+" }}}
+
+" Neovim: {{{
+  if has('nvim')
 
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
@@ -123,6 +131,9 @@ endif
 " Elixir: {{{
   " Elixir support
   Plug 'elixir-lang/vim-elixir'
+
+  " elixir text objects
+  Plug 'duff/vim-textobj-elixir'
 
   " pulls info on hex packages (requires mattn/webapi-vim)
   Plug 'lucidstack/hex.vim', { 'for': 'elixir'}
@@ -292,7 +303,9 @@ endif
   Plug 'epilande/vim-react-snippets', { 'for': ['javascript', 'javascript.jsx'] }
 
   " vim snippets for UltiSnips ...
-  Plug 'honza/vim-snippets'
+  if has('nvim')
+    Plug 'honza/vim-snippets'
+  endif
 
   " modern snippets for vim
   Plug 'SirVer/ultisnips'
@@ -444,6 +457,12 @@ Plug 'enricobacis/vim-airline-clock'
 " }}}
 
 " Other: {{{
+  " window animations
+  Plug 'camspiers/animate.vim'
+
+  " resize windows automatically if too small
+  Plug 'camspiers/lens.vim'
+
   " open Finder / Terminal for file under the cursor
   Plug 'justinmk/vim-gtfo'
 
@@ -502,6 +521,9 @@ Plug 'enricobacis/vim-airline-clock'
 
   " Scratch buffers
   Plug 'mtth/scratch.vim'
+
+  " interactive scratchpad
+  Plug 'metakirby5/codi.vim'
 
   " resize windows in vim naturally
   Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }

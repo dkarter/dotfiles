@@ -22,7 +22,20 @@
         "elmFormatPath": "elm-format",
         "elmTestPath": "./node_modules/elm-test/bin/elm-test"
       }
+    },
+    "elixir": {
+      "command": "~/.elixir_ls/release/language_server.sh",
+      "args": [],
+      "filetypes": ["elixir", "eelixir", "ex", "exs", "eex"],
+      "rootPatterns": ["mix.lock"]
     }
   },
-  "coc.preferences.enableFloatHighlight": false
+  "coc.preferences.enableFloatHighlight": false,
+  "highlight.colors.enable": false,
+  "list.nextKeymap": "<C-n>",
+  "list.previousKeymap": "<C-p>",
+  "list.maxHeight": 15,
+  "list.insertMappings": {
+    "<C-c>": "do:exit"
+  }
 }
