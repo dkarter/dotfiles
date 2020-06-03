@@ -66,7 +66,7 @@
      set visualbell
 
    " text appearance
-     set textwidth=80
+     set textwidth=80                    " set row width size in charcters
      set nowrap                          " nowrap by default
      set list                            " show invisible characters
      set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
@@ -114,6 +114,12 @@
          \ 'ruby',
          \ 'sql',
          \ 'vim',
+         \ 'typescript',
+         \ 'yaml',
+         \ 'sshconfig',
+         \ 'cfg',
+         \ 'systemd',
+         \ 'nginx',
          \ ]
 
    " enable folding in bash files
