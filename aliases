@@ -59,6 +59,7 @@ alias pping='prettyping --nolegend'
 alias migrate="be rails db:migrate db:rollback && be rails db:migrate"
 alias s="rspec"
 alias rof="rspec --only-failures"
+alias be='bundle exec'
 
 # language servers
 alias sgraph="solargraph socket"
