@@ -90,6 +90,7 @@ alias gcd1='git clone --depth=1'
 # only add deleted files
 alias gad='git ls-files --deleted | xargs git add'
 alias gprune='gf --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -D'
+alias gclone='git clone'
 
 
 # hashrocket uses gpr and I like gup, this prevents typos
