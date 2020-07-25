@@ -205,8 +205,6 @@ class Installer
 
     SYMLINK_DIRS.each do |source, target|
       print 'Symlinking '.light_blue + source + ' -> '.light_blue + target + '...'.light_blue
-      target_full_path = File.join(File.expand_path(target), File.basename(source))
-      FileUtils.rm_rf(target_full_path)
       link(source, target)
       puts 'Done'.green
     end
