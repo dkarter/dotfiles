@@ -68,9 +68,14 @@ ASDF_PLUGINS = %w[
   rust
 ].freeze
 
+NPMS = %w[
+  yarn
+  neovim
+].freeze
+
 CARGOS = %w[
   devicon-lookup
-]
+].freeze
 
 class Installer
   def install
@@ -82,11 +87,13 @@ class Installer
     install_asdf_plugins
     install_asdf_languages if confirm('Install asdf languages latest?')
     install_git_template
-    install_rust_cargos
     symlink_dotfiles
     symlink_nested_dotfiles
     install_rubygems
+    install_npm_packages
     install_python_packages
+    install_rust_cargos
+    install_vim_plugins
 
     puts '===== ALL DONE! ====='.green
   end
@@ -151,6 +158,10 @@ class Installer
 
   def install_asdf_languages
     puts '===== Installing asdf languages latest version'.yellow
+
+    #import OpenPGP keysfornode
+    popen("bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'")
+
     ASDF_PLUGINS.each do |plugin|
       puts "Installing #{plugin}...".light_blue
       asdf_command(
@@ -194,21 +205,36 @@ class Installer
 
     SYMLINK_DIRS.each do |source, target|
       print 'Symlinking '.light_blue + source + ' -> '.light_blue + target + '...'.light_blue
+      target_full_path = File.join(File.expand_path(target), File.basename(source))
+      FileUtils.rm_rf(target_full_path)
       link(source, target)
       puts 'Done'.green
     end
   end
 
   def install_rubygems
-    puts '===== Installing necessary gems'.yellow
+    puts '===== Installing necessary RubyGems'.yellow
 
     popen("gem install #{GEMS.join(' ')}")
   end
 
   def install_python_packages
-    puts '===== Installing python packages'.yellow
+    puts '===== Installing Python packages'.yellow
 
     popen("pip3 install #{PIPS3.join(' ')}")
+  end
+
+  def install_npm_packages
+    puts '===== Installing NPM packages'.yellow
+
+    popen("npm install -g #{NPMS.join(' ')}")
+  end
+
+  def install_vim_plugins
+    puts '===== Installing NeoVim plugins'.yellow
+
+    popen("curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
+    popen("nvim +PlugInstall")
   end
 
   def asdf_command(cmd)
