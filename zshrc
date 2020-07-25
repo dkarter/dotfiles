@@ -29,7 +29,8 @@ fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 # completion only refresh once a day
 # autoload -U compinit
 # compinit
-autoload -Uz compinit
+autoload -Uz +X bashcompinit && bashcompinit
+autoload -Uz +X compinit
 
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
