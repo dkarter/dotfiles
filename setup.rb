@@ -49,12 +49,12 @@ GEMS = [
   'pry-clipboard', # easily copy and paste stuff from pry (required by .pryrc)
   'awesome_print', # colorize output of pry (required by .pryrc)
   'neovim',        # for NeoVim ruby plugins
-  'solargraph',    # ruby language server
+  'solargraph'     # ruby language server
 ].freeze
 
 PIPS3 = [
-  'neovim',       # NeoVim python3 support
-  'neovim-remote' # allow controlling neovim remotely
+  'neovim',        # NeoVim python3 support
+  'neovim-remote'  # allow controlling neovim remotely
 ].freeze
 
 ASDF_PLUGINS = %w[
@@ -159,7 +159,7 @@ class Installer
   def install_asdf_languages
     puts '===== Installing asdf languages latest version'.yellow
 
-    #import OpenPGP keysfornode
+    # import OpenPGP keysfornode
     popen("bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'")
 
     ASDF_PLUGINS.each do |plugin|
@@ -233,8 +233,8 @@ class Installer
   def install_vim_plugins
     puts '===== Installing NeoVim plugins'.yellow
 
-    popen("curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
-    popen("nvim +PlugInstall +qall")
+    popen('curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+    popen('nvim +PlugInstall +qall')
   end
 
   def asdf_command(cmd)
