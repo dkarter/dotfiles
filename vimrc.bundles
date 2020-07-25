@@ -214,9 +214,6 @@ endif
 " Navigation: {{{
   " navigate to directory of current file using `-`
   Plug 'tpope/vim-vinegar'
-
-  " Navigate symbols and tags using LSPs/ctags
-  Plug 'liuchengxu/vista.vim'
 " }}}
 
 " NERDTree: {{{
@@ -287,9 +284,6 @@ endif
 
     " Run elixir mix tests in vimux
     Plug 'spiegela/vimix', { 'on': 'Mux' }
-
-    " Run ruby and elixir tests
-    Plug 'jgdavey/vim-turbux', { 'on': 'Mux' }
 
   " autocomplete using text from tmux
   Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
