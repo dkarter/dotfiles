@@ -14,7 +14,11 @@ Easy..
 git clone git@github.com:dkarter/dotfiles.git
 ```
 
-Make sure you have setup ruby, python2 and python3 (ideally with asdf) and run:
+Cd into the dotfiles dir: `cd dotfiles`
+
+If on mac install homebrew, and run `brew bundle`
+
+To install dotfiles, latest versions of asdf languages and packages, run:
 
 ```sh
 ruby setup.rb
