@@ -887,7 +887,7 @@ endif
 " }}}
 
 "  Plugin Modifications (AFTER loading bundles) ----- {{{
-if has('nvim') && !exists('$TMUX')
+if has('nvim') && has('nvimux') && !exists('$TMUX')
 " ------------------------------------
 " NVIMUX:
 " ------------------------------------
