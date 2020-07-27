@@ -836,26 +836,43 @@ let g:go_fmt_command='goimports'
 let g:limelight_paragraph_span = 1
 let g:limelight_priority = -1
 
-let g:background_before_goyo = &background
+" limelight colors for 'one' color scheme
+let g:limelight_conceal_ctermfg = '#454d5a'
+let g:limelight_conceal_guifg = '#454d5a'
+
+let g:goyo_width = 100
 
 function! s:goyo_enter()
   let g:background_before_goyo = &background
-  if has('gui_running')
-    set linespace=7
-  elseif exists('$TMUX')
-    silent !tmux set status off
-  endif
+  let g:colorscheme_before_goyo = g:colors_name
+  let g:limelight_conceal_guifg_before_goyo = g:limelight_conceal_guifg
+  let g:limelight_conceal_ctermfg_before_goyo = g:limelight_conceal_ctermfg
+  let g:textwidth_before_goyo = &textwidth
+  let g:wrapmargin_before_goyo = &wrapmargin
+
+  set textwidth=0
+  set wrapmargin=0
+  set wrap
+  set nofoldenable
+  set linebreak
+  set background=light
+  colorscheme pencil
+  let g:pencil_terminal_italics = 1
+  let g:limelight_conceal_guifg='#bfbfbf'
+  let g:limelight_conceal_ctermfg='#bfbfbf'
   Limelight
 endfunction
 
 function! s:goyo_leave()
-  if has('gui_running')
-    set linespace=0
-  elseif exists('$TMUX')
-    silent !tmux set status on
-  endif
   execute 'Limelight!'
+  execute 'set textwidth=' . g:textwidth_before_goyo
+  execute 'set wrapmargin=' . g:wrapmargin_before_goyo
   execute 'set background=' . g:background_before_goyo
+  execute 'colorscheme ' . g:colorscheme_before_goyo
+  set nowrap
+  set foldenable
+  let g:limelight_conceal_guifg = g:limelight_conceal_guifg_before_goyo
+  let g:limelight_conceal_ctermfg = g:limelight_conceal_ctermfg_before_goyo
 endfunction
 
 augroup GOYO
@@ -928,6 +945,8 @@ endif
 
 " UI Customizations --------------------------------{{{
 
+  " automatically set Vim's background to light theme if iterm has light in the
+  " profile name
   if match($ITERM_PROFILE, 'light') >= 0
     set background=light
   else
@@ -939,9 +958,6 @@ endif
     call one#highlight('elixirInclude', 'e06c75', '', 'none')
     call one#highlight('elixirOperator', 'd19a66', '', 'none')
     call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
-
-  let g:limelight_conceal_ctermfg = '#454d5a'
-  let g:limelight_conceal_guifg = '#454d5a'
 
   " Make it obvious where 80 characters is
   " cheatsheet https://jonasjacek.github.io/colors/
@@ -1039,9 +1055,15 @@ nnoremap <expr> <leader>fd ':Cfd '
 
     " Enable spellchecking for Markdown
     autocmd FileType markdown setlocal spell
-
+    " Enable line wrapping for markdown
+    autocmd FileType markdown setlocal wrap
+    " Break wrapped lines on space (not middle of word)
+    autocmd FileType markdown setlocal linebreak
+    " navigate wrapped text more naturally
+    autocmd FileType markdown nmap <buffer> j gj
+    autocmd FileType markdown nmap <buffer> k gk
     " Automatically wrap at 80 characters for Markdown
-    autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+    autocmd FileType markdown setlocal textwidth=80
 
     " Automatically wrap at 72 characters and spell check git commit messages
     autocmd FileType gitcommit setlocal textwidth=72

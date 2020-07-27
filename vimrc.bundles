@@ -350,6 +350,9 @@ Plug 'ianks/vim-tsx'
 
   " vim one
   Plug 'rakr/vim-one'
+
+  " iA Writer Scheme
+  Plug 'reedes/vim-colors-pencil'
 " }}}
 
 " Postgres: {{{
@@ -361,9 +364,6 @@ Plug 'ianks/vim-tsx'
 " }}}
 
 " Writing: {{{
-  " distraction free writing (like iA Writer)
-  Plug 'laktek/distraction-free-writing-vim', { 'on': 'ToggleDistractionFreeWriting' }
-
   " Distraction free writing in vim
   Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
@@ -409,7 +409,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 " Airline {{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'enricobacis/vim-airline-clock'
 " }}}
 
 " Crystal: {{{
