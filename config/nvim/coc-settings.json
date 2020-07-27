@@ -28,6 +28,11 @@
       "args": [],
       "filetypes": ["elixir", "eelixir", "ex", "exs", "eex"],
       "rootPatterns": ["mix.lock"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
     }
   },
   "coc.preferences.enableFloatHighlight": false,

@@ -71,6 +71,9 @@ ASDF_PLUGINS = %w[
 NPMS = %w[
   yarn
   neovim
+  bash-language-server
+  @elm-tooling/elm-language-server
+  dockerfile-language-server-nodejs
 ].freeze
 
 CARGOS = %w[
