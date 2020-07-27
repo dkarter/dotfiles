@@ -7,6 +7,9 @@ cask 'font-fira-code-nerd-font'
 cask 'font-source-code-pro'
 cask 'font-victor-mono'
 
+# Dual Panel File Browser
+cask 'marta'
+
 # Fast GPU rendered terminal emulator
 cask 'kitty'
 
@@ -15,6 +18,28 @@ brew 'wxmac'
 brew 'autoconf'
 brew 'fop'
 brew 'libiodbc'
+brew 'openjdk'
+
+# help from terminal
+brew 'howdoi'
+
+# code stats
+brew 'scc'
+
+# sqlite3
+brew 'sqlite'
+
+# image manipulation
+brew 'imagemagick'
+
+# json querying + pretty printing
+brew 'jq'
+
+# easily copy tabular data
+brew 'yank'
+
+# postgres pager
+brew 'pspg'
 
 # for neovim
 brew 'lua'
