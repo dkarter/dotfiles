@@ -628,18 +628,18 @@ if has('nvim')
   let g:test#strategy = 'neoterm'
 endif
 
-"  Support Elixir Umbrella Apps (pre 1.9) {{{
-  " https://github.com/janko/vim-test/issues/136
-  function! ElixirUmbrellaTransform(cmd) abort
-    if match(a:cmd, 'apps/') != -1
-      return substitute(a:cmd, 'mix test apps/\([^/]*\)/', 'mix cmd --app \1 mix test --color ', '')
-    else
-      return a:cmd
-    end
-  endfunction
+" "  Support Elixir Umbrella Apps (pre 1.9) {{{
+"   " https://github.com/janko/vim-test/issues/136
+"   function! ElixirUmbrellaTransform(cmd) abort
+"     if match(a:cmd, 'apps/') != -1
+"       return substitute(a:cmd, 'mix test apps/\([^/]*\)/', 'mix cmd --app \1 mix test --color ', '')
+"     else
+"       return a:cmd
+"     end
+"   endfunction
 
-  let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
-  let g:test#transformation = 'elixir_umbrella'
+"   let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+"   let g:test#transformation = 'elixir_umbrella'
 " }}}
 
 nmap <silent> <leader>T :TestNearest<CR>
