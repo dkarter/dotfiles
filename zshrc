@@ -146,16 +146,6 @@ if [ -f $syntax_plug ]; then
   source $syntax_plug
 fi
 
-# zsh history search
-# pre-requisite `brew install zsh-history-substring-search`
-# NOTE: must be placed after zsh-syntax-highlighting if used together
-# readme: /usr/local/opt/zsh-history-substring-search/README.md
-hist_plug=/usr/local/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
-if [ -f $hist_plug ]; then
-  source $hist_plug
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
-fi
 
 # zsh completions
 # pre-requisite: `brew install zsh-completions`
@@ -190,9 +180,6 @@ bindkey "^[f" forward-word
 bindkey "^[b" backward-word
 
 bindkey '^r' history-incremental-search-backward
-
-# ctrl-space accepts suggestions
-# bindkey '^t' autosuggest-accept
 
 export KEYTIMEOUT=1
 
@@ -254,27 +241,6 @@ if $(command -v fzf >/dev/null); then
     if [ -n "$file" ]; then
       [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-nvim} "$file"
     fi
-  }
-
-  # fcd - cd to selected directory
-  fcd() {
-    local dir
-    dir=$(find ${1:-*} -path '*/\.*' -prune \
-      -o -type d -print 2>/dev/null | fzf +m) &&
-      cd "$dir"
-  }
-
-  # fcda - including hidden directories
-  fcda() {
-    local dir
-    dir=$(find ${1:-.} -type d 2>/dev/null | fzf +m) && cd "$dir"
-  }
-
-  # cdf - cd into the directory of the selected file
-  fcdf() {
-    local file
-    local dir
-    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
   }
 
   # fh - repeat history
