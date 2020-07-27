@@ -216,19 +216,19 @@ class Installer
   def install_rubygems
     puts '===== Installing necessary RubyGems'.yellow
 
-    popen("gem install #{GEMS.join(' ')}")
+    asdf_command("gem install #{GEMS.join(' ')}")
   end
 
   def install_python_packages
     puts '===== Installing Python packages'.yellow
 
-    popen("pip3 install #{PIPS3.join(' ')}")
+    asdf_command("pip3 install #{PIPS3.join(' ')}")
   end
 
   def install_npm_packages
     puts '===== Installing NPM packages'.yellow
 
-    popen("npm install -g #{NPMS.join(' ')}")
+    asdf_command("npm install -g #{NPMS.join(' ')}")
   end
 
   def install_vim_plugins
