@@ -902,6 +902,42 @@ let g:rubycomplete_rails = 1
 nnoremap <M-h> :SidewaysLeft<cr>
 nnoremap <M-l> :SidewaysRight<cr>
 
+" ================================
+" Projectioinist
+" ================================
+
+let g:projectionist_heuristics = {}
+
+" Mostly copied from https://hauleth.dev/post/vim-for-elixir/
+let g:projectionist_heuristics['mix.exs'] = {
+            \     'apps/*/mix.exs': { 'type': 'app' },
+            \     'lib/*.ex': {
+            \       'type': 'lib',
+            \       'alternate': 'test/{}_test.exs',
+            \       'template': ['defmodule {camelcase|capitalize|dot} do', 'end'],
+            \     },
+            \     'test/*_test.exs': {
+            \       'type': 'test',
+            \       'alternate': 'lib/{}.ex',
+            \       'template': [
+            \           'defmodule {camelcase|capitalize|dot}Test do',
+            \           '  use ExUnit.Case',
+            \           '',
+            \           '  alias {camelcase|capitalize|dot}, as: Subject',
+            \           '',
+            \           '  doctest Subject',
+            \           'end'
+            \       ],
+            \     },
+            \     'mix.exs': { 'type': 'mix' },
+            \     'config/*.exs': { 'type': 'config' },
+            \ }
+
+let g:projectionist_heuristics['package.json'] = {
+            \ '*.js': { 'make': 'yarn' },
+            \ 'package.json': { 'type': 'package' }
+            \ }
+
 " ----------------------------------------------------- }}}
 
 " Load all plugins ------------------------------- {{{
