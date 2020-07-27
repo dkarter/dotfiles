@@ -676,6 +676,7 @@ let g:ale_fixers = {
       \   'javascript.jsx': ['prettier'],
       \   'json': ['prettier'],
       \   'scss': ['prettier'],
+      \   'css': ['prettier'],
       \   'bash': ['shfmt'],
       \   'zsh': ['shfmt'],
       \   'elixir': ['mix_format'],
