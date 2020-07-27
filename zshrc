@@ -458,8 +458,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # fi
 
 # Compile erlang with OpenSSL from Homebrew via asdf
-export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl"
-export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl"
+export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl@1.1"
+export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl@1.1"
 
 # asdf global version manager
 source "$HOME/.asdf/asdf.sh"
@@ -497,10 +497,20 @@ export PATH=$PATH:$GOPATH/bin
 
 # qt
 export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/qt/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/qt/lib"
 export CPPFLAGS="-I/usr/local/opt/qt/include"
+
+# OPEN SSL
+# =====================================================
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# For compilers to find openssl@1.1 you may need to set:
+export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
+
+# For pkg-config to find openssl@1.1 you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 # zprof
