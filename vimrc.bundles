@@ -15,6 +15,9 @@ call plug#begin('~/.vim/bundle')
 " delete unused buffers
 Plug 'schickling/vim-bufonly'
 
+" nginx syntax support
+Plug 'chr4/nginx.vim'
+
 " Legacy Vim {{{
 
 " Compatibility for legacy vim with neovim's async api
