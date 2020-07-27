@@ -18,6 +18,7 @@ brew 'wxmac'
 brew 'autoconf'
 brew 'fop'
 brew 'libiodbc'
+cask 'java'
 brew 'openjdk'
 
 # help from terminal
