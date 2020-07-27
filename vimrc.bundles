@@ -450,14 +450,15 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Quickfix List: {{{
   Plug 'romainl/vim-qf'
+
+  " Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
+  " https://gitlab.com/hauleth/qfx.vim
+  Plug 'https://gitlab.com/hauleth/qfx.vim.git'
 " }}}
 
 " Other: {{{
   " window animations
   Plug 'camspiers/animate.vim'
-
-  " resize windows automatically if too small
-  Plug 'camspiers/lens.vim'
 
   " open Finder / Terminal for file under the cursor
   Plug 'justinmk/vim-gtfo'
