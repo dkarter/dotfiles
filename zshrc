@@ -20,6 +20,8 @@ fi
 
 # zmodload zsh/zprof
 
+export LANG="en_US.UTF-8"
+
 # load zinit
 source ~/.zinit/bin/zinit.zsh
 
