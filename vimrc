@@ -55,7 +55,7 @@
    set hidden            " enable hidden unsaved buffers
 
    if !has('nvim')             " does not work on neovim
-     set emoji                 " treat emojis 😄  as full width characters
+     set emoji                 " treat emojis 😄 as full width characters
      set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
    end
 
@@ -290,8 +290,8 @@ map <leader>gst :Gist<cr>
 " ====================================
 " GitGutter:
 " ====================================
-" nnoremap <silent> + :GitGutterNextHunk<cr>
-" nnoremap <silent> _ :GitGutterPrevHunk<cr>
+nnoremap <silent> + :GitGutterNextHunk<cr>
+nnoremap <silent> _ :GitGutterPrevHunk<cr>
 
 " ====================================
 " Vim Scriptease:
@@ -677,7 +677,6 @@ let g:ale_fixers = {
       \   'css': ['prettier'],
       \   'bash': ['shfmt'],
       \   'zsh': ['shfmt'],
-      \   'elixir': ['mix_format'],
       \   'ruby': ['rubocop'],
       \   'rust': ['rustfmt'],
       \   'elm': ['elm-format'],
@@ -687,6 +686,11 @@ let g:ale_sh_shfmt_options = '-i 2 -ci'
 
 let g:ale_fix_on_save = 1
 
+
+" ----------------------------------------------------------------------------
+" Mix Format (mhinz/vim-mix-format)
+" ----------------------------------------------------------------------------
+let g:mix_format_on_save = 1
 
 " ----------------------------------------------------------------------------
 " Investigate
@@ -944,40 +948,7 @@ if filereadable(expand('~/.vimrc.bundles'))
 endif
 " }}}
 
-"  Plugin Modifications (AFTER loading bundles) ----- {{{
-if has('nvim') && has('nvimux') && !exists('$TMUX')
-" ------------------------------------
-" NVIMUX:
-" ------------------------------------
-
-lua << EOF
-local nvimux = require('nvimux')
-
--- Nvimux configuration
-nvimux.config.set_all{
-  prefix = '<C-z>',
-  open_term_by_default = true,
-  new_window_buffer = 'single',
-  quickterm_direction = 'botright',
-  quickterm_orientation = 'vertical',
-  -- Use 'g' for global quickterm
-  quickterm_scope = 't',
-  quickterm_size = '80',
-}
-
--- Nvimux custom bindings
-nvimux.bindings.bind_all{
-  {'s', ':NvimuxHorizontalSplit', {'n', 'v', 'i', 't'}},
-  {'v', ':NvimuxVerticalSplit', {'n', 'v', 'i', 't'}},
-}
-
--- Required so nvimux sets the mappings correctly
-nvimux.bootstrap()
-EOF
-endif
-" }}}
-
-" UI Customizations --------------------------------{{{
+" UI Customizations {{{
 
   " automatically set Vim's background to light theme if iterm has light in the
   " profile name

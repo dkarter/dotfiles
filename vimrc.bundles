@@ -91,10 +91,8 @@ endif
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
 
-    if !exists('$TMUX')
-      " simulate tmux shortcuts in neovim
-      Plug 'hkupty/nvimux'
-    endif
+    " simulate tmux shortcuts in neovim
+    Plug 'hkupty/nvimux'
   endif
 " }}}
 
@@ -103,9 +101,9 @@ endif
   Plug 'lambdalisue/gina.vim'
 
   " Visual git gutter
-  " Plug 'airblade/vim-gitgutter'
+  Plug 'airblade/vim-gitgutter'
 
-  Plug 'mhinz/vim-signify'
+  " Plug 'mhinz/vim-signify'
 
   " Gitv - for browsing a file's history in git
   Plug 'gregsexton/gitv'
@@ -214,22 +212,25 @@ endif
   Plug 'tpope/vim-commentary'
 " }}}
 
-" Navigation: {{{
+" File Navigation: {{{
   " navigate to directory of current file using `-`
   Plug 'tpope/vim-vinegar'
-" }}}
 
-" NERDTree: {{{
   " NERDTree... tree explorer for vim
   Plug 'scrooloose/nerdtree'
 
-  " Nerdtree show git status
-  Plug 'Xuyuanp/nerdtree-git-plugin'
+    " Nerdtree show git status
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
-  " highlight file icons with different colors
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " highlight file icons with different colors
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+  " Path navigator designed to work with Vim's built-in mechanisms and complementary plugins.
   Plug 'justinmk/vim-dirvish'
+
+    " dirvish + projections
+    " List all files defined by your projections with the Dirvish plugin.
+    Plug 'fsharpasharp/vim-dirvinist'
 " }}}
 
 " HTML: {{{
@@ -446,6 +447,11 @@ Plug 'vim-airline/vim-airline-themes'
 " Format+Lint: {{{
   " staticly check code and highlight errors (async syntastic replacement)
   Plug 'dense-analysis/ale'
+
+  " temporarily use this plugin to format elixir - until ALE starts supporting
+  " umbrella apps and respect nested .formatter.exs files (see
+  " https://github.com/dense-analysis/ale/pull/3106)
+  Plug 'mhinz/vim-mix-format'
 " }}}
 
 " Quickfix List: {{{
