@@ -14,6 +14,7 @@ DIRS = [
 ].freeze
 
 DOTFILES = %w[
+  p10k.zsh
   aliases
   asdfrc
   ctags
