@@ -96,6 +96,12 @@ brew 'lazygit'
 # build tool
 brew 'make'
 
+# terminal multiplexer
+brew 'tmux'
+
+# tmux for remote pairing
+brew 'tmate'
+
 # display system info
 brew 'neofetch'
 
