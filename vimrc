@@ -20,7 +20,7 @@
  filetype plugin indent on  " try to recognize filetypes and load rel' plugins
 " }}}
 
- "  Behavior Modification ----------------------  {{{
+ "  Behavior Modification {{{
 
    " set leader key
      let g:mapleader="\\"
@@ -126,7 +126,7 @@
      let g:sh_fold_enabled=1
  " }}}
 
-"  Plugin Modifications (BEFORE loading bundles) ----- {{{
+"  Plugin Configuration (BEFORE loading bundles) {{{
 " ====================================
 " Floaterm
 " ====================================
@@ -219,6 +219,7 @@ endfunction
 
 augroup CocConfig
   autocmd!
+
   " coc-highlight: enable highlighting for symbol under cursor
   autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -937,7 +938,7 @@ let g:projectionist_heuristics['package.json'] = {
 
 " ----------------------------------------------------- }}}
 
-" Load all plugins ------------------------------- {{{
+" Load all plugins {{{
 if filereadable(expand('~/.vimrc.bundles'))
   source ~/.vimrc.bundles
 endif
@@ -1025,7 +1026,7 @@ augroup elixir_textobjs
 augroup END
 " }}}
 
-" Own commands --------------------------------------------- {{{
+" Own commands {{{
 command! PrettyPrintJSON %!python -m json.tool
 command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
 command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
@@ -1059,7 +1060,7 @@ endfunction
 nnoremap <expr> <leader>fd ':Cfd '
 " }}}
 
-" Auto commands ------------------------------------------------- {{{
+" Auto commands {{{
   augroup vimrcEx
     autocmd!
 
@@ -1124,14 +1125,14 @@ nnoremap <expr> <leader>fd ':Cfd '
   augroup END
 " }}}
 
-" Vim Script file settings ------------------------ {{{
+" Vim Script file settings {{{
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
 
-"  Key Mappings -------------------------------------------------- {{{
+" Key Mappings {{{
   " Delete current buffer without losing the split
     nnoremap <silent> <C-q> :bp\|bd #<CR>
 
@@ -1361,7 +1362,7 @@ fun! HasItem(list, fn)
 endfun
 " }}}
 
-"    Abbreviations --------------------------------------- {{{
+" Abbreviations {{{
 iabbrev @@ dkarter@gmail.com
 iabbrev ccopy Copyleft 2016 Dorian Karter.
 
@@ -1379,7 +1380,7 @@ if filereadable($HOME . '/.vimrc.local')
 endif
 " -------- Abbreviations ---------------------------------- }}}
 
-" For NeoVim ----------------------------------------------------- {{{
+" For NeoVim {{{
 if has('nvim')
   " use neovim-remote (pip3 install neovim-remote) allows
   " opening a new split inside neovim instead of nesting
