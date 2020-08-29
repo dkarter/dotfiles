@@ -294,6 +294,8 @@ map <leader>gst :Gist<cr>
 " ====================================
 nnoremap <silent> + :GitGutterNextHunk<cr>
 nnoremap <silent> _ :GitGutterPrevHunk<cr>
+nnoremap <silent> <leader>uh :GitGutterUndoHunk<cr>
+
 
 " ====================================
 " Vim Scriptease:
