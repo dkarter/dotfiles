@@ -62,6 +62,8 @@
    set ttyfast           " should make scrolling faster
    set lazyredraw        " should make scrolling faster
 
+   set redrawtime=5000   " prevent vim from disabling highliting if the code is complex
+
    " visual bell for errors
      set visualbell
 
