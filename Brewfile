@@ -102,6 +102,9 @@ brew 'tmux'
 # tmux for remote pairing
 brew 'tmate'
 
+# Reattach process (e.g., tmux) to background
+brew 'reattach-to-user-namespace'
+
 # display system info
 brew 'neofetch'
 
