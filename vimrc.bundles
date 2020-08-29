@@ -291,6 +291,9 @@ endif
 
   " autocomplete using text from tmux
   Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
+
+  " detect focus events from tmux
+  Plug 'tmux-plugins/vim-tmux-focus-events', { 'on': 'Mux' }
 " }}}
 
 " Snippets: {{{
