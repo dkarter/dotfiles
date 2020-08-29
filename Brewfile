@@ -86,8 +86,7 @@ brew 'htop'
 
 # Github CLIs
 brew 'hub'
-tap 'github/gh'
-brew 'github/gh/gh'
+brew 'gh'
 
 # curses interface for docker + git
 brew 'lazydocker'
