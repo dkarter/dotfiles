@@ -273,27 +273,27 @@ endif
   Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
   " tmux config file stuff
-  Plug 'tmux-plugins/vim-tmux', { 'on': 'Mux' }
+  Plug 'tmux-plugins/vim-tmux'
 
   " vim slime for tmux integration (C-c, C-c to send selction to tmux)
-  Plug 'jpalardy/vim-slime', { 'on': 'Mux' }
+  Plug 'jpalardy/vim-slime'
 
   " seamless tmux/vim pane navigation
-  Plug 'christoomey/vim-tmux-navigator', { 'on': 'Mux' }
+  Plug 'christoomey/vim-tmux-navigator'
 
   " yet another tmux plugin
-  Plug 'benmills/vimux', { 'on': 'Mux' }
+  Plug 'benmills/vimux'
     " Run Golang tests in vimux
-    Plug 'benmills/vimux-golang', { 'on': 'Mux' }
+    Plug 'benmills/vimux-golang'
 
     " Run elixir mix tests in vimux
-    Plug 'spiegela/vimix', { 'on': 'Mux' }
+    Plug 'spiegela/vimix'
 
   " autocomplete using text from tmux
-  Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
+  Plug 'wellle/tmux-complete.vim'
 
   " detect focus events from tmux
-  Plug 'tmux-plugins/vim-tmux-focus-events', { 'on': 'Mux' }
+  Plug 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 
 " Snippets: {{{

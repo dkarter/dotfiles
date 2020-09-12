@@ -1288,12 +1288,6 @@ augroup END
   " current line to title case
     inoremap <C-g>t <esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A
 
-  " Quicker window movement
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-l> <C-w>l
-
   " Incsearch:
     map /  <Plug>(incsearch-forward)
     map ?  <Plug>(incsearch-backward)
@@ -1420,18 +1414,6 @@ if has('nvim')
   " pasting works quite well in neovim as is so disabling yo
     nnoremap <silent> yo o
     nnoremap <silent> yO O
-endif
-" }}}
-
-" For TMux {{{
-function! Mux()
-  echom 'Loaded TMux plugins'
-endfunction
-
-command! Mux :call Mux()
-
-if exists('$TMUX')
-  :Mux
 endif
 " }}}
 
