@@ -116,6 +116,9 @@ brew 'openssl@1.1'
 # better, faster grep
 brew 'ripgrep'
 
+# fast code modifications using regex (project find/replace)
+brew 'fastmod'
+
 # like grep but for files and folder names
 brew 'fd'
 
