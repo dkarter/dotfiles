@@ -130,3 +130,8 @@ brew 'tree'
 
 # keep zsh up to date
 brew 'zsh'
+
+brew 'coreutils'
+
+# enable ocr via an Alfred workflow
+brew 'tesseract'
