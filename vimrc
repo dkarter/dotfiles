@@ -1417,7 +1417,8 @@ if has('nvim')
 endif
 " }}}
 
-" For VimPlug {{{
+" gx extensions {{{
+" For VimPlug
 function! PlugGx()
   let l:line = getline('.')
   let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
@@ -1447,6 +1448,30 @@ augroup PlugGxGroup
   autocmd!
   autocmd BufRead,BufNewFile .vimrc.bundles nnoremap <buffer> <silent> gx :call PlugGx()<cr>
   autocmd FileType vim-plug nnoremap <buffer> <silent> gx :call PlugGx()<cr>
+augroup END
+
+" JavaScript package.json
+function! PackageJsonGx() abort
+  let l:line = getline('.')
+  let l:package = matchlist(l:line, '\v"(.*)": "(.*)"')
+
+  if len(l:package) > 0
+    let l:package_name = l:package[1]
+    let l:url = 'https://www.npmjs.com/package/' . l:package_name
+    call netrw#BrowseX(l:url, 0)
+  endif
+endfunction
+
+augroup PackageJsonGx
+  autocmd!
+  autocmd BufRead,BufNewFile package.json nnoremap <buffer> <silent> gx :call PackageJsonGx()<cr>
+augroup END
+
+" Elixir mix.exs (requires plugin: lucidstack/hex.vim)
+augroup MixExsGx
+  autocmd!
+  autocmd BufRead,BufNewFile mix.exs nnoremap <buffer> <silent> gx :HexOpenHexDocs<cr>
+  autocmd BufRead,BufNewFile mix.exs nnoremap <buffer> <silent> gh :HexOpenGithub<cr>
 augroup END
 " }}}
 
