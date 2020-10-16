@@ -207,6 +207,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> go :<C-u>CocFzfList outline<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -236,6 +237,15 @@ command! -nargs=0 Format :call CocAction('format')
 " TODO: maybe need to check if coc is enabled for file and do setlocal?
 set keywordprg=:call\ CocAction('doHover')
 
+nnoremap <silent> <leader>ca  :<C-u>CocFzfList diagnostics<CR>
+nnoremap <silent> <leader>cb  :<C-u>CocFzfList diagnostics --current-buf<CR>
+nnoremap <silent> <leader>cc  :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <leader>ce  :<C-u>CocFzfList extensions<CR>
+nnoremap <silent> <leader>cl  :<C-u>CocFzfList location<CR>
+nnoremap <silent> <leader>co  :<C-u>CocFzfList outline<CR>
+nnoremap <silent> <leader>cs  :<C-u>CocFzfList symbols<CR>
+nnoremap <silent> <leader>cS  :<C-u>CocFzfList services<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
 
 " ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
@@ -405,6 +415,7 @@ autocmd  FileType fzf set noshowmode noruler nonu
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
+" Do not open files inside of a nerdtree buffer
 function! FZFOpen(command_str)
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
     exe "normal! \<c-w>\<c-w>"
@@ -424,9 +435,8 @@ nnoremap <silent> <C-g>g :call FZFOpen(':FzfRg!')<CR>
 nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
 nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
 nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
-nnoremap <silent> <C-h> :call FZFOpen(':History')<CR>
+" nnoremap <silent> <C-h> :call FZFOpen(':History')<CR>
 nnoremap <silent> <C-t> :call FZFOpen(':BTags')<CR>
-" nnoremap <silent> <C-p> :call FZFOpen(':call Fzf_dev()')<CR>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -625,9 +635,11 @@ let g:flow#autoclose = 1
 " Vim Test
 " ----------------------------------------------------------------------------
 
-if has('nvim')
+if has('nvim') && !exists('$TMUX')
   " run tests with neoterm in vim-test
   let g:test#strategy = 'neoterm'
+else
+  let g:test#strategy = 'vimux'
 endif
 
 " "  Support Elixir Umbrella Apps (pre 1.9) {{{
@@ -708,15 +720,6 @@ let g:investigate_syntax_for_rspec='ruby'
 " ----------------------------------------------------------------------------
 let g:startify_files_number = 5
 
-
-" ----------------------------------------------------------------------------
-" Vim Hashrocket
-" ----------------------------------------------------------------------------
-"Change cursor on insert mode (vim-hashrocket)
-if !has('nvim')
-  let g:use_cursor_shapes = 1
-end
-
 " ----------------------------------------------------------------------------
 " Elm-vim
 " ----------------------------------------------------------------------------
@@ -742,6 +745,25 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeAutoDeleteBuffer=1
 " keep alternate files and jumps
 let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+let g:NERDTreeChDirMode=2
+let g:NERDTreeMapOpen='<CR>'
+let g:NERDTreeMapPreview='<S-CR>'
+let g:NERDTreeMapOpenSplit='<C-x>'
+let g:NERDTreeMapPreviewSplit='px'
+let g:NERDTreeMapOpenVSplit='<C-v>'
+let g:NERDTreeMapPreviewVSplit='pv'
+" let g:NERDTreeGitStatusIndicatorMapCustom = {
+"     \ "Modified"  : "✹",
+"     \ "Staged"    : "✚",
+"     \ "Untracked" : "✭",
+"     \ "Renamed"   : "➜",
+"     \ "Unmerged"  : "═",
+"     \ "Deleted"   : "✖",
+"     \ "Dirty"     : "✹",
+"     \ "Clean"     : "✔︎",
+"     \ 'Ignored'   : '☒',
+"     \ "Unknown"   : "?"
+"     \ }
 
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 
@@ -753,8 +775,6 @@ augroup NERDTreeAuCmds
   autocmd FileType nerdtree nmap <buffer> <expr> - g:NERDTreeMapUpdir
 augroup END
 " move up a directory with "-" like using vim-vinegar (usually "u" does that)
-
-
 
 " ----------------------------------------------------------------------------
 " WebDevIcons

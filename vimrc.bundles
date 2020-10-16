@@ -40,6 +40,10 @@ endif
   Plug 'junegunn/fzf.vim'
 " }}}
 
+" Appearance {{{
+  " Plug 'TaDaa/vimade'
+" }}}
+
 " COC {{{
   if executable('yarn') && executable('node') " && has('nvim')
     let g:coc_global_extensions = [
@@ -69,6 +73,7 @@ endif
           \ 'coc-yank',
           \ ]
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'antoinemadec/coc-fzf'
   endif
 " }}}
 
@@ -90,9 +95,6 @@ endif
 
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
-
-    " simulate tmux shortcuts in neovim
-    Plug 'hkupty/nvimux'
   endif
 " }}}
 
@@ -138,6 +140,10 @@ endif
 
   " pulls info on hex packages (requires mattn/webapi-vim)
   Plug 'lucidstack/hex.vim', { 'for': 'elixir'}
+" }}}
+
+" Kotlin {{{
+  Plug 'udalov/kotlin-vim'
 " }}}
 
 " Ruby: {{{
@@ -224,13 +230,6 @@ endif
 
     " highlight file icons with different colors
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-  " Path navigator designed to work with Vim's built-in mechanisms and complementary plugins.
-  Plug 'justinmk/vim-dirvish'
-
-    " dirvish + projections
-    " List all files defined by your projections with the Dirvish plugin.
-    Plug 'fsharpasharp/vim-dirvinist'
 " }}}
 
 " HTML: {{{
@@ -536,6 +535,9 @@ Plug 'vim-airline/vim-airline-themes'
 
   "' File icons in vim --- keep at the bottom, below airline, nerdtree and startify
   Plug 'ryanoasis/vim-devicons'
+
+  " log file syntax
+  Plug 'yyq123/vim-syntax-logfile'
 "}}}
 
 " OWN PLUGINS: {{{
