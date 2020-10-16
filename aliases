@@ -201,6 +201,8 @@ alias extwiki='mix ecto.migrate && mix ecto.rollback && mix ecto.migrate'
 alias imix='iex -S mix'
 alias im='iex -S mix'
 alias mc='mix compile'
+# mix compile check
+alias mcc='mix compile --force --all-warnings --warnings-as-errors'
 alias mpr='mix phx.routes'
 alias mps='mix phx.server'
 alias mt='mix test'
