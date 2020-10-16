@@ -53,6 +53,9 @@
    set shiftround        " Round indent to multiple of 'shiftwidth'
    set termguicolors     " enable true colors
    set hidden            " enable hidden unsaved buffers
+   set updatetime=100    " used by a bunch of plugins to perform async actions 
+                         " when the user stopped typing. Also used by vim to decide when
+                         " to write a swp file.
 
    if !has('nvim')             " does not work on neovim
      set emoji                 " treat emojis 😄 as full width characters
