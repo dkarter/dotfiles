@@ -39,10 +39,6 @@ alias tree="tree -C"
 alias :qa="nvr -cc ':qa'"
 alias :wq="nvr -cc ':wq'"
 
-# yarn
-# disable emoji for yarn - breaking neovim term
-alias yarn='yarn --emoji false'
-
 # Bundler
 alias b="bundle"
 
@@ -218,12 +214,16 @@ alias ma='mix_cmd_app'
 
 
 # yarn
+# disable emoji for yarn - breaking neovim term
+alias yarn='yarn --emoji false'
+alias y='yarn'
 alias yga='yarn global add'
 alias yad='yarn add -D'
 alias ya='yarn add'
 alias yr='yarn remove'
 alias yrd='yarn remove -D'
 alias yi='yarn install'
+alias ys='yarn start'
 
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
 # Include machine specific aliases
