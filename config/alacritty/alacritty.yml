@@ -369,7 +369,16 @@ key_bindings:
   - { key: LBracket, mods: Command,       chars: "\x1A;"                       }  # select last (previously used) pane
   - { key: F,        mods: Command,       chars: "\x1A/"                       }  # search (upwards) (see tmux.conf)
   - { key: P,        mods: Command,       chars: "\x1AP"                       }  # jump to window (with fzf floating window)
-  - { key: P,        mods: Command|Shift, chars: "\x1A\x1bP"                       }  # jump to pane (with fzf floating window)
+  - { key: P,        mods: Command|Shift, chars: "\x1A\x1bP"                   }  # jump to pane (with fzf floating window)
+  - { key: Key1,     mods: Command,       chars: "\x1A1"                       }  # jump to pane 1
+  - { key: Key2,     mods: Command,       chars: "\x1A2"                       }  # jump to pane 2
+  - { key: Key3,     mods: Command,       chars: "\x1A3"                       }  # jump to pane 3
+  - { key: Key4,     mods: Command,       chars: "\x1A4"                       }  # jump to pane 4
+  - { key: Key5,     mods: Command,       chars: "\x1A5"                       }  # jump to pane 5
+  - { key: Key6,     mods: Command,       chars: "\x1A6"                       }  # jump to pane 6
+  - { key: Key7,     mods: Command,       chars: "\x1A7"                       }  # jump to pane 7
+  - { key: Key8,     mods: Command,       chars: "\x1A8"                       }  # jump to pane 8
+  - { key: Key9,     mods: Command,       chars: "\x1A9"                       }  # jump to pane 9
 
   # allow using alt as meta on mac
   # https://godoc.org/github.com/tiborvass/uniline/ansi#Code
