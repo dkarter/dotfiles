@@ -967,8 +967,58 @@ let g:projectionist_heuristics['mix.exs'] = {
             \ }
 
 let g:projectionist_heuristics['package.json'] = {
-            \ '*.js': { 'make': 'yarn' },
-            \ 'package.json': { 'type': 'package' }
+            \   '*.js': {
+            \     'alternate': [
+            \       '{dirname}/{basename}.test.js',
+            \       '{dirname}/__tests__/{basename}.test.js',
+            \     ],
+            \     'type': 'source',
+            \     'make': 'yarn',
+            \   },
+            \   '*.test.js': {
+            \     'alternate': [
+            \       '{dirname}/{basename}.js',
+            \       '{dirname}/../{basename}.js',
+            \     ],
+            \     'type': 'test',
+            \   },
+            \   '*.ts': {
+            \     'alternate': [
+            \       '{dirname}/{basename}.test.ts',
+            \       '{dirname}/{basename}.test.tsx',
+            \       '{dirname}/__tests__/{basename}.test.ts',
+            \       '{dirname}/__tests__/{basename}.test.tsx',
+            \     ],
+            \     'type': 'source',
+            \   },
+            \   '*.test.ts': {
+            \     'alternate': [
+            \       '{dirname}/{basename}.ts',
+            \       '{dirname}/{basename}.tsx',
+            \       '{dirname}/../{basename}.ts',
+            \       '{dirname}/../{basename}.tsx',
+            \     ],
+            \     'type': 'test',
+            \   },
+            \   '*.tsx': {
+            \     'alternate': [
+            \       '{dirname}/{basename}.test.ts',
+            \       '{dirname}/{basename}.test.tsx',
+            \       '{dirname}/__tests__/{basename}.test.ts',
+            \       '{dirname}/__tests__/{basename}.test.tsx',
+            \     ],
+            \     'type': 'source',
+            \   },
+            \   '*.test.tsx': {
+            \     'alternate': [
+            \       '{dirname}/{basename}.ts',
+            \       '{dirname}/{basename}.tsx',
+            \       '{dirname}/../{basename}.ts',
+            \       '{dirname}/../{basename}.tsx',
+            \     ],
+            \     'type': 'test',
+            \   },
+            \   'package.json': { 'type': 'package' }
             \ }
 
 " ----------------------------------------------------- }}}
