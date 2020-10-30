@@ -563,8 +563,9 @@ let g:jsx_ext_required = 0
 "  Rg
 " =====================================
 
-" Grep selection with Rg
+" Grep project for selection with Rg
 xnoremap <leader>gr y :Rg "<CR>
+" Grep project for word under the cursor with Rg
 nnoremap <Leader>gr :Rg <C-r><C-w><CR>
 
 " Grep selection with Rg (excluding tests and migrations)
@@ -768,7 +769,10 @@ let g:NERDTreeMapPreviewVSplit='pv'
 "     \ "Unknown"   : "?"
 "     \ }
 
+" Toggle NerdTree
 nnoremap <Leader>nt :NERDTreeToggle<CR>
+" Reveal current file in NerdTree
+nnoremap <Leader>nf :NERDTreeFind<CR>
 
 " not necessarily NTree related but uses NERDTree because I have it setup
 nnoremap <leader>d :e %:h<CR>
