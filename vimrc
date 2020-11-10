@@ -946,12 +946,15 @@ let g:projectionist_heuristics['mix.exs'] = {
             \     'apps/*/mix.exs': { 'type': 'app' },
             \     'lib/*.ex': {
             \       'type': 'lib',
-            \       'alternate': 'test/{}_test.exs',
+            \       'alternate': [
+            \         'test/{}_test.exs',
+            \         'test/lib/{}_test.exs',
+            \       ],
             \       'template': ['defmodule {camelcase|capitalize|dot} do', 'end'],
             \     },
             \     'test/*_test.exs': {
             \       'type': 'test',
-            \       'alternate': 'lib/{}.ex',
+            \       'alternate': ['lib/{}.ex', '{}.ex'],
             \       'template': [
             \           'defmodule {camelcase|capitalize|dot}Test do',
             \           '  use ExUnit.Case',
