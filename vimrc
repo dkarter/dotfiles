@@ -941,7 +941,6 @@ nnoremap <M-l> :SidewaysRight<cr>
 
 let g:projectionist_heuristics = {}
 
-" Mostly copied from https://hauleth.dev/post/vim-for-elixir/
 let g:projectionist_heuristics['mix.exs'] = {
             \     'apps/*/mix.exs': { 'type': 'app' },
             \     'lib/*.ex': {
