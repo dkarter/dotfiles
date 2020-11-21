@@ -41,7 +41,8 @@ SYMLINK_DIRS = [
   ['vim/UltiSnips', '~/.vim/'],
   ['config/nvim', '~/.config/'],
   ['config/kitty', '~/.config/'],
-  ['config/ripgrep', '~/.config/']
+  ['config/ripgrep', '~/.config/'],
+  ['config/alacritty', '~/.config/']
 ].freeze
 
 GEMS = [
