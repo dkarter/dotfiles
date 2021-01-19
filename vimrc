@@ -163,17 +163,7 @@ augroup FloatermCustom
   autocmd FileType floaterm tmap <buffer> <silent> <leader>h <C-\><C-n>:call SetColorColumn(1)<CR>:hide<CR>
 augroup END
 
-" function! floaterm#wrapper#lazygit() abort
-"   let cmd = 'lazygit'
-"   call SetColorColumn(0)
-"   return [cmd, {'on_exit': funcref('s:lazygit_callback')}, v:false]
-" endfunction
-
-" function! s:ranger_callback(...) abort
-"     call SetColorColumn(1)
-" endfunction
-
-nnoremap <silent> <leader>gg :FloatermNew lazygit<CR>
+nnoremap <silent> <leader>gg :FloatermNew --title='LazyGit' --autoclose=1 lazygit<CR>
 
 " ====================================
 " VimMatchUp:
