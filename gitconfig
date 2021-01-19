@@ -51,10 +51,6 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
-[zenflow "api.base"]
-  url = https://api.github.com
-[zenflow "user.agent"]
-  base = zencoder
 [branch]
   autosetuprebase = always
 [help]
