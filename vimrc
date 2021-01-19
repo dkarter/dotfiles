@@ -397,6 +397,12 @@ let g:bullets_enabled_file_types = [
     \]
 
 " =====================================
+" Fugitive
+" =====================================
+nnoremap <silent> <leader>gw :Gwrite<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+
+" =====================================
 "  FZF
 " =====================================
 let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always -E .git --ignore-file ~/.gitignore'
