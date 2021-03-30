@@ -30,6 +30,12 @@ alias z='j'
 alias covid='curl https://covid19.trackercli.com'
 alias covidus='curl https://covid19.trackercli.com/us'
 
+# Jira
+# transition issue
+jt() {
+  jira i "$(jira i | fzf | awk '{ print $1 }')" -t
+}
+
 # vim
 alias e="$EDITOR"
 alias v="$VISUAL"
@@ -87,6 +93,12 @@ alias gcd1='git clone --depth=1'
 alias gad='git ls-files --deleted | xargs git add'
 alias gprune='gf --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -D'
 alias gclone='git clone'
+
+# create a draft PR from jira ticket name and number, based off a different
+# branch
+jpr() {
+  gh pr create --base $(gb | fzf) --draft --title "$(jira i | fzf | ruby -ne 'i = $_.strip.split(/\s{2,}/); puts "[#{i[0]}] #{i[2]}"')"
+}
 
 
 # hashrocket uses gpr and I like gup, this prevents typos
