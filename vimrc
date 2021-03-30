@@ -1081,11 +1081,24 @@ EOF
     set background=dark
   endif
 
+
   colorscheme one
     let g:one_allow_italics = 1
     call one#highlight('elixirInclude', 'e06c75', '', 'none')
     call one#highlight('elixirOperator', 'd19a66', '', 'none')
     call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
+
+    let g:lightline = {
+          \   'colorscheme': 'one',
+          \   'component_function': {
+          \     'filename': 'LightlineFilename'
+          \   }
+          \ }
+
+    function! LightlineFilename()
+      return expand('%')
+    endfunction
+
 
   " Make it obvious where 80 characters is
   " cheatsheet https://jonasjacek.github.io/colors/
