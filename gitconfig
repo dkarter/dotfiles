@@ -13,6 +13,8 @@
   ci = commit -v
   co = checkout
   aa = add -A .
+  # add untracked files
+  an = add -N .
   st = status
   cp = cherry-pick
   put = push origin HEAD
