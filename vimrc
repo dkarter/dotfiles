@@ -125,6 +125,7 @@
          \ 'cfg',
          \ 'systemd',
          \ 'nginx',
+         \ 'diff'
          \ ]
 
    " enable folding in bash files
