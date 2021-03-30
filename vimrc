@@ -730,9 +730,18 @@ let g:investigate_use_dash=1
 let g:investigate_syntax_for_rspec='ruby'
 
 " ----------------------------------------------------------------------------
-" Startify
+" Dashboard
 " ----------------------------------------------------------------------------
-let g:startify_files_number = 5
+
+let g:dashboard_default_executive = 'fzf'
+let g:dashboard_custom_header = [
+            \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+            \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+            \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+            \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+            \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+            \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+            \]
 
 " ----------------------------------------------------------------------------
 " Elm-vim
@@ -1280,7 +1289,7 @@ augroup END
 
   " Split edit your vimrc. Type space, v, r in sequence to trigger
     fun! OpenConfigFile(file)
-      if (&filetype ==? 'startify')
+      if (&filetype ==? 'startify' || &filetype ==? 'dashboard')
         execute 'e ' . a:file
       else
         execute 'tabe ' . a:file
