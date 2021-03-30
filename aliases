@@ -94,6 +94,9 @@ alias gad='git ls-files --deleted | xargs git add'
 alias gprune='gf --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -D'
 alias gclone='git clone'
 
+# better git tree log:
+alias gg='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold green)%h%C(reset) - %C(bold blue)%ai%C(reset) %C(bold red)%an%C(reset) %C(bold yellow)%d%C(reset)'\'\'' %C(dim white)- %s%C(reset)'\'
+
 # create a draft PR from jira ticket name and number, based off a different
 # branch
 jpr() {
