@@ -601,6 +601,19 @@ augroup END
 " better emmet leader key (must be followed with ,)
 let g:user_emmet_leader_key='<C-e>'
 
+" ----------------------------------------------------------------------------
+" Vim Better Whitespace
+" ----------------------------------------------------------------------------
+let g:better_whitespace_filetypes_blacklist = [
+      \ 'startify',
+      \ 'dashboard',
+      \ 'diff',
+      \ 'gitcommit',
+      \ 'unite',
+      \ 'qf',
+      \ 'help',
+      \ 'markdown'
+      \ ]
 
 " ----------------------------------------------------------------------------
 " Switch.vim
