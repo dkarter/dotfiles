@@ -95,6 +95,9 @@ endif
 
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
+
+    " tree sitter (nvim 0.5 and up) - better syntax highlighting
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   endif
 " }}}
 

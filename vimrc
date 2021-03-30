@@ -1050,6 +1050,27 @@ if filereadable(expand('~/.vimrc.bundles'))
 endif
 " }}}
 
+" Plugin Configuration (AFTER loading bundles) {{{
+
+
+" ----------------------------------------------------------------------------
+" TreeSitter
+" ----------------------------------------------------------------------------
+
+" why after loading the bundle? 
+" https://github.com/nvim-treesitter/nvim-treesitter/issues/914#issuecomment-773670349
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
+
+" }}}
+
 " UI Customizations {{{
 
   " automatically set Vim's background to light theme if iterm has light in the
