@@ -92,8 +92,15 @@ endif
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
 
-    " tree sitter (nvim 0.5 and up) - better syntax highlighting
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " ONLY FOR NVIM 0.5 and up {{{
+      if has('nvim-0.5')
+        " Better syntax highlighting
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+        " LSP support
+        Plug 'neovim/nvim-lspconfig'
+      endif
+    " }}}
   endif
 " }}}
 
