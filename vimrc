@@ -1049,24 +1049,37 @@ if filereadable(expand('~/.vimrc.bundles'))
 endif
 " }}}
 
-" Plugin Configuration (AFTER loading bundles) {{{
-
-
-" ----------------------------------------------------------------------------
-" TreeSitter
-" ----------------------------------------------------------------------------
-
-" why after loading the bundle? 
-" https://github.com/nvim-treesitter/nvim-treesitter/issues/914#issuecomment-773670349
-
+"  Plugin Configuration (AFTER loading bundles) {{{
+" ====================================
+" Treesitter
+" ====================================
+if has('nvim-0.5')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
+  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
   },
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true
+  }
 }
 EOF
+
+" add foldsupport using nvim treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+endif
 
 " }}}
 
