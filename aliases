@@ -118,6 +118,15 @@ hdi() {
 
 alias h='hdi'
 
+# self-hosted ngrok clone
+tnnl() {
+  local_port=$1
+  subdomain=$2
+  target_port="$(shuf -i 3000-65000 -n 1)"
+  echo "Creating encrypted tunnel at ${subdomain}.tnnl.me for local port ${local_port} ..."
+  ssh -i ~/.ssh/tnnl -tR "${target_port}:localhost:${local_port}" tnnl@tnnl.me /home/tnnl/SirTunnel/sirtunnel.py "$subdomain.tnnl.me" "$target_port"
+}
+
 # docker
 alias dkc='docker container'
 
