@@ -60,6 +60,7 @@ PIPS3 = [
 ].freeze
 
 ASDF_PLUGINS = %w[
+  direnv
   elixir
   elm
   erlang
@@ -68,10 +69,10 @@ ASDF_PLUGINS = %w[
   python
   ruby
   rust
+  yarn
 ].freeze
 
 NPMS = %w[
-  yarn
   neovim
   bash-language-server
   @elm-tooling/elm-language-server
