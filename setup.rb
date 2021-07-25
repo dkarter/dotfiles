@@ -255,7 +255,10 @@ class Installer
   end
 
   def link(source, target)
-    FileUtils.ln_sf(File.expand_path(source), File.expand_path(target))
+    source = File.expand_path(source)
+    target = File.expand_path(target)
+    FileUtils.rm_f(target)
+    FileUtils.ln_sf(source, target)
   end
 
   def mkdir(path)
