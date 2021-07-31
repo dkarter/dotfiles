@@ -1061,30 +1061,16 @@ endif
 " ====================================
 if has('nvim-0.5')
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = "maintained",
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true
-  }
+  highlight = { enable = true },
 }
 EOF
 
 " add foldsupport using nvim treesitter
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 endif
 
 " }}}
