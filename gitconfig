@@ -33,7 +33,7 @@
   excludesfile = ~/.gitignore
   autocrlf = input
   whitespace = warn
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = git-split-diffs --color | less -RFX
 [merge]
   ; ff = only
   summary = true
