@@ -437,6 +437,16 @@ bashman() {
   man bash | less -p "^       $1 "
 }
 
+# ask for confirmation in scripts
+function confirm() {
+  read -p "Are you sure? " -n 1 -r
+  echo    # move to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 1
+  fi
+}
+
 # color man pages
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode – red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode – bold, magenta
