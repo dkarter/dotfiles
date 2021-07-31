@@ -40,10 +40,6 @@ endif
   Plug 'junegunn/fzf.vim'
 " }}}
 
-" Appearance {{{
-  " Plug 'TaDaa/vimade'
-" }}}
-
 " COC {{{
   if executable('yarn') && executable('node') " && has('nvim')
     let g:coc_global_extensions = [
@@ -293,9 +289,6 @@ endif
 
   " autocomplete using text from tmux
   Plug 'wellle/tmux-complete.vim'
-
-  " detect focus events from tmux
-  Plug 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 
 " Snippets: {{{
@@ -531,10 +524,10 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
   " Scratch buffers
-  Plug 'mtth/scratch.vim'
+  Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
 
   " interactive scratchpad
-  Plug 'metakirby5/codi.vim'
+  Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
 
   " resize windows in vim naturally
   Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }

@@ -1529,16 +1529,6 @@ if has('nvim')
   " interactive find replace preview
     set inccommand=nosplit
 
-    augroup TerminalMod
-      autocmd!
-      autocmd BufEnter *
-            \ if &buftype == 'terminal' |
-            \   setlocal foldcolumn=0 |
-            \ endif
-      autocmd TermEnter * setlocal foldcolumn=0
-    augroup END
-
-
   " share data between nvim instances (registers etc)
     augroup SHADA
       autocmd!
