@@ -43,7 +43,6 @@
    set noshowmode        " don't show mode as airline already does
    set showcmd           " show any commands
    set foldmethod=manual " set folds by syntax of current language
-   set foldcolumn=2      " display gutter markings for folds
    set mouse=a           " enable mouse (selection, resizing windows)
    set iskeyword+=-      " treat dash separated words as a word text object
 
@@ -53,7 +52,7 @@
    set shiftround        " Round indent to multiple of 'shiftwidth'
    set termguicolors     " enable true colors
    set hidden            " enable hidden unsaved buffers
-   set updatetime=100    " used by a bunch of plugins to perform async actions 
+   set updatetime=100    " used by a bunch of plugins to perform async actions
                          " when the user stopped typing. Also used by vim to decide when
                          " to write a swp file.
 
@@ -1082,18 +1081,26 @@ EOF
   endif
 
 
-  colorscheme one
+  colorscheme gruvbox-flat
+
     " make background transparent
     au ColorScheme * hi Normal ctermbg=none guibg=none
     highlight Normal ctermbg=none guibg=none
     highlight NonText ctermbg=none guibg=none
+    highlight vimCommentGroup ctermbg=none guibg=none
+    highlight SignColumn ctermbg=none guibg=none
+    highlight FoldColumn ctermbg=none guibg=none
+    highlight Folded ctermbg=none guibg=none
+    highlight ALEErrorSign ctermbg=none guibg=none
+    highlight ALEWarningSign ctermbg=none guibg=none
+    highlight clear LineNr
 
-    call one#highlight('elixirInclude', 'e06c75', '', 'none')
-    call one#highlight('elixirOperator', 'd19a66', '', 'none')
-    call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
+    highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 ctermbg=none guibg=none
+    highlight SignifySignDelete ctermfg=red    guifg=#ff0000 ctermbg=none guibg=none
+    highlight SignifySignChange ctermfg=yellow guifg=#ffff00 ctermbg=none guibg=none
 
     let g:lightline = {
-          \   'colorscheme': 'one',
+          \   'colorscheme': 'gruvbox-flat',
           \   'component_function': {
           \     'filename': 'LightlineFilename'
           \   }
@@ -1109,7 +1116,10 @@ EOF
   fun! SetColorColumn(active)
     if a:active
       highlight ColorColumn ctermbg=236 guibg=#303030
-      let &colorcolumn=join(range(100,999),',')
+      " let &colorcolumn=join(range(100,999),',')
+      "
+      " highlight one column after 'textwidth'
+      set cc=+1
     else
       highlight ColorColumn guibg=#272c35
     endif

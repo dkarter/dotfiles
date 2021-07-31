@@ -27,8 +27,8 @@ window:
   # Blank space added around the window in pixels. This padding is not scaled by
   # DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 20
-    y: 30
+    x: 10
+    y: 10
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -40,7 +40,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: transparent
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -69,26 +69,18 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: "FiraCode Nerd Font"
-    style: Retina
-    # family: "Fira Code"
-    # family: "Source Code Pro"
-    # style: Retina
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Regular
 
   # The bold font face
   bold:
-    family: "FiraCode Nerd Font"
-    style: Bold
-    # family: "Fira Code"
-    # family: "Source Code Pro"
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Medium
 
   # The italic font face
   italic:
-    family: "FiraCode Nerd Font"
-    style: Light
-    # family: "Fira Code"
-    # family: "Source Code Pro"
-    # style: "Medium Italic"
+    family: "JetBrainsMono Nerd Font Mono"
+    style: "Italic"
 
   # Point size of the font
   size: 18.0
@@ -129,45 +121,38 @@ draw_bold_text_with_bright_colors: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 # custom_cursor_colors: false
 
-# Colors (One Dark)
+# Colors (gruvbox flat)
 colors:
   # Default colors
   primary:
-    background: '0x282c34'
-    foreground: '0xabb2bf'
+    background: '0x282828'
+    foreground: '0xd4be98'
 
   # Normal colors
   normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
+    black:   '0x262627'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xd8a657'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xd4be98'
 
   # Bright colors
   bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
+    black:   '0x1d2021'
+    red:     '0xea6962'
+    green:   '0xa9b665'
+    yellow:  '0xd8a657'
+    blue:    '0x7daea3'
+    magenta: '0xd3869b'
+    cyan:    '0x89b482'
+    white:   '0xd4be98'
 
-#  # Dim colors (Optional)
-#  dim:
-#    black:   '0x333333'
-#    red:     '0xf2777a'
-#    green:   '0x99cc99'
-#    yellow:  '0xffcc66'
-#    blue:    '0x6699cc'
-#    magenta: '0xcc99cc'
-#    cyan:    '0x66cccc'
-#    white:   '0xdddddd'
+  indexed_colors:
+    - { index: 16, color: '0xe78a4e' }
+    - { index: 17, color: '0xc14a4a' }
 
 #  # Indexed Colors
 #  #
@@ -207,7 +192,7 @@ bell:
   duration: 0
 
 # Background opacity
-background_opacity: 0.85
+background_opacity: 0.9
 
 # Key bindings
 #
