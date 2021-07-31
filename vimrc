@@ -707,6 +707,7 @@ let g:ale_fixers = {
       \   'bash': ['shfmt'],
       \   'zsh': ['shfmt'],
       \   'ruby': ['prettier'],
+      \   'yaml': ['prettier'],
       \   'rust': ['rustfmt'],
       \   'elm': ['elm-format'],
       \}
