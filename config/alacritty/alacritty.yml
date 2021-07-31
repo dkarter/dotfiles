@@ -27,8 +27,8 @@ window:
   # Blank space added around the window in pixels. This padding is not scaled by
   # DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 20
+    y: 30
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -40,7 +40,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: transparent
 
   # Startup Mode (changes require restart)
   #
@@ -207,7 +207,7 @@ bell:
   duration: 0
 
 # Background opacity
-background_opacity: 1.0
+background_opacity: 0.85
 
 # Key bindings
 #
