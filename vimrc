@@ -714,6 +714,7 @@ let g:ale_fixers = {
       \   'yaml': ['prettier'],
       \   'rust': ['rustfmt'],
       \   'elm': ['elm-format'],
+      \   'cpp': ['clang-format'],
       \}
 
 let g:ale_sh_shfmt_options = '-i 2 -ci'
