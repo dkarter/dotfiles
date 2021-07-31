@@ -37,6 +37,7 @@
 [merge]
   ; ff = only
   summary = true
+	tool = nvimdiff
 [merge "bundlelock"]
   name = lock Gemfile
   driver = bundle install
