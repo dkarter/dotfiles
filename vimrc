@@ -1083,7 +1083,11 @@ EOF
 
 
   colorscheme one
-    let g:one_allow_italics = 1
+    " make background transparent
+    au ColorScheme * hi Normal ctermbg=none guibg=none
+    highlight Normal ctermbg=none guibg=none
+    highlight NonText ctermbg=none guibg=none
+
     call one#highlight('elixirInclude', 'e06c75', '', 'none')
     call one#highlight('elixirOperator', 'd19a66', '', 'none')
     call one#highlight('vimTodo', '000000', 'ffec8b', 'none')
