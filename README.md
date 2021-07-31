@@ -1,5 +1,8 @@
 Dorian's Dotfiles
 ===================
+
+![screenshot](./screenshot.png)
+
 Originally based on the ThoughtBot base configuration but HEAVILY customized to my needs and ergonomics.
 
 Feel free to "steal" anything you want, and if you have a question please open an issue.
