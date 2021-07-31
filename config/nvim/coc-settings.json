@@ -28,6 +28,22 @@
       "command": "docker-langserver",
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
     }
   },
   "coc.preferences.enableFloatHighlight": false,
