@@ -1262,6 +1262,10 @@ augroup END
 " }}}
 
 " Key Mappings {{{
+  " center window on search result
+    nnoremap <silent> n nzzzv
+    nnoremap <silent> N Nzzzv
+
   " Delete current buffer without losing the split
     nnoremap <silent> <C-q> :bp\|bd #<CR>
 
