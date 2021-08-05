@@ -1086,6 +1086,7 @@ endif
   endif
 
 
+  let g:gruvbox_transparent = 1
   colorscheme gruvbox-flat
 
     " make background transparent
