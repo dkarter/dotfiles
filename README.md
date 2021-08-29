@@ -30,10 +30,10 @@ ruby setup.rb
 --------
 
 ## FAQ
-
-Q: Why are things named without a dot at the beginning?
+<details>
+<summary>Q: Why are things named without a dot at the beginning?</summary>
 A: It makes it easier to include files in this repo if they are not named
 exactly how they would be when symlinked over (I symlink the files here to my home
 directory).  e.g. if I want to include the global `.gitignore` in this repo it
 will override this repo's `.gitignore`.
-
+</details>
