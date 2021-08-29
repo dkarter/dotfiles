@@ -42,7 +42,8 @@ SYMLINK_DIRS = [
   ['config/nvim', '~/.config/'],
   ['config/kitty', '~/.config/'],
   ['config/ripgrep', '~/.config/'],
-  ['config/alacritty', '~/.config/']
+  ['config/alacritty', '~/.config/'],
+  ['config/vifm', '~/.config/']
 ].freeze
 
 GEMS = [
@@ -60,15 +61,22 @@ PIPS3 = [
 ].freeze
 
 ASDF_PLUGINS = %w[
+  bat
   direnv
   elixir
   elm
   erlang
+  fd
+  fzf
   golang
+  lazygit
+  neovim
   nodejs
   python
+  ripgrep
   ruby
   rust
+  tmux
   yarn
 ].freeze
 
@@ -158,7 +166,7 @@ class Installer
 
     ASDF_PLUGINS.each do |plugin|
       puts "Installing #{plugin} plugin...".light_blue
-      asdf_command("asdf plugin-add #{plugin}")
+      asdf_command("asdf plugin add #{plugin}")
     end
   end
 
@@ -242,7 +250,7 @@ class Installer
   end
 
   def asdf_command(cmd)
-    popen(". #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}")
+    popen("bash -c '. #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}'")
   end
 
   def popen(cmd)
