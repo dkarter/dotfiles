@@ -463,22 +463,33 @@ export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 # for erl/iex history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# show if a command is available as a homebrew package if cannot find it
-# disabling this because it slows down zsh initialization
-# if brew command command-not-found-init >/dev/null 2>&1; then
-#   eval "$(brew command-not-found-init)"
-# fi
-
-# Compile erlang with OpenSSL from Homebrew via asdf
-export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl@1.1"
-export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl@1.1"
+case "$(uname -s)" in
+  Darwin*)
+    # Compile erlang with OpenSSL from Homebrew via asdf
+    export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl@1.1"
+    export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl@1.1"
+    ;;
+  Linux*)
+    # Compile erlang with OpenSSL from apt (what about arch/manjaro?)
+    export ERLANG_OPENSSL_PATH="/usr/lib/x86_64-linux-gnu"
+    export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/include/openssl"
+    ;;
+esac
 
 # asdf global version manager
 source "$HOME/.asdf/asdf.sh"
 source "$HOME/.asdf/completions/asdf.bash"
 
-# ruby-build -> configure readline path from homebrew
-export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
+case "$(uname -s)" in
+  Darwin*)
+    # ruby-build -> configure readline path from homebrew
+    export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
+    ;;
+  Linux*)
+    # ruby-build -> configure readline path
+    export RUBY_CONFIGURE_OPTS=--with-readline-dir="/usr/include/readline"
+    ;;
+esac
 
 # TODO: can we do this with zsh-async
 # set yarn binaries on path
