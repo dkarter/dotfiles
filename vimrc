@@ -1491,9 +1491,6 @@ endfun
 " }}}
 
 " Abbreviations {{{
-iabbrev @@ dkarter@gmail.com
-iabbrev ccopy Copyleft 2016 Dorian Karter.
-
 augroup DebuggerBrevs
   autocmd!
   autocmd FileType ruby,eruby iabbrev <buffer> bpry require 'pry'; binding.pry;
@@ -1501,12 +1498,12 @@ augroup DebuggerBrevs
   autocmd FileType elixir iabbrev <buffer> bpry require IEx; IEx.pry;
   autocmd FileType elixir iabbrev <buffer> ipry require IEx; IEx.pry;
 augroup END
+" -------- Abbreviations ---------------------------------- }}}
 
 " Local config
 if filereadable($HOME . '/.vimrc.local')
   source ~/.vimrc.local
 endif
-" -------- Abbreviations ---------------------------------- }}}
 
 " For NeoVim {{{
 if has('nvim')
