@@ -1078,6 +1078,14 @@ EOF
 " set foldexpr=nvim_treesitter#foldexpr()
 endif
 
+" ====================================
+" Unimpaired
+" ====================================
+
+" [q and ]q center the result on screen
+" nnoremap ]q ]qzz
+" nnoremap [q [qzz
+
 " }}}
 
 " UI Customizations {{{
