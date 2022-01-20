@@ -96,9 +96,6 @@ endif
       if has('nvim-0.5')
         " Better syntax highlighting
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-        " LSP support
-        Plug 'neovim/nvim-lspconfig'
       endif
     " }}}
   endif
@@ -176,9 +173,6 @@ endif
 
   " show code coverage in vim
   Plug 'killphi/vim-legend', { 'for': 'ruby' }
-
-  " Rails and ruby support (loaded automatically for rails apps)
-  Plug 'tpope/vim-rails'
 
   " Text object for ruby blocks
   Plug 'nelstrom/vim-textobj-rubyblock'
