@@ -709,6 +709,7 @@ let g:ale_fixers = {
       \   'typescript.tsx': ['prettier'],
       \   'javascript': ['prettier'],
       \   'javascript.jsx': ['prettier'],
+      \   'html': ['prettier'],
       \   'json': ['prettier'],
       \   'scss': ['prettier'],
       \   'css': ['prettier'],
