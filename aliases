@@ -112,7 +112,7 @@ alias gg='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold
 # create a draft PR from jira ticket name and number, based off a different
 # branch
 jpr() {
-  gh pr create --base $(gb | fzf) --draft --title "$(jira i | fzf | ruby -ne 'i = $_.strip.split(/\s{2,}/); puts "[#{i[0]}] #{i[2]}"')"
+  gh pr create --base $(gb --format='%(refname:short)' | fzf --border=rounded --prompt='Select base branch: ' --margin 25%) --draft --title "$(jira i | fzf --border=rounded --prompt='Select ticket: ' --margin 25%| ruby -ne 'i = $_.strip.split(/\s{2,}/); puts "[#{i[0]}] #{i[2]}"')"
 }
 
 
@@ -146,8 +146,8 @@ alias dkc='docker container'
 alias usbtree='ioreg -p IOUSB -l -w 0'
 
 # fuzzy commands with fzf
-alias gcorb='gco --track $(git branch -r | fzf)'
-alias gcob='gco $(git branch | fzf)'
+alias gcorb='gco --track $(git branch -r  --format="%(refname:short)" | fzf --prompt="Select remote branch to checkout: ")'
+alias gcob='gco $(git branch --format="%(refname:short)" | fzf --prompt="Select branch to checkout: ")'
 alias fz="fzf --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort' --preview '[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"
 alias vfz='vim $(fz)'
 alias preview="fzf --preview 'bat --color \"always\" --line-range 0:30 {}'"
@@ -242,6 +242,7 @@ alias mdg='mix deps.get'
 alias mdca='mix deps.clean --all'
 alias ecto.reset='mix ecto.drop && mix ecto.create && mix ecto.migrate && mix ecto.seed'
 alias killbeam='pgrep -f beam | xargs kill -9'
+
 function mix_cmd_app() {
   mix cmd --app $1 mix
 }
