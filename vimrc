@@ -132,6 +132,8 @@
  " }}}
 
 "  Plugin Configuration (BEFORE loading bundles) {{{
+
+
 " ====================================
 " Floaterm
 " ====================================
@@ -230,15 +232,17 @@ command! -nargs=0 Format :call CocAction('format')
 " TODO: maybe need to check if coc is enabled for file and do setlocal?
 set keywordprg=:call\ CocAction('doHover')
 
-nnoremap <silent> <leader>ca  :<C-u>CocFzfList diagnostics<CR>
-nnoremap <silent> <leader>cb  :<C-u>CocFzfList diagnostics --current-buf<CR>
-nnoremap <silent> <leader>cc  :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <leader>ce  :<C-u>CocFzfList extensions<CR>
-nnoremap <silent> <leader>cl  :<C-u>CocFzfList location<CR>
-nnoremap <silent> <leader>co  :<C-u>CocFzfList outline<CR>
-nnoremap <silent> <leader>cs  :<C-u>CocFzfList symbols<CR>
-nnoremap <silent> <leader>cS  :<C-u>CocFzfList services<CR>
-nnoremap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
+vmap <silent> <leader>ca  :<C-u>CocFzfList actions<CR>
+nmap <silent> <leader>ca  :<C-u>CocFzfList actions<CR>
+nmap <silent> <leader>cd  :<C-u>CocFzfList diagnostics<CR>
+nmap <silent> <leader>cb  :<C-u>CocFzfList diagnostics --current-buf<CR>
+nmap <silent> <leader>cc  :<C-u>CocFzfList commands<CR>
+nmap <silent> <leader>ce  :<C-u>CocFzfList extensions<CR>
+nmap <silent> <leader>cl  :<C-u>CocFzfList location<CR>
+nmap <silent> <leader>co  :<C-u>CocFzfList outline<CR>
+nmap <silent> <leader>cs  :<C-u>CocFzfList symbols<CR>
+nmap <silent> <leader>cS  :<C-u>CocFzfList services<CR>
+nmap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
 
 " ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
