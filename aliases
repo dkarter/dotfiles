@@ -93,6 +93,10 @@ alias gcd1='git clone --depth=1'
 alias gad='git ls-files --deleted | xargs git add'
 alias gprune='gf --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -D'
 alias gclone='git clone'
+# list all branches in a git bundle
+alias gblh='git bundle list-heads'
+# first commit sha
+alias gfc='git rev-list --max-parents=0 HEAD'
 
 fork() {
   repo_name=$(echo "$1" | xargs basename | cut -d. -f1)
