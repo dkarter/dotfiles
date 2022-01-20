@@ -403,7 +403,7 @@ let g:bullets_enabled_file_types = [
 " Fugitive
 " =====================================
 nnoremap <silent> <leader>gw :Gwrite<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gb :Git blame<CR>
 
 " =====================================
 "  FZF
