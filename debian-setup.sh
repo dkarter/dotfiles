@@ -1,26 +1,29 @@
 # install all debian packages needed for my dotfiles
 sudo apt -y install \
-  zsh \
-  bat \
-  libssl-dev \
-  automake \
   autoconf \
-  libncurses5-dev \
-  ruby \
+  automake \
+  bat \
   bison \
+  universal-ctags \
   fop \
-  xsltproc \
+  global \
+  libgl1-mesa-dev \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
-  libpng-dev \
-  wx-common \
-  libssl-dev \
-  libssh-dev \
-  unixodbc-dev \
-  libxml2-utils \
+  libglu1-mesa-dev \
   libncurses-dev \
-  openjdk-11-jdk \
+  libncurses5-dev \
+  libpng-dev \
+  libssh-dev \
+  libssl-dev \
+  libssl-dev \
   libwxgtk3.0-gtk3-dev \
-  libgl1-mesa-dev \
-  libglu1-mesa-dev \
-  m4
+  libxml2-utils \
+  m4 \
+  openjdk-11-jdk \
+  ruby \
+  tmux \
+  unixodbc-dev \
+  wx-common \
+  xsltproc \
+  zsh
