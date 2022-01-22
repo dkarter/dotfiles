@@ -267,7 +267,7 @@ class Installer
   def link(source, target)
     source = File.expand_path(source)
     target = File.expand_path(target)
-    FileUtils.rm_f(target)
+    FileUtils.rm_rf(target)
     FileUtils.ln_sf(source, target)
   end
 
