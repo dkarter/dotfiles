@@ -148,13 +148,13 @@ class Installer
   def install_zinit
     puts '===== Installing zinit'.yellow
 
-    git_install('https://github.com/zdharma/zinit.git', ZINIT_INSTALL_DIR)
+    git_install('git@github.com:zdharma-continuum/zinit.git', ZINIT_INSTALL_DIR)
   end
 
   def install_asdf
     puts '===== Installing asdf'.yellow
 
-    git_install('https://github.com/asdf-vm/asdf.git', ASDF_INSTALL_DIR)
+    git_install('git@github.com:asdf-vm/asdf.git', ASDF_INSTALL_DIR)
   end
 
   def update_asdf
@@ -190,7 +190,7 @@ class Installer
     puts '===== Installing git_template'.yellow
 
     git_install(
-      'https://github.com/greg0ire/git_template',
+      'git@github.com:greg0ire/git_template.git',
       GIT_TEMPLATE_INSTALL_DIR
     )
   end
