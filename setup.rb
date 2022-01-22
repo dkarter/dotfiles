@@ -39,11 +39,11 @@ DOTFILES = %w[
 
 SYMLINK_DIRS = [
   ['vim/UltiSnips', '~/.vim/'],
-  ['config/nvim', '~/.config/'],
-  ['config/kitty', '~/.config/'],
-  ['config/ripgrep', '~/.config/'],
-  ['config/alacritty', '~/.config/'],
-  ['config/vifm', '~/.config/']
+  ['config/nvim', '~/.config/nvim'],
+  ['config/kitty', '~/.config/kitty'],
+  ['config/ripgrep', '~/.config/ripgrep'],
+  ['config/alacritty', '~/.config/alacritty'],
+  ['config/vifm', '~/.config/vifm']
 ].freeze
 
 GEMS = [
