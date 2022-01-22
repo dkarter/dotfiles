@@ -48,8 +48,6 @@ SYMLINK_DIRS = [
 
 GEMS = [
   'pry',           # ruby debugger
-  'pry-byebug',    # better debugging experience (required by .pryrc)
-  'pry-clipboard', # easily copy and paste stuff from pry (required by .pryrc)
   'awesome_print', # colorize output of pry (required by .pryrc)
   'neovim',        # for NeoVim ruby plugins
   'solargraph'     # ruby language server
