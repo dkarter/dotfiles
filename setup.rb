@@ -66,10 +66,12 @@ ASDF_PLUGINS = %w[
   elixir
   elm
   erlang
+  exa
   fd
   fzf
   golang
   lazygit
+  lua
   neovim
   nodejs
   python
