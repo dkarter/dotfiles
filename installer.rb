@@ -93,7 +93,11 @@ CARGOS = %w[
   devicon-lookup
 ].freeze
 
+# Installs dotfiles and configures the machine to my preferences
+# This is an idempotent script (or at least should be)
 class Installer
+  # This is the main function containing all the setup steps in their intended
+  # order
   def install
     print_title
     create_dirs
