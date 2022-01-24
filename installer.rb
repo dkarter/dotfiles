@@ -124,7 +124,7 @@ class Installer
   private
 
   def print_title
-    puts <<~TITLE
+    puts <<~TITLE.green
 
 
 
