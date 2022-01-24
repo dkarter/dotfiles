@@ -39,7 +39,7 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
-  ['vim/UltiSnips', '~/.vim/UltiSnips'],
+  ['snippets', '~/.vim/UltiSnips'],
   ['config/nvim', '~/.config/nvim'],
   ['config/kitty', '~/.config/kitty'],
   ['config/ripgrep', '~/.config/ripgrep'],
