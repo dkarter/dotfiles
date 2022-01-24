@@ -38,7 +38,7 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
-  ['vim/UltiSnips', '~/.vim/'],
+  ['vim/UltiSnips', '~/.vim/UltiSnips'],
   ['config/nvim', '~/.config/nvim'],
   ['config/kitty', '~/.config/kitty'],
   ['config/ripgrep', '~/.config/ripgrep'],
@@ -67,6 +67,7 @@ ASDF_PLUGINS = %w[
   exa
   fd
   fzf
+  github-cli
   golang
   lazygit
   lua
@@ -107,7 +108,7 @@ class Installer
     install_npm_packages
     install_python_packages
     install_rust_cargos
-    install_vim_plugins
+    install_vim_plugins if confirm('Install vim plugins?')
 
     puts '===== ALL DONE! ====='.green
   end
