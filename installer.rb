@@ -100,6 +100,9 @@ class Installer
   # order
   def install
     print_title
+
+    return unless confirm('Run installer?')
+
     create_dirs
     install_zinit
     install_asdf
