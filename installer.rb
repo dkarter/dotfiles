@@ -169,7 +169,7 @@ class Installer
     puts '===== Installing asdf languages latest version'.yellow
 
     # import OpenPGP keysfornode
-    popen("bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'")
+    popen("zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'")
 
     ASDF_PLUGINS.each do |plugin|
       puts "Installing #{plugin}...".light_blue
@@ -245,16 +245,7 @@ class Installer
   end
 
   def asdf_command(cmd)
-    popen("bash -c '. #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}'")
-  end
-
-  def popen(cmd)
-    puts 'Running: '.light_blue + cmd.to_s
-    IO.popen(cmd) do |io|
-      while (line = io.gets)
-        puts line
-      end
-    end
+    popen("zsh -c '. #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}'")
   end
 
   def link(source, target)
@@ -282,6 +273,15 @@ class Installer
   # changes the default shell to zsh
   def change_shell
     popen('chsh -s zsh')
+  end
+
+  def popen(cmd)
+    puts 'Running: '.light_blue + cmd.to_s
+    IO.popen(cmd) do |io|
+      while (line = io.gets)
+        puts line
+      end
+    end
   end
 
   def confirm(msg)
