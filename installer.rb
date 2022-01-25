@@ -44,7 +44,8 @@ SYMLINK_DIRS = [
   ['config/kitty', '~/.config/kitty'],
   ['config/ripgrep', '~/.config/ripgrep'],
   ['config/alacritty', '~/.config/alacritty'],
-  ['config/vifm', '~/.config/vifm']
+  ['config/vifm', '~/.config/vifm'],
+  ['config/rubocop', '~/.config/rubocop']
 ].freeze
 
 GEMS = [
@@ -300,6 +301,5 @@ class Installer
     %w[y yes].include?(resp)
   end
 end
-
 
 Installer.new.install
