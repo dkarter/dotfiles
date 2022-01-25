@@ -39,13 +39,13 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
-  ['snippets', '~/.vim/UltiSnips'],
-  ['config/nvim', '~/.config/nvim'],
-  ['config/kitty', '~/.config/kitty'],
-  ['config/ripgrep', '~/.config/ripgrep'],
-  ['config/alacritty', '~/.config/alacritty'],
-  ['config/vifm', '~/.config/vifm'],
-  ['config/rubocop', '~/.config/rubocop']
+  ['./snippets/', '~/.vim/UltiSnips'],
+  ['./config/nvim', '~/.config/nvim'],
+  ['./config/kitty', '~/.config/kitty'],
+  ['./config/ripgrep', '~/.config/ripgrep'],
+  ['./config/alacritty', '~/.config/alacritty'],
+  ['./config/vifm', '~/.config/vifm'],
+  ['./config/rubocop', '~/.config/rubocop']
 ].freeze
 
 GEMS = [
@@ -203,7 +203,7 @@ class Installer
       raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
 
       target = "~/.#{source}"
-      print 'Symlinking '.light_blue + target.to_s + '...'.light_blue
+      print 'Symlinking '.light_blue + target + ' -> '.light_blue + source + '...'.light_blue
       link(source, target)
       puts 'Done'.green
     end
@@ -213,7 +213,7 @@ class Installer
     puts '===== Symlinking nested dotfiles'.yellow
 
     SYMLINK_DIRS.each do |source, target|
-      print 'Symlinking '.light_blue + source + ' -> '.light_blue + target + '...'.light_blue
+      print 'Symlinking '.light_blue + target + ' -> '.light_blue + source + '...'.light_blue
       link(source, target)
       puts 'Done'.green
     end
@@ -251,8 +251,7 @@ class Installer
   def link(source, target)
     source = File.expand_path(source)
     target = File.expand_path(target)
-    FileUtils.rm_rf(target)
-    FileUtils.ln_sf(source, target)
+    popen("zsh -c 'ln -s -f -T #{source} #{target}'", silent: true)
   end
 
   def mkdir(path)
@@ -275,8 +274,8 @@ class Installer
     popen('chsh -s zsh')
   end
 
-  def popen(cmd)
-    puts 'Running: '.light_blue + cmd.to_s
+  def popen(cmd, silent: false)
+    puts('Running: '.light_blue + cmd.to_s) unless silent
     IO.popen(cmd) do |io|
       while (line = io.gets)
         puts line
