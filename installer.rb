@@ -105,6 +105,7 @@ class Installer
     return unless confirm('Run installer?')
 
     create_dirs
+    change_shell if confirm('Change default shell to zsh?')
     install_zinit
     install_asdf
     update_asdf
@@ -276,6 +277,11 @@ class Installer
     else
       popen("git clone #{repo_url} #{install_dir}")
     end
+  end
+
+  # changes the default shell to zsh
+  def change_shell
+    popen('chsh -s zsh')
   end
 
   def confirm(msg)
