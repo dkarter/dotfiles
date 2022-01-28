@@ -4,18 +4,15 @@ sudo apt -y install \
   automake \
   bat \
   bison \
-  universal-ctags \
+  build-essential \
   fop \
   global \
   libgl1-mesa-dev \
-  libgl1-mesa-dev \
-  libglu1-mesa-dev \
   libglu1-mesa-dev \
   libncurses-dev \
   libncurses5-dev \
   libpng-dev \
   libssh-dev \
-  libssl-dev \
   libssl-dev \
   libwxgtk3.0-gtk3-dev \
   libxml2-utils \
@@ -23,6 +20,7 @@ sudo apt -y install \
   openjdk-11-jdk \
   ruby \
   tmux \
+  universal-ctags \
   unixodbc-dev \
   wx-common \
   xsltproc \

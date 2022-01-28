@@ -46,7 +46,7 @@ echo
 
 if [ $DISTRO_BASE = 'debian' ] ; then
   echo "Debian based repo detected, getting required packages..."
-  ./debian-setup.sh
+  ./installer/debian-setup.sh
 elif [ $OS = 'mac' ] ; then
   echo "Mac detected, running brew..."
   # TODO: add homebrew installation script (curl?)
