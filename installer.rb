@@ -88,6 +88,7 @@ NPMS = %w[
   bash-language-server
   @elm-tooling/elm-language-server
   dockerfile-language-server-nodejs
+  git-split-diffs
 ].freeze
 
 CARGOS = %w[
