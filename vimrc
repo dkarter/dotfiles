@@ -1086,6 +1086,19 @@ require("nvim-treesitter.configs").setup {
 EOF
 
 " ====================================
+" Bufferline.nvim
+" ====================================
+lua << EOF
+require("bufferline").setup{
+  options = {
+    numbers = "ordinal",
+    diagnostics = "coc",
+    always_show_bufferline = false
+  }
+}
+EOF
+
+" ====================================
 " Unimpaired
 " ====================================
 
@@ -1295,6 +1308,9 @@ augroup END
 
   " fold file based on syntax
     nnoremap <silent> <leader>zs :setlocal foldmethod=syntax<CR>
+
+  " close tab
+    nnoremap <c-w>w :bd<CR>
 
   " rename current file
     nnoremap <Leader>rn :Move <C-R>=expand("%")<CR>
