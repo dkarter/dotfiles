@@ -1120,7 +1120,7 @@ EOF
 
 
   let g:gruvbox_transparent = 1
-  colorscheme gruvbox-flat
+  colorscheme one
 
     " make background transparent
     au ColorScheme * hi Normal ctermbg=none guibg=none
@@ -1139,7 +1139,6 @@ EOF
     highlight SignifySignChange ctermfg=yellow guifg=#ffff00 ctermbg=none guibg=none
 
     let g:lightline = {
-          \   'colorscheme': 'gruvbox-flat',
           \   'component_function': {
           \     'filename': 'LightlineFilename'
           \   }
