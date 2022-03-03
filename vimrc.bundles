@@ -215,14 +215,11 @@ endif
   " navigate to directory of current file using `-`
   Plug 'tpope/vim-vinegar'
 
-  " NERDTree... tree explorer for vim
-  Plug 'scrooloose/nerdtree'
+  " colored dev icons for nvim-tree and bufferline.nvim
+  Plug 'kyazdani42/nvim-web-devicons'
 
-    " Nerdtree show git status
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-
-    " highlight file icons with different colors
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  " modern tree explorer for neovim
+  Plug 'kyazdani42/nvim-tree.lua'
 " }}}
 
 " HTML: {{{

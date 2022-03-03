@@ -417,9 +417,9 @@ autocmd  FileType fzf set noshowmode noruler nonu
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-" Do not open files inside of a nerdtree buffer
+" Do not open files inside of a NvimTree buffer
 function! FZFOpen(command_str)
-  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+  if (expand('%') =~# 'NvimTree' && winnr('$') > 1)
     exe "normal! \<c-w>\<c-w>"
   endif
   exe 'normal! ' . a:command_str . "\<cr>"
@@ -759,118 +759,6 @@ let g:dashboard_custom_header = [
 " let g:elm_format_autosave=1
 let g:elm_detailed_complete = 1
 
-" ----------------------------------------------------------------------------
-" NERDTree
-" ----------------------------------------------------------------------------
-let g:NERDTreeIgnore = [
-      \ '\.vim$',
-      \ '\~$',
-      \ '\.beam',
-      \ 'elm-stuff',
-      \ 'deps',
-      \ '_build',
-      \ '.git',
-      \ 'node_modules',
-      \ 'tags',
-      \ ]
-
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeAutoDeleteBuffer=1
-" keep alternate files and jumps
-let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
-let g:NERDTreeChDirMode=2
-let g:NERDTreeMapOpen='<CR>'
-let g:NERDTreeMapPreview='<S-CR>'
-let g:NERDTreeMapOpenSplit='<C-x>'
-let g:NERDTreeMapPreviewSplit='px'
-let g:NERDTreeMapOpenVSplit='<C-v>'
-let g:NERDTreeMapPreviewVSplit='pv'
-" let g:NERDTreeGitStatusIndicatorMapCustom = {
-"     \ "Modified"  : "✹",
-"     \ "Staged"    : "✚",
-"     \ "Untracked" : "✭",
-"     \ "Renamed"   : "➜",
-"     \ "Unmerged"  : "═",
-"     \ "Deleted"   : "✖",
-"     \ "Dirty"     : "✹",
-"     \ "Clean"     : "✔︎",
-"     \ 'Ignored'   : '☒',
-"     \ "Unknown"   : "?"
-"     \ }
-
-" Toggle NerdTree
-nnoremap <Leader>nt :NERDTreeToggle<CR>
-" Reveal current file in NerdTree
-nnoremap <Leader>nf :NERDTreeFind<CR>
-
-" not necessarily NTree related but uses NERDTree because I have it setup
-nnoremap <leader>d :e %:h<CR>
-
-augroup NERDTreeAuCmds
-  autocmd!
-  autocmd FileType nerdtree nmap <buffer> <expr> - g:NERDTreeMapUpdir
-augroup END
-" move up a directory with "-" like using vim-vinegar (usually "u" does that)
-
-" ----------------------------------------------------------------------------
-" WebDevIcons
-" ----------------------------------------------------------------------------
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:WebDevIconsOS = 'Darwin'
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ex'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['exs'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jsx'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rabl'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yaml'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yml'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['svg'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['elm'] = ''
-
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*vimrc.*'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.ruby-version'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.ruby-gemset'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.rspec'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['Rakefile'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['application.rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['environment.rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['routes.rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['spring.rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.keep'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['package.json'] = ''
-
-" Useful alternatives:           
-
-" after a re-source, fix syntax matching issues (concealing brackets):
-if exists('g:loaded_webdevicons')
-  call webdevicons#refresh()
-endif
-
-" ----------------------------------------------------------------------------
-"  vim-nerdtree-syntax-highlight:
-" ----------------------------------------------------------------------------
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-let g:NERDTreeExtensionHighlightColor = {}
-let g:NERDTreeExtensionHighlightColor['ex'] = '834F79'
-let g:NERDTreeExtensionHighlightColor['exs'] = 'c57bd8'
-let g:NERDTreeExtensionHighlightColor['rabl'] = 'ac4142'
-let g:NERDTreeExtensionHighlightColor['yml'] = 'f4bf70'
-let g:NERDTreeExtensionHighlightColor['yaml'] = 'f4bf70'
-let g:NERDTreeExtensionHighlightColor['elm'] = '39B7CF'
-
 
 " ----------------------------------------------------------------------------
 " vim-go
@@ -1061,6 +949,131 @@ endif
 " }}}
 
 "  Plugin Configuration (AFTER loading bundles) {{{
+
+" ----------------------------------------------------------------------------
+" Nvim Tree
+" ----------------------------------------------------------------------------
+
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+
+lua <<EOF
+local action = require('nvim-tree.config').nvim_tree_callback
+
+vim.api.nvim_set_keymap('n', '<leader>nt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+
+vim.g.nvim_tree_icons = {
+  default = '',
+  git = {
+    unstaged = '',
+    staged = '',
+    unmerged = '',
+    renamed = '',
+    untracked = '',
+    deleted = '',
+  },
+}
+
+require('nvim-tree').setup {
+  disable_netrw        = true,
+  hijack_netrw         = true,
+  open_on_setup        = false,
+  ignore_ft_on_setup   = {},
+  auto_close           = false,
+  auto_reload_on_write = true,
+  open_on_tab          = false,
+  hijack_cursor        = false,
+  update_cwd           = false,
+  update_to_buf_dir    = {
+    enable = true,
+    auto_open = true,
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
+  },
+  update_focused_file = {
+    enable      = false,
+    update_cwd  = false,
+    ignore_list = {}
+  },
+  system_open = {
+    cmd  = nil,
+    args = {}
+  },
+  filters = {
+    dotfiles = false,
+    custom = { '.DS_Store', 'fugitive:', '.git' },
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
+  view = {
+    width = 30,
+    height = 30,
+    hide_root_folder = false,
+    side = 'left',
+    auto_resize = false,
+    mappings = {
+      custom_only = false,
+      list = {}
+    },
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes"
+  },
+  trash = {
+    cmd = "trash",
+    require_confirm = true
+  },
+  actions = {
+    change_dir = {
+      global = false,
+    },
+    open_file = {
+      quit_on_open = false,
+    }
+  },
+  show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
+  },
+  icons = {
+    default = "",
+    symlink = "",
+    git = {
+      unstaged = "",
+      staged = "S",
+      unmerged = "",
+      renamed = "➜",
+      deleted = "",
+      untracked = "U",
+      ignored = "◌",
+    },
+    folder = {
+      default = "",
+      open = "",
+      empty = "",
+      empty_open = "",
+      symlink = "",
+    },
+  },
+}
+EOF
+
 " ====================================
 " Treesitter
 " ====================================
