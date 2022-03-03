@@ -1064,7 +1064,6 @@ endif
 " ====================================
 " Treesitter
 " ====================================
-if has('nvim-0.5')
 lua <<EOF
 require("nvim-treesitter.configs").setup {
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -1072,11 +1071,6 @@ require("nvim-treesitter.configs").setup {
   highlight = { enable = true },
 }
 EOF
-
-" add foldsupport using nvim treesitter
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
-endif
 
 " ====================================
 " Unimpaired

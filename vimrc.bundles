@@ -87,18 +87,11 @@ endif
 " }}}
 
 " Neovim: {{{
-  if has('nvim')
-
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
 
-    " ONLY FOR NVIM 0.5 and up {{{
-      if has('nvim-0.5')
-        " Better syntax highlighting
-        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-      endif
-    " }}}
-  endif
+    " Better syntax highlighting
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " }}}
 
 " Git: {{{
