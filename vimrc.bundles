@@ -103,9 +103,6 @@ endif
 
   " Plug 'mhinz/vim-signify'
 
-  " Gitv - for browsing a file's history in git
-  Plug 'gregsexton/gitv'
-
   " A better Gitv?
   Plug 'junegunn/gv.vim'
 
@@ -521,9 +518,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 
   " resize windows in vim naturally
   Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
-
-  "' File icons in vim --- keep at the bottom, below airline, nerdtree and startify
-  Plug 'ryanoasis/vim-devicons'
 
   " log file syntax
   Plug 'yyq123/vim-syntax-logfile'
