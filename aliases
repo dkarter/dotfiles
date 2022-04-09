@@ -200,6 +200,11 @@ alias docs='cd ~/Dropbox/Documents'
 
 alias ss='imgur-screenshot.sh'
 
+# debian
+# creates a pbcopy command using xclip
+command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
+
+
 # tldr (quicker to type help than tldr)
 alias help='tldr'
 
