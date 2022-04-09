@@ -22,6 +22,9 @@ sudo apt -y install \
   tmux \
   universal-ctags \
   unixodbc-dev \
+  postgresql \
+  postgresql-client \
+  inotify-tools \
   wx-common \
   xsltproc \
   zsh
