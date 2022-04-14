@@ -15,69 +15,19 @@
 
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
- set nocompatible           " vim, not vi
- syntax on                  " syntax highlighting
- filetype plugin indent on  " try to recognize filetypes and load rel' plugins
 " }}}
 
  "  Behavior Modification {{{
-
-   " set leader key
-     let g:mapleader="\\"
 
    " alias for leader key
      nmap <space> \
      xmap <space> \
 
-   set backspace=2       " Backspace deletes like most programs in insert mode
-   set history=200       " how many : commands to save in history
-   set ruler             " show the cursor position all the time
-   set showcmd           " display incomplete commands
-   set incsearch         " do incremental searching
-   set laststatus=2      " Always display the status line
-   set autowrite         " Automatically :write before running commands
-   set ignorecase        " ignore case in searches
-   set smartcase         " use case sensitive if capital letter present or \C
-   set magic             " Use 'magic' patterns (extended regular expressions).
-   set guioptions=       " remove scrollbars on macvim
-   set noshowmode        " don't show mode as airline already does
-   set showcmd           " show any commands
-   set foldmethod=manual " set folds by syntax of current language
-   set mouse=a           " enable mouse (selection, resizing windows)
+   " set mouse=a           " enable mouse (selection, resizing windows)
    set iskeyword+=-      " treat dash separated words as a word text object
 
-   set tabstop=2         " Softtabs or die! use 2 spaces for tabs.
-   set shiftwidth=2      " Number of spaces to use for each step of (auto)indent.
-   set expandtab         " insert tab with right amount of spacing
-   set shiftround        " Round indent to multiple of 'shiftwidth'
-   set termguicolors     " enable true colors
-   set hidden            " enable hidden unsaved buffers
-   set updatetime=100    " used by a bunch of plugins to perform async actions
-                         " when the user stopped typing. Also used by vim to decide when
-                         " to write a swp file.
 
-   if !has('nvim')             " does not work on neovim
-     set emoji                 " treat emojis 😄 as full width characters
-     set cryptmethod=blowfish2 " set encryption to use blowfish2 (vim -x file.txt)
-   end
 
-   set ttyfast           " should make scrolling faster
-   set lazyredraw        " should make scrolling faster
-
-   set redrawtime=5000   " prevent vim from disabling highliting if the code is complex
-
-   " visual bell for errors
-     set visualbell
-
-   " text appearance
-     set textwidth=80                    " set row width size in charcters
-     set nowrap                          " nowrap by default
-     set list                            " show invisible characters
-     set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
-
-   " Numbers
-     set number
-     set numberwidth=1
 
    " set where swap file and undo/backup files are saved
      set backupdir=~/.vim/tmp,.
@@ -88,10 +38,6 @@
        set undofile
        set undodir=~/.vim/tmp,.
      endif
-
-   " Open new split panes to right and bottom, which feels more natural
-     set splitbelow
-     set splitright
 
    " Set spellfile to location that is guaranteed to exist, can be symlinked to
    " Dropbox or kept in Git
@@ -1109,18 +1055,6 @@ EOF
 " }}}
 
 " UI Customizations {{{
-
-  " automatically set Vim's background to light theme if iterm has light in the
-  " profile name
-  if match($ITERM_PROFILE, 'light') >= 0
-    set background=light
-  else
-    set background=dark
-  endif
-
-
-  let g:gruvbox_transparent = 1
-  colorscheme one
 
     " make background transparent
     au ColorScheme * hi Normal ctermbg=none guibg=none
