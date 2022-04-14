@@ -7,6 +7,7 @@ sudo apt -y install \
   build-essential \
   fop \
   global \
+  httpie \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
   libncurses-dev \
