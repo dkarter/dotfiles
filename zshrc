@@ -477,6 +477,10 @@ case "$(uname -s)" in
     ;;
 esac
 
+# asdf global version manager
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+
 # TODO: can we do this with zsh-async
 # set yarn binaries on path
 export PATH="$(yarn global bin):$PATH"
