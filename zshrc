@@ -171,7 +171,6 @@ fi
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # For GO
-export CC=clang
 export GOPATH="<<-[[CHANGEINLOCALZSHRC]]->>"
 
 # HomeBrew
@@ -468,20 +467,7 @@ case "$(uname -s)" in
     # Compile erlang with OpenSSL from Homebrew via asdf
     export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl@1.1"
     export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl@1.1"
-    ;;
-  Linux*)
-    # Compile erlang with OpenSSL from apt (what about arch/manjaro?)
-    export ERLANG_OPENSSL_PATH="/usr/lib/x86_64-linux-gnu"
-    export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/include/openssl"
-    ;;
-esac
 
-# asdf global version manager
-source "$HOME/.asdf/asdf.sh"
-source "$HOME/.asdf/completions/asdf.bash"
-
-case "$(uname -s)" in
-  Darwin*)
     # ruby-build -> configure readline path from homebrew
     export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
     ;;
