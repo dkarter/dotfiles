@@ -1,31 +1,26 @@
--- move to options.lua
+-- configure general vim settings here
 local opt = vim.opt
 local g = vim.g
 
 -- support syntax highlighting
-
 vim.cmd("syntax enable")
-vim.cmd("filetype plugin indent on")  -- try to recognize filetypes and load rel' plugins
+-- try to recognize filetypes and load rel' plugins
+vim.cmd("filetype plugin indent on")
 
 -- vim, not vi (wonder if this is still necessary in neovim)
-opt.compatible = false
+opt.compatible    = false
 
--- use system clipboard by default
-opt.clipboard = "unnamedplus"
-
-opt.hidden = true --  enable hidden unsaved buffers
-
+opt.hidden        = true --  enable hidden unsaved buffers
 opt.termguicolors = true --  enable true colors
+opt.cursorline    = true -- highlight the current line
 
-opt.smartcase = true -- use case sensitive if capital letter present or \C
+-- search
+opt.smartcase  = true -- use case sensitive if capital letter present or \C
 opt.ignorecase = true -- ignore case in searches
-opt.incsearch = true -- do incremental searching
-opt.magic = true -- Use 'magic' patterns (extended regular expressions).
+opt.incsearch  = true -- do incremental searching
+opt.magic      = true -- Use 'magic' patterns (extended regular expressions).
 
 opt.mouse = "a" -- enable mouse usage
-
-opt.cursorline = true -- highlight the current line
-
 
 -- keep indentation consistent
 local indent = 2
@@ -68,7 +63,7 @@ opt.ttyfast    = true
 opt.lazyredraw = true
 
 -- set leader key to `\`
-g.mapleader = "\\"
+g.mapleader    = "\\"
 -- TODO: add aliases to space
 -- " alias for leader key
 --  nmap <space> \
@@ -91,7 +86,7 @@ vim.cmd("colorscheme one")
 
 --Defer loading shada until after startup_
 local shadafile = opt.shadafile
-opt.shadafile = "NONE"
+opt.shadafile   = "NONE"
 
 vim.schedule(function()
    vim.opt.shadafile = shadafile
