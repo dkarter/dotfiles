@@ -830,6 +830,10 @@ lua <<EOF
 require('gitsigns').setup()
 EOF
 
+" remove background from sign column (so it works better with a transparent
+" terminal emulator)
+hi SignColumn guibg=None
+
 " " ====================================
 " " GitGutter:
 " " ====================================
