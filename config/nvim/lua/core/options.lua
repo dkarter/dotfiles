@@ -144,7 +144,7 @@ g.markdown_fenced_languages = {
 }
 
 -- enable folding in bash files
-g.sh_fold_enabled = true
+g.sh_fold_enabled = 1
 
 -- treat dash separated words as a word text object
 opt.iskeyword:append("-")
