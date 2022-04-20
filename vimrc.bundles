@@ -10,266 +10,13 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-" List Plugins =====================================
-
-" delete unused buffers
-Plug 'schickling/vim-bufonly'
-
-" nginx syntax support
-Plug 'chr4/nginx.vim'
-
-" Legacy Vim {{{
-
-" Compatibility for legacy vim with neovim's async api
-if !has('nvim')
-  Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'roxma/nvim-yarp'
-endif
-
-" }}}
-
 " Dependencies: {{{
-  " Create custom text objects (required by rubyblock,xmlattr, vim-textobj-elixir)
-  Plug 'kana/vim-textobj-user'
-
   " Vim Web API (required by gist-vim)
   Plug 'mattn/webapi-vim'
 
   " fzf greatness (fuzzy finding)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
-" }}}
-
-" COC {{{
-  if executable('yarn') && executable('node') " && has('nvim')
-    let g:coc_global_extensions = [
-          \ 'coc-css',
-          \ 'coc-dictionary',
-          \ 'coc-eslint',
-          \ 'coc-github',
-          \ 'coc-gitignore',
-          \ 'coc-gocode',
-          \ 'coc-highlight',
-          \ 'coc-html',
-          \ 'coc-json',
-          \ 'coc-neosnippet',
-          \ 'coc-omni',
-          \ 'coc-prettier',
-          \ 'coc-rls',
-          \ 'coc-snippets',
-          \ 'coc-solargraph',
-          \ 'coc-svg',
-          \ 'coc-syntax',
-          \ 'coc-tsserver',
-          \ 'coc-ultisnips',
-          \ 'coc-vimlsp',
-          \ 'coc-yaml',
-          \ 'coc-yank',
-          \ "coc-react-refactor",
-          \ "coc-lua",
-          \ ]
-
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'antoinemadec/coc-fzf'
-  endif
-" }}}
-
-" Testing {{{
-    " run tests at the speed of thought
-    Plug 'janko-m/vim-test'
-" }}}
-
-" Terminal {{{
-    " abstraction on top of neovim terminal
-    Plug 'kassio/neoterm'
-
-    " floating terminal
-    Plug 'voldikss/vim-floaterm'
-" }}}
-
-" Neovim: {{{
-    " Highlight Yanked String
-    Plug 'machakann/vim-highlightedyank'
-
-    " Better syntax highlighting
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" }}}
-
-" Git: {{{
-  " A better Gitv?
-  Plug 'junegunn/gv.vim'
-
-  " git awesomeness
-  Plug 'tpope/vim-fugitive'
-
-    " github support for fugitive
-    Plug 'tpope/vim-rhubarb'
-
-" }}}
-
-" Gleam: {{{
-  " Gleam language support
-  Plug 'gleam-lang/gleam.vim'
-" }}}
-
-" Erlang: {{{
-  " syntax
-  Plug 'vim-erlang/vim-erlang-runtime'
-" }}}
-
-" Elixir: {{{
-  " Elixir support
-  Plug 'elixir-lang/vim-elixir'
-
-  " elixir text objects
-  Plug 'duff/vim-textobj-elixir'
-
-  " pulls info on hex packages (requires mattn/webapi-vim)
-  Plug 'lucidstack/hex.vim', { 'for': 'elixir'}
-" }}}
-
-" Kotlin {{{
-  Plug 'udalov/kotlin-vim'
-" }}}
-
-" Ruby: {{{
-  " do rspec things and highlight syntax
-  Plug 'thoughtbot/vim-rspec', { 'for': ['ruby', 'rspec'] }
-
-  " get gem info and insert latest gem version into Gemfile
-  Plug 'alexbel/vim-rubygems', { 'for': 'ruby' }
-
-  " interact with ruby bundler gem
-  Plug 'tpope/vim-bundler', { 'for': ['ruby', 'rspec'] }
-
-  " vim rake by Tim Pope - like rails.vim but for plain ruby
-  Plug 'tpope/vim-rake', { 'for': ['ruby', 'rspec'] }
-
-  " support for ruby
-  Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'rspec']}
-
-  " vim cucumber for easy cuke navigation
-  Plug 'tpope/vim-cucumber', { 'for': ['gherkin', 'ruby'] }
-
-  " syntax highlighting for rspec
-  Plug 'keith/rspec.vim', { 'for': ['ruby', 'rspec'] }
-
-  " show code coverage in vim
-  Plug 'killphi/vim-legend', { 'for': 'ruby' }
-
-  " Text object for ruby blocks
-  Plug 'nelstrom/vim-textobj-rubyblock'
-
-  " refactoring tools for ruby/rspec
-  Plug 'pablobfonseca/vim-ruby-refactoring', { 'for': 'ruby' }
-" }}}
-
-" GraphQL {{{
-  Plug 'jparise/vim-graphql'
-" }}}
-
-" TimPope: {{{
-  " Vim sugar for the UNIX shell commands that need it the most.
-  Plug 'tpope/vim-eunuch'
-
-  " allow (non-native) plugins to use the . command
-  Plug 'tpope/vim-repeat'
-
-  " Surround text with closures
-  Plug 'tpope/vim-surround'
-
-  " vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
-  Plug 'tpope/vim-projectionist'
-
-  " vim unimpaired fixes daily annoyences
-  Plug 'tpope/vim-unimpaired'
-
-  " abolish.vim: easily search for, substitute, and abbreviate multiple variants
-  " of a word
-  Plug 'tpope/vim-abolish'
-
-  " Support emacs keybindings in insert mode
-  Plug 'tpope/vim-rsi'
-
-  " Clojure REPL in Vim
-  Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-  " save vim sessions
-  Plug 'tpope/vim-obsession'
-
-  " " Comment out code easily
-  Plug 'tpope/vim-commentary'
-" }}}
-
-" File Navigation: {{{
-  " navigate to directory of current file using `-`
-  Plug 'tpope/vim-vinegar'
-
-  " colored dev icons for nvim-tree and bufferline.nvim
-  Plug 'kyazdani42/nvim-web-devicons'
-
-  " modern tree explorer for neovim
-  Plug 'kyazdani42/nvim-tree.lua'
-" }}}
-
-" HTML: {{{
-  " Emmet: generates html tags, autocomplete css
-  Plug 'mattn/emmet-vim'
-
-  " RagTag: Auto-close html tags + mappings for template scripting languages
-  Plug 'tpope/vim-ragtag'
-
-  " add text object for HTML attributes - allows dax cix etc
-  Plug 'whatyouhide/vim-textobj-xmlattr'
-" }}}
-
-" WebAssembly: {{{
-  " Syntax Highlighting:
-  Plug 'rhysd/vim-wasm', { 'for': 'wasm' }
-" }}}
-
-" Searching: {{{
-  " highlights all search results and allows tabbing between them
-  Plug 'haya14busa/incsearch.vim'
-
-  " Sublime text like search results
-  Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }
-
-  " RipGrep - grep is dead. All hail the new king RipGrep.
-  Plug 'jremmen/vim-ripgrep'
-" }}}
-
-" Align Code: {{{
-  " same as tabular but by Junegunn and way easier
-  Plug 'junegunn/vim-easy-align'
-
-  " move function arguments
-  Plug 'AndrewRadev/sideways.vim'
-" }}}
-
-" TMUX: {{{
-  " .tmux.conf syntax highlighting
-  Plug 'keith/tmux.vim', { 'for': 'tmux' }
-
-  " tmux config file stuff
-  Plug 'tmux-plugins/vim-tmux'
-
-  " vim slime for tmux integration (C-c, C-c to send selction to tmux)
-  Plug 'jpalardy/vim-slime'
-
-  " seamless tmux/vim pane navigation
-  Plug 'christoomey/vim-tmux-navigator'
-
-  " yet another tmux plugin
-  Plug 'benmills/vimux'
-    " Run Golang tests in vimux
-    Plug 'benmills/vimux-golang'
-
-    " Run elixir mix tests in vimux
-    Plug 'spiegela/vimix'
-
-  " autocomplete using text from tmux
-  Plug 'wellle/tmux-complete.vim'
 " }}}
 
 " Snippets: {{{
@@ -313,26 +60,18 @@ endif
   Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript.jsx' }
 " }}}
 
-" MDX (Gatsby Markdown with React) {{{
-  Plug 'jxnblk/vim-mdx-js'
-" }}}
-
 " TypeScript: {{{
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 "}}}
 
+" MDX (Gatsby Markdown with React) {{{
+  Plug 'jxnblk/vim-mdx-js'
+" }}}
+
 " Elm: {{{
   " elm editing and compilation in vim
   Plug 'ElmCast/elm-vim'
-" }}}
-
-" ColorSchemes: {{{
-  " vim one
-  Plug 'rakr/vim-one'
-
-  " iA Writer Scheme
-  Plug 'reedes/vim-colors-pencil'
 " }}}
 
 " Postgres: {{{
@@ -341,20 +80,6 @@ Plug 'ianks/vim-tsx'
 
   " show table description in vim
   Plug 'hashrocket/vim-hr-psql', { 'on': 'Pgtable' }
-" }}}
-
-" Writing: {{{
-  " Distraction free writing in vim
-  Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-
-  " Highlight current paragraph (works well with goyo)
-  Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-
-  " integration with Deckset macOS app
-  Plug 'bwmcadams/vim-deckset', { 'for': 'markdown' }
-
-  " Marked 2 app integration with vim (OSX only)
-  Plug 'itspriddle/vim-marked', { 'for': 'markdown' }
 " }}}
 
 " Terraform: {{{
@@ -379,13 +104,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 " GITHUB: {{{
   " Vim GitHub gist integration
   Plug 'mattn/gist-vim', { 'on': 'Gist' }
-" }}}
-
-" status line {{{
-
-  " Visual git gutter (also used by feline)
-  Plug 'lewis6991/gitsigns.nvim'
-  Plug 'feline-nvim/feline.nvim'
 " }}}
 
 " Crystal: {{{
@@ -427,16 +145,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   Plug 'mhinz/vim-mix-format'
 " }}}
 
-" Quickfix List: {{{
-  " growing collection of settings, commands and mappings put together to make
-  " working with the location list/window and the quickfix list/window smoother
-  Plug 'romainl/vim-qf'
-
-  " Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
-  " https://gitlab.com/hauleth/qfx.vim
-  Plug 'https://gitlab.com/hauleth/qfx.vim.git'
-" }}}
-
 " Other: {{{
   " window animations
   Plug 'camspiers/animate.vim'
@@ -447,14 +155,8 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   " share code screenshots with Carbon Now
   Plug 'kristijanhusak/vim-carbon-now-sh'
 
-  " replacement for matchit
-  Plug 'andymass/vim-matchup'
-
   " profiling vim startup
   Plug 'tweekmonster/startuptime.vim'
-
-  " add `end` automatically when creating a closure in many languages
-  Plug 'tpope/vim-endwise'
 
   " auto-generate ctags on save
   Plug 'jsfaint/gen_tags.vim'
@@ -483,11 +185,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   " The ultimate undo history visualizer for VIM
   Plug 'mbbill/undotree'
 
-  " Convert code to multiline
-  Plug 'AndrewRadev/splitjoin.vim'
-
-  " Toggle between different language verbs or syntax styles
-  Plug 'AndrewRadev/switch.vim'
 
   " fancy vim start page
   Plug 'glepnir/dashboard-nvim'
@@ -510,20 +207,7 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
   " log file syntax
   Plug 'yyq123/vim-syntax-logfile'
 
-  " cool looking tabs
-  Plug 'akinsho/bufferline.nvim'
 "}}}
-
-" OWN PLUGINS: {{{
-  " automatic bulleted lists
-  Plug 'dkarter/bullets.vim'
-
-  " snip helpers - assorted functions for snippets
-  Plug 'dkarter/sniphelpers.vim'
-
-  " routes for rails, phoenix etc
-  " Plug 'dkarter/routes.nvim', { 'dir': '~/dev/vim-plugins/routes.nvim' }
-" }}}
 
 " ==================================================
 

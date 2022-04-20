@@ -79,9 +79,6 @@ opt.foldmethod = "manual" -- set folds by syntax of current language
 opt.visualbell = true -- visual bell for errors
 opt.redrawtime = 5000 -- prevent vim from disabling highliting if the code is complex
 
--- colors
-vim.cmd("colorscheme one")
-
 --Defer loading shada until after startup_
 local shadafile = opt.shadafile
 opt.shadafile = "NONE"
