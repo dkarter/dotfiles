@@ -46,7 +46,6 @@ endif
           \ 'coc-css',
           \ 'coc-dictionary',
           \ 'coc-eslint',
-          \ 'coc-git',
           \ 'coc-github',
           \ 'coc-gitignore',
           \ 'coc-gocode',
@@ -66,8 +65,10 @@ endif
           \ 'coc-vimlsp',
           \ 'coc-yaml',
           \ 'coc-yank',
-          \ "coc-react-refactor"
+          \ "coc-react-refactor",
+          \ "coc-lua",
           \ ]
+
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'antoinemadec/coc-fzf'
   endif
@@ -95,14 +96,6 @@ endif
 " }}}
 
 " Git: {{{
-  " Asynchronously control git repositories in Neovim/Vim 8
-  Plug 'lambdalisue/gina.vim'
-
-  " Visual git gutter
-  Plug 'airblade/vim-gitgutter'
-
-  " Plug 'mhinz/vim-signify'
-
   " A better Gitv?
   Plug 'junegunn/gv.vim'
 
@@ -384,20 +377,15 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 " }}}
 
 " GITHUB: {{{
-  " Browse github
-  Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
-
   " Vim GitHub gist integration
   Plug 'mattn/gist-vim', { 'on': 'Gist' }
 " }}}
 
-" PIVOTAL "{{{
-  " Complete pivotal tracker stories
-  Plug 'hauleth/pivotaltracker.vim'
-" }}}"
+" status line {{{
 
-" Lightline {{{
-  Plug 'itchyny/lightline.vim'
+  " Visual git gutter (also used by feline)
+  Plug 'lewis6991/gitsigns.nvim'
+  Plug 'feline-nvim/feline.nvim'
 " }}}
 
 " Crystal: {{{

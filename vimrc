@@ -15,70 +15,13 @@
 
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
+ " TODO: currently exists in both vimrc and options.lua, this is due to feline
+ " and bufferline requiring this option to be set and messing up the
+ " colorscheme if it's not..
+ set termguicolors
 " }}}
 
- "  Behavior Modification {{{
-
-   " alias for leader key
-     nmap <space> \
-     xmap <space> \
-
-   " set mouse=a           " enable mouse (selection, resizing windows)
-   set iskeyword+=-      " treat dash separated words as a word text object
-
-
-
-
-   " set where swap file and undo/backup files are saved
-     set backupdir=~/.vim/tmp,.
-     set directory=~/.vim/tmp,.
-
-   " persistent undo between file reloads
-     if has('persistent_undo')
-       set undofile
-       set undodir=~/.vim/tmp,.
-     endif
-
-   " Set spellfile to location that is guaranteed to exist, can be symlinked to
-   " Dropbox or kept in Git
-     set spellfile=$HOME/.vim-spell-en.utf-8.add
-
-   " Autocomplete with dictionary words when spell check is on
-     set complete+=kspell
-
-   " Always use vertical diffs
-    if has('nvim')
-      set diffopt+=vertical
-    endif
-
-   " highlight fenced code blocks in markdown
-   let g:markdown_fenced_languages = [
-         \ 'bash=sh',
-         \ 'elixir',
-         \ 'elm',
-         \ 'graphql',
-         \ 'html',
-         \ 'js=javascript',
-         \ 'json',
-         \ 'python',
-         \ 'ruby',
-         \ 'sql',
-         \ 'vim',
-         \ 'typescript',
-         \ 'yaml',
-         \ 'sshconfig',
-         \ 'cfg',
-         \ 'systemd',
-         \ 'nginx',
-         \ 'diff'
-         \ ]
-
-   " enable folding in bash files
-     let g:sh_fold_enabled=1
- " }}}
-
 "  Plugin Configuration (BEFORE loading bundles) {{{
-
 
 " ====================================
 " Floaterm
@@ -220,17 +163,6 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 
 " ====================================
-" PivotalTracker.vim:
-" ====================================
-
-augroup PivotalTracker
-  autocmd!
-  autocmd FileType gitcommit setlocal completefunc=pivotaltracker#stories
-  autocmd FileType gitcommit setlocal omnifunc=pivotaltracker#stories
-augroup END
-
-
-" ====================================
 " NeoTerm:
 " ====================================
 let g:neoterm_repl_ruby = 'pry'
@@ -240,13 +172,6 @@ let g:neoterm_autoscroll = 1
 " Gist:
 " ====================================
 map <leader>gst :Gist<cr>
-
-" ====================================
-" GitGutter:
-" ====================================
-nnoremap <silent> + :GitGutterNextHunk<cr>
-nnoremap <silent> _ :GitGutterPrevHunk<cr>
-nnoremap <silent> <leader>uh :GitGutterUndoHunk<cr>
 
 
 " ====================================
@@ -666,6 +591,7 @@ let g:ale_fixers = {
       \   'rust': ['rustfmt'],
       \   'elm': ['elm-format'],
       \   'cpp': ['clang-format'],
+      \   'lua': ['stylua']
       \}
 
 let g:ale_sh_shfmt_options = '-i 2 -ci'
@@ -896,19 +822,42 @@ endif
 
 "  Plugin Configuration (AFTER loading bundles) {{{
 
+
+" ====================================
+" GitSigns
+" ====================================
+lua <<EOF
+require('gitsigns').setup()
+EOF
+
+" " ====================================
+" " GitGutter:
+" " ====================================
+" nnoremap <silent> + :GitGutterNextHunk<cr>
+" nnoremap <silent> _ :GitGutterPrevHunk<cr>
+" nnoremap <silent> <leader>uh :GitGutterUndoHunk<cr>
+
+
+" ----------------------------------------------------------------------------
+" Feline
+" ----------------------------------------------------------------------------
+lua <<EOF
+require('feline').setup()
+EOF
+
 " ----------------------------------------------------------------------------
 " Nvim Tree
 " ----------------------------------------------------------------------------
 
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-
 lua <<EOF
 local action = require('nvim-tree.config').nvim_tree_callback
+
+vim.g.nvim_tree_show_icons = {
+  git = 1,
+  folders = 1,
+  files = 1,
+  folder_arrows = 1,
+}
 
 vim.api.nvim_set_keymap('n', '<leader>nt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
@@ -925,8 +874,8 @@ vim.g.nvim_tree_icons = {
 }
 
 require('nvim-tree').setup {
-  disable_netrw        = true,
-  hijack_netrw         = true,
+  disable_netrw        = false,
+  hijack_netrw         = false,
   open_on_setup        = false,
   ignore_ft_on_setup   = {},
   auto_close           = false,
@@ -1088,14 +1037,6 @@ require("bufferline").setup{
 }
 EOF
 
-" ====================================
-" Unimpaired
-" ====================================
-
-" [q and ]q center the result on screen
-" nnoremap ]q ]qzz
-" nnoremap [q [qzz
-
 " }}}
 
 " UI Customizations {{{
@@ -1115,16 +1056,6 @@ EOF
     highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 ctermbg=none guibg=none
     highlight SignifySignDelete ctermfg=red    guifg=#ff0000 ctermbg=none guibg=none
     highlight SignifySignChange ctermfg=yellow guifg=#ffff00 ctermbg=none guibg=none
-
-    let g:lightline = {
-          \   'component_function': {
-          \     'filename': 'LightlineFilename'
-          \   }
-          \ }
-
-    function! LightlineFilename()
-      return expand('%')
-    endfunction
 
 
   " Make it obvious where 80 characters is
@@ -1273,6 +1204,10 @@ augroup END
 " }}}
 
 " Key Mappings {{{
+   " alias for leader key
+     nmap <space> \
+     xmap <space> \
+
   " center window on search result
     nnoremap <silent> n nzzzv
     nnoremap <silent> N Nzzzv
