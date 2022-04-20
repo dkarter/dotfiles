@@ -140,8 +140,22 @@ g.markdown_fenced_languages = {
   "diff",
 }
 
+-- folds!!
 -- enable folding in bash files
 g.sh_fold_enabled = 1
+
+-- use custom fold display text
+-- https://www.reddit.com/r/neovim/comments/opznf4/custom_foldtext_in_lua/
+function _G.custom_fold_text()
+  local line = vim.fn.getline(vim.v.foldstart)
+  local line_count = vim.v.foldend - vim.v.foldstart + 1
+  return " ⚡ " .. line .. ": " .. line_count .. " lines"
+end
+
+opt.foldtext = "v:lua.custom_fold_text()"
+-- remove existing fold text (.... at the end of folds)
+opt.fillchars = { eob = "-", fold = " " }
+opt.viewoptions:remove("options")
 
 -- treat dash separated words as a word text object
 opt.iskeyword:append("-")
