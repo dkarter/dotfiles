@@ -216,7 +216,12 @@ return require("packer").startup(function(use)
   use({ "mbbill/undotree" })
 
   --  Indent lines (visual indication)
-  use({ "Yggdroot/indentLine" })
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("plugins.indent_blankline").setup()
+    end,
+  })
 
   vim.g.coc_global_extensions = {
     "coc-css",

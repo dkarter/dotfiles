@@ -1,0 +1,30 @@
+local present, indent_blankline = pcall(require, "indent_blankline")
+
+if not present then
+  return
+end
+
+local default = {
+  char = "│",
+  filetype_exclude = {
+    "dashboard",
+    "NvimTree",
+    "packer",
+    "terminal",
+    "nofile",
+    "quickfix",
+    "lspinfo",
+    "checkhealth",
+    "help",
+    "man",
+    "",
+  },
+}
+
+local M = {}
+
+M.setup = function()
+  indent_blankline.setup(default)
+end
+
+return M
