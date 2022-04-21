@@ -56,14 +56,6 @@ local default = {
 local M = {}
 M.setup = function()
   telescope.setup(default)
-
-  local extensions = { "themes", "terms" }
-
-  pcall(function()
-    for _, ext in ipairs(extensions) do
-      telescope.load_extension(ext)
-    end
-  end)
 end
 
 return M
