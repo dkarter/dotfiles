@@ -33,7 +33,7 @@ return require("packer").startup(function(use)
   -- status line
   use({
     "feline-nvim/feline.nvim",
-    requires = { "lewis6991/gitsigns.nvim" },
+    requires = { "lewis6991/gitsigns.nvim", "kyazdani42/nvim-web-devicons" },
     config = function()
       require("feline").setup()
     end,
