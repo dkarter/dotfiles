@@ -223,6 +223,14 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- smooth scrolling in neovim
+  use({
+    "declancm/cinnamon.nvim",
+    config = function()
+      require("cinnamon").setup()
+    end,
+  })
+
   vim.g.coc_global_extensions = {
     "coc-css",
     "coc-dictionary",
