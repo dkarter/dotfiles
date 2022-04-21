@@ -865,15 +865,6 @@ augroup END
 " }}}
 
 " Own commands {{{
-command! PrettyPrintJSON %!python -m json.tool
-command! PrettyPrintHTML !tidy -mi -html -wrap 0 %
-command! PrettyPrintXML !tidy -mi -xml -wrap 0 %
-command! BreakLineAtComma :normal! f,.
-command! Retab :set ts=2 sw=2 et<CR>:retab<CR>
-command! CopyFullName let @+=expand('%')
-command! CopyPath let @+=expand('%:h')
-command! CopyFileName let @+=expand('%:t')
-
 " put result of fd command into quickfix list
 command! -bar -bang -complete=file -nargs=+ Cfd exe s:Grep(<q-bang>, <q-args>, 'fd', '')
 function! s:Grep(bang, args, prg, type) abort
