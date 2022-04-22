@@ -242,8 +242,14 @@ return require("packer").startup(function(use)
   --  add `end` automatically when creating a closure in many languages
   use({ "tpope/vim-endwise" })
 
+  -- window animations
+  use({ "camspiers/animate.vim" })
+
   --  auto-generate ctags on save
   use({ "jsfaint/gen_tags.vim" })
+
+  -- " show trailing white spaces and allow deleting them
+  use("ntpeters/vim-better-whitespace")
 
   --  Multiple cursor emulation (a la Sublime Text) using ctrl-n
   use({ "mg979/vim-visual-multi", branch = "master" })
@@ -257,6 +263,9 @@ return require("packer").startup(function(use)
   -- The ultimate undo history visualizer for VIM
   use({ "mbbill/undotree" })
 
+  -- Rust support
+  use({ "rust-lang/rust.vim", ft = { "rust" } })
+
   --  Indent lines (visual indication)
   use({
     "lukas-reineke/indent-blankline.nvim",
@@ -264,6 +273,9 @@ return require("packer").startup(function(use)
       require("plugins.indent_blankline").setup()
     end,
   })
+
+  -- resize windows in vim naturally
+  use({ "simeji/winresizer", cmd = "WinResizerStartResize" })
 
   -- smooth scrolling in neovim
   use({

@@ -146,60 +146,6 @@ Plug 'ekalinin/Dockerfile.vim', {'for' : 'Dockerfile'}
 " }}}
 
 " Other: {{{
-  " window animations
-  Plug 'camspiers/animate.vim'
-
-  " open Finder / Terminal for file under the cursor
-  Plug 'justinmk/vim-gtfo'
-
-  " share code screenshots with Carbon Now
-  Plug 'kristijanhusak/vim-carbon-now-sh'
-
-  " profiling vim startup
-  Plug 'tweekmonster/startuptime.vim'
-
-  " auto-generate ctags on save
-  Plug 'jsfaint/gen_tags.vim'
-
-  " Multiple cursor emulation (a la Sublime Text) using ctrl-n
-  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-  " get docs for command under cursor (with Dash or web) (mapped to gK)
-  Plug 'keith/investigate.vim'
-
-  " show trailing white spaces and allow deleting them
-  Plug 'ntpeters/vim-better-whitespace'
-
-  " syntax for apple scripts
-  Plug 'vim-scripts/applescript.vim', { 'for': ['scpt', 'applescript', 'scptd'] }
-
-  " Jekyll blog commands
-  Plug 'parkr/vim-jekyll'
-
-  " Integration testing for vim plugins
-  Plug 'junegunn/vader.vim'
-
-  " The ultimate undo history visualizer for VIM
-  Plug 'mbbill/undotree'
-
-
-  " fancy vim start page
-  Plug 'glepnir/dashboard-nvim'
-
-  " copy code as rtf
-  Plug 'zerowidth/vim-copy-as-rtf', { 'on': 'CopyRTF' }
-
-  " Rust support
-  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-
-  " Scratch buffers
-  Plug 'mtth/scratch.vim', { 'on': 'Scratch' }
-
-  " interactive scratchpad
-  Plug 'metakirby5/codi.vim', { 'on': 'Codi' }
-
-  " resize windows in vim naturally
-  Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
   " log file syntax
   Plug 'yyq123/vim-syntax-logfile'
