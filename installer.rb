@@ -94,6 +94,7 @@ NPMS = %w[
 
 CARGOS = %w[
   devicon-lookup
+  stylua
 ].freeze
 
 # Installs dotfiles and configures the machine to my preferences
