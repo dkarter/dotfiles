@@ -124,38 +124,34 @@ draw_bold_text_with_bright_colors: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 # custom_cursor_colors: false
 
-# Colors (gruvbox flat)
+# Colors (Palenight)
 colors:
   # Default colors
   primary:
-    background: '0x1d2021'
-    foreground: '0xd4be98'
+    background: '0x292d3e'
+    foreground: '0xd0d0d0'
 
   # Normal colors
   normal:
-    black:   '0x1D2021'
-    red:     '0xea6962'
-    green:   '0xa9b665'
-    yellow:  '0xd8a657'
-    blue:    '0x7daea3'
-    magenta: '0xd3869b'
-    aqua:    '0x89b482'
-    white:   '0xd4be98'
+    black:   '0x292d3e'
+    red:     '0xf07178'
+    green:   '0xc3e88d'
+    yellow:  '0xffcb6b'
+    blue:    '0x82aaff'
+    magenta: '0xc792ea'
+    cyan:    '0x89ddff'
+    white:   '0xd0d0d0'
 
   # Bright colors
   bright:
-    black:   '0x17191a'
-    red:     '0xea6962'
-    green:   '0xa9b665'
-    yellow:  '0xd8a657'
-    blue:    '0x7daea3'
-    magenta: '0xd3869b'
-    aqua:    '0x89b482'
-    white:   '0xd4be98'
-
-  indexed_colors:
-    - { index: 16, color: '0xe78a4e' }
-    - { index: 17, color: '0xc14a4a' }
+    black:   '0x434758'
+    red:     '0xff8b92'
+    green:   '0xddffa7'
+    yellow:  '0xffe585'
+    blue:    '0x9cc4ff'
+    magenta: '0xe1acff'
+    cyan:    '0xa3f7ff'
+    white:   '0xffffff'
 
 
 #  # Indexed Colors

@@ -812,7 +812,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " UI Customizations {{{
 
     " make background transparent
-    au ColorScheme * hi Normal ctermbg=none guibg=none
+    " au ColorScheme * hi Normal ctermbg=none guibg=none
     highlight Normal ctermbg=none guibg=none
     highlight NonText ctermbg=none guibg=none
     highlight vimCommentGroup ctermbg=none guibg=none
