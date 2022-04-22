@@ -7,7 +7,7 @@ end
 return packer.startup(function(use)
   --
   -- Packer can manage itself
-  use("wbthomason/packer.nvim")
+  use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
   -- color schemes
   ----------------
