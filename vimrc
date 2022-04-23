@@ -1019,13 +1019,13 @@ augroup DebuggerBrevs
 augroup END
 " -------- Abbreviations ---------------------------------- }}}
 
-" Local config
+" Local config (useful for customizing config on another machine which is not
+" transferable)
 if filereadable($HOME . '/.vimrc.local')
   source ~/.vimrc.local
 endif
 
 " For NeoVim {{{
-if has('nvim')
   " use neovim-remote (pip3 install neovim-remote) allows
   " opening a new split inside neovim instead of nesting
   " neovim processes for git commit
@@ -1093,7 +1093,6 @@ if has('nvim')
   " pasting works quite well in neovim as is so disabling yo
     nnoremap <silent> yo o
     nnoremap <silent> yO O
-endif
 " }}}
 
 " gx extensions {{{

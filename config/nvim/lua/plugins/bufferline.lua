@@ -10,7 +10,11 @@ local default = {
     diagnostics = "coc",
     always_show_bufferline = false,
     show_close_icon = false,
-    offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
+    offsets = { {
+      filetype = "NvimTree",
+      text = "File Explorer",
+      text_align = "center",
+    } },
   },
 }
 

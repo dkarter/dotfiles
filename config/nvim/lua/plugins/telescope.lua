@@ -52,7 +52,7 @@ M.setup = function()
 
   local extensions = { "gh", "file_browser", "packer" }
 
-  for i, e in ipairs(extensions) do
+  for _, e in ipairs(extensions) do
     telescope.load_extension(e)
   end
 end
