@@ -300,7 +300,6 @@ return packer.startup(function(use)
     "coc-github",
     "coc-gitignore",
     "coc-gocode",
-    "coc-highlight",
     "coc-html",
     "coc-json",
     "coc-neosnippet",

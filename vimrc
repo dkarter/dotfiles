@@ -104,16 +104,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-augroup CocConfig
-  autocmd!
-
-  " coc-highlight: enable highlighting for symbol under cursor
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup END
-
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
