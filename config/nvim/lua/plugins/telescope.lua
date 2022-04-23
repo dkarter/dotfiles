@@ -35,8 +35,6 @@ local default = {
       height = 0.80,
       preview_cutoff = 120,
     },
-    -- file_sorter = require("telescope.sorters").get_fuzzy_file,
-    -- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     file_ignore_patterns = { "node_modules" },
     path_display = { "truncate" },
     winblend = 0,
@@ -45,17 +43,13 @@ local default = {
     color_devicons = true,
     use_less = true,
     set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-    -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-    -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-    -- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-    -- -- Developer configurations: Not meant for general override
-    -- buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
   },
 }
 
 local M = {}
 M.setup = function()
   telescope.setup(default)
+  telescope.load_extension("file_browser")
 end
 
 return M
