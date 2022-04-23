@@ -300,64 +300,6 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Custom FZF commands ----------------------------- {{{
- fun! s:parse_pivotal_story(entry)
-    let l:stories = pivotaltracker#stories('', '')
-    let l:filtered = filter(l:stories, {_idx, val -> val.menu == a:entry[0]})
-    return l:filtered[0].word
- endfun
-
-  augroup PivotalTrackerCompletionMappings
-    autocmd!
-
-    autocmd FileType gitcommit inoremap <expr> <c-x># fzf#complete(
-          \ {
-          \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
-          \ 'reducer': function('<sid>parse_pivotal_story'),
-          \ 'options': '-m',
-          \ 'down': '20%'
-          \ })
-
-    autocmd FileType gitcommit inoremap <expr> <c-x>t fzf#complete(
-          \ {
-          \ 'source': map(pivotaltracker#stories('', ''), {_key, val -> val.menu}),
-          \ 'options': '-m',
-          \ 'down': '20%'
-          \ })
-  augroup END
-
- " ------  CHANGE BRANCH (Gbranch) ------- {{{
-    fun! s:change_branch(e)
-      let l:_ = system('git checkout ' . a:e)
-      :e!
-      :AirlineRefresh
-      echom 'Changed branch to' . a:e
-    endfun
-
-    command! Gbranch call fzf#run(
-          \ {
-          \ 'source': 'git branch',
-          \ 'sink': function('<sid>change_branch'),
-          \ 'options': '-m',
-          \ 'window': { 'width': 0.9, 'height': 0.6 }
-          \ })
- " ------  /CHANGE BRANCH (Gbranch) ------- }}}
-
- " ------  CHANGE REMOTE BRANCH (Gbranch) ------- {{{
-    fun! s:change_remote_branch(e)
-      let l:_ = system('git checkout --track ' . a:e)
-      :e!
-      :AirlineRefresh
-      echom 'Changed to remote branch' . a:e
-    endfun
-
-    command! Grbranch call fzf#run(
-          \ {
-          \ 'source': 'git branch -r',
-          \ 'sink': function('<sid>change_remote_branch'),
-          \ 'options': '-m',
-          \ 'window': { 'width': 0.9, 'height': 0.6 }
-          \ })
- " ------  /CHANGE REMOTE BRANCH (Gbranch) ------- }}}
 
  " ------  JUMP TO GIT CONFLICTS (Gconflict) ------- {{{
     fun! s:jump_to_first_conflict(file_path)
@@ -666,22 +608,6 @@ augroup GOYO
 augroup END
 
 " --------------------------------------------
-" vim-legend
-" --------------------------------------------
-let g:legend_active_auto = 0
-let g:legend_hit_color = 'ctermfg=64 cterm=bold gui=bold guifg=Green'
-let g:legend_ignored_sign = '◌'
-let g:legend_ignored_color = 'ctermfg=234'
-let g:legend_mapping_toggle = '<Leader>cv'
-let g:legend_mapping_toggle_line = '<localleader>cv'
-
-" --------------------------------------------
-"  vim-ruby:
-" --------------------------------------------
-" support ruby on rails omnicompletions
-let g:rubycomplete_rails = 1
-
-" --------------------------------------------
 " sideways.vim
 " --------------------------------------------
 nnoremap <M-h> :SidewaysLeft<cr>
@@ -863,14 +789,6 @@ nnoremap <expr> <leader>fd ':Cfd '
 " Auto commands {{{
   augroup vimrcEx
     autocmd!
-
-    " Remove trailing whitespace on save for ruby files.
-    autocmd BufWritePre *.rb,*.ex,*.exs :%s/\s\+$//e
-
-    if exists('$ITERM_PROFILE')
-      " Preview images in vim (while in iterm)
-      autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
-    endif
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it for commit messages, when the position is invalid, or when
