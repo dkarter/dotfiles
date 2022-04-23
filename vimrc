@@ -1176,18 +1176,8 @@ endif
 " For VimPlug
 function! PlugGx()
   let l:line = getline('.')
-  let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
-
-  let l:name = matchlist(l:line, '\v/([A-Za-z0-9\-_\.]+)')[1]
-
-  let l:uri  = get(get(g:plugs, l:name, {}), 'uri', '')
-  if l:uri !~? 'github.com'
-    return
-  endif
-  let l:repo = matchstr(l:uri, '[^:/]*/'.l:name)
-  let l:url  = empty(l:sha)
-              \ ? 'https://github.com/'.l:repo
-              \ : printf('https://github.com/%s/commit/%s', l:repo, l:sha)
+  let l:name = matchlist(l:line, '\v[A-Za-z0-9\-_\.]+\/[A-Za-z0-9\-_\.]+')[0]
+  let l:url  = 'https://github.com/'.l:name
   call netrw#BrowseX(l:url, 0)
 endfunction
 
