@@ -49,8 +49,12 @@ local default = {
 local M = {}
 M.setup = function()
   telescope.setup(default)
-  telescope.load_extension("file_browser")
-  telescope.load_extension("packer")
+
+  local extensions = { "gh", "file_browser", "packer" }
+
+  for i, e in ipairs(extensions) do
+    telescope.load_extension(e)
+  end
 end
 
 return M

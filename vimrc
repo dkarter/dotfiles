@@ -294,6 +294,12 @@ nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
 
 nnoremap <silent> <leader>fp <cmd>Telescope packer<cr>
 
+" check out pull requests from vim!
+nnoremap <silent> <leader>gp <cmd>Telescope gh pull_request<cr>
+nnoremap <silent> <leader>gi <cmd>Telescope gh issues<cr>
+nnoremap <silent> <leader>gs <cmd>Telescope gh gist<cr>
+nnoremap <silent> <leader>gr <cmd>Telescope gh run<cr>
+
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)

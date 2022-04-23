@@ -329,20 +329,15 @@ return packer.startup(function(use)
 
   use({
     "nvim-telescope/telescope.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-packer.nvim",
+      "nvim-telescope/telescope-github.nvim",
+    },
     config = function()
       require("plugins.telescope").setup()
     end,
-  })
-
-  use({
-    "nvim-telescope/telescope-file-browser.nvim",
-    requires = { "nvim-telescope/telescope.nvim" },
-  })
-
-  use({
-    "nvim-telescope/telescope-packer.nvim",
-    requires = { "nvim-telescope/telescope.nvim" },
   })
 
   -- " highlights all search results and allows tabbing between them
