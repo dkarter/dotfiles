@@ -1135,16 +1135,6 @@ augroup MixExsGx
 augroup END
 " }}}
 
-" Load project specific vimrc {{{
-
-  if (getcwd() != expand('~')) && filereadable(getcwd() . '/.vimrc')
-    echom '-------------> loading project specific local vimrc'
-    set exrc
-    execute 'source ' . getcwd() . '/.vimrc'
-  endif
-
-" }}}
-
 " Temporary {{{
 
 " testing for bullets.vim

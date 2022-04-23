@@ -1,4 +1,7 @@
--- init.lua
+--[[
+init.lua:
+this file will load other files and serve as an entry point
+--]]
 
 -- Speed up loading Lua modules in Neovim to improve startup time.
 local present, impatient = pcall(require, "impatient")
@@ -16,3 +19,6 @@ vim.cmd("source ~/.vimrc")
 
 -- require `new_config.lua` from the nvim/lua folder:
 require("new_config")
+
+-- Load project specific vimrc
+require("utils").load_local_vimrc()
