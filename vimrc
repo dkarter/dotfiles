@@ -276,13 +276,23 @@ command! -bang -nargs=* FzfRg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
 nnoremap <silent> <C-g>g :call FZFOpen(':FzfRg!')<CR>
-nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
-nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
-nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
-" nnoremap <silent> <C-h> :call FZFOpen(':History')<CR>
 nnoremap <silent> <C-t> :call FZFOpen(':BTags')<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <silent> <C-p> <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
+
+nnoremap <silent> <leader>lg <cmd>Telescope live_grep<cr>
+
+nnoremap <silent> <C-b> <cmd>Telescope buffers<cr>
+nnoremap <silent> <leader>bb <cmd>Telescope buffers<cr>
+
+nnoremap <silent> <leader>fb <cmd>Telescope file_browser<cr>
+
+nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <silent> <leader>fp <cmd>Telescope packer<cr>
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
