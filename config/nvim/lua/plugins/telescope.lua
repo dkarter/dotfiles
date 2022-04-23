@@ -50,6 +50,7 @@ local M = {}
 M.setup = function()
   telescope.setup(default)
   telescope.load_extension("file_browser")
+  telescope.load_extension("packer")
 end
 
 return M

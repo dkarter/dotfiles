@@ -341,6 +341,11 @@ return packer.startup(function(use)
     requires = { "nvim-telescope/telescope.nvim" },
   })
 
+  use({
+    "nvim-telescope/telescope-packer.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+  })
+
   -- " highlights all search results and allows tabbing between them
   use({ "haya14busa/incsearch.vim" })
 
