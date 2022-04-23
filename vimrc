@@ -261,14 +261,6 @@ autocmd  FileType fzf set noshowmode noruler nonu
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-" Do not open files inside of a NvimTree buffer
-function! FZFOpen(command_str)
-  if (expand('%') =~# 'NvimTree' && winnr('$') > 1)
-    exe "normal! \<c-w>\<c-w>"
-  endif
-  exe 'normal! ' . a:command_str . "\<cr>"
-endfunction
-
 command! -bang -nargs=* FzfRg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden '.shellescape(<q-args>), 1,
@@ -276,8 +268,8 @@ command! -bang -nargs=* FzfRg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
-nnoremap <silent> <C-g>g :call FZFOpen(':FzfRg!')<CR>
-nnoremap <silent> <C-t> :call FZFOpen(':BTags')<CR>
+nnoremap <silent> <C-g>g :FzfRg!<CR>
+nnoremap <silent> <C-t> :BTags<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <silent> <C-p> <cmd>Telescope find_files<cr>
