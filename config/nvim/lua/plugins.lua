@@ -62,7 +62,7 @@ return packer.startup(function(use)
   })
 
   -- " iA Writer Scheme
-  use({ "reedes/vim-colors-pencil" })
+  use({ "reedes/vim-colors-pencil", cmd = "Goyo" })
   ------------------------------------
 
   -- vim one (previous colorscheme, might still be useful)
@@ -72,6 +72,7 @@ return packer.startup(function(use)
   use({
     "feline-nvim/feline.nvim",
     requires = { "lewis6991/gitsigns.nvim", "kyazdani42/nvim-web-devicons" },
+    after = "nvim-web-devicons",
     config = function()
       require("feline").setup()
     end,
