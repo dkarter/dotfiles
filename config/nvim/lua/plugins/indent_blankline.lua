@@ -7,6 +7,7 @@ end
 local default = {
   char = "│",
   filetype_exclude = {
+    "TelescopePrompt",
     "dashboard",
     "NvimTree",
     "packer",
