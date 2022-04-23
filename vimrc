@@ -159,21 +159,6 @@ let g:neoterm_repl_ruby = 'pry'
 let g:neoterm_autoscroll = 1
 
 " ====================================
-" Gist:
-" ====================================
-map <leader>gst :Gist<cr>
-
-
-" ====================================
-" Vim Scriptease:
-" ====================================
-" Run commands that require an interactive shell
-nnoremap <Leader>ri :RunInInteractiveShell<space>
-
-" Reload current vim plugin
-nnoremap <Leader>rr :Runtime<cr>
-
-" ====================================
 " CopyRTF: Copy code as RTF
 " ====================================
 nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
@@ -360,24 +345,6 @@ endif
 let g:slime_target='tmux'
 
 " ----------------------------------------------------------------------------
-" Scratch.vim
-" ----------------------------------------------------------------------------
-let g:scratch_no_mappings=1
-
-nnoremap <leader>sc :Scratch<CR>
-
-augroup ScratchToggle
-  autocmd!
-  autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
-augroup END
-
-" ----------------------------------------------------------------------------
-" Emmet
-" ----------------------------------------------------------------------------
-" better emmet leader key (must be followed with ,)
-let g:user_emmet_leader_key='<C-e>'
-
-" ----------------------------------------------------------------------------
 " Vim Better Whitespace
 " ----------------------------------------------------------------------------
 let g:better_whitespace_filetypes_blacklist = [
@@ -416,12 +383,6 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>sa :call RunAllSpecs()<CR>
 
 " ----------------------------------------------------------------------------
-" Vim Flow JS
-" ----------------------------------------------------------------------------
-let g:flow#autoclose = 1
-
-
-" ----------------------------------------------------------------------------
 " Vim Elixir
 " ----------------------------------------------------------------------------
 let g:elixir_fold = 0
@@ -436,20 +397,6 @@ if has('nvim') && !exists('$TMUX')
 else
   let g:test#strategy = 'vimux'
 endif
-
-" "  Support Elixir Umbrella Apps (pre 1.9) {{{
-"   " https://github.com/janko/vim-test/issues/136
-"   function! ElixirUmbrellaTransform(cmd) abort
-"     if match(a:cmd, 'apps/') != -1
-"       return substitute(a:cmd, 'mix test apps/\([^/]*\)/', 'mix cmd --app \1 mix test --color ', '')
-"     else
-"       return a:cmd
-"     end
-"   endfunction
-
-"   let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
-"   let g:test#transformation = 'elixir_umbrella'
-" }}}
 
 nmap <silent> <leader>T :TestNearest<CR>
 nmap <silent> <leader>t :TestFile<CR>
@@ -513,27 +460,6 @@ let g:mix_format_on_save = 1
 " Use Dash.app for documentation of word under cursor
 let g:investigate_use_dash=1
 let g:investigate_syntax_for_rspec='ruby'
-
-" ----------------------------------------------------------------------------
-" Dashboard
-" ----------------------------------------------------------------------------
-
-let g:dashboard_default_executive = 'fzf'
-let g:dashboard_custom_header = [
-            \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-            \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-            \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-            \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-            \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-            \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-            \]
-
-" ----------------------------------------------------------------------------
-" Elm-vim
-" ----------------------------------------------------------------------------
-" let g:elm_format_autosave=1
-let g:elm_detailed_complete = 1
-
 
 " ----------------------------------------------------------------------------
 " vim-go
