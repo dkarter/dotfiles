@@ -367,7 +367,7 @@ return packer.startup(function(use)
   --- TMUX ---
 
   -- " .tmux.conf syntax highlighting
-  use({ "keith/tmux.vim", ft = "tmux" })
+  use({ "ericpruitt/tmux.vim", ft = "tmux" })
 
   -- " tmux config file stuff
   use({ "tmux-plugins/vim-tmux" })
