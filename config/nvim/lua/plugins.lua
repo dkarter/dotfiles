@@ -5,7 +5,9 @@ if not present then
 end
 
 return packer.startup(function(use)
-  --
+  -- Speed up loading Lua modules in Neovim to improve startup time.
+  use({ "lewis6991/impatient.nvim" })
+
   -- Packer can manage itself
   use({ "wbthomason/packer.nvim", event = "VimEnter" })
 
@@ -178,6 +180,11 @@ return packer.startup(function(use)
     requires = { "kana/vim-textobj-user" },
   })
 
+  -- temporarily use this plugin to format elixir - until ALE starts supporting
+  -- umbrella apps and respect nested .formatter.exs files (see
+  -- https://github.com/dense-analysis/ale/pull/3106)
+  use("mhinz/vim-mix-format")
+
   -- pulls info on hex packages (requires mattn/webapi-vim)
   use({ "lucidstack/hex.vim", ft = { "elixir" } })
   -- }}}
@@ -268,8 +275,14 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Golang support
+  use({ "fatih/vim-go", ft = { "go" } })
+
   -- resize windows in vim naturally
   use({ "simeji/winresizer", cmd = "WinResizerStartResize" })
+
+  -- " staticly check code and highlight errors (async syntastic replacement)
+  use("dense-analysis/ale")
 
   -- smooth scrolling in neovim
   use({
@@ -309,6 +322,11 @@ return packer.startup(function(use)
   use({ "neoclide/coc.nvim", branch = "release" })
   use({ "antoinemadec/coc-fzf", requires = { "neoclide/coc.nvim" } })
 
+  -- fuzzy finder (still used by a lot of small workflows I built FzfRg,
+  -- GConflict etc)
+  use({ "junegunn/fzf", run = "cd ~/.fzf && ./install --all" })
+  use("junegunn/fzf.vim")
+
   use({
     "nvim-telescope/telescope.nvim",
     requires = { "nvim-lua/plenary.nvim" },
@@ -328,6 +346,12 @@ return packer.startup(function(use)
 
   -- " move function arguments
   use({ "AndrewRadev/sideways.vim" })
+
+  -- manage github gists
+  use({ "mattn/gist-vim", cmd = "Gist", requires = { "mattn/webapi-vim" } })
+
+  -- PostgreSQL highlighting
+  use("exu/pgsql.vim")
 
   --- TMUX ---
 

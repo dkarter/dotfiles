@@ -1,5 +1,12 @@
 -- init.lua
 
+-- Speed up loading Lua modules in Neovim to improve startup time.
+local present, impatient = pcall(require, "impatient")
+
+if present then
+  impatient.enable_profile()
+end
+
 -- iterative migration: source old config first, then overwrite it with new
 -- configs
 -- source a vimscript file
