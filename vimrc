@@ -797,18 +797,6 @@ let g:projectionist_heuristics['package.json'] = {
 
 " ----------------------------------------------------- }}}
 
-" Load all plugins {{{
-if filereadable(expand('~/.vimrc.bundles'))
-  source ~/.vimrc.bundles
-endif
-" }}}
-
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 " UI Customizations {{{
 
     " make background transparent
@@ -1292,15 +1280,7 @@ function! PlugGx()
   let l:line = getline('.')
   let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
 
-  if (&filetype ==# 'vim-plug')
-    " inside vim plug splits such as :PlugStatus
-    let l:name = empty(l:sha)
-                  \ ? matchstr(l:line, '^[-x+] \zs[^:]\+\ze:')
-                  \ : getline(search('^- .*:$', 'bn'))[2:-2]
-  else
-    " in .vimrc.bundles
-    let l:name = matchlist(l:line, '\v/([A-Za-z0-9\-_\.]+)')[1]
-  endif
+  let l:name = matchlist(l:line, '\v/([A-Za-z0-9\-_\.]+)')[1]
 
   let l:uri  = get(get(g:plugs, l:name, {}), 'uri', '')
   if l:uri !~? 'github.com'
@@ -1315,8 +1295,7 @@ endfunction
 
 augroup PlugGxGroup
   autocmd!
-  autocmd BufRead,BufNewFile .vimrc.bundles nnoremap <buffer> <silent> gx :call PlugGx()<cr>
-  autocmd FileType vim-plug nnoremap <buffer> <silent> gx :call PlugGx()<cr>
+  autocmd BufRead,BufNewFile plugins.lua nnoremap <buffer> <silent> gx :call PlugGx()<cr>
 augroup END
 
 " JavaScript package.json
