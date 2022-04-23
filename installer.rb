@@ -120,7 +120,6 @@ class Installer
     install_npm_packages
     install_python_packages
     install_rust_cargos
-    install_vim_plugins if confirm('Install vim plugins?')
 
     puts '===== ALL DONE! ====='.green
   end
@@ -237,13 +236,6 @@ class Installer
     puts '===== Installing NPM packages'.yellow
 
     asdf_command("npm install -g #{NPMS.join(' ')}")
-  end
-
-  def install_vim_plugins
-    puts '===== Installing NeoVim plugins'.yellow
-
-    popen('curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
-    popen('nvim +PlugInstall +CocInstall +qall')
   end
 
   def asdf_command(cmd)
