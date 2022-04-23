@@ -299,26 +299,6 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" ======================================
-" FZF + DevIcons
-" ======================================
-
-function! FzfIcons()
-  let l:fzf_files_options = '--preview "bat --color always --style numbers {2..} | head -'.&lines.'"'
-   function! s:edit_devicon_prepended_file(item)
-    let l:file_path = a:item[4:-1]
-    execute 'silent e' l:file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': $FZF_DEFAULT_COMMAND . ' | devicon-lookup --color',
-        \ 'sink':   function('s:edit_devicon_prepended_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'window': { 'width': 0.9, 'height': 0.6 }
-        \ })
-
-endfunction
-
 " Custom FZF commands ----------------------------- {{{
  fun! s:parse_pivotal_story(entry)
     let l:stories = pivotaltracker#stories('', '')
