@@ -50,7 +50,7 @@ local M = {}
 M.setup = function()
   telescope.setup(default)
 
-  local extensions = { "gh", "file_browser", "packer" }
+  local extensions = { "gh", "file_browser", "packer", "fzf" }
 
   for _, e in ipairs(extensions) do
     telescope.load_extension(e)
