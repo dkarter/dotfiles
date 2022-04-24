@@ -23,10 +23,6 @@ return packer.startup(function(use)
     end,
   })
 
-  -- " iA Writer Scheme
-  use({ "reedes/vim-colors-pencil", cmd = "Goyo" })
-  ------------------------------------
-
   -- vim one (previous colorscheme, might still be useful)
   use({ "rakr/vim-one" })
 
