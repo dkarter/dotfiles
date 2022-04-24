@@ -104,25 +104,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" set coc as nvim man page provider for functions
-" TODO: maybe need to check if coc is enabled for file and do setlocal?
-set keywordprg=:call\ CocAction('doHover')
-
-vmap <silent> <leader>ca  :<C-u>CocFzfList actions<CR>
-nmap <silent> <leader>ca  :<C-u>CocFzfList actions<CR>
-nmap <silent> <leader>cd  :<C-u>CocFzfList diagnostics<CR>
-nmap <silent> <leader>cb  :<C-u>CocFzfList diagnostics --current-buf<CR>
-nmap <silent> <leader>cc  :<C-u>CocFzfList commands<CR>
-nmap <silent> <leader>ce  :<C-u>CocFzfList extensions<CR>
-nmap <silent> <leader>cl  :<C-u>CocFzfList location<CR>
-nmap <silent> <leader>co  :<C-u>CocFzfList outline<CR>
-nmap <silent> <leader>cs  :<C-u>CocFzfList symbols<CR>
-nmap <silent> <leader>cS  :<C-u>CocFzfList services<CR>
-nmap <silent> <leader>cp  :<C-u>CocFzfListResume<CR>
-
 " ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
 " ====================================
@@ -1051,9 +1032,6 @@ endif
     let g:terminal_color_14 = "#65c2cd"
     let g:terminal_color_15 = "#e3e5e9"
 
-  " interactive find replace preview
-    set inccommand=nosplit
-
   " share data between nvim instances (registers etc)
     augroup SHADA
       autocmd!
@@ -1061,11 +1039,6 @@ endif
             \ if exists(':rshada') | rshada | wshada | endif
     augroup END
 
-  " set pum background visibility to 20 percent
-    set pumblend=20
-
-  " set file completion in command to use pum
-    set wildoptions=pum
 
   " Navigate neovim + neovim terminal emulator with alt+direction
     tnoremap <silent><C-h> <C-\><C-n><C-w>h

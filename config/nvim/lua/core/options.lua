@@ -159,3 +159,17 @@ opt.viewoptions:remove("options")
 
 -- treat dash separated words as a word text object
 opt.iskeyword:append("-")
+
+-- set pum background visibility to 20 percent
+opt.pumblend = 20
+
+-- set file completion in command to use pum
+opt.wildoptions = "pum"
+
+-- interactive find replace preview
+opt.inccommand = "nosplit"
+
+-- " set coc as nvim man page provider for functions
+-- " TODO: maybe need to check if coc is enabled for file and do setlocal?
+-- ALSO TODO: when switching to nvim-lsp this should go away
+vim.cmd([[set keywordprg=:call\ CocAction('doHover')]])
