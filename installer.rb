@@ -32,7 +32,6 @@ DOTFILES = %w[
   stylelintrc
   tmux.conf
   vimrc
-  vimrc.bundles
   zinitrc
   zshenv
   zshrc
