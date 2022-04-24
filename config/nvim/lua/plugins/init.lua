@@ -17,6 +17,8 @@ return packer.startup(function(use)
     "folke/tokyonight.nvim",
     config = function()
       -- set colorscheme
+      vim.g.tokyonight_transparent = true
+      vim.g.tokyonight_dark_float = false
       vim.cmd([[colorscheme tokyonight]])
     end,
   })
