@@ -642,48 +642,12 @@ augroup END
 " }}}
 
 " Key Mappings {{{
-   " alias for leader key
-     nmap <space> \
-     xmap <space> \
-
-  " center window on search result
-    nnoremap <silent> n nzzzv
-    nnoremap <silent> N Nzzzv
-
-  " Delete current buffer without losing the split
-    nnoremap <silent> <C-q> :bp\|bd #<CR>
-
-  " open FZF in current file's directory
-    nnoremap <silent> <Leader>_ :Files <C-R>=expand('%:h')<CR><CR>
-
-  " fold file based on syntax
-    nnoremap <silent> <leader>zs :setlocal foldmethod=syntax<CR>
-
-  " close tab
-    nnoremap <c-w>w :bd<CR>
-
-  " rename current file
-    nnoremap <Leader>rn :Move <C-R>=expand("%")<CR>
-
   " replace word under cursor, globally, with confirmation
     nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
     vnoremap <Leader>k y :%s/<C-r>"//gc<Left><Left><Left>
 
   " insert frozen string literal comment at the top of the file (ruby)
     map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>
-
-  " remove highlighting on escape
-    nnoremap <silent> <esc> :nohlsearch<cr>
-
-  " sort selected lines
-    vmap gs :sort<CR>
-
-  " Pasting support
-    set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when
-                          " pasting from clipboard into terminal
-
-  " re-indent file and jump back to where the cursor was
-    map <F7> mzgg=G`z
 
   " Allow j and k to work on visual lines (when wrapping)
     noremap <silent> <Leader>w :call ToggleWrap()<CR>

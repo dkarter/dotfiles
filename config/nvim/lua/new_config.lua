@@ -2,7 +2,7 @@ local modules = {
   "core.options",
   "core.commands",
   "core.autocmds",
-  -- "core.mappings",
+  "core.mappings",
   "plugins",
 }
 
