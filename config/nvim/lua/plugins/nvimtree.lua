@@ -12,20 +12,20 @@ g.nvim_tree_show_icons = {
 }
 
 g.nvim_tree_icons = {
-  default = "",
+  default = '',
   git = {
-    unstaged = "",
-    staged = "",
-    unmerged = "",
-    renamed = "",
-    untracked = "",
-    deleted = "",
+    unstaged = '',
+    staged = '',
+    unmerged = '',
+    renamed = '',
+    untracked = '',
+    deleted = '',
   },
 }
 
-keymap("n", "<leader>nt", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+keymap('n', '<leader>nt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
-local present, nvimtree = pcall(require, "nvim-tree")
+local present, nvimtree = pcall(require, 'nvim-tree')
 
 if not present then
   return
@@ -48,10 +48,10 @@ local default = {
   diagnostics = {
     enable = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = '',
+      info = '',
+      warning = '',
+      error = '',
     },
   },
   update_focused_file = {
@@ -65,7 +65,7 @@ local default = {
   },
   filters = {
     dotfiles = false,
-    custom = { ".DS_Store", "fugitive:", ".git" },
+    custom = { '.DS_Store', 'fugitive:', '.git' },
   },
   git = {
     enable = true,
@@ -76,7 +76,7 @@ local default = {
     width = 30,
     height = 30,
     hide_root_folder = false,
-    side = "left",
+    side = 'left',
     auto_resize = false,
     mappings = {
       custom_only = false,
@@ -84,10 +84,10 @@ local default = {
     },
     number = false,
     relativenumber = false,
-    signcolumn = "yes",
+    signcolumn = 'yes',
   },
   trash = {
-    cmd = "trash",
+    cmd = 'trash',
     require_confirm = true,
   },
   actions = {
@@ -105,23 +105,23 @@ local default = {
     folder_arrows = 1,
   },
   icons = {
-    default = "",
-    symlink = "",
+    default = '',
+    symlink = '',
     git = {
-      unstaged = "",
-      staged = "S",
-      unmerged = "",
-      renamed = "➜",
-      deleted = "",
-      untracked = "U",
-      ignored = "◌",
+      unstaged = '',
+      staged = 'S',
+      unmerged = '',
+      renamed = '➜',
+      deleted = '',
+      untracked = 'U',
+      ignored = '◌',
     },
     folder = {
-      default = "",
-      open = "",
-      empty = "",
-      empty_open = "",
-      symlink = "",
+      default = '',
+      open = '',
+      empty = '',
+      empty_open = '',
+      symlink = '',
     },
   },
 }

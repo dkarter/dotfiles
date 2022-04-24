@@ -1,4 +1,4 @@
-local present, gitsigns = pcall(require, "gitsigns")
+local present, gitsigns = pcall(require, 'gitsigns')
 
 if not present then
   return
@@ -15,32 +15,32 @@ local default = {
     end
 
     -- Navigation
-    map("n", "]c", function()
+    map('n', ']c', function()
       if vim.wo.diff then
-        return "]c"
+        return ']c'
       end
       vim.schedule(function()
         gs.next_hunk()
       end)
-      return "<Ignore>"
+      return '<Ignore>'
     end, { expr = true })
 
-    map("n", "[c", function()
+    map('n', '[c', function()
       if vim.wo.diff then
-        return "[c"
+        return '[c'
       end
       vim.schedule(function()
         gs.prev_hunk()
       end)
-      return "<Ignore>"
+      return '<Ignore>'
     end, { expr = true })
 
     -- Text object for git hunks (e.g. vih will select the hunk)
-    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
     -- remove background from sign column (so it works better with a transparent
     -- terminal emulator)
-    vim.cmd "hi SignColumn guibg=None"
+    vim.cmd 'hi SignColumn guibg=None'
   end,
 }
 

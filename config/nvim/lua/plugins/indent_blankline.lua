@@ -1,24 +1,24 @@
-local present, indent_blankline = pcall(require, "indent_blankline")
+local present, indent_blankline = pcall(require, 'indent_blankline')
 
 if not present then
   return
 end
 
 local default = {
-  char = "│",
+  char = '│',
   filetype_exclude = {
-    "TelescopePrompt",
-    "dashboard",
-    "NvimTree",
-    "packer",
-    "terminal",
-    "nofile",
-    "quickfix",
-    "lspinfo",
-    "checkhealth",
-    "help",
-    "man",
-    "",
+    'TelescopePrompt',
+    'dashboard',
+    'NvimTree',
+    'packer',
+    'terminal',
+    'nofile',
+    'quickfix',
+    'lspinfo',
+    'checkhealth',
+    'help',
+    'man',
+    '',
   },
 }
 
