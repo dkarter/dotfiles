@@ -2,8 +2,12 @@ local utils = require("utils")
 local nmap = utils.nmap
 local vmap = utils.vmap
 
--- use space as leader key
-vim.g.mapleader = " "
+-- set leader key to `\`
+vim.g.mapleader = "\\"
+-- TODO: find out why this doesn't work with helper funcs
+-- " alias for leader key (use space as leader)
+vim.cmd([[nmap <space> \]])
+vim.cmd([[xmap <space> \]])
 
 -- center window on search result
 nmap({ "n", "nzzzv" })

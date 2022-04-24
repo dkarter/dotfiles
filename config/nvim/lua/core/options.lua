@@ -61,13 +61,6 @@ opt.updatetime = 100
 opt.ttyfast = true
 opt.lazyredraw = true
 
--- set leader key to `\`
-g.mapleader = "\\"
--- TODO: add aliases to space
--- " alias for leader key
---  nmap <space> \
---  xmap <space> \
-
 opt.backspace = "indent,eol,start" -- Backspace deletes like most programs in insert mode
 opt.history = 200 -- how many : commands to save in history
 opt.showcmd = true -- display incomplete commands
