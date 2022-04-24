@@ -40,7 +40,7 @@ local default = {
 
     -- remove background from sign column (so it works better with a transparent
     -- terminal emulator)
-    vim.cmd("hi SignColumn guibg=None")
+    vim.cmd "hi SignColumn guibg=None"
   end,
 }
 
