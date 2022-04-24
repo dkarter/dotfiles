@@ -24,39 +24,6 @@
 "  Plugin Configuration (BEFORE loading bundles) {{{
 
 " ====================================
-" Floaterm
-" ====================================
-let g:floaterm_position = 'center'
-let g:floaterm_background = '#272c35'
-let g:floaterm_winblend = 10
-
-
-hi FloatermNF       guibg=#272c35
-hi FloatermBorderNF guibg=#272c35 guifg=white
-
-command! -nargs=0 FT FloatermToggle
-
-" Use 90% width for floaterm. If error occurs, update the plugin
-let g:floaterm_width = 0.9
-let g:floaterm_height = 0.7
-
-function s:floatermSettings()
-    call SetColorColumn(0)
-endfunction
-
-augroup FloatermCustom
-  autocmd!
-
-  autocmd FileType floaterm call s:floatermSettings()
-  " <leader>h : Hide the floating terminal window
-  " <leader>q : Quit the floating terminal window
-  autocmd FileType floaterm tmap <buffer> <silent> <leader>q <C-\><C-n>:call SetColorColumn(1)<CR>:q<CR>
-  autocmd FileType floaterm tmap <buffer> <silent> <leader>h <C-\><C-n>:call SetColorColumn(1)<CR>:hide<CR>
-augroup END
-
-nnoremap <silent> <leader>gg :FloatermNew --title='LazyGit' --autoclose=1 lazygit<CR>
-
-" ====================================
 " VimMatchUp:
 " ====================================
 let g:matchup_matchparen_deferred = 1
@@ -110,41 +77,6 @@ endfunction
 vnoremap <F5> :CarbonNowSh<CR>
 
 " ====================================
-" Neosnippet:
-" ====================================
-
-let g:neosnippet#enable_completed_snippet = 1
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ neosnippet#expandable_or_jumpable() ?
-      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-
-" ====================================
-" NeoTerm:
-" ====================================
-let g:neoterm_repl_ruby = 'pry'
-let g:neoterm_autoscroll = 1
-
-" ====================================
-" CopyRTF: Copy code as RTF
-" ====================================
-nnoremap <silent> <leader><C-c> :set nonumber<CR>:CopyRTF<CR>:set number<CR>
-
-" ====================================
 " SplitJoin:
 " ====================================
 let g:splitjoin_align = 1
@@ -165,39 +97,6 @@ let g:mta_filetypes = {
       \ 'eruby': 1,
       \ }
 
-" ====================================
-" Snippets (UltiSnips):
-" ====================================
-let g:UltiSnipsExpandTrigger="<NUL>"
-let g:UltiSnipsListSnippets="<NUL>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" :UltiSnipsEdit opens in a vertical split
-let g:UltiSnipsEditSplit                   = 'vertical'
-let g:UltiSnipsSnippetsDir                 = $HOME . '/dotfiles/vim/UltiSnips'
-
-
-" ====================================
-" setup airline
-" ====================================
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
 
 " ====================================
 " Bullets.vim:
@@ -1014,23 +913,6 @@ endif
     let $GIT_EDITOR  = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
     let $EDITOR      = 'nvr -l'
     let $ECTO_EDITOR = 'nvr -l'
-
-    let g:terminal_color_0  = "#353a44"
-    let g:terminal_color_1  = "#e88388"
-    let g:terminal_color_2  = "#a7cc8c"
-    let g:terminal_color_3  = "#ebca8d"
-    let g:terminal_color_4  = "#72bef2"
-    let g:terminal_color_5  = "#d291e4"
-    let g:terminal_color_6  = "#65c2cd"
-    let g:terminal_color_7  = "#e3e5e9"
-    let g:terminal_color_8  = "#353a44"
-    let g:terminal_color_9  = "#e88388"
-    let g:terminal_color_10 = "#a7cc8c"
-    let g:terminal_color_11 = "#ebca8d"
-    let g:terminal_color_12 = "#72bef2"
-    let g:terminal_color_13 = "#d291e4"
-    let g:terminal_color_14 = "#65c2cd"
-    let g:terminal_color_15 = "#e3e5e9"
 
   " share data between nvim instances (registers etc)
     augroup SHADA
