@@ -710,17 +710,6 @@ augroup END
   " Source (reload) your vimrc. Type space, s, o in sequence to trigger
     nnoremap <leader>so :source $MYVIMRC<cr>
 
-  " toggle background light / dark
-    fun! ToggleBackground()
-      if (&background ==? 'dark')
-        set background=light
-      else
-        set background=dark
-      endif
-    endfun
-
-    nnoremap <silent> <F10> :call ToggleBackground()<CR>
-
 
   "split edit your tmux conf
     nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
