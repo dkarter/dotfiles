@@ -1,6 +1,17 @@
 --[[
-init.lua:
-this file will load other files and serve as an entry point
+
+ ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓
+ ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒
+▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░
+▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██
+▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒
+░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░
+░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░
+   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░
+         ░    ░  ░    ░ ░        ░   ░         ░
+                                ░
+
+        - Dorian's NeoVim Configuration -
 --]]
 
 -- Speed up loading Lua modules in Neovim to improve startup time.

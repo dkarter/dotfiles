@@ -1,18 +1,5 @@
-"
-"  ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓
-"  ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒
-" ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░
-" ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██
-" ▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒
-" ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░
-" ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░
-"    ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░
-"          ░    ░  ░    ░ ░        ░   ░         ░
-"                                 ░
-"
-"         - Dorian's NeoVim Configuration -
-
-
+" Old vimrc config.. nothing should be added here anymore, instead it should be
+" added to the new lua configuration. Eventually this file will go away...
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
  " TODO: currently exists in both vimrc and options.lua, this is due to feline
