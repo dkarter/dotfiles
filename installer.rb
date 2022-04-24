@@ -246,7 +246,7 @@ class Installer
   def link(source, target)
     source = File.expand_path(source)
     target = File.expand_path(target)
-    popen("zsh -c 'ln -s -f -T #{source} #{target}'", silent: true)
+    popen("zsh -c 'ln -s -f #{source} #{target}'", silent: true)
   end
 
   def mkdir(path)

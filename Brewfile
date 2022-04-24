@@ -1,11 +1,6 @@
 # some fonts
 tap 'homebrew/cask-fonts'
-cask 'font-3270-nerd-font'
-cask 'font-cascadia-mono'
-cask 'font-fira-code'
 cask 'font-fira-code-nerd-font'
-cask 'font-source-code-pro'
-cask 'font-victor-mono'
 
 # Dual Panel File Browser
 cask 'marta'
