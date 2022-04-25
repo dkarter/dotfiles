@@ -44,6 +44,27 @@ local default = {
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
   },
+  extensions = {
+    conventional_commits = {
+      -- insert a conventional_commit label from telescope + scope
+      action = function(entry)
+        vim.ui.input({ prompt = 'Scope ? (optional) ' }, function(scope)
+          local msg = entry.value
+
+          if scope then
+            msg = string.format('%s(%s)', msg, scope)
+          end
+
+          msg = string.format('%s: ', msg)
+
+          -- update the line
+          vim.api.nvim_set_current_line(msg)
+          -- place cursor at the end of the line in insert mode
+          vim.cmd[[:normal A]]
+        end)
+      end,
+    },
+  },
 }
 
 local M = {}
