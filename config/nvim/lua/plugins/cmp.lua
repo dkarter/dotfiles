@@ -137,6 +137,7 @@ M.setup = function()
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'nvim_lsp_signature_help' },
+      { name = 'path' },
     }, {
       all_buffers_completion_source,
       { name = 'emoji' },
