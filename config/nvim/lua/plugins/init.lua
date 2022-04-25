@@ -30,6 +30,8 @@ return packer.startup(function(use)
       -- snippet engine, required by cmp
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
+      -- git completions
+      'petertriho/cmp-git',
     },
     config = function()
       require('plugins.cmp').setup()
