@@ -11,6 +11,16 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
+local all_buffers_completion_source = {
+  name = 'buffer',
+  option = {
+    get_bufnrs = function()
+      -- complete from all buffers
+      return vim.api.nvim_list_bufs()
+    end,
+  },
+}
+
 local kind_icons = {
   Text = '',
   Method = '',
@@ -101,7 +111,7 @@ M.setup = function()
       { name = 'luasnip' },
       { name = 'nvim_lsp_signature_help' },
     }, {
-      { name = 'buffer' },
+      all_buffers_completion_source,
       { name = 'emoji' },
     }),
   }
@@ -111,7 +121,7 @@ M.setup = function()
     sources = cmp.config.sources({
       { name = 'nvim_lua' },
     }, {
-      { name = 'buffer' },
+      all_buffers_completion_source,
     }),
   })
 
@@ -147,7 +157,7 @@ M.setup = function()
     sources = cmp.config.sources({
       { name = 'git' }, -- `cmp_git`
     }, {
-      { name = 'buffer' },
+      all_buffers_completion_source,
       { name = 'emoji' },
     }),
   })
@@ -156,7 +166,7 @@ M.setup = function()
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = 'buffer' },
+      all_buffers_completion_source,
     },
   })
 
