@@ -7,7 +7,7 @@ end
 local default = {
   options = {
     numbers = 'ordinal',
-    diagnostics = 'coc',
+    diagnostics = 'nvim_lsp',
     always_show_bufferline = false,
     show_close_icon = false,
     offsets = { {

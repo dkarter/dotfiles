@@ -59,6 +59,9 @@ PIPS3 = [
   'neovim-remote'  # allow controlling neovim remotely
 ].freeze
 
+
+# TODO: how do I add this? maybe the datastructure should be tuples?
+# asdf plugin add lua-language-server https://github.com/shun-shobon/asdf-lua-language-server.git
 ASDF_PLUGINS = %w[
   bat
   direnv

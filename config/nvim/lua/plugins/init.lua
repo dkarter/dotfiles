@@ -11,6 +11,48 @@ return packer.startup(function(use)
   -- Speed up loading Lua modules in Neovim to improve startup time.
   use { 'lewis6991/impatient.nvim' }
 
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+    },
+    config = function()
+      require('plugins.cmp').setup()
+    end,
+  }
+
+  -- Collection of configurations for the built-in LSP client
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('plugins.lsp').setup()
+    end,
+  }
+
+  --  pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('trouble').setup {}
+
+      -- TODO: move these into a function exported from mappings.lua
+      vim.keymap.set('n', '<leader>xx', '<cmd>Trouble<cr>', { silent = true, noremap = true })
+      vim.keymap.set('n', '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', { silent = true, noremap = true })
+      vim.keymap.set('n', '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', { silent = true, noremap = true })
+      vim.keymap.set('n', '<leader>xl', '<cmd>Trouble loclist<cr>', { silent = true, noremap = true })
+      vim.keymap.set('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', { silent = true, noremap = true })
+      vim.keymap.set('n', 'gR', '<cmd>Trouble lsp_references<cr>', { silent = true, noremap = true })
+    end,
+  }
+
   -- color schemes
   ----------------
   use {
@@ -250,34 +292,6 @@ return packer.startup(function(use)
       require('cinnamon').setup()
     end,
   }
-
-  vim.g.coc_global_extensions = {
-    'coc-css',
-    'coc-dictionary',
-    'coc-eslint',
-    'coc-github',
-    'coc-gitignore',
-    'coc-gocode',
-    'coc-html',
-    'coc-json',
-    'coc-omni',
-    'coc-prettier',
-    'coc-rls',
-    'coc-snippets',
-    'coc-solargraph',
-    'coc-svg',
-    'coc-syntax',
-    'coc-tsserver',
-    'coc-ultisnips',
-    'coc-vimlsp',
-    'coc-yaml',
-    'coc-yank',
-    'coc-react-refactor',
-    'coc-lua',
-  }
-
-  use { 'neoclide/coc.nvim', branch = 'release' }
-  use { 'antoinemadec/coc-fzf', requires = { 'neoclide/coc.nvim' } }
 
   -- fuzzy finder (still used by a lot of small workflows I built FzfRg,
   -- GConflict etc)

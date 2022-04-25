@@ -111,6 +111,9 @@ end
 -- Autocomplete with dictionary words when spell check is on
 opt.complete:append 'kspell'
 
+-- for nvim-cmp
+opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
 -- highlight fenced code blocks in markdown
 g.markdown_fenced_languages = {
   'bash=sh',
