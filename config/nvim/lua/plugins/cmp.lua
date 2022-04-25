@@ -62,6 +62,7 @@ M.setup = function()
       { name = 'nvim_lsp_signature_help' },
     }, {
       { name = 'buffer' },
+      { name = 'emoji' },
     }),
   }
 
@@ -80,6 +81,7 @@ M.setup = function()
       { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
     }, {
       { name = 'buffer' },
+      { name = 'emoji' },
     }),
   })
 
