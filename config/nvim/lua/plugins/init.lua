@@ -352,11 +352,4 @@ return packer.startup(function(use)
 
   -- " autocomplete using text from tmux
   use { 'wellle/tmux-complete.vim' }
-  ------------
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if _G.packer_bootstrap then
-    require('packer').sync()
-  end
 end)
