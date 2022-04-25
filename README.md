@@ -3,8 +3,6 @@ Dorian's Dotfiles
 
 ![screenshot](./screenshot.png)
 
-Originally based on the ThoughtBot base configuration but HEAVILY customized to my needs and ergonomics.
-
 Feel free to "steal" anything you want, and if you have a question please open an issue.
 
 --------
@@ -19,12 +17,8 @@ git clone git@github.com:dkarter/dotfiles.git
 
 Cd into the dotfiles dir: `cd dotfiles`
 
-If on mac install homebrew, and run `brew bundle`
-
-To install dotfiles, latest versions of asdf languages and packages, run:
-
 ```sh
-ruby setup.rb
+./setup.sh
 ```
 
 --------
