@@ -90,26 +90,28 @@ command! -bang -nargs=* FzfRg
 nnoremap <silent> <C-g>g :FzfRg!<CR>
 nnoremap <silent> <C-t> :BTags<CR>
 
+" TODO: move this to lua
 " Find files using Telescope command-line sugar.
 nnoremap <silent> <C-p> <cmd>Telescope find_files<cr>
 nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
-
 nnoremap <silent> <leader>lg <cmd>Telescope live_grep<cr>
-
 nnoremap <silent> <C-b> <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>bb <cmd>Telescope buffers<cr>
 
-nnoremap <silent> <leader>fb <cmd>Telescope file_browser<cr>
 
 nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
 
+" Extensions
+nnoremap <silent> <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <silent> <leader>fp <cmd>Telescope packer<cr>
+nnoremap <silent> <leader>cc <cmd>Telescope conventional_commits<cr>
 
 " check out pull requests from vim!
 nnoremap <silent> <leader>gp <cmd>Telescope gh pull_request<cr>
 nnoremap <silent> <leader>gi <cmd>Telescope gh issues<cr>
 nnoremap <silent> <leader>gs <cmd>Telescope gh gist<cr>
 nnoremap <silent> <leader>gr <cmd>Telescope gh run<cr>
+
 
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
