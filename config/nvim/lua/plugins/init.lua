@@ -14,13 +14,20 @@ return packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
+      -- LSP driven completions
       'hrsh7th/cmp-nvim-lsp',
+      -- completion from buffer text
       'hrsh7th/cmp-buffer',
+      -- file path completion
       'hrsh7th/cmp-path',
+      -- command line completion
       'hrsh7th/cmp-cmdline',
+      -- neovim lua config api completion
       'hrsh7th/cmp-nvim-lua',
+      -- function signature help
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-emoji',
+      -- snippet engine, required by cmp
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
     },
