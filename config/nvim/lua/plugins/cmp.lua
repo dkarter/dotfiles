@@ -135,8 +135,8 @@ M.setup = function()
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
       { name = 'nvim_lsp_signature_help' },
+      { name = 'luasnip' },
       { name = 'path' },
     }, {
       all_buffers_completion_source,
@@ -148,6 +148,7 @@ M.setup = function()
   cmp.setup.filetype('lua', {
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
       { name = 'nvim_lua' },
       { name = 'path' },
