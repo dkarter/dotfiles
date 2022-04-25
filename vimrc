@@ -26,39 +26,6 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 " ====================================
-" COC
-" ====================================
-
-" Tell CoC where node is if it doesn't know
-let current_node_path = trim(system('asdf where nodejs'))
-let g:coc_node_path = current_node_path . '/bin/node'
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> go :<C-u>CocFzfList outline<CR>
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" ====================================
 " Carbon Now Screenshots (vim-carbon-now-sh)
 " ====================================
 vnoremap <F5> :CarbonNowSh<CR>
