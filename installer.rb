@@ -125,6 +125,7 @@ class Installer
     install_npm_packages
     install_python_packages
     install_rust_cargos
+    install_elixir_ls
 
     puts '===== ALL DONE! ====='.green
   end
@@ -200,6 +201,10 @@ class Installer
     CARGOS.each do |cargo|
       popen("cargo install #{cargo}")
     end
+  end
+
+  def install_elixir_ls
+    popen('./setup/elixir_ls.sh')
   end
 
   def symlink_dotfiles
