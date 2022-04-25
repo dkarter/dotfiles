@@ -52,6 +52,33 @@ local kind_icons = {
 local M = {}
 
 M.setup = function()
+  -- adds support for git completions
+  require('cmp_git').setup {
+    trigger_actions = {
+      {
+        debug_name = 'git_commits',
+        trigger_character = '$',
+        action = function(sources, trigger_char, callback, params, _)
+          return sources.git:get_commits(callback, params, trigger_char)
+        end,
+      },
+      {
+        debug_name = 'github_issues_and_pr',
+        trigger_character = '#',
+        action = function(sources, trigger_char, callback, _, git_info)
+          return sources.github:get_issues_and_prs(callback, git_info, trigger_char)
+        end,
+      },
+      {
+        debug_name = 'github_mentions',
+        trigger_character = '@',
+        action = function(sources, trigger_char, callback, _, git_info)
+          return sources.github:get_mentions(callback, git_info, trigger_char)
+        end,
+      },
+    },
+  }
+
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -124,33 +151,6 @@ M.setup = function()
       all_buffers_completion_source,
     }),
   })
-
-  -- adds support for git completions
-  require('cmp_git').setup {
-    trigger_actions = {
-      {
-        debug_name = 'git_commits',
-        trigger_character = '$',
-        action = function(sources, trigger_char, callback, params, _)
-          return sources.git:get_commits(callback, params, trigger_char)
-        end,
-      },
-      {
-        debug_name = 'github_issues_and_pr',
-        trigger_character = '#',
-        action = function(sources, trigger_char, callback, _, git_info)
-          return sources.github:get_issues_and_prs(callback, git_info, trigger_char)
-        end,
-      },
-      {
-        debug_name = 'github_mentions',
-        trigger_character = '@',
-        action = function(sources, trigger_char, callback, _, git_info)
-          return sources.github:get_mentions(callback, git_info, trigger_char)
-        end,
-      },
-    },
-  }
 
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
