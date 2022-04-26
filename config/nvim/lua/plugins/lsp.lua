@@ -23,9 +23,13 @@ M.setup = function()
   -- Use a loop to conveniently call 'setup' on multiple servers and
   -- map buffer local keybindings when the language server attaches
   local simple_servers = {
+    -- sudo apt install clangd-12
     'clangd',
+    -- https://rust-analyzer.github.io/manual.html#installation
     'rust_analyzer',
+    -- yarn global add typescript typescript-language-server
     'tsserver',
+    -- gem install solargraph
     'solargraph',
   }
 
