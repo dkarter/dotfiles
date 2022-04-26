@@ -19,15 +19,22 @@ This is my personal collection of configuration files.
 
 Here are some details about my setup:
 
-+ **OS**: [Pop!_OS](https://pop.system76.com/)
-+ **DE**: [Gnome](https://www.gnome.org)
-+ **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
-+ **Shell**: [zsh](https://www.zsh.org/)
-+ **Editor**: [Neovim](https://github.com/neovim/neovim/)
-+ **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-+ **Terminal**: [Alacritty](https://alacritty.org/)
-+ **Term Prompt**: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-+ **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
+- **OS**: [Pop!_OS](https://pop.system76.com/)
+- **DE**: [Gnome](https://www.gnome.org)
+- **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
+- **Shell**: [zsh](https://www.zsh.org/)
+- **Editor**: [Neovim](https://github.com/neovim/neovim/)
+  - utilizes the built-in lsp ❤️
+  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
+  - [tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
+  - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
+  - [feline](https://github.com/famiu/feline.nvim) - status line
+  - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
+- **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+- **Terminal**: [Alacritty](https://alacritty.org/)
+- **Term Prompt**: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 
 ![screenshot](./screenshot.png)
 
