@@ -1,0 +1,14 @@
+# Name of the session
+name: dotfiles
+
+# Root directory of the session
+root: ~/dotfiles
+
+windows:
+  - editor:
+      # Any valid tmux layout is accepted
+      layout: main-vertical
+      # Short form for panes, with a single command each:
+      panes:
+        - vim
+        -

@@ -56,7 +56,10 @@ But really you shouldn't use other people's dotfiles.. these are customized to m
 
 # Development
 
-This repo now uses conventional commits. To install the git hooks simply run `yarn` in the project directory
+- This repo now uses conventional commits. To install the git hooks simply run `yarn` in the project directory
+- To start development use [airmux](https://github.com/dermoumi/airmux) (alias `mux`) inside of the project directory
+
+
 
 --------
 
