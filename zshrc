@@ -184,29 +184,6 @@ bindkey '^r' history-incremental-search-backward
 
 export KEYTIMEOUT=1
 
-function mux() {
-  if [ -n "$TMUX" ]; then
-    echo "ERROR: You're already in a tmux session. Nesting tmux sessions is a bad idea." >&2
-    return 1
-  fi
-
-  if [ -z "$1" ]; then
-    session_name="$(basename $(pwd) | sed -e 's/\./-/g')"
-  else
-    session_name=$1
-  fi
-
-  if ! $(tmux has-session -t $session_name &>/dev/null); then
-    echo "creating session $session_name"
-    # tmux new-session -s $session_name -n 'main'
-    cols="$(tput cols)"
-    tmux new-session -d -n 'code' -s $session_name -x${cols-150} -y50 'reattach-to-user-namespace -l zsh'
-  fi
-
-  echo "attaching session $session_name"
-  reattach-to-user-namespace tmux attach-session -t $session_name
-}
-
 # set homebrew on path
 export PATH="/usr/local/bin:$PATH"
 
