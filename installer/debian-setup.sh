@@ -6,6 +6,7 @@ sudo apt -y install \
   bat \
   bison \
   build-essential \
+  clangd-12 \
   fop \
   global \
   httpie \
