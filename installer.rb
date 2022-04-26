@@ -94,6 +94,7 @@ NPMS = %w[
   diff-so-fancy
   typescript
   typescript-language-server
+  dockerfile-language-server-nodejs
 ].freeze
 
 CARGOS = %w[

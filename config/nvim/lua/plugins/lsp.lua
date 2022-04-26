@@ -31,6 +31,8 @@ M.setup = function()
     'tsserver',
     -- gem install solargraph
     'solargraph',
+    -- yarn global add dockerfile-language-server-nodejs
+    'dockerls',
   }
 
   -- nvim-cmp supports additional completion capabilities
