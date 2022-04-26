@@ -41,6 +41,11 @@ return packer.startup(function(use)
   -- Collection of configurations for the built-in LSP client
   use {
     'neovim/nvim-lspconfig',
+    requires = {
+      'mhanberg/elixir.nvim',
+      -- required by elixir plugin
+      'nvim-lua/plenary.nvim',
+    },
     config = function()
       require('plugins.lsp').setup()
     end,

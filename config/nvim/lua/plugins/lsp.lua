@@ -22,7 +22,7 @@ M.setup = function()
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
   -- map buffer local keybindings when the language server attaches
-  local servers = {
+  local simple_servers = {
     'clangd',
     'rust_analyzer',
     'tsserver',
@@ -32,7 +32,7 @@ M.setup = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-  for _, lsp in pairs(servers) do
+  for _, lsp in pairs(simple_servers) do
     lspconfig[lsp].setup {
       on_attach = on_attach,
       capabilities = capabilities,
@@ -74,7 +74,11 @@ M.setup = function()
 
   -- Elixir
   lspconfig.elixirls.setup {
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+      -- regular on_attach for lsp
+      on_attach(client, bufnr)
+      require('elixir').on_attach(client, bufnr)
+    end,
     capabilities = capabilities,
     cmd = { vim.loop.os_homedir() .. '/.elixir_ls/release/language_server.sh' },
   }
