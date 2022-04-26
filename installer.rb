@@ -95,6 +95,7 @@ NPMS = %w[
   typescript
   typescript-language-server
   dockerfile-language-server-nodejs
+  @ansible/ansible-language-server
 ].freeze
 
 CARGOS = %w[

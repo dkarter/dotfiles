@@ -33,6 +33,8 @@ M.setup = function()
     'solargraph',
     -- yarn global add dockerfile-language-server-nodejs
     'dockerls',
+    -- npm install -g @ansible/ansible-language-server
+    'ansiblels',
   }
 
   -- nvim-cmp supports additional completion capabilities
