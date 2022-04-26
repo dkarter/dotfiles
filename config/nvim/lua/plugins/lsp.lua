@@ -26,6 +26,7 @@ M.setup = function()
     'clangd',
     'rust_analyzer',
     'tsserver',
+    'solargraph',
   }
 
   -- nvim-cmp supports additional completion capabilities
