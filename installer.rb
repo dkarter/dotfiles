@@ -99,6 +99,7 @@ NPMS = %w[
 CARGOS = %w[
   devicon-lookup
   stylua
+  airmux
 ].freeze
 
 # Installs dotfiles and configures the machine to my preferences
