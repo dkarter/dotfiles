@@ -2,6 +2,8 @@ local utils = require 'utils'
 local nmap = utils.nmap
 local vmap = utils.vmap
 
+local default_opts = { noremap = true, silent = true }
+
 -- -- set leader key to `\`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- vim.g.mapleader = ' '
@@ -33,10 +35,8 @@ nmap { '<esc>', ':nohlsearch<cr>', { silent = true } }
 local M = {}
 
 M.lsp_mappings = function(bufnr)
-  local opts = { noremap = true, silent = true }
-
   local buf_nmap = function(mapping, cmd)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, default_opts)
   end
 
   -- TODO: expose this as a function from mappings module e.g. require('core.mappings').lsp_mappings()
@@ -58,11 +58,10 @@ M.lsp_mappings = function(bufnr)
 end
 
 M.lsp_diagnostic_mappings = function()
-  local opts = { noremap = true, silent = true }
-  nmap { '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts }
-  nmap { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts }
-  nmap { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts }
-  nmap { '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts }
+  nmap { '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', default_opts }
+  nmap { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', default_opts }
+  nmap { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', default_opts }
+  nmap { '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', default_opts }
 end
 
 return M
