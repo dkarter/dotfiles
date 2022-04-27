@@ -6,7 +6,7 @@ cask 'font-fira-code-nerd-font'
 cask 'marta'
 
 # Fast GPU rendered terminal emulator
-cask 'kitty'
+cask 'alacritty'
 
 # for erlang
 brew 'wxwidgets'
