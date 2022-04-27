@@ -25,20 +25,29 @@ M.setup = function()
   local simple_servers = {
     -- sudo apt install clangd-12
     'clangd',
+
     -- https://rust-analyzer.github.io/manual.html#installation
     'rust_analyzer',
+
     -- yarn global add typescript typescript-language-server
     'tsserver',
+
     -- gem install solargraph
     'solargraph',
+
     -- yarn global add dockerfile-language-server-nodejs
     'dockerls',
+
     -- npm i -g @ansible/ansible-language-server
     'ansiblels',
+
     -- npm i -g vscode-langservers-extracted
     'jsonls',
     'cssls',
     'html',
+
+    -- go install golang.org/x/tools/gopls@latest
+    'gopls',
   }
 
   -- nvim-cmp supports additional completion capabilities
