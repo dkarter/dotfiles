@@ -91,6 +91,9 @@ M.setup = function()
       -- JSON
       jsonls = require 'plugins.lsp.jsonls',
 
+      -- YAML
+      yamlls = {},
+
       -- CSS
       cssls = {},
 
