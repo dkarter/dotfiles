@@ -461,7 +461,7 @@ key_bindings:
   - { key: Delete, chars: "\x1b[3~" }
     # shortcuts for tmux. the leader key is control-z (0x1A)
   - { key: W, mods: Super, chars: "\x1A&" } # close tab (kill)
-  - { key: T, mods: Super, chars: "\x1Ac" } # new tab
+  - { key: T, mods: Super|Shift, chars: "\x1Ac" } # new tab
   - { key: RBracket, mods: Super|Shift, chars: "\x1An" } # select next tab
   - { key: LBracket, mods: Super|Shift, chars: "\x1Ap" } # select previous tab
   - { key: RBracket, mods: Super, chars: "\x1Ao" } # select next pane
