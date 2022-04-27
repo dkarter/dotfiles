@@ -39,23 +39,33 @@ M.lsp_mappings = function(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, default_opts)
   end
 
-  -- TODO: expose this as a function from mappings module e.g. require('core.mappings').lsp_mappings()
-  -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
+  -- gD = go Declaration
   buf_nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  -- gD = go definition
   buf_nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  -- K = is just the vim help for thing under cursor
   buf_nmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  -- gi = go implementation
   buf_nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
   -- fs = function signature
   buf_nmap('<leader>fs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  -- wa = workspace add
   buf_nmap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+  -- wr = workspace remove
   buf_nmap('<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  -- wl = workspace list
   buf_nmap('<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  -- D = <type> Definition
   buf_nmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  -- rn = rename
   buf_nmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  -- ca = code action
   buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  -- gr = get references
   buf_nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  buf_nmap('<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  -- fr = formatting
+  buf_nmap('<leader>fr', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 end
 
 M.lsp_diagnostic_mappings = function()
