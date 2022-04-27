@@ -51,6 +51,11 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'williamboman/nvim-lsp-installer',
+    requires = { 'neovim/nvim-lspconfig' },
+  }
+
   --  pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
   use {
     'folke/trouble.nvim',
