@@ -123,6 +123,8 @@ brew 'tree'
 # keep zsh up to date
 brew 'zsh'
 
+# GNU File, Shell, and Text utilities
+# https://www.gnu.org/software/coreutils
 brew 'coreutils'
 
 # enable ocr via an Alfred workflow
