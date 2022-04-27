@@ -38,22 +38,28 @@ return packer.startup(function(use)
     end,
   }
 
-  -- Collection of configurations for the built-in LSP client
+  -- installs and sets up lsps for you
   use {
-    'neovim/nvim-lspconfig',
+    'junnplus/nvim-lsp-setup',
     requires = {
+      -- just installs/updates LSPs
+      'williamboman/nvim-lsp-installer',
+
+      -- LSP driven completions
+      'hrsh7th/cmp-nvim-lsp',
+
+      -- Collection of configurations for the built-in LSP client
+      'neovim/nvim-lspconfig',
+
+      -- elixir commands from elixirls
       'mhanberg/elixir.nvim',
+
       -- required by elixir plugin
       'nvim-lua/plenary.nvim',
     },
     config = function()
       require('plugins.lsp').setup()
     end,
-  }
-
-  use {
-    'williamboman/nvim-lsp-installer',
-    requires = { 'neovim/nvim-lspconfig' },
   }
 
   --  pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
