@@ -9,7 +9,7 @@ cask 'marta'
 cask 'kitty'
 
 # for erlang
-brew 'wxmac'
+brew 'wxwidgets'
 brew 'autoconf'
 brew 'fop'
 brew 'libiodbc'
