@@ -358,4 +358,7 @@ return packer.startup(function(use)
 
   -- " autocomplete using text from tmux
   use { 'wellle/tmux-complete.vim' }
+
+  -- Resize tmux panes and Vim windows with ease.
+  use 'RyanMillerC/better-vim-tmux-resizer'
 end)
