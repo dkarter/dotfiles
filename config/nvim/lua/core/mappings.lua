@@ -73,4 +73,8 @@ M.trouble_mappings = function()
   nmap { 'gR', '<cmd>Trouble lsp_references<cr>', default_opts }
 end
 
+M.nvim_tree_mappings = function()
+  nmap { '<leader>nt', ':NvimTreeToggle<CR>', default_opts }
+end
+
 return M

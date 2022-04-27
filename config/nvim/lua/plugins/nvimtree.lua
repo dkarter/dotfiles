@@ -1,5 +1,4 @@
 local g = vim.g
-local keymap = vim.api.nvim_set_keymap
 
 g.nvim_tree_show_icons = {
   git = 1,
@@ -19,8 +18,6 @@ g.nvim_tree_icons = {
     deleted = '',
   },
 }
-
-keymap('n', '<leader>nt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 local present, nvimtree = pcall(require, 'nvim-tree')
 
@@ -51,6 +48,7 @@ local M = {}
 
 M.setup = function()
   nvimtree.setup(config)
+  require('core.mappings').nvim_tree_mappings()
 end
 
 return M
