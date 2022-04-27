@@ -87,6 +87,7 @@ ASDF_PLUGINS = %w[
 
 NPMS = %w[
   neovim
+  tldr
   bash-language-server
   @elm-tooling/elm-language-server
   dockerfile-language-server-nodejs
