@@ -48,6 +48,9 @@ M.setup = function()
 
     -- go install golang.org/x/tools/gopls@latest
     'gopls',
+
+    -- npm i -g bash-language-server
+    'bashls',
   }
 
   -- nvim-cmp supports additional completion capabilities
