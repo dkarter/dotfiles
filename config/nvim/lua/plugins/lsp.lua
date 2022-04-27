@@ -37,6 +37,8 @@ M.setup = function()
     'ansiblels',
     -- npm i -g vscode-langservers-extracted
     'jsonls',
+    'cssls',
+    'html',
   }
 
   -- nvim-cmp supports additional completion capabilities
