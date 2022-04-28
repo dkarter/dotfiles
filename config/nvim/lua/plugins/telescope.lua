@@ -60,7 +60,7 @@ local default = {
           -- update the line
           vim.api.nvim_set_current_line(msg)
           -- place cursor at the end of the line in insert mode
-          vim.cmd[[:normal A]]
+          vim.cmd [[:normal A]]
         end)
       end,
     },
@@ -68,6 +68,7 @@ local default = {
 }
 
 local M = {}
+
 M.setup = function()
   telescope.setup(default)
 
@@ -82,6 +83,8 @@ M.setup = function()
   for _, e in ipairs(extensions) do
     telescope.load_extension(e)
   end
+
+  require('core.mappings').telescope_mappings()
 end
 
 return M

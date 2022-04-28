@@ -88,4 +88,26 @@ M.nvim_tree_mappings = function()
   nmap { '<leader>nt', ':NvimTreeToggle<CR>', default_opts }
 end
 
+M.telescope_mappings = function()
+  -- " Find files using Telescope command-line sugar.
+  nmap { '<C-p>', '<cmd>Telescope find_files<cr>', default_opts }
+  nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts }
+  nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', default_opts }
+  nmap { '<C-b>', '<cmd>Telescope buffers<cr>', default_opts }
+  nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', default_opts }
+
+  nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts }
+
+  --  Extensions
+  nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', default_opts }
+  nmap { '<leader>fp', '<cmd>Telescope packer<cr>', default_opts }
+  nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', default_opts }
+
+  -- check out pull requests from vim!
+  nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', default_opts }
+  nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
+  nmap { '<leader>gs', '<cmd>Telescope gh gist<cr>', default_opts }
+  nmap { '<leader>gr', '<cmd>Telescope gh run<cr>', default_opts }
+end
+
 return M
