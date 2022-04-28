@@ -89,10 +89,14 @@ return packer.startup(function(use)
   -- status line
   use {
     'feline-nvim/feline.nvim',
-    requires = { 'lewis6991/gitsigns.nvim', 'kyazdani42/nvim-web-devicons' },
-    after = 'nvim-web-devicons',
+    requires = {
+      'lewis6991/gitsigns.nvim',
+      'kyazdani42/nvim-web-devicons',
+      -- for creating a theme
+      'folke/tokyonight.nvim',
+    },
     config = function()
-      require('feline').setup()
+      require('plugins.feline').setup()
     end,
   }
 
