@@ -376,4 +376,16 @@ return packer.startup(function(use)
 
   -- Resize tmux panes and Vim windows with ease.
   use 'RyanMillerC/better-vim-tmux-resizer'
+
+  -- notifications
+  use {
+    'rcarriga/nvim-notify',
+    config = function()
+      local notify = require 'notify'
+      notify.setup {
+        background_colour = '#000',
+      }
+      vim.notify = notify
+    end,
+  }
 end)
