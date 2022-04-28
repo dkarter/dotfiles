@@ -170,9 +170,6 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# For GO
-export GOPATH="<<-[[CHANGEINLOCALZSHRC]]->>"
-
 # HomeBrew
 export HOMEBREW_GITHUB_API_TOKEN="<<-[[CHANGEINLOCALZSHRC]]->>"
 
@@ -189,6 +186,9 @@ export PATH="/usr/local/bin:$PATH"
 
 # set cabal and haskell binaries on path
 export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
+
+# Golang
+export PATH="/usr/local/go/bin:$PATH"
 
 # For PostgreSQL
 export PGDATA="/Library/PostgreSQL/9.3/data"
