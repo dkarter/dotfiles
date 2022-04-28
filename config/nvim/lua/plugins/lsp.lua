@@ -12,7 +12,7 @@ M.setup = function()
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
 
-  local on_attach = function(client, bufnr)
+  local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
     -- vmp plugin)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

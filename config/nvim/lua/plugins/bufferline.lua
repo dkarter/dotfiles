@@ -21,6 +21,7 @@ local default = {
 local M = {}
 
 M.setup = function()
+  ---@diagnostic disable-next-line: redundant-parameter
   bufferline.setup(default)
 end
 

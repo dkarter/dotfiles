@@ -9,6 +9,8 @@ local M = {}
 M.setup = function()
   local tokyonight_colors = require('tokyonight.colors').setup { style = 'storm' }
 
+  -- not sure why the Lua diagnostics engine is not detecting these colors
+  ---@diagnostic disable: undefined-field
   local colors = {
     bg = tokyonight_colors.bg_statusline,
     fg = tokyonight_colors.fg,
@@ -24,6 +26,7 @@ M.setup = function()
     light_bg = tokyonight_colors.bg_highlight,
     primary_blue = tokyonight_colors.blue5,
   }
+  ---@diagnostic enable: undefined-field
 
   local vi_mode_colors = {
     NORMAL = colors.primary_blue,

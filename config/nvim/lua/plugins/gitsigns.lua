@@ -47,6 +47,7 @@ local default = {
 local M = {}
 
 M.setup = function()
+  ---@diagnostic disable-next-line: redundant-parameter
   gitsigns.setup(default)
 end
 

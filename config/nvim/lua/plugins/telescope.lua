@@ -70,6 +70,7 @@ local default = {
 local M = {}
 
 M.setup = function()
+  ---@diagnostic disable-next-line: redundant-parameter
   telescope.setup(default)
 
   local extensions = {

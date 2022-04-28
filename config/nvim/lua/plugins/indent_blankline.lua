@@ -25,6 +25,7 @@ local default = {
 local M = {}
 
 M.setup = function()
+  ---@diagnostic disable-next-line: redundant-parameter
   indent_blankline.setup(default)
 end
 
