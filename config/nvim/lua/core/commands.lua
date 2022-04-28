@@ -1,4 +1,5 @@
 local cmd = vim.api.nvim_create_user_command
+local utils = require 'utils'
 
 cmd('PrettyPrintJSON', '%!jq', {})
 cmd('PrettyPrintXML', '!tidy -mi -xml -wrap 0 %', {})
@@ -8,3 +9,5 @@ cmd('Retab', ':set ts=2 sw=2 et<CR>:retab<CR>', {})
 cmd('CopyFullName', "let @+=expand('%')", {})
 cmd('CopyPath', "let @+=expand('%:h')", {})
 cmd('CopyFileName', "let @+=expand('%:t')", {})
+
+cmd('RefreshJsonSchemas', utils.download_json_schemas, {})
