@@ -78,6 +78,7 @@ ASDF_PLUGINS = %w[
   neovim
   nodejs
   python
+  rebar
   ripgrep
   ruby
   rust
