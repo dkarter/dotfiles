@@ -70,6 +70,9 @@ M.setup = function()
       -- C, CPP
       clangd = {},
 
+      -- C, CPP, Arduino
+      ccls = {},
+
       -- Rust
       rust_analyzer = {},
 
