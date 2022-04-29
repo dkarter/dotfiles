@@ -514,23 +514,6 @@ augroup END
   " easily escape terminal
     tnoremap <leader><esc> <C-\><C-n><esc><cr>
     tnoremap <C-o> <C-\><C-n><esc><cr>
-
-  " quickly toggle term
-    nnoremap <silent> <leader>o :vertical botright Ttoggle<cr><C-w>l
-    nnoremap <silent> <leader>O :botright Ttoggle<cr><C-w>j
-    nnoremap <silent> <leader><space> :vertical botright Ttoggle<cr><C-w>l
-
-    " close terminal
-    tnoremap <silent> <leader>o <C-\><C-n>:Ttoggle<cr>
-    tnoremap <silent> <leader><space> <C-\><C-n>:Ttoggle<cr>
-
-  " send stuff to REPL using NeoTerm
-    nnoremap <silent> <c-s>l :TREPLSendLine<CR>
-    vnoremap <silent> <c-s>s :TREPLSendSelection<CR>
-
-  " pasting works quite well in neovim as is so disabling yo
-    nnoremap <silent> yo o
-    nnoremap <silent> yO O
 " }}}
 
 " gx extensions {{{

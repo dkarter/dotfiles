@@ -2,6 +2,7 @@ local utils = require 'utils'
 local nmap = utils.nmap
 local vmap = utils.vmap
 local xmap = utils.vmap
+local tmap = utils.tmap
 
 local default_opts = { noremap = true, silent = true }
 
@@ -42,6 +43,16 @@ nmap {
   utils.reload_current_luafile,
   default_opts,
 }
+
+--  Navigate neovim + neovim terminal emulator with alt+direction
+tmap { '<C-h>', '<C-><C-n><C-w>h' }
+tmap { '<C-j>', '<C-><C-n><C-w>j' }
+tmap { '<C-k>', '<C-><C-n><C-w>k' }
+tmap { '<C-l>', '<C-><C-n><C-w>l' }
+
+-- easily escape terminal
+tmap { '<leader><esc>', '<C-><C-n><esc><cr>' }
+tmap { '<C-o>', '<C-><C-n><esc><cr>' }
 
 local M = {}
 
