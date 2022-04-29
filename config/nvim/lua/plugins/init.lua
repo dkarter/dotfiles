@@ -176,11 +176,15 @@ return packer.startup(function(use)
     end,
   }
 
-  -- " Distraction free writing in vim
-  use { 'junegunn/goyo.vim', cmd = 'Goyo' }
-
   -- " Highlight current paragraph (works well with goyo)
-  use { 'junegunn/limelight.vim', cmd = 'Limelight' }
+  use {
+    'junegunn/limelight.vim',
+    cmd = 'Limelight',
+    setup = function()
+      vim.g.limelight_paragraph_span = 1
+      vim.g.limelight_priority = -1
+    end,
+  }
 
   -- growing collection of settings, commands and require('core.mappings') put together to make
   -- working with the location list/window and the quickfix list/window smoother

@@ -119,58 +119,6 @@ let g:ale_sh_shfmt_options = '-i 2 -ci'
 
 let g:ale_fix_on_save = 1
 
-
-" ----------------------------------------------------------------------------
-" goyo.vim + limelight.vim
-" ----------------------------------------------------------------------------
-let g:limelight_paragraph_span = 1
-let g:limelight_priority = -1
-
-" limelight colors for 'one' color scheme
-let g:limelight_conceal_ctermfg = '#454d5a'
-let g:limelight_conceal_guifg = '#454d5a'
-
-let g:goyo_width = 100
-
-function! s:goyo_enter()
-  let g:background_before_goyo = &background
-  let g:colorscheme_before_goyo = g:colors_name
-  let g:limelight_conceal_guifg_before_goyo = g:limelight_conceal_guifg
-  let g:limelight_conceal_ctermfg_before_goyo = g:limelight_conceal_ctermfg
-  let g:textwidth_before_goyo = &textwidth
-  let g:wrapmargin_before_goyo = &wrapmargin
-
-  set textwidth=0
-  set wrapmargin=0
-  set wrap
-  set nofoldenable
-  set linebreak
-  set background=light
-  colorscheme pencil
-  let g:pencil_terminal_italics = 1
-  let g:limelight_conceal_guifg='#bfbfbf'
-  let g:limelight_conceal_ctermfg='#bfbfbf'
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  execute 'Limelight!'
-  execute 'set textwidth=' . g:textwidth_before_goyo
-  execute 'set wrapmargin=' . g:wrapmargin_before_goyo
-  execute 'set background=' . g:background_before_goyo
-  execute 'colorscheme ' . g:colorscheme_before_goyo
-  set nowrap
-  set foldenable
-  let g:limelight_conceal_guifg = g:limelight_conceal_guifg_before_goyo
-  let g:limelight_conceal_ctermfg = g:limelight_conceal_ctermfg_before_goyo
-endfunction
-
-augroup GOYO
-  autocmd! User GoyoEnter nested call <SID>goyo_enter()
-  autocmd! User GoyoLeave nested call <SID>goyo_leave()
-augroup END
-
-
 " ----------------------------------------------------- }}}
 
 " UI Customizations {{{
