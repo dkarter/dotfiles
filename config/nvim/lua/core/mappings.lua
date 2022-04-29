@@ -33,6 +33,16 @@ vmap { 'gs', ':sort<CR>' }
 -- remove highlighting on escape
 nmap { '<esc>', ':nohlsearch<cr>', { silent = true } }
 
+-- ml = map lua: converts vim mapping to lua (roughly..)
+nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4' }/<cr>" }
+
+-- reload (current) lua file (does not reload module though...)
+nmap {
+  '<leader>rl',
+  utils.reload_current_luafile,
+  default_opts,
+}
+
 local M = {}
 
 M.lsp_mappings = function(bufnr)

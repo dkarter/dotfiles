@@ -76,4 +76,11 @@ function M.read_json_schemas()
   end
 end
 
+function M.reload_current_luafile()
+  local current_file = vim.fn.expand '%'
+  print(current_file)
+  vim.cmd(string.format('luafile %s', current_file))
+  vim.notify(string.format('Reloaded %s!', current_file))
+end
+
 return M
