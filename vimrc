@@ -478,36 +478,6 @@ augroup END
 
 " --------------------- Key Mappings ---------------------------- }}}
 
-" Higher Order Immutable Funcs {{{
-fun! Map(list, fn)
-  let new_list = deepcopy(a:list)
-  call map(new_list, a:fn)
-  return new_list
-endfun
-
-fun! Filter(list, fn)
-  let new_list = deepcopy(a:list)
-  call filter(new_list, a:fn)
-  return new_list
-endfun
-
-fun! Find(list, fn)
-  let l:fn = substitute(a:fn, 'v:val', 'l:item', 'g')
-  for l:item in a:list
-    let l:new_item = deepcopy(l:item)
-    if execute('echon (' . l:fn . ')') ==# '1'
-      return l:new_item
-    endif
-  endfor
-
-  return 0
-endfun
-
-fun! HasItem(list, fn)
-  return !empty(Find(a:list, a:fn))
-endfun
-" }}}
-
 " Abbreviations {{{
 augroup DebuggerBrevs
   autocmd!
