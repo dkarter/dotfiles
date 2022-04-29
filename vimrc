@@ -518,12 +518,6 @@ augroup DebuggerBrevs
 augroup END
 " -------- Abbreviations ---------------------------------- }}}
 
-" Local config (useful for customizing config on another machine which is not
-" transferable)
-if filereadable($HOME . '/.vimrc.local')
-  source ~/.vimrc.local
-endif
-
 " For NeoVim {{{
   " use neovim-remote (pip3 install neovim-remote) allows
   " opening a new split inside neovim instead of nesting

@@ -26,6 +26,12 @@ end
 -- source a vimscript file
 vim.cmd 'source ~/.vimrc'
 
+-- Local config (useful for customizing config on another machine which is not
+-- transferable)
+if vim.fn.filereadable(vim.fn.expand '~/.vimrc.local') == 1 then
+  vim.cmd [[source ~/.vimrc.local]]
+end
+
 -- require `new_config.lua` from the nvim/lua folder:
 require 'new_config'
 
