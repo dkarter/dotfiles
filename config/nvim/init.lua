@@ -23,7 +23,6 @@ end
 
 -- iterative migration: source old config first, then overwrite it with new
 -- configs
--- source a vimscript file
 vim.cmd 'source ~/.vimrc'
 
 -- Local config (useful for customizing config on another machine which is not
