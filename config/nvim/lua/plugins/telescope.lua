@@ -42,7 +42,23 @@ local default = {
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     color_devicons = true,
     use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    set_env = { ['COLORTERM'] = 'truecolor' },
+  },
+  pickers = {
+    find_files = {
+      find_command = {
+        'fd',
+        '--type',
+        'f',
+        '--strip-cwd-prefix',
+        '--hidden',
+        '--follow',
+        '-E',
+        '.git',
+        '--ignore-file',
+        '~/.gitignore',
+      },
+    },
   },
   extensions = {
     conventional_commits = {
