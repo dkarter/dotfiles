@@ -217,7 +217,7 @@ return packer.startup(function(use)
 
   -- elixir text objects
   use {
-    'duff/vim-textobj-elixir',
+    'kevinkoltz/vim-textobj-elixir',
     requires = { 'kana/vim-textobj-user' },
   }
 
