@@ -165,7 +165,8 @@ opt.wildoptions = 'pum'
 -- interactive find replace preview
 opt.inccommand = 'nosplit'
 
--- " set coc as nvim man page provider for functions
--- " TODO: maybe need to check if coc is enabled for file and do setlocal?
--- ALSO TODO: when switching to nvim-lsp this should go away
-vim.cmd [[set keywordprg=:call\ CocAction('doHover')]]
+-- Use RipGrep for grep https://www.wezm.net/technical/2016/09/ripgrep-with-vim/
+if vim.fn.executable 'rg' then
+  opt.grepprg = 'rg --vimgrep --no-heading'
+  opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
+end

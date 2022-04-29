@@ -1,5 +1,13 @@
-" Old vimrc config.. nothing should be added here anymore, instead it should be
-" added to the new lua configuration. Eventually this file will go away...
+" =====================================
+" ------------ NOTICE -----------------
+" =====================================
+" Old vimrc config.. nothing should be
+" added here anymore, instead it should
+" be added to the new lua configuration.
+"
+" Eventually this file will go away...
+" =====================================
+
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
  " TODO: currently exists in both vimrc and options.lua, this is due to feline
@@ -9,64 +17,6 @@
 " }}}
 
 "  Plugin Configuration (BEFORE loading bundles) {{{
-
-" ====================================
-" VimMatchUp:
-" ====================================
-let g:matchup_matchparen_deferred = 1
-
-" ====================================
-" WinResizer:
-" ====================================
-nnoremap <C-w>r :WinResizerStartResize<CR>
-
-"" ====================================
-" UndoTree:
-" ====================================
-nnoremap <silent> <leader>ut :UndotreeToggle<CR>
-
-" ====================================
-" Carbon Now Screenshots (vim-carbon-now-sh)
-" ====================================
-vnoremap <F5> :CarbonNowSh<CR>
-
-" ====================================
-" SplitJoin:
-" ====================================
-let g:splitjoin_align = 1
-let g:splitjoin_trailing_comma = 1
-let g:splitjoin_ruby_curly_braces = 0
-let g:splitjoin_ruby_hanging_args = 0
-
-" ====================================
-" MatchTagAlways:
-" ====================================
-let g:mta_filetypes = {
-      \ 'jinja': 1,
-      \ 'xhtml': 1,
-      \ 'xml': 1,
-      \ 'html': 1,
-      \ 'django': 1,
-      \ 'javascript.jsx': 1,
-      \ 'eruby': 1,
-      \ }
-
-
-" ====================================
-" Bullets.vim:
-" ====================================
-let g:bullets_enabled_file_types = [
-    \ 'markdown',
-    \ 'text',
-    \ 'gitcommit',
-    \ 'scratch'
-    \]
-
-" =====================================
-" Fugitive
-" =====================================
-nnoremap <silent> <leader>gw :Gwrite<CR>
-nnoremap <silent> <leader>gb :Git blame<CR>
 
 " =====================================
 "  FZF
@@ -125,100 +75,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
  " ------  /JUMP TO GIT CONFLICTS (Gconflict) ------- }}}
 " --------------------------------------------------}}}
 
-" =====================================
-"  JSX
-" =====================================
-
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
-
-" =====================================
-"  Rg
-" =====================================
-
-" Grep project for selection with Rg
-xnoremap <leader>gr y :Rg "<CR>
-" Grep project for word under the cursor with Rg
-nnoremap <Leader>gr :Rg <C-r><C-w><CR>
-
-" Grep selection with Rg (excluding tests and migrations)
-xnoremap <leader>gt y :Rg " -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>
-nnoremap <Leader>gt :Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>
-
-" Put cursor after :Rg command (a little faster than typing :Rg)
-nnoremap <expr> <leader>rg ':Rg '
-
-" Use RipGrep for grep https://www.wezm.net/technical/2016/09/ripgrep-with-vim/
-if executable("rg")
-  set grepprg=rg\ --vimgrep\ --no-heading
-  set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-
-" ----------------------------------------------------------------------------
-" vim slime
-" ----------------------------------------------------------------------------
-let g:slime_target='tmux'
-
-" ----------------------------------------------------------------------------
-" Vim Better Whitespace
-" ----------------------------------------------------------------------------
-let g:better_whitespace_filetypes_blacklist = [
-      \ 'startify',
-      \ 'dashboard',
-      \ 'diff',
-      \ 'gitcommit',
-      \ 'unite',
-      \ 'qf',
-      \ 'help',
-      \ 'markdown',
-      \ ]
-
-" ----------------------------------------------------------------------------
-" Switch.vim
-" ----------------------------------------------------------------------------
-let g:switch_custom_definitions =
-  \ [
-  \   ['up', 'down', 'change'],
-  \   ['add', 'drop', 'remove'],
-  \   ['create', 'drop'],
-  \   ['row', 'column'],
-  \   ['first', 'second', 'third', 'fourth', 'fifth'],
-  \ ]
-
-
-" ----------------------------------------------------------------------------
-" Vim RSpec
-" ----------------------------------------------------------------------------
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>T :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>sa :call RunAllSpecs()<CR>
-
-" ----------------------------------------------------------------------------
-" Vim Elixir
-" ----------------------------------------------------------------------------
-let g:elixir_fold = 0
-
-" ----------------------------------------------------------------------------
-" Vim Test
-" ----------------------------------------------------------------------------
-
-if has('nvim') && !exists('$TMUX')
-  " run tests with neoterm in vim-test
-  let g:test#strategy = 'neoterm'
-else
-  let g:test#strategy = 'vimux'
-endif
-
-nmap <silent> <leader>T :TestNearest<CR>
-nmap <silent> <leader>t :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-
-
 " ----------------------------------------------------------------------------
 " ALE
 " ----------------------------------------------------------------------------
@@ -263,38 +119,6 @@ let g:ale_sh_shfmt_options = '-i 2 -ci'
 
 let g:ale_fix_on_save = 1
 
-
-" ----------------------------------------------------------------------------
-" Mix Format (mhinz/vim-mix-format)
-" ----------------------------------------------------------------------------
-let g:mix_format_on_save = 1
-
-" ----------------------------------------------------------------------------
-" Investigate
-" ----------------------------------------------------------------------------
-" Use Dash.app for documentation of word under cursor
-let g:investigate_use_dash=1
-let g:investigate_syntax_for_rspec='ruby'
-
-" ----------------------------------------------------------------------------
-" vim-go
-" ----------------------------------------------------------------------------
-augroup CustomGoVimMappings
-  autocmd!
-  autocmd FileType go setlocal nolist listchars=tab:>-,trail:·,nbsp:·
-  autocmd FileType go nmap <buffer> <leader>r <Plug>(go-run)
-  autocmd FileType go nmap <buffer> <leader>b <Plug>(go-build)
-  autocmd FileType go nmap <buffer> <leader>t <Plug>(go-test)
-  autocmd FileType go nmap <buffer> <leader>c <Plug>(go-coverage)
-  autocmd Filetype go
-    \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-    \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-    \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-augroup END
-
-let g:go_fmt_autosave = 1
-let g:go_term_mode = 'vsplit'
-let g:go_fmt_command='goimports'
 
 " ----------------------------------------------------------------------------
 " goyo.vim + limelight.vim
@@ -346,99 +170,6 @@ augroup GOYO
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
-" --------------------------------------------
-" sideways.vim
-" --------------------------------------------
-nnoremap <M-h> :SidewaysLeft<cr>
-nnoremap <M-l> :SidewaysRight<cr>
-
-" ================================
-" Projectioinist
-" ================================
-
-let g:projectionist_heuristics = {}
-
-let g:projectionist_heuristics['mix.exs'] = {
-            \     'apps/*/mix.exs': { 'type': 'app' },
-            \     'lib/*.ex': {
-            \       'type': 'lib',
-            \       'alternate': [
-            \         'test/{}_test.exs',
-            \         'test/lib/{}_test.exs',
-            \       ],
-            \       'template': ['defmodule {camelcase|capitalize|dot} do', 'end'],
-            \     },
-            \     'test/*_test.exs': {
-            \       'type': 'test',
-            \       'alternate': ['lib/{}.ex', '{}.ex'],
-            \       'template': [
-            \           'defmodule {camelcase|capitalize|dot}Test do',
-            \           '  use ExUnit.Case',
-            \           '',
-            \           '  alias {camelcase|capitalize|dot}, as: Subject',
-            \           '',
-            \           '  doctest Subject',
-            \           'end'
-            \       ],
-            \     },
-            \     'mix.exs': { 'type': 'mix' },
-            \     'config/*.exs': { 'type': 'config' },
-            \ }
-
-let g:projectionist_heuristics['package.json'] = {
-            \   '*.js': {
-            \     'alternate': [
-            \       '{dirname}/{basename}.test.js',
-            \       '{dirname}/__tests__/{basename}.test.js',
-            \     ],
-            \     'type': 'source',
-            \     'make': 'yarn',
-            \   },
-            \   '*.test.js': {
-            \     'alternate': [
-            \       '{dirname}/{basename}.js',
-            \       '{dirname}/../{basename}.js',
-            \     ],
-            \     'type': 'test',
-            \   },
-            \   '*.ts': {
-            \     'alternate': [
-            \       '{dirname}/{basename}.test.ts',
-            \       '{dirname}/{basename}.test.tsx',
-            \       '{dirname}/__tests__/{basename}.test.ts',
-            \       '{dirname}/__tests__/{basename}.test.tsx',
-            \     ],
-            \     'type': 'source',
-            \   },
-            \   '*.test.ts': {
-            \     'alternate': [
-            \       '{dirname}/{basename}.ts',
-            \       '{dirname}/{basename}.tsx',
-            \       '{dirname}/../{basename}.ts',
-            \       '{dirname}/../{basename}.tsx',
-            \     ],
-            \     'type': 'test',
-            \   },
-            \   '*.tsx': {
-            \     'alternate': [
-            \       '{dirname}/{basename}.test.ts',
-            \       '{dirname}/{basename}.test.tsx',
-            \       '{dirname}/__tests__/{basename}.test.ts',
-            \       '{dirname}/__tests__/{basename}.test.tsx',
-            \     ],
-            \     'type': 'source',
-            \   },
-            \   '*.test.tsx': {
-            \     'alternate': [
-            \       '{dirname}/{basename}.ts',
-            \       '{dirname}/{basename}.tsx',
-            \       '{dirname}/../{basename}.ts',
-            \       '{dirname}/../{basename}.tsx',
-            \     ],
-            \     'type': 'test',
-            \   },
-            \   'package.json': { 'type': 'package' }
-            \ }
 
 " ----------------------------------------------------- }}}
 

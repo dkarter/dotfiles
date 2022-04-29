@@ -5,6 +5,8 @@ if not present then
 end
 
 return packer.startup(function(use)
+  local mappings = require 'core.mappings'
+
   -- Packer can manage itself
   use { 'wbthomason/packer.nvim' }
 
@@ -110,13 +112,19 @@ return packer.startup(function(use)
   }
 
   -- delete unused buffers
-  use { 'schickling/vim-bufonly' }
+  use { 'schickling/vim-bufonly', cmd = 'BO' }
 
   -- nginx syntax support
   use { 'chr4/nginx.vim' }
 
   -- run tests at the speed of thought
-  use { 'janko-m/vim-test' }
+  use {
+    'janko-m/vim-test',
+    config = function()
+      vim.g['test#strategy'] = 'vimux'
+      mappings.vim_test_mappings()
+    end,
+  }
 
   -- Highlight Yanked String
   use { 'machakann/vim-highlightedyank' }
@@ -125,6 +133,9 @@ return packer.startup(function(use)
   use {
     'junegunn/gv.vim',
     requires = { 'tpope/vim-fugitive' },
+    config = function()
+      mappings.fugitive_mappings()
+    end,
   }
 
   -- git integration
@@ -206,7 +217,12 @@ return packer.startup(function(use)
   -- temporarily use this plugin to format elixir - until ALE starts supporting
   -- umbrella apps and respect nested .formatter.exs files (see
   -- https://github.com/dense-analysis/ale/pull/3106)
-  use 'mhinz/vim-mix-format'
+  use {
+    'mhinz/vim-mix-format',
+    setup = function()
+      vim.g.mix_format_on_save = 1
+    end,
+  }
 
   -- pulls info on hex packages (requires mattn/webapi-vim)
   use { 'lucidstack/hex.vim', ft = { 'elixir' } }
@@ -231,7 +247,12 @@ return packer.startup(function(use)
   use { 'tpope/vim-surround' }
 
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
-  use { 'tpope/vim-projectionist' }
+  use {
+    'tpope/vim-projectionist',
+    setup = function()
+      require 'plugins.projectionist'
+    end,
+  }
 
   -- vim unimpaired fixes daily annoyences
   use { 'tpope/vim-unimpaired' }
@@ -255,13 +276,28 @@ return packer.startup(function(use)
   use { 'tpope/vim-ragtag' }
 
   -- automatic bulleted lists
-  use { 'dkarter/bullets.vim' }
+  use {
+    'dkarter/bullets.vim',
+    setup = function()
+      vim.g.bullets_enabled_file_types = {
+        'markdown',
+        'text',
+        'gitcommit',
+        'scratch',
+      }
+    end,
+  }
 
   -- snip helpers - assorted functions for snippets
   use { 'dkarter/sniphelpers.vim' }
 
   -- " replacement for matchit
-  use { 'andymass/vim-matchup' }
+  use {
+    'andymass/vim-matchup',
+    setup = function()
+      vim.g.matchup_matchparen_deferred = 1
+    end,
+  }
 
   --  add `end` automatically when creating a closure in many languages
   use { 'tpope/vim-endwise' }
@@ -279,13 +315,38 @@ return packer.startup(function(use)
   use { 'mg979/vim-visual-multi', branch = 'master' }
 
   -- " Convert code to multiline
-  use { 'AndrewRadev/splitjoin.vim' }
+  use {
+    'AndrewRadev/splitjoin.vim',
+    setup = function()
+      vim.g.splitjoin_align = 1
+      vim.g.splitjoin_trailing_comma = 1
+      vim.g.splitjoin_ruby_curly_braces = 0
+      vim.g.splitjoin_ruby_hanging_args = 0
+    end,
+  }
 
   -- " Toggle between different language verbs or syntax styles
-  use { 'AndrewRadev/switch.vim' }
+  use {
+    'AndrewRadev/switch.vim',
+    setup = function()
+      vim.g.switch_custom_definitions = {
+        { 'up', 'down', 'change' },
+        { 'add', 'drop', 'remove' },
+        { 'create', 'drop' },
+        { 'row', 'column' },
+        { 'first', 'second', 'third', 'fourth', 'fifth' },
+        { 'yes', 'no' },
+      }
+    end,
+  }
 
   -- The ultimate undo history visualizer for VIM
-  use { 'mbbill/undotree' }
+  use {
+    'mbbill/undotree',
+    config = function()
+      mappings.undotree_mappings()
+    end,
+  }
 
   -- Rust support
   use { 'rust-lang/rust.vim', ft = { 'rust' } }
@@ -298,11 +359,14 @@ return packer.startup(function(use)
     end,
   }
 
-  -- Golang support
-  use { 'fatih/vim-go', ft = { 'go' } }
-
   -- resize windows in vim naturally
-  use { 'simeji/winresizer', cmd = 'WinResizerStartResize' }
+  use {
+    'simeji/winresizer',
+    cmd = 'WinResizerStartResize',
+    config = function()
+      mappings.winresizer_mappings()
+    end,
+  }
 
   -- " staticly check code and highlight errors (async syntastic replacement)
   use 'dense-analysis/ale'
@@ -339,14 +403,21 @@ return packer.startup(function(use)
   -- " highlights all search results and allows tabbing between them
   use { 'haya14busa/incsearch.vim' }
 
-  -- " RipGrep - grep is dead. All hail the new king RipGrep.
-  use { 'jremmen/vim-ripgrep' }
+  -- RipGrep - grep is dead. All hail the new king RipGrep.
+  use {
+    'jremmen/vim-ripgrep',
+    config = function()
+      mappings.ripgrep_mappings()
+    end,
+  }
 
   -- " same as tabular but by Junegunn and way easier
-  use { 'junegunn/vim-easy-align' }
-
-  -- " move function arguments
-  use { 'AndrewRadev/sideways.vim' }
+  use {
+    'junegunn/vim-easy-align',
+    config = function()
+      mappings.easy_align_mappings()
+    end,
+  }
 
   -- manage github gists
   use { 'mattn/gist-vim', cmd = 'Gist', requires = { 'mattn/webapi-vim' } }
@@ -361,9 +432,6 @@ return packer.startup(function(use)
 
   -- " tmux config file stuff
   use { 'tmux-plugins/vim-tmux' }
-
-  -- " vim slime for tmux integration (C-c, C-c to send selction to tmux)
-  use { 'jpalardy/vim-slime' }
 
   -- " seamless tmux/vim pane navigation
   use { 'christoomey/vim-tmux-navigator' }

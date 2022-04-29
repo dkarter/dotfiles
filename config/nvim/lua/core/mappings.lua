@@ -1,20 +1,21 @@
 local utils = require 'utils'
 local nmap = utils.nmap
 local vmap = utils.vmap
+local xmap = utils.vmap
 
 local default_opts = { noremap = true, silent = true }
 
--- -- set leader key to `\`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- TODO: find out why this doesn't work with helper funcs or why I can't just
+-- set the leader to space directly
+-- alias for leader key (use space as leader)
 -- vim.g.mapleader = ' '
 -- vim.g.maplocalleader = ' '
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- set leader key to `\` so that I can alias it to <space>
 vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
 vim.cmd [[nmap <space> \]]
 vim.cmd [[xmap <space> \]]
--- TODO: find out why this doesn't work with helper funcs or why I can't just
--- set the leader to space directly
--- alias for leader key (use space as leader)
 
 -- center window on search result
 nmap { 'n', 'nzzzv' }
@@ -108,6 +109,44 @@ M.telescope_mappings = function()
   nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
   nmap { '<leader>gs', '<cmd>Telescope gh gist<cr>', default_opts }
   nmap { '<leader>gr', '<cmd>Telescope gh run<cr>', default_opts }
+end
+
+M.fugitive_mappings = function()
+  nmap { '<leader>gw', ':Gwrite<CR>', default_opts }
+  nmap { '<leader>gb', ':Git blame<CR>', default_opts }
+end
+
+M.winresizer_mappings = function()
+  nmap { '<C-w>r', '<cmd>WinResizerStartResize<CR>' }
+end
+
+M.ripgrep_mappings = function()
+  --  Grep project for selection with Rg
+  xmap { '<leader>gr', 'y :Rg "<CR>' }
+  --  Grep project for word under the cursor with Rg
+  nmap { '<Leader>gr :Rg', '<C-r><C-w><CR>' }
+
+  --  Grep selection with Rg (excluding tests and migrations)
+  xmap { '<leader>gt', "y :Rg \" -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
+  nmap { '<Leader>gt', ":Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
+
+  --  Put cursor after :Rg command (a little faster than typing :Rg)
+  nmap { '<leader>rg ', ':Rg ' }
+end
+
+M.easy_align_mappings = function()
+  nmap { '<leader>ea', ':EasyAlign ' }
+end
+
+M.vim_test_mappings = function()
+  nmap { '<leader>T', ':TestNearest<CR>' }
+  nmap { '<leader>t', ':TestFile<CR>' }
+  nmap { '<leader>a', ':TestSuite<CR>' }
+  nmap { '<leader>l', ':TestLast<CR>' }
+end
+
+M.undotree_mappings = function()
+  nmap { '<leader>ut', '<cmd>UndotreeToggle<CR>' }
 end
 
 return M
