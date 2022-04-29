@@ -5,10 +5,13 @@ if not present then
 end
 
 return packer.startup(function(use)
-  local mappings = require 'core.mappings'
-
   -- Packer can manage itself
-  use { 'wbthomason/packer.nvim' }
+  use {
+    'wbthomason/packer.nvim',
+    config = function()
+      require('core.mappings').packer_mappings()
+    end,
+  }
 
   -- Speed up loading Lua modules in Neovim to improve startup time.
   use { 'lewis6991/impatient.nvim' }
@@ -122,7 +125,7 @@ return packer.startup(function(use)
     'janko-m/vim-test',
     config = function()
       vim.g['test#strategy'] = 'vimux'
-      mappings.vim_test_mappings()
+      require('core.mappings').vim_test_mappings()
     end,
   }
 
@@ -134,7 +137,7 @@ return packer.startup(function(use)
     'junegunn/gv.vim',
     requires = { 'tpope/vim-fugitive' },
     config = function()
-      mappings.fugitive_mappings()
+      require('core.mappings').fugitive_mappings()
     end,
   }
 
@@ -179,7 +182,7 @@ return packer.startup(function(use)
   -- " Highlight current paragraph (works well with goyo)
   use { 'junegunn/limelight.vim', cmd = 'Limelight' }
 
-  -- growing collection of settings, commands and mappings put together to make
+  -- growing collection of settings, commands and require('core.mappings') put together to make
   -- working with the location list/window and the quickfix list/window smoother
   use { 'romainl/vim-qf' }
 
@@ -344,7 +347,7 @@ return packer.startup(function(use)
   use {
     'mbbill/undotree',
     config = function()
-      mappings.undotree_mappings()
+      require('core.mappings').undotree_mappings()
     end,
   }
 
@@ -364,7 +367,7 @@ return packer.startup(function(use)
     'simeji/winresizer',
     cmd = 'WinResizerStartResize',
     config = function()
-      mappings.winresizer_mappings()
+      require('core.mappings').winresizer_mappings()
     end,
   }
 
@@ -407,7 +410,7 @@ return packer.startup(function(use)
   use {
     'jremmen/vim-ripgrep',
     config = function()
-      mappings.ripgrep_mappings()
+      require('core.mappings').ripgrep_mappings()
     end,
   }
 
@@ -415,7 +418,7 @@ return packer.startup(function(use)
   use {
     'junegunn/vim-easy-align',
     config = function()
-      mappings.easy_align_mappings()
+      require('core.mappings').easy_align_mappings()
     end,
   }
 

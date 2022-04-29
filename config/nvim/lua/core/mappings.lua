@@ -1,8 +1,10 @@
 local utils = require 'utils'
+local imap = utils.imap
 local nmap = utils.nmap
 local vmap = utils.vmap
 local xmap = utils.vmap
 local tmap = utils.tmap
+local cmap = utils.cmap
 
 local default_opts = { noremap = true, silent = true }
 
@@ -44,6 +46,27 @@ nmap {
   default_opts,
 }
 
+-- replace word under cursor, globally, with confirmation
+nmap { '<Leader>k', [[:%s/\<<C-r><C-w>\>//gc<Left><Left><Left>]] }
+vmap { '<Leader>k', 'y :%s/<C-r>"//gc<Left><Left><Left>' }
+
+-- insert frozen string literal comment at the top of the file (ruby)
+nmap { '<leader>fsl', 'ggO# frozen_string_literal: true<esc>jO<esc>' }
+
+-- qq to record, Q to replay
+nmap { 'Q', '@q' }
+
+-- Tab/shift-tab to indent/outdent in visual mode.
+vmap { '<Tab>', '>gv' }
+vmap { '<S-Tab>', '<gv' }
+
+-- Keep selection when indenting/outdenting.
+vmap { '>', '>gv' }
+vmap { '<', '<gv' }
+
+-- Search for selected text
+vmap { '*', '"xy/<C-R>x<CR>' }
+
 --  Navigate neovim + neovim terminal emulator with alt+direction
 tmap { '<C-h>', '<C-><C-n><C-w>h' }
 tmap { '<C-j>', '<C-><C-n><C-w>j' }
@@ -53,6 +76,73 @@ tmap { '<C-l>', '<C-><C-n><C-w>l' }
 -- easily escape terminal
 tmap { '<leader><esc>', '<C-><C-n><esc><cr>' }
 tmap { '<C-o>', '<C-><C-n><esc><cr>' }
+
+-- command typo mapping
+cmap { 'WQ', 'wq', default_opts }
+cmap { 'Wq', 'wq', default_opts }
+cmap { 'QA', 'qa', default_opts }
+cmap { 'qA', 'qa', default_opts }
+cmap { 'Q!', 'q!', default_opts }
+
+-- " zoom a vim pane, <C-w> = to re-balance
+nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>' }
+nmap { '<leader>=', ':wincmd =<cr>' }
+
+-- " close all other windows with <leader>o
+nmap { '<leader>wo', '<c-w>o' }
+
+-- " Index ctags from any project, including those outside Rails
+nmap { '<Leader>ct', ':!ctags -R .<CR>' }
+
+-- " Switch between the last two files
+nmap { '<tab><tab>', '<c-^>' }
+
+-- " copy to end of line
+nmap { 'Y', 'y$' }
+
+-- " copy to system clipboard
+nmap { 'gy', '"+y' }
+
+-- " copy whole file to system clipboard
+nmap { 'gY', 'gg"+yG' }
+
+-- " disable arrow keys in normal mode
+nmap { '<Up>', ':call animate#window_delta_height(10)<CR>' }
+nmap { '<Down>', ':call animate#window_delta_height(-10)<CR>' }
+nmap { '<Left>', ':call animate#window_delta_width(10)<CR>' }
+nmap { '<Right>', ':call animate#window_delta_width(-10)<CR>' }
+
+-- " last typed word to lower case
+imap { '<C-w>u', '<esc>guawA' }
+
+-- " last typed word to UPPER CASE
+imap { '<C-w>U', '<esc>gUawA' }
+
+-- " entire line to lower case
+imap { '<C-g>u', '<esc>guuA' }
+
+-- " entire line to UPPER CASE
+imap { '<C-g>U', '<esc>gUUA' }
+
+-- " last word to title case
+imap { '<C-w>t', '<esc>bvgU<esc>A' }
+
+-- " current line to title case
+imap { '<C-g>t', [[<esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A]] }
+
+-- " Incsearch:
+nmap { '/', ' <Plug>(incsearch-forward)' }
+nmap { '?', ' <Plug>(incsearch-backward)' }
+nmap { 'g/', '<Plug>(incsearch-stay)' }
+
+-- " Open files relative to current path:
+nmap { '<leader>ed', ':edit <C-R>=expand("%:p:h") . "/" <CR>' }
+nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>' }
+nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>' }
+
+-- " move lines up and down in visual mode
+xmap { '<c-k>', ":move '<-2<CR>gv=gv" }
+xmap { '<c-j>', ":move '>+1<CR>gv=gv" }
 
 local M = {}
 
@@ -168,6 +258,12 @@ end
 
 M.undotree_mappings = function()
   nmap { '<leader>ut', '<cmd>UndotreeToggle<CR>' }
+end
+
+M.packer_mappings = function()
+  nmap { '<leader>pl', '<cmd>PackerCompile<CR>' }
+  nmap { '<leader>ps', '<cmd>PackerSync<CR>' }
+  nmap { '<leader>pc', '<cmd>PackerClean<CR>' }
 end
 
 return M

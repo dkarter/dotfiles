@@ -321,12 +321,6 @@ augroup END
 " }}}
 
 " Key Mappings {{{
-  " replace word under cursor, globally, with confirmation
-    nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-    vnoremap <Leader>k y :%s/<C-r>"//gc<Left><Left><Left>
-
-  " insert frozen string literal comment at the top of the file (ruby)
-    map <leader>fsl ggO# frozen_string_literal: true<esc>jO<esc>
 
   " Allow j and k to work on visual lines (when wrapping)
     noremap <silent> <Leader>w :call ToggleWrap()<CR>
@@ -349,9 +343,6 @@ augroup END
       endif
     endfunction
 
-    " qq to record, Q to replay
-    nnoremap Q @q
-
     " Zoom
     function! s:zoom()
       if winnr('$') > 1
@@ -362,119 +353,6 @@ augroup END
       endif
     endfunction
     nnoremap <silent> <leader>z :call <sid>zoom()<cr> 
-
-  " Tab/shift-tab to indent/outdent in visual mode.
-    vnoremap <Tab> >gv
-    vnoremap <S-Tab> <gv
-
-  " Keep selection when indenting/outdenting.
-    vnoremap > >gv
-    vnoremap < <gv
-
-  " Search for selected text
-    vnoremap * "xy/<C-R>x<CR>
-
-  " Split edit your vimrc. Type space, v, r in sequence to trigger
-    fun! OpenConfigFile(file)
-      if (&filetype ==? 'startify' || &filetype ==? 'dashboard')
-        execute 'e ' . a:file
-      else
-        execute 'tabe ' . a:file
-      endif
-    endfun
-
-    nnoremap <silent> <leader>vr :call OpenConfigFile('~/.vimrc')<cr>
-    nnoremap <silent> <leader>vb :call OpenConfigFile('~/.vimrc.bundles')<cr>
-    "
-  " Source (reload) your vimrc. Type space, s, o in sequence to trigger
-    nnoremap <leader>so :source $MYVIMRC<cr>
-
-
-  "split edit your tmux conf
-    nnoremap <leader>mux :vsp ~/.tmux.conf<cr>
-
-  " Packer:
-    nnoremap <leader>pl :PackerCompile<CR>
-    nnoremap <leader>ps :PackerSync<CR>
-    nnoremap <leader>pc :PackerClean<CR>
-
-  " change dir to current file's dir
-    nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-  " zoom a vim pane, <C-w> = to re-balance
-    nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-    nnoremap <leader>= :wincmd =<cr>
-
-  " close all other windows with <leader>o
-    nnoremap <leader>wo <c-w>o
-
-  " Index ctags from any project, including those outside Rails
-    map <Leader>ct :!ctags -R .<CR>
-
-  " Switch between the last two files
-    nnoremap <tab><tab> <c-^>
-
-  " command typo mapping
-    cnoremap WQ wq
-    cnoremap Wq wq
-    cnoremap QA qa
-    cnoremap qA qa
-    cnoremap Q! q!
-
-  " copy to end of line
-    nnoremap Y y$
-
-  " copy to system clipboard
-    noremap gy "+y
-
-  " copy whole file to system clipboard
-    nnoremap gY gg"+yG
-
-  " Prettier:
-    " shows the output from prettier - useful for syntax errors
-    nnoremap <leader>pt :!prettier %<CR>
-
-  " CtrlSF:
-    nnoremap <C-F>f :CtrlSF
-    nnoremap <C-F>g :CtrlSF<CR>
-
-  " disable arrow keys in normal mode
-    nnoremap <silent> <Up>    :call animate#window_delta_height(10)<CR>
-    nnoremap <silent> <Down>  :call animate#window_delta_height(-10)<CR>
-    nnoremap <silent> <Left>  :call animate#window_delta_width(10)<CR>
-    nnoremap <silent> <Right> :call animate#window_delta_width(-10)<CR>
-
-  " last typed word to lower case
-    inoremap <C-w>u <esc>guawA
-
-  " last typed word to UPPER CASE
-    inoremap <C-w>U <esc>gUawA
-
-  " entire line to lower case
-    inoremap <C-g>u <esc>guuA
-
-  " entire line to UPPER CASE
-    inoremap <C-g>U <esc>gUUA
-
-  " last word to title case
-    inoremap <C-w>t <esc>bvgU<esc>A
-
-  " current line to title case
-    inoremap <C-g>t <esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A
-
-  " Incsearch:
-    map /  <Plug>(incsearch-forward)
-    map ?  <Plug>(incsearch-backward)
-    map g/ <Plug>(incsearch-stay)
-
-  " Open files relative to current path:
-    nnoremap <leader>ed :edit <C-R>=expand("%:p:h") . "/" <CR>
-    nnoremap <leader>sp :split <C-R>=expand("%:p:h") . "/" <CR>
-    nnoremap <leader>vs :vsplit <C-R>=expand("%:p:h") . "/" <CR>
-
-  " move lines up and down in visual mode
-    xnoremap <c-k> :move '<-2<CR>gv=gv
-    xnoremap <c-j> :move '>+1<CR>gv=gv
 
 " --------------------- Key Mappings ---------------------------- }}}
 
@@ -505,15 +383,6 @@ augroup END
     augroup END
 
 
-  " Navigate neovim + neovim terminal emulator with alt+direction
-    tnoremap <silent><C-h> <C-\><C-n><C-w>h
-    tnoremap <silent><C-j> <C-\><C-n><C-w>j
-    tnoremap <silent><C-k> <C-\><C-n><C-w>k
-    tnoremap <silent><C-l> <C-\><C-n><C-w>l
-
-  " easily escape terminal
-    tnoremap <leader><esc> <C-\><C-n><esc><cr>
-    tnoremap <C-o> <C-\><C-n><esc><cr>
 " }}}
 
 " gx extensions {{{

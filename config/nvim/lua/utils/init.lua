@@ -42,6 +42,10 @@ function M.tmap(tbl)
   vim.keymap.set('t', tbl[1], tbl[2], tbl[3])
 end
 
+function M.cmap(tbl)
+  vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
+end
+
 -- Builds the path for the json schema catalog cache
 ---@return Path path
 local json_schemas_catalog_path = function()
