@@ -175,23 +175,6 @@ augroup END
 
 " UI Customizations {{{
 
-    " make background transparent
-    " au ColorScheme * hi Normal ctermbg=none guibg=none
-    highlight Normal ctermbg=none guibg=none
-    highlight NonText ctermbg=none guibg=none
-    highlight vimCommentGroup ctermbg=none guibg=none
-    highlight SignColumn ctermbg=none guibg=none
-    highlight FoldColumn ctermbg=none guibg=none
-    highlight Folded ctermbg=none guibg=none
-    highlight ALEErrorSign ctermbg=none guibg=none
-    highlight ALEWarningSign ctermbg=none guibg=none
-    highlight clear LineNr
-
-    highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 ctermbg=none guibg=none
-    highlight SignifySignDelete ctermfg=red    guifg=#ff0000 ctermbg=none guibg=none
-    highlight SignifySignChange ctermfg=yellow guifg=#ffff00 ctermbg=none guibg=none
-
-
   " Make it obvious where 80 characters is
   " cheatsheet https://jonasjacek.github.io/colors/
   fun! SetColorColumn(active)
