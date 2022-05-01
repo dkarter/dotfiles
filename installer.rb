@@ -10,8 +10,6 @@ ZINIT_INSTALL_DIR = '~/.zinit/bin'
 
 DIRS = [
   '~/.zinit',
-  '~/.vim',
-  '~/.vim/tmp',
   '~/.config'
 ].freeze
 
@@ -40,7 +38,6 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
-  ['./snippets/', '~/.vim/UltiSnips'],
   ['./config/nvim', '~/.config/nvim'],
   ['./config/kitty', '~/.config/kitty'],
   ['./config/ripgrep', '~/.config/ripgrep'],
@@ -125,7 +122,6 @@ class Installer
     update_asdf
     install_asdf_plugins
     install_asdf_languages if confirm('Install asdf languages latest?')
-    install_git_template
     symlink_dotfiles
     symlink_nested_dotfiles
     install_rubygems
@@ -190,15 +186,6 @@ class Installer
         "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})"
       )
     end
-  end
-
-  def install_git_template
-    puts '===== Installing git_template'.yellow
-
-    git_install(
-      'git@github.com:greg0ire/git_template.git',
-      GIT_TEMPLATE_INSTALL_DIR
-    )
   end
 
   def install_rust_cargos
