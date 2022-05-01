@@ -116,8 +116,11 @@ class Installer
 
     return unless confirm('Run installer?')
 
+    # Create necessary dirs for installer
     create_dirs
-    change_shell if confirm('Change default shell to zsh?')
+
+    # Change default shell
+    change_shell if !shell_already_zsh? && confirm('Make zsh default?')
 
     # Zsh Plugin Manager
     install_zinit if confirm('Install zinit?')
@@ -304,6 +307,10 @@ class Installer
     resp = gets.strip.downcase
     puts ''
     %w[y yes].include?(resp)
+  end
+
+  def shell_already_zsh?
+    ENV['SHELL'].end_with?('zsh')
   end
 end
 
