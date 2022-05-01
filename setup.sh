@@ -49,7 +49,7 @@ if [[ $DISTRO_BASE = 'debian' ]] ; then
   ./installer/debian-setup.sh
 elif [[ $OS = 'mac' ]] ; then
   echo "Mac detected, running brew..."
-  # TODO: add homebrew installation script (curl?)
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle
 fi
 
