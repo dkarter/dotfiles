@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require 'pathname'
 require_relative 'installer/string'
 
 ASDF_INSTALL_DIR = '~/.asdf'
@@ -226,7 +227,7 @@ class Installer
 
     SYMLINK_DIRS.each do |source, target|
       print 'Symlinking '.light_blue + target + ' -> '.light_blue + source + '...'.light_blue
-      link(source, target)
+      link_folder(source, target)
       puts 'Done'.green
     end
   end
@@ -251,6 +252,13 @@ class Installer
 
   def asdf_command(cmd)
     popen("zsh -c '. #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}'")
+  end
+
+  def link_folder(source, target)
+    full_source_path = File.expand_path(source)
+    target_parent = Pathname.new(target).parent
+    cmd = "zsh -c 'cd #{target_parent} && ln -s -f #{full_source_path} .'"
+    popen(cmd, silent: true)
   end
 
   def link(source, target)
