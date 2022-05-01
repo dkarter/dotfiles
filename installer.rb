@@ -117,17 +117,31 @@ class Installer
 
     create_dirs
     change_shell if confirm('Change default shell to zsh?')
-    install_zinit
-    install_asdf
-    update_asdf
-    install_asdf_plugins
-    install_asdf_languages if confirm('Install asdf languages latest?')
-    symlink_dotfiles
-    symlink_nested_dotfiles
-    install_rubygems
-    install_npm_packages
-    install_python_packages
-    install_rust_cargos
+
+    # Zsh Plugin Manager
+    install_zinit if confirm('Install zinit?')
+
+    # ASDF
+    if confirm('Install ASDF and latest language versions?')
+      install_asdf
+      update_asdf
+      install_asdf_plugins
+      install_asdf_languages
+    end
+
+    # Dotfiles
+    if confirm('Link dotfiles?')
+      symlink_dotfiles
+      symlink_nested_dotfiles
+    end
+
+    # External packages
+    if confirm('Install external packages (gems, pips, cargos, npms)?')
+      install_rubygems
+      install_npm_packages
+      install_python_packages
+      install_rust_cargos
+    end
 
     puts '===== ALL DONE! ====='.green
   end
