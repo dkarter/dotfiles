@@ -210,11 +210,20 @@ M.telescope_mappings = function()
 
   nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts }
 
+  -- Git
+  -- bc = buffer commits (like gitv!)
+  nmap { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', default_opts }
+
+  -- LSP
+  -- ds = document symbols
+  nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', default_opts }
+
   --  Extensions
   nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', default_opts }
   nmap { '<leader>fp', '<cmd>Telescope packer<cr>', default_opts }
   nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', default_opts }
 
+  -- GitHub
   -- check out pull requests from vim!
   nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', default_opts }
   nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
