@@ -25,11 +25,11 @@ Here are some details about my setup:
 - **Shell**: [zsh](https://www.zsh.org/)
 - **Editor**: [Neovim](https://github.com/neovim/neovim/)
   - utilizes the built-in lsp ❤️
-  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - autocompletion
+  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) — autocompletion
   - [tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) - color theme
-  - [telescope](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
-  - [feline](https://github.com/famiu/feline.nvim) - status line
+  - [tokyonight](https://github.com/folke/tokyonight.nvim) — color theme
+  - [telescope](https://github.com/nvim-telescope/telescope.nvim) — fuzzy finder
+  - [feline](https://github.com/famiu/feline.nvim) — status line
   - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
 - **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 - **Terminal**: [Alacritty](https://alacritty.org/)
@@ -56,7 +56,7 @@ Cd into the dotfiles dir: `cd dotfiles`
 ./setup.sh
 ```
 
-But really you shouldn't use other people's dotfiles.. these are customized to my personal preferences and are subject to change at any time. Instead consider forking https://github.com/nvim-lua/kickstart.nvim which is modern and very minimal and using it as your base to build upon.
+But really you shouldn't use other people's dotfiles.. these are customized to my personal preferences and are subject to change at any time. Instead consider forking [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), which is modern and very minimal, and using it as your base to build upon.
 
 
 --------
@@ -64,7 +64,7 @@ But really you shouldn't use other people's dotfiles.. these are customized to m
 # Development
 
 - This repo now uses conventional commits. To install the git hooks simply run `yarn` in the project directory
-- To start development use [airmux](https://github.com/dermoumi/airmux) (alias `mux`) inside of the project directory
+- To start development use [airmux](https://github.com/dermoumi/airmux) (alias `mux`) inside the project directory
 
 
 
