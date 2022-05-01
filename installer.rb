@@ -15,7 +15,7 @@ DIRS = [
 ].freeze
 
 DOTFILES = %w[
-  p10k.zsh
+  airmux.yml
   aliases
   asdfrc
   ctags
@@ -26,6 +26,7 @@ DOTFILES = %w[
   gitmessage
   gvimrc
   ignore
+  p10k.zsh
   prettierrc
   pryrc
   psqlrc
@@ -58,7 +59,6 @@ PIPS3 = [
   'neovim',        # NeoVim python3 support
   'neovim-remote'  # allow controlling neovim remotely
 ].freeze
-
 
 # TODO: how do I add this? maybe the datastructure should be tuples?
 # asdf plugin add lua-language-server https://github.com/shun-shobon/asdf-lua-language-server.git
