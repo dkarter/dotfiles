@@ -53,7 +53,7 @@ M.setup = function()
       elmls = {},
 
       -- Markdown
-      remark_ls = {},
+      prosemd_lsp = {},
 
       -- SQL
       sqlls = {},
