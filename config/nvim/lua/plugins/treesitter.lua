@@ -5,7 +5,8 @@ if not present then
 end
 
 local default = {
-  -- one of "all", or a list of languages
+  -- see full list here:
+  -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
   ensure_installed = {
     'bash',
     'c',
