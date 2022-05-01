@@ -110,6 +110,7 @@ CARGOS = %w[
 class Installer
   # This is the main function containing all the setup steps in their intended
   # order
+  # rubocop:disable Metrics/CyclomaticComplexity
   def install
     print_title
 
@@ -145,6 +146,7 @@ class Installer
 
     puts '===== ALL DONE! ====='.green
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 
