@@ -101,6 +101,8 @@ NPMS = %w[
   dockerfile-language-server-nodejs
   @ansible/ansible-language-server
   vscode-langservers-extracted
+  prettier
+  @prettier/plugin-ruby
 ].freeze
 
 CARGOS = %w[
