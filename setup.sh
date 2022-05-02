@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # DETECT OS
 # Shamelessly copied from stackoverflow:
 # https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script
