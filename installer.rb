@@ -38,50 +38,54 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
-  ['./config/nvim', '~/.config/nvim'],
-  ['./config/kitty', '~/.config/kitty'],
-  ['./config/ripgrep', '~/.config/ripgrep'],
-  ['./config/alacritty', '~/.config/alacritty'],
-  ['./config/vifm', '~/.config/vifm'],
-  ['./config/rubocop', '~/.config/rubocop']
+  %w[./config/nvim ~/.config/nvim],
+  %w[./config/kitty ~/.config/kitty],
+  %w[./config/ripgrep ~/.config/ripgrep],
+  %w[./config/alacritty ~/.config/alacritty],
+  %w[./config/vifm ~/.config/vifm],
+  %w[./config/rubocop ~/.config/rubocop],
 ].freeze
 
 GEMS = [
-  'pry',           # ruby debugger
+  'pry', # ruby debugger
   'awesome_print', # colorize output of pry (required by .pryrc)
-  'neovim',        # for NeoVim ruby plugins
-  'solargraph'     # ruby language server
+  'neovim', # for NeoVim ruby plugins
+  'solargraph', # ruby language server
 ].freeze
 
 PIPS3 = [
-  'neovim',        # NeoVim python3 support
-  'neovim-remote'  # allow controlling neovim remotely
+  'neovim', # NeoVim python3 support
+  'neovim-remote', # allow controlling neovim remotely
 ].freeze
 
 # TODO: how do I add this? maybe the datastructure should be tuples?
 # asdf plugin add lua-language-server https://github.com/shun-shobon/asdf-lua-language-server.git
-ASDF_PLUGINS = %w[
-  bat
-  direnv
-  elixir
-  elm
-  erlang
-  exa
-  fd
-  fzf
-  github-cli
-  golang
-  lazygit
-  lua
-  neovim
-  nodejs
-  python
-  rebar
-  ripgrep
-  ruby
-  rust
-  tmux
-  yarn
+ASDF_PLUGINS = [
+  'bat',
+  'direnv',
+  'elixir',
+  'elm',
+  'erlang',
+  'exa',
+  'fd',
+  'fzf',
+  'github-cli',
+  'golang',
+  'lazygit',
+  'lua',
+  %w[
+    lua-language-server
+    https://github.com/shun-shobon/asdf-lua-language-server
+  ],
+  'neovim',
+  'nodejs',
+  'python',
+  'rebar',
+  'ripgrep',
+  'ruby',
+  'rust',
+  'tmux',
+  'yarn',
 ].freeze
 
 NPMS = %w[
@@ -191,9 +195,9 @@ class Installer
   def install_asdf_plugins
     puts '===== Installing asdf plugins'.yellow
 
-    ASDF_PLUGINS.each do |plugin|
+    ASDF_PLUGINS.each do |plugin, url|
       puts "Installing #{plugin} plugin...".light_blue
-      asdf_command("asdf plugin add #{plugin}")
+      asdf_command("asdf plugin add #{plugin} #{url}")
     end
   end
 
@@ -203,7 +207,7 @@ class Installer
     # import OpenPGP keysfornode
     popen("zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'")
 
-    ASDF_PLUGINS.each do |plugin|
+    ASDF_PLUGINS.each do |plugin, _url|
       puts "Installing #{plugin}...".light_blue
       asdf_command(
         "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})"
