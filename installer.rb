@@ -8,10 +8,7 @@ ASDF_INSTALL_DIR = '~/.asdf'
 GIT_TEMPLATE_INSTALL_DIR = '~/.git_template'
 ZINIT_INSTALL_DIR = '~/.zinit/bin'
 
-DIRS = [
-  '~/.zinit',
-  '~/.config'
-].freeze
+DIRS = %w[~/.zinit ~/.config].freeze
 
 DOTFILES = %w[
   airmux.yml
@@ -105,11 +102,7 @@ NPMS = %w[
   @prettier/plugin-ruby
 ].freeze
 
-CARGOS = %w[
-  stylua
-  airmux
-  fastmod
-].freeze
+CARGOS = %w[stylua airmux fastmod].freeze
 
 # Installs dotfiles and configures the machine to my preferences
 # This is an idempotent script (or at least should be)
@@ -155,6 +148,7 @@ class Installer
 
     puts '===== ALL DONE! ====='.green
   end
+
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
@@ -167,9 +161,7 @@ class Installer
 
   def create_dirs
     puts '===== Creating dirs'.yellow
-    DIRS.each do |dir|
-      mkdir(dir)
-    end
+    DIRS.each { |dir| mkdir(dir) }
   end
 
   def install_zinit
@@ -207,12 +199,14 @@ class Installer
     puts '===== Installing asdf languages latest version'.yellow
 
     # import OpenPGP keysfornode
-    popen("zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'")
+    popen(
+      "zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'",
+    )
 
     ASDF_PLUGINS.each do |plugin, _url|
       puts "Installing #{plugin}...".light_blue
       asdf_command(
-        "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})"
+        "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})",
       )
     end
   end
@@ -220,9 +214,7 @@ class Installer
   def install_rust_cargos
     puts '===== Installing Rust Cargos'.yellow
 
-    CARGOS.each do |cargo|
-      popen("cargo install #{cargo}")
-    end
+    CARGOS.each { |cargo| popen("cargo install #{cargo}") }
   end
 
   def symlink_dotfiles
@@ -232,7 +224,11 @@ class Installer
       raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
 
       target = "~/.#{source}"
-      print 'Symlinking '.light_blue + target + ' -> '.light_blue + source + '...'.light_blue
+      print(
+        'Symlinking '.light_blue + target + ' -> '.light_blue + source +
+          '...'.light_blue,
+      )
+
       link(source, target)
       puts 'Done'.green
     end
@@ -242,8 +238,13 @@ class Installer
     puts '===== Symlinking nested dotfiles'.yellow
 
     SYMLINK_DIRS.each do |source, target|
-      print 'Symlinking '.light_blue + target + ' -> '.light_blue + source + '...'.light_blue
+      print(
+        'Symlinking '.light_blue + target + ' -> '.light_blue + source +
+          '...'.light_blue,
+      )
+
       link_folder(source, target)
+
       puts 'Done'.green
     end
   end
