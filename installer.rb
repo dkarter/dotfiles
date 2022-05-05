@@ -169,7 +169,11 @@ class Installer
   def install_zinit
     puts '===== Installing zinit'.yellow
 
-    git_install('git@github.com:zdharma-continuum/zinit.git', ZINIT_INSTALL_DIR)
+    IO.popen(<<-COMMAND.chomp)
+      ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" && \
+      mkdir -p "$(dirname $ZINIT_HOME)" && \
+      git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+    COMMAND
   end
 
   def install_asdf
