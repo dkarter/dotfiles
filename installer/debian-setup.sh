@@ -24,6 +24,7 @@ sudo apt -y install \
   openjdk-11-jdk \
   ruby \
   tmux \
+  tree \
   universal-ctags \
   unixodbc-dev \
   postgresql \
