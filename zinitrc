@@ -43,4 +43,7 @@ zinit light Aloxaf/fzf-tab
 zinit light djui/alias-tips
 
 # kubernetes completions and aliases
+zinit ice lucid wait \
+          has'kubectl' \
+          atinit'source <(kubectl completion zsh)'
 zinit light Dbz/kube-aliases
