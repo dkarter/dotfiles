@@ -6,7 +6,6 @@ require_relative 'installer/string'
 
 ASDF_INSTALL_DIR = '~/.asdf'
 GIT_TEMPLATE_INSTALL_DIR = '~/.git_template'
-ZINIT_INSTALL_DIR = '~/.zinit/bin'
 
 DIRS = %w[~/.zinit ~/.config].freeze
 
