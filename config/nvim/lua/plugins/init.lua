@@ -109,6 +109,8 @@ return packer.startup(function(use)
     end,
   }
 
+  use { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } }
+
   -- delete unused buffers
   use { 'schickling/vim-bufonly', cmd = 'BO' }
 
