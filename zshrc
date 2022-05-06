@@ -96,7 +96,8 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+ITERM2_INTEGRATION_SCRIPT="${HOME}/.iterm2_shell_integration.zsh"
+test -e "$ITERM2_INTEGRATION_SCRIPT" && source "$ITERM2_INTEGRATION_SCRIPT"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
