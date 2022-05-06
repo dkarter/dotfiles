@@ -431,7 +431,7 @@ eval "$(direnv hook zsh)"
 # tell RipGrep where to look for it's config file
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 
-[ -f ~/.zinitrc ] && source ~/.zinitrc
+[[ -f ~/.zinitrc ]] && source ~/.zinitrc
 
 # load aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
@@ -442,7 +442,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 # add go path bin to path
 export PATH=$PATH:$GOPATH/bin
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 # qt
 export PATH="/usr/local/opt/libpq/bin:$PATH"
