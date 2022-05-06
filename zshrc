@@ -99,25 +99,13 @@ bindkey "^[[1;3D" backward-word
 ITERM2_INTEGRATION_SCRIPT="${HOME}/.iterm2_shell_integration.zsh"
 test -e "$ITERM2_INTEGRATION_SCRIPT" && source "$ITERM2_INTEGRATION_SCRIPT"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
+# red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 HIST_STAMPS="mm/dd/yyyy"
-
-# zsh syntax highlighting
-# pre-requisite: `brew install zsh-syntax-highlighting`
-syntax_plug=/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-if [ -f $syntax_plug ]; then
-  source $syntax_plug
-fi
-
-
-# zsh completions
-# pre-requisite: `brew install zsh-completions`
-fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Preferred editor for local and remote sessions
 if [ -z ${EDITOR+x} ]; then
