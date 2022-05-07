@@ -150,7 +150,7 @@ end
 
 opt.foldtext = 'v:lua.custom_fold_text()'
 -- remove existing fold text (.... at the end of folds)
-opt.fillchars = { eob = '-', fold = ' ' }
+opt.fillchars = { eob = '~', fold = ' ' }
 opt.viewoptions:remove 'options'
 
 -- treat dash separated words as a word text object
