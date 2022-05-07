@@ -97,14 +97,17 @@ nmap { '<Leader>ct', ':!ctags -R .<CR>' }
 -- " Switch between the last two files
 nmap { '<tab><tab>', '<c-^>' }
 
--- " copy to end of line
+-- copy to end of line
 nmap { 'Y', 'y$' }
 
--- " copy to system clipboard
+-- copy to system clipboard
 nmap { 'gy', '"+y' }
 
--- " copy whole file to system clipboard
-nmap { 'gY', 'gg"+yG' }
+-- copy to to system clipboard (till end of line)
+nmap { 'gY', '"+y$' }
+
+-- copy entire file to system clipboard
+nmap { 'GY', 'gg"+yG' }
 
 -- " disable arrow keys in normal mode
 nmap { '<Up>', ':call animate#window_delta_height(10)<CR>' }
