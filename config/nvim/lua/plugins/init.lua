@@ -419,9 +419,6 @@ return packer.startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  -- " highlights all search results and allows tabbing between them
-  use { 'haya14busa/incsearch.vim' }
-
   -- RipGrep - grep is dead. All hail the new king RipGrep.
   use {
     'jremmen/vim-ripgrep',

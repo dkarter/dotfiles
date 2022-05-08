@@ -133,11 +133,6 @@ imap { '<C-w>t', '<esc>bvgU<esc>A' }
 -- " current line to title case
 imap { '<C-g>t', [[<esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A]] }
 
--- " Incsearch:
-nmap { '/', ' <Plug>(incsearch-forward)' }
-nmap { '?', ' <Plug>(incsearch-backward)' }
-nmap { 'g/', '<Plug>(incsearch-stay)' }
-
 -- " Open files relative to current path:
 nmap { '<leader>ed', ':edit <C-R>=expand("%:p:h") . "/" <CR>' }
 nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>' }
