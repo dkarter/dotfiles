@@ -7,7 +7,7 @@ require_relative 'installer/string'
 ASDF_INSTALL_DIR = '~/.asdf'
 GIT_TEMPLATE_INSTALL_DIR = '~/.git_template'
 
-DIRS = %w[~/.zinit ~/.config].freeze
+DIRS = %w[~/.config].freeze
 
 DOTFILES = %w[
   airmux.yml
