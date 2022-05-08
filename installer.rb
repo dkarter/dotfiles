@@ -167,6 +167,7 @@ class Installer
     IO.popen(<<-COMMAND.chomp)
       ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" && \
       mkdir -p "$(dirname $ZINIT_HOME)" && \
+      rm -rf "$ZINIT_HOME" && \
       git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
     COMMAND
   end
