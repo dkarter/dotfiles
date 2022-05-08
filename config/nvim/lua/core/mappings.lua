@@ -107,8 +107,11 @@ vmap { 'gy', '"+y' }
 -- copy to to system clipboard (till end of line)
 nmap { 'gY', '"+y$' }
 
+-- copy entire file
+nmap { '<C-g>y', 'ggyG' }
+
 -- copy entire file to system clipboard
-nmap { 'GY', 'gg"+yG' }
+nmap { '<C-g>Y', 'gg"+yG' }
 
 -- " disable arrow keys in normal mode
 nmap { '<Up>', ':call animate#window_delta_height(10)<CR>' }
