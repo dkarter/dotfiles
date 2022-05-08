@@ -7,9 +7,6 @@ vim.cmd 'syntax enable'
 -- try to recognize filetypes and load rel' plugins
 vim.cmd 'filetype plugin indent on'
 
--- vim, not vi (wonder if this is still necessary in neovim)
-opt.compatible = false
-
 opt.hidden = true --  enable hidden unsaved buffers
 opt.termguicolors = true --  enable true colors
 opt.cursorline = true -- highlight the current line
