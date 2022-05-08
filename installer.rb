@@ -2,6 +2,7 @@
 
 require 'fileutils'
 require 'pathname'
+require 'tmpdir'
 require_relative 'installer/string'
 
 ASDF_INSTALL_DIR = '~/.asdf'
@@ -110,38 +111,40 @@ class Installer
   def install
     print_title
 
-    return unless confirm('Run installer?')
+    # return unless confirm('Run installer?')
 
-    # Create necessary dirs for installer
-    create_dirs
+    install_nerdfonts
 
-    # Change default shell
-    change_shell if !shell_already_zsh? && confirm('Make zsh default?')
+    # # Create necessary dirs for installer
+    # create_dirs
 
-    # Zsh Plugin Manager
-    install_zinit if confirm('Install zinit?')
+    # # Change default shell
+    # change_shell if !shell_already_zsh? && confirm('Make zsh default?')
 
-    # ASDF
-    if confirm('Install ASDF and latest language versions?')
-      install_asdf
-      update_asdf
-      install_asdf_plugins
-      install_asdf_languages
-    end
+    # # Zsh Plugin Manager
+    # install_zinit if confirm('Install zinit?')
 
-    # Dotfiles
-    if confirm('Link dotfiles?')
-      symlink_dotfiles
-      symlink_nested_dotfiles
-    end
+    # # ASDF
+    # if confirm('Install ASDF and latest language versions?')
+    #   install_asdf
+    #   update_asdf
+    #   install_asdf_plugins
+    #   install_asdf_languages
+    # end
 
-    # External packages
-    if confirm('Install external packages (gems, pips, cargos, npms)?')
-      install_rubygems
-      install_npm_packages
-      install_python_packages
-      install_rust_cargos
-    end
+    # # Dotfiles
+    # if confirm('Link dotfiles?')
+    #   symlink_dotfiles
+    #   symlink_nested_dotfiles
+    # end
+
+    # # External packages
+    # if confirm('Install external packages (gems, pips, cargos, npms)?')
+    #   install_rubygems
+    #   install_npm_packages
+    #   install_python_packages
+    #   install_rust_cargos
+    # end
 
     puts '===== ALL DONE! ====='.green
   end
@@ -310,6 +313,8 @@ class Installer
     end
   end
 
+  # TODO: if the -f flag was passed then confirm should assume the answer is
+  # always yes
   def confirm(msg)
     print "#{msg} (y/n) "
     resp = gets.strip.downcase
@@ -317,8 +322,23 @@ class Installer
     %w[y yes].include?(resp)
   end
 
+  # TODO: if the -f flag was passed, assume zsh is not the current shell
   def shell_already_zsh?
     ENV['SHELL'].end_with?('zsh')
+  end
+
+  def install_nerdfonts
+    dir = Dir.mktmpdir('fonts')
+    begin
+      popen(<<-CMD)
+        git clone --depth=1 git@github.com:ryanoasis/nerd-fonts.git #{dir} && \
+        cd #{dir} && \
+        ./install.sh JetBrainsMono
+      CMD
+    ensure
+      puts dir
+      # FileUtils.rm_rf(dir)
+    end
   end
 end
 
