@@ -102,6 +102,7 @@ nmap { 'Y', 'y$' }
 
 -- copy to system clipboard
 nmap { 'gy', '"+y' }
+vmap { 'gy', '"+y' }
 
 -- copy to to system clipboard (till end of line)
 nmap { 'gY', '"+y$' }
