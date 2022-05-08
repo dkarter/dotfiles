@@ -113,6 +113,7 @@ M.setup = function()
     mapping = cmp.mapping.preset.insert {
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ---@diagnostic disable-next-line:missing-parameter
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
 
@@ -155,6 +156,7 @@ M.setup = function()
   }
 
   -- completion for neovim lua configs
+  ---@diagnostic disable-next-line:undefined-field
   cmp.setup.filetype('lua', {
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -169,6 +171,7 @@ M.setup = function()
   })
 
   -- Set configuration for specific filetype.
+  ---@diagnostic disable-next-line:undefined-field
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
       { name = 'git' }, -- `cmp_git`
