@@ -37,6 +37,8 @@ return packer.startup(function(use)
       'saadparwaiz1/cmp_luasnip',
       -- git completions
       'petertriho/cmp-git',
+      -- tmux pane completion
+      'andersevenrud/cmp-tmux',
     },
     config = function()
       require('plugins.cmp').setup()
@@ -453,9 +455,6 @@ return packer.startup(function(use)
 
   -- " yet another tmux plugin
   use { 'benmills/vimux' }
-
-  -- " autocomplete using text from tmux
-  use { 'wellle/tmux-complete.vim' }
 
   -- Resize tmux panes and Vim windows with ease.
   use 'RyanMillerC/better-vim-tmux-resizer'

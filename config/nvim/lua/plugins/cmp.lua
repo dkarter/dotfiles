@@ -11,16 +11,6 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
-local all_buffers_completion_source = {
-  name = 'buffer',
-  option = {
-    get_bufnrs = function()
-      -- complete from all buffers
-      return vim.api.nvim_list_bufs()
-    end,
-  },
-}
-
 local kind_icons = {
   Text = '',
   Method = '',
@@ -47,6 +37,21 @@ local kind_icons = {
   Event = '',
   Operator = '',
   TypeParameter = '',
+}
+
+local tmux_source = {
+  name = 'tmux',
+  option = { all_panes = true },
+}
+
+local all_buffers_completion_source = {
+  name = 'buffer',
+  option = {
+    get_bufnrs = function()
+      -- complete from all buffers
+      return vim.api.nvim_list_bufs()
+    end,
+  },
 }
 
 local M = {}
@@ -141,6 +146,7 @@ M.setup = function()
     }, {
       all_buffers_completion_source,
       { name = 'emoji' },
+      tmux_source,
     }),
   }
 
@@ -154,6 +160,7 @@ M.setup = function()
       { name = 'path' },
     }, {
       all_buffers_completion_source,
+      tmux_source,
     }),
   })
 
@@ -163,6 +170,7 @@ M.setup = function()
       { name = 'git' }, -- `cmp_git`
     }, {
       all_buffers_completion_source,
+      tmux_source,
       { name = 'emoji' },
     }),
   })
