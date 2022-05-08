@@ -236,7 +236,7 @@ return packer.startup(function(use)
 
   -- Elixir: {{{
   -- Elixir support
-  use { 'elixir-lang/vim-elixir', ft = { 'elixir' } }
+  use { 'elixir-lang/vim-elixir' }
 
   -- elixir text objects
   use {
