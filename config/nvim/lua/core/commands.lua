@@ -1,5 +1,5 @@
 local cmd = vim.api.nvim_create_user_command
-local utils = require 'utils'
+local utils = require 'core.utils'
 
 cmd('PrettyPrintJSON', '%!jq', {})
 cmd('PrettyPrintXML', '!tidy -mi -xml -wrap 0 %', {})

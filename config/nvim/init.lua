@@ -35,4 +35,4 @@ end
 require 'new_config'
 
 -- Load project specific vimrc
-require('utils').load_local_vimrc()
+require('core.utils').load_local_vimrc()

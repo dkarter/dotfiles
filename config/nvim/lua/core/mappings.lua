@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local utils = require 'core.utils'
 local imap = utils.imap
 local nmap = utils.nmap
 local vmap = utils.vmap
