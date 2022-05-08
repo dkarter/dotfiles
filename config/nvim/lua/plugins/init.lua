@@ -102,6 +102,18 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require('octo').setup()
+    end,
+  }
+
   -- " Visual git gutter (also used by feline)
   use {
     'lewis6991/gitsigns.nvim',
