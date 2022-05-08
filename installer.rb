@@ -19,7 +19,6 @@ DOTFILES = %w[
   gitconfig
   gitignore
   gitmessage
-  gvimrc
   ignore
   p10k.zsh
   prettierrc
@@ -27,7 +26,6 @@ DOTFILES = %w[
   psqlrc
   stylelintrc
   tmux.conf
-  vimrc
   zinitrc
   zshenv
   zshrc
