@@ -91,4 +91,14 @@ function M.reload_current_luafile()
   vim.notify(string.format('Reloaded %s!', current_file))
 end
 
+function M.right_pad(str, len, char)
+  local res = str .. string.rep(char or ' ', len - #str)
+  return res, res ~= str
+end
+
+function M.left_pad(str, len, char)
+  local res = string.rep(char or ' ', len - #str) .. str
+  return res, res ~= str
+end
+
 return M

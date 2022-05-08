@@ -92,23 +92,28 @@ M.setup = function()
     },
 
     formatting = {
+      fields = { 'kind', 'abbr', 'menu' },
       format = function(entry, vim_item)
         -- find icon based on kind
         local icon = kind_icons[vim_item.kind]
 
-        -- This concatonates the icons with the name of the item kind
-        vim_item.kind = string.format('%s %s', icon, vim_item.kind)
-
         -- Source
-        vim_item.menu = ({
-          buffer = '[Buf]',
-          nvim_lsp = '[LSP]',
-          luasnip = '[Snip]',
-          nvim_lua = '[NvimLua]',
-          tmux = '[Tmux]',
-          path = '[Path]',
-          nvim_lsp_signature_help = '[LSP]',
+        local source = ({
+          buffer = '[B]',
+          cmdline = '[C]',
+          emoji = '[E]',
+          git = '[G]',
+          luasnip = '[S]',
+          nvim_lsp = '[L]',
+          nvim_lsp_signature_help = '[L]',
+          nvim_lua = '[V]',
+          path = '[P]',
+          tmux = '[T]',
         })[entry.source.name]
+
+        local padded_kind = require('utils').right_pad(vim_item.kind, 8)
+        vim_item.menu = string.format('%s %s', padded_kind, source)
+        vim_item.kind = icon
 
         return vim_item
       end,
@@ -123,7 +128,10 @@ M.setup = function()
 
       -- Accept currently selected item. Set `select` to `false` to only
       -- confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm { select = false },
+      ['<CR>'] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      },
 
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
@@ -157,6 +165,7 @@ M.setup = function()
       { name = 'emoji' },
       tmux_source,
     }),
+    preselect = cmp.PreselectMode.None,
   }
 
   -- completion for neovim lua configs
