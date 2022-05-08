@@ -122,6 +122,7 @@ return packer.startup(function(use)
   -- run tests at the speed of thought
   use {
     'janko-m/vim-test',
+    requires = { 'benmills/vimux' },
     config = function()
       vim.g['test#strategy'] = 'vimux'
       require('core.mappings').vim_test_mappings()
@@ -223,12 +224,13 @@ return packer.startup(function(use)
 
   -- Elixir: {{{
   -- Elixir support
-  use { 'elixir-lang/vim-elixir' }
+  use { 'elixir-lang/vim-elixir', ft = { 'elixir' } }
 
   -- elixir text objects
   use {
     'kevinkoltz/vim-textobj-elixir',
     requires = { 'kana/vim-textobj-user' },
+    ft = { 'elixir' },
   }
 
   -- temporarily use this plugin to format elixir - until ALE starts supporting
@@ -444,17 +446,11 @@ return packer.startup(function(use)
 
   --- TMUX ---
 
-  -- " .tmux.conf syntax highlighting
-  use { 'ericpruitt/tmux.vim', ft = 'tmux' }
-
   -- " tmux config file stuff
-  use { 'tmux-plugins/vim-tmux' }
+  use { 'tmux-plugins/vim-tmux', ft = 'tmux' }
 
   -- " seamless tmux/vim pane navigation
   use { 'christoomey/vim-tmux-navigator' }
-
-  -- " yet another tmux plugin
-  use { 'benmills/vimux' }
 
   -- Resize tmux panes and Vim windows with ease.
   use 'RyanMillerC/better-vim-tmux-resizer'
