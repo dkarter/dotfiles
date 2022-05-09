@@ -6,20 +6,21 @@ end
 
 local M = {}
 
+
+M.common_on_attach = function(_, bufnr)
+  -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
+  -- cmp plugin)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- Use an on_attach function to only map the following keys
+  -- after the language server attaches to the current buffer
+  require('core.mappings').lsp_mappings(bufnr)
+end
+
 M.setup = function()
   -- Make runtime files discoverable to the lua server
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
-
-  local on_attach = function(_, bufnr)
-    -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
-    -- vmp plugin)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    -- Use an on_attach function to only map the following keys
-    -- after the language server attaches to the current buffer
-    require('core.mappings').lsp_mappings(bufnr)
-  end
 
   -- set up global mappings for diagnostics
   require('core.mappings').lsp_diagnostic_mappings()
@@ -29,7 +30,7 @@ M.setup = function()
     default_mappings = false,
 
     -- Global on_attach
-    on_attach = on_attach,
+    on_attach = M.common_on_attach,
 
     -- Global capabilities (cmp_nvim_lsp will automatically advertise
     -- capabilities) as per https://github.com/junnplus/nvim-lsp-setup#cmp-nvim-lsp
@@ -154,8 +155,7 @@ M.setup = function()
       -- Elixir
       elixirls = {
         on_attach = function(client, bufnr)
-          -- regular on_attach for lsp
-          on_attach(client, bufnr)
+          M.common_on_attach(client, bufnr)
           require('elixir').on_attach(client, bufnr)
         end,
       },

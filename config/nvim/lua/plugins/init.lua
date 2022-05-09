@@ -400,13 +400,20 @@ return packer.startup(function(use)
   }
 
   -- " staticly check code and highlight errors (async syntastic replacement)
-  use 'dense-analysis/ale'
+  -- use 'dense-analysis/ale'
 
   -- smooth scrolling in neovim
   use {
     'declancm/cinnamon.nvim',
     config = function()
       require('cinnamon').setup()
+    end,
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('plugins.null-ls').setup()
     end,
   }
 

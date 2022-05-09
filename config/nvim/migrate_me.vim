@@ -75,6 +75,9 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
  " ------  /JUMP TO GIT CONFLICTS (Gconflict) ------- }}}
 " --------------------------------------------------}}}
 
+" TODO: replace ALE with:
+"   - https://github.com/jose-elias-alvarez/null-ls.nvim
+"   - https://github.com/mhartington/formatter.nvim
 " ----------------------------------------------------------------------------
 " ALE
 " ----------------------------------------------------------------------------

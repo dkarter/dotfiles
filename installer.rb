@@ -143,7 +143,6 @@ class Installer
 
     puts '===== ALL DONE! ====='.green
   end
-
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
