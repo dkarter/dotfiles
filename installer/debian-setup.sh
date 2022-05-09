@@ -29,6 +29,7 @@ sudo apt -y install \
   unixodbc-dev \
   postgresql \
   postgresql-client \
+  pspg \
   inotify-tools \
   wx-common \
   xsltproc \
