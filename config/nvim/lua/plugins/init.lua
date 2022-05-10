@@ -453,6 +453,9 @@ return packer.startup(function(use)
   -- PostgreSQL highlighting
   use 'exu/pgsql.vim'
 
+  -- Helm Chart syntax
+  use 'towolf/vim-helm'
+
   --- TMUX ---
 
   -- " tmux config file stuff

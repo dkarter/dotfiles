@@ -95,7 +95,20 @@ M.setup = function()
       jsonls = require 'plugins.lsp.jsonls',
 
       -- YAML
-      yamlls = {},
+      yamlls = {
+        on_attach = function(client, bufnr)
+          on_attach(client, bufnr)
+
+          -- disable and reset diagnostics for helm files (because the LS can't
+          -- read them properly)
+          if vim.bo[bufnr].buftype ~= '' or vim.bo[bufnr].filetype == 'helm' then
+            vim.diagnostic.disable(bufnr)
+            vim.defer_fn(function()
+              vim.diagnostic.reset(nil, bufnr)
+            end, 1000)
+          end
+        end,
+      },
 
       -- CSS
       cssls = {},
