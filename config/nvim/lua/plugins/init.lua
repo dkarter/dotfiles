@@ -464,6 +464,9 @@ return packer.startup(function(use)
   -- Resize tmux panes and Vim windows with ease.
   use 'RyanMillerC/better-vim-tmux-resizer'
 
+  -- support editorconfig files
+  use { 'gpanders/editorconfig.nvim' }
+
   -- notifications
   use {
     'rcarriga/nvim-notify',
