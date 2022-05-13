@@ -29,7 +29,7 @@ Here are some details about my setup:
   - [tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
   - [tokyonight](https://github.com/folke/tokyonight.nvim) — color theme
   - [telescope](https://github.com/nvim-telescope/telescope.nvim) — fuzzy finder
-  - [feline](https://github.com/famiu/feline.nvim) — status line
+  - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) — status line
   - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
 - **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 - **Terminal**: [Alacritty](https://alacritty.org/)
