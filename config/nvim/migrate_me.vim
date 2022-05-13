@@ -251,42 +251,6 @@ augroup filetype_vim
 augroup END
 " }}}
 
-" Key Mappings {{{
-
-  " Allow j and k to work on visual lines (when wrapping)
-    noremap <silent> <Leader>w :call ToggleWrap()<CR>
-    function! ToggleWrap()
-      if &wrap
-        echo 'Wrap OFF'
-        setlocal nowrap
-        set virtualedit=all
-        silent! nunmap <buffer> j
-        silent! nunmap <buffer> k
-      else
-        echo 'Wrap ON'
-        setlocal wrap linebreak nolist
-        set virtualedit=
-        setlocal display+=lastline
-        noremap  <buffer> <silent> k   gk
-        noremap  <buffer> <silent> j gj
-        inoremap <buffer> <silent> <Up>   <C-o>gk
-        inoremap <buffer> <silent> <Down> <C-o>gj
-      endif
-    endfunction
-
-    " Zoom
-    function! s:zoom()
-      if winnr('$') > 1
-        tab split
-      elseif len(filter(map(range(tabpagenr('$')), 'tabpagebuflist(v:val + 1)'),
-                      \ 'index(v:val, '.bufnr('').') >= 0')) > 1
-        tabclose
-      endif
-    endfunction
-    nnoremap <silent> <leader>z :call <sid>zoom()<cr> 
-
-" --------------------- Key Mappings ---------------------------- }}}
-
 " Abbreviations {{{
 augroup DebuggerBrevs
   autocmd!
