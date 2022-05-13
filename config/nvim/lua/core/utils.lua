@@ -30,10 +30,6 @@ function M.nmap(tbl)
   vim.keymap.set('n', tbl[1], tbl[2], tbl[3])
 end
 
-function M.xmap(tbl)
-  vim.keymap.set('x', tbl[1], tbl[2], tbl[3])
-end
-
 function M.vmap(tbl)
   vim.keymap.set('v', tbl[1], tbl[2], tbl[3])
 end

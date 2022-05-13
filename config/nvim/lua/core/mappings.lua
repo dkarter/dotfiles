@@ -2,7 +2,6 @@ local utils = require 'core.utils'
 local imap = utils.imap
 local nmap = utils.nmap
 local vmap = utils.vmap
-local xmap = utils.vmap
 local tmap = utils.tmap
 local cmap = utils.cmap
 
@@ -18,7 +17,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
 vim.cmd [[nmap <space> \]]
-vim.cmd [[xmap <space> \]]
+vim.cmd [[vmap <space> \]]
 
 -- center window on search result
 nmap { 'n', 'nzzzv' }
@@ -143,8 +142,8 @@ nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>' }
 nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>' }
 
 -- " move lines up and down in visual mode
-xmap { '<c-k>', ":move '<-2<CR>gv=gv" }
-xmap { '<c-j>', ":move '>+1<CR>gv=gv" }
+vmap { '<c-k>', ":move '<-2<CR>gv=gv" }
+vmap { '<c-j>', ":move '>+1<CR>gv=gv" }
 
 local M = {}
 
@@ -244,12 +243,18 @@ end
 
 M.ripgrep_mappings = function()
   --  Grep project for selection with Rg
-  xmap { '<leader>gr', 'y :Rg "<CR>' }
+  vmap { '<leader>gr', 'y :Rg "<CR>' }
   --  Grep project for word under the cursor with Rg
   nmap { '<Leader>gr :Rg', '<C-r><C-w><CR>' }
 
+  --  alias for above
+  --  Grep project for selection with Rg
+  vmap { '<leader>rg', 'y :Rg "<CR>' }
+  --  Grep project for word under the cursor with Rg
+  nmap { '<Leader>rg :Rg', '<C-r><C-w><CR>' }
+
   --  Grep selection with Rg (excluding tests and migrations)
-  xmap { '<leader>gt', "y :Rg \" -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
+  vmap { '<leader>gt', "y :Rg \" -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
   nmap { '<Leader>gt', ":Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
 
   --  Put cursor after :Rg command (a little faster than typing :Rg)
