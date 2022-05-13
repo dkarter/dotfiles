@@ -12,6 +12,8 @@ local has_words_before = function()
 end
 
 local kind_icons = {
+  Array = '',
+  Boolean = '',
   Class = 'ﴯ',
   Color = '',
   Constant = '',
@@ -27,6 +29,7 @@ local kind_icons = {
   Keyword = '',
   Method = '',
   Module = '',
+  Object = 'פּ',
   Operator = '',
   Property = 'ﰠ',
   Reference = '',
