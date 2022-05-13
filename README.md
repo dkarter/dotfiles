@@ -58,6 +58,10 @@ Cd into the dotfiles dir: `cd dotfiles`
 
 But really you shouldn't use other people's dotfiles.. these are customized to my personal preferences and are subject to change at any time. Instead consider forking [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), which is modern and very minimal, and using it as your base to build upon.
 
+## Ended up cloning anyway? 😄
+
+My dotfiles are now automatically versioned and contain a [changelog](./CHANGELOG.md)!
+You can use git tags checkout specific versions.
 
 --------
 
