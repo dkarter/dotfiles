@@ -8,9 +8,11 @@
     "husky": "^7.0.4"
   },
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "standard-version"
   },
   "dependencies": {
-    "remark": "^14.0.2"
+    "remark": "^14.0.2",
+    "standard-version": "^9.3.2"
   }
 }
