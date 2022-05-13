@@ -16,6 +16,9 @@ brew 'libiodbc'
 cask 'java'
 brew 'openjdk'
 
+# used by my alfred workflow (Default Browser)
+brew 'defaultbrowser'
+
 # help from terminal
 brew 'howdoi'
 
