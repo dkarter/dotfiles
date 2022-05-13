@@ -56,12 +56,18 @@ Cd into the dotfiles dir: `cd dotfiles`
 ./setup.sh
 ```
 
-But really you shouldn't use other people's dotfiles.. these are customized to my personal preferences and are subject to change at any time. Instead consider forking [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), which is modern and very minimal, and using it as your base to build upon.
+I don't recommend using other people's dotfiles, at least not when you're just starting with Vim.. these are customized to my personal taste and preferences, and are subject to change at any time. Instead consider forking [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), which is modern and very minimal, and using it as your base to build upon.
 
-## Ended up cloning anyway? 😄
+## Ended up cloning anyway?
 
-My dotfiles are now automatically versioned and contain a [changelog](./CHANGELOG.md)!
-You can use git tags checkout specific versions.
+My dotfiles are now automatically versioned and contain a [Changelog](./CHANGELOG.md)! The main branch will be continuously updated, and you can use git tags to check out specific versions.
+
+> :warning: notice how I said automatically version and not semantically
+> versioned. While I do try to keep a good git hygene, and the versioning script
+> follows conventional commits to determine the semantic version, I may still
+> introduce a breaking change without a warning (these are my personal dotfiles
+> after all :). The best course of action might be to have an independent fork
+> and follow the changelog.
 
 --------
 
