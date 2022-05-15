@@ -7,7 +7,7 @@ function M.load_local_vimrc()
   local local_vimrc = vim.fn.glob(cwd .. '/.vimrc')
 
   if cwd ~= home_dir and vim.fn.empty(local_vimrc) == 0 then
-    print '------> loading local vimrc for project'
+    vim.notify '------> loading local vimrc for project'
     vim.opt.exrc = true
     vim.cmd('source ' .. local_vimrc)
   end
@@ -15,11 +15,16 @@ end
 
 -- Reload all lua configuration modules
 function M.reload_modules()
-  local lua_dirs = vim.fn.glob('./lua/*', 0, 1)
-  for _, dir in ipairs(lua_dirs) do
-    dir = string.gsub(dir, './lua/', '')
-    require('plenary.reload').reload_module(dir)
+  local config_path = vim.fn.stdpath 'config' .. '/lua/'
+  local lua_files = vim.fn.glob(config_path .. '**/*.lua', 0, 1)
+
+  for _, file in ipairs(lua_files) do
+    local module_name = string.gsub(file, '.*/(.*)/(.*).lua', '%1.%2')
+    vim.pretty_print(module_name)
+    package.loaded[module_name] = nil
   end
+  vim.cmd [[source $MYVIMRC]]
+  vim.notify 'Reloaded all config modules'
 end
 
 --[[
