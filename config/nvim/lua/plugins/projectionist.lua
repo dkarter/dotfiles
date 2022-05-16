@@ -30,9 +30,17 @@ vim.g.projectionist_heuristics = {
   -- JavaScript / TypeScript
   ['package.json'] = {
     ['*.js'] = {
-      alternate = { '{dirname}/{basename}.test.js', '{dirname}/__tests__/{basename}.test.js' },
+      alternate = {
+        '{dirname}/{basename}.test.js',
+        '{dirname}/__tests__/{basename}.test.js',
+        '{dirname}/{basename}.__tests__.js',
+      },
       type = 'source',
       make = 'yarn',
+    },
+    ['*.__tests__.js'] = {
+      alternate = { '{dirname}/{basename}.js', '{dirname}/../{basename}.js' },
+      type = 'test',
     },
     ['*.test.js'] = {
       alternate = { '{dirname}/{basename}.js', '{dirname}/../{basename}.js' },
