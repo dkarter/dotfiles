@@ -97,6 +97,7 @@ let g:ale_pattern_options = {
                         \}
 
 let g:ale_fixers = {
+      \   'typescriptreact': ['prettier'],
       \   'typescript': ['prettier'],
       \   'typescript.tsx': ['prettier'],
       \   'javascript': ['prettier'],
