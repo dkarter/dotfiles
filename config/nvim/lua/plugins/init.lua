@@ -432,6 +432,14 @@ return packer.startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+  -- use Neovim inside Firefox
+  use {
+    'glacambre/firenvim',
+    run = function()
+      vim.fn['firenvim#install'](0)
+    end,
+  }
+
   -- RipGrep - grep is dead. All hail the new king RipGrep.
   use {
     'jremmen/vim-ripgrep',

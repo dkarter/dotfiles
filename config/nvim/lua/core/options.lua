@@ -19,6 +19,9 @@ opt.magic = true -- Use 'magic' patterns (extended regular expressions).
 
 opt.mouse = 'a' -- enable mouse usage
 
+-- font for gui
+vim.cmd [[set guifont=JetBrainsMono\ Nerd\ Font\ Mono]]
+
 -- keep indentation consistent
 local indent = 2
 opt.tabstop = indent -- Softtabs or die! use 2 spaces for tabs.
