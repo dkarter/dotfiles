@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 2.4.2 (2022-05-20)
+
+
+### Bug Fixes
+
+* **psql:** standardize history path ([c10aea0](https://github.com/dkarter/dotfiles/commit/c10aea011fc748bc3461d21de611f8ecfc261ab2))
+
 ### 2.4.1 (2022-05-20)
 
 ## 2.4.0 (2022-05-20)
