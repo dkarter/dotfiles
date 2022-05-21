@@ -6,6 +6,17 @@ end
 
 local M = {}
 
+local appearance_mods = function()
+  -- set a border around lsp hover popover and signature help
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'rounded',
+  })
+
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = 'rounded',
+  })
+end
+
 M.setup = function()
   -- Make runtime files discoverable to the lua server
   local runtime_path = vim.split(package.path, ';')
@@ -161,6 +172,8 @@ M.setup = function()
       },
     },
   }
+
+  appearance_mods()
 end
 
 return M
