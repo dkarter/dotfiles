@@ -19,6 +19,14 @@ return packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
+      -- snippet engine, required by cmp
+      {
+        'L3MON4D3/LuaSnip',
+        requires = {
+          -- snippets!
+          'rafamadriz/friendly-snippets',
+        },
+      },
       -- LSP driven completions
       'hrsh7th/cmp-nvim-lsp',
       -- completion from buffer text
@@ -31,16 +39,14 @@ return packer.startup(function(use)
       'hrsh7th/cmp-nvim-lua',
       -- function signature help
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      -- emoji completion (triggered by `:`)
       'hrsh7th/cmp-emoji',
-      -- snippet engine, required by cmp
-      'L3MON4D3/LuaSnip',
+      -- snippets in completion sources
       'saadparwaiz1/cmp_luasnip',
       -- git completions
       'petertriho/cmp-git',
       -- tmux pane completion
       'andersevenrud/cmp-tmux',
-      -- snippets!
-      'rafamadriz/friendly-snippets',
     },
     config = function()
       require('plugins.cmp').setup()
