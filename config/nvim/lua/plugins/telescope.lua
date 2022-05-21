@@ -80,6 +80,9 @@ local default = {
         end)
       end,
     },
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {},
+    },
   },
 }
 
@@ -95,6 +98,7 @@ M.setup = function()
     'packer',
     'fzf',
     'conventional_commits',
+    'ui-select',
   }
 
   for _, e in ipairs(extensions) do

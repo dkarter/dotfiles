@@ -426,6 +426,7 @@ return packer.startup(function(use)
       'nvim-telescope/telescope-packer.nvim',
       'nvim-telescope/telescope-github.nvim',
       'olacin/telescope-cc.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
     },
     config = function()
       require('plugins.telescope').setup()
