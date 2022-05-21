@@ -123,6 +123,8 @@ M.setup = function()
     },
 
     mapping = cmp.mapping.preset.insert {
+      ['<C-p>'] = cmp.mapping.select_prev_item(),
+      ['<C-n>'] = cmp.mapping.select_next_item(),
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ---@diagnostic disable-next-line:missing-parameter
@@ -159,15 +161,15 @@ M.setup = function()
       end, { 'i', 's' }),
 
       -- Snippet placeholder navigation to avoid conflict with tab completion
-      ['<C-l>'] = cmp.mapping(function(fallback)
-        if luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
+      ['<C-k>'] = cmp.mapping(function(fallback)
+        if luasnip.jumpable(1) then
+          luasnip.jump(1)
         else
           fallback()
         end
       end, { 'i' }),
 
-      ['<C-h>'] = cmp.mapping(function(fallback)
+      ['<C-j>'] = cmp.mapping(function(fallback)
         if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
