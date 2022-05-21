@@ -157,6 +157,23 @@ M.setup = function()
           fallback()
         end
       end, { 'i', 's' }),
+
+      -- Snippet placeholder navigation to avoid conflict with tab completion
+      ['<C-l>'] = cmp.mapping(function(fallback)
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          fallback()
+        end
+      end, { 'i' }),
+
+      ['<C-h>'] = cmp.mapping(function(fallback)
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { 'i' }),
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
