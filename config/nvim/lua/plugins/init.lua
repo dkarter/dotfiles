@@ -39,6 +39,8 @@ return packer.startup(function(use)
       'petertriho/cmp-git',
       -- tmux pane completion
       'andersevenrud/cmp-tmux',
+      -- snippets!
+      'rafamadriz/friendly-snippets',
     },
     config = function()
       require('plugins.cmp').setup()
