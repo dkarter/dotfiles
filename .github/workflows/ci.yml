@@ -5,29 +5,31 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'chore(release):')"
     steps:
-      - name: Checkout project
-        uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: google-github-actions/release-please-action@v3
         with:
-          node-version: '16.x'
-          cache: 'npm'
-
-      - name: Install dependencies with Yarn
-        run: yarn install
-
-      - name: Setup Git Identity for Release
-        run: |
-          git config --global user.email "dkarter@users.noreply.github.com"
-          git config --global user.name "Dorian Karter (via Github Actions)"
-
-      - name: Bump version and update changelog
-        run: yarn release
-
-      - name: Publish
-        run: git push origin master
+          release-type: simple
+          package-name: dotfiles
+  # build:
+  #   runs-on: ubuntu-latest
+  #   if: "!contains(github.event.head_commit.message, 'chore(release):')"
+  #   steps:
+  #     - name: Checkout project
+  #       uses: actions/checkout@v3
+  #     - name: Use Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16.x'
+  #         cache: 'npm'
+  #     - name: Install dependencies with Yarn
+  #       run: yarn install
+  #     - name: Setup Git Identity for Release
+  #       run: |
+  #         git config --global user.email "dkarter@users.noreply.github.com"
+  #         git config --global user.name "Dorian Karter (via Github Actions)"
+  #     - name: Bump version and update changelog
+  #       run: yarn release
+  #     - name: Publish
+  #       run: git push origin master
