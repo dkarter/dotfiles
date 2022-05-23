@@ -69,6 +69,8 @@ My dotfiles are now automatically versioned and contain a [Changelog](./CHANGELO
 > after all :). The best course of action might be to have an independent fork
 > and follow the changelog.
 
+Releases and versioning is done using [Release Please](https://github.com/googleapis/release-please), GitHub Actions, and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
 --------
 
 # Development
