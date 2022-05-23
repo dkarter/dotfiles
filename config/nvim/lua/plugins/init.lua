@@ -309,9 +309,7 @@ return packer.startup(function(use)
 
   -- Comment out code easily
   use { 'tpope/vim-commentary' }
-  -- }}}
 
-  -- HTML: {{{
   -- RagTag: Auto-close html tags + mappings for template scripting languages
   use { 'tpope/vim-ragtag' }
 
@@ -350,9 +348,6 @@ return packer.startup(function(use)
 
   -- " show trailing white spaces and allow deleting them
   use 'ntpeters/vim-better-whitespace'
-
-  --  Multiple cursor emulation (a la Sublime Text) using ctrl-n
-  use { 'mg979/vim-visual-multi', branch = 'master' }
 
   -- " Convert code to multiline
   use {
