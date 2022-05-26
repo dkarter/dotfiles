@@ -55,6 +55,7 @@ elif [[ $OS = 'mac' ]] ; then
   if ! command -v brew &> /dev/null; then
     echo 'Homebrew not installed, installing...'
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 
   echo 'getting brew packges...'
