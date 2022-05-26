@@ -13,7 +13,6 @@ brew 'wxwidgets'
 brew 'autoconf'
 brew 'fop'
 brew 'libiodbc'
-cask 'java'
 brew 'openjdk'
 
 # used by my alfred workflow (Default Browser)
