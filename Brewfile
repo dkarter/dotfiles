@@ -101,6 +101,9 @@ brew 'tmux'
 # tmux for remote pairing
 brew 'tmate'
 
+# download files from the terminal, used by some scripts
+brew 'wget'
+
 # Reattach process (e.g., tmux) to background
 brew 'reattach-to-user-namespace'
 
