@@ -134,3 +134,6 @@ brew 'coreutils'
 
 # enable ocr via an Alfred workflow
 brew 'tesseract'
+
+# required by ccls
+brew 'llvm'
