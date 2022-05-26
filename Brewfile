@@ -86,6 +86,9 @@ brew 'htop'
 brew 'hub'
 brew 'gh'
 
+# docker desktop for containers
+cask 'docker'
+
 # curses interface for docker + git
 brew 'lazydocker'
 brew 'lazygit'
