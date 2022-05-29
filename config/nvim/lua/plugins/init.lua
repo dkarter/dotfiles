@@ -131,7 +131,16 @@ return packer.startup(function(use)
     end,
   }
 
+  -- syntax highlighting for zinit (zsh plugin manager)
   use { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } }
+
+  -- Comment out code easily
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
+  }
 
   -- delete unused buffers
   use { 'schickling/vim-bufonly', cmd = 'BO' }
@@ -306,9 +315,6 @@ return packer.startup(function(use)
 
   -- save vim sessions
   use { 'tpope/vim-obsession' }
-
-  -- Comment out code easily
-  use { 'tpope/vim-commentary' }
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
   use { 'tpope/vim-ragtag' }
