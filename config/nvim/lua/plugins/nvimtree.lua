@@ -1,24 +1,3 @@
-local g = vim.g
-
-g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-}
-
-g.nvim_tree_icons = {
-  default = '',
-  git = {
-    unstaged = '',
-    staged = '',
-    unmerged = '',
-    renamed = '',
-    untracked = '',
-    deleted = '',
-  },
-}
-
 local present, nvimtree = pcall(require, 'nvim-tree')
 
 if not present then
@@ -26,6 +5,27 @@ if not present then
 end
 
 local config = {
+  renderer = {
+    icons = {
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
+      glyphs = {
+        default = '',
+        git = {
+          unstaged = '',
+          staged = '',
+          unmerged = '',
+          renamed = '',
+          untracked = '',
+          deleted = '',
+        },
+      },
+    },
+  },
   hijack_netrw = false,
   diagnostics = {
     enable = true,
