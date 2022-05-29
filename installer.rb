@@ -56,7 +56,6 @@ ASDF_PLUGINS = [
   'bat',
   'direnv',
   'elixir',
-  'elm',
   'erlang',
   'exa',
   'fd',
@@ -65,10 +64,6 @@ ASDF_PLUGINS = [
   'golang',
   'lazygit',
   'lua',
-  %w[
-    lua-language-server
-    https://github.com/shun-shobon/asdf-lua-language-server
-  ],
   'neovim',
   'nodejs',
   'python',
@@ -83,16 +78,8 @@ ASDF_PLUGINS = [
 NPMS = %w[
   neovim
   tldr
-  bash-language-server
-  @elm-tooling/elm-language-server
-  dockerfile-language-server-nodejs
   git-split-diffs
   diff-so-fancy
-  typescript
-  typescript-language-server
-  dockerfile-language-server-nodejs
-  @ansible/ansible-language-server
-  vscode-langservers-extracted
   prettier
   @prettier/plugin-ruby
 ].freeze
