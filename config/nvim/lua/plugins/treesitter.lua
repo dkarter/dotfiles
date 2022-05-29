@@ -53,6 +53,10 @@ local default = {
     'zig',
   },
   highlight = { enable = true },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 }
 
 local M = {}

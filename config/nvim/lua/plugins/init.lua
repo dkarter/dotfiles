@@ -137,8 +137,11 @@ return packer.startup(function(use)
   -- Comment out code easily
   use {
     'numToStr/Comment.nvim',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+    },
     config = function()
-      require('Comment').setup()
+      require('plugins.comment').setup()
     end,
   }
 
@@ -183,6 +186,9 @@ return packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
     config = function()
       require('plugins.treesitter').setup()
     end,
