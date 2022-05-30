@@ -441,13 +441,13 @@ return packer.startup(function(use)
       'nvim-telescope/telescope-github.nvim',
       'olacin/telescope-cc.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      'm-demare/attempt.nvim',
     },
     config = function()
       require('plugins.telescope').setup()
     end,
   }
-
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- use Neovim inside Firefox
   use {
