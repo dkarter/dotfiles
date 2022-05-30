@@ -51,27 +51,34 @@ PIPS3 = [
   'neovim-remote', # allow controlling neovim remotely
 ].freeze
 
-ASDF_PLUGINS = [
-  'bat',
-  'direnv',
-  'elixir',
-  'erlang',
-  'exa',
-  'fd',
-  'fzf',
-  'github-cli',
-  'golang',
-  'lazygit',
-  'lua',
-  'neovim',
-  'nodejs',
-  'python',
-  'rebar',
-  'ripgrep',
-  'ruby',
-  'rust',
-  'tmux',
-  'yarn',
+ASDF_PLUGINS = %w[
+  bat
+  direnv
+  elixir
+  erlang
+  exa
+  fd
+  fzf
+  github-cli
+  golang
+  lazygit
+  lua
+  neovim
+  nodejs
+  python
+  rebar
+  ripgrep
+  ruby
+  rust
+  tmux
+  yarn
+].freeze
+
+ASDF_ARM_INCOMPATIBLE = %w[
+  github-cli
+  fzf
+  fd
+  ripgrep
 ].freeze
 
 NPMS = %w[
@@ -106,11 +113,11 @@ class Installer
     install_zinit if confirm('Install zinit?')
 
     # ASDF
-    if confirm('Install ASDF and latest language versions?')
+    if confirm('Install ASDF and latest tool versions?')
       install_asdf
       update_asdf
       install_asdf_plugins
-      install_asdf_languages
+      install_asdf_tools
     end
 
     # Dotfiles
@@ -177,15 +184,21 @@ class Installer
     end
   end
 
-  def install_asdf_languages
-    puts '===== Installing asdf languages latest version'.yellow
+  def install_asdf_tools
+    puts '===== Installing asdf packages latest version'.yellow
 
     # import OpenPGP keysfornode
     popen(
       "zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'",
     )
 
-    ASDF_PLUGINS.each do |plugin, _url|
+    plugins = if `uname -m`.match?(/x86/)
+                ASDF_PLUGINS
+              else
+                ASDF_PLUGINS - ASDF_ARM_INCOMPATIBLE
+              end
+
+    plugins.each do |plugin, _url|
       puts "Installing #{plugin}...".light_blue
       asdf_command(
         "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})",
