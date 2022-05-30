@@ -5,7 +5,6 @@ require 'pathname'
 require_relative 'installer/string'
 
 ASDF_INSTALL_DIR = '~/.asdf'
-GIT_TEMPLATE_INSTALL_DIR = '~/.git_template'
 
 DIRS = %w[~/.config ~/.local/share/psql].freeze
 
