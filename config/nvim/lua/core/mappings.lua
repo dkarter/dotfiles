@@ -282,4 +282,17 @@ M.packer_mappings = function()
   nmap { '<leader>pc', '<cmd>PackerClean<CR>' }
 end
 
+M.attempt_mappings = function(attempt)
+  -- new attempt, selecting extension
+  nmap { '<leader>sn', attempt.new_select, default_opts }
+  -- run current attempt buffer
+  nmap { '<leader>sr', attempt.run, default_opts }
+  -- delete attempt from current buffer
+  nmap { '<leader>sd', attempt.delete_buf, default_opts }
+  -- rename attempt from current buffer
+  nmap { '<leader>sc', attempt.rename_buf, default_opts }
+  -- open one of the existing scratch buffers
+  nmap { '<leader>sl', attempt.open_select, default_opts }
+end
+
 return M

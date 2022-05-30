@@ -482,6 +482,17 @@ return packer.startup(function(use)
   -- Helm Chart syntax
   use 'towolf/vim-helm'
 
+  -- attempt stuff using scratch buffer and pre-configured bootstrap
+  use {
+    'm-demare/attempt.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require('plugins.attempt').setup()
+    end,
+  }
+
   --- TMUX ---
 
   -- tmux config file stuff

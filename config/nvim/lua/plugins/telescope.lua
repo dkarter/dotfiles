@@ -99,6 +99,7 @@ M.setup = function()
     'fzf',
     'conventional_commits',
     'ui-select',
+    'attempt',
   }
 
   for _, e in ipairs(extensions) do
