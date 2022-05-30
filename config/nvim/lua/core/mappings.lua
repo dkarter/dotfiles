@@ -83,17 +83,17 @@ cmap { 'QA', 'qa', default_opts }
 cmap { 'qA', 'qa', default_opts }
 cmap { 'Q!', 'q!', default_opts }
 
--- " zoom a vim pane, <C-w> = to re-balance
+-- zoom a vim pane, <C-w> = to re-balance
 nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>' }
 nmap { '<leader>=', ':wincmd =<cr>' }
 
--- " close all other windows with <leader>o
+-- close all other windows with <leader>o
 nmap { '<leader>wo', '<c-w>o' }
 
--- " Index ctags from any project, including those outside Rails
+-- Index ctags from any project, including those outside Rails
 nmap { '<Leader>ct', ':!ctags -R .<CR>' }
 
--- " Switch between the last two files
+-- Switch between the last two files
 nmap { '<tab><tab>', '<c-^>' }
 
 -- copy to end of line
@@ -112,36 +112,36 @@ nmap { '<C-g>y', 'ggyG' }
 -- copy entire file to system clipboard
 nmap { '<C-g>Y', 'gg"+yG' }
 
--- " disable arrow keys in normal mode
+-- disable arrow keys in normal mode
 nmap { '<Up>', ':call animate#window_delta_height(10)<CR>' }
 nmap { '<Down>', ':call animate#window_delta_height(-10)<CR>' }
 nmap { '<Left>', ':call animate#window_delta_width(10)<CR>' }
 nmap { '<Right>', ':call animate#window_delta_width(-10)<CR>' }
 
--- " last typed word to lower case
+-- last typed word to lower case
 imap { '<C-w>u', '<esc>guawA' }
 
--- " last typed word to UPPER CASE
+-- last typed word to UPPER CASE
 imap { '<C-w>U', '<esc>gUawA' }
 
--- " entire line to lower case
+-- entire line to lower case
 imap { '<C-g>u', '<esc>guuA' }
 
--- " entire line to UPPER CASE
+-- entire line to UPPER CASE
 imap { '<C-g>U', '<esc>gUUA' }
 
--- " last word to title case
+-- last word to title case
 imap { '<C-w>t', '<esc>bvgU<esc>A' }
 
--- " current line to title case
+-- current line to title case
 imap { '<C-g>t', [[<esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A]] }
 
--- " Open files relative to current path:
+-- Open files relative to current path:
 nmap { '<leader>ed', ':edit <C-R>=expand("%:p:h") . "/" <CR>' }
 nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>' }
 nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>' }
 
--- " move lines up and down in visual mode
+-- move lines up and down in visual mode
 vmap { '<c-k>', ":move '<-2<CR>gv=gv" }
 vmap { '<c-j>', ":move '>+1<CR>gv=gv" }
 
@@ -202,7 +202,7 @@ M.nvim_tree_mappings = function()
 end
 
 M.telescope_mappings = function()
-  -- " Find files using Telescope command-line sugar.
+  -- Find files using Telescope command-line sugar.
   nmap { '<C-p>', '<cmd>Telescope find_files<cr>', default_opts }
   nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts }
   nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', default_opts }

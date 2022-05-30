@@ -122,7 +122,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- " Visual git gutter (also used by feline)
+  -- Visual git gutter (also used by feline)
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
@@ -224,7 +224,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- " Highlight current paragraph (works well with goyo)
+  -- Highlight current paragraph (works well with goyo)
   use {
     'junegunn/limelight.vim',
     cmd = 'Limelight',
@@ -284,7 +284,7 @@ return packer.startup(function(use)
   use { 'lucidstack/hex.vim', ft = { 'elixir' } }
   -- }}}
 
-  -- " add text object for HTML attributes - allows dax cix etc
+  -- add text object for HTML attributes - allows dax cix etc
   use {
     'whatyouhide/vim-textobj-xmlattr',
     requires = { 'kana/vim-textobj-user' },
@@ -342,7 +342,7 @@ return packer.startup(function(use)
   -- snip helpers - assorted functions for snippets
   use { 'dkarter/sniphelpers.vim' }
 
-  -- " replacement for matchit
+  -- replacement for matchit
   use {
     'andymass/vim-matchup',
     setup = function()
@@ -359,10 +359,10 @@ return packer.startup(function(use)
   --  auto-generate ctags on save
   use { 'jsfaint/gen_tags.vim' }
 
-  -- " show trailing white spaces and allow deleting them
+  -- show trailing white spaces and allow deleting them
   use 'ntpeters/vim-better-whitespace'
 
-  -- " Convert code to multiline
+  -- Convert code to multiline
   use {
     'AndrewRadev/splitjoin.vim',
     setup = function()
@@ -373,7 +373,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- " Toggle between different language verbs or syntax styles
+  -- Toggle between different language verbs or syntax styles
   use {
     'AndrewRadev/switch.vim',
     setup = function()
@@ -416,7 +416,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- " staticly check code and highlight errors (async syntastic replacement)
+  -- staticly check code and highlight errors (async syntastic replacement)
   use 'dense-analysis/ale'
 
   -- smooth scrolling in neovim
@@ -465,7 +465,7 @@ return packer.startup(function(use)
     end,
   }
 
-  -- " same as tabular but by Junegunn and way easier
+  -- same as tabular but by Junegunn and way easier
   use {
     'junegunn/vim-easy-align',
     config = function()
@@ -484,10 +484,10 @@ return packer.startup(function(use)
 
   --- TMUX ---
 
-  -- " tmux config file stuff
+  -- tmux config file stuff
   use { 'tmux-plugins/vim-tmux', ft = 'tmux' }
 
-  -- " seamless tmux/vim pane navigation
+  -- seamless tmux/vim pane navigation
   use { 'christoomey/vim-tmux-navigator' }
 
   -- Resize tmux panes and Vim windows with ease.
