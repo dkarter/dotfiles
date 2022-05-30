@@ -82,7 +82,6 @@ brew 'grep'
 brew 'htop'
 
 # Github CLIs
-brew 'hub'
 brew 'gh'
 
 # docker desktop for containers
