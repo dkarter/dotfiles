@@ -4,6 +4,8 @@ name: dotfiles
 # Root directory of the session
 root: ~/dotfiles
 
+clear_panes: true
+
 windows:
   - editor:
       # Any valid tmux layout is accepted
@@ -11,4 +13,4 @@ windows:
       # Short form for panes, with a single command each:
       panes:
         - vim
-        - clear
+        -
