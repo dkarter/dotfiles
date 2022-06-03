@@ -79,6 +79,7 @@ ASDF_ARM_INCOMPATIBLE = %w[
   fzf
   fd
   ripgrep
+  neovim
 ].freeze
 
 NPMS = %w[
