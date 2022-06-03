@@ -25,8 +25,8 @@ M.setup = function()
     ext_options = { 'lua', 'js', 'ex', 'rb', '' },
     format_opts = { [''] = '[None]', js = 'JavaScript', lua = 'Lua', rb = 'Ruby', ex = 'Elixir' },
     run = {
-      ex = { 'w', 'elixir %' },
-      rb = { 'w', 'ruby %' },
+      ex = { 'w', '!elixir %' },
+      rb = { 'w', '!ruby %' },
     },
   }
 
