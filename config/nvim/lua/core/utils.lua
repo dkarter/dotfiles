@@ -27,44 +27,6 @@ function M.reload_modules()
   vim.notify 'Reloaded all config modules'
 end
 
---[[
-╭────────────────────────────────────────────────────────────────────────────╮
-│  Str  │  Help page   │  Affected modes                           │  VimL   │
-│────────────────────────────────────────────────────────────────────────────│
-│  ''   │  mapmode-nvo │  Normal, Visual, Select, Operator-pending │  :map   │
-│  'n'  │  mapmode-n   │  Normal                                   │  :nmap  │
-│  'v'  │  mapmode-v   │  Visual and Select                        │  :vmap  │
-│  's'  │  mapmode-s   │  Select                                   │  :smap  │
-│  'x'  │  mapmode-x   │  Visual                                   │  :xmap  │
-│  'o'  │  mapmode-o   │  Operator-pending                         │  :omap  │
-│  '!'  │  mapmode-ic  │  Insert and Command-line                  │  :map!  │
-│  'i'  │  mapmode-i   │  Insert                                   │  :imap  │
-│  'l'  │  mapmode-l   │  Insert, Command-line, Lang-Arg           │  :lmap  │
-│  'c'  │  mapmode-c   │  Command-line                             │  :cmap  │
-│  't'  │  mapmode-t   │  Terminal                                 │  :tmap  │
-╰────────────────────────────────────────────────────────────────────────────╯
---]]
-
-function M.imap(tbl)
-  vim.keymap.set('i', tbl[1], tbl[2], tbl[3])
-end
-
-function M.nmap(tbl)
-  vim.keymap.set('n', tbl[1], tbl[2], tbl[3])
-end
-
-function M.vmap(tbl)
-  vim.keymap.set('v', tbl[1], tbl[2], tbl[3])
-end
-
-function M.tmap(tbl)
-  vim.keymap.set('t', tbl[1], tbl[2], tbl[3])
-end
-
-function M.cmap(tbl)
-  vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
-end
-
 -- Builds the path for the json schema catalog cache
 ---@return Path path
 local json_schemas_catalog_path = function()

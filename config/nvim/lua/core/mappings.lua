@@ -1,9 +1,42 @@
 local utils = require 'core.utils'
-local imap = utils.imap
-local nmap = utils.nmap
-local vmap = utils.vmap
-local tmap = utils.tmap
-local cmap = utils.cmap
+
+--[[
+╭────────────────────────────────────────────────────────────────────────────╮
+│  Str  │  Help page   │  Affected modes                           │  VimL   │
+│────────────────────────────────────────────────────────────────────────────│
+│  ''   │  mapmode-nvo │  Normal, Visual, Select, Operator-pending │  :map   │
+│  'n'  │  mapmode-n   │  Normal                                   │  :nmap  │
+│  'v'  │  mapmode-v   │  Visual and Select                        │  :vmap  │
+│  's'  │  mapmode-s   │  Select                                   │  :smap  │
+│  'x'  │  mapmode-x   │  Visual                                   │  :xmap  │
+│  'o'  │  mapmode-o   │  Operator-pending                         │  :omap  │
+│  '!'  │  mapmode-ic  │  Insert and Command-line                  │  :map!  │
+│  'i'  │  mapmode-i   │  Insert                                   │  :imap  │
+│  'l'  │  mapmode-l   │  Insert, Command-line, Lang-Arg           │  :lmap  │
+│  'c'  │  mapmode-c   │  Command-line                             │  :cmap  │
+│  't'  │  mapmode-t   │  Terminal                                 │  :tmap  │
+╰────────────────────────────────────────────────────────────────────────────╯
+--]]
+
+local imap = function(tbl)
+  vim.keymap.set('i', tbl[1], tbl[2], tbl[3])
+end
+
+local nmap = function(tbl)
+  vim.keymap.set('n', tbl[1], tbl[2], tbl[3])
+end
+
+local vmap = function(tbl)
+  vim.keymap.set('v', tbl[1], tbl[2], tbl[3])
+end
+
+local tmap = function(tbl)
+  vim.keymap.set('t', tbl[1], tbl[2], tbl[3])
+end
+
+local cmap = function(tbl)
+  vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
+end
 
 local default_opts = { noremap = true, silent = true }
 
