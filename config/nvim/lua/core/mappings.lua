@@ -332,4 +332,35 @@ M.attempt_mappings = function(attempt)
   nmap { '<leader>sl', attempt.open_select, default_opts }
 end
 
+M.gitsigns_mappings = function(gitsigns, bufnr)
+  local opts = { expr = true, buffer = bufnr }
+
+  local next_hunk = function()
+    if vim.wo.diff then
+      return ']c'
+    end
+    vim.schedule(function()
+      gitsigns.next_hunk()
+    end)
+    return '<Ignore>'
+  end
+
+  local prev_hunk = function()
+    if vim.wo.diff then
+      return '[c'
+    end
+    vim.schedule(function()
+      gitsigns.prev_hunk()
+    end)
+    return '<Ignore>'
+  end
+
+  -- Navigation
+  nmap { ']c', next_hunk, opts }
+  nmap { '[c', prev_hunk, opts }
+
+  -- Text object for git hunks (e.g. vih will select the hunk)
+  map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
+end
+
 return M
