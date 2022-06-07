@@ -449,6 +449,15 @@ return packer.startup(function(use)
     end,
   }
 
+  --
+  -- decouple updatetime from CursorHold
+  use {
+    'antoinemadec/FixCursorHold.nvim',
+    setup = function()
+      vim.g.cursorhold_updatetime = 100
+    end,
+  }
+
   -- use Neovim inside Firefox
   use {
     'glacambre/firenvim',

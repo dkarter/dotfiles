@@ -49,14 +49,6 @@ opt.signcolumn = 'yes'
 opt.splitbelow = true
 opt.splitright = true
 
--- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
--- opt.fillchars = { eob = " " }
-
--- used by a bunch of plugins to perform async actions (e.g. gitsigns)
--- when the user stopped typing. Also used by vim to decide when
--- to write a swp file.
-opt.updatetime = 100
-
 -- should make scrolling faster
 opt.ttyfast = true
 opt.lazyredraw = true
