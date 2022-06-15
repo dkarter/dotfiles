@@ -359,6 +359,22 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
   nmap { ']c', next_hunk, opts }
   nmap { '[c', prev_hunk, opts }
 
+  -- Hunk operations
+  -- Undo Hunk
+  nmap { '<leader>uh', ':Gitsigns reset_hunk<CR>' }
+  -- Stage Hunk
+  nmap { '<leader>sh', ':Gitsigns stage_hunk<CR>' }
+  -- Undo Stage Hunk
+  nmap { '<leader>Sh', ':Gitsigns undo_stage_hunk<CR>' }
+
+  -- Buffer operations
+  -- Undo Buffer
+  nmap { '<leader>ub', ':Gitsigns reset_hunk<CR>' }
+  -- Stage Buffer
+  nmap { '<leader>sb', ':Gitsigns stage_buffer<CR>' }
+  -- Undo Stage Buffer
+  nmap { '<leader>Sb', ':Gitsigns undo_stage_buffer<CR>' }
+
   -- Text object for git hunks (e.g. vih will select the hunk)
   map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
 end
