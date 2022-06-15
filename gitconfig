@@ -44,6 +44,12 @@
 [merge "bundle"]
   name = bundle
   driver = bundle
+[merge "npm-merge-driver"]
+  name = automatically merge npm lockfiles
+  driver = npx npm-merge-driver merge %A %O %B %P
+[merge "yarn-merge-driver"]
+  name = automatically merge yarn lockfiles
+  driver = npx npm-merge-driver merge %A %O %B %P -c yarn
 [commit]
   template = ~/.gitmessage
 [fetch]

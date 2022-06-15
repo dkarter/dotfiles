@@ -36,6 +36,7 @@ SYMLINK_DIRS = [
   %w[./config/alacritty ~/.config/alacritty],
   %w[./config/vifm ~/.config/vifm],
   %w[./config/rubocop ~/.config/rubocop],
+  %w[./config/git ~/.config/git],
 ].freeze
 
 GEMS = [
