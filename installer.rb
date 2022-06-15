@@ -13,7 +13,6 @@ DOTFILES = %w[
   aliases
   asdfrc
   ctags
-  eslintrc
   gemrc
   gitconfig
   gitignore
