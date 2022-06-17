@@ -49,11 +49,18 @@ vim.g.projectionist_heuristics = {
     ['*.ts'] = {
       alternate = {
         '{dirname}/{basename}.test.ts',
-        '{dirname}/{basename}.test.tsx',
+        '{dirname}/{basename}.__tests__.ts',
         '{dirname}/__tests__/{basename}.test.ts',
-        '{dirname}/__tests__/{basename}.test.tsx',
       },
       type = 'source',
+    },
+    ['*.__tests__.ts'] = {
+      alternate = { '{dirname}/{basename}.ts', '{dirname}/../{basename}.ts' },
+      type = 'test',
+    },
+    ['*.__tests__.tsx'] = {
+      alternate = { '{dirname}/{basename}.tsx', '{dirname}/../{basename}.tsx' },
+      type = 'test',
     },
     ['*.test.ts'] = {
       alternate = {
@@ -66,9 +73,8 @@ vim.g.projectionist_heuristics = {
     },
     ['*.tsx'] = {
       alternate = {
-        '{dirname}/{basename}.test.ts',
         '{dirname}/{basename}.test.tsx',
-        '{dirname}/__tests__/{basename}.test.ts',
+        '{dirname}/{basename}.__tests__.tsx',
         '{dirname}/__tests__/{basename}.test.tsx',
       },
       type = 'source',
