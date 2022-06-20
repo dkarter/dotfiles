@@ -7,10 +7,11 @@ sudo apt -y install \
   bison \
   build-essential \
   clangd-13 \
-  libclang-13-dev \
   fop \
   global \
   httpie \
+  inotify-tools \
+  libclang-13-dev \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
   libncurses-dev \
@@ -22,15 +23,16 @@ sudo apt -y install \
   libxml2-utils \
   m4 \
   openjdk-11-jdk \
+  postgresql \
+  postgresql-client \
+  pspg \
   ruby \
+  squashfs-tools \
+  ssh-askpass \
   tmux \
   tree \
   universal-ctags \
   unixodbc-dev \
-  postgresql \
-  postgresql-client \
-  pspg \
-  inotify-tools \
   wx-common \
   xsltproc \
   zsh
