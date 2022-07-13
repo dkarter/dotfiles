@@ -37,8 +37,6 @@ return packer.startup(function(use)
       'hrsh7th/cmp-cmdline',
       -- neovim lua config api completion
       'hrsh7th/cmp-nvim-lua',
-      -- function signature help
-      'hrsh7th/cmp-nvim-lsp-signature-help',
       -- emoji completion (triggered by `:`)
       'hrsh7th/cmp-emoji',
       -- snippets in completion sources
@@ -74,6 +72,14 @@ return packer.startup(function(use)
     },
     config = function()
       require('plugins.lsp').setup()
+    end,
+  }
+
+  -- function signature help via LSP
+  use {
+    'ray-x/lsp_signature.nvim',
+    setup = function()
+      require('lsp_signature').setup { wrap = true }
     end,
   }
 

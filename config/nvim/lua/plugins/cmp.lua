@@ -108,7 +108,6 @@ M.setup = function()
           git = '[G]',
           luasnip = '[S]',
           nvim_lsp = '[L]',
-          nvim_lsp_signature_help = '[L]',
           nvim_lua = '[V]',
           path = '[P]',
           tmux = '[T]',
@@ -179,7 +178,6 @@ M.setup = function()
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
       { name = 'path' },
     }, {
@@ -195,7 +193,6 @@ M.setup = function()
   cmp.setup.filetype('lua', {
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
       { name = 'nvim_lua' },
       { name = 'path' },
