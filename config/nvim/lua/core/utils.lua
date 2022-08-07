@@ -82,4 +82,14 @@ function M.left_pad(str, len, char)
   return res, res ~= str
 end
 
+function M.contains(tbl, item)
+  for x in pairs(tbl) do
+    if x == item then
+      return true
+    end
+  end
+
+  return false
+end
+
 return M
