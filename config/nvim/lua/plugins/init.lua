@@ -51,24 +51,21 @@ return packer.startup(function(use)
     end,
   }
 
-  -- installs and sets up lsps for you
+  -- installs/updates LSPs, linters and DAPs
   use {
-    'junnplus/nvim-lsp-setup',
+    'williamboman/mason.nvim',
     requires = {
-      -- just installs/updates LSPs
-      'williamboman/nvim-lsp-installer',
-
-      -- LSP driven completions
-      'hrsh7th/cmp-nvim-lsp',
+      -- handles connection of LSP Configs and Mason
+      'williamboman/mason-lspconfig.nvim',
 
       -- Collection of configurations for the built-in LSP client
       'neovim/nvim-lspconfig',
 
       -- elixir commands from elixirls
-      'mhanberg/elixir.nvim',
-
-      -- required by elixir plugin
-      'nvim-lua/plenary.nvim',
+      {
+        'mhanberg/elixir.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+      },
     },
     config = function()
       require('plugins.lsp').setup()

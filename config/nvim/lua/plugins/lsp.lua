@@ -1,6 +1,11 @@
-local present, lspsetup = pcall(require, 'nvim-lsp-setup')
+local utils = require 'core.utils'
 
-if not present then
+local mason_present, mason = pcall(require, 'mason')
+local mason_lspconfig_present, mason_lspconfig = pcall(require, 'mason-lspconfig')
+local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
+
+if utils.contains({ mason_present, mason_lspconfig_present, lspconfig_present }, nil) then
+  vim.notify 'Failed to load dependencies in plugins/lsp.lua'
   return
 end
 
@@ -35,96 +40,59 @@ M.setup = function()
   -- set up global mappings for diagnostics
   require('core.mappings').lsp_diagnostic_mappings()
 
-  lspsetup.setup {
-    -- I'll use my own mappings
-    default_mappings = false,
+  mason.setup()
+  mason_lspconfig.setup {
+    ensure_installed = {
+      'ansible-language-server',
+      'arduino-language-server',
+      'bash-language-server',
+      'clangd',
+      'cmake-language-server',
+      'css-lsp',
+      'dockerfile-language-server',
+      'elixirls',
+      'elm-language-server',
+      'emmet-ls',
+      'eslint-lsp',
+      'erlang-ls',
+      'gopls',
+      'html-lsp',
+      'json-lsp',
+      'prosemd-lsp',
+      'rust-analyzer',
+      'solargraph',
+      'sqlls',
+      'lua-language-server',
+      'tailwindcss-language-server',
+      'taplo',
+      'terraform-ls',
+      'typescript-language-server',
+      'vim-language-server',
+      'yaml-language-server',
+      'zls',
+    },
+  }
 
-    -- Global on_attach
-    on_attach = on_attach,
+  mason_lspconfig.setup_handlers {
+    function(server_name)
+      lspconfig[server_name].setup { on_attach = on_attach }
+    end,
 
-    -- Global capabilities (cmp_nvim_lsp will automatically advertise
-    -- capabilities) as per https://github.com/junnplus/nvim-lsp-setup#cmp-nvim-lsp
-    -- capabilities = not necessary...
+    -- JSON
+    jsonls = function()
+      local overrides = require 'plugins.lsp.jsonls'
+      lspconfig.jsonls.setup(overrides)
+    end,
 
-    -- Configuration of LSP servers
-    servers = {
-      -- Install LSP servers automatically
-      -- LSP server configuration please see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    -- YAML
+    yamlls = function()
+      local overrides = require('plugins.lsp.yamlls').setup(on_attach)
+      lspconfig.yamlls.setup(overrides)
+    end,
 
-      -- zig
-      zls = {},
-
-      -- Arduino
-      arduino_language_server = {},
-
-      -- cmake
-      cmake = {},
-
-      -- Elm
-      elmls = {},
-
-      -- Markdown
-      prosemd_lsp = {},
-
-      -- SQL
-      sqlls = {},
-
-      -- Erlang
-      erlangls = {},
-
-      -- HTML snippets
-      emmet_ls = {},
-
-      -- TOML
-      taplo = {},
-
-      -- C, CPP
-      clangd = {},
-
-      -- C, CPP, Arduino
-      ccls = {},
-
-      -- Rust
-      rust_analyzer = {},
-
-      -- TypeScript and JavaScript
-      tsserver = {},
-
-      -- Ruby
-      solargraph = {},
-
-      -- Dockerfile
-      dockerls = {},
-
-      -- Terraform
-      terraformls = {},
-
-      -- Ansible
-      ansiblels = {},
-
-      -- JSON
-      jsonls = require 'plugins.lsp.jsonls',
-
-      -- YAML
-      yamlls = require('plugins.lsp.yamlls').setup(on_attach),
-
-      -- CSS
-      cssls = {},
-
-      -- HTML
-      html = {},
-
-      -- Golang
-      gopls = {},
-
-      -- Bash
-      bashls = {},
-
-      -- VimScript
-      vimls = {},
-
-      -- Lua
-      sumneko_lua = {
+    -- Lua
+    sumneko_lua = function()
+      lspconfig.sumneko_lua.setup {
         settings = {
           Lua = {
             runtime = {
@@ -147,17 +115,19 @@ M.setup = function()
             },
           },
         },
-      },
+      }
+    end,
 
-      -- Elixir
-      elixirls = {
+    -- Elixir
+    elixirls = function()
+      lspconfig.elixirls.setup {
         on_attach = function(client, bufnr)
           -- regular on_attach for lsp
           on_attach(client, bufnr)
           require('elixir').on_attach(client, bufnr)
         end,
-      },
-    },
+      }
+    end,
   }
 
   appearance_mods()
