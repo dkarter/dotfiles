@@ -54,6 +54,7 @@ function M.download_json_schemas()
   vim.notify(string.format('Wrote JSON Schemas catalog to %s', catalog_path))
 end
 
+-- Reads JSON Schemas from cache location
 function M.read_json_schemas()
   local catalog_path = json_schemas_catalog_path()
 
@@ -65,6 +66,7 @@ function M.read_json_schemas()
   end
 end
 
+-- Reloads the current Lua file
 function M.reload_current_luafile()
   local current_file = vim.fn.expand '%'
   print(current_file)
@@ -72,16 +74,28 @@ function M.reload_current_luafile()
   vim.notify(string.format('Reloaded %s!', current_file))
 end
 
+-- Pads a string's right hand side
+---@param str string String to pad
+---@param len number How many characters to pad by
+---@param char string Character to use when padding
 function M.right_pad(str, len, char)
   local res = str .. string.rep(char or ' ', len - #str)
   return res, res ~= str
 end
 
+-- Pads a string's left hand side
+---@param str string String to pad
+---@param len number How many characters to pad by
+---@param char string Character to use when padding
 function M.left_pad(str, len, char)
   local res = string.rep(char or ' ', len - #str) .. str
   return res, res ~= str
 end
 
+-- Checks if a table contains a value
+---@param tbl table
+---@param item any
+---@return boolean
 function M.contains(tbl, item)
   for x in pairs(tbl) do
     if x == item then
