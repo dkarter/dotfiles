@@ -3,8 +3,16 @@ local utils = require 'core.utils'
 local mason_present, mason = pcall(require, 'mason')
 local mason_lspconfig_present, mason_lspconfig = pcall(require, 'mason-lspconfig')
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
+local cmp_lsp_present, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 
-if utils.contains({ mason_present, mason_lspconfig_present, lspconfig_present }, nil) then
+local deps = {
+  cmp_lsp_present,
+  mason_present,
+  mason_lspconfig_present,
+  lspconfig_present,
+}
+
+if utils.contains(deps, false) then
   vim.notify 'Failed to load dependencies in plugins/lsp.lua'
   return
 end
@@ -40,7 +48,40 @@ M.setup = function()
   -- set up global mappings for diagnostics
   require('core.mappings').lsp_diagnostic_mappings()
 
-  mason.setup()
+  -- Add completion and documentation capabilities for cmp completion
+  ---@param opts table|nil
+  local function create_capabilities(opts)
+    local default_opts = {
+      with_snippet_support = true,
+    }
+    opts = opts or default_opts
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = opts.with_snippet_support
+    if opts.with_snippet_support then
+      capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = {
+          'documentation',
+          'detail',
+          'additionalTextEdits',
+        },
+      }
+    end
+
+    return cmp_lsp.update_capabilities(capabilities)
+  end
+
+  -- inject our custom on_attach after the built in on_attach from the lspconfig
+  lspconfig.util.on_setup = lspconfig.util.add_hook_after(lspconfig.util.on_setup, function(config)
+    if config.on_attach then
+      config.on_attach = lspconfig.util.add_hook_after(config.on_attach, on_attach)
+    else
+      config.on_attach = on_attach
+    end
+
+    config.capabilities = create_capabilities()
+  end)
+
+  mason.setup {}
   mason_lspconfig.setup {
     ensure_installed = {
       'ansible-language-server',
@@ -75,11 +116,11 @@ M.setup = function()
 
   mason_lspconfig.setup_handlers {
     function(server_name)
-      lspconfig[server_name].setup { on_attach = on_attach }
+      lspconfig[server_name].setup {}
     end,
 
     -- JSON
-    jsonls = function()
+    ['jsonls'] = function()
       local overrides = require 'plugins.lsp.jsonls'
       lspconfig.jsonls.setup(overrides)
     end,
@@ -124,6 +165,7 @@ M.setup = function()
         on_attach = function(client, bufnr)
           -- regular on_attach for lsp
           on_attach(client, bufnr)
+          -- use on_attach from elixir.nvim plugin
           require('elixir').on_attach(client, bufnr)
         end,
       }

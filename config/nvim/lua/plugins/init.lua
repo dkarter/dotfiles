@@ -61,6 +61,9 @@ return packer.startup(function(use)
       -- Collection of configurations for the built-in LSP client
       'neovim/nvim-lspconfig',
 
+      -- required for setting up capabilities for cmp
+      'hrsh7th/cmp-nvim-lsp',
+
       -- elixir commands from elixirls
       {
         'mhanberg/elixir.nvim',
