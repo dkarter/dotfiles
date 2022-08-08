@@ -113,7 +113,7 @@ M.setup = function()
           tmux = '[T]',
         })[entry.source.name]
 
-        local padded_kind = require('core.utils').right_pad(vim_item.kind, 8)
+        local padded_kind = require('core.utils').right_pad(vim_item.kind, 8, ' ')
         vim_item.menu = string.format('%s %s', padded_kind, source)
         vim_item.kind = icon
 
