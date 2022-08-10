@@ -9,13 +9,13 @@ lowercase(){
 }
 
 OS=`lowercase \`uname\``
-KERNEL=`uname -r`
-MACH=`uname -m`
+KERNEL="$(uname -r)"
+MACH="$(uname -m)"
 
 if [ "${OS}" = "darwin" ]; then
     OS='mac'
 else
-    OS=`uname`
+    OS="$(uname)"
     if [ "${OS}" = "Linux" ] ; then
         if [ -f /etc/debian_version ] ; then
             DISTRO_BASE='debian'
@@ -28,8 +28,6 @@ else
         readonly OS
         readonly DIST
         readonly DISTRO_BASE
-        readonly PSUEDONAME
-        readonly REV
         readonly KERNEL
         readonly MACH
     fi
@@ -38,11 +36,11 @@ fi
 
 echo
 echo "==========================================="
-echo $OS
-echo $DISTRO_BASE
-echo $DIST
-echo $KERNEL
-echo $MACH
+echo "$OS"
+echo "$DISTRO_BASE"
+echo "$DIST"
+echo "$KERNEL"
+echo "$MACH"
 echo "==========================================="
 echo
 
