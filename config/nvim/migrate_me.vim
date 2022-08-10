@@ -75,51 +75,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
  " ------  /JUMP TO GIT CONFLICTS (Gconflict) ------- }}}
 " --------------------------------------------------}}}
 
-" ----------------------------------------------------------------------------
-" ALE
-" ----------------------------------------------------------------------------
-let g:airline#extensions#ale#enabled = 1
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
-
-" ALE automatically updates the loclist which makes it impossible to use some
-" other plugins such as GV
-let g:ale_set_loclist = 0
-
-highlight link ALEWarningSign Directory
-highlight link ALEErrorSign WarningMsg
-nnoremap <silent> <leader>ne :ALENextWrap<CR>
-nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
-
-let g:ale_pattern_options = {
-                        \  '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-                        \  '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-                        \}
-
-let g:ale_fixers = {
-      \   'typescriptreact': ['prettier'],
-      \   'typescript': ['prettier'],
-      \   'typescript.tsx': ['prettier'],
-      \   'javascript': ['prettier'],
-      \   'javascript.jsx': ['prettier'],
-      \   'html': ['prettier'],
-      \   'json': ['prettier'],
-      \   'scss': ['prettier'],
-      \   'css': ['prettier'],
-      \   'bash': ['shfmt'],
-      \   'zsh': ['shfmt'],
-      \   'ruby': ['prettier'],
-      \   'yaml': ['prettier'],
-      \   'rust': ['rustfmt'],
-      \   'elm': ['elm-format'],
-      \   'cpp': ['clang-format'],
-      \   'lua': ['stylua']
-      \}
-
-let g:ale_sh_shfmt_options = '-i 2 -ci'
-
-let g:ale_fix_on_save = 1
-
 " ----------------------------------------------------- }}}
 
 " UI Customizations {{{

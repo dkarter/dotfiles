@@ -75,6 +75,20 @@ return packer.startup(function(use)
     end,
   }
 
+  -- Use Neovim as a language server to inject LSP diagnostics, code
+  -- actions, and more via Lua.
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+
+      'lukas-reineke/lsp-format.nvim',
+    },
+    config = function()
+      require('plugins.null-ls').setup()
+    end,
+  }
+
   -- function signature help via LSP
   use {
     'ray-x/lsp_signature.nvim',
@@ -276,16 +290,6 @@ return packer.startup(function(use)
     ft = { 'elixir' },
   }
 
-  -- temporarily use this plugin to format elixir - until ALE starts supporting
-  -- umbrella apps and respect nested .formatter.exs files (see
-  -- https://github.com/dense-analysis/ale/pull/3106)
-  use {
-    'mhinz/vim-mix-format',
-    setup = function()
-      vim.g.mix_format_on_save = 1
-    end,
-  }
-
   -- pulls info on hex packages (requires mattn/webapi-vim)
   use { 'lucidstack/hex.vim', ft = { 'elixir' } }
   -- }}}
@@ -421,9 +425,6 @@ return packer.startup(function(use)
       require('core.mappings').winresizer_mappings()
     end,
   }
-
-  -- staticly check code and highlight errors (async syntastic replacement)
-  use 'dense-analysis/ale'
 
   -- smooth scrolling in neovim
   use {
