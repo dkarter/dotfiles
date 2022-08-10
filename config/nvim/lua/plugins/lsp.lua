@@ -126,13 +126,13 @@ M.setup = function()
     end,
 
     -- YAML
-    yamlls = function()
+    ['yamlls'] = function()
       local overrides = require('plugins.lsp.yamlls').setup(on_attach)
       lspconfig.yamlls.setup(overrides)
     end,
 
     -- Lua
-    sumneko_lua = function()
+    ['sumneko_lua'] = function()
       lspconfig.sumneko_lua.setup {
         settings = {
           Lua = {
@@ -160,7 +160,7 @@ M.setup = function()
     end,
 
     -- Elixir
-    elixirls = function()
+    ['elixirls'] = function()
       lspconfig.elixirls.setup {
         on_attach = function(client, bufnr)
           -- regular on_attach for lsp
