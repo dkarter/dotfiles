@@ -75,6 +75,17 @@ return packer.startup(function(use)
     end,
   }
 
+  -- automatically install tools using mason
+  use {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    requires = {
+      'williamboman/mason.nvim',
+    },
+    config = function()
+      require('plugins.mason-tool-installer').setup()
+    end,
+  }
+
   -- Use Neovim as a language server to inject LSP diagnostics, code
   -- actions, and more via Lua.
   use {
