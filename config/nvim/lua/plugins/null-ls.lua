@@ -20,7 +20,6 @@ M.setup = function()
       --   Code Actions   --
       ----------------------
       b.code_actions.eslint_d,
-      b.code_actions.gitrebase,
       b.code_actions.refactoring,
       b.code_actions.shellcheck,
 
