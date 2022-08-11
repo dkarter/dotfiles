@@ -112,7 +112,6 @@ M.setup = function()
       'yaml-language-server',
       'zls',
     },
-    automatic_installation = true,
   }
 
   mason_lspconfig.setup_handlers {
