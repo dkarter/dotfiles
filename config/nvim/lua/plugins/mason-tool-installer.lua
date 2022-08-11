@@ -14,6 +14,7 @@ M.setup = function()
     -- start; they should be the names Mason uses for each tool
     ensure_installed = {
       'actionlint',
+      'codespell',
       'eslint_d',
       'prettierd',
       'rubocop',
