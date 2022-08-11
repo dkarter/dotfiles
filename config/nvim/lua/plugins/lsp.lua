@@ -91,7 +91,7 @@ M.setup = function()
       'cmake-language-server',
       'css-lsp',
       'dockerfile-language-server',
-      'elixirls',
+      'elixir-ls',
       'elm-language-server',
       'emmet-ls',
       'erlang-ls',
