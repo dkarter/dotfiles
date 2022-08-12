@@ -21,6 +21,7 @@ M.setup = function()
       'shellcheck',
       'shfmt',
       'stylua',
+      'yamllint',
       -- LSPs
       --
 
