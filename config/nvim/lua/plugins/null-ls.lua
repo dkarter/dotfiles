@@ -14,7 +14,6 @@ M.setup = function()
   lsp_format.setup {}
 
   null_ls.setup {
-    debug = true,
     sources = {
       ----------------------
       --   Code Actions   --
