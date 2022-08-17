@@ -43,3 +43,32 @@ zinit ice lucid wait \
   has'kubectl' \
   atinit'source <(kubectl completion zsh)'
 zinit light Dbz/kube-aliases
+
+# cht.sh
+zinit wait"2a" lucid \
+  id-as"cht.sh" \
+  as"program" \
+  for https://cht.sh/:cht.sh
+  # has'rlwrap' \
+
+zinit wait"2b" lucid \
+  id-as"cht-completion" \
+  has'rlwrap' \
+  mv"cht* -> _cht" \
+  as"completion" \
+  for https://cheat.sh/:zsh
+
+# cheat
+zinit wait"2a" lucid \
+  id-as"cheat" \
+  from"gh-r" \
+  mv"cheat* -> cheat" \
+  pick"cheat" \
+  as"program" \
+  for @cheat/cheat
+
+zinit wait"2b" lucid \
+  id-as"cheat-completion" \
+  mv"cheat* -> _cheat" \
+  as"completion" \
+  for https://github.com/cheat/cheat/blob/master/scripts/cheat.zsh
