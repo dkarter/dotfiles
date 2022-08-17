@@ -311,6 +311,11 @@ if $(command -v fzf >/dev/null); then
   }
 fi
 
+# shows cheat sheet for a command
+function cht() {
+  curl "https://cht.sh/$1"
+}
+
 # git functions
 function clonecd() {
   # find a way to pass the rest of the arguments to
