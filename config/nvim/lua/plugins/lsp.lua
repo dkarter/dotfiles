@@ -168,6 +168,10 @@ M.setup = function()
           -- use on_attach from elixir.nvim plugin
           require('elixir').on_attach(client, bufnr)
         end,
+        elixirLS = {
+          dialyzerEnabled = true,
+          fetchDeps = false,
+        },
       }
     end,
   }

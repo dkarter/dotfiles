@@ -17,7 +17,7 @@ local default = {
     'dockerfile',
     'eex',
     -- Elixir treesitter is very slow
-    -- "elixir",
+    'elixir',
     'elm',
     'erlang',
     'gleam',
