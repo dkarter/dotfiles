@@ -162,6 +162,7 @@ M.setup = function()
     -- Elixir
     ['elixirls'] = function()
       lspconfig.elixirls.setup {
+        settings = require('elixir').settings {},
         on_attach = function(client, bufnr)
           -- regular on_attach for lsp
           on_attach(client, bufnr)
