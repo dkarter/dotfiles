@@ -19,17 +19,6 @@ end
 
 local M = {}
 
-local appearance_mods = function()
-  -- set a border around lsp hover popover and signature help
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = 'rounded',
-  })
-
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = 'rounded',
-  })
-end
-
 M.setup = function()
   -- Make runtime files discoverable to the lua server
   local runtime_path = vim.split(package.path, ';')
@@ -38,8 +27,9 @@ M.setup = function()
 
   local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
-    -- vmp plugin)
+    -- cmp plugin)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     require('core.mappings').lsp_mappings(bufnr)
@@ -116,7 +106,9 @@ M.setup = function()
 
   mason_lspconfig.setup_handlers {
     function(server_name)
-      lspconfig[server_name].setup {}
+      lspconfig[server_name].setup {
+        on_attach = on_attach,
+      }
     end,
 
     -- JSON
@@ -176,8 +168,6 @@ M.setup = function()
       }
     end,
   }
-
-  appearance_mods()
 end
 
 return M

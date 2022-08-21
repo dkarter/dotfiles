@@ -42,6 +42,7 @@ local cmap = function(tbl)
   vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
 end
 
+local silent = { silent = true }
 local default_opts = { noremap = true, silent = true }
 
 -- TODO: find out why this doesn't work with helper funcs or why I can't just
@@ -49,7 +50,7 @@ local default_opts = { noremap = true, silent = true }
 -- alias for leader key (use space as leader)
 -- vim.g.mapleader = ' '
 -- vim.g.maplocalleader = ' '
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', silent)
 -- set leader key to `\` so that I can alias it to <space>
 vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
@@ -64,13 +65,13 @@ nmap { 'N', 'Nzzzv' }
 nmap { '<c-w>w', ':bd<CR>' }
 
 -- rename current file
-nmap { '<Leader>RN', ":Move <C-R>=expand('%')<CR>" }
+nmap { '<Leader>mv', ":Move <C-R>=expand('%')<CR>", default_opts }
 
 -- sort selected lines
 vmap { 'gs', ':sort<CR>' }
 
 -- remove highlighting on escape
-nmap { '<esc>', ':nohlsearch<cr>', { silent = true } }
+nmap { '<esc>', ':nohlsearch<cr>', silent }
 
 -- ml = map lua: converts vim mapping to lua (roughly..)
 nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4' }/<cr>" }
@@ -194,8 +195,6 @@ M.lsp_mappings = function(bufnr)
   buf_nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
   -- gD = go definition
   buf_nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  -- K = is just the vim help for thing under cursor
-  buf_nmap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
   -- gi = go implementation
   buf_nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
   -- fs = function signature
@@ -208,8 +207,6 @@ M.lsp_mappings = function(bufnr)
   buf_nmap('<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
   -- D = <type> Definition
   buf_nmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-  -- rn = rename
-  buf_nmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   -- ca = code action
   buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
   -- gr = get references
@@ -219,10 +216,61 @@ M.lsp_mappings = function(bufnr)
 end
 
 M.lsp_diagnostic_mappings = function()
-  nmap { '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', default_opts }
+  nmap { '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', default_opts }
   nmap { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', default_opts }
   nmap { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', default_opts }
-  nmap { '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', default_opts }
+  nmap { '<leader>qd', '<cmd>lua vim.diagnostic.setloclist()<CR>', default_opts }
+end
+
+M.lsp_saga_mappings = function()
+  -- Lsp finder find the symbol definition implmement reference
+  nmap { 'gh', '<cmd>Lspsaga lsp_finder<CR>', silent }
+
+  -- Code action
+  nmap { '<leader>ca', '<cmd>Lspsaga code_action<CR>', silent }
+  vmap { '<leader>ca', '<cmd><C-U>Lspsaga range_code_action<CR>', silent }
+
+  -- Rename
+  nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', silent }
+
+  -- Definition preview
+  nmap { 'gd', '<cmd>Lspsaga preview_definition<CR>', silent }
+
+  -- Show line diagnostics
+  nmap { '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<CR>', silent }
+
+  -- Show cursor diagnostic
+  nmap { '<leader>cd', '<cmd>Lspsaga show_cursor_diagnostics<CR>', silent }
+
+  -- Diagnsotic jump
+  nmap { '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', silent }
+  nmap { ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', silent }
+
+  -- Only jump to error
+  nmap {
+    '[E',
+    function()
+      require('lspsaga.diagnostic').goto_prev { severity = vim.diagnostic.severity.ERROR }
+    end,
+    silent,
+  }
+
+  nmap {
+    ']E',
+    function()
+      require('lspsaga.diagnostic').goto_next { severity = vim.diagnostic.severity.ERROR }
+    end,
+    silent,
+  }
+
+  -- Outline
+  nmap { '<leader>ol', '<cmd>LSoutlineToggle<CR>', silent }
+
+  -- Hover Doc
+  nmap { 'K', '<cmd>Lspsaga hover_doc<CR>', silent }
+
+  -- Signature help
+  nmap { '<leader>sh', '<Cmd>Lspsaga signature_help<CR>', silent }
 end
 
 M.trouble_mappings = function()

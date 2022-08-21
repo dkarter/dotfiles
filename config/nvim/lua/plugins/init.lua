@@ -75,6 +75,24 @@ return packer.startup(function(use)
     end,
   }
 
+  use {
+    'glepnir/lspsaga.nvim',
+    branch = 'main',
+    config = function()
+      local saga = require 'lspsaga'
+      saga.init_lsp_saga {
+        code_action_lightbulb = {
+          enable = true,
+          sign = true,
+          enable_in_insert = true,
+          sign_priority = 20,
+          virtual_text = false,
+        },
+      }
+      require('core.mappings').lsp_saga_mappings()
+    end,
+  }
+
   -- automatically install tools using mason
   use {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
