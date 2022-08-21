@@ -41,12 +41,6 @@ nnoremap <silent> <C-g>g :FzfRg!<CR>
 nnoremap <silent> <C-t> :BTags<CR>
 
 
-
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
 " Custom FZF commands ----------------------------- {{{
 
  " ------  JUMP TO GIT CONFLICTS (Gconflict) ------- {{{
@@ -101,19 +95,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
   " hide vertical split
   hi vertsplit guifg=fg guibg=bg
 "  }}}
-
-" Text Objects {{{
-augroup elixir_textobjs
-  autocmd!
-  autocmd FileType elixir call textobj#user#map('elixir', {
-        \   'map': {
-        \     'pattern': ['%{', '}'],
-        \     'select-a': '<buffer> aM',
-        \     'select-i': '<buffer> iM',
-        \   },
-        \ })
-augroup END
-" }}}
 
 " Own commands {{{
 " put result of fd command into quickfix list
