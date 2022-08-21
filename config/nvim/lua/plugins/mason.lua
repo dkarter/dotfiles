@@ -105,18 +105,10 @@ M.setup = function()
 
     -- Elixir
     ['elixirls'] = function()
+      local elixir_nvim = require 'elixir'
       lspconfig.elixirls.setup {
-        settings = require('elixir').settings {},
-        on_attach = function(client, bufnr)
-          --[[ -- regular on_attach for lsp ]]
-          --[[ on_attach(client, bufnr) ]]
-          -- use on_attach from elixir.nvim plugin
-          require('elixir').on_attach(client, bufnr)
-        end,
-        elixirLS = {
-          dialyzerEnabled = true,
-          fetchDeps = false,
-        },
+        settings = elixir_nvim.settings {},
+        on_attach = elixir_nvim.on_attach,
       }
     end,
   }
