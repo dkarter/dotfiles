@@ -183,6 +183,13 @@ nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>' }
 vmap { '<c-k>', ":move '<-2<CR>gv=gv" }
 vmap { '<c-j>', ":move '>+1<CR>gv=gv" }
 
+-- source current file (useful when iterating on config)
+nmap {
+  '<leader>so',
+  ':source %<CR>:lua vim.notify("File sourced!")<CR>',
+  default_opts,
+}
+
 local M = {}
 
 M.lsp_mappings = function(bufnr)
