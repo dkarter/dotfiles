@@ -241,7 +241,7 @@ M.lsp_saga_mappings = function()
   nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', silent }
 
   -- Definition preview
-  nmap { 'gd', '<cmd>Lspsaga preview_definition<CR>', silent }
+  nmap { 'gp', '<cmd>Lspsaga preview_definition<CR>', silent }
 
   -- Show line diagnostics
   nmap { '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<CR>', silent }
@@ -321,7 +321,7 @@ M.telescope_mappings = function()
   nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', default_opts }
   nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
   nmap { '<leader>gs', '<cmd>Telescope gh gist<cr>', default_opts }
-  nmap { '<leader>gw', '<cmd>Telescope gh run<cr>', default_opts }
+  nmap { '<leader>ga', '<cmd>Telescope gh run<cr>', default_opts }
 end
 
 M.fugitive_mappings = function()
