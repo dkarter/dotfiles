@@ -13,6 +13,7 @@ M.setup = function()
     -- a list of all tools you want to ensure are installed upon
     -- start; they should be the names Mason uses for each tool
     ensure_installed = {
+      -- Null LS
       'actionlint',
       'codespell',
       'eslint_d',
@@ -22,8 +23,8 @@ M.setup = function()
       'shfmt',
       'stylua',
       'yamllint',
+
       -- LSPs
-      --
 
       'ansible-language-server',
       'arduino-language-server',
@@ -34,7 +35,6 @@ M.setup = function()
       'dockerfile-language-server',
       'elixir-ls',
       'elm-language-server',
-      'emmet-ls',
       'erlang-ls',
       'eslint-lsp',
       'gopls',

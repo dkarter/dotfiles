@@ -20,38 +20,7 @@ local M = {}
 -- Sets up Mason and Mason LSP Config
 M.setup = function()
   mason.setup {}
-  mason_lspconfig.setup {
-    ensure_installed = {
-      'ansible-language-server',
-      'arduino-language-server',
-      'bash-language-server',
-      'clangd',
-      'cmake-language-server',
-      'css-lsp',
-      'dockerfile-language-server',
-      'elixir-ls',
-      'elm-language-server',
-      'emmet-ls',
-      'erlang-ls',
-      'eslint-lsp',
-      'gopls',
-      'html-lsp',
-      'json-lsp',
-      'lua-language-server',
-      'prosemd-lsp',
-      'rust-analyzer',
-      'solargraph',
-      'sqlls',
-      'tailwindcss-language-server',
-      'taplo',
-      'terraform-ls',
-      'typescript-language-server',
-      'vim-language-server',
-      'yaml-language-server',
-      'zls',
-    },
-  }
-
+  mason_lspconfig.setup {}
   mason_lspconfig.setup_handlers {
     function(server_name)
       lspconfig[server_name].setup {}
