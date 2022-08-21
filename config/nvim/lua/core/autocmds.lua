@@ -22,3 +22,11 @@ autocmd('BufEnter', {
   command = 'set filetype=markdown',
   group = firenvim_group,
 })
+
+-- share data between nvim instances (registers etc)
+local shada_group = augroup 'Shada'
+autocmd({ 'CursorHold', 'TextYankPost', 'FocusGained', 'FocusLost' }, {
+  pattern = '*',
+  command = "if exists(':rshada') | rshada | wshada | endif",
+  group = shada_group,
+})

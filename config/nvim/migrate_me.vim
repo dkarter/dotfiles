@@ -226,12 +226,6 @@ augroup END
     let $EDITOR      = 'nvr -l'
     let $ECTO_EDITOR = 'nvr -l'
 
-  " share data between nvim instances (registers etc)
-    augroup SHADA
-      autocmd!
-      autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
-            \ if exists(':rshada') | rshada | wshada | endif
-    augroup END
 
 
 " }}}
