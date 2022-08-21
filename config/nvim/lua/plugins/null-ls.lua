@@ -22,11 +22,6 @@ M.setup = function()
       b.code_actions.shellcheck,
 
       ----------------------
-      --   Completions    --
-      ----------------------
-      b.completion.spell,
-
-      ----------------------
       --    Diagnostics   --
       ----------------------
       b.diagnostics.actionlint,
