@@ -1,5 +1,5 @@
 return {
-  setup = function(on_attach)
+  setup = function()
     return {
       settings = {
         -- https://github.com/redhat-developer/vscode-redhat-telemetry#how-to-disable-telemetry-reporting
@@ -31,9 +31,7 @@ return {
         },
       },
 
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-
+      on_attach = function(_client, bufnr)
         -- disable and reset diagnostics for helm files (because the LS can't
         -- read them properly)
         if vim.bo[bufnr].buftype ~= '' or vim.bo[bufnr].filetype == 'helm' then
