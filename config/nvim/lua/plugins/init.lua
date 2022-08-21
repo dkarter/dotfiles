@@ -147,8 +147,15 @@ return packer.startup(function(use)
     end,
   }
 
-  -- vim one (previous colorscheme, might still be useful)
-  use { 'rakr/vim-one' }
+  -- highlight color hex codes with their color (fast!)
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup {
+        '*',
+      }
+    end,
+  }
 
   -- status line
   use {
