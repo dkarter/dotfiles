@@ -270,10 +270,19 @@ return packer.startup(function(use)
     end,
   }
 
+  -- auto complete closable pairs
   use {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup {}
+    end,
+  }
+
+  -- auto close html/tsx tags using TreeSitter
+  use {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
     end,
   }
 

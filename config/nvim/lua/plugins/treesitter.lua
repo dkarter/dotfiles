@@ -52,6 +52,7 @@ local default = {
     'yaml',
     'zig',
   },
+  autotag = { enable = true },
   highlight = { enable = true },
   context_commentstring = {
     enable = true,
