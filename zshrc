@@ -313,7 +313,7 @@ fi
 
 # shows cheat sheet for a command
 function cht() {
-  curl "https://cht.sh/$1"
+  curl --silent "https://cht.sh/$1" | bat -p
 }
 
 # git functions
