@@ -157,6 +157,15 @@ return packer.startup(function(use)
     end,
   }
 
+  -- highlight and search todo/fixme/hack etc comments
+  use {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('todo-comments').setup {}
+    end,
+  }
+
   -- status line
   use {
     'nvim-lualine/lualine.nvim',
