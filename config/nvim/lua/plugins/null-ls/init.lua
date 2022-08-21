@@ -34,6 +34,7 @@ M.setup = function()
       b.diagnostics.rubocop,
       b.diagnostics.shellcheck,
       b.diagnostics.yamllint,
+      require 'plugins.null-ls.commitlint',
 
       ----------------------
       --    Formatters    --
