@@ -28,7 +28,7 @@ M.setup = function()
       b.diagnostics.codespell,
       b.diagnostics.credo.with {
         -- run credo in strict mode even if strict mode is not enabled in .credo.exs
-        args = { 'credo', 'suggest', '--strict', '--format', 'json', '--read-from-stdin', '$FILENAME' },
+        extra_args = { '--strict' },
       },
       b.diagnostics.eslint_d,
       b.diagnostics.rubocop,
