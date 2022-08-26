@@ -50,6 +50,14 @@ if [[ $DISTRO_BASE = 'debian' ]]; then
 elif [[ $OS = 'mac' ]]; then
 	echo 'Mac detected'
 
+	echo 'Disabling annoying features...'
+	# disables the hold key menu to allow key repeat
+	defaults write -g ApplePressAndHoldEnabled -bool false
+	# The speed of repetition of characters
+	defaults write -g KeyRepeat -int 2
+	# Delay until repeat
+	defaults write -g InitialKeyRepeat -int 15
+
 	if ! command -v brew &>/dev/null; then
 		echo 'Homebrew not installed, installing...'
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
