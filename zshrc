@@ -467,6 +467,10 @@ export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# configure neovim remote
+[[ ! -f ~/.config/zsh/nvr.zsh ]] || source ~/.config/zsh/nvr.zsh
+
 # zprof
 # profiling bottom
 # unsetopt XTRACE
