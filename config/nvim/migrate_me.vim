@@ -59,7 +59,7 @@ nnoremap <silent> <C-t> :BTags<CR>
 
     command! Gconflict call fzf#run(
           \ {
-          \ 'source': "rg -l '^(<<<|===|>>>)'",
+          \ 'source': "rg -l --hidden '^(<<<|===|>>>)'",
           \ 'sink': function('<sid>jump_to_first_conflict'),
           \ 'options': '-m '. s:gconflict_preview_cmd(),
           \ 'window': { 'width': 0.9, 'height': 0.6 }
