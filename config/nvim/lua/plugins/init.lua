@@ -67,7 +67,7 @@ return packer.startup(function(use)
       -- elixir commands from elixirls
       {
         'mhanberg/elixir.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
+        requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
       },
     },
     config = function()
