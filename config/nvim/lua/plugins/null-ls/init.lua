@@ -35,6 +35,7 @@ M.setup = function()
       b.diagnostics.rubocop,
       b.diagnostics.shellcheck,
       b.diagnostics.yamllint,
+      b.diagnostics.zsh,
       require 'plugins.null-ls.commitlint',
 
       ----------------------
