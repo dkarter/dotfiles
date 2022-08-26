@@ -32,10 +32,10 @@ opt.shiftround = true -- Round indent to multiple of 'shiftwidth'
 opt.smartindent = true
 
 -- text appearance
-opt.textwidth = 80 --  set row width size in    charcters
+opt.textwidth = 80 --  set row width size in characters
 opt.wrap = false
 opt.list = true --  show invisible characters
-opt.listchars = 'tab:»·,trail:·,nbsp:·' --  Display        extra   whitespace
+opt.listchars = 'tab:»·,trail:·,nbsp:·' --  Display extra whitespace
 
 -- line numbers
 opt.number = true
