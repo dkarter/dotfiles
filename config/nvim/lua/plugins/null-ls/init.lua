@@ -27,7 +27,8 @@ M.setup = function()
       b.diagnostics.actionlint,
       b.diagnostics.codespell,
       b.diagnostics.credo.with {
-        -- run credo in strict mode even if strict mode is not enabled in .credo.exs
+        -- run credo in strict mode even if strict mode is not enabled in
+        -- .credo.exs
         extra_args = { '--strict' },
       },
       b.diagnostics.eslint_d,
@@ -53,7 +54,7 @@ M.setup = function()
         -- args = { 'format', '$FILENAME' },
         -- should be resolved in Elixir 1.14 with https://github.com/elixir-lang/elixir/blob/a342311843a241b578533c6dd22102cd647ce130/lib/mix/lib/mix/tasks/format.ex#L69
         -- and then I can add that extra flag (but will have to deal with
-        -- backwards compatibility with old projects
+        -- backwards compatibility with old projects)
       },
       b.formatting.pg_format,
       b.formatting.prettierd,
