@@ -430,7 +430,32 @@ return packer.startup(function(use)
   use { 'jsfaint/gen_tags.vim' }
 
   -- show trailing white spaces and allow deleting them
-  use 'ntpeters/vim-better-whitespace'
+  -- consider swapping with https://github.com/zakharykaplan/nvim-retrail
+  use {
+    'ntpeters/vim-better-whitespace',
+    setup = function()
+      vim.g.better_whitespace_filetypes_blacklist = {
+        'TelescopePrompt',
+        'Trouble',
+        'WhichKey',
+        'alpha',
+        'checkhealth',
+        'diff',
+        'fugitive',
+        'git',
+        'gitcommit',
+        'help',
+        'lspinfo',
+        'lspsagafinder',
+        'lspsagaoutline',
+        'man',
+        'markdown',
+        'mason',
+        'qf',
+        'unite',
+      }
+    end,
+  }
 
   -- Convert code to multiline
   use {
