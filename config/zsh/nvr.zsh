@@ -20,15 +20,18 @@ unalias :e 2>/dev/null
 
 # Let's export the $EDITOR and NVIM_LISTEN_ADDRESS to use nvr and the current
 # session socket.
-local __current_tmux_session=$(tmux display-message -p '#S')
-local __current_session_window=$(tmux display-message -p '#I')
+local __current_tmux_session="$(tmux display-message -p '#S')"
+local __current_session_window="$(tmux display-message -p '#I')"
 # Replace slashes on session name to prevent socket creation errors
-__current_tmux_session=${__current_tmux_session//\//-}
+__current_tmux_session="${__current_tmux_session//\//-}"
 export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket-${__current_tmux_session}-${__current_session_window}"
-export EDITOR="nvr --remote-tab -s --servername=$NVIM_LISTEN_ADDRESS"
-export VISUAL=$EDITOR
 
-alias e=$EDITOR
+export EDITOR="nvr"
+export VISUAL="nvr"
+
+function e() {
+  nvr "$1" && tmux select-pane -l
+}
 
 # Elixir Editor Support
 # -------------------------------------------
