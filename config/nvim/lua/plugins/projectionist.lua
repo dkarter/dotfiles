@@ -14,7 +14,7 @@ vim.g.projectionist_heuristics = {
       alternate = { 'lib/{}.ex', '{}.ex' },
       template = {
         'defmodule {camelcase|capitalize|dot}Test do',
-        '  use ExUnit.Case',
+        '  use ExUnit.Case, async: true',
         '',
         '  alias {camelcase|capitalize|dot}, as: Subject',
         '',
