@@ -6,7 +6,6 @@ vim.g.projectionist_heuristics = {
       type = 'lib',
       alternate = {
         'test/{}_test.exs',
-        'test/lib/{}_test.exs',
       },
       template = { 'defmodule {camelcase|capitalize|dot} do', 'end' },
     },
