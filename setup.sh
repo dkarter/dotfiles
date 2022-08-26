@@ -8,7 +8,7 @@ lowercase() {
 	echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
 }
 
-OS=$(lowercase $(uname))
+OS="$(lowercase "$(uname)")"
 KERNEL="$(uname -r)"
 MACH="$(uname -m)"
 
@@ -24,7 +24,7 @@ else
 		if [ -f /etc/UnitedLinux-release ]; then
 			DIST="${DIST}[$(cat /etc/UnitedLinux-release | tr "\n" ' ' | sed s/VERSION.*//)]"
 		fi
-		OS=$(lowercase $OS)
+		OS="$(lowercase "$OS")"
 		readonly OS
 		readonly DIST
 		readonly DISTRO_BASE
