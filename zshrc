@@ -337,23 +337,6 @@ in() {
   fi
 }
 
-# checkout a PR from github
-function pr() {
-  local origin pr
-  if [[ $# == 0 ]]; then
-    echo "usage: pr [remote] <ref>"
-    return 1
-  elif [[ $# == 1 ]]; then
-    origin=$(git config branch.master.remote || echo origin)
-    pr=$1
-  else
-    origin=$1
-    pr=$2
-  fi
-  git fetch $origin refs/pull/${pr}/head || return
-  git checkout -q FETCH_HEAD
-}
-
 # tree command ignoring gitignored files/dirs
 function gtree() {
   git_ignore_file=$(git config --get core.excludesfile)
