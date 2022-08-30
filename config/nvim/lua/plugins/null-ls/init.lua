@@ -26,10 +26,17 @@ M.setup = function()
       ----------------------
       b.diagnostics.actionlint,
       b.diagnostics.codespell,
+
       b.diagnostics.credo.with {
         -- run credo in strict mode even if strict mode is not enabled in
         -- .credo.exs
         extra_args = { '--strict' },
+        -- only register credo source if it is installed in the current project
+        condition = function(_utils)
+          local cmd = { 'rg', ':credo', 'mix.exs' }
+          local credo_installed = ('' == vim.fn.system(cmd))
+          return not credo_installed
+        end,
       },
       b.diagnostics.eslint_d,
       b.diagnostics.rubocop,
