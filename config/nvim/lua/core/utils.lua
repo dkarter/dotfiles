@@ -13,6 +13,21 @@ function M.load_local_vimrc()
   end
 end
 
+-- Returns a list of border characters
+---@param name 'double' | 'none' | 'rounded' | 'shadow' | 'single'
+---@return table<string>
+function M.get_border_chars(name)
+  local border_chars = {
+    double = { '═', '║', '═', '║', '╔', '╗', '╝', '╚' },
+    none = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+    rounded = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    shadow = { '▀', '█', '▄', '█', '█', '█', '█', '█' },
+    single = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+  }
+
+  return border_chars[name]
+end
+
 -- Reload all lua configuration modules
 function M.reload_modules()
   local config_path = vim.fn.stdpath 'config' .. '/lua/'

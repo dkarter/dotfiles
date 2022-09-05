@@ -535,6 +535,7 @@ return packer.startup(function(use)
       'nvim-telescope/telescope-ui-select.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       'm-demare/attempt.nvim',
+      'folke/tokyonight.nvim',
     },
     config = function()
       require('plugins.telescope').setup()

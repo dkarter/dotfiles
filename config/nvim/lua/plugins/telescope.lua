@@ -6,6 +6,7 @@ end
 
 local default = {
   defaults = {
+    results_title = false,
     vimgrep_arguments = {
       'rg',
       '--color=never',
@@ -39,7 +40,7 @@ local default = {
     path_display = { 'truncate' },
     winblend = 0,
     border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    borderchars = require('core.utils').get_border_chars 'none',
     color_devicons = true,
     use_less = true,
     set_env = { ['COLORTERM'] = 'truecolor' },
@@ -81,10 +82,68 @@ local default = {
       end,
     },
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown {},
+      {
+        layout_config = {
+          -- Preview should always show (unless previewer = false)
+          preview_cutoff = 1,
+
+          width = function(_, max_columns, _)
+            return math.min(max_columns, 80)
+          end,
+
+          height = function(_, _, max_lines)
+            return math.min(max_lines, 15)
+          end,
+        },
+      },
     },
   },
 }
+
+local apply_highlights = function()
+  local colors = require('tokyonight.colors').setup {}
+  local util = require 'tokyonight.util'
+  -- not sure why lua ls cannot see this field.. it's there..
+  ---@diagnostic disable-next-line: undefined-field
+  local results_bg = util.darken(colors.bg_highlight, 0.2)
+
+  local TelescopePrompt = {
+    TelescopePreviewNormal = {
+      bg = util.darken(colors.bg_dark, 0.8),
+    },
+    TelescopePreviewBorder = {
+      bg = util.darken(colors.bg_dark, 0.8),
+    },
+    TelescopePromptNormal = {
+      bg = '#2d3149',
+    },
+    TelescopePromptBorder = {
+      bg = '#2d3149',
+    },
+    TelescopePromptTitle = {
+      fg = util.lighten('#2d3149', 0.8),
+      bg = '#2d3149',
+    },
+    TelescopePreviewTitle = {
+      fg = colors.info,
+      bg = colors.bg_dark,
+    },
+    TelescopeResultsTitle = {
+      fg = colors.bg_dark,
+      bg = results_bg,
+    },
+    TelescopeResultsNormal = {
+      bg = results_bg,
+    },
+    TelescopeResultsBorder = {
+      bg = results_bg,
+    },
+  }
+
+  for hl, col in pairs(TelescopePrompt) do
+    vim.api.nvim_set_hl(0, hl, col)
+  end
+end
 
 local M = {}
 
@@ -105,6 +164,8 @@ M.setup = function()
   for _, e in ipairs(extensions) do
     telescope.load_extension(e)
   end
+
+  apply_highlights()
 
   require('core.mappings').telescope_mappings()
 end
