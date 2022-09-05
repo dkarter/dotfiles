@@ -15,10 +15,14 @@ end
 
 local M = {}
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
   -- cmp plugin)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
+    vim.lsp.buf_detach_client(bufnr, client.id)
+  end
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
