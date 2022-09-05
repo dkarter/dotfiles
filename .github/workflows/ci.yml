@@ -5,6 +5,17 @@ on:
     branches: [master]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install yamllint
+        run: |
+          apt install yamllint
+
+      - name: Lint Yaml Files
+        run: |
+          yamllint -c config/yamllint/config .
+
   release:
     runs-on: ubuntu-latest
     steps:
