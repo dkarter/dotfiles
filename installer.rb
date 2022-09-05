@@ -37,6 +37,7 @@ SYMLINK_DIRS = [
   %w[./config/vifm ~/.config/vifm],
   %w[./config/rubocop ~/.config/rubocop],
   %w[./config/git ~/.config/git],
+  %w[./config/yamllint ~/.config/yamllint],
   %w[./config/zsh ~/.config/zsh],
 ].freeze
 
