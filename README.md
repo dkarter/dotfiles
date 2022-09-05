@@ -36,6 +36,7 @@ Here are some details about my setup:
 - **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
 
 ![screenshot](./screenshot.png)
+![image](https://user-images.githubusercontent.com/551858/188434274-2df6fe83-7824-4b45-a797-51a96a1b928b.png)
 
 Feel free to "steal" anything you want, and if you have a question please open an issue.
 
