@@ -2,11 +2,11 @@
 
 --- Create augroup
 ---@param name string
-local augroup = function(name)
+augroup = function(name)
   vim.api.nvim_create_augroup(name, { clear = true })
 end
 
-local autocmd = vim.api.nvim_create_autocmd
+autocmd = vim.api.nvim_create_autocmd
 
 -- automatic spell check for some file types
 local spell_group = augroup 'SetSpell'
@@ -30,3 +30,8 @@ autocmd({ 'CursorHold', 'TextYankPost', 'FocusGained', 'FocusLost' }, {
   command = "if exists(':rshada') | rshada | wshada | endif",
   group = shada_group,
 })
+
+return {
+  autocmd = autocmd,
+  augroup = augroup,
+}
