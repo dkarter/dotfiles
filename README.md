@@ -10,7 +10,6 @@
   <b>:sparkles: Dorian's Dotfiles :sparkles:</b>
 </p>
 
-
 <br />
 
 ### Thanks for dropping by!
@@ -19,7 +18,7 @@ This is my personal collection of configuration files.
 
 Here are some details about my setup:
 
-- **OS**: [Pop!_OS](https://pop.system76.com/)
+- **OS**: [Pop!\_OS](https://pop.system76.com/)
 - **DE**: [Gnome](https://www.gnome.org)
 - **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
 - **Shell**: [zsh](https://www.zsh.org/)
@@ -40,11 +39,11 @@ Here are some details about my setup:
 
 Feel free to "steal" anything you want, and if you have a question please open an issue.
 
---------
+---
 
 # Installation
 
-Easy.. 
+Easy..
 
 ```sh
 git clone git@github.com:dkarter/dotfiles.git
@@ -63,7 +62,7 @@ I don't recommend using other people's dotfiles, at least not when you're just s
 My dotfiles are now automatically versioned and contain a [Changelog](./CHANGELOG.md)! The main branch will be continuously updated, and you can use git tags to check out specific versions.
 
 > :warning: notice how I said automatically version and not semantically
-> versioned. While I do try to keep a good git hygene, and the versioning script
+> versioned. While I do try to keep a good git hygiene, and the versioning script
 > follows conventional commits to determine the semantic version, I may still
 > introduce a breaking change without a warning (these are my personal dotfiles
 > after all :). The best course of action might be to have an independent fork
@@ -71,18 +70,17 @@ My dotfiles are now automatically versioned and contain a [Changelog](./CHANGELO
 
 Releases and versioning is done using [Release Please](https://github.com/googleapis/release-please), GitHub Actions, and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
---------
+---
 
 # Development
 
 - This repo now uses conventional commits. To install the git hooks simply run `yarn` in the project directory
 - To start development use [airmux](https://github.com/dermoumi/airmux) (alias `mux`) inside the project directory
 
-
-
---------
+---
 
 ## FAQ
+
 <details>
 <summary>Q: Why are things named without a dot at the beginning?</summary>
 A: It makes it easier to include files in this repo if they are not named
