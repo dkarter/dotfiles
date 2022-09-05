@@ -303,6 +303,9 @@ M.telescope_mappings = function()
 
   nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts }
 
+  -- better spell suggestions
+  nmap { 'z=', '<cmd>Telescope spell_suggest<cr>', default_opts }
+
   -- Git
   -- bc = buffer commits (like gitv!)
   nmap { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', default_opts }
