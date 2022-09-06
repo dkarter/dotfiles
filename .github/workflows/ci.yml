@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
       - name: Run yamllint
         uses: karancode/yamllint-github-action@v2.0.0
@@ -27,9 +27,21 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
       - name: RuboCop Linter Action
         uses: andrewmcodes/rubocop-linter-action@v3.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  shell-lint:
+    runs-on: ubuntu-latest
+
+    name: 'Lint: Shell'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@1.1.0
