@@ -19,3 +19,17 @@ jobs:
           yamllint_file_or_dir: '.'
           yamllint_strict: true
           yamllint_config_filepath: config/yamllint/config
+
+  ruby-lint:
+    runs-on: ubuntu-latest
+
+    name: 'Lint: Ruby'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: RuboCop Linter Action
+        uses: andrewmcodes/rubocop-linter-action@v3.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
