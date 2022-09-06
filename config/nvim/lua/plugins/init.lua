@@ -260,6 +260,7 @@ return packer.startup(function(use)
     end,
   }
 
+  -- TODO: Remove when updating to Neovim v0.8 since this was merged into core
   use {
     'lewis6991/spellsitter.nvim',
     requires = {
