@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # vim: ft=sh
 # Unix
 # short for ls
@@ -207,7 +209,6 @@ alias ss='imgur-screenshot.sh'
 # debian
 # creates a pbcopy command using xclip
 command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
-
 
 # tldr (quicker to type help than tldr)
 alias help='tldr'
