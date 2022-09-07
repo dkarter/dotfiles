@@ -44,4 +44,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: ShellCheck
-        uses: ludeeus/action-shellcheck@1.1.0
+        uses: ludeeus/action-shellcheck@b2bbefc2e6b9dcbc6355b85e366c9e55bf8d57e1
+        with:
+          ignore_paths: './iterm/TerminalVim.app/'
+          ignore_names: '*/**/*.zsh zshrc'
