@@ -5,9 +5,10 @@ on:
 
 jobs:
   yaml-lint:
-    runs-on: ubuntu-latest
-
     name: 'Lint: Yaml'
+
+    runs-on: ubuntu-latest
+    if: always()
 
     steps:
       - name: Checkout
@@ -21,9 +22,10 @@ jobs:
           yamllint_config_filepath: config/yamllint/config
 
   ruby-lint:
-    runs-on: ubuntu-latest
-
     name: 'Lint: Ruby'
+
+    runs-on: ubuntu-latest
+    if: always()
 
     steps:
       - name: Checkout
@@ -35,9 +37,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   shell-lint:
-    runs-on: ubuntu-latest
-
     name: 'Lint: Shell'
+
+    runs-on: ubuntu-latest
+    if: always()
 
     steps:
       - name: Checkout
