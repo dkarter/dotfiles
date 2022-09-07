@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install all debian packages needed for my dotfiles
 sudo apt -y install \
   autoconf \

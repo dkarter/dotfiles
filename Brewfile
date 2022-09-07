@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # some fonts
 tap 'homebrew/cask-fonts'
 cask 'font-fira-code-nerd-font'

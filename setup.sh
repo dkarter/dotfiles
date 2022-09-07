@@ -19,10 +19,10 @@ else
 	if [ "${OS}" = "Linux" ]; then
 		if [ -f /etc/debian_version ]; then
 			DISTRO_BASE='debian'
-			DIST=$(cat /etc/lsb-release | grep '^DISTRIB_ID' | awk -F= '{ print $2 }')
+			DIST=$(grep '^DISTRIB_ID' </etc/lsb-release | awk -F= '{ print $2 }')
 		fi
 		if [ -f /etc/UnitedLinux-release ]; then
-			DIST="${DIST}[$(cat /etc/UnitedLinux-release | tr "\n" ' ' | sed s/VERSION.*//)]"
+			DIST="${DIST}[$(tr "\n" ' ' </etc/UnitedLinux-release | sed s/VERSION.*//)]"
 		fi
 		OS="$(lowercase "$OS")"
 		readonly OS
