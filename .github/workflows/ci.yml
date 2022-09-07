@@ -51,3 +51,17 @@ jobs:
         with:
           ignore_paths: './iterm/TerminalVim.app/'
           ignore_names: '*/**/*.zsh zshrc'
+
+  spelling:
+    name: 'Lint: Spelling'
+
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check spelling in code
+        # yamllint disable-line rule:line-length
+        uses: codespell-project/actions-codespell@2391250ab05295bddd51e36a8c6295edb6343b0e

@@ -1,0 +1,5 @@
+set classify+=' ::*.cljs,,*.edn::'
+# fo [FUZZY PATTERN] - Open the selected file with the default editor
+fo() {
+" unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
+nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4' }/<cr>" }
