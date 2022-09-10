@@ -18,7 +18,7 @@ This is my personal collection of configuration files.
 
 Here are some details about my setup:
 
-- **OS**: [Pop!\_OS](https://pop.system76.com/)
+- **OS**: [Pop!\_OS](https://pop.system76.com/) / macOS
 - **DE**: [Gnome](https://www.gnome.org)
 - **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
 - **Shell**: [zsh](https://www.zsh.org/)
@@ -37,6 +37,7 @@ Here are some details about my setup:
 
 ![screenshot](./screenshot.png)
 ![image](https://user-images.githubusercontent.com/551858/188434274-2df6fe83-7824-4b45-a797-51a96a1b928b.png)
+<img width="2226" alt="image" src="https://user-images.githubusercontent.com/551858/189501141-a442b7b8-4089-4721-aaff-7d467b3d8bf4.png">
 
 Feel free to "steal" anything you want, and if you have a question please open an issue.
 
