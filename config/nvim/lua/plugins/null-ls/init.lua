@@ -51,18 +51,9 @@ M.setup = function()
       -- Doesn't work for heex files
       b.formatting.mix.with {
         extra_filetypes = { 'eelixir', 'heex' },
-        -- we can't use stdin to format heex files due to how formatter
-        -- plugins work (they rely on file extensions)
-        -- see https://hexdocs.pm/mix/main/Mix.Tasks.Format.html#module-plugins
-        -- It might be nicer to split this into a efm custom lsp just for
-        -- formatting heex files (see example at
-        -- https://github.com/lukas-reineke/lsp-format.nvim#how-do-i-use-format-options)
-        -- or to keep things in null-ls, I could register a custom null-ls
-        -- server such as in this example https://github.com/jose-elias-alvarez/null-ls.nvim#parsing-buffer-content
-        -- args = { 'format', '$FILENAME' },
-        -- should be resolved in Elixir 1.14 with https://github.com/elixir-lang/elixir/blob/a342311843a241b578533c6dd22102cd647ce130/lib/mix/lib/mix/tasks/format.ex#L69
-        -- and then I can add that extra flag (but will have to deal with
-        -- backwards compatibility with old projects)
+        -- tells the formatter the filename for the code passed to it via stdin.
+        -- This allows formatting heex files correctly
+        extra_args = { '--stdin-filename', '$FILENAME' },
       },
       b.formatting.pg_format,
       b.formatting.prettierd,
