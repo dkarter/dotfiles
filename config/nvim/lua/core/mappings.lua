@@ -414,8 +414,8 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
   end
 
   -- Navigation
-  nmap { ']c', next_hunk, opts }
-  nmap { '[c', prev_hunk, opts }
+  nmap { ']h', next_hunk, opts }
+  nmap { '[h', prev_hunk, opts }
 
   -- Hunk operations
   -- Undo Hunk
