@@ -222,6 +222,7 @@ return packer.startup(function(use)
     requires = { 'benmills/vimux' },
     config = function()
       vim.g['test#strategy'] = 'vimux'
+      -- accommodations for Malomo's unusual folder structure on Dash
       vim.cmd [[let test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|__tests__))\.(js|jsx|coffee|ts|tsx)$']]
       require('core.mappings').vim_test_mappings()
     end,
