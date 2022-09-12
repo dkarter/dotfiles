@@ -230,17 +230,13 @@ return packer.startup(function(use)
   -- Highlight Yanked String
   use { 'machakann/vim-highlightedyank' }
 
-  -- browse commit history for file
+  -- git integration
   use {
-    'junegunn/gv.vim',
-    requires = { 'tpope/vim-fugitive' },
+    'tpope/vim-fugitive',
     config = function()
       require('core.mappings').fugitive_mappings()
     end,
   }
-
-  -- git integration
-  use { 'tpope/vim-fugitive' }
 
   -- github support for fugitive
   use {
@@ -576,6 +572,15 @@ return packer.startup(function(use)
     config = function()
       require('core.mappings').easy_align_mappings()
     end,
+  }
+
+  -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+  use {
+    'sindrets/diffview.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
   }
 
   -- manage github gists
