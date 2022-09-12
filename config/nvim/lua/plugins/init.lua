@@ -560,6 +560,11 @@ return packer.startup(function(use)
   -- RipGrep - grep is dead. All hail the new king RipGrep.
   use {
     'jremmen/vim-ripgrep',
+    setup = function()
+      -- allow hidden files to be searched and use smart case
+      vim.g.rg_command = 'rg --vimgrep --hidden --smart-case'
+      vim.g.rg_highlight = 1
+    end,
     config = function()
       require('core.mappings').ripgrep_mappings()
     end,
