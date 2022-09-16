@@ -312,6 +312,8 @@ class Installer
   end
 
   def confirm(msg)
+    return true if ARGV.include?('--force')
+
     print "#{msg} [Y/n] "
     resp = gets.strip.downcase
     puts ''
