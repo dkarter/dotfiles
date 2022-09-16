@@ -98,69 +98,126 @@ NPMS = %w[
 
 CARGOS = %w[stylua airmux fastmod].freeze
 
-# Installs dotfiles and configures the machine to my preferences
-# This is an idempotent script (or at least should be)
-class Installer
-  # This is the main function containing all the setup steps in their intended
-  # order
-  # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
-  def install
-    print_title
-
-    return unless confirm('Run installer?')
-
-    install_fonts if confirm('Install fonts?')
-
-    # Create necessary dirs for installer
-    create_dirs
-
-    # Change default shell
-    change_shell if !shell_already_zsh? && confirm('Make zsh default?')
-
-    # Zsh Plugin Manager
-    install_zinit if confirm('Install zinit?')
-
-    # ASDF
-    if confirm('Install ASDF and latest tool versions?')
+TASKS = [
+  {
+    name: 'Default Shell',
+    sync: false,
+    confirmation: 'Make zsh default?',
+    run_if: proc { !shell_already_zsh? },
+    callback: proc { change_shell },
+  },
+  {
+    name: 'Fonts',
+    sync: false,
+    confirmation: 'Install fonts?',
+    callback: proc { install_fonts },
+  },
+  {
+    name: 'Create Dirs',
+    sync: true,
+    callback: proc { create_dirs },
+  },
+  {
+    name: 'Symlink Dotfiles',
+    sync: true,
+    confirmation: 'Link dotfiles?',
+    callback: proc do
+      symlink_dotfiles
+      symlink_nested_dotfiles
+    end,
+  },
+  {
+    name: 'ZSH Plugin Manager',
+    sync: false,
+    confirmation: 'Install zinit?',
+    callback: proc { install_zinit },
+  },
+  {
+    name: 'ASDF',
+    sync: false,
+    confirmation: 'Install ASDF and latest tool versions?',
+    callback: proc do
       install_asdf
       update_asdf
       install_asdf_plugins
       install_asdf_tools
-    end
-
-    # Dotfiles
-    if confirm('Link dotfiles?')
-      symlink_dotfiles
-      symlink_nested_dotfiles
-    end
-
-    # External packages
-    if confirm('Install external packages (gems, pips, cargos, npms)?')
+    end,
+  },
+  {
+    name: 'Extrenal Packages',
+    sync: false,
+    confirmation: 'Install external packages (gems, pips, cargos, npms)?',
+    callback: proc do
       install_rubygems
       install_npm_packages
       install_python_packages
       install_rust_cargos
+    end,
+  },
+].freeze
+
+# Installs dotfiles and configures the machine to my preferences
+# This is an idempotent script (or at least should be)
+class Installer
+  def install
+    trap('SIGINT') do
+      puts ''
+      puts 'Cancelled! Exiting...'.red
+      exit!
     end
 
+    print_title
+
+    return unless sync? || confirm('Run installer?')
+
+    TASKS.each { |task| run_task(task) }
+
+    puts ''
     puts '===== ALL DONE! ====='.green
   end
-  # rubocop:enable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 
   private
+
+  def run_task(task)
+    task in {name: name, callback: callback, sync: sync}
+
+    # skip non "sync" tasks when in sync mode
+    # sync mode is used to just sync commonly changed files and directories
+    return if sync? && !sync
+
+    puts ''
+    puts "=== TASK: #{name}".pink
+    puts ''
+
+    # skip if run_if condition is not met
+    if task[:run_if] && !instance_eval(&task[:run_if])
+      puts 'Skipping...'.yellow + '  (run_if: false)'.light_blue
+      return
+    end
+
+    # ask for confirmation (automatically confirmed in `force` mode)
+    if task[:confirmation] && !confirm(task[:confirmation])
+      puts 'Skipping...'.yellow
+      return
+    end
+
+    # execute the task
+    instance_eval(&callback)
+  end
 
   def print_title
     file = File.open('installer/title.txt')
     title = file.read
-    puts title.green
+    puts title.red
   end
 
   def create_dirs
-    puts '===== Creating dirs'.yellow
+    puts '===== Creating dirs'.blue
     DIRS.each { |dir| mkdir(dir) }
   end
 
   def install_zinit
-    puts '===== Installing zinit'.yellow
+    puts '===== Installing zinit'.blue
 
     IO.popen(<<-COMMAND.chomp)
       ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" && \
@@ -171,19 +228,19 @@ class Installer
   end
 
   def install_asdf
-    puts '===== Installing asdf'.yellow
+    puts '===== Installing asdf'.blue
 
     git_install('git@github.com:asdf-vm/asdf.git', ASDF_INSTALL_DIR)
   end
 
   def update_asdf
-    puts '===== Updating asdf to latest version'.yellow
+    puts '===== Updating asdf to latest version'.blue
 
     asdf_command('asdf update')
   end
 
   def install_asdf_plugins
-    puts '===== Installing asdf plugins'.yellow
+    puts '===== Installing asdf plugins'.blue
 
     ASDF_PLUGINS.each do |plugin, url|
       puts "Installing #{plugin} plugin...".light_blue
@@ -192,7 +249,7 @@ class Installer
   end
 
   def install_asdf_tools
-    puts '===== Installing asdf packages latest version'.yellow
+    puts '===== Installing asdf packages latest version'.blue
 
     # import OpenPGP keysfornode
     popen(
@@ -214,7 +271,7 @@ class Installer
   end
 
   def install_fonts
-    puts '==== Installing fonts'.yellow
+    puts '==== Installing fonts'.blue
 
     # download_fonts
     [
@@ -232,7 +289,7 @@ class Installer
               raise 'WTF? not a mac or linux.. who are you?'
             end
 
-      target_path = File.expand_path(Pathname.join(dir, filename))
+      target_path = File.expand_path(File.join(dir, filename))
 
       print(
         'Downloading '.light_blue + filename + ' -> '.light_blue + target_path +
@@ -248,13 +305,13 @@ class Installer
   end
 
   def install_rust_cargos
-    puts '===== Installing Rust Cargos'.yellow
+    puts '===== Installing Rust Cargos'.blue
 
     CARGOS.each { |cargo| popen("cargo install #{cargo}") }
   end
 
   def symlink_dotfiles
-    puts '===== Symlinking dotfiles'.yellow
+    puts '===== Symlinking dotfiles'.blue
 
     DOTFILES.each do |source|
       raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
@@ -271,7 +328,7 @@ class Installer
   end
 
   def symlink_nested_dotfiles
-    puts '===== Symlinking nested dotfiles'.yellow
+    puts '===== Symlinking nested dotfiles'.blue
 
     SYMLINK_DIRS.each do |source, target|
       print(
@@ -286,19 +343,19 @@ class Installer
   end
 
   def install_rubygems
-    puts '===== Installing necessary RubyGems'.yellow
+    puts '===== Installing necessary RubyGems'.blue
 
     asdf_command("gem install #{GEMS.join(' ')}")
   end
 
   def install_python_packages
-    puts '===== Installing Python packages'.yellow
+    puts '===== Installing Python packages'.blue
 
     asdf_command("pip3 install #{PIPS3.join(' ')}")
   end
 
   def install_npm_packages
-    puts '===== Installing NPM packages'.yellow
+    puts '===== Installing NPM packages'.blue
 
     asdf_command("npm install -g #{NPMS.join(' ')}")
   end
@@ -368,6 +425,10 @@ class Installer
 
   def force?
     ARGV.include?('--force')
+  end
+
+  def sync?
+    ARGV.include?('--sync')
   end
 
   def shell_already_zsh?
