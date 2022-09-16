@@ -156,8 +156,8 @@ colors:
     white: '0xc0caf5'
 
   indexed_colors:
-    - {index: 16, color: '0xff9e64'}
-    - {index: 17, color: '0xdb4b4b'}
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 
 #  # Indexed Colors
 #  #
@@ -404,85 +404,85 @@ bell:
 # in the order they were defined in.
 #
 key_bindings:
-  - {key: V, mods: Super, action: Paste}
-  - {key: C, mods: Super, action: Copy}
-  - {key: Q, mods: Super, action: Quit}
-  - {key: N, mods: Super, action: CreateNewWindow}
-  - {key: Return, mods: Super, action: ToggleFullscreen}
+  - { key: V, mods: Super, action: Paste }
+  - { key: C, mods: Super, action: Copy }
+  - { key: Q, mods: Super, action: Quit }
+  - { key: N, mods: Super, action: CreateNewWindow }
+  - { key: Return, mods: Super, action: ToggleFullscreen }
 
-  - {key: Home, chars: "\x1bOH", mode: AppCursor}
-  - {key: Home, chars: "\x1b[H", mode: ~AppCursor}
-  - {key: End, chars: "\x1bOF", mode: AppCursor}
-  - {key: End, chars: "\x1b[F", mode: ~AppCursor}
-  - {key: Equals, mods: Super, action: IncreaseFontSize}
-  - {key: Minus, mods: Super, action: DecreaseFontSize}
-  - {key: Minus, mods: Super|Shift, action: ResetFontSize}
-  - {key: PageUp, mods: Shift, chars: "\x1b[5;2~"}
-  - {key: PageUp, mods: Control, chars: "\x1b[5;5~"}
-  - {key: PageUp, chars: "\x1b[5~"}
-  - {key: PageDown, mods: Shift, chars: "\x1b[6;2~"}
-  - {key: PageDown, mods: Control, chars: "\x1b[6;5~"}
-  - {key: PageDown, chars: "\x1b[6~"}
-  - {key: Left, mods: Shift, chars: "\x1b[1;2D"}
-  - {key: Left, mods: Control, chars: "\x1b[1;5D"}
-  - {key: Left, mods: Alt, chars: "\x1b[1;3D"}
-  - {key: Left, chars: "\x1b[D", mode: ~AppCursor}
-  - {key: Left, chars: "\x1bOD", mode: AppCursor}
-  - {key: Right, mods: Shift, chars: "\x1b[1;2C"}
-  - {key: Right, mods: Control, chars: "\x1b[1;5C"}
-  - {key: Right, mods: Alt, chars: "\x1b[1;3C"}
-  - {key: Right, chars: "\x1b[C", mode: ~AppCursor}
-  - {key: Right, chars: "\x1bOC", mode: AppCursor}
-  - {key: Up, mods: Shift, chars: "\x1b[1;2A"}
-  - {key: Up, mods: Control, chars: "\x1b[1;5A"}
-  - {key: Up, mods: Alt, chars: "\x1b[1;3A"}
-  - {key: Up, chars: "\x1b[A", mode: ~AppCursor}
-  - {key: Up, chars: "\x1bOA", mode: AppCursor}
-  - {key: Down, mods: Shift, chars: "\x1b[1;2B"}
-  - {key: Down, mods: Control, chars: "\x1b[1;5B"}
-  - {key: Down, mods: Alt, chars: "\x1b[1;3B"}
-  - {key: Down, chars: "\x1b[B", mode: ~AppCursor}
-  - {key: Down, chars: "\x1bOB", mode: AppCursor}
-  - {key: Tab, mods: Shift, chars: "\x1b[Z"}
-  - {key: F1, chars: "\x1bOP"}
-  - {key: F2, chars: "\x1bOQ"}
-  - {key: F3, chars: "\x1bOR"}
-  - {key: F4, chars: "\x1bOS"}
-  - {key: F5, chars: "\x1b[15~"}
-  - {key: F6, chars: "\x1b[17~"}
-  - {key: F7, chars: "\x1b[18~"}
-  - {key: F8, chars: "\x1b[19~"}
-  - {key: F9, chars: "\x1b[20~"}
-  - {key: F10, chars: "\x1b[21~"}
-  - {key: F11, chars: "\x1b[23~"}
-  - {key: F12, chars: "\x1b[24~"}
-  - {key: Back, chars: "\x7f"}
-  - {key: Back, mods: Alt, chars: "\x1b\x7f"}
-  - {key: Insert, chars: "\x1b[2~"}
-  - {key: Delete, chars: "\x1b[3~"}
+  - { key: Home, chars: "\x1bOH", mode: AppCursor }
+  - { key: Home, chars: "\x1b[H", mode: ~AppCursor }
+  - { key: End, chars: "\x1bOF", mode: AppCursor }
+  - { key: End, chars: "\x1b[F", mode: ~AppCursor }
+  - { key: Equals, mods: Super, action: IncreaseFontSize }
+  - { key: Minus, mods: Super, action: DecreaseFontSize }
+  - { key: Minus, mods: Super|Shift, action: ResetFontSize }
+  - { key: PageUp, mods: Shift, chars: "\x1b[5;2~" }
+  - { key: PageUp, mods: Control, chars: "\x1b[5;5~" }
+  - { key: PageUp, chars: "\x1b[5~" }
+  - { key: PageDown, mods: Shift, chars: "\x1b[6;2~" }
+  - { key: PageDown, mods: Control, chars: "\x1b[6;5~" }
+  - { key: PageDown, chars: "\x1b[6~" }
+  - { key: Left, mods: Shift, chars: "\x1b[1;2D" }
+  - { key: Left, mods: Control, chars: "\x1b[1;5D" }
+  - { key: Left, mods: Alt, chars: "\x1b[1;3D" }
+  - { key: Left, chars: "\x1b[D", mode: ~AppCursor }
+  - { key: Left, chars: "\x1bOD", mode: AppCursor }
+  - { key: Right, mods: Shift, chars: "\x1b[1;2C" }
+  - { key: Right, mods: Control, chars: "\x1b[1;5C" }
+  - { key: Right, mods: Alt, chars: "\x1b[1;3C" }
+  - { key: Right, chars: "\x1b[C", mode: ~AppCursor }
+  - { key: Right, chars: "\x1bOC", mode: AppCursor }
+  - { key: Up, mods: Shift, chars: "\x1b[1;2A" }
+  - { key: Up, mods: Control, chars: "\x1b[1;5A" }
+  - { key: Up, mods: Alt, chars: "\x1b[1;3A" }
+  - { key: Up, chars: "\x1b[A", mode: ~AppCursor }
+  - { key: Up, chars: "\x1bOA", mode: AppCursor }
+  - { key: Down, mods: Shift, chars: "\x1b[1;2B" }
+  - { key: Down, mods: Control, chars: "\x1b[1;5B" }
+  - { key: Down, mods: Alt, chars: "\x1b[1;3B" }
+  - { key: Down, chars: "\x1b[B", mode: ~AppCursor }
+  - { key: Down, chars: "\x1bOB", mode: AppCursor }
+  - { key: Tab, mods: Shift, chars: "\x1b[Z" }
+  - { key: F1, chars: "\x1bOP" }
+  - { key: F2, chars: "\x1bOQ" }
+  - { key: F3, chars: "\x1bOR" }
+  - { key: F4, chars: "\x1bOS" }
+  - { key: F5, chars: "\x1b[15~" }
+  - { key: F6, chars: "\x1b[17~" }
+  - { key: F7, chars: "\x1b[18~" }
+  - { key: F8, chars: "\x1b[19~" }
+  - { key: F9, chars: "\x1b[20~" }
+  - { key: F10, chars: "\x1b[21~" }
+  - { key: F11, chars: "\x1b[23~" }
+  - { key: F12, chars: "\x1b[24~" }
+  - { key: Back, chars: "\x7f" }
+  - { key: Back, mods: Alt, chars: "\x1b\x7f" }
+  - { key: Insert, chars: "\x1b[2~" }
+  - { key: Delete, chars: "\x1b[3~" }
   # shortcuts for tmux. the leader key is control-z (0x1A)
-  - {key: W, mods: Super, chars: "\x1A&"}  # close tab (kill)
-  - {key: T, mods: Super|Shift, chars: "\x1Ac"}  # new tab
-  - {key: RBracket, mods: Super|Shift, chars: "\x1An"}  # select next tab
-  - {key: LBracket, mods: Super|Shift, chars: "\x1Ap"}  # select previous tab
-  - {key: RBracket, mods: Super, chars: "\x1Ao"}  # select next pane
+  - { key: W, mods: Super, chars: "\x1A&" } # close tab (kill)
+  - { key: T, mods: Super|Shift, chars: "\x1Ac" } # new tab
+  - { key: RBracket, mods: Super|Shift, chars: "\x1An" } # select next tab
+  - { key: LBracket, mods: Super|Shift, chars: "\x1Ap" } # select previous tab
+  - { key: RBracket, mods: Super, chars: "\x1Ao" } # select next pane
   # select last (previously used) pane
-  - {key: LBracket, mods: Super, chars: "\x1A;"}
+  - { key: LBracket, mods: Super, chars: "\x1A;" }
   # search (upwards) (see tmux.conf)
-  - {key: F, mods: Super, chars: "\x1A/"}
+  - { key: F, mods: Super, chars: "\x1A/" }
   # jump to window (with fzf floating window)
-  - {key: P, mods: Super, chars: "\x1AP"}
+  - { key: P, mods: Super, chars: "\x1AP" }
   # jump to pane (with fzf floating window)
-  - {key: P, mods: Super|Shift, chars: "\x1A\x1bP"}
-  - {key: Key1, mods: Super, chars: "\x1A1"}  # jump to pane 1
-  - {key: Key2, mods: Super, chars: "\x1A2"}  # jump to pane 2
-  - {key: Key3, mods: Super, chars: "\x1A3"}  # jump to pane 3
-  - {key: Key4, mods: Super, chars: "\x1A4"}  # jump to pane 4
-  - {key: Key5, mods: Super, chars: "\x1A5"}  # jump to pane 5
-  - {key: Key6, mods: Super, chars: "\x1A6"}  # jump to pane 6
-  - {key: Key7, mods: Super, chars: "\x1A7"}  # jump to pane 7
-  - {key: Key8, mods: Super, chars: "\x1A8"}  # jump to pane 8
-  - {key: Key9, mods: Super, chars: "\x1A9"}  # jump to pane 9
+  - { key: P, mods: Super|Shift, chars: "\x1A\x1bP" }
+  - { key: Key1, mods: Super, chars: "\x1A1" } # jump to pane 1
+  - { key: Key2, mods: Super, chars: "\x1A2" } # jump to pane 2
+  - { key: Key3, mods: Super, chars: "\x1A3" } # jump to pane 3
+  - { key: Key4, mods: Super, chars: "\x1A4" } # jump to pane 4
+  - { key: Key5, mods: Super, chars: "\x1A5" } # jump to pane 5
+  - { key: Key6, mods: Super, chars: "\x1A6" } # jump to pane 6
+  - { key: Key7, mods: Super, chars: "\x1A7" } # jump to pane 7
+  - { key: Key8, mods: Super, chars: "\x1A8" } # jump to pane 8
+  - { key: Key9, mods: Super, chars: "\x1A9" } # jump to pane 9
 
   # fix for <C-/> on macOS
   # https://github.com/alacritty/alacritty/issues/3586
@@ -526,8 +526,8 @@ mouse:
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  double_click: {threshold: 300}
-  triple_click: {threshold: 300}
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
