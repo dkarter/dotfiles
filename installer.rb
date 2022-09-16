@@ -2,6 +2,8 @@
 
 require 'fileutils'
 require 'pathname'
+require 'net/http'
+require 'cgi'
 require_relative 'installer/string'
 
 ASDF_INSTALL_DIR = '~/.asdf'
@@ -100,11 +102,13 @@ CARGOS = %w[stylua airmux fastmod].freeze
 class Installer
   # This is the main function containing all the setup steps in their intended
   # order
-  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
   def install
     print_title
 
     return unless confirm('Run installer?')
+
+    install_fonts if confirm('Install fonts?')
 
     # Create necessary dirs for installer
     create_dirs
@@ -139,8 +143,7 @@ class Installer
 
     puts '===== ALL DONE! ====='.green
   end
-
-  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 
   private
 
@@ -206,6 +209,40 @@ class Installer
       asdf_command(
         "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})",
       )
+    end
+  end
+
+  def install_fonts
+    puts '==== Installing fonts'.yellow
+
+    # download_fonts
+    [
+      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Regular/complete/Caskaydia%20Cove%20Nerd%20Font%20Complete%20Mono%20Regular.otf',
+      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Regular/complete/Caskaydia%20Cove%20Nerd%20Font%20Complete%20Mono%20Italic.otf',
+      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Bold/complete/Caskaydia%20Cove%20Nerd%20Font%20Complete%20Mono%20Bold.otf',
+
+    ].each do |url|
+      filename = CGI.unescape(File.basename(url))
+      dir = if mac?
+              '~/Library/Fonts'
+            elsif linux?
+              '~/.fonts'
+            else
+              raise 'WTF? not a mac or linux.. who are you?'
+            end
+
+      target_path = File.expand_path(Pathname.join(dir, filename))
+
+      print(
+        'Downloading '.light_blue + filename + ' -> '.light_blue + target_path +
+          '...'.light_blue,
+      )
+
+      response = Net::HTTP.get_response(URI.parse(url))
+      File.write(target_path, response)
+
+      puts 'Done'.green
+      puts ''
     end
   end
 
@@ -312,12 +349,24 @@ class Installer
   end
 
   def confirm(msg)
-    return true if ARGV.include?('--force')
+    return true if force?
 
     print "#{msg} [Y/n] "
     resp = gets.strip.downcase
     puts ''
     %w[y yes].include?(resp) || resp == ''
+  end
+
+  def mac?
+    RUBY_PLATFORM.include?('darwin')
+  end
+
+  def linux?
+    RUBY_PLATFORM.include?('linux')
+  end
+
+  def force?
+    ARGV.include?('--force')
   end
 
   def shell_already_zsh?
