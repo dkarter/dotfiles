@@ -6,6 +6,8 @@ require 'net/http'
 require 'cgi'
 require_relative 'installer/string'
 
+Warning[:experimental] = false
+
 ASDF_INSTALL_DIR = '~/.asdf'
 
 DIRS = %w[~/.config ~/.local/share/psql].freeze
