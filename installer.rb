@@ -312,10 +312,10 @@ class Installer
   end
 
   def confirm(msg)
-    print "#{msg} (y/n) "
+    print "#{msg} [Y/n] "
     resp = gets.strip.downcase
     puts ''
-    %w[y yes].include?(resp)
+    %w[y yes].include?(resp) || resp == ''
   end
 
   def shell_already_zsh?
