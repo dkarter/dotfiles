@@ -52,8 +52,9 @@ M.setup = function()
       b.formatting.mix.with {
         extra_filetypes = { 'eelixir', 'heex' },
         -- tells the formatter the filename for the code passed to it via stdin.
-        -- This allows formatting heex files correctly
-        extra_args = { '--stdin-filename', '$FILENAME' },
+        -- This allows formatting heex files correctly. Only available for
+        -- Elixir >= 1.14
+        --[[ extra_args = { '--stdin-filename', '$FILENAME' }, ]]
       },
       b.formatting.pg_format,
       b.formatting.prettierd,
