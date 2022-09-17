@@ -345,6 +345,10 @@ return packer.startup(function(use)
   --  }}}
 
   -- Elixir: {{{
+  -- Detect elixir syntax (should not be necessary in the future, but for now seems
+  -- like it's required to detect eex files)
+  use 'elixir-editors/vim-elixir'
+
   -- elixir text objects
   use {
     'kevinkoltz/vim-textobj-elixir',
