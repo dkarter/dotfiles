@@ -140,9 +140,11 @@ return packer.startup(function(use)
   use {
     'folke/tokyonight.nvim',
     config = function()
-      -- set colorscheme
-      vim.g.tokyonight_transparent = true
-      vim.g.tokyonight_dark_float = false
+      require('tokyonight').setup {
+        style = 'storm',
+        transparent = true,
+      }
+
       vim.cmd [[colorscheme tokyonight]]
     end,
   }
