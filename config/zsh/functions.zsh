@@ -144,19 +144,19 @@ fgst() {
 }
 
 # shows cheat sheet for a command
-function cht() {
+cht() {
   curl --silent "https://cht.sh/$1" | bat -p
 }
 
 # git functions
-function clonecd() {
+clonecd() {
   # find a way to pass the rest of the arguments to
   # git clone in a variadic style to allow still using
   # --depth=1 etc
   git clone git@github.com:"$1.git" && cd "${1#*/}"
 }
 
-function shallowclone() {
+shallowclone() {
   git clone --depth=1 git@github.com:"$1.git" && cd "${1#*/}"
 }
 
@@ -170,7 +170,7 @@ in() {
 }
 
 # tree command ignoring gitignored files/dirs
-function gtree() {
+gtree() {
   git_ignore_file=$(git config --get core.excludesfile)
 
   if [[ -f ${git_ignore_file} ]]; then
@@ -193,7 +193,7 @@ bashman() {
 }
 
 # ask for confirmation in scripts
-function confirm() {
+confirm() {
   read -p "Are you sure? " -n 1 -r
   echo    # move to a new line
   if [[ ! $REPLY =~ ^[Yy]$ ]]
