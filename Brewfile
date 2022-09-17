@@ -35,6 +35,9 @@ brew 'imagemagick'
 # json querying + pretty printing
 brew 'jq'
 
+# html querying
+brew 'htmlq'
+
 # easily copy tabular data
 brew 'yank'
 

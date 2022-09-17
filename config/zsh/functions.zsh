@@ -201,3 +201,12 @@ function confirm() {
     exit 1
   fi
 }
+
+# like jq but for html, using css selectors
+#
+# Dependencies: htmlq, bat
+#
+# Usage: curl --silent https://www.rust-lang.org/ | hq '#get-help'
+hq() {
+  htmlq "$1" | bat -l html -p
+}
