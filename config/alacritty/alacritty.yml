@@ -483,6 +483,10 @@ key_bindings:
   - {key: Key8, mods: Super, chars: "\x1A8"}  # jump to pane 8
   - {key: Key9, mods: Super, chars: "\x1A9"}  # jump to pane 9
 
+  # fix for <C-/> on macOS
+  # https://github.com/alacritty/alacritty/issues/3586
+  - {key: Slash, mods: Control, chars: "\x1f"}
+
   # allow using alt as meta on mac
   # https://godoc.org/github.com/tiborvass/uniline/ansi#Code
   # https://github.com/jwilm/alacritty/issues/93#issuecomment-334790547
