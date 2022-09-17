@@ -435,31 +435,11 @@ return packer.startup(function(use)
   --  auto-generate ctags on save
   use { 'jsfaint/gen_tags.vim' }
 
-  -- show trailing white spaces and allow deleting them
-  -- consider swapping with https://github.com/zakharykaplan/nvim-retrail
+  -- show trailing white spaces and automatically delete them on write
   use {
-    'ntpeters/vim-better-whitespace',
-    setup = function()
-      vim.g.better_whitespace_filetypes_blacklist = {
-        'TelescopePrompt',
-        'Trouble',
-        'WhichKey',
-        'alpha',
-        'checkhealth',
-        'diff',
-        'fugitive',
-        'git',
-        'gitcommit',
-        'help',
-        'lspinfo',
-        'lspsagafinder',
-        'lspsagaoutline',
-        'man',
-        'markdown',
-        'mason',
-        'qf',
-        'unite',
-      }
+    'zakharykaplan/nvim-retrail',
+    config = function()
+      require('plugins.retrail').setup()
     end,
   }
 
