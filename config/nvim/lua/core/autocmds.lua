@@ -59,8 +59,11 @@ autocmd('BufReadPost', {
   pattern = '*',
   callback = function()
     local ft = vim.bo.filetype
+    local line = vim.fn.line
 
-    if not (ft == 'gitcommit') then
+    local not_in_event_handler = line '\'"' > 0 and line '\'"' <= line '$'
+
+    if not (ft == 'gitcommit') and not_in_event_handler then
       vim.fn.execute 'normal g`"'
     end
   end,
