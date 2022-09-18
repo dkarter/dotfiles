@@ -31,6 +31,7 @@ M.setup = function()
         'man',
         'markdown',
         'mason',
+        'null-ls-info',
         'qf',
         'unite',
       },
