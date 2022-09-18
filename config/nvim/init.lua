@@ -34,6 +34,7 @@ end
 
 -- require new configuration
 local modules = {
+  'core.globals',
   'core.options',
   'core.commands',
   'core.autocmds',
