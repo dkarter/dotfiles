@@ -124,63 +124,6 @@ endfunction
 nnoremap <expr> <leader>fd ':Cfd '
 " }}}
 
-" Auto commands {{{
-  augroup vimrcEx
-    autocmd!
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it for commit messages, when the position is invalid, or when
-    " inside an event handler (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
-
-    " Set syntax highlighting for specific file types
-    autocmd BufRead,BufNewFile Appraisals,*.rabl set filetype=ruby
-    autocmd BufRead,BufNewFile .babelrc set filetype=json
-    autocmd BufRead,BufNewFile *.yrl set filetype=erlang
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd BufRead,BufNewFile .eslintrc,.prettierrc set filetype=json
-
-    " Enable spellchecking for Markdown
-    autocmd FileType markdown setlocal spell
-    " Enable line wrapping for markdown
-    autocmd FileType markdown setlocal wrap
-    " Break wrapped lines on space (not middle of word)
-    autocmd FileType markdown setlocal linebreak
-    " navigate wrapped text more naturally
-    autocmd FileType markdown nmap <buffer> j gj
-    autocmd FileType markdown nmap <buffer> k gk
-    " Automatically wrap at 80 characters for Markdown
-    autocmd FileType markdown setlocal textwidth=80
-
-    " Automatically wrap at 72 characters and spell check git commit messages
-    autocmd FileType gitcommit setlocal textwidth=72
-    autocmd FileType gitcommit setlocal spell
-
-    " Allow stylesheets to autocomplete hyphenated words
-    autocmd FileType css,scss,sass setlocal iskeyword+=-
-
-    " Vim/tmux layout rebalancing
-    " automatically rebalance windows on vim resize
-    autocmd VimResized * :wincmd =
-
-    " add support for comments in json (jsonc format used as configuration for
-    " many utilities)
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-
-    " notify if file changed outside of vim to avoid multiple versions
-    autocmd FocusGained * checktime
-  augroup END
-
-  " add operator pending mode for elixir maps - needs to support multiline map
-  augroup ElixirAutoCommands
-    autocmd!
-    autocmd FileType elixir,eelixir let b:surround_{char2nr("m")} = '%{ \r }'
-  augroup END
-" }}}
-
 " Vim Script file settings {{{
 augroup filetype_vim
   autocmd!
