@@ -77,3 +77,8 @@
   user = dkarter
 [pull]
   rebase = true
+
+; Load local configs.
+; https://git-scm.com/docs/git-config#_includes
+[include]
+  path = ~/.gitconfig.local
