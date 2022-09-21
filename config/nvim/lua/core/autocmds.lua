@@ -45,6 +45,11 @@ augroup('FileTypes AutoCmds', {
     pattern = { '*.yrl' },
     command = 'set filetype=erlang',
   },
+  {
+    event = { 'BufRead', 'BufNewFile' },
+    pattern = { '.envrc' },
+    command = 'set filetype=bash',
+  },
 })
 
 -- When editing a file, always jump to the last known cursor position.
