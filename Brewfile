@@ -144,3 +144,4 @@ brew 'tesseract'
 
 # required by ccls
 brew 'llvm'
+
