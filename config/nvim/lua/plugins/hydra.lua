@@ -53,10 +53,50 @@ local setup_telescope_hydra = function()
   }
 end
 
+local setup_git_hydra = function()
+  local hint = [[
+
+  ^^^^^   _c_: Conflicts         _w_: Git Write          ^
+  ^^^^^   _b_: Blame                                     ^
+  ^
+  ^^^^^   _p_: pull requests     _i_: github issues      ^
+  ^^^^^   _s_: list gists        _a_: github actions     ^
+  ^
+  ^^^^ _<Enter>_: Fugitive Summary    _<Esc>_: quit      ^
+  ]]
+
+  Hydra {
+    name = 'Git',
+    hint = hint,
+    config = {
+      color = 'teal',
+      invoke_on_body = true,
+      hint = {
+        position = 'middle',
+        border = 'rounded',
+      },
+    },
+    mode = 'n',
+    body = '<Leader>g',
+    heads = {
+      { 'a', cmd 'Telescope gh run' },
+      { 'b', cmd 'Git blame' },
+      { 'c', cmd 'Gconflict' },
+      { 'i', cmd 'Telescope gh issues' },
+      { 'p', cmd 'Telescope gh pull_request' },
+      { 's', cmd 'Telescope gh gist' },
+      { 'w', cmd 'Gwrite' },
+      { '<Enter>', cmd 'Git', { exit = true, desc = 'Fugitive Summary' } },
+      { '<Esc>', nil, { exit = true, nowait = true } },
+    },
+  }
+end
+
 local M = {}
 
 M.setup = function()
   setup_telescope_hydra()
+  setup_git_hydra()
 end
 
 return M

@@ -425,7 +425,7 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
   nmap { '[h', prev_hunk, opts }
 
   -- Hunk operations
-  -- Undo Hunk
+  -- Reset Hunk
   nmap { '<leader>uh', ':Gitsigns reset_hunk<CR>' }
   -- Stage Hunk
   nmap { '<leader>sh', ':Gitsigns stage_hunk<CR>' }
@@ -433,8 +433,8 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
   nmap { '<leader>Sh', ':Gitsigns undo_stage_hunk<CR>' }
 
   -- Buffer operations
-  -- Undo Buffer
-  nmap { '<leader>ub', ':Gitsigns reset_hunk<CR>' }
+  -- Reset Buffer
+  nmap { '<leader>rb', ':Gitsigns reset_buffer<CR>' }
   -- Stage Buffer
   nmap { '<leader>sb', ':Gitsigns stage_buffer<CR>' }
   -- Undo Stage Buffer
