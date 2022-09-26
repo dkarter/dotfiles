@@ -120,9 +120,8 @@ alias gg='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold
 # create a draft PR from jira ticket name and number, based off a different
 # branch
 jpr() {
-  gh pr create --base $(gb --format='%(refname:short)' | fzf --border=rounded --prompt='Select base branch: ' --margin 25%) --draft --title "$(jira i | fzf --border=rounded --prompt='Select ticket: ' --margin 25%| ruby -ne 'i = $_.strip.split(/\s{2,}/); puts "[#{i[0]}] #{i[2]}"')"
+  gh pr create --base $(gb --format='%(refname:short)' | fzf --border=rounded --prompt='Select base branch: ' --margin 25%) --draft --title "$(jira i | fzf --border=rounded --prompt='Select ticket: ' --margin 25% | ruby -ne 'i = $_.strip.split(/\s{2,}/); puts "[#{i[0]}] #{i[2]}"')"
 }
-
 
 # hashrocket uses gpr and I like gup, this prevents typos
 alias gpr='gup'
@@ -263,7 +262,6 @@ function mix_cmd_app() {
 }
 #  execute commands on umbrella apps
 alias ma='mix_cmd_app'
-
 
 # yarn
 # disable emoji for yarn - breaking neovim term
