@@ -18,27 +18,53 @@ local utils = require 'core.utils'
 ╰────────────────────────────────────────────────────────────────────────────╯
 --]]
 
+local mappings = {}
+
+local add_to_set = function(set, key)
+  set[key] = true
+end
+
+local set_contains = function(set, key)
+  return set[key] ~= nil
+end
+
+local check_duplicates = function(mode, lhs)
+  local mapping_key = fmt('%s %s', mode, lhs)
+
+  if set_contains(mappings, mapping_key) then
+    local msg = fmt('Duplicate user mappings: %s', mapping_key)
+    vim.notify(msg)
+  else
+    add_to_set(mappings, mapping_key)
+  end
+end
+
 local map = function(tbl)
   vim.keymap.set(tbl[1], tbl[2], tbl[3], tbl[4])
 end
 
 local imap = function(tbl)
+  check_duplicates(tbl[1], tbl[2])
   vim.keymap.set('i', tbl[1], tbl[2], tbl[3])
 end
 
 local nmap = function(tbl)
+  check_duplicates(tbl[1], tbl[2])
   vim.keymap.set('n', tbl[1], tbl[2], tbl[3])
 end
 
 local vmap = function(tbl)
+  check_duplicates(tbl[1], tbl[2])
   vim.keymap.set('v', tbl[1], tbl[2], tbl[3])
 end
 
 local tmap = function(tbl)
+  check_duplicates(tbl[1], tbl[2])
   vim.keymap.set('t', tbl[1], tbl[2], tbl[3])
 end
 
 local cmap = function(tbl)
+  check_duplicates(tbl[1], tbl[2])
   vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
 end
 
