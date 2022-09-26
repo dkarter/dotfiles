@@ -7,7 +7,7 @@ end
 local M = {}
 
 M.setup = function()
-  require('retrail').setup {
+  retrail.setup {
     -- Highlight group to use for trailing whitespace.
     hlgroup = 'IncSearch',
     -- Enabled filetypes.
