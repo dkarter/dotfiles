@@ -218,8 +218,6 @@ M.lsp_mappings = function(bufnr)
   buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
   -- gr = get references
   buf_nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  -- fr = formatting
-  buf_nmap('<leader>fr', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 end
 
 M.lsp_diagnostic_mappings = function()
@@ -244,7 +242,7 @@ M.lsp_saga_mappings = function()
   nmap { 'gp', '<cmd>Lspsaga preview_definition<CR>', silent }
 
   -- Show line diagnostics
-  nmap { '<leader>cd', '<cmd>Lspsaga show_line_diagnostics<CR>', silent }
+  nmap { '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', silent }
 
   -- Show cursor diagnostic
   nmap { '<leader>cd', '<cmd>Lspsaga show_cursor_diagnostics<CR>', silent }
@@ -275,9 +273,6 @@ M.lsp_saga_mappings = function()
 
   -- Hover Doc
   nmap { 'K', '<cmd>Lspsaga hover_doc<CR>', silent }
-
-  -- Signature help
-  nmap { '<leader>sh', '<Cmd>Lspsaga signature_help<CR>', silent }
 end
 
 M.trouble_mappings = function()
@@ -294,14 +289,29 @@ M.nvim_tree_mappings = function()
 end
 
 M.telescope_mappings = function()
-  -- Find files using Telescope command-line sugar.
+  -- muscle memory
   nmap { '<C-p>', '<cmd>Telescope find_files<cr>', default_opts }
-  nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts }
-  nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', default_opts }
   nmap { '<C-b>', '<cmd>Telescope buffers<cr>', default_opts }
-  nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', default_opts }
 
+  -- Compatible with hydra setup
+  nmap { '<leader>f/', '<cmd>Telescope current_buffer_fuzzy_find<cr>', default_opts }
+  nmap { '<leader>f;', '<cmd>Telescope command_history<cr>', default_opts }
+  nmap { '<leader>f?', '<cmd>Telescope search_history<cr>', default_opts }
+  nmap { '<leader>fc', '<cmd>Telescope commands<cr>', default_opts }
+  nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts }
+  nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts }
   nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts }
+  nmap { '<leader>fk', '<cmd>Telescope keymaps<cr>', default_opts }
+  nmap { '<leader>fo', '<cmd>Telescope oldfiles<cr>', default_opts }
+  nmap { '<leader>fO', '<cmd>Telescope vim_options<cr>', default_opts }
+  nmap { '<leader>fr', '<cmd>Telescope resume<cr>', default_opts }
+
+  --  Extensions
+  nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', default_opts }
+  nmap { '<leader>fp', '<cmd>Telescope packer<cr>', default_opts }
+
+  nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', default_opts }
+  nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', default_opts }
 
   -- better spell suggestions
   nmap { 'z=', '<cmd>Telescope spell_suggest<cr>', default_opts }
@@ -314,9 +324,6 @@ M.telescope_mappings = function()
   -- ds = document symbols
   nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', default_opts }
 
-  --  Extensions
-  nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', default_opts }
-  nmap { '<leader>fp', '<cmd>Telescope packer<cr>', default_opts }
   nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', default_opts }
 
   -- GitHub

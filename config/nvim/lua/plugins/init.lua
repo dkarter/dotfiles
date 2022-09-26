@@ -109,6 +109,15 @@ return packer.startup(function(use)
     end,
   }
 
+  -- makes mappings more discoverable using modals that show up after the prefix
+  -- was pressed
+  use {
+    'anuvyklack/hydra.nvim',
+    config = function()
+      require('plugins.hydra').setup()
+    end,
+  }
+
   -- function signature help via LSP
   use {
     'ray-x/lsp_signature.nvim',
