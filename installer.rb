@@ -55,6 +55,7 @@ GEMS = [
 PIPS3 = [
   'neovim', # NeoVim python3 support
   'neovim-remote', # allow controlling neovim remotely
+  'yq', # like jq but for yaml files
 ].freeze
 
 ASDF_PLUGINS = %w[
