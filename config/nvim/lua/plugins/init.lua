@@ -75,21 +75,12 @@ return packer.startup(function(use)
     end,
   }
 
+  -- LSP UI utils
   use {
     'glepnir/lspsaga.nvim',
     branch = 'main',
     config = function()
-      local saga = require 'lspsaga'
-      saga.init_lsp_saga {
-        code_action_lightbulb = {
-          enable = true,
-          sign = true,
-          enable_in_insert = true,
-          sign_priority = 20,
-          virtual_text = false,
-        },
-      }
-      require('core.mappings').lsp_saga_mappings()
+      require('plugins.lspsaga').setup()
     end,
   }
 
