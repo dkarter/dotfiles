@@ -5,6 +5,7 @@ require 'pathname'
 require 'net/http'
 require 'cgi'
 require_relative 'installer/string'
+require_relative 'installer/request'
 
 Warning[:experimental] = false
 
@@ -296,8 +297,8 @@ class Installer
           '...'.light_blue,
       )
 
-      response = Net::HTTP.get_response(URI.parse(url))
-      File.write(target_path, response)
+      response = Request.new(url).resolve
+      File.binwrite(target_path, response.body)
 
       puts 'Done'.green
       puts ''
