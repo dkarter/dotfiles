@@ -55,10 +55,13 @@ end
 
 local setup_git_hydra = function()
   local hint = [[
-
-  ^^^^^   _c_: Conflicts         _w_: Git Write          ^
-  ^^^^^   _b_: Blame                                     ^
+  ^^^^^   _c_: Conflicts         _w_: Stage File         ^
+  ^^^^^   _b_: Blame             _R_: Revert File        ^
   ^
+  ^^^^^   _h_: Stage Hunk        _H_: Undo Stage Hunk    ^
+  ^^^^^   _r_: Reset Hunk                                ^
+  ^
+  ^                   Github
   ^^^^^   _p_: pull requests     _i_: github issues      ^
   ^^^^^   _s_: list gists        _a_: github actions     ^
   ^
@@ -82,8 +85,12 @@ local setup_git_hydra = function()
       { 'a', cmd 'Telescope gh run' },
       { 'b', cmd 'Git blame' },
       { 'c', cmd 'Gconflict' },
+      { 'h', cmd 'Gitsigns stage_hunk' },
+      { 'H', cmd 'Gitsigns undo_stage_hunk' },
       { 'i', cmd 'Telescope gh issues' },
       { 'p', cmd 'Telescope gh pull_request' },
+      { 'r', cmd 'Gitsigns reset_hunk' },
+      { 'R', cmd 'Gread' },
       { 's', cmd 'Telescope gh gist' },
       { 'w', cmd 'Gwrite' },
       { '<Enter>', cmd 'Git', { exit = true, desc = 'Fugitive Summary' } },

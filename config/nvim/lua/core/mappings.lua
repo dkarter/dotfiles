@@ -337,6 +337,8 @@ end
 M.fugitive_mappings = function()
   nmap { '<leader>gw', ':Gwrite<CR>', default_opts }
   nmap { '<leader>gb', ':Git blame<CR>', default_opts }
+  --  Grep project for word under the cursor with Rg
+  nmap { '<Leader>gR', ':Gread<CR>' }
 end
 
 M.winresizer_mappings = function()
@@ -344,11 +346,6 @@ M.winresizer_mappings = function()
 end
 
 M.ripgrep_mappings = function()
-  --  Grep project for selection with Rg
-  vmap { '<leader>gr', 'y :Rg "<CR>' }
-  --  Grep project for word under the cursor with Rg
-  nmap { '<Leader>gr', ':Rg <C-r><C-w><CR>' }
-
   --  alias for above
   --  Grep project for selection with Rg
   vmap { '<leader>rg', 'y :Rg "<CR>' }
@@ -426,19 +423,11 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
 
   -- Hunk operations
   -- Reset Hunk
-  nmap { '<leader>uh', ':Gitsigns reset_hunk<CR>' }
+  nmap { '<leader>gr', ':Gitsigns reset_hunk<CR>' }
   -- Stage Hunk
-  nmap { '<leader>sh', ':Gitsigns stage_hunk<CR>' }
+  nmap { '<leader>gh', ':Gitsigns stage_hunk<CR>' }
   -- Undo Stage Hunk
-  nmap { '<leader>Sh', ':Gitsigns undo_stage_hunk<CR>' }
-
-  -- Buffer operations
-  -- Reset Buffer
-  nmap { '<leader>rb', ':Gitsigns reset_buffer<CR>' }
-  -- Stage Buffer
-  nmap { '<leader>sb', ':Gitsigns stage_buffer<CR>' }
-  -- Undo Stage Buffer
-  nmap { '<leader>Sb', ':Gitsigns undo_stage_buffer<CR>' }
+  nmap { '<leader>gH', ':Gitsigns undo_stage_hunk<CR>' }
 
   -- Text object for git hunks (e.g. vih will select the hunk)
   map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
