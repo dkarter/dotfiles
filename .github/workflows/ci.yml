@@ -36,6 +36,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  lua-formatting:
+    name: 'Format: Lua'
+
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run stylua check
+        uses: JohnnyMorganz/stylua-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: 0.15.1
+          args: --check .
+
   shell-lint:
     name: 'Lint: Shell'
 
@@ -65,4 +82,3 @@ jobs:
       - name: Check spelling in code
         # yamllint disable-line rule:line-length
         uses: codespell-project/actions-codespell@2391250ab05295bddd51e36a8c6295edb6343b0e
-
