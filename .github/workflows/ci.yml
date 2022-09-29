@@ -53,6 +53,30 @@ jobs:
           version: 0.15.1
           args: --check .
 
+  lua-diagnotics:
+    name: 'Diagnostics: Lua'
+
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install ASDF
+        uses: asdf-vm/actions/setup@v1
+
+      - name: ASDF Plugin Add
+        run: |
+          asdf plugin add lua-language-server https://github.com/shun-shobon/asdf-lua-language-server.git
+
+      - name: ASDF Install
+        uses: asdf-vm/actions/install@v1
+
+      - name: Run Diagnostics Check
+        run: |
+          lua-language-server --check config/nvim/lua --checklevel=Warning
+
   shell-lint:
     name: 'Lint: Shell'
 
