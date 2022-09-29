@@ -155,6 +155,7 @@ return packer.startup(function(use)
     config = function()
       require('colorizer').setup {
         '*',
+        '!packer',
       }
     end,
   }
