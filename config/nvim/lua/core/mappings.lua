@@ -229,7 +229,7 @@ end
 
 M.lsp_saga_mappings = function()
   -- Lsp finder find the symbol definition implmement reference
-  nmap { 'gf', '<cmd>Lspsaga lsp_finder<CR>', silent }
+  nmap { '<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', silent }
 
   -- Code action
   nmap { '<leader>ca', '<cmd>Lspsaga code_action<CR>', silent }
