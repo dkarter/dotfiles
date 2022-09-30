@@ -1,17 +1,7 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty it self.
-# env:
-# TERM env customization.
-#
-# If this property is not set, alacritty will set it to xterm-256color.
-#
-# Note that some xterm terminfo databases don't declare support for italics.
-# You can verify this by checking for the presence of `smso` and `sitm` in
-# `infocmp xterm-256color`.
-# TERM: xterm-256color-italic
+# Live config reload (changes require restart)
+live_config_reload: true
 
 # Import additional configuration files
 #
@@ -31,39 +21,5 @@ import:
   - ~/.config/alacritty/mouse.yml
   - ~/.config/alacritty/cursor.yml
   - ~/.config/alacritty.local/alacrity.yml
-
-# Live config reload (changes require restart)
-live_config_reload: true
-# Shell
 #
-# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
-# Entries in shell.args are passed unmodified as arguments to the shell.
-# shell:
-#   program: /usr/local/homebrew/bin/fish
-#   args:
-#     - --command=tmux
-
-# debug:
-#  # Should display the render timer
-#  render_timer: false
-
-#  # Keep the log file after quitting Alacritty.
-#  persistent_logging: false
-
-#  # Log level
-#  #
-#  # Values for `log_level`:
-#  #   - None
-#  #   - Error
-#  #   - Warn
-#  #   - Info
-#  #   - Debug
-#  #   - Trace
-#  log_level: None
-
-#  # Print all received window events.
-#  print_events: false
-
-#  # Record all characters and escape sequences as test data.
-#  ref_test: false
 # vim: nospell
