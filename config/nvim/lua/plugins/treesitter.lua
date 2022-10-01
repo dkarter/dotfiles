@@ -47,6 +47,7 @@ M.setup = function()
       'ruby',
       'rust',
       'scss',
+      'sql',
       'surface',
       'toml',
       'tsx',
