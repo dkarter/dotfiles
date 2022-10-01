@@ -43,6 +43,7 @@ M.setup = function()
       'make',
       'markdown',
       'python',
+      'query',
       'regex',
       'ruby',
       'rust',
