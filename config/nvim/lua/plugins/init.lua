@@ -247,13 +247,15 @@ return packer.startup(function(use)
     'tpope/vim-rhubarb',
     requires = { 'tpope/vim-fugitive' },
   }
-  --  Better syntax highlighting
+
+  --  Better syntax highlighting (and more)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     requires = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/playground',
     },
     config = function()
       require('plugins.treesitter').setup()
