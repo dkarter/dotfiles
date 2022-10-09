@@ -327,18 +327,40 @@ M.telescope_mappings = function()
   nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', default_opts }
 
   -- GitHub
-  -- check out pull requests from vim!
-  nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', default_opts }
-  nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
-  nmap { '<leader>gs', '<cmd>Telescope gh gist<cr>', default_opts }
   nmap { '<leader>ga', '<cmd>Telescope gh run<cr>', default_opts }
+  nmap { '<leader>gg', '<cmd>Telescope gh gist<cr>', default_opts }
+  nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
+  nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', default_opts }
 end
 
 M.fugitive_mappings = function()
-  nmap { '<leader>gw', ':Gwrite<CR>', default_opts }
+  -- Git Stage file
+  nmap { '<leader>gS', ':Gwrite<CR>', default_opts }
+
+  -- Git Blame
   nmap { '<leader>gb', ':Git blame<CR>', default_opts }
+  vmap { '<leader>gb', ':Git blame<CR>', default_opts }
+
   --  Grep project for word under the cursor with Rg
-  nmap { '<Leader>gR', ':Gread<CR>' }
+  nmap { '<Leader>gR', ':Gread<CR>', default_opts }
+
+  -- open github page for file
+  nmap { '<leader>gO', ':GBrowse<CR>', default_opts }
+
+  -- open github page for line under cursor
+  nmap { '<leader>go', ':.GBrowse<CR>', default_opts }
+
+  -- open github page for selection
+  vmap { '<leader>go', ':GBrowse<CR>', default_opts }
+
+  -- copy github link for file
+  nmap { '<leader>gY', ':GBrowse! | lua vim.notify("Copied file URL to clipboard")<CR>', default_opts }
+
+  -- copy github link for line under cursor
+  nmap { '<leader>gy', ':.GBrowse! | lua vim.notify("Copied line URL to clipboard")<CR>', default_opts }
+
+  -- copy github link for selection
+  vmap { '<leader>gy', ':GBrowse! | lua vim.notify("Copied selection URL to clipboard")<CR>', default_opts }
 end
 
 M.winresizer_mappings = function()
@@ -425,9 +447,9 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
   -- Reset Hunk
   nmap { '<leader>gr', ':Gitsigns reset_hunk<CR>' }
   -- Stage Hunk
-  nmap { '<leader>gh', ':Gitsigns stage_hunk<CR>' }
+  nmap { '<leader>gs', ':Gitsigns stage_hunk<CR>' }
   -- Undo Stage Hunk
-  nmap { '<leader>gH', ':Gitsigns undo_stage_hunk<CR>' }
+  nmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>' }
 
   -- Text object for git hunks (e.g. vih will select the hunk)
   map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }

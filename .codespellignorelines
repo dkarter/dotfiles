@@ -3,3 +3,4 @@ set classify+=' ::*.cljs,,*.edn::'
 fo() {
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
 nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4' }/<cr>" }
+  ^^^^^ _o_: old files        _w_: file bro[w]ser    ^
