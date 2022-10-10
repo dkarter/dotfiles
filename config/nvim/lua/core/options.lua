@@ -62,7 +62,7 @@ opt.showmode = false -- don't show mode as airline already does
 opt.showcmd = true -- show any commands
 opt.foldmethod = 'manual' -- set folds by syntax of current language
 opt.visualbell = true -- visual bell for errors
-opt.redrawtime = 5000 -- prevent vim from disabling highliting if the code is complex
+opt.redrawtime = 5000 -- prevent vim from disabling highlighting if the code is complex
 
 --Defer loading shada until after startup_
 local shadafile = opt.shadafile
