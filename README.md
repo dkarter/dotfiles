@@ -43,6 +43,26 @@ Feel free to "steal" anything you want, and if you have a question please open a
 
 ---
 
+# Dependencies
+
+The goal is to have all dependencies for the config automatically installed with
+the setup script. More details can be found by reading the following files:
+
+- [setup.sh](./setup.sh)
+  - For mac: [Brewfile](./Brewfile)
+  - For linux: [debian-setup.sh](./installer/debian-setup.sh)
+- [installer.rb](./installer.rb)
+
+Gotchas for NeoVim setup:
+
+- requires [fd](https://github.com/sharkdp/fd) >= 8.4 (install from brew)
+- requires [global](https://www.gnu.org/software/global/) for GNU Tags (install
+  from brew)
+- Tools such as formatters, LSPs, linters are automatically installed via
+  `:Mason`, if one of the deps is not installing make sure to open `:Mason` to
+  see the full error message.
+- Make sure to run `:checkhealth` to know if you are missing anything
+
 # Installation
 
 Easy..
