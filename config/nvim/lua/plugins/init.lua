@@ -69,6 +69,11 @@ return packer.startup(function(use)
         'mhanberg/elixir.nvim',
         requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
       },
+
+      {
+        'SmiteshP/nvim-navic',
+        requires = 'neovim/nvim-lspconfig',
+      },
     },
     config = function()
       require('plugins.lsp').setup()
@@ -294,13 +299,24 @@ return packer.startup(function(use)
     end,
   }
 
-  -- pretty buffers
+  -- winbar file title and lsp path
   use {
-    'akinsho/bufferline.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    'B4mbus/nvim-headband',
     config = function()
-      require('plugins.bufferline').setup()
+      require('nvim-headband').setup {
+        location_section = {
+          position = 'right',
+        },
+      }
     end,
+    after = 'nvim-web-devicons',
+    requires = {
+      -- required for for the navic section to work
+      { 'SmiteshP/nvim-navic' },
+      -- required for for devicons and default location_section.separator
+      -- highlight group
+      { 'kyazdani42/nvim-web-devicons' },
+    },
   }
 
   -- file tree
