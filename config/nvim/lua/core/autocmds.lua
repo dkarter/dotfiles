@@ -93,4 +93,11 @@ augroup('General Improvements', {
     pattern = { '*' },
     command = 'checktime',
   },
+
+  -- Unfold all folds when opening a file
+  {
+    event = { 'BufReadPost', 'FileReadPost' },
+    pattern = { '*' },
+    command = 'normal zR',
+  },
 })
