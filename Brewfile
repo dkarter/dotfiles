@@ -2,7 +2,6 @@
 
 # some fonts
 tap 'homebrew/cask-fonts'
-cask 'font-fira-code-nerd-font'
 
 # Dual Panel File Browser
 cask 'marta'
