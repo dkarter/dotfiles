@@ -22,6 +22,7 @@ M.setup = function()
         'checkhealth',
         'diff',
         'fugitive',
+        'fzf',
         'git',
         'gitcommit',
         'help',
