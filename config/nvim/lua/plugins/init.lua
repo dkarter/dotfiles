@@ -423,9 +423,6 @@ return packer.startup(function(use)
     end,
   }
 
-  -- snip helpers - assorted functions for snippets
-  use { 'dkarter/sniphelpers.vim' }
-
   -- replacement for matchit
   use {
     'andymass/vim-matchup',
