@@ -295,9 +295,9 @@ M.telescope_mappings = function()
 
   -- Compatible with hydra setup
   nmap { '<leader>f/', '<cmd>Telescope current_buffer_fuzzy_find<cr>', default_opts }
+  nmap { '<leader>f:', '<cmd>Telescope commands<cr>', default_opts }
   nmap { '<leader>f;', '<cmd>Telescope command_history<cr>', default_opts }
   nmap { '<leader>f?', '<cmd>Telescope search_history<cr>', default_opts }
-  nmap { '<leader>fc', '<cmd>Telescope commands<cr>', default_opts }
   nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts }
   nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts }
   nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts }

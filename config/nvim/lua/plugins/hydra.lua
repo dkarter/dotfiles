@@ -8,16 +8,18 @@ local cmd = require('hydra.keymap-util').cmd
 
 local setup_telescope_hydra = function()
   local hint = [[
-  ^^^^^ _f_: files       _b_: file browser     ^
-  ^^^^^ _o_: old files   _g_: live grep        ^
-  ^^^^^ _p_: packer      _/_: search in file   ^
+  ^^^^^ _f_: files            _b_: buffers           ^
+  ^^^^^ _o_: old files        _w_: file bro[w]ser    ^
 
-  ^^^^^ _r_: resume                            ^
-  ^^^^^ _h_: vim help    _c_: execute command  ^
-  ^^^^^ _k_: keymaps     _;_: commands history ^
-  ^^^^^ _O_: options     _?_: search history   ^
+  ^^^^^ _/_: search in file   _g_: live [g]rep       ^
+  ^^^^^ _?_: search history   _t_: tags              ^
+
+  ^^^^^ _r_: resume           _l_: re[l]oader        ^
+  ^^^^^ _h_: vim [h]elp       _:_: execute  command  ^
+  ^^^^^ _k_: keymaps          _;_: commands history  ^
+  ^^^^^ _O_: options          _p_: packer            ^
   ^
-  ^^^^ _<Enter>_: Telescope    _<Esc>_: quit   ^
+  ^^^^   _<Enter>_: Telescope     _<Esc>_: quit      ^
   ]]
 
   Hydra {
@@ -34,19 +36,25 @@ local setup_telescope_hydra = function()
     mode = 'n',
     body = '<Leader>f',
     heads = {
-      { '/', cmd 'Telescope current_buffer_fuzzy_find', { desc = 'search in file' } },
-      { ';', cmd 'Telescope command_history', { desc = 'command-line history' } },
-      { '?', cmd 'Telescope search_history', { desc = 'search history' } },
+      { '/', cmd 'Telescope current_buffer_fuzzy_find' },
+      { ';', cmd 'Telescope command_history' },
+      { '?', cmd 'Telescope search_history' },
       { 'O', cmd 'Telescope vim_options' },
-      { 'b', cmd 'Telescope file_browser' },
-      { 'c', cmd 'Telescope commands', { desc = 'execute command' } },
+      { 'b', cmd 'Telescope buffers' },
+      { ':', cmd 'Telescope commands' },
       { 'f', cmd 'Telescope find_files' },
       { 'g', cmd 'Telescope live_grep' },
-      { 'h', cmd 'Telescope help_tags', { desc = 'vim help' } },
+      { 'h', cmd 'Telescope help_tags' },
       { 'k', cmd 'Telescope keymaps' },
-      { 'o', cmd 'Telescope oldfiles', { desc = 'recently opened files' } },
-      { 'p', cmd 'Telescope packer', { desc = 'packer plugins' } },
+      { 'l', cmd 'Telescope reloader' },
+      { 'o', cmd 'Telescope oldfiles' },
+      { 'p', cmd 'Telescope packer' },
       { 'r', cmd 'Telescope resume' },
+      -- The `Telescope current_buffer_tags` command sucks currently, I might be
+      -- able to submit a PR to improve it, but for now let's just use FZF's
+      -- Buffer Tags (BTags) command
+      { 't', cmd 'BTags' },
+      { 'w', cmd 'Telescope file_browser' },
       { '<Enter>', cmd 'Telescope', { exit = true, desc = 'list all pickers' } },
       { '<Esc>', nil, { exit = true, nowait = true } },
     },
