@@ -63,19 +63,19 @@ end
 
 local setup_git_hydra = function()
   local hint = [[
-  ^^^^^   _c_: Conflicts         _S_: Stage File         ^
-  ^^^^^   _b_: Blame             _R_: Revert File        ^
+  ^^^^^^^^ _c_: Conflicts         _S_: Stage File       ^
+  ^^^^^^^^ _b_: Blame             _R_: Revert File      ^
   ^
-  ^^^^^   _s_: Stage Hunk        _u_: Unstage Hunk       ^
-  ^^^^^   _r_: Revert Hunk                               ^
+  ^^^^^^^^ _s_: Stage Hunk        _u_: Unstage Hunk     ^
+  ^^^^^^^^ _r_: Revert Hunk                             ^
   ^
-  ^                       Github
-  ^^^^^   _p_: Pull Requests          _i_: Github Issues      ^
-  ^^^^^   _g_: List Gists             _a_: Github Actions     ^
-  ^^^^^   _Y_: Yank File Link         _O_: Open in Github     ^
-  ^^^^^   _y_: Yank Line Link         _O_: Open in Github     ^
+  ^                   Github
+  ^^^^^ _p_: Pull Requests          _i_: Github Issues  ^
+  ^^^^^ _g_: List Gists             _a_: Github Actions ^
+  ^^^^^ _Y_: Yank File Link         _O_: File in Github ^
+  ^^^^^ _y_: Yank Line Link         _o_: Line in Github ^
   ^
-  ^^^^ _<Enter>_: Fugitive Summary    _<Esc>_: quit      ^
+  ^^^^^  _<Enter>_: Fugitive Summary    _<Esc>_: quit   ^
   ]]
 
   Hydra {
@@ -99,12 +99,14 @@ local setup_git_hydra = function()
       { 's', cmd 'Gitsigns stage_hunk' },
       { 'u', cmd 'Gitsigns undo_stage_hunk' },
       { 'i', cmd 'Telescope gh issues' },
+      { 'o', cmd '.GBrowse' },
       { 'O', cmd 'GBrowse' },
       { 'p', cmd 'Telescope gh pull_request' },
       { 'r', cmd 'Gitsigns reset_hunk' },
       { 'R', cmd 'Gread' },
       { 'S', cmd 'Gwrite' },
       { 'Y', cmd 'GBrowse!' },
+      { 'y', cmd '.GBrowse!' },
       { '<Enter>', cmd 'Git', { exit = true, desc = 'Fugitive Summary' } },
       { '<Esc>', nil, { exit = true, nowait = true } },
     },
