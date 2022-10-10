@@ -272,17 +272,6 @@ return packer.startup(function(use)
     'amadeus/vim-mjml',
   }
 
-  -- TODO: Remove when updating to Neovim v0.8 since this was merged into core
-  use {
-    'lewis6991/spellsitter.nvim',
-    requires = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = function()
-      require('spellsitter').setup {}
-    end,
-  }
-
   -- auto complete closable pairs
   use {
     'windwp/nvim-autopairs',
