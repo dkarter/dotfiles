@@ -239,7 +239,7 @@ M.lsp_saga_mappings = function()
   nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', silent }
 
   -- Definition preview
-  nmap { 'gp', '<cmd>Lspsaga preview_definition<CR>', silent }
+  nmap { 'gp', '<cmd>Lspsaga peek_definition<CR>', silent }
 
   -- Show line diagnostics
   nmap { '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', silent }
