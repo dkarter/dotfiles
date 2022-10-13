@@ -147,8 +147,8 @@ jpr() {
 alias gpr='gup'
 
 # fancy weather
-alias wttr='curl -4 http://wttr.in/chicago?m'
-alias moon='curl -4 http://wttr.in/Moon?m'
+alias wttr='curl --silent https://wttr.in'
+alias moon='curl --silent https://wttr.in/Moon'
 
 # howdoi (pip install howdoi) https://github.com/gleitz/howdoi
 hdi() {
