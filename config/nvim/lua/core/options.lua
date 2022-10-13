@@ -20,7 +20,7 @@ opt.magic = true -- Use 'magic' patterns (extended regular expressions).
 opt.mouse = 'a' -- enable mouse usage
 
 -- font for gui
-vim.cmd [[set guifont=JetBrainsMono\ Nerd\ Font\ Mono]]
+vim.cmd [[set guifont=CaskaydiaCove\ Nerd\ Font\ Mono]]
 
 -- keep indentation consistent
 local indent = 2
