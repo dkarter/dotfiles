@@ -114,6 +114,26 @@ fork() {
   cd $clone_path
 }
 
+# returns the first sha matching the selected branch
+# this is useful when rebasing the branch to it's base to clean up things.
+#
+# git rebase -i $(base_sha)
+base_sha() {
+  git fetch
+  branch=$(git branch --format='%(refname:short)' | fzf)
+  git show-ref refs/heads/$branch | awk '{ print $1 }'
+}
+
+# automate git fixup workflow with interactive fzf selection
+# assumes staged files are part of the fixup and a clean working directory for
+# the reabse
+gfixup() {
+  branch=$(git branch --format='%(refname:short)' | fzf)
+  commit_sha=$(git log "$branch.." --pretty=oneline --color=always | fzf | awk '{ print $1 }')
+  git fixup $commit_sha
+  git rebase -i "${commit_sha}~1"
+}
+
 # better git tree log:
 alias gg='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold green)%h%C(reset) - %C(bold blue)%ai%C(reset) %C(bold red)%an%C(reset) %C(bold yellow)%d%C(reset)'\'\'' %C(dim white)- %s%C(reset)'\'
 
