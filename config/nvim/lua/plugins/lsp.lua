@@ -58,7 +58,7 @@ M.setup = function()
       }
     end
 
-    return cmp_lsp.update_capabilities(capabilities)
+    return cmp_lsp.default_capabilities(capabilities)
   end
 
   -- inject our custom on_attach after the built in on_attach from the lspconfig
