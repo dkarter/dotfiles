@@ -341,6 +341,9 @@ return packer.startup(function(use)
   -- navigate to directory of current file using `-`
   use { 'tpope/vim-vinegar' }
 
+  -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically
+  use { 'tpope/vim-sleuth' }
+
   -- ruby gem info directly in a Gemfile
   use { 'alexbel/vim-rubygems', ft = { 'ruby' } }
 
