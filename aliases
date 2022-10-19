@@ -131,7 +131,16 @@ gfixup() {
   branch=$(git branch --format='%(refname:short)' | fzf)
   commit_sha=$(git log "$branch.." --pretty=oneline --color=always | fzf | awk '{ print $1 }')
   git fixup $commit_sha
-  git rebase -i "${commit_sha}~1"
+  # there's probably a better way of doing this.. but good enough for now. This
+  # will try to stash unrelated changes, and pop them afterwards while avoiding
+  # a pop when a stash was not performed. Stashing is necessary because a rebase
+  # requires a clean working tree
+  if [[ "$(git stash -u | grep 'No local changes to save')" ]]; then
+    git rebase -i "${commit_sha}~1"
+  else
+    git rebase -i "${commit_sha}~1"
+    git stash pop
+  fi
 }
 
 # better git tree log:
