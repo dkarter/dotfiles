@@ -42,6 +42,7 @@ M.setup = function()
       'lua',
       'make',
       'markdown',
+      'markdown_inline',
       'python',
       'query',
       'regex',
