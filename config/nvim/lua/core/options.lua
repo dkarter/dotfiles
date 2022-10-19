@@ -107,28 +107,6 @@ opt.complete:append 'kspell'
 -- for nvim-cmp
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
--- highlight fenced code blocks in markdown
-g.markdown_fenced_languages = {
-  'bash=sh',
-  'elixir',
-  'elm',
-  'graphql',
-  'html',
-  'js=javascript',
-  'json',
-  'python',
-  'ruby',
-  'sql',
-  'vim',
-  'typescript',
-  'yaml',
-  'sshconfig',
-  'cfg',
-  'systemd',
-  'nginx',
-  'diff',
-}
-
 -- folds!!
 -- enable folding in bash files
 g.sh_fold_enabled = 1
