@@ -260,6 +260,7 @@ return packer.startup(function(use)
     requires = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
+      'RRethy/nvim-treesitter-endwise',
       'nvim-treesitter/playground',
     },
     config = function()
@@ -430,9 +431,6 @@ return packer.startup(function(use)
       vim.g.matchup_matchparen_deferred = 1
     end,
   }
-
-  --  add `end` automatically when creating a closure in many languages
-  use { 'tpope/vim-endwise' }
 
   -- window animations
   use { 'camspiers/animate.vim' }
