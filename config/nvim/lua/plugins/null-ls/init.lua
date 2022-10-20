@@ -51,7 +51,7 @@ M.setup = function()
       -- Doesn't work for heex files
       b.formatting.mix.with {
         extra_filetypes = { 'eelixir', 'heex' },
-        args = { 'format' },
+        args = { 'format', '-' },
         extra_args = function(_params)
           local version_output = vim.fn.system 'elixir -v'
           local minor_version = vim.fn.matchlist(version_output, 'Elixir \\d.\\(\\d\\+\\)')[2]
