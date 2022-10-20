@@ -51,10 +51,22 @@ M.setup = function()
       -- Doesn't work for heex files
       b.formatting.mix.with {
         extra_filetypes = { 'eelixir', 'heex' },
-        -- tells the formatter the filename for the code passed to it via stdin.
-        -- This allows formatting heex files correctly. Only available for
-        -- Elixir >= 1.14
-        --[[ extra_args = { '--stdin-filename', '$FILENAME' }, ]]
+        args = { 'format' },
+        extra_args = function(_params)
+          local version_output = vim.fn.system 'elixir -v'
+          local minor_version = vim.fn.matchlist(version_output, 'Elixir \\d.\\(\\d\\+\\)')[2]
+
+          local extra_args = {}
+
+          -- tells the formatter the filename for the code passed to it via stdin.
+          -- This allows formatting heex files correctly. Only available for
+          -- Elixir >= 1.14
+          if tonumber(minor_version, 10) >= 14 then
+            extra_args = { '--stdin-filename', '$FILENAME' }
+          end
+
+          return extra_args
+        end,
       },
       b.formatting.pg_format,
       b.formatting.prettierd,
