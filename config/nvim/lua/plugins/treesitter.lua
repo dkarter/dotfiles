@@ -77,6 +77,8 @@ M.setup = function()
           ['if'] = '@function.inner',
           ['ac'] = '@class.outer',
           ['ic'] = '@class.inner',
+          ['ip'] = '@parameter.inner',
+          ['ap'] = '@parameter.outer',
         },
       },
       swap = {
