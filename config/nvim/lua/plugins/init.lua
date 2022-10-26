@@ -295,14 +295,15 @@ return packer.startup(function(use)
     config = function()
       require('nvim-headband').setup {
         location_section = {
-          position = 'right',
+          enable = false,
+          --[[ position = 'right', ]]
         },
       }
     end,
     after = 'nvim-web-devicons',
     requires = {
       -- required for for the navic section to work
-      { 'SmiteshP/nvim-navic' },
+      --[[ { 'SmiteshP/nvim-navic' }, ]]
       -- required for for devicons and default location_section.separator
       -- highlight group
       { 'kyazdani42/nvim-web-devicons' },
