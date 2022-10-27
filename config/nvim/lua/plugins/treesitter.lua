@@ -7,6 +7,11 @@ end
 local M = {}
 
 M.setup = function()
+  vim.cmd [[
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+  ]]
+
   treesitter.setup {
     -- see full list here:
     -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
