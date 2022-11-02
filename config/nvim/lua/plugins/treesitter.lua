@@ -10,6 +10,8 @@ M.setup = function()
   vim.cmd [[
     set foldmethod=expr
     set foldexpr=nvim_treesitter#foldexpr()
+    " disable folds at startup
+    set nofoldenable
   ]]
 
   treesitter.setup {
