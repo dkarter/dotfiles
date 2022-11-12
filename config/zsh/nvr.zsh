@@ -26,11 +26,13 @@ local __current_session_window="$(tmux display-message -p '#I')"
 __current_tmux_session="${__current_tmux_session//\//-}"
 export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket-${__current_tmux_session}-${__current_session_window}"
 
-export EDITOR="nvr"
-export VISUAL="nvr"
+alias nvim="nvim --listen $NVIM_LISTEN_ADDRESS"
+
+export EDITOR="nvr --servername $NVIM_LISTEN_ADDRESS"
+export VISUAL="nvr --servername $NVIM_LISTEN_ADDRESS"
 
 function e() {
-  nvr "$1" && tmux select-pane -l
+  nvr --servername $NVIM_LISTEN_ADDRESS "$1" && tmux select-pane -l
 }
 
 # Elixir Editor Support
@@ -41,9 +43,9 @@ function e() {
 # probably a better way to do that.)
 # open exh source files in neovim in the last pane
 # see https://github.com/rowlandcodes/exhelp#open-source-code-in-an-editor
-export ELIXIR_EDITOR="nvr +'__LINE__' __FILE__ && tmux select-pane -l"
+export ELIXIR_EDITOR="$EDITOR +'__LINE__' __FILE__ && tmux select-pane -l"
 
 # open ecto generated source files in neovim in the last pane
 # see https://hexdocs.pm/ecto/Mix.Tasks.Ecto.Gen.Repo.html
 # and https://hexdocs.pm/ecto_sql/Mix.Tasks.Ecto.Gen.Migration.html
-export ECTO_EDITOR="nvr +'__LINE__' __FILE__ && tmux select-pane -l"
+export ECTO_EDITOR="$EDITOR +'__LINE__' __FILE__ && tmux select-pane -l"
