@@ -94,10 +94,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 case "$(uname -s)" in
   Darwin*)
-    # Compile erlang with OpenSSL from Homebrew via asdf
-    export ERLANG_OPENSSL_PATH="/usr/local/opt/openssl@1.1"
-    export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl@1.1"
-
     # ruby-build -> configure readline path from homebrew
     export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
     ;;
@@ -131,21 +127,36 @@ export PATH=$PATH:$GOPATH/bin
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 # qt
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
-export CPPFLAGS="-I/usr/local/opt/qt/include"
+case "$(uname -s)" in
+  Darwin*)
+    # don't mess with this.. or erlang will stop compiling.
+    ;;
+  Linux*)
+    export PATH="/usr/local/opt/libpq/bin:$PATH"
+    export PATH="/usr/local/opt/qt/bin:$PATH"
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
+    export CPPFLAGS="-I/usr/local/opt/qt/include"
+    ;;
+esac
 
 # OPEN SSL
 # =====================================================
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
-# For compilers to find openssl@1.1 you may need to set:
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
+case "$(uname -s)" in
+  Darwin*)
+    # don't mess with this.. or erlang will stop compiling.
+    ;;
+  Linux*)
+    export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
-# For pkg-config to find openssl@1.1 you may need to set:
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+    # For compilers to find openssl@1.1 you may need to set:
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/openssl@1.1/lib"
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/openssl@1.1/include"
+
+    # For pkg-config to find openssl@1.1 you may need to set:
+    export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+    ;;
+esac
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
