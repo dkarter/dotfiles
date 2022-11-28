@@ -86,6 +86,8 @@ M.setup = function()
           ['ic'] = '@class.inner',
           ['ip'] = '@parameter.inner',
           ['ap'] = '@parameter.outer',
+          ['ib'] = '@block.inner',
+          ['ab'] = '@block.outer',
         },
       },
       swap = {
