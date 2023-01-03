@@ -88,6 +88,8 @@ M.setup = function()
           ['ap'] = '@parameter.outer',
           ['ib'] = '@block.inner',
           ['ab'] = '@block.outer',
+          ['ik'] = '@comment.inner',
+          ['ak'] = '@comment.outer',
         },
       },
       swap = {
