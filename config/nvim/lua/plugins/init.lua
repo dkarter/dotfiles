@@ -291,23 +291,16 @@ return packer.startup(function(use)
 
   -- winbar file title and lsp path
   use {
-    'B4mbus/nvim-headband',
-    config = function()
-      require('nvim-headband').setup {
-        location_section = {
-          enable = false,
-          --[[ position = 'right', ]]
-        },
-      }
-    end,
-    after = 'nvim-web-devicons',
+    'utilyre/barbecue.nvim',
     requires = {
-      -- required for for the navic section to work
-      --[[ { 'SmiteshP/nvim-navic' }, ]]
-      -- required for for devicons and default location_section.separator
-      -- highlight group
-      { 'kyazdani42/nvim-web-devicons' },
+      'neovim/nvim-lspconfig',
+      'smiteshp/nvim-navic',
+      'nvim-tree/nvim-web-devicons',
     },
+    after = 'nvim-web-devicons',
+    config = function()
+      require('barbecue').setup()
+    end,
   }
 
   -- file tree
