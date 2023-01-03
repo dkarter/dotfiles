@@ -92,6 +92,9 @@ export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 # for erl/iex history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# for erlang docs (used by ElixirLS)
+export KERL_BUILD_DOCS="yes"
+
 case "$(uname -s)" in
   Darwin*)
     # ruby-build -> configure readline path from homebrew
