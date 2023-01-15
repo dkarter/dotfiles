@@ -98,7 +98,13 @@ NPMS = %w[
   @prettier/plugin-ruby
 ].freeze
 
-CARGOS = %w[stylua airmux fastmod].freeze
+CARGOS = %w[
+  airmux
+  fastmod
+  pipe-rename
+  stylua
+  zoxide
+].freeze
 
 TASKS = [
   {

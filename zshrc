@@ -26,6 +26,7 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# load all config files
 for f in ${XDG_CONFIG_HOME}/zsh/*; do
   source $f
 done
