@@ -284,6 +284,11 @@ M.trouble_mappings = function()
   nmap { 'gR', '<cmd>Trouble lsp_references<cr>', default_opts }
 end
 
+M.hop_mappings = function()
+  nmap { '<leader>hp', '<cmd>HopPattern<cr>', default_opts }
+  nmap { '<leader>hw', '<cmd>HopWord<cr>', default_opts }
+end
+
 M.nvim_tree_mappings = function()
   nmap { '<leader>nt', ':NvimTreeToggle<CR>', default_opts }
 end

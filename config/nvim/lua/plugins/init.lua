@@ -123,6 +123,16 @@ return packer.startup(function(use)
     end,
   }
 
+  -- like leap, but with tiny hops
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2',
+    config = function()
+      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+      require('core.mappings').hop_mappings()
+    end,
+  }
+
   -- function signature help via LSP
   use {
     'ray-x/lsp_signature.nvim',
