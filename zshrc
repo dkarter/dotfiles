@@ -76,9 +76,6 @@ if $(command -v brew >/dev/null); then
   [[ -s "$BREW_PREFIX/etc/profile.d/autojump.sh" ]] && . "$BREW_PREFIX/etc/profile.d/autojump.sh"
 fi
 
-# asdf global version manager
-source "$HOME/.asdf/asdf.sh"
-
 # fzf stuff
 export FZF_DEFAULT_COMMAND='fd --type f --follow --color=always --exclude .git --exclude node_modules --exclude vendor --exclude build --exclude _build --exclude bundle --exclude Godeps'
 # add support for ctrl+o to open selected file in VS Code, also ansi for fd
