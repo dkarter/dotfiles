@@ -15,6 +15,9 @@ M.setup = function()
       sign_priority = 20,
       virtual_text = false,
     },
+    symbol_in_winbar = {
+      enable = false,
+    },
   }
 
   require('core.mappings').lsp_saga_mappings()
