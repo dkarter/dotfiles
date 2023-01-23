@@ -197,6 +197,10 @@ M.lsp_mappings = function(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, default_opts)
   end
 
+  local buf_vmap = function(mapping, cmd)
+    vim.api.nvim_buf_set_keymap(bufnr, 'v', mapping, cmd, default_opts)
+  end
+
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- gD = go Declaration
   buf_nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -216,6 +220,8 @@ M.lsp_mappings = function(bufnr)
   buf_nmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
   -- ca = code action
   buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  -- ca = code action
+  buf_vmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
   -- gr = get references
   buf_nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 end
@@ -230,10 +236,6 @@ end
 M.lsp_saga_mappings = function()
   -- Lsp finder find the symbol definition implmement reference
   nmap { '<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', silent }
-
-  -- Code action
-  nmap { '<leader>ca', '<cmd>Lspsaga code_action<CR>', silent }
-  vmap { '<leader>ca', '<cmd><C-U>Lspsaga range_code_action<CR>', silent }
 
   -- Rename
   nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', silent }
