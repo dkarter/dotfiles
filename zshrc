@@ -50,13 +50,6 @@ fi
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# HomeBrew
-export HOMEBREW_GITHUB_API_TOKEN="<<-[[CHANGEINLOCALZSHRC]]->>"
-
-
-# set homebrew on path
-export PATH="/usr/local/bin:$PATH"
-
 # set cabal and haskell binaries on path
 export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
 
@@ -69,11 +62,6 @@ export PGDATA="/Library/PostgreSQL/9.3/data"
 # autojump on Debian
 if [[ -f /usr/share/autojump/autojump.sh ]]; then
   source /usr/share/autojump/autojump.sh
-fi
-
-# autojump on mac (requires brew install autojump)
-if $(command -v brew >/dev/null); then
-  [[ -s "$BREW_PREFIX/etc/profile.d/autojump.sh" ]] && . "$BREW_PREFIX/etc/profile.d/autojump.sh"
 fi
 
 # fzf stuff
