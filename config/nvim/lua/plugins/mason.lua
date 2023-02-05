@@ -140,6 +140,8 @@ M.setup = function()
             workspace = {
               -- Make the server aware of Neovim runtime files
               library = vim.api.nvim_get_runtime_file('', true),
+              -- Stop prompting about 'luassert'. See https://github.com/neovim/nvim-lspconfig/issues/1700
+              checkThirdParty = false,
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
