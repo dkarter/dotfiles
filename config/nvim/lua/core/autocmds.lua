@@ -101,3 +101,13 @@ augroup('General Improvements', {
     command = 'normal zR',
   },
 })
+
+augroup('LSP Stuff', {
+  -- Use internal formatting for bindings like gq.
+  {
+    event = { 'LspAttach' },
+    command = function(args)
+      vim.bo[args.buf].formatexpr = nil
+    end,
+  },
+})
