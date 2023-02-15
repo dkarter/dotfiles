@@ -117,13 +117,13 @@ M.setup = function()
     end,
 
     -- Lua
-    ['sumneko_lua'] = function()
+    ['lua_ls'] = function()
       -- Make runtime files discoverable to the lua server
       local runtime_path = vim.split(package.path, ';')
       table.insert(runtime_path, 'lua/?.lua')
       table.insert(runtime_path, 'lua/?/init.lua')
 
-      lspconfig.sumneko_lua.setup {
+      lspconfig.lua_ls.setup {
         settings = {
           Lua = {
             runtime = {
