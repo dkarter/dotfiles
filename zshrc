@@ -56,14 +56,6 @@ export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
 # Golang
 export PATH="/usr/local/go/bin:$PATH"
 
-# For PostgreSQL
-export PGDATA="/Library/PostgreSQL/9.3/data"
-
-# autojump on Debian
-if [[ -f /usr/share/autojump/autojump.sh ]]; then
-  source /usr/share/autojump/autojump.sh
-fi
-
 # fzf stuff
 export FZF_DEFAULT_COMMAND='fd --type f --follow --color=always --exclude .git --exclude node_modules --exclude vendor --exclude build --exclude _build --exclude bundle --exclude Godeps'
 # add support for ctrl+o to open selected file in VS Code, also ansi for fd
