@@ -48,7 +48,7 @@ if [ -z ${GIT_EDITOR+x} ]; then
 fi
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
 # set cabal and haskell binaries on path
 export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
