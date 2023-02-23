@@ -31,15 +31,50 @@
   add-untracked = !"git status --porcelain | awk '/\\?\\?/{ print $2 }' | xargs git add"
   snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
   reset-authors = commit --amend --reset-author -CHEAD
+
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
   whitespace = warn
-	pager = git-split-diffs --color | less -RFX
+  pager = delta
+
+[delta]
+  navigate = true
+  light = false
+  side-by-side = true
+  line-numbers = true
+  features = tokyonight
+  hyperlinks = true
+
+[delta "tokyonight"]
+  dark = true
+  line-numbers = true
+  side-by-side = false
+  keep-plus-minus-markers = false
+  syntax-theme = Monokai Extended Origin
+  file-style = bold
+  file-decoration-style = ul
+  file-added-label = [+]
+  file-copied-label = [==]
+  file-modified-label = [*]
+  file-removed-label = [-]
+  file-renamed-label = [->]
+  minus-style                   = syntax "#3a273a"
+  minus-non-emph-style          = syntax "#3a273a"
+  minus-emph-style              = syntax "#6b2e43"
+  minus-empty-line-marker-style = syntax "#3a273a"
+  line-numbers-minus-style      = "#b55a67"
+  plus-style                    = syntax "#273849"
+  plus-non-emph-style           = syntax "#273849"
+  plus-emph-style               = syntax "#305f6f"
+  plus-empty-line-marker-style  = syntax "#273849"
+  line-numbers-plus-style       = "#627259"
+  line-numbers-zero-style       = "#3b4261"
+
 [merge]
   ; ff = only
   summary = true
-	tool = nvimdiff
+  tool = nvimdiff
 [merge "bundlelock"]
   name = lock Gemfile
   driver = bundle install
@@ -67,10 +102,11 @@
 [help]
   autocorrect = 10
 [interactive]
+  diffFilter = delta --color-only
   singlekey = true
 [diff]
   algorithm = patience
-  colorMoved = zebra
+  colorMoved = default
 [user]
   name = Dorian Karter
   email = dkarter@users.noreply.github.com

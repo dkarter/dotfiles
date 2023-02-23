@@ -92,8 +92,6 @@ ASDF_ARM_INCOMPATIBLE = %w[
 NPMS = %w[
   neovim
   tldr
-  git-split-diffs
-  diff-so-fancy
   prettier
   @prettier/plugin-ruby
 ].freeze
@@ -101,6 +99,7 @@ NPMS = %w[
 CARGOS = %w[
   airmux
   fastmod
+  git-delta
   pipe-rename
   stylua
   zoxide

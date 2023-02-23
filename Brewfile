@@ -58,16 +58,13 @@ brew 'bat'
 # compile C stuff
 brew 'cmake'
 
-# better git diffs
-brew 'diff-so-fancy'
-
 # auto run env scripts when entering a dir
 brew 'direnv'
 
 # fuzzy finder
 brew 'fzf'
 
-# C++ compiler
+# c++ compiler
 brew 'gcc'
 
 # source control
