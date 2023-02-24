@@ -217,6 +217,12 @@ return packer.startup(function(use)
   -- syntax highlighting for zinit (zsh plugin manager)
   use { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } }
 
+  -- ui for jq and yq
+  use {
+    'gennaro-tedesco/nvim-jqx',
+    ft = { 'json', 'yaml' },
+  }
+
   -- Comment out code easily
   use {
     'numToStr/Comment.nvim',
