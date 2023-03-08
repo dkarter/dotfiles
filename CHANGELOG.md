@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.7.0](https://github.com/dkarter/dotfiles/compare/v7.6.4...v7.7.0) (2023-03-08)
+
+
+### Features
+
+* **installer:** add howdoi via pip ([78b4106](https://github.com/dkarter/dotfiles/commit/78b41064168acf587ca87a41a3197d3940d46332))
+
+
+### Bug Fixes
+
+* **nvim:** replace telescope-ui-select w/ dressing.nvim ([1122d4f](https://github.com/dkarter/dotfiles/commit/1122d4f29001617eaf82ac9943b529d30b86e39a))
+* **nvim:** use ElixirLS from elixir.nvim instead of Mason ([3dea902](https://github.com/dkarter/dotfiles/commit/3dea9027c9e566a3aab03021257231525fce05e8))
+
 ## [7.6.4](https://github.com/dkarter/dotfiles/compare/v7.6.3...v7.6.4) (2023-02-17)
 
 
