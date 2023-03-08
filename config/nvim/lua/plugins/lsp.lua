@@ -3,11 +3,13 @@ local utils = require 'core.utils'
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
 local cmp_lsp_present, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 local navic_present, navic = pcall(require, 'nvim-navic')
+local elixir_present, elixir = pcall(require, 'elixir')
 
 local deps = {
   cmp_lsp_present,
   lspconfig_present,
   navic_present,
+  elixir_present,
 }
 
 if utils.contains(deps, false) then
@@ -76,7 +78,12 @@ M.setup = function()
     config.capabilities = create_capabilities()
   end)
 
+  ---@diagnostic disable-next-line: redundant-parameter
   require('plugins.mason').setup {
+    on_attach = on_attach,
+  }
+
+  elixir.setup {
     on_attach = on_attach,
   }
 end

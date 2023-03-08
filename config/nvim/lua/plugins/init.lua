@@ -51,15 +51,6 @@ return packer.startup(function(use)
     end,
   }
 
-  -- elixir commands from elixirls
-  use {
-    'mhanberg/elixir.nvim',
-    requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('elixir').setup()
-    end,
-  }
-
   -- installs/updates LSPs, linters and DAPs
   use {
     'williamboman/mason.nvim',
@@ -76,6 +67,12 @@ return packer.startup(function(use)
       {
         'SmiteshP/nvim-navic',
         requires = 'neovim/nvim-lspconfig',
+      },
+
+      -- elixir commands from elixirls
+      {
+        'mhanberg/elixir.nvim',
+        requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
       },
     },
     config = function()
