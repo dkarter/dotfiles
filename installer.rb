@@ -56,6 +56,7 @@ PIPS3 = [
   'neovim', # NeoVim python3 support
   'neovim-remote', # allow controlling neovim remotely
   'yq', # like jq but for yaml files
+  'howdoi', # ask for coding help directly from the terminal
 ].freeze
 
 ASDF_PLUGINS = %w[
