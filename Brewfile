@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# some fonts
-tap 'homebrew/cask-fonts'
-
 # Dual Panel File Browser
 cask 'marta'
 
@@ -18,9 +15,6 @@ brew 'openjdk'
 
 # used by my alfred workflow (Default Browser)
 brew 'defaultbrowser'
-
-# help from terminal
-brew 'howdoi'
 
 # code stats
 brew 'scc'
