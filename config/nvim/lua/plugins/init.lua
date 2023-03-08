@@ -51,6 +51,15 @@ return packer.startup(function(use)
     end,
   }
 
+  -- elixir commands from elixirls
+  use {
+    'mhanberg/elixir.nvim',
+    requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('elixir').setup()
+    end,
+  }
+
   -- installs/updates LSPs, linters and DAPs
   use {
     'williamboman/mason.nvim',
@@ -63,12 +72,6 @@ return packer.startup(function(use)
 
       -- required for setting up capabilities for cmp
       'hrsh7th/cmp-nvim-lsp',
-
-      -- elixir commands from elixirls
-      {
-        'mhanberg/elixir.nvim',
-        requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
-      },
 
       {
         'SmiteshP/nvim-navic',
@@ -517,6 +520,7 @@ return packer.startup(function(use)
   use { 'junegunn/fzf', run = 'cd ~/.fzf && ./install --all' }
   use 'junegunn/fzf.vim'
 
+  -- fuzzy find things
   use {
     'nvim-telescope/telescope.nvim',
     requires = {

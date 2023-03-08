@@ -151,14 +151,6 @@ M.setup = function()
         },
       }
     end,
-
-    -- Elixir
-    ['elixirls'] = function()
-      lspconfig.elixirls.setup {
-        settings = elixir.settings {},
-        on_attach = elixir.on_attach,
-      }
-    end,
   }
 end
 
