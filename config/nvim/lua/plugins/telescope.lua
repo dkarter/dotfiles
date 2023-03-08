@@ -81,22 +81,6 @@ local default = {
         end)
       end,
     },
-    ['ui-select'] = {
-      {
-        layout_config = {
-          -- Preview should always show (unless previewer = false)
-          preview_cutoff = 1,
-
-          width = function(_, max_columns, _)
-            return math.min(max_columns, 80)
-          end,
-
-          height = function(_, _, max_lines)
-            return math.min(max_lines, 15)
-          end,
-        },
-      },
-    },
   },
 }
 
@@ -157,7 +141,6 @@ M.setup = function()
     'packer',
     'fzf',
     'conventional_commits',
-    'ui-select',
     'attempt',
   }
 
