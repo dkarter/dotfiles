@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.7.1](https://github.com/dkarter/dotfiles/compare/v7.7.0...v7.7.1) (2023-03-08)
+
+
+### Bug Fixes
+
+* **nvim:** move ElixirLS setup to plugins.lsp and use shared on_attach ([8574e30](https://github.com/dkarter/dotfiles/commit/8574e30581c15790b22381913a843792526176c0))
+
 ## [7.7.0](https://github.com/dkarter/dotfiles/compare/v7.6.4...v7.7.0) (2023-03-08)
 
 
