@@ -28,10 +28,6 @@ local on_attach = function(client, bufnr)
     vim.lsp.buf_detach_client(bufnr, client.id)
   end
 
-  if client.config.name == 'elixirls' then
-    vim.api.nvim_buf_set_option(bufnr, 'formatexpr', '')
-  end
-
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
   end
