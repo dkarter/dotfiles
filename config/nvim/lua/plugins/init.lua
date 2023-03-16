@@ -272,6 +272,7 @@ return packer.startup(function(use)
       'JoosepAlviste/nvim-ts-context-commentstring',
       'RRethy/nvim-treesitter-endwise',
       'nvim-treesitter/playground',
+      'nvim-treesitter/nvim-treesitter-context',
     },
     config = function()
       require('plugins.treesitter').setup()
