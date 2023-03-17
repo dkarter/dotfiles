@@ -223,6 +223,15 @@ return packer.startup(function(use)
     ft = { 'json', 'yaml' },
   }
 
+  -- browse for anything using your choice of method
+  use {
+    'lalitmee/browse.nvim',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require('plugins.browse').setup()
+    end,
+  }
+
   -- Comment out code easily
   use {
     'numToStr/Comment.nvim',
