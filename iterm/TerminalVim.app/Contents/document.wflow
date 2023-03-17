@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>512</string>
+	<string>520</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -51,7 +51,13 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>-- TerminalVim.app-- This creates a shim Application that will enable you to open files from the Finder in vim using iTerm-- To use this script: -- 1. Open Automator and create a new Application-- 2. Add the "Run Applescript" action-- 3. Paste this script into the Run Applescript section-- 4. Save the application as TerminalVim.app in your Applications folder-- 5. In the Finder, right click on a file and select "Open With". In that window you can set TerminalVim as a defaulton run {input, parameters}	tell application "iTerm"		create window with default profile		tell front window			tell current session				write text ("vim " &amp; quote &amp; POSIX path of input &amp; quote &amp; "; exit")			end tell		end tell	end tellend run</string>
+					<string>-- TerminalVim.app-- This creates a shim Application that will enable you to open files from the Finder in vim using iTerm-- To use this script: -- 1. Open Automator and create a new Application-- 2. Add the "Run Applescript" action-- 3. Paste this script into the Run Applescript section-- 4. Save the application as TerminalVim.app in your Applications folder-- 5. In the Finder, right click on a file and select "Open With". In that window you can set TerminalVim as a defaulton run {input, parameters}	tell application "iTerm"		create window with default profile		tell front window			tell current session
+			    if input is not {} then
+				    write text ("vim " &amp; quote &amp; POSIX path of input &amp; quote &amp; "; exit")
+				else
+				    write text ("vim; exit")
+                end if			
+	        end tell		end tell	end tellend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -105,7 +111,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>440.000000:315.000000</string>
+				<string>583.500000:720.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
