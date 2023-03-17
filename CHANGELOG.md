@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.8.0](https://github.com/dkarter/dotfiles/compare/v7.7.1...v7.8.0) (2023-03-17)
+
+
+### Features
+
+* **nvim:** add nvim-treesitter-context ([601702c](https://github.com/dkarter/dotfiles/commit/601702cf4dde161b34d1606f0814b2c44a4795c4))
+
+
+### Bug Fixes
+
+* allow opening TerminalVim.app without specifying a file ([d7c11ad](https://github.com/dkarter/dotfiles/commit/d7c11ad8ca700b915cfadcdb3ff2bb2683ed3cc5))
+
 ## [7.7.1](https://github.com/dkarter/dotfiles/compare/v7.7.0...v7.7.1) (2023-03-08)
 
 
