@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.9.0](https://github.com/dkarter/dotfiles/compare/v7.8.0...v7.9.0) (2023-03-20)
+
+
+### Features
+
+* **nvim:** add browse.nvim ([2b34b5a](https://github.com/dkarter/dotfiles/commit/2b34b5a181a1b69c9748e5763c9b9f29213a2cc5))
+* **nvim:** add nvim-jqx (UI for JQ and YQ) ([1902276](https://github.com/dkarter/dotfiles/commit/19022764c7ac4bd34649eaba0000a510bea8f887))
+
 ## [7.8.0](https://github.com/dkarter/dotfiles/compare/v7.7.1...v7.8.0) (2023-03-17)
 
 
