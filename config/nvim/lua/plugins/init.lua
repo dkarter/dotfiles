@@ -399,7 +399,7 @@ require('lazy').setup({
     end,
   },
 
-  -- vim unimpaired fixes daily annoyences
+  -- vim unimpaired fixes daily annoyances
   { 'tpope/vim-unimpaired' },
 
   -- abolish.vim: easily search for, substitute, and abbreviate multiple variants
