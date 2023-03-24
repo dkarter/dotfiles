@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/dkarter/dotfiles/compare/v7.9.0...v8.0.0) (2023-03-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change mappings for vim test
+* **nvim:** switch Packer -> Lazy.nvim
+
+### Features
+
+* **installer:** add commitlint and trash-cli npms ([5621842](https://github.com/dkarter/dotfiles/commit/5621842b8a03507fc8e03413a6a65b7dac938774))
+
+
+### Bug Fixes
+
+* **nvim:** move leader mapping definition to init.lua ([adb5094](https://github.com/dkarter/dotfiles/commit/adb5094964273ab5cd0353e08dc929e71a9e16fe))
+
+
+### Code Refactoring
+
+* **nvim:** change mappings for vim test ([89e2040](https://github.com/dkarter/dotfiles/commit/89e204031400caa730478519aaff635259237643))
+* **nvim:** switch Packer -&gt; Lazy.nvim ([99cef86](https://github.com/dkarter/dotfiles/commit/99cef86183ea78c9a78bf3e2f8e1427f917b259c))
+
 ## [7.9.0](https://github.com/dkarter/dotfiles/compare/v7.8.0...v7.9.0) (2023-03-20)
 
 
