@@ -381,10 +381,10 @@ M.easy_align_mappings = function()
 end
 
 M.vim_test_mappings = function()
-  nmap { '<leader>T', ':TestNearest<CR>' }
-  nmap { '<leader>t', ':TestFile<CR>' }
-  nmap { '<leader>a', ':TestSuite<CR>' }
-  nmap { '<leader>l', ':TestLast<CR>' }
+  nmap { '<leader>tn', ':TestNearest<CR>' }
+  nmap { '<leader>tf', ':TestFile<CR>' }
+  nmap { '<leader>ts', ':TestSuite<CR>' }
+  nmap { '<leader>tl', ':TestLast<CR>' }
 end
 
 M.undotree_mappings = function()
