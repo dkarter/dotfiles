@@ -17,7 +17,7 @@ local setup_telescope_hydra = function()
   ^^^^^ _r_: resume           _l_: re[l]oader        ^
   ^^^^^ _h_: vim [h]elp       _:_: execute  command  ^
   ^^^^^ _k_: keymaps          _;_: commands history  ^
-  ^^^^^ _O_: options          _p_: packer            ^
+  ^^^^^ _O_: options                                 ^
   ^
   ^^^^   _<Enter>_: Telescope     _<Esc>_: quit      ^
   ]]
@@ -48,7 +48,6 @@ local setup_telescope_hydra = function()
       { 'k', cmd 'Telescope keymaps' },
       { 'l', cmd 'Telescope reloader' },
       { 'o', cmd 'Telescope oldfiles' },
-      { 'p', cmd 'Telescope packer' },
       { 'r', cmd 'Telescope resume' },
       -- The `Telescope current_buffer_tags` command sucks currently, I might be
       -- able to submit a PR to improve it, but for now let's just use FZF's

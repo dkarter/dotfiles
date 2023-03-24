@@ -1,28 +1,14 @@
-local present, packer = pcall(require, 'plugins.packer_init')
-
-if not present then
-  return false
-end
-
-return packer.startup(function(use)
-  -- Packer can manage itself
-  use {
-    'wbthomason/packer.nvim',
-    config = function()
-      require('core.mappings').packer_mappings()
-    end,
-  }
-
+require('lazy').setup({
   -- Speed up loading Lua modules in Neovim to improve startup time.
-  use { 'lewis6991/impatient.nvim' }
+  { 'lewis6991/impatient.nvim' },
 
-  use {
+  {
     'hrsh7th/nvim-cmp',
-    requires = {
+    dependencies = {
       -- snippet engine, required by cmp
       {
         'L3MON4D3/LuaSnip',
-        requires = {
+        dependencies = {
           -- snippets!
           'rafamadriz/friendly-snippets',
         },
@@ -49,12 +35,12 @@ return packer.startup(function(use)
     config = function()
       require('plugins.cmp').setup()
     end,
-  }
+  },
 
   -- installs/updates LSPs, linters and DAPs
-  use {
+  {
     'williamboman/mason.nvim',
-    requires = {
+    dependencies = {
       -- handles connection of LSP Configs and Mason
       'williamboman/mason-lspconfig.nvim',
 
@@ -66,45 +52,45 @@ return packer.startup(function(use)
 
       {
         'SmiteshP/nvim-navic',
-        requires = 'neovim/nvim-lspconfig',
+        dependencies = 'neovim/nvim-lspconfig',
       },
 
       -- elixir commands from elixirls
       {
         'mhanberg/elixir.nvim',
-        requires = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
+        dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
       },
     },
     config = function()
       require('plugins.lsp').setup()
     end,
-  }
+  },
 
   -- LSP UI utils
-  use {
+  {
     'glepnir/lspsaga.nvim',
     branch = 'main',
     config = function()
       require('plugins.lspsaga').setup()
     end,
-  }
+  },
 
   -- automatically install tools using mason
-  use {
+  {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    requires = {
+    dependencies = {
       'williamboman/mason.nvim',
     },
     config = function()
       require('plugins.mason-tool-installer').setup()
     end,
-  }
+  },
 
-  -- Use Neovim as a language server to inject LSP diagnostics, code
+  -- Neovim as a language server to inject LSP diagnostics, code
   -- actions, and more via Lua.
-  use {
+  {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
 
       'lukas-reineke/lsp-format.nvim',
@@ -112,48 +98,50 @@ return packer.startup(function(use)
     config = function()
       require('plugins.null-ls').setup()
     end,
-  }
+  },
 
   -- makes mappings more discoverable using modals that show up after the prefix
   -- was pressed
-  use {
+  {
     'anuvyklack/hydra.nvim',
     config = function()
       require('plugins.hydra').setup()
     end,
-  }
+  },
 
   -- like leap, but with tiny hops
-  use {
+  {
     'phaazon/hop.nvim',
     branch = 'v2',
     config = function()
       require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
       require('core.mappings').hop_mappings()
     end,
-  }
+  },
 
   -- function signature help via LSP
-  use {
+  {
     'ray-x/lsp_signature.nvim',
     setup = function()
       require('lsp_signature').setup { wrap = true }
     end,
-  }
+  },
 
   --  pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-  use {
+  {
     'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('plugins.trouble').setup()
     end,
-  }
+  },
 
   -- color schemes
   ----------------
-  use {
+  {
     'folke/tokyonight.nvim',
+    lazy = false, -- make sure we load this during startup
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('tokyonight').setup {
         style = 'storm',
@@ -162,10 +150,10 @@ return packer.startup(function(use)
 
       vim.cmd [[colorscheme tokyonight]]
     end,
-  }
+  },
 
   -- highlight color hex codes with their color (fast!)
-  use {
+  {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup {
@@ -173,116 +161,116 @@ return packer.startup(function(use)
         '!packer',
       }
     end,
-  }
+  },
 
   -- highlight and search todo/fixme/hack etc comments
-  use {
+  {
     'folke/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       require('todo-comments').setup {}
     end,
-  }
+  },
 
   -- status line
-  use {
+  {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('plugins.lualine').setup()
     end,
-  }
+  },
 
-  use {
+  {
     'pwntester/octo.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require('octo').setup()
     end,
-  }
+  },
 
   -- Visual git gutter (also used by feline)
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('plugins.gitsigns').setup()
     end,
-  }
+  },
 
   -- syntax highlighting for zinit (zsh plugin manager)
-  use { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } }
+  { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } },
 
   -- ui for jq and yq
-  use {
+  {
     'gennaro-tedesco/nvim-jqx',
     ft = { 'json', 'yaml' },
-  }
+  },
 
   -- browse for anything using your choice of method
-  use {
+  {
     'lalitmee/browse.nvim',
-    requires = { 'nvim-telescope/telescope.nvim' },
+    dependencies = { 'nvim-telescope/telescope.nvim' },
     config = function()
       require('plugins.browse').setup()
     end,
-  }
+  },
 
   -- Comment out code easily
-  use {
+  {
     'numToStr/Comment.nvim',
-    requires = {
+    dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
     config = function()
       require('plugins.comment').setup()
     end,
-  }
+  },
 
   -- delete unused buffers
-  use { 'schickling/vim-bufonly', cmd = 'BO' }
+  { 'schickling/vim-bufonly', cmd = 'BO' },
 
   -- nginx syntax support
-  use { 'chr4/nginx.vim' }
+  { 'chr4/nginx.vim' },
 
   -- run tests at the speed of thought
-  use {
+  {
     'janko-m/vim-test',
-    requires = { 'benmills/vimux' },
+    dependencies = { 'benmills/vimux' },
     config = function()
       vim.g['test#strategy'] = 'vimux'
       -- accommodations for Malomo's unusual folder structure on Dash
       vim.cmd [[let test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|__tests__))\.(js|jsx|coffee|ts|tsx)$']]
       require('core.mappings').vim_test_mappings()
     end,
-  }
+  },
 
   -- Highlight Yanked String
-  use { 'machakann/vim-highlightedyank' }
+  { 'machakann/vim-highlightedyank' },
 
   -- git integration
-  use {
+  {
     'tpope/vim-fugitive',
     config = function()
       require('core.mappings').fugitive_mappings()
     end,
-  }
+  },
 
   -- github support for fugitive
-  use {
+  {
     'tpope/vim-rhubarb',
-    requires = { 'tpope/vim-fugitive' },
-  }
+    dependencies = { 'tpope/vim-fugitive' },
+  },
 
   --  Better syntax highlighting (and more)
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    requires = {
+    build = ':TSUpdate',
+    dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'RRethy/nvim-treesitter-endwise',
@@ -292,147 +280,143 @@ return packer.startup(function(use)
     config = function()
       require('plugins.treesitter').setup()
     end,
-  }
+  },
 
   -- support for MJML templates
-  use {
+  {
     'amadeus/vim-mjml',
-  }
+  },
 
   -- auto complete closable pairs
-  use {
+  {
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup {}
     end,
-  }
+  },
 
   -- auto close html/tsx tags using TreeSitter
-  use {
+  {
     'windwp/nvim-ts-autotag',
     config = function()
       require('nvim-ts-autotag').setup()
     end,
-  }
+  },
 
   -- winbar file title and lsp path
-  use {
+  {
     'utilyre/barbecue.nvim',
-    requires = {
+    dependencies = {
       'neovim/nvim-lspconfig',
-      'smiteshp/nvim-navic',
+      'SmiteshP/nvim-navic',
       'nvim-tree/nvim-web-devicons',
     },
     after = 'nvim-web-devicons',
     config = function()
       require('barbecue').setup()
     end,
-  }
+  },
 
   -- file tree
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('plugins.nvimtree').setup()
     end,
-  }
+  },
 
   -- Highlight current paragraph (works well with goyo)
-  use {
+  {
     'junegunn/limelight.vim',
     cmd = 'Limelight',
     setup = function()
       vim.g.limelight_paragraph_span = 1
       vim.g.limelight_priority = -1
     end,
-  }
+  },
 
   -- growing collection of settings, commands and require('core.mappings') put together to make
   -- working with the location list/window and the quickfix list/window smoother
-  use { 'romainl/vim-qf' }
+  { 'romainl/vim-qf' },
 
   -- Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
-  use { 'matthias-margush/qfx.vim' }
-
-  -- Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
-  -- https://gitlab.com/hauleth/qfx.vim
-  use 'https://gitlab.com/hauleth/qfx.vim.git'
+  { 'matthias-margush/qfx.vim' },
 
   -- navigate to directory of current file using `-`
-  use { 'tpope/vim-vinegar' }
+  { 'tpope/vim-vinegar' },
 
   -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically
-  use { 'tpope/vim-sleuth' }
+  { 'tpope/vim-sleuth' },
 
   -- ruby gem info directly in a Gemfile
-  use { 'alexbel/vim-rubygems', ft = { 'ruby' } }
+  { 'alexbel/vim-rubygems', ft = { 'ruby' } },
 
   -- support for Gleam language
-  use { 'gleam-lang/gleam.vim' }
+  { 'gleam-lang/gleam.vim' },
 
   --  Erlang: {{{
   -- erlang syntax
-  use { 'vim-erlang/vim-erlang-runtime' }
-  --  }}}
+  { 'vim-erlang/vim-erlang-runtime' },
+  --  }}},
 
   -- Elixir: {{{
 
   -- elixir text objects
-  use {
+  {
     'kevinkoltz/vim-textobj-elixir',
-    requires = { 'kana/vim-textobj-user' },
+    dependencies = { 'kana/vim-textobj-user' },
     ft = { 'elixir' },
-  }
+  },
 
-  -- pulls info on hex packages (requires mattn/webapi-vim)
-  use { 'lucidstack/hex.vim', ft = { 'elixir' } }
-  -- }}}
+  -- pulls info on hex packages (dependencies mattn/webapi-vim)
+  { 'lucidstack/hex.vim', ft = { 'elixir' }, dependencies = { 'mattn/webapi-vim' } },
+  -- }}},
 
   -- add text object for HTML attributes - allows dax cix etc
-  use {
+  {
     'whatyouhide/vim-textobj-xmlattr',
-    requires = { 'kana/vim-textobj-user' },
-  }
+    dependencies = { 'kana/vim-textobj-user' },
+  },
 
   -- graphql support
-  use { 'jparise/vim-graphql' }
+  { 'jparise/vim-graphql' },
 
   -- Vim sugar for the UNIX shell commands that need it the most.
-  use { 'tpope/vim-eunuch' }
+  { 'tpope/vim-eunuch' },
 
-  -- allow (non-native) plugins to use the . command
-  use { 'tpope/vim-repeat' }
+  -- allow (non-native) plugins to the . command
+  { 'tpope/vim-repeat' },
 
   -- Surround text with closures
-  use { 'tpope/vim-surround' }
+  { 'tpope/vim-surround' },
 
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
-  use {
+  {
     'tpope/vim-projectionist',
     setup = function()
       require 'plugins.projectionist'
     end,
-  }
+  },
 
   -- vim unimpaired fixes daily annoyences
-  use { 'tpope/vim-unimpaired' }
+  { 'tpope/vim-unimpaired' },
 
   -- abolish.vim: easily search for, substitute, and abbreviate multiple variants
   -- of a word
-  use { 'tpope/vim-abolish' }
+  { 'tpope/vim-abolish' },
 
   -- Support emacs keybindings in insert mode
-  use { 'tpope/vim-rsi' }
+  { 'tpope/vim-rsi' },
 
   -- save vim sessions
-  use { 'tpope/vim-obsession' }
+  { 'tpope/vim-obsession' },
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
-  use { 'tpope/vim-ragtag' }
+  { 'tpope/vim-ragtag' },
 
   -- automatic bulleted lists
-  use {
+  {
     'dkarter/bullets.vim',
     setup = function()
       vim.g.bullets_enabled_file_types = {
@@ -442,32 +426,32 @@ return packer.startup(function(use)
         'scratch',
       }
     end,
-  }
+  },
 
   -- replacement for matchit
-  use {
+  {
     'andymass/vim-matchup',
     setup = function()
       vim.g.matchup_matchparen_deferred = 1
     end,
-  }
+  },
 
   -- window animations
-  use { 'camspiers/animate.vim' }
+  { 'camspiers/animate.vim' },
 
   --  auto-generate ctags on save
-  use { 'jsfaint/gen_tags.vim' }
+  { 'jsfaint/gen_tags.vim' },
 
   -- show trailing white spaces and automatically delete them on write
-  use {
+  {
     'zakharykaplan/nvim-retrail',
     config = function()
       require('plugins.retrail').setup()
     end,
-  }
+  },
 
   -- Convert code to multiline
-  use {
+  {
     'AndrewRadev/splitjoin.vim',
     setup = function()
       vim.g.splitjoin_align = 1
@@ -475,10 +459,10 @@ return packer.startup(function(use)
       vim.g.splitjoin_ruby_curly_braces = 0
       vim.g.splitjoin_ruby_hanging_args = 0
     end,
-  }
+  },
 
   -- Toggle between different language verbs or syntax styles
-  use {
+  {
     'AndrewRadev/switch.vim',
     setup = function()
       vim.g.switch_custom_definitions = {
@@ -490,149 +474,141 @@ return packer.startup(function(use)
         { 'yes', 'no' },
       }
     end,
-  }
+  },
 
   -- The ultimate undo history visualizer for VIM
-  use {
+  {
     'mbbill/undotree',
     config = function()
       require('core.mappings').undotree_mappings()
     end,
-  }
+  },
 
   -- Rust support
-  use { 'rust-lang/rust.vim', ft = { 'rust' } }
+  { 'rust-lang/rust.vim', ft = { 'rust' } },
 
   --  Indent lines (visual indication)
-  use {
+  {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('plugins.indent_blankline').setup()
     end,
-  }
+  },
 
   -- resize windows in vim naturally
-  use {
+  {
     'simeji/winresizer',
     cmd = 'WinResizerStartResize',
     config = function()
       require('core.mappings').winresizer_mappings()
     end,
-  }
+  },
 
   -- smooth scrolling in neovim
-  use {
+  {
     'declancm/cinnamon.nvim',
     config = function()
       require('cinnamon').setup()
     end,
-  }
+  },
 
   -- fuzzy finder (still used by a lot of small workflows I built FzfRg,
   -- GConflict etc)
-  use { 'junegunn/fzf', run = 'cd ~/.fzf && ./install --all' }
-  use 'junegunn/fzf.vim'
+  { 'junegunn/fzf', build = ':call fzf#install()' },
+  { 'junegunn/fzf.vim' },
 
   -- fuzzy find things
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
       'nvim-telescope/telescope-packer.nvim',
       'nvim-telescope/telescope-github.nvim',
       'olacin/telescope-cc.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'm-demare/attempt.nvim',
       'folke/tokyonight.nvim',
     },
     config = function()
       require('plugins.telescope').setup()
     end,
-  }
+  },
 
   -- better ui for vim.ui commands
-  use {
+  {
     'stevearc/dressing.nvim',
     config = function()
       require('dressing').setup()
     end,
-  }
-
-  -- use Neovim inside Firefox
-  use {
-    'glacambre/firenvim',
-    run = function()
-      vim.fn['firenvim#install'](0)
-    end,
-  }
+  },
 
   -- RipGrep - grep is dead. All hail the new king RipGrep.
-  use {
+  {
     'jremmen/vim-ripgrep',
     setup = function()
-      -- allow hidden files to be searched and use smart case
+      -- allow hidden files to be searched and smart case
       vim.g.rg_command = 'rg --vimgrep --hidden --smart-case'
       vim.g.rg_highlight = 1
     end,
     config = function()
       require('core.mappings').ripgrep_mappings()
     end,
-  }
+  },
 
   -- same as tabular but by Junegunn and way easier
-  use {
+  {
     'junegunn/vim-easy-align',
     config = function()
       require('core.mappings').easy_align_mappings()
     end,
-  }
+  },
 
   -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
-  use {
+  {
     'sindrets/diffview.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
-  }
+  },
 
   -- manage github gists
-  use { 'mattn/gist-vim', cmd = 'Gist', requires = { 'mattn/webapi-vim' } }
+  { 'mattn/gist-vim', cmd = 'Gist', dependencies = { 'mattn/webapi-vim' } },
 
   -- PostgreSQL highlighting
-  use 'exu/pgsql.vim'
+  { 'exu/pgsql.vim' },
 
   -- Helm Chart syntax
-  use 'towolf/vim-helm'
+  { 'towolf/vim-helm' },
 
   -- attempt stuff using scratch buffer and pre-configured bootstrap
-  use {
+  {
     'm-demare/attempt.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim',
     },
     config = function()
       require('plugins.attempt').setup()
     end,
-  }
+  },
 
   --- TMUX ---
 
   -- tmux config file stuff
-  use { 'tmux-plugins/vim-tmux', ft = 'tmux' }
+  { 'tmux-plugins/vim-tmux', ft = 'tmux' },
 
   -- seamless tmux/vim pane navigation
-  use { 'christoomey/vim-tmux-navigator' }
+  { 'christoomey/vim-tmux-navigator' },
 
   -- Resize tmux panes and Vim windows with ease.
-  use 'RyanMillerC/better-vim-tmux-resizer'
+  { 'RyanMillerC/better-vim-tmux-resizer' },
 
   -- support editorconfig files
-  use { 'gpanders/editorconfig.nvim' }
+  { 'gpanders/editorconfig.nvim' },
 
   -- notifications
-  use {
+  {
     'rcarriga/nvim-notify',
     config = function()
       local notify = require 'notify'
@@ -641,5 +617,5 @@ return packer.startup(function(use)
       }
       vim.notify = notify
     end,
-  }
-end)
+  },
+}, { concurrency = 8 })

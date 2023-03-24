@@ -138,7 +138,6 @@ M.setup = function()
   local extensions = {
     'gh',
     'file_browser',
-    'packer',
     'fzf',
     'conventional_commits',
     'attempt',

@@ -10,7 +10,7 @@ local default = {
     'TelescopePrompt',
     'dashboard',
     'NvimTree',
-    'packer',
+    'lazy',
     'terminal',
     'nofile',
     'quickfix',

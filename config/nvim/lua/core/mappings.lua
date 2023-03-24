@@ -303,7 +303,6 @@ M.telescope_mappings = function()
 
   --  Extensions
   nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', default_opts }
-  nmap { '<leader>fp', '<cmd>Telescope packer<cr>', default_opts }
 
   nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', default_opts }
   nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', default_opts }
@@ -392,10 +391,9 @@ M.undotree_mappings = function()
   nmap { '<leader>ut', '<cmd>UndotreeToggle<CR>' }
 end
 
-M.packer_mappings = function()
-  nmap { '<leader>pl', '<cmd>PackerCompile<CR>' }
-  nmap { '<leader>ps', '<cmd>PackerSync<CR>' }
-  nmap { '<leader>pc', '<cmd>PackerClean<CR>' }
+M.lazy_mappings = function()
+  nmap { '<leader>ps', '<cmd>Lazy sync<CR>' }
+  nmap { '<leader>pc', '<cmd>Lazy clean<CR>' }
 end
 
 M.attempt_mappings = function(attempt)
