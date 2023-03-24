@@ -91,10 +91,12 @@ ASDF_ARM_INCOMPATIBLE = %w[
 ].freeze
 
 NPMS = %w[
-  neovim
-  tldr
-  prettier
+  @commitlint/cli
   @prettier/plugin-ruby
+  neovim
+  prettier
+  tldr
+  trash-cli
 ].freeze
 
 CARGOS = %w[
