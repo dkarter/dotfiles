@@ -45,18 +45,6 @@ end
 local silent = { silent = true }
 local default_opts = { noremap = true, silent = true }
 
--- TODO: find out why this doesn't work with helper funcs or why I can't just
--- set the leader to space directly
--- alias for leader key (use space as leader)
--- vim.g.mapleader = ' '
--- vim.g.maplocalleader = ' '
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', silent)
--- set leader key to `\` so that I can alias it to <space>
-vim.g.mapleader = '\\'
-vim.g.maplocalleader = '\\'
-vim.cmd [[nmap <space> \]]
-vim.cmd [[vmap <space> \]]
-
 -- center window on search result
 nmap { 'n', 'nzzzv' }
 nmap { 'N', 'Nzzzv' }
