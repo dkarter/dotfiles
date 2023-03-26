@@ -113,7 +113,7 @@ require('lazy').setup({
   -- function signature help via LSP
   {
     'ray-x/lsp_signature.nvim',
-    setup = function()
+    config = function()
       require('lsp_signature').setup { wrap = true }
     end,
   },
@@ -232,10 +232,12 @@ require('lazy').setup({
   {
     'janko-m/vim-test',
     dependencies = { 'benmills/vimux' },
-    config = function()
+    init = function()
       vim.g['test#strategy'] = 'vimux'
       -- accommodations for Malomo's unusual folder structure on Dash
       vim.cmd [[let test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|__tests__))\.(js|jsx|coffee|ts|tsx)$']]
+    end,
+    config = function()
       require('core.mappings').vim_test_mappings()
     end,
   },
@@ -321,7 +323,7 @@ require('lazy').setup({
   {
     'junegunn/limelight.vim',
     cmd = 'Limelight',
-    setup = function()
+    init = function()
       vim.g.limelight_paragraph_span = 1
       vim.g.limelight_priority = -1
     end,
@@ -385,7 +387,7 @@ require('lazy').setup({
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
   {
     'tpope/vim-projectionist',
-    setup = function()
+    config = function()
       require 'plugins.projectionist'
     end,
   },
@@ -409,7 +411,7 @@ require('lazy').setup({
   -- automatic bulleted lists
   {
     'dkarter/bullets.vim',
-    setup = function()
+    init = function()
       vim.g.bullets_enabled_file_types = {
         'markdown',
         'text',
@@ -422,7 +424,7 @@ require('lazy').setup({
   -- replacement for matchit
   {
     'andymass/vim-matchup',
-    setup = function()
+    init = function()
       vim.g.matchup_matchparen_deferred = 1
     end,
   },
@@ -444,7 +446,7 @@ require('lazy').setup({
   -- Convert code to multiline
   {
     'AndrewRadev/splitjoin.vim',
-    setup = function()
+    init = function()
       vim.g.splitjoin_align = 1
       vim.g.splitjoin_trailing_comma = 1
       vim.g.splitjoin_ruby_curly_braces = 0
@@ -455,7 +457,7 @@ require('lazy').setup({
   -- Toggle between different language verbs or syntax styles
   {
     'AndrewRadev/switch.vim',
-    setup = function()
+    init = function()
       vim.g.switch_custom_definitions = {
         { 'up', 'down', 'change' },
         { 'add', 'drop', 'remove' },
@@ -537,7 +539,7 @@ require('lazy').setup({
   -- RipGrep - grep is dead. All hail the new king RipGrep.
   {
     'jremmen/vim-ripgrep',
-    setup = function()
+    init = function()
       -- allow hidden files to be searched and smart case
       vim.g.rg_command = 'rg --vimgrep --hidden --smart-case'
       vim.g.rg_highlight = 1
@@ -551,9 +553,11 @@ require('lazy').setup({
   -- the next possible character
   {
     'folke/which-key.nvim',
-    config = function()
+    init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
+    end,
+    config = function()
       require('which-key').setup {}
     end,
   },
