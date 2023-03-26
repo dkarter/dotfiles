@@ -169,17 +169,6 @@ in() {
   fi
 }
 
-# tree command ignoring gitignored files/dirs
-gtree() {
-  git_ignore_file=$(git config --get core.excludesfile)
-
-  if [[ -f ${git_ignore_file} ]]; then
-    tree -C -I"$(tr '\n' '\|' <"${git_ignore_file}")" "${@}"
-  else
-    tree -C "${@}"
-  fi
-}
-
 # split strings
 # Usage: split "string" "delimiter"
 split() {

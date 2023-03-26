@@ -99,13 +99,19 @@ NPMS = %w[
   trash-cli
 ].freeze
 
-CARGOS = %w[
-  airmux
-  fastmod
-  git-delta
-  pipe-rename
-  stylua
-  zoxide
+CARGOS = [
+  # manage tmux sessions via yaml files (similar to tmuxinator)
+  'airmux',
+  # file system tree visualizer with icons and git support
+  'erdtree',
+  # fast regex code modifications
+  'fastmod',
+  # nicer git diffs
+  'git-delta',
+  # rename a list of files in your editor
+  'pipe-rename',
+  # a modern version of autojump
+  'zoxide',
 ].freeze
 
 TASKS = [

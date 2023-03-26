@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# vim: ft=sh
+# vim: ft=zsh
 # Unix
 # short for ls
 alias l="ls"
@@ -44,7 +44,9 @@ alias e="$EDITOR"
 alias v="$VISUAL"
 alias sp="nvr -cc split"
 alias vs="nvr -cc vsplit"
-alias tree="tree -C"
+alias et="et -I"
+alias tree="et"
+alias gtree="et"
 alias :qa="nvr -cc ':qa'"
 alias :wq="nvr -cc ':wq'"
 
