@@ -149,7 +149,6 @@ require('lazy').setup({
     config = function()
       require('colorizer').setup {
         '*',
-        '!packer',
       }
     end,
   },
@@ -304,7 +303,6 @@ require('lazy').setup({
       'SmiteshP/nvim-navic',
       'nvim-tree/nvim-web-devicons',
     },
-    after = 'nvim-web-devicons',
     config = function()
       require('barbecue').setup()
     end,
@@ -516,7 +514,6 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
-      'nvim-telescope/telescope-packer.nvim',
       'nvim-telescope/telescope-github.nvim',
       'olacin/telescope-cc.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
