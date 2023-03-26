@@ -37,6 +37,8 @@ brew 'htmlq'
 # easily copy tabular data
 brew 'yank'
 
+brew 'pgformatter'
+
 # postgres pager
 brew 'pspg'
 
