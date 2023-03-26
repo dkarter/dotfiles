@@ -6,6 +6,9 @@ cask 'marta'
 # Fast GPU rendered terminal emulator
 cask 'alacritty'
 
+# allow accessing passwords from a cli
+cask '1password/tap/1password-cli'
+
 # for erlang
 brew 'wxwidgets'
 brew 'autoconf'
