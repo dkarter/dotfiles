@@ -100,15 +100,6 @@ require('lazy').setup({
     end,
   },
 
-  -- makes mappings more discoverable using modals that show up after the prefix
-  -- was pressed
-  {
-    'anuvyklack/hydra.nvim',
-    config = function()
-      require('plugins.hydra').setup()
-    end,
-  },
-
   -- like leap, but with tiny hops
   {
     'phaazon/hop.nvim',
@@ -553,6 +544,17 @@ require('lazy').setup({
     end,
     config = function()
       require('core.mappings').ripgrep_mappings()
+    end,
+  },
+
+  -- displays a popup with possible key bindings e.g. <leader>f will show f as
+  -- the next possible character
+  {
+    'folke/which-key.nvim',
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require('which-key').setup {}
     end,
   },
 
