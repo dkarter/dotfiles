@@ -621,4 +621,6 @@ require('lazy').setup({
       vim.notify = notify
     end,
   },
+
+  require 'plugins.debug',
 }, { concurrency = 8 })
