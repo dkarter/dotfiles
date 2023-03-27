@@ -171,6 +171,7 @@ require('lazy').setup({
     end,
   },
 
+  -- Github
   {
     'pwntester/octo.nvim',
     dependencies = {
@@ -327,28 +328,28 @@ require('lazy').setup({
     end,
   },
 
-  -- growing collection of settings, commands and require('core.mappings') put together to make
+  -- growing collection of settings, commands and mappings put together to make
   -- working with the location list/window and the quickfix list/window smoother
-  { 'romainl/vim-qf' },
+  'romainl/vim-qf',
 
   -- Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
-  { 'matthias-margush/qfx.vim' },
+  'matthias-margush/qfx.vim',
 
   -- navigate to directory of current file using `-`
-  { 'tpope/vim-vinegar' },
+  'tpope/vim-vinegar',
 
   -- automatically adjusts 'shiftwidth' and 'expandtab' heuristically
-  { 'tpope/vim-sleuth' },
+  'tpope/vim-sleuth',
 
   -- ruby gem info directly in a Gemfile
   { 'alexbel/vim-rubygems', ft = { 'ruby' } },
 
   -- support for Gleam language
-  { 'gleam-lang/gleam.vim' },
+  'gleam-lang/gleam.vim',
 
   --  Erlang: {{{
   -- erlang syntax
-  { 'vim-erlang/vim-erlang-runtime' },
+  'vim-erlang/vim-erlang-runtime',
   --  }}},
 
   -- Elixir: {{{
@@ -371,16 +372,16 @@ require('lazy').setup({
   },
 
   -- graphql support
-  { 'jparise/vim-graphql' },
+  'jparise/vim-graphql',
 
   -- Vim sugar for the UNIX shell commands that need it the most.
-  { 'tpope/vim-eunuch' },
+  'tpope/vim-eunuch',
 
   -- allow (non-native) plugins to the . command
-  { 'tpope/vim-repeat' },
+  'tpope/vim-repeat',
 
   -- Surround text with closures
-  { 'tpope/vim-surround' },
+  'tpope/vim-surround',
 
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
   {
@@ -391,18 +392,17 @@ require('lazy').setup({
   },
 
   -- vim unimpaired fixes daily annoyances
-  { 'tpope/vim-unimpaired' },
+  'tpope/vim-unimpaired',
 
   -- abolish.vim: easily search for, substitute, and abbreviate multiple variants
   -- of a word
-  { 'tpope/vim-abolish' },
+  'tpope/vim-abolish',
 
   -- Support emacs keybindings in insert mode
-  { 'tpope/vim-rsi' },
-
+  'tpope/vim-rsi',
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
-  { 'tpope/vim-ragtag' },
+  'tpope/vim-ragtag',
 
   -- automatic bulleted lists
   {
@@ -600,13 +600,13 @@ require('lazy').setup({
   { 'tmux-plugins/vim-tmux', ft = 'tmux' },
 
   -- seamless tmux/vim pane navigation
-  { 'christoomey/vim-tmux-navigator' },
+  'christoomey/vim-tmux-navigator',
 
   -- Resize tmux panes and Vim windows with ease.
-  { 'RyanMillerC/better-vim-tmux-resizer' },
+  'RyanMillerC/better-vim-tmux-resizer',
 
   -- support editorconfig files
-  { 'gpanders/editorconfig.nvim' },
+  'gpanders/editorconfig.nvim',
 
   -- notifications
   {
