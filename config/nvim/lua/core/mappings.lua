@@ -55,6 +55,9 @@ nmap { '<c-w>w', ':bd<CR>' }
 -- rename current file
 nmap { '<Leader>mv', ":Move <C-R>=expand('%')<CR>", default_opts }
 
+-- copy current file
+nmap { '<Leader>sa', ":saveas <C-R>=expand('%')<CR><Left><Left><Left>", default_opts }
+
 -- sort selected lines
 vmap { 'gs', ':sort<CR>' }
 
