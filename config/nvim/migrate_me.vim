@@ -141,33 +141,7 @@ augroup DebuggerBrevs
 augroup END
 " -------- Abbreviations ---------------------------------- }}}
 
-" For NeoVim {{{
-  " use neovim-remote (pip3 install neovim-remote) allows
-  " opening a new split inside neovim instead of nesting
-  " neovim processes for git commit
-    let $VISUAL      = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
-    let $GIT_EDITOR  = 'nvr -cc split --remote-wait +"setlocal bufhidden=delete"'
-    let $EDITOR      = 'nvr -l'
-    let $ECTO_EDITOR = 'nvr -l'
-
-
-
-" }}}
-
 " gx extensions {{{
-" For VimPlug
-function! PlugGx()
-  let l:line = getline('.')
-  let l:name = matchlist(l:line, '\v[A-Za-z0-9\-_\.]+\/[A-Za-z0-9\-_\.]+')[0]
-  let l:url  = 'https://github.com/'.l:name
-  call netrw#BrowseX(l:url, 0)
-endfunction
-
-augroup PlugGxGroup
-  autocmd!
-  autocmd BufRead,BufNewFile plugins.lua nnoremap <buffer> <silent> gx :call PlugGx()<cr>
-augroup END
-
 " JavaScript package.json
 function! PackageJsonGx() abort
   let l:line = getline('.')
@@ -192,11 +166,3 @@ augroup MixExsGx
   autocmd BufRead,BufNewFile mix.exs nnoremap <buffer> <silent> gh :HexOpenGithub<cr>
 augroup END
 " }}}
-
-" Temporary {{{
-
-" testing for bullets.vim
-nnoremap <leader>m :vs test.md<cr>
-nnoremap <leader>q :q!<cr>
-
-"}}}
