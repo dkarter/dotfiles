@@ -400,8 +400,6 @@ require('lazy').setup({
   -- Support emacs keybindings in insert mode
   { 'tpope/vim-rsi' },
 
-  -- save vim sessions
-  { 'tpope/vim-obsession' },
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
   { 'tpope/vim-ragtag' },
