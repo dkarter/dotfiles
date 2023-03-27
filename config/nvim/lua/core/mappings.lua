@@ -371,9 +371,6 @@ M.ripgrep_mappings = function()
   --  Grep selection with Rg (excluding tests and migrations)
   vmap { '<leader>gt', "y :Rg \" -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
   nmap { '<Leader>gt', ":Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
-
-  --  Put cursor after :Rg command (a little faster than typing :Rg)
-  nmap { '<leader>rg ', ':Rg ' }
 end
 
 M.easy_align_mappings = function()
