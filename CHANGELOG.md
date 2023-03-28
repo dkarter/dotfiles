@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.1.0](https://github.com/dkarter/dotfiles/compare/v8.0.0...v8.1.0) (2023-03-28)
+
+
+### Features
+
+* **installer,zsh:** add erdtree for a better tree command ([72b7073](https://github.com/dkarter/dotfiles/commit/72b7073c313131ae62cbd08324849961b722cb36))
+* **nvim:** add mapping for 'save as' ([0843abb](https://github.com/dkarter/dotfiles/commit/0843abbe1020a1555992ab0f757a1d8e224c04ae))
+* **term,tmux:** add script for setting up terminfo ([e0e0f8e](https://github.com/dkarter/dotfiles/commit/e0e0f8e68a0c4a76637d25b1914803a6ad259078))
+* **zsh,brew:** add 1password-cli ([efaabb4](https://github.com/dkarter/dotfiles/commit/efaabb464a8ec242531181e3a14115024b30010c))
+
+
+### Bug Fixes
+
+* **nvim:** fix behavior of ts_context_commentstring ([2a27e2e](https://github.com/dkarter/dotfiles/commit/2a27e2e523546afab44c22cc9743601ae8aa96cc))
+* **nvim:** remove duplicate mapping for &lt;leader&gt;rg ([edffa34](https://github.com/dkarter/dotfiles/commit/edffa34fab587d032443fb75cbb6222ccacb7394))
+* **nvim:** use init instead of setup for vim settings ([83fe86c](https://github.com/dkarter/dotfiles/commit/83fe86cf6fa08c14fb5177b5cd4c5084e4ee1483))
+* **ruby,prettier:** fix ability to format Ruby with prettier ([6c2d479](https://github.com/dkarter/dotfiles/commit/6c2d479e0ea6b719a6f42465dbf4228d1cfd1159))
+* **tmux:** add proper undercurl support to tmux ([4ad44a8](https://github.com/dkarter/dotfiles/commit/4ad44a88831ef30c9f0c8be0312286f204515eb1))
+
 ## [8.0.0](https://github.com/dkarter/dotfiles/compare/v7.9.0...v8.0.0) (2023-03-24)
 
 
