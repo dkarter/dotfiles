@@ -69,7 +69,9 @@ M.setup = function()
         end,
       },
       b.formatting.pg_format,
-      b.formatting.prettierd,
+      b.formatting.prettierd.with {
+        extra_filetypes = { 'ruby' },
+      },
       b.formatting.shfmt,
       b.formatting.stylua,
     },

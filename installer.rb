@@ -46,9 +46,14 @@ SYMLINK_DIRS = [
 ].freeze
 
 GEMS = [
-  'pry', # ruby debugger
   'awesome_print', # colorize output of pry (required by .pryrc)
+  'bundler', # manage gem bundles for a project
+  'prettier_print', # required by prettier ruby plugin
+  'syntax_tree', # required by prettier ruby plugin
+  'syntax_tree-rbs', # required by prettier ruby plugin
+  'syntax_tree-haml', # required by prettier ruby plugin
   'neovim', # for NeoVim ruby plugins
+  'pry', # ruby debugger
   'solargraph', # ruby language server
 ].freeze
 
@@ -82,13 +87,7 @@ ASDF_PLUGINS = %w[
   yarn
 ].freeze
 
-ASDF_ARM_INCOMPATIBLE = %w[
-  github-cli
-  fzf
-  fd
-  ripgrep
-  neovim
-].freeze
+ASDF_ARM_INCOMPATIBLE = %w[github-cli fzf fd ripgrep neovim].freeze
 
 NPMS = %w[
   @commitlint/cli
@@ -128,19 +127,16 @@ TASKS = [
     confirmation: 'Install fonts?',
     callback: proc { install_fonts },
   },
-  {
-    name: 'Create Dirs',
-    sync: true,
-    callback: proc { create_dirs },
-  },
+  { name: 'Create Dirs', sync: true, callback: proc { create_dirs } },
   {
     name: 'Symlink Dotfiles',
     sync: true,
     confirmation: 'Link dotfiles?',
-    callback: proc do
-      symlink_dotfiles
-      symlink_nested_dotfiles
-    end,
+    callback:
+      proc do
+        symlink_dotfiles
+        symlink_nested_dotfiles
+      end,
   },
   {
     name: 'ZSH Plugin Manager',
@@ -152,23 +148,25 @@ TASKS = [
     name: 'ASDF',
     sync: false,
     confirmation: 'Install ASDF and latest tool versions?',
-    callback: proc do
-      install_asdf
-      update_asdf
-      install_asdf_plugins
-      install_asdf_tools
-    end,
+    callback:
+      proc do
+        install_asdf
+        update_asdf
+        install_asdf_plugins
+        install_asdf_tools
+      end,
   },
   {
     name: 'Extrenal Packages',
     sync: false,
     confirmation: 'Install external packages (gems, pips, cargos, npms)?',
-    callback: proc do
-      install_rubygems
-      install_npm_packages
-      install_python_packages
-      install_rust_cargos
-    end,
+    callback:
+      proc do
+        install_rubygems
+        install_npm_packages
+        install_python_packages
+        install_rust_cargos
+      end,
   },
 ].freeze
 
@@ -195,7 +193,7 @@ class Installer
   private
 
   def run_task(task)
-    task in {name: name, callback: callback, sync: sync}
+    task in { name: name, callback: callback, sync: sync }
 
     # skip non "sync" tasks when in sync mode
     # sync mode is used to just sync commonly changed files and directories
@@ -272,11 +270,12 @@ class Installer
       "zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'",
     )
 
-    plugins = if `uname -m`.match?(/x86/)
-                ASDF_PLUGINS
-              else
-                ASDF_PLUGINS - ASDF_ARM_INCOMPATIBLE
-              end
+    plugins =
+      if `uname -m`.match?(/x86/)
+        ASDF_PLUGINS
+      else
+        ASDF_PLUGINS - ASDF_ARM_INCOMPATIBLE
+      end
 
     plugins.each do |plugin, _url|
       puts "Installing #{plugin}...".light_blue
@@ -291,19 +290,22 @@ class Installer
 
     # download_fonts
     [
+      # Regular
       'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Regular/complete/Caskaydia%20Cove%20Nerd%20Font%20Complete%20Mono%20Regular.otf',
+      # Italic
       'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Regular/complete/Caskaydia%20Cove%20Nerd%20Font%20Complete%20Mono%20Italic.otf',
+      # Bold
       'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Bold/complete/Caskaydia%20Cove%20Nerd%20Font%20Complete%20Mono%20Bold.otf',
-
     ].each do |url|
       filename = CGI.unescape(File.basename(url))
-      dir = if mac?
-              '~/Library/Fonts'
-            elsif linux?
-              '~/.fonts'
-            else
-              raise 'WTF? not a mac or linux.. who are you?'
-            end
+      dir =
+        if mac?
+          '~/Library/Fonts'
+        elsif linux?
+          '~/.fonts'
+        else
+          raise 'WTF? not a mac or linux.. who are you?'
+        end
 
       target_path = File.expand_path(File.join(dir, filename))
 

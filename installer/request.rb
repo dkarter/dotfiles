@@ -8,7 +8,8 @@ require 'net/http'
 # response = Request.new(url).resolve
 # request.body # => return the body of the request
 class Request
-  class TooManyRedirects < StandardError; end
+  class TooManyRedirects < StandardError
+  end
 
   attr_accessor :url, :body, :redirect_limit, :response
 
