@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.2.0](https://github.com/dkarter/dotfiles/compare/v8.1.0...v8.2.0) (2023-03-28)
+
+
+### Features
+
+* **nvim:** add additional TreeSitter grammars ([071b561](https://github.com/dkarter/dotfiles/commit/071b5610994e3724feea00f4aa9865b1ae17c2b7))
+
+
+### Bug Fixes
+
+* **nvim:** force gitignore file to render as gitignore ft ([2ea939c](https://github.com/dkarter/dotfiles/commit/2ea939cac41f3e4a3f1d0c028919b58b23251869))
+
 ## [8.1.0](https://github.com/dkarter/dotfiles/compare/v8.0.0...v8.1.0) (2023-03-28)
 
 
