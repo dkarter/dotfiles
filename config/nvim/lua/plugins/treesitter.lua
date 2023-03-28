@@ -18,18 +18,23 @@ M.setup = function()
     -- see full list here:
     -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
     ensure_installed = {
+      'arduino',
       'bash',
       'c',
       'cmake',
       'comment',
       'cpp',
       'css',
+      'diff',
       'dockerfile',
       'eex',
       -- Elixir treesitter is very slow
       'elixir',
       'elm',
       'erlang',
+      'gitcommit',
+      'git_rebase',
+      'gitignore',
       'gleam',
       'go',
       'graphql',
