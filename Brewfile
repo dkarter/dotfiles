@@ -140,3 +140,5 @@ brew 'tesseract'
 # required by ccls
 brew 'llvm'
 
+# the watch command
+brew 'watch'
