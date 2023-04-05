@@ -20,6 +20,7 @@ M.setup = function()
       ----------------------
       b.code_actions.eslint_d,
       b.code_actions.shellcheck,
+      b.code_actions.gomodifytags,
 
       ----------------------
       --    Diagnostics   --
@@ -48,6 +49,9 @@ M.setup = function()
       ----------------------
       --    Formatters    --
       ----------------------
+      b.formatting.gofmt,
+      b.formatting.goimports,
+
       -- Doesn't work for heex files
       b.formatting.mix.with {
         extra_filetypes = { 'eelixir', 'heex' },
