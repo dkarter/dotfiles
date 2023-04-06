@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.3.0](https://github.com/dkarter/dotfiles/compare/v8.2.0...v8.3.0) (2023-04-06)
+
+
+### Features
+
+* **nvim:** add tooling for golang ([0584597](https://github.com/dkarter/dotfiles/commit/05845973455aaac6debc23510fb0d64788f3d0cc))
+
+
+### Bug Fixes
+
+* **nvim:** disable colorizer in Lazy popup ([884ed48](https://github.com/dkarter/dotfiles/commit/884ed4852e7125db3d34038c8e73379f781da8f6))
+
 ## [8.2.0](https://github.com/dkarter/dotfiles/compare/v8.1.0...v8.2.0) (2023-03-28)
 
 
