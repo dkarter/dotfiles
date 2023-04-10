@@ -142,3 +142,6 @@ brew 'llvm'
 
 # the watch command
 brew 'watch'
+
+# set default application for opening files on mac
+brew 'duti'
