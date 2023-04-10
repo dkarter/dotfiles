@@ -429,9 +429,6 @@ require('lazy').setup({
   -- window animations
   { 'camspiers/animate.vim' },
 
-  --  auto-generate ctags on save
-  { 'jsfaint/gen_tags.vim' },
-
   -- show trailing white spaces and automatically delete them on write
   {
     'zakharykaplan/nvim-retrail',

@@ -56,8 +56,6 @@ the setup script. More details can be found by reading the following files:
 Gotchas for NeoVim setup:
 
 - requires [fd](https://github.com/sharkdp/fd) >= 8.4 (install from brew)
-- requires [global](https://www.gnu.org/software/global/) for GNU Tags (install
-  from brew)
 - Tools such as formatters, LSPs, linters are automatically installed via
   `:Mason`, if one of the deps is not installing make sure to open `:Mason` to
   see the full error message.
