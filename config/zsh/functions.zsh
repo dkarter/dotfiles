@@ -1,3 +1,12 @@
+# Github PR edit
+ghpre() {
+  existing_description="$(gh pr view --json body -q '.body')"
+  temp_file="$(mktemp)"
+  echo "$existing_description" > "$temp_file"
+  nvim "$temp_file" +'set ft=markdown'
+  gh pr edit --body "$(cat $temp_file)"
+  rm "$temp_file"
+}
 # fo [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
