@@ -300,6 +300,7 @@ require('lazy').setup({
   -- winbar file title and lsp path
   {
     'utilyre/barbecue.nvim',
+    enabled = false,
     dependencies = {
       'neovim/nvim-lspconfig',
       'SmiteshP/nvim-navic',
