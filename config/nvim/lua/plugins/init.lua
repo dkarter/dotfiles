@@ -57,7 +57,7 @@ require('lazy').setup({
 
       -- elixir commands from elixirls
       {
-        'mhanberg/elixir.nvim',
+        'elixir-tools/elixir-tools.nvim',
         dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
       },
     },
