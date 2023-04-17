@@ -47,6 +47,7 @@ M.setup = function()
       'golangci-lint',
       'golangci-lint-langserver',
       'gomodifytags',
+      'helm-ls',
       'html-lsp',
       'json-lsp',
       'lua-language-server',
