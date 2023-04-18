@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.5.0](https://github.com/dkarter/dotfiles/compare/v8.4.0...v8.5.0) (2023-04-18)
+
+
+### Features
+
+* **nvim:** add helm-ls ([564b3f1](https://github.com/dkarter/dotfiles/commit/564b3f1288541651e6d83effaf702ed1664000b2))
+* **zsh:** add ghpre command for editing PR body in Neovim ([bc7810a](https://github.com/dkarter/dotfiles/commit/bc7810a500aa48cf25df479853899429c6f0483e))
+
 ## [8.4.0](https://github.com/dkarter/dotfiles/compare/v8.3.0...v8.4.0) (2023-04-10)
 
 
