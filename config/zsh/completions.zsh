@@ -7,8 +7,11 @@ COMPLETION_WAITING_DOTS="true"
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
-# append completions to fpath
+# append asdf completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
+
+# append homebrew completions to fpath
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 # completion only refresh once a day
 # autoload -U compinit
