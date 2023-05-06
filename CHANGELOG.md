@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.5.1](https://github.com/dkarter/dotfiles/compare/v8.5.0...v8.5.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* **zsh,brew:** add zsh completions from homebrew ([eafa80a](https://github.com/dkarter/dotfiles/commit/eafa80a136ca131ddf5edafdab33523de79dc1c3))
+
 ## [8.5.0](https://github.com/dkarter/dotfiles/compare/v8.4.0...v8.5.0) (2023-04-18)
 
 
