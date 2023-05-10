@@ -57,18 +57,3 @@ zinit wait"2b" lucid \
   mv"cht* -> _cht" \
   as"completion" \
   for https://cheat.sh/:zsh
-
-# cheat
-zinit wait"2a" lucid \
-  id-as"cheat" \
-  from"gh-r" \
-  mv"cheat* -> cheat" \
-  pick"cheat" \
-  as"program" \
-  for @cheat/cheat
-
-zinit wait"2b" lucid \
-  id-as"cheat-completion" \
-  mv"cheat* -> _cheat" \
-  as"completion" \
-  for https://github.com/cheat/cheat/blob/master/scripts/cheat.zsh
