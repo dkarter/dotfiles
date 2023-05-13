@@ -9,13 +9,16 @@ sudo apt -y install \
   bison \
   build-essential \
   clangd-13 \
+  curl \
   fop \
+  git \
   global \
   httpie \
   inotify-tools \
   libclang-13-dev \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
+  libmnl-dev \
   libncurses-dev \
   libncurses5-dev \
   libpng-dev \
@@ -25,6 +28,7 @@ sudo apt -y install \
   libxml2-utils \
   m4 \
   openjdk-11-jdk \
+  pkg-config \
   postgresql \
   postgresql-client \
   pspg \

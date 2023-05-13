@@ -130,10 +130,6 @@ brew 'tree'
 # keep zsh up to date
 brew 'zsh'
 
-# GNU File, Shell, and Text utilities
-# https://www.gnu.org/software/coreutils
-brew 'coreutils'
-
 # enable ocr via an Alfred workflow
 brew 'tesseract'
 
@@ -145,3 +141,14 @@ brew 'watch'
 
 # set default application for opening files on mac
 brew 'duti'
+
+# for Nerves
+brew 'xz'
+brew 'pkg-config'
+brew 'squashfs'
+brew 'fwup'
+
+# GNU File, Shell, and Text utilities (also required by Nerves)
+# https://www.gnu.org/software/coreutils
+brew 'coreutils'
+
