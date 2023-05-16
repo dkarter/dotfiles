@@ -49,9 +49,6 @@ local default_opts = { noremap = true, silent = true }
 nmap { 'n', 'nzzzv' }
 nmap { 'N', 'Nzzzv' }
 
---  close tab
-nmap { '<c-w>w', ':bd<CR>' }
-
 -- rename current file
 nmap { '<Leader>mv', ":Move <C-R>=expand('%')<CR>", default_opts }
 
@@ -63,9 +60,6 @@ vmap { 'gs', ':sort<CR>' }
 
 -- remove highlighting on escape
 nmap { '<esc>', ':nohlsearch<cr>', silent }
-
--- ml = map lua: converts vim mapping to lua (roughly..)
-nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4' }/<cr>" }
 
 -- reload (current) lua file (does not reload module though...)
 nmap {
@@ -113,48 +107,39 @@ cmap { 'qA', 'qa', default_opts }
 cmap { 'Q!', 'q!', default_opts }
 
 -- zoom a vim pane, <C-w> = to re-balance
-nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>' }
-nmap { '<leader>=', ':wincmd =<cr>' }
+nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>', { desc = 'Zoom window' } }
+nmap { '<leader>=', ':wincmd =<cr>', { desc = 'Rebalance window sizes' } }
 
 -- close all other windows with <leader>o
-nmap { '<leader>wo', '<c-w>o' }
-
--- Index ctags from any project, including those outside Rails
-nmap { '<Leader>ct', ':!ctags -R .<CR>' }
+nmap { '<leader>wo', '<c-w>o', { desc = 'Close other windows' } }
 
 -- Switch between the last two files
 nmap { '<tab><tab>', '<c-^>' }
 
 -- copy to end of line
-nmap { 'Y', 'y$' }
+nmap { 'Y', 'y$', { desc = 'Yank to EOL' } }
 
 -- copy to system clipboard
-nmap { 'gy', '"+y' }
-vmap { 'gy', '"+y' }
+nmap { 'gy', '"+y', { desc = 'Yank to clipboard' } }
+vmap { 'gy', '"+y', { desc = 'Yank to clipboard' } }
 
 -- copy to to system clipboard (till end of line)
-nmap { 'gY', '"+y$' }
+nmap { 'gY', '"+y$', { desc = 'Yank to clipboard EOL' } }
 
 -- copy entire file
-nmap { '<C-g>y', 'ggyG' }
+nmap { '<C-g>y', 'ggyG', { desc = 'Copy Entire File' } }
 
 -- copy entire file to system clipboard
-nmap { '<C-g>Y', 'gg"+yG' }
-
--- disable arrow keys in normal mode
-nmap { '<Up>', ':call animate#window_delta_height(10)<CR>' }
-nmap { '<Down>', ':call animate#window_delta_height(-10)<CR>' }
-nmap { '<Left>', ':call animate#window_delta_width(10)<CR>' }
-nmap { '<Right>', ':call animate#window_delta_width(-10)<CR>' }
+nmap { '<C-g>Y', 'gg"+yG', { desc = 'Copy Entire File To System Clipboard' } }
 
 -- Open files relative to current path:
-nmap { '<leader>ed', ':edit <C-R>=expand("%:p:h") . "/" <CR>' }
-nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>' }
-nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>' }
+nmap { '<leader>ed', ':edit <C-R>=expand("%:p:h") . "/" <CR>', { desc = '[ED]it file' } }
+nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>', { desc = '[SP]lit file' } }
+nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>', { desc = '[V]ertical [S]plit file' } }
 
 -- move lines up and down in visual mode
-vmap { '<c-k>', ":move '<-2<CR>gv=gv" }
-vmap { '<c-j>', ":move '>+1<CR>gv=gv" }
+vmap { '<c-k>', ":move '<-2<CR>gv=gv", { desc = 'Move selection up' } }
+vmap { '<c-j>', ":move '>+1<CR>gv=gv", { desc = 'Move selection down' } }
 
 -- source current file (useful when iterating on config)
 nmap {
