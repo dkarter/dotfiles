@@ -77,6 +77,14 @@ require('lazy').setup({
     end,
   },
 
+  -- LSP progress indicator
+  {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup()
+    end,
+  },
+
   -- automatically install tools using mason
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
