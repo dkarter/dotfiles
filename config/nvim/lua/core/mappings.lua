@@ -147,24 +147,6 @@ nmap { '<Down>', ':call animate#window_delta_height(-10)<CR>' }
 nmap { '<Left>', ':call animate#window_delta_width(10)<CR>' }
 nmap { '<Right>', ':call animate#window_delta_width(-10)<CR>' }
 
--- last typed word to lower case
-imap { '<C-w>u', '<esc>guawA' }
-
--- last typed word to UPPER CASE
-imap { '<C-w>U', '<esc>gUawA' }
-
--- entire line to lower case
-imap { '<C-g>u', '<esc>guuA' }
-
--- entire line to UPPER CASE
-imap { '<C-g>U', '<esc>gUUA' }
-
--- last word to title case
-imap { '<C-w>t', '<esc>bvgU<esc>A' }
-
--- current line to title case
-imap { '<C-g>t', [[<esc>:s/\v<(.)(\w*)/\u\1\L\2/g<cr>A]] }
-
 -- Open files relative to current path:
 nmap { '<leader>ed', ':edit <C-R>=expand("%:p:h") . "/" <CR>' }
 nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>' }
