@@ -31,6 +31,8 @@ require('lazy').setup({
       'petertriho/cmp-git',
       -- tmux pane completion
       'andersevenrud/cmp-tmux',
+      -- icons for the completion menu
+      'onsails/lspkind.nvim',
     },
     config = function()
       require('plugins.cmp').setup()

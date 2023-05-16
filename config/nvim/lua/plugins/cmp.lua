@@ -1,8 +1,9 @@
 -- Setup nvim-cmp.
 local cmp_present, cmp = pcall(require, 'cmp')
 local luasnip_present, luasnip = pcall(require, 'luasnip')
+local lspkind_present, lspkind = pcall(require, 'lspkind')
 
-if not cmp_present or not luasnip_present then
+if not cmp_present or not luasnip_present or not lspkind_present then
   return false
 end
 
@@ -14,37 +15,6 @@ local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
-
-local kind_icons = {
-  Array = '',
-  Boolean = '',
-  Class = 'ﴯ',
-  Color = '',
-  Constant = '',
-  Constructor = '',
-  Enum = '',
-  EnumMember = '',
-  Event = '',
-  Field = '',
-  File = '',
-  Folder = '',
-  Function = '',
-  Interface = '',
-  Keyword = '',
-  Method = '',
-  Module = '',
-  Object = 'פּ',
-  Operator = '',
-  Property = 'ﰠ',
-  Reference = '',
-  Snippet = '',
-  Struct = '',
-  Text = '',
-  TypeParameter = '',
-  Unit = '',
-  Value = '',
-  Variable = '',
-}
 
 local tmux_source = {
   name = 'tmux',
@@ -101,29 +71,34 @@ M.setup = function()
 
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
-      format = function(entry, vim_item)
-        -- find icon based on kind
-        local icon = kind_icons[vim_item.kind]
+      format = lspkind.cmp_format {
+        mode = 'symbol', -- show only symbol annotations
+        maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+        ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
-        -- Source
-        local source = ({
-          buffer = '[B]',
-          cmdline = '[C]',
-          emoji = '[E]',
-          git = '[G]',
-          luasnip = '[S]',
-          nvim_lsp = '[L]',
-          nvim_lua = '[V]',
-          path = '[P]',
-          tmux = '[T]',
-        })[entry.source.name]
+        -- The function below will be called before any actual modifications from lspkind
+        -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+        before = function(entry, vim_item)
+          -- find icon based on kind
+          -- Source
+          local source = ({
+            buffer = '[BUF]',
+            cmdline = '[CMD]',
+            emoji = '[EMJ]',
+            git = '[GIT]',
+            luasnip = '[SNP]',
+            nvim_lsp = '[LSP]',
+            nvim_lua = '[LUA]',
+            path = '[PTH]',
+            tmux = '[TMX]',
+          })[entry.source.name]
 
-        local padded_kind = require('core.utils').right_pad(vim_item.kind, 8, ' ')
-        vim_item.menu = string.format('%s %s', padded_kind, source)
-        vim_item.kind = icon
+          local padded_kind = require('core.utils').right_pad(vim_item.kind, 8, ' ')
+          vim_item.menu = string.format('%s %s', padded_kind, source)
 
-        return vim_item
-      end,
+          return vim_item
+        end,
+      },
     },
 
     mapping = cmp.mapping.preset.insert {
