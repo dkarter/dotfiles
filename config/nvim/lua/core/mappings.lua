@@ -22,6 +22,7 @@ local map = function(tbl)
   vim.keymap.set(tbl[1], tbl[2], tbl[3], tbl[4])
 end
 
+---@diagnostic disable-next-line: unused-local, unused-function
 local imap = function(tbl)
   vim.keymap.set('i', tbl[1], tbl[2], tbl[3])
 end
@@ -145,7 +146,7 @@ vmap { '<c-j>', ":move '>+1<CR>gv=gv", { desc = 'Move selection down' } }
 nmap {
   '<leader>so',
   ':source %<CR>:lua vim.notify("File sourced!")<CR>',
-  default_opts,
+  { desc = '[SO]urce file' },
 }
 
 local M = {}
@@ -193,46 +194,20 @@ end
 
 M.lsp_saga_mappings = function()
   -- Lsp finder find the symbol definition implmement reference
-  nmap { '<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', silent }
+  nmap { '<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', { desc = '[L]sp [F]inder' } }
 
   -- Rename
-  nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', silent }
+  nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', { desc = 'Rename LSP Symbol' } }
 
   -- Definition preview
-  nmap { 'gp', '<cmd>Lspsaga peek_definition<CR>', silent }
-
-  -- Show line diagnostics
-  nmap { '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', silent }
-
-  -- Show cursor diagnostic
-  nmap { '<leader>cd', '<cmd>Lspsaga show_cursor_diagnostics<CR>', silent }
+  nmap { 'gp', '<cmd>Lspsaga peek_definition<CR>', { desc = 'Peek definition' } }
 
   -- Diagnsotic jump
-  nmap { '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', silent }
-  nmap { ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', silent }
-
-  -- Only jump to error
-  nmap {
-    '[E',
-    function()
-      require('lspsaga.diagnostic').goto_prev { severity = vim.diagnostic.severity.ERROR }
-    end,
-    silent,
-  }
-
-  nmap {
-    ']E',
-    function()
-      require('lspsaga.diagnostic').goto_next { severity = vim.diagnostic.severity.ERROR }
-    end,
-    silent,
-  }
-
-  -- Outline
-  nmap { '<leader>ol', '<cmd>LSoutlineToggle<CR>', silent }
+  nmap { '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = 'Previous Diagnostic Error' } }
+  nmap { ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = 'Next Diagnostic Error' } }
 
   -- Hover Doc
-  nmap { 'K', '<cmd>Lspsaga hover_doc<CR>', silent }
+  nmap { 'K', '<cmd>Lspsaga hover_doc<CR>', { desc = 'LSP Hover Doc' } }
 end
 
 M.trouble_mappings = function()
@@ -259,72 +234,84 @@ M.telescope_mappings = function()
   nmap { '<C-b>', '<cmd>Telescope buffers<cr>', default_opts }
 
   -- Compatible with hydra setup
-  nmap { '<leader>f/', '<cmd>Telescope current_buffer_fuzzy_find<cr>', default_opts }
-  nmap { '<leader>f:', '<cmd>Telescope commands<cr>', default_opts }
-  nmap { '<leader>f;', '<cmd>Telescope command_history<cr>', default_opts }
-  nmap { '<leader>f?', '<cmd>Telescope search_history<cr>', default_opts }
+  nmap { '<leader>f/', '<cmd>Telescope current_buffer_fuzzy_find<cr>', { desc = 'Buffer fuzzy find' } }
+  nmap { '<leader>f:', '<cmd>Telescope commands<cr>', { desc = 'Command search' } }
+  nmap { '<leader>f;', '<cmd>Telescope command_history<cr>', { desc = 'Command History' } }
+  nmap { '<leader>f?', '<cmd>Telescope search_history<cr>', { desc = 'Search History' } }
   nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', { silent = true, noremap = true, desc = 'Find Files' } }
-  nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts }
-  nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts }
-  nmap { '<leader>fk', '<cmd>Telescope keymaps<cr>', default_opts }
-  nmap { '<leader>fo', '<cmd>Telescope oldfiles<cr>', default_opts }
-  nmap { '<leader>fO', '<cmd>Telescope vim_options<cr>', default_opts }
-  nmap { '<leader>fr', '<cmd>Telescope resume<cr>', default_opts }
+  nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', { desc = 'Live Grep' } }
+  nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', { desc = '[F]ind [H]elp' } }
+  nmap { '<leader>fk', '<cmd>Telescope keymaps<cr>', { desc = '[F]ind [K]eymaps' } }
+  nmap { '<leader>fo', '<cmd>Telescope oldfiles<cr>', { desc = '[F]ind [o]ld files' } }
+  nmap { '<leader>fO', '<cmd>Telescope vim_options<cr>', { desc = '[F]ind [O]ptions' } }
+  nmap { '<leader>fr', '<cmd>Telescope resume<cr>', { desc = 'Telescope Resume' } }
 
   --  Extensions
-  nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', default_opts }
+  nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', { desc = '[F]ile [B]rowser' } }
 
-  nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', default_opts }
+  nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', { desc = '[L]ive [G]rep' } }
   nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', default_opts }
 
   -- better spell suggestions
-  nmap { 'z=', '<cmd>Telescope spell_suggest<cr>', default_opts }
+  nmap { 'z=', '<cmd>Telescope spell_suggest<cr>', { desc = 'Spelling Suggestions' } }
 
   -- Git
   -- bc = buffer commits (like gitv!)
-  nmap { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', default_opts }
+  nmap { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', { desc = '[B]uffer [C]ommits' } }
 
   -- LSP
   -- ds = document symbols
-  nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', default_opts }
+  nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', { desc = '[D]ocument [S]ymbols' } }
 
-  nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', default_opts }
+  nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', { desc = '[C]onventional [C]ommits' } }
 
   -- GitHub
-  nmap { '<leader>ga', '<cmd>Telescope gh run<cr>', default_opts }
-  nmap { '<leader>gg', '<cmd>Telescope gh gist<cr>', default_opts }
-  nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', default_opts }
-  nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', default_opts }
+  nmap { '<leader>ga', '<cmd>Telescope gh run<cr>', { desc = '[G]ithub [A]ctions' } }
+  nmap { '<leader>gg', '<cmd>Telescope gh gist<cr>', { desc = '[G]ithub [G]ist' } }
+  nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', { desc = '[G]ithub [I]ssues' } }
+  nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', { desc = '[G]ithub [P]ull Requsts' } }
 end
 
 M.fugitive_mappings = function()
   -- Git Stage file
-  nmap { '<leader>gS', ':Gwrite<CR>', default_opts }
+  nmap { '<leader>gS', ':Gwrite<CR>', { desc = '[G]it [S]tage' } }
 
   -- Git Blame
-  nmap { '<leader>gb', ':Git blame<CR>', default_opts }
-  vmap { '<leader>gb', ':Git blame<CR>', default_opts }
+  nmap { '<leader>gb', ':Git blame<CR>', { desc = '[G]it [B]lame' } }
+  vmap { '<leader>gb', ':Git blame<CR>', { desc = '[G]it [B]lame' } }
 
-  --  Grep project for word under the cursor with Rg
-  nmap { '<Leader>gR', ':Gread<CR>', default_opts }
+  --  Revert file
+  nmap { '<Leader>gR', ':Gread<CR>', { desc = '[G]it [R]ead (reverts file)' } }
 
   -- open github page for file
-  nmap { '<leader>gO', ':GBrowse<CR>', default_opts }
+  nmap { '<leader>gO', ':GBrowse<CR>', { desc = '[G]ithub [O]pen File' } }
 
   -- open github page for line under cursor
-  nmap { '<leader>go', ':.GBrowse<CR>', default_opts }
+  nmap { '<leader>go', ':.GBrowse<CR>', { desc = '[G]ithub [o]pen Line' } }
 
   -- open github page for selection
-  vmap { '<leader>go', ':GBrowse<CR>', default_opts }
+  vmap { '<leader>go', ':GBrowse<CR>', { desc = '[G]ithub [o]pen Line' } }
 
   -- copy github link for file
-  nmap { '<leader>gY', ':GBrowse! | lua vim.notify("Copied file URL to clipboard")<CR>', default_opts }
+  nmap {
+    '<leader>gY',
+    ':GBrowse! | lua vim.notify("Copied file URL to clipboard")<CR>',
+    { desc = '[G]ithub [Y]ank file URL' },
+  }
 
   -- copy github link for line under cursor
-  nmap { '<leader>gy', ':.GBrowse! | lua vim.notify("Copied line URL to clipboard")<CR>', default_opts }
+  nmap {
+    '<leader>gy',
+    ':.GBrowse! | lua vim.notify("Copied line URL to clipboard")<CR>',
+    { desc = '[G]ithub [y]ank line URL' },
+  }
 
   -- copy github link for selection
-  vmap { '<leader>gy', ':GBrowse! | lua vim.notify("Copied selection URL to clipboard")<CR>', default_opts }
+  vmap {
+    '<leader>gy',
+    ':GBrowse! | lua vim.notify("Copied selection URL to clipboard")<CR>',
+    { desc = '[G]ithub [Y]ank selection link' },
+  }
 end
 
 M.winresizer_mappings = function()
