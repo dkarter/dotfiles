@@ -321,9 +321,9 @@ end
 M.ripgrep_mappings = function()
   --  alias for above
   --  Grep project for selection with Rg
-  vmap { '<leader>rg', 'y :Rg "<CR>' }
+  vmap { '<leader>rg', 'y :Rg "<CR>', { desc = '[R]ip[G]rep selection' } }
   --  Grep project for word under the cursor with Rg
-  nmap { '<Leader>rg', ':Rg <C-r><C-w><CR>' }
+  nmap { '<Leader>rg', ':Rg <C-r><C-w><CR>', { desc = '[R]ip[G]rep word under cursor' } }
 
   --  Grep selection with Rg (excluding tests and migrations)
   vmap { '<leader>gt', "y :Rg \" -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
