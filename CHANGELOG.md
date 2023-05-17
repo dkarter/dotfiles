@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/dkarter/dotfiles/compare/v8.5.1...v9.0.0) (2023-05-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** remove unused mappings + add descriptions
+* **nvim:** remove unused mappings and add descriptions
+
+### Features
+
+* **nvim:** add fidget.nvim for LSP status ([c3bbccd](https://github.com/dkarter/dotfiles/commit/c3bbccd4e1a28db4147ceb8730771654d8e14860))
+
+
+### Bug Fixes
+
+* **installer,fonts:** update install path for nerdfonts  (v3.0) ([051a696](https://github.com/dkarter/dotfiles/commit/051a69625e80c454beca0898ed065ba15ea41a16))
+* **nvim:** correct LSP icons (to work with nerd fonts v3.0) ([adf71fb](https://github.com/dkarter/dotfiles/commit/adf71fb5c78f377564344db771b2105a972ca4d9))
+* **nvim:** elixir ls setup ([740facc](https://github.com/dkarter/dotfiles/commit/740facc4fa4fa1c696ab23a4b77ba5f5b3071619))
+
+
+### Code Refactoring
+
+* **nvim:** remove unused mappings + add descriptions ([0043997](https://github.com/dkarter/dotfiles/commit/004399756c7954eb827f8e7deb4a1c83d6eec901))
+* **nvim:** remove unused mappings and add descriptions ([0b6c284](https://github.com/dkarter/dotfiles/commit/0b6c2841b2ea42f77e234896234aeea27dfcae8c))
+
 ## [8.5.1](https://github.com/dkarter/dotfiles/compare/v8.5.0...v8.5.1) (2023-05-04)
 
 
