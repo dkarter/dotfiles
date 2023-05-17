@@ -51,10 +51,10 @@ nmap { 'n', 'nzzzv' }
 nmap { 'N', 'Nzzzv' }
 
 -- rename current file
-nmap { '<Leader>mv', ":Move <C-R>=expand('%')<CR>", default_opts }
+nmap { '<Leader>mv', ":Move <C-R>=expand('%')<CR>", { desc = 'Move current file' } }
 
 -- copy current file
-nmap { '<Leader>sa', ":saveas <C-R>=expand('%')<CR><Left><Left><Left>", default_opts }
+nmap { '<Leader>sa', ":saveas <C-R>=expand('%')<CR><Left><Left><Left>", { desc = '[S]ave [A]s current file' } }
 
 -- sort selected lines
 vmap { 'gs', ':sort<CR>' }
@@ -66,7 +66,7 @@ nmap { '<esc>', ':nohlsearch<cr>', silent }
 nmap {
   '<leader>rl',
   utils.reload_current_luafile,
-  default_opts,
+  { desc = 'Reload Current Lua File' },
 }
 
 -- replace word under cursor, globally, with confirmation
@@ -76,7 +76,7 @@ vmap { '<Leader>k', 'y :%s/<C-r>"//gc<Left><Left><Left>' }
 -- insert frozen string literal comment at the top of the file (ruby)
 nmap { '<leader>fsl', 'ggO# frozen_string_literal: true<esc>jO<esc>' }
 
--- qq to record, Q to replay
+-- qq to record (built-in), Q to replay
 nmap { 'Q', '@q' }
 
 -- Tab/shift-tab to indent/outdent in visual mode.
@@ -115,7 +115,7 @@ nmap { '<leader>=', ':wincmd =<cr>', { desc = 'Rebalance window sizes' } }
 nmap { '<leader>wo', '<c-w>o', { desc = 'Close other windows' } }
 
 -- Switch between the last two files
-nmap { '<tab><tab>', '<c-^>' }
+nmap { '<tab><tab>', '<c-^>', { desc = 'Switch between alternate buffers' } }
 
 -- copy to end of line
 nmap { 'Y', 'y$', { desc = 'Yank to EOL' } }
@@ -149,47 +149,58 @@ nmap {
   { desc = '[SO]urce file' },
 }
 
+-- Lazy.nvim (plugin manager)
+nmap { '<leader>ps', '<cmd>Lazy sync<CR>', { desc = '[P]lugin [S]ync' } }
+nmap { '<leader>pc', '<cmd>Lazy clean<CR>', { desc = '[P]lugin [C]lean' } }
+
 local M = {}
 
 M.lsp_mappings = function(bufnr)
-  local buf_nmap = function(mapping, cmd)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, default_opts)
+  local buf_nmap = function(mapping, cmd, opts)
+    local merged_opts = vim.tbl_extend('force', default_opts, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, merged_opts)
   end
 
-  local buf_vmap = function(mapping, cmd)
-    vim.api.nvim_buf_set_keymap(bufnr, 'v', mapping, cmd, default_opts)
+  local buf_vmap = function(mapping, cmd, opts)
+    local merged_opts = vim.tbl_extend('force', default_opts, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'v', mapping, cmd, merged_opts)
   end
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- gD = go Declaration
-  buf_nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  buf_nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = '[G]o to [D]ecleration' })
   -- gD = go definition
-  buf_nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  buf_nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = '[G]o to [d]efinition' })
   -- gi = go implementation
-  buf_nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  buf_nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = '[G]o to [I]mplementation' })
   -- fs = function signature
-  buf_nmap('<leader>fs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  buf_nmap('<leader>fs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = '[F]unction [S]ignature' })
   -- wa = workspace add
-  buf_nmap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+  buf_nmap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { desc = '[W]orkspace [A]dd' })
   -- wr = workspace remove
-  buf_nmap('<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  buf_nmap('<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { desc = '[W]orkspace [R]emove' })
   -- wl = workspace list
-  buf_nmap('<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  buf_nmap(
+    '<leader>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+    { desc = '[W]orkspace [L]ist' }
+  )
   -- D = <type> Definition
-  buf_nmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  buf_nmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { desc = 'Type Def' })
   -- ca = code action
-  buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })
   -- ca = code action
-  buf_vmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  buf_vmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })
   -- gr = get references
-  buf_nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  buf_nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = '[G]o to [R]eferences' })
 end
 
 M.lsp_diagnostic_mappings = function()
-  nmap { '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', default_opts }
-  nmap { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', default_opts }
-  nmap { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', default_opts }
-  nmap { '<leader>qd', '<cmd>lua vim.diagnostic.setloclist()<CR>', default_opts }
+  -- TODO: These are a bit redundant with LSP Saga and Trouble.nvim - consider removing them
+  nmap { '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = '[D]iagnostic [O]pen [F]loat' } }
+  nmap { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = 'Prev Diagnostic' } }
+  nmap { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = 'Next Diagnostic' } }
+  nmap { '<leader>qd', '<cmd>lua vim.diagnostic.setloclist()<CR>', { desc = 'Set loclist to LSP diagnostics' } }
 end
 
 M.lsp_saga_mappings = function()
@@ -238,13 +249,13 @@ M.telescope_mappings = function()
   nmap { '<leader>f:', '<cmd>Telescope commands<cr>', { desc = 'Command search' } }
   nmap { '<leader>f;', '<cmd>Telescope command_history<cr>', { desc = 'Command History' } }
   nmap { '<leader>f?', '<cmd>Telescope search_history<cr>', { desc = 'Search History' } }
-  nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', { silent = true, noremap = true, desc = 'Find Files' } }
-  nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', { desc = 'Live Grep' } }
+  nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = '[F]ind [F]iles' } }
+  nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', { desc = '[F]ind w/ [G]rep' } }
   nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', { desc = '[F]ind [H]elp' } }
   nmap { '<leader>fk', '<cmd>Telescope keymaps<cr>', { desc = '[F]ind [K]eymaps' } }
   nmap { '<leader>fo', '<cmd>Telescope oldfiles<cr>', { desc = '[F]ind [o]ld files' } }
   nmap { '<leader>fO', '<cmd>Telescope vim_options<cr>', { desc = '[F]ind [O]ptions' } }
-  nmap { '<leader>fr', '<cmd>Telescope resume<cr>', { desc = 'Telescope Resume' } }
+  nmap { '<leader>fr', '<cmd>Telescope resume<cr>', { desc = '[F]ind [R]esume' } }
 
   --  Extensions
   nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', { desc = '[F]ile [B]rowser' } }
@@ -331,23 +342,18 @@ M.ripgrep_mappings = function()
 end
 
 M.easy_align_mappings = function()
-  nmap { '<leader>ea', ':EasyAlign ' }
+  nmap { '<leader>ea', ':EasyAlign ', { desc = '[E]asy [A]lign' } }
 end
 
 M.vim_test_mappings = function()
-  nmap { '<leader>tn', ':TestNearest<CR>' }
-  nmap { '<leader>tf', ':TestFile<CR>' }
-  nmap { '<leader>ts', ':TestSuite<CR>' }
-  nmap { '<leader>tl', ':TestLast<CR>' }
+  nmap { '<leader>tn', ':TestNearest<CR>', { desc = '[T]est [N]earest' } }
+  nmap { '<leader>tf', ':TestFile<CR>', { desc = '[T]est [F]ile' } }
+  nmap { '<leader>ts', ':TestSuite<CR>', { desc = '[T]est [S]uite' } }
+  nmap { '<leader>tl', ':TestLast<CR>', { desc = '[T]est [L]ast' } }
 end
 
 M.undotree_mappings = function()
-  nmap { '<leader>ut', '<cmd>UndotreeToggle<CR>' }
-end
-
-M.lazy_mappings = function()
-  nmap { '<leader>ps', '<cmd>Lazy sync<CR>' }
-  nmap { '<leader>pc', '<cmd>Lazy clean<CR>' }
+  nmap { '<leader>ut', '<cmd>UndotreeToggle<CR>', { desc = '[U]ndo [T]ree' } }
 end
 
 M.attempt_mappings = function(attempt)
