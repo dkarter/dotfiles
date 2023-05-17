@@ -222,7 +222,6 @@ M.lsp_saga_mappings = function()
 end
 
 M.trouble_mappings = function()
-  nmap { '<leader>xx', '<cmd>Trouble<cr>', default_opts }
   nmap { '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', default_opts }
   nmap { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', default_opts }
   nmap { '<leader>xl', '<cmd>Trouble loclist<cr>', default_opts }
