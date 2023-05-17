@@ -230,12 +230,12 @@ M.trouble_mappings = function()
 end
 
 M.hop_mappings = function()
-  nmap { '<leader>hp', '<cmd>HopPattern<cr>', default_opts }
-  nmap { '<leader>hw', '<cmd>HopWord<cr>', default_opts }
+  nmap { '<leader>hp', '<cmd>HopPattern<cr>', { desc = '[H]op [P]attern' } }
+  nmap { '<leader>hw', '<cmd>HopWord<cr>', { desc = '[H]op [W]ord' } }
 end
 
 M.nvim_tree_mappings = function()
-  nmap { '<leader>nt', ':NvimTreeToggle<CR>', default_opts }
+  nmap { '<leader>nt', ':NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } }
 end
 
 M.telescope_mappings = function()
@@ -260,7 +260,7 @@ M.telescope_mappings = function()
   nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', { desc = '[F]ile [B]rowser' } }
 
   nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', { desc = '[L]ive [G]rep' } }
-  nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', default_opts }
+  nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'Find Buffers' } }
 
   -- better spell suggestions
   nmap { 'z=', '<cmd>Telescope spell_suggest<cr>', { desc = 'Spelling Suggestions' } }
