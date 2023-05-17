@@ -392,14 +392,14 @@ M.gitsigns_mappings = function(gitsigns, bufnr)
 
   -- Hunk operations
   -- Reset Hunk
-  nmap { '<leader>gr', ':Gitsigns reset_hunk<CR>' }
-  vmap { '<leader>gr', ':Gitsigns reset_hunk<CR>' }
+  nmap { '<leader>gr', ':Gitsigns reset_hunk<CR>', { buffer = bufnr, desc = '[G]it [R]eset Hunk' } }
+  vmap { '<leader>gr', ':Gitsigns reset_hunk<CR>', { buffer = bufnr, desc = '[G]it [R]eset Hunk' } }
   -- Stage Hunk
-  nmap { '<leader>gs', ':Gitsigns stage_hunk<CR>' }
-  vmap { '<leader>gs', ':Gitsigns stage_hunk<CR>' }
+  nmap { '<leader>gs', ':Gitsigns stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [S]age Hunk' } }
+  vmap { '<leader>gs', ':Gitsigns stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [S]age Hunk' } }
   -- Undo Stage Hunk
-  nmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>' }
-  vmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>' }
+  nmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [U]ndo Stage Hunk' } }
+  vmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [U]ndo Stage Hunk' } }
 
   -- Text object for git hunks (e.g. vih will select the hunk)
   map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
