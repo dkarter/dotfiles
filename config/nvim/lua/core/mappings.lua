@@ -222,11 +222,11 @@ M.lsp_saga_mappings = function()
 end
 
 M.trouble_mappings = function()
-  nmap { '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', default_opts }
-  nmap { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', default_opts }
-  nmap { '<leader>xl', '<cmd>Trouble loclist<cr>', default_opts }
-  nmap { '<leader>xq', '<cmd>Trouble quickfix<cr>', default_opts }
-  nmap { 'gR', '<cmd>Trouble lsp_references<cr>', default_opts }
+  nmap { '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', { desc = 'Workspace Diagnostics' } }
+  nmap { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', { desc = 'Document Diagnostics' } }
+  nmap { '<leader>xl', '<cmd>Trouble loclist<cr>', { desc = 'Open Loclist' } }
+  nmap { '<leader>xq', '<cmd>Trouble quickfix<cr>', { desc = 'Open Quickfix' } }
+  nmap { 'gR', '<cmd>Trouble lsp_references<cr>', { desc = '[G]o to [R]eferences (Trouble)' } }
 end
 
 M.hop_mappings = function()
