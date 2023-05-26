@@ -31,7 +31,10 @@ brew 'imagemagick'
 # json querying + pretty printing
 brew 'jq'
 
-# html querying
+# json exploration
+brew 'fx'
+
+# html querying aka hq
 brew 'htmlq'
 
 # easily copy tabular data
