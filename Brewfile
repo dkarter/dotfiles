@@ -83,6 +83,7 @@ brew 'grep'
 
 # show active process and their telemetry
 brew 'htop'
+brew 'btop'
 
 # Github CLIs
 brew 'gh'
