@@ -45,10 +45,11 @@ echo "==========================================="
 echo
 
 if [[ $DISTRO_BASE = 'debian' ]]; then
-  echo "Debian based repo detected, getting required packages..."
+  echo "Debian based distro detected, getting required packages..."
   ./installer/debian-setup.sh
 elif [[ $OS = 'mac' ]]; then
-  echo 'Mac detected'
+  echo 'macOS detected'
+  ./installer/mac-setup.sh
 
   echo 'Disabling annoying features...'
   # disables the hold key menu to allow key repeat
