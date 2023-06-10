@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.1.0](https://github.com/dkarter/dotfiles/compare/v9.0.0...v9.1.0) (2023-06-10)
+
+
+### Features
+
+* add btop iterm automator app ([41913dd](https://github.com/dkarter/dotfiles/commit/41913dda475572cdf98683bc088aa22cf6690ff3))
+
 ## [9.0.0](https://github.com/dkarter/dotfiles/compare/v8.5.1...v9.0.0) (2023-05-17)
 
 
