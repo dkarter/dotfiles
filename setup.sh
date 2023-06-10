@@ -50,33 +50,6 @@ if [[ $DISTRO_BASE = 'debian' ]]; then
 elif [[ $OS = 'mac' ]]; then
   echo 'macOS detected'
   ./installer/mac-setup.sh
-
-  echo 'Disabling annoying features...'
-  # disables the hold key menu to allow key repeat
-  defaults write -g ApplePressAndHoldEnabled -bool false
-  # The speed of repetition of characters
-  defaults write -g KeyRepeat -int 2
-  # Delay until repeat
-  defaults write -g InitialKeyRepeat -int 15
-
-  if ! command -v brew &>/dev/null; then
-    echo 'Homebrew not installed, installing...'
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  fi
-
-  echo 'getting brew packages...'
-  brew bundle
-
-  # Install TerminalVim
-  cp -r ./iterm/TerminalVim.app /Applications/
-
-  # setup file handlers for TerminalVim
-  terminal_vim_id="$(osascript -e 'id of app "TerminalVim"')"
-  for ext in md txt js ts json lua rb ex exs eex heex; do
-    echo "Setting TerminalVim as handler for .$ext"
-    duti -s "$terminal_vim_id" ".$ext" all
-  done
 fi
 
 ruby installer.rb
