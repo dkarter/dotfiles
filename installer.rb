@@ -43,6 +43,7 @@ SYMLINK_DIRS = [
   %w[./config/rubocop ~/.config/rubocop],
   %w[./config/yamllint ~/.config/yamllint],
   %w[./config/zsh ~/.config/zsh],
+  %w[./config/btop ~/.config/btop],
 ].freeze
 
 GEMS = [
