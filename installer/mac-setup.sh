@@ -25,7 +25,8 @@ echo 'getting brew packages...'
 brew bundle
 
 # Install TerminalVim
-cp -r ./iterm/TerminalVim.app /Applications/
+ln -s ./iterm/TerminalVim.app /Applications/
+ln -s ./iterm/BTop.app /Applications/
 
 # setup file handlers for TerminalVim
 terminal_vim_id="$(osascript -e 'id of app "TerminalVim"')"
