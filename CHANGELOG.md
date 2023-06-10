@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.2.0](https://github.com/dkarter/dotfiles/compare/v9.1.0...v9.2.0) (2023-06-10)
+
+
+### Features
+
+* **btop:** add btop config ([123fbec](https://github.com/dkarter/dotfiles/commit/123fbec45d2da44d140b3b186d602753431f55c8))
+* **installer:** add script to install btop app ([b9b3074](https://github.com/dkarter/dotfiles/commit/b9b3074464dd2a300e2222a640a8cb9ff8cf435e))
+* **zsh:** enable 1password ssh agent for all hosts ([d0db66a](https://github.com/dkarter/dotfiles/commit/d0db66aa056ae229d4f8c2a1b3e4b0d79bc2bddf))
+
+
+### Bug Fixes
+
+* **zsh:** make 1password SSH Agent sock work on both mac and linux ([8ce7019](https://github.com/dkarter/dotfiles/commit/8ce7019027a1ae4275e19ddbb7982dac8a587f44))
+
 ## [9.1.0](https://github.com/dkarter/dotfiles/compare/v9.0.0...v9.1.0) (2023-06-10)
 
 
