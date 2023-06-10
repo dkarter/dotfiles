@@ -80,6 +80,7 @@ require('lazy').setup({
   -- LSP progress indicator
   {
     'j-hui/fidget.nvim',
+    branch = 'legacy',
     config = function()
       require('fidget').setup()
     end,
