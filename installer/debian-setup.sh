@@ -15,30 +15,42 @@ sudo apt -y install \
   global \
   httpie \
   inotify-tools \
+  libbz2-dev \
   libclang-13-dev \
+  libffi-dev \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
   libmnl-dev \
+  liblzma-dev \
   libncurses-dev \
   libncurses5-dev \
+  libncursesw5-dev \
   libpng-dev \
+  libreadline-dev \
+  libsqlite3-dev \
   libssh-dev \
   libssl-dev \
   libwxgtk3.0-gtk3-dev \
+  libxml2-dev \
   libxml2-utils \
+  libxmlsec1-dev \
   m4 \
   openjdk-11-jdk \
   pkg-config \
   postgresql \
   postgresql-client \
   pspg \
+  python3-tk \
   ruby \
   squashfs-tools \
   ssh-askpass \
+  tk-dev \
   tmux \
   tree \
   universal-ctags \
   unixodbc-dev \
   wx-common \
   xsltproc \
+  xz-utils \
+  zlib1g-dev \
   zsh
