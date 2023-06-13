@@ -1,31 +1,4 @@
-vim.g.projectionist_heuristics = {
-  -- Elixir
-  ['mix.exs'] = {
-    ['apps/*/mix.exs'] = { type = 'app' },
-    ['lib/*.ex'] = {
-      type = 'lib',
-      alternate = {
-        'test/{}_test.exs',
-      },
-      template = { 'defmodule {camelcase|capitalize|dot} do', 'end' },
-    },
-    ['test/*_test.exs'] = {
-      type = 'test',
-      alternate = { 'lib/{}.ex', '{}.ex' },
-      template = {
-        'defmodule {camelcase|capitalize|dot}Test do',
-        '  use ExUnit.Case, async: true',
-        '',
-        '  alias {camelcase|capitalize|dot}, as: Subject',
-        '',
-        '  doctest Subject',
-        'end',
-      },
-    },
-    ['mix.exs'] = { type = 'mix' },
-    ['config/*.exs'] = { type = 'config' },
-  },
-
+local config = {
   -- JavaScript / TypeScript
   ['package.json'] = {
     ['*.js'] = {
@@ -109,3 +82,18 @@ vim.g.projectionist_heuristics = {
     ['package.json'] = { type = 'package' },
   },
 }
+
+local M = {}
+
+function M.setup()
+  local new_heuristics
+  if vim.g.projectionist_heuristics then
+    new_heuristics = vim.tbl_extend('force', vim.g.projectionist_heuristics, config)
+  else
+    new_heuristics = config
+  end
+
+  vim.g.projectionist_heuristics = new_heuristics
+end
+
+return M

@@ -400,7 +400,7 @@ require('lazy').setup({
   {
     'tpope/vim-projectionist',
     config = function()
-      require 'plugins.projectionist'
+      require('plugins.projectionist').setup()
     end,
   },
 
