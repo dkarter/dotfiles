@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+gh pr list \
+  | fzf \
+    --delimiter "\t" \
+    --reverse \
+    --header="[ENTER] Open in GitHub [CTRL-E] Checkout PR locally [CTRL-V] Preview PR [CTRL-Y] Preview checks [CTRL-T] Reload with open+closed PRs" \
+    --preview="GH_FORCE_TTY=true CLICOLOR_FORCE=1 gh pr view --comments {1}" \
+    --bind="enter:become(gh pr view -w {1}),ctrl-e:become(gh pr checkout {1}),ctrl-t:reload(gh pr list --state=all --limit=10000),ctrl-y:change-preview(GH_FORCE_TTY=true CLICOLOR_FORCE=1 gh pr checks --watch {1}),ctrl-v:change-preview(GH_FORCE_TTY=true CLICOLOR_FORCE=1 gh pr view --comments {1})"
