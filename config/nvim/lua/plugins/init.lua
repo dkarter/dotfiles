@@ -295,9 +295,8 @@ require('lazy').setup({
   -- auto complete closable pairs
   {
     'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {}
-    end,
+    event = 'InsertEnter',
+    opts = {},
   },
 
   -- auto close html/tsx tags using TreeSitter
