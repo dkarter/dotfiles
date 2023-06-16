@@ -21,6 +21,8 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       -- command line completion
       'hrsh7th/cmp-cmdline',
+      -- command line history
+      'dmitmel/cmp-cmdline-history',
       -- neovim lua config api completion
       'hrsh7th/cmp-nvim-lua',
       -- emoji completion (triggered by `:`)
