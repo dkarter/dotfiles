@@ -72,9 +72,11 @@ M.setup = function()
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
       format = lspkind.cmp_format {
-        mode = 'symbol', -- show only symbol annotations
+        mode = 'symbol_text', -- show only symbol annotations
         maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
         ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+        preset = 'codicons',
 
         -- The function below will be called before any actual modifications from lspkind
         -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
@@ -93,8 +95,7 @@ M.setup = function()
             tmux = '[TMX]',
           })[entry.source.name]
 
-          local padded_kind = require('core.utils').right_pad(vim_item.kind, 8, ' ')
-          vim_item.menu = string.format('%s %s', padded_kind, source)
+          vim_item.menu = string.format('%s', source)
 
           return vim_item
         end,
