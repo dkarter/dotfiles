@@ -6,23 +6,23 @@ cask 'marta'
 # Fast GPU rendered terminal emulator
 cask 'alacritty'
 
-# allow accessing passwords from a cli
+# allow accessing passwords from a CLI
 cask '1password/tap/1password-cli'
 
-# for erlang
+# for Erlang
 brew 'wxwidgets'
 brew 'autoconf'
 brew 'fop'
 brew 'libiodbc'
 brew 'openjdk'
 
-# used by my alfred workflow (Default Browser)
+# used by my Alfred Workflow (Default Browser)
 brew 'defaultbrowser'
 
 # code stats
 brew 'scc'
 
-# sqlite3
+# SQLite3
 brew 'sqlite'
 
 # image manipulation
@@ -42,10 +42,10 @@ brew 'yank'
 
 brew 'pgformatter'
 
-# postgres pager
+# Postgres pager
 brew 'pspg'
 
-# for neovim
+# for NeoVim
 brew 'lua'
 
 # ls replacement with icons and colors (rust)
@@ -85,7 +85,7 @@ brew 'grep'
 brew 'htop'
 brew 'btop'
 
-# Github CLIs
+# GitHub CLIs
 brew 'gh'
 
 # docker desktop for containers
@@ -101,13 +101,13 @@ brew 'make'
 # terminal multiplexer
 brew 'tmux'
 
-# tmux for remote pairing
+# TMux for remote pairing
 brew 'tmate'
 
 # download files from the terminal, used by some scripts
 brew 'wget'
 
-# Reattach process (e.g., tmux) to background
+# Reattach process (e.g., TMux) to background
 brew 'reattach-to-user-namespace'
 
 # display system info
@@ -116,7 +116,7 @@ brew 'neofetch'
 # best code editor on planet earth
 brew 'neovim'
 
-# OpenSSL - important for compiling things that support ssl
+# OpenSSL - important for compiling things that support SSL
 brew 'openssl@1.1'
 
 # better, faster grep
@@ -131,10 +131,10 @@ brew 'shellcheck'
 # keep tree up to date
 brew 'tree'
 
-# keep zsh up to date
+# keep ZSH up to date
 brew 'zsh'
 
-# enable ocr via an Alfred workflow
+# enable OCR via an Alfred workflow
 brew 'tesseract'
 
 # required by ccls
