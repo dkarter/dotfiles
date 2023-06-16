@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.3.0](https://github.com/dkarter/dotfiles/compare/v9.2.0...v9.3.0) (2023-06-16)
+
+
+### Features
+
+* **nvim:** add completion of command line history ([f64b4aa](https://github.com/dkarter/dotfiles/commit/f64b4aac299f6d43856af5fd74e73a55890a8221))
+* **zsh:** add dotfiles bin folder to path + fzf-prs command ([47c2a80](https://github.com/dkarter/dotfiles/commit/47c2a80922e4827b8ff263715ed87b8500a76e53))
+
+
+### Bug Fixes
+
+* **nvim:** allow expanding % in cmdline with cmp ([91b1708](https://github.com/dkarter/dotfiles/commit/91b170862cfff0ffec97526e6889496fa8532ed5))
+* **nvim:** use projections for elixir from elixir-tools.nvim ([bf0a9a6](https://github.com/dkarter/dotfiles/commit/bf0a9a6b4bb1095fa03480b777b90eff8700240c))
+
 ## [9.2.0](https://github.com/dkarter/dotfiles/compare/v9.1.0...v9.2.0) (2023-06-10)
 
 
