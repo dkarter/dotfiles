@@ -156,3 +156,6 @@ brew 'fwup'
 # https://www.gnu.org/software/coreutils
 brew 'coreutils'
 
+# Enable Sudo Touch ID on macOS
+brew 'sudo-touchid'
+
