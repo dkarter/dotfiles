@@ -281,7 +281,7 @@ class Installer
     plugins.each do |plugin, _url|
       puts "Installing #{plugin}...".light_blue
       asdf_command(
-        "asdf install #{plugin} latest && asdf global #{plugin} $(asdf latest #{plugin})",
+        "asdf install #{plugin} latest && asdf global #{plugin} latest",
       )
     end
   end
