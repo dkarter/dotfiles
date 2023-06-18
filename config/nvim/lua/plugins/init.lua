@@ -1,7 +1,4 @@
 require('lazy').setup({
-  -- Speed up loading Lua modules in Neovim to improve startup time.
-  { 'lewis6991/impatient.nvim' },
-
   {
     'hrsh7th/nvim-cmp',
     dependencies = {

@@ -14,6 +14,11 @@
         - Dorian's NeoVim Configuration -
 --]]
 
+-- Enables the experimental Lua module loader:
+-- • overrides loadfile
+-- • adds the lua loader using the byte-compilation cache
+vim.loader.enable()
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
