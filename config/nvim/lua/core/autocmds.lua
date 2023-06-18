@@ -111,3 +111,16 @@ augroup('LSP Stuff', {
     end,
   },
 })
+
+augroup('DebuggerBrevs', {
+  {
+    event = { 'FileType' },
+    pattern = { 'ruby', 'eruby' },
+    command = "iabbrev <buffer> bpry require 'pry';",
+  },
+  {
+    event = { 'FileType' },
+    pattern = { 'elixir' },
+    command = 'iabbrev <buffer> ipry require IEx; IEx.pry;',
+  },
+})

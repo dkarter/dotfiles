@@ -120,23 +120,6 @@ endfunction
 nnoremap <expr> <leader>fd ':Cfd '
 " }}}
 
-" Vim Script file settings {{{
-augroup filetype_vim
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
-
-" Abbreviations {{{
-augroup DebuggerBrevs
-  autocmd!
-  autocmd FileType ruby,eruby iabbrev <buffer> bpry require 'pry'; binding.pry;
-  autocmd FileType javascript iabbrev <buffer> bpry debugger;
-  autocmd FileType elixir iabbrev <buffer> bpry require IEx; IEx.pry;
-  autocmd FileType elixir iabbrev <buffer> ipry require IEx; IEx.pry;
-augroup END
-" -------- Abbreviations ---------------------------------- }}}
-
 " gx extensions {{{
 " JavaScript package.json
 function! PackageJsonGx() abort
