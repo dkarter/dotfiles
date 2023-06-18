@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.4.0](https://github.com/dkarter/dotfiles/compare/v9.3.0...v9.4.0) (2023-06-18)
+
+
+### Features
+
+* **alacritty:** add Bold Italic font face ([34d4cbc](https://github.com/dkarter/dotfiles/commit/34d4cbcbee1d844bf276398f2a069260d2d88e91))
+* **zsh:** add alias for vim scratch vsc ([ae6458e](https://github.com/dkarter/dotfiles/commit/ae6458eba55ca116fddf6d5daea321606250194c))
+
+
+### Bug Fixes
+
+* **alacritty:** use bold font instead of medium ([88d77b2](https://github.com/dkarter/dotfiles/commit/88d77b26e474ee2a26d873a5c255f318d0660a1d))
+* **nvim:** command line icons were not showing ([35f9f48](https://github.com/dkarter/dotfiles/commit/35f9f48e71854d792468163204b2e128451cfb03))
+* **nvim:** improve conventional commit entry modal ([74d43e4](https://github.com/dkarter/dotfiles/commit/74d43e496121c03c489fc72581b90ea32d5f8078))
+* **nvim:** only run commitlint linter on repos that have a config file ([55ff6fa](https://github.com/dkarter/dotfiles/commit/55ff6fa4176fb6eaa3dde2586c26bb32dac4447c))
+
 ## [9.3.0](https://github.com/dkarter/dotfiles/compare/v9.2.0...v9.3.0) (2023-06-16)
 
 
