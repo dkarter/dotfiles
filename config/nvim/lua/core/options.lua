@@ -108,6 +108,13 @@ opt.complete:append 'kspell'
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 opt.fillchars = { eob = '~' }
+--
+-- solid window border requires Nerd Font
+vim.opt.fillchars:append { vert = '│' }
+
+-- hide vertical split
+vim.cmd 'highlight vertsplit guifg=fg guibg=bg'
+
 opt.viewoptions:remove 'options'
 
 -- treat dash separated words as a word text object
@@ -127,3 +134,6 @@ if vim.fn.executable 'rg' then
   opt.grepprg = 'rg --vimgrep --no-heading'
   opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 end
+
+-- highlight the 80 character column
+opt.colorcolumn = '80'

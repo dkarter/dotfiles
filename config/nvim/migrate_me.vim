@@ -8,7 +8,6 @@
 " Eventually this file will go away...
 " =====================================
 
-"  Plugin Configuration (BEFORE loading bundles) {{{
 
 " =====================================
 "  FZF
@@ -60,31 +59,4 @@ nnoremap <silent> <C-t> :BTags<CR>
     nmap <leader>gc :Gconflict<CR>
  " ------  /JUMP TO GIT CONFLICTS (Gconflict) ------- }}}
 " --------------------------------------------------}}}
-
-" ----------------------------------------------------- }}}
-
-" UI Customizations {{{
-
-  " Make it obvious where 80 characters is
-  " cheatsheet https://jonasjacek.github.io/colors/
-  fun! SetColorColumn(active)
-    if a:active
-      highlight ColorColumn ctermbg=236 guibg=#303030
-      " let &colorcolumn=join(range(100,999),',')
-      "
-      " highlight one column after 'textwidth'
-      set cc=+1
-    else
-      highlight ColorColumn guibg=#272c35
-    endif
-  endfun
-
-  call SetColorColumn(1)
-
-  " solid window border requires FuraCode Nerd Font
-  set fillchars+=vert:│
-
-  " hide vertical split
-  hi vertsplit guifg=fg guibg=bg
-"  }}}
 
