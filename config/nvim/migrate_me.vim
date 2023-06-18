@@ -89,24 +89,6 @@ nnoremap <silent> <C-t> :BTags<CR>
 "  }}}
 
 
-" gx extensions {{{
-" JavaScript package.json
-function! PackageJsonGx() abort
-  let l:line = getline('.')
-  let l:package = matchlist(l:line, '\v"(.*)": "(.*)"')
-
-  if len(l:package) > 0
-    let l:package_name = l:package[1]
-    let l:url = 'https://www.npmjs.com/package/' . l:package_name
-    call netrw#BrowseX(l:url, 0)
-  endif
-endfunction
-
-augroup PackageJsonGx
-  autocmd!
-  autocmd BufRead,BufNewFile package.json nnoremap <buffer> <silent> gx :call PackageJsonGx()<cr>
-augroup END
-
 " Elixir mix.exs (requires plugin: lucidstack/hex.vim)
 augroup MixExsGx
   autocmd!
