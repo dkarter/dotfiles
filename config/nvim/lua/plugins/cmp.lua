@@ -173,9 +173,9 @@ M.setup = function()
   ---@diagnostic disable-next-line:undefined-field
   cmp.setup.filetype('lua', {
     sources = cmp.config.sources({
+      { name = 'nvim_lua' },
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
-      { name = 'nvim_lua' },
       { name = 'path' },
     }, {
       all_buffers_completion_source,
