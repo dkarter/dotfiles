@@ -65,20 +65,28 @@ local default = {
     conventional_commits = {
       -- insert a conventional_commit label from telescope + scope
       action = function(entry)
-        vim.ui.input({ prompt = 'Scope ? (optional) ' }, function(scope)
-          local msg = entry.value
+        local msg = string.format('%s()', entry.value)
+        vim.api.nvim_set_current_line(msg)
+        vim.api.nvim_win_set_cursor(0, { 1, string.len(msg) - 1 })
 
+        vim.ui.input({ prompt = 'Scope? (optional)' }, function(scope)
+          local new_msg = entry.value
+
+          -- scope is nil if dialog is aborted
           if scope then
-            msg = string.format('%s(%s)', msg, scope)
+            new_msg = string.format('%s(%s)', new_msg, scope)
           end
 
-          msg = string.format('%s: ', msg)
+          new_msg = string.format('%s: ', new_msg)
 
           -- update the line
-          vim.api.nvim_set_current_line(msg)
-          -- place cursor at the end of the line in insert mode
-          vim.cmd [[:normal A]]
+          vim.api.nvim_set_current_line(new_msg)
+
+          vim.api.nvim_win_set_cursor(0, { 1, string.len(new_msg) + 1 })
         end)
+
+        -- place cursor at the end of the line in insert mode
+        vim.cmd [[:normal $a]]
       end,
     },
   },
