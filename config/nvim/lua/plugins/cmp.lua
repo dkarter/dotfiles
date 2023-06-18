@@ -276,7 +276,6 @@ M.setup = function()
     sources = cmp.config.sources {
       { name = 'cmdline' },
       { name = 'path' },
-      { name = 'cmdline_history' },
     },
   })
 
