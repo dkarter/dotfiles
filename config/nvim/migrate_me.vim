@@ -10,10 +10,6 @@
 
 " General settings {{{
  scriptencoding utf-16      " allow emojis in vimrc
- " TODO: currently exists in both vimrc and options.lua, this is due to feline
- " and bufferline requiring this option to be set and messing up the
- " colorscheme if it's not..
- set termguicolors
 " }}}
 
 "  Plugin Configuration (BEFORE loading bundles) {{{
