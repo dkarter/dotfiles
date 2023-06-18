@@ -17,6 +17,8 @@
 -- Enables the experimental Lua module loader:
 -- • overrides loadfile
 -- • adds the lua loader using the byte-compilation cache
+-- • adds the libs loader
+-- • removes the default Neovim loader
 vim.loader.enable()
 
 -- Set <space> as the leader key
