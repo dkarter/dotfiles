@@ -8,10 +8,6 @@
 " Eventually this file will go away...
 " =====================================
 
-" General settings {{{
- scriptencoding utf-16      " allow emojis in vimrc
-" }}}
-
 "  Plugin Configuration (BEFORE loading bundles) {{{
 
 " =====================================
