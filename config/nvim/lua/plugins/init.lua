@@ -537,9 +537,7 @@ require('lazy').setup({
   -- better ui for vim.ui commands
   {
     'stevearc/dressing.nvim',
-    config = function()
-      require('dressing').setup()
-    end,
+    opts = {},
   },
 
   -- RipGrep - grep is dead. All hail the new king RipGrep.
