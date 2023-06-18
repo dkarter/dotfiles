@@ -138,4 +138,18 @@ augroup('GlobalGX', {
       )
     end,
   },
+  {
+    event = { 'BufRead', 'BufNewFile' },
+    pattern = { 'mix.exs' },
+    command = function()
+      vim.keymap.set('n', 'gx', ':HexOpenHexDocs<CR>', { noremap = true, buffer = true, desc = 'Open in HexDocs' })
+    end,
+  },
+  {
+    event = { 'BufRead', 'BufNewFile' },
+    pattern = { 'mix.exs' },
+    command = function()
+      vim.keymap.set('n', 'gh', ':HexOpenGithub<CR>', { noremap = true, buffer = true, desc = 'Open in GitHub' })
+    end,
+  },
 })

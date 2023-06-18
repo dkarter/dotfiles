@@ -88,11 +88,3 @@ nnoremap <silent> <C-t> :BTags<CR>
   hi vertsplit guifg=fg guibg=bg
 "  }}}
 
-
-" Elixir mix.exs (requires plugin: lucidstack/hex.vim)
-augroup MixExsGx
-  autocmd!
-  autocmd BufRead,BufNewFile mix.exs nnoremap <buffer> <silent> gx :HexOpenHexDocs<cr>
-  autocmd BufRead,BufNewFile mix.exs nnoremap <buffer> <silent> gh :HexOpenGithub<cr>
-augroup END
-" }}}
