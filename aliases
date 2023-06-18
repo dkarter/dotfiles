@@ -213,6 +213,9 @@ alias vim='nvim'
 alias vi='nvim'
 alias vimdiff='nvim -d'
 alias legacyvim='command vim'
+# vim scratch - doesn't prompt to save a file on exit. Great for quick
+# experiments and iterations on configs
+alias vsc="nvim -c 'set buftype=nofile'"
 
 # HomeBrew
 alias brewup='brew upgrade'
