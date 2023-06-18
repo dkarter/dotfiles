@@ -73,9 +73,6 @@ nmap {
 nmap { '<Leader>k', [[:%s/\<<C-r><C-w>\>//gc<Left><Left><Left>]] }
 vmap { '<Leader>k', 'y :%s/<C-r>"//gc<Left><Left><Left>' }
 
--- insert frozen string literal comment at the top of the file (ruby)
-nmap { '<leader>fsl', 'ggO# frozen_string_literal: true<esc>jO<esc>' }
-
 -- qq to record (built-in), Q to replay
 nmap { 'Q', '@q' }
 
@@ -173,8 +170,6 @@ M.lsp_mappings = function(bufnr)
   buf_nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = '[G]o to [d]efinition' })
   -- gi = go implementation
   buf_nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = '[G]o to [I]mplementation' })
-  -- fs = function signature
-  buf_nmap('<leader>fs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { desc = '[F]unction [S]ignature' })
   -- wa = workspace add
   buf_nmap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { desc = '[W]orkspace [A]dd' })
   -- wr = workspace remove

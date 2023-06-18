@@ -9,28 +9,6 @@
 " =====================================
 
 
-" =====================================
-"  FZF
-" =====================================
-let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --color=always -E .git --ignore-file ~/.gitignore'
-let $FZF_DEFAULT_OPTS='--ansi --layout=reverse'
-let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
-
-autocmd! FileType fzf
-autocmd  FileType fzf set noshowmode noruler nonu
-
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
-command! -bang -nargs=* FzfRg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-nnoremap <silent> <C-g>g :FzfRg!<CR>
-nnoremap <silent> <C-t> :BTags<CR>
-
 
 " Custom FZF commands ----------------------------- {{{
 
