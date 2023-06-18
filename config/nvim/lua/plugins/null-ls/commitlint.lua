@@ -11,6 +11,9 @@ local commitlint = {
   },
   method = DIAGNOSTICS,
   filetypes = { 'gitcommit', 'NeogitCommitMessage' },
+  condition = function(utils)
+    return utils.root_has_file { 'commitlint.config.js' }
+  end,
   generator = nullls.generator {
     command = 'commitlint',
     to_stdin = true,
