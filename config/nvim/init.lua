@@ -44,13 +44,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
--- Speed up loading Lua modules in Neovim to improve startup time.
-local present, impatient = pcall(require, 'impatient')
-
-if present then
-  impatient.enable_profile()
-end
-
 -- Local config (useful for customizing config on another machine which is not
 -- transferable)
 if vim.fn.filereadable(vim.fn.expand '~/.vimrc.local') == 1 then
