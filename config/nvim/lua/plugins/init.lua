@@ -205,12 +205,6 @@ require('lazy').setup({
   -- syntax highlighting for zinit (zsh plugin manager)
   { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } },
 
-  -- ui for jq and yq
-  {
-    'gennaro-tedesco/nvim-jqx',
-    ft = { 'json', 'yaml' },
-  },
-
   -- Comment out code easily
   {
     'numToStr/Comment.nvim',
