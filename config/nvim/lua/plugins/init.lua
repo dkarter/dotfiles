@@ -315,9 +315,6 @@ require('lazy').setup({
   -- ruby gem info directly in a Gemfile
   { 'alexbel/vim-rubygems', ft = { 'ruby' } },
 
-  -- support for Gleam language
-  'gleam-lang/gleam.vim',
-
   -- Elixir: {{{
 
   -- elixir text objects
