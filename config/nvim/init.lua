@@ -14,18 +14,18 @@
         - Dorian's NeoVim Configuration -
 --]]
 
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- Enables the experimental Lua module loader:
 -- • overrides loadfile
 -- • adds the lua loader using the byte-compilation cache
 -- • adds the libs loader
 -- • removes the default Neovim loader
 vim.loader.enable()
-
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
