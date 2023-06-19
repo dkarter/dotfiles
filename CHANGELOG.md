@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.0.0](https://github.com/dkarter/dotfiles/compare/v9.4.0...v10.0.0) (2023-06-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** remove all vimscript + no more FZF
+* **nvim:** reduce reliance on fzf
+
+### Features
+
+* **nvim:** add &lt;leader&gt;fd for finding dotfiles ([139f2f7](https://github.com/dkarter/dotfiles/commit/139f2f7131ff8dab188b334705eb19c37122f960))
+
+
+### Bug Fixes
+
+* **nvim:** improve Lua completion by prioritizing nvim_lua ([bd4d677](https://github.com/dkarter/dotfiles/commit/bd4d677214ef1889c0cc32625e2ad1755f3d1400))
+
+
+### Miscellaneous Chores
+
+* **nvim:** reduce reliance on fzf ([10fb767](https://github.com/dkarter/dotfiles/commit/10fb7679f28fdc1623b4fd31cc9ac09cd3517d72))
+* **nvim:** remove all vimscript + no more FZF ([27297f0](https://github.com/dkarter/dotfiles/commit/27297f0da2d745649e97409d945c9547dfb0ace0))
+
 ## [9.4.0](https://github.com/dkarter/dotfiles/compare/v9.3.0...v9.4.0) (2023-06-18)
 
 
