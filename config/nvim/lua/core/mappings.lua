@@ -250,6 +250,7 @@ M.telescope_mappings = function()
   nmap { '<leader>fo', '<cmd>Telescope oldfiles<cr>', { desc = '[F]ind [o]ld files' } }
   nmap { '<leader>fO', '<cmd>Telescope vim_options<cr>', { desc = '[F]ind [O]ptions' } }
   nmap { '<leader>fr', '<cmd>Telescope resume<cr>', { desc = '[F]ind [R]esume' } }
+  nmap { '<leader>fd', require('plugins.telescope').find_dotfiles, { desc = '[F]ind [D]otfiles' } }
 
   --  Extensions
   nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', { desc = '[F]ile [B]rowser' } }
