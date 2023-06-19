@@ -318,11 +318,6 @@ require('lazy').setup({
   -- support for Gleam language
   'gleam-lang/gleam.vim',
 
-  --  Erlang: {{{
-  -- erlang syntax
-  'vim-erlang/vim-erlang-runtime',
-  --  }}},
-
   -- Elixir: {{{
 
   -- elixir text objects
