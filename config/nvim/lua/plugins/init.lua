@@ -367,6 +367,14 @@ require('lazy').setup({
   -- RagTag: Auto-close html tags + mappings for template scripting languages
   'tpope/vim-ragtag',
 
+  -- smarter gx mapping
+  {
+    'chrishrb/gx.nvim',
+    event = { 'BufEnter' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {},
+  },
+
   -- automatic bulleted lists
   {
     'dkarter/bullets.vim',

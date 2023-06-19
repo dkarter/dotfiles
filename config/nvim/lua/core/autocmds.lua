@@ -126,18 +126,18 @@ augroup('DebuggerBrevs', {
 })
 
 augroup('GlobalGX', {
-  {
-    event = { 'BufRead', 'BufNewFile' },
-    pattern = { 'package.json' },
-    command = function()
-      vim.keymap.set(
-        'n',
-        'gx',
-        require('plugins.gx').package_json_gx,
-        { noremap = true, buffer = true, desc = 'Open in npm' }
-      )
-    end,
-  },
+  -- {
+  --   event = { 'BufRead', 'BufNewFile' },
+  --   pattern = { 'package.json' },
+  --   command = function()
+  --     vim.keymap.set(
+  --       'n',
+  --       'gx',
+  --       require('plugins.gx').package_json_gx,
+  --       { noremap = true, buffer = true, desc = 'Open in npm' }
+  --     )
+  --   end,
+  -- },
   {
     event = { 'BufRead', 'BufNewFile' },
     pattern = { 'mix.exs' },
