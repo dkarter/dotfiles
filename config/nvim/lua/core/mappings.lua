@@ -270,12 +270,6 @@ M.telescope_mappings = function()
   nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', { desc = '[D]ocument [S]ymbols' } }
 
   nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', { desc = '[C]onventional [C]ommits' } }
-
-  -- GitHub
-  nmap { '<leader>ga', '<cmd>Telescope gh run<cr>', { desc = '[G]ithub [A]ctions' } }
-  nmap { '<leader>gg', '<cmd>Telescope gh gist<cr>', { desc = '[G]ithub [G]ist' } }
-  nmap { '<leader>gi', '<cmd>Telescope gh issues<cr>', { desc = '[G]ithub [I]ssues' } }
-  nmap { '<leader>gp', '<cmd>Telescope gh pull_request<cr>', { desc = '[G]ithub [P]ull Requsts' } }
 end
 
 M.fugitive_mappings = function()
