@@ -51,11 +51,6 @@ if present then
   impatient.enable_profile()
 end
 
--- iterative migration: source old config first, then overwrite it with new
--- configs
-local config_path = vim.fn.stdpath 'config'
-vim.cmd(string.format('source %s/migrate_me.vim', config_path))
-
 -- Local config (useful for customizing config on another machine which is not
 -- transferable)
 if vim.fn.filereadable(vim.fn.expand '~/.vimrc.local') == 1 then

@@ -507,14 +507,6 @@ require('lazy').setup({
     end,
   },
 
-  -- fuzzy finder (still used by a lot of small workflows I built FzfRg,
-  -- GConflict etc)
-  {
-    'junegunn/fzf',
-    build = ':call fzf#install()',
-  },
-  { 'junegunn/fzf.vim' },
-
   -- fuzzy find things
   {
     'nvim-telescope/telescope.nvim',
