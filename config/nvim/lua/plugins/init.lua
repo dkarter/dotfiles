@@ -211,15 +211,6 @@ require('lazy').setup({
     ft = { 'json', 'yaml' },
   },
 
-  -- browse for anything using your choice of method
-  {
-    'lalitmee/browse.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require('plugins.browse').setup()
-    end,
-  },
-
   -- Comment out code easily
   {
     'numToStr/Comment.nvim',
