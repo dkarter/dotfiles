@@ -151,8 +151,7 @@ local function validate_autocmd(name, cmd)
     return
   end
   vim.schedule(function()
-    ---@diagnostic disable-next-line: redundant-parameter
-    vim.notify('Incorrect keys: ' .. table.concat(incorrect, ', '), 'error', {
+    vim.notify('Incorrect keys: ' .. table.concat(incorrect, ', '), vim.log.levels.ERROR, {
       title = fmt('Autocmd: %s', name),
     })
   end)
