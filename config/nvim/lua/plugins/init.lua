@@ -327,16 +327,6 @@ require('lazy').setup({
     end,
   },
 
-  -- Highlight current paragraph (works well with goyo)
-  {
-    'junegunn/limelight.vim',
-    cmd = 'Limelight',
-    init = function()
-      vim.g.limelight_paragraph_span = 1
-      vim.g.limelight_priority = -1
-    end,
-  },
-
   -- growing collection of settings, commands and mappings put together to make
   -- working with the location list/window and the quickfix list/window smoother
   'romainl/vim-qf',
