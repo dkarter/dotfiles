@@ -74,15 +74,6 @@ require('lazy').setup({
     end,
   },
 
-  -- LSP progress indicator
-  {
-    'j-hui/fidget.nvim',
-    branch = 'legacy',
-    config = function()
-      require('fidget').setup()
-    end,
-  },
-
   -- automatically install tools using mason
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -118,14 +109,6 @@ require('lazy').setup({
     end,
   },
 
-  -- function signature help via LSP
-  {
-    'ray-x/lsp_signature.nvim',
-    config = function()
-      require('lsp_signature').setup { wrap = true }
-    end,
-  },
-
   --  pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
   {
     'folke/trouble.nvim',
@@ -133,6 +116,37 @@ require('lazy').setup({
     config = function()
       require('plugins.trouble').setup()
     end,
+  },
+
+  -- modern vim command line replacement, requires nvim 0.9 or higher
+  {
+    'folke/noice.nvim',
+    enabled = true,
+    event = 'VeryLazy',
+    opts = {
+      lsp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+          ['cmp.entry.get_documentation'] = true,
+        },
+      },
+      hover = {
+        enabled = false,
+      },
+      presets = {
+        -- you can enable a preset by setting it to true, or a table that will override the preset config
+        -- you can also add custom presets that you can enable/disable with enabled=true
+        bottom_search = true, -- use a classic bottom cmdline for search
+        long_message_to_split = true, -- long messages will be sent to a split
+      },
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    },
   },
 
   -- color schemes
