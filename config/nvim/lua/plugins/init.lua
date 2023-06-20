@@ -276,20 +276,6 @@ require('lazy').setup({
     end,
   },
 
-  -- winbar file title and lsp path
-  {
-    'utilyre/barbecue.nvim',
-    enabled = false,
-    dependencies = {
-      'neovim/nvim-lspconfig',
-      'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require('barbecue').setup()
-    end,
-  },
-
   -- file tree
   {
     'nvim-tree/nvim-tree.lua',
