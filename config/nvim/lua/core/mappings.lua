@@ -146,41 +146,14 @@ nmap { '<leader>pc', '<cmd>Lazy clean<CR>', { desc = '[P]lugin [C]lean' } }
 local M = {}
 
 M.lsp_mappings = function(bufnr)
-  local buf_nmap = function(mapping, cmd, opts)
-    local merged_opts = vim.tbl_extend('force', default_opts, opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, merged_opts)
-  end
-
-  local buf_vmap = function(mapping, cmd, opts)
-    local merged_opts = vim.tbl_extend('force', default_opts, opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'v', mapping, cmd, merged_opts)
-  end
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- gD = go Declaration
-  buf_nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { desc = '[G]o to [D]ecleration' })
-  -- gD = go definition
-  buf_nmap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { desc = '[G]o to [d]efinition' })
-  -- gi = go implementation
-  buf_nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { desc = '[G]o to [I]mplementation' })
-  -- wa = workspace add
-  buf_nmap('<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', { desc = '[W]orkspace [A]dd' })
-  -- wr = workspace remove
-  buf_nmap('<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', { desc = '[W]orkspace [R]emove' })
-  -- wl = workspace list
-  buf_nmap(
-    '<leader>wl',
-    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
-    { desc = '[W]orkspace [L]ist' }
-  )
-  -- D = <type> Definition
-  buf_nmap('<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { desc = 'Type Def' })
-  -- ca = code action
-  buf_nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })
-  -- ca = code action
-  buf_vmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = '[C]ode [A]ction' })
-  -- gr = get references
-  buf_nmap('gr', '<cmd>lua vim.lsp.buf.references()<CR>', { desc = '[G]o to [R]eferences' })
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' })
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = true, desc = '[G]o to [d]efinition' })
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = true, desc = '[G]o to [I]mplementation' })
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = true, desc = 'Type [D]ef' })
+  vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = true, desc = '[C]ode [A]ction' })
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = true, desc = '[G]o to [R]eferences' })
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = true, desc = 'LSP Hover Doc' })
 end
 
 M.lsp_diagnostic_mappings = function()
@@ -204,9 +177,6 @@ M.lsp_saga_mappings = function()
   -- Diagnsotic jump
   nmap { '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = 'Previous Diagnostic Error' } }
   nmap { ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = 'Next Diagnostic Error' } }
-
-  -- Hover Doc
-  nmap { 'K', '<cmd>Lspsaga hover_doc<CR>', { desc = 'LSP Hover Doc' } }
 end
 
 M.trouble_mappings = function()

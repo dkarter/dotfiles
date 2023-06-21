@@ -132,14 +132,12 @@ require('lazy').setup({
           ['cmp.entry.get_documentation'] = true,
         },
       },
-      hover = {
-        enabled = false,
-      },
       presets = {
         -- you can enable a preset by setting it to true, or a table that will override the preset config
         -- you can also add custom presets that you can enable/disable with enabled=true
         bottom_search = true, -- use a classic bottom cmdline for search
         long_message_to_split = true, -- long messages will be sent to a split
+        lsp_doc_border = true, -- add a border to hover docs and signature help
       },
     },
     dependencies = {
