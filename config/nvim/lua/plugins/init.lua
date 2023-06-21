@@ -74,6 +74,15 @@ require('lazy').setup({
     end,
   },
 
+  -- LSP Output Panel
+  {
+    'mhanberg/output-panel.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('output_panel').setup()
+    end,
+  },
+
   -- automatically install tools using mason
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
