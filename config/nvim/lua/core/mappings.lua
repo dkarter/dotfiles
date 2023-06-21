@@ -97,13 +97,6 @@ tmap { '<C-l>', '<C-><C-n><C-w>l' }
 tmap { '<leader><esc>', '<C-><C-n><esc><cr>' }
 tmap { '<C-o>', '<C-><C-n><esc><cr>' }
 
--- command typo mapping
-cmap { 'WQ', 'wq', default_opts }
-cmap { 'Wq', 'wq', default_opts }
-cmap { 'QA', 'qa', default_opts }
-cmap { 'qA', 'qa', default_opts }
-cmap { 'Q!', 'q!', default_opts }
-
 -- zoom a vim pane, <C-w> = to re-balance
 nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>', { desc = 'Zoom window' } }
 nmap { '<leader>=', ':wincmd =<cr>', { desc = 'Rebalance window sizes' } }
