@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.1.0](https://github.com/dkarter/dotfiles/compare/v10.0.0...v10.1.0) (2023-06-21)
+
+
+### Features
+
+* **nvim:** add noice.nvim ([3c8cfab](https://github.com/dkarter/dotfiles/commit/3c8cfabd8ac9071a8d4202ddd40e45e253059b7d))
+* **nvim:** use gx.nvim to open plugins under cursor with gx ([f3e9873](https://github.com/dkarter/dotfiles/commit/f3e9873876488881e6c71520ea8613393125cadf))
+
+
+### Bug Fixes
+
+* **nvim:** use correct error level code ([be88779](https://github.com/dkarter/dotfiles/commit/be88779abdc33386d70f9bf5191a83835f640527))
+
+
+### Reverts
+
+* "feat(nvim): add noice.nvim" ([8a14cee](https://github.com/dkarter/dotfiles/commit/8a14cee4a01e248480862f7dcee4e17360dc5b38))
+* "revert: "feat(nvim): add noice.nvim"" ([4f222e3](https://github.com/dkarter/dotfiles/commit/4f222e3d66ff6040789f0e4d97f9ba4e5e51d9e1))
+
 ## [10.0.0](https://github.com/dkarter/dotfiles/compare/v9.4.0...v10.0.0) (2023-06-19)
 
 
