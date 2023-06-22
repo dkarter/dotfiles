@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.2.0](https://github.com/dkarter/dotfiles/compare/v10.1.0...v10.2.0) (2023-06-22)
+
+
+### Features
+
+* **nvim:** add basic winbar (just filename) ([5397be2](https://github.com/dkarter/dotfiles/commit/5397be2d8dec3e54c99c76eae37125ff76d22fda))
+* **nvim:** add filetype icon in winbar ([31c5aa5](https://github.com/dkarter/dotfiles/commit/31c5aa579bcf659d2cc53bfb8d5a803ad03fe45e))
+* **nvim:** add output panel plugin to debug LSPs ([6a9ed9b](https://github.com/dkarter/dotfiles/commit/6a9ed9b5f0f808a0e734e76848e9749243030d02))
+* **nvim:** display macro recording status in Lualine ([f8ae1e4](https://github.com/dkarter/dotfiles/commit/f8ae1e4853b12b4e342dc18d6b43f6facfbf190d))
+
 ## [10.1.0](https://github.com/dkarter/dotfiles/compare/v10.0.0...v10.1.0) (2023-06-21)
 
 
