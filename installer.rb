@@ -97,6 +97,7 @@ NPMS = %w[
   prettier
   tldr
   trash-cli
+  npkill
 ].freeze
 
 CARGOS = [
