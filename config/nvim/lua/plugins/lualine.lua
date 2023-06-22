@@ -35,9 +35,11 @@ M.setup = function()
   local function process_sections(sections)
     for name, section in pairs(sections) do
       local left = name:sub(9, 10) < 'x'
+
       for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
         table.insert(section, pos * 2, { empty, color = { fg = colors.white, bg = colors.white } })
       end
+
       for id, comp in ipairs(section) do
         if type(comp) ~= 'table' then
           comp = { comp }
@@ -46,6 +48,7 @@ M.setup = function()
         comp.separator = left and { right = '' } or { left = '' }
       end
     end
+
     return sections
   end
 
@@ -53,11 +56,15 @@ M.setup = function()
     if vim.v.hlsearch == 0 then
       return ''
     end
+
     local last_search = vim.fn.getreg '/'
+
     if not last_search or last_search == '' then
       return ''
     end
+
     local searchcount = vim.fn.searchcount { maxcount = 9999 }
+
     return last_search .. '(' .. searchcount.current .. '/' .. searchcount.total .. ')'
   end
 
@@ -72,6 +79,14 @@ M.setup = function()
 
   ---@diagnostic disable-next-line: redundant-parameter
   lualine.setup {
+    winbar = {
+      lualine_a = { { 'filename' } },
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    },
     options = {
       -- theme = theme,
       component_separators = '',
