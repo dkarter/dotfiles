@@ -80,7 +80,18 @@ M.setup = function()
   ---@diagnostic disable-next-line: redundant-parameter
   lualine.setup {
     winbar = {
-      lualine_a = { { 'filename' } },
+      lualine_a = {
+        {
+          'filetype',
+          colored = true, -- Displays filetype icon in color if set to true
+          icon_only = true, -- Display only an icon for filetype
+          icon = { align = 'right' }, -- Display filetype icon on the right hand side
+          color = { bg = colors.grey, fg = colors.black },
+          -- icon =    {'X', align='right'}
+          -- Icon string ^ in table is ignored in filetype component
+        },
+        { 'filename', separator = { right = ' ' }, color = { bg = colors.grey, fg = colors.black } },
+      },
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},
