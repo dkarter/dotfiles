@@ -289,9 +289,10 @@ M.ripgrep_mappings = function()
   nmap { '<Leader>gt', ":Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
 end
 
-M.easy_align_mappings = function()
-  nmap { '<leader>ea', ':EasyAlign ', { desc = '[E]asy [A]lign' } }
-end
+M.easy_align_mappings = {
+  { '<leader>ea', ':EasyAlign ', desc = '[E]asy [A]lign' },
+  { '<leader>ea', ':EasyAlign ', mode = 'v', desc = '[E]asy [A]lign' },
+}
 
 M.vim_test_mappings = {
   { '<leader>tn', ':TestNearest<CR>', desc = '[T]est [N]earest' },

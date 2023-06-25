@@ -179,6 +179,7 @@ require('lazy').setup({
   -- highlight color hex codes with their color (fast!)
   {
     'norcalli/nvim-colorizer.lua',
+    event = 'VeryLazy',
     opts = {
       '*',
       '!lazy',
@@ -188,6 +189,7 @@ require('lazy').setup({
   -- highlight and search todo/fixme/hack etc comments
   {
     'folke/todo-comments.nvim',
+    event = 'VeryLazy',
     dependencies = 'nvim-lua/plenary.nvim',
     opts = {},
   },
@@ -195,6 +197,7 @@ require('lazy').setup({
   -- status line
   {
     'nvim-lualine/lualine.nvim',
+    event = 'VeryLazy',
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('plugins.lualine').setup()
@@ -204,6 +207,7 @@ require('lazy').setup({
   -- Visual git gutter (also used by feline)
   {
     'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = require 'plugins.gitsigns',
   },
@@ -283,7 +287,10 @@ require('lazy').setup({
   },
 
   -- support for MJML templates
-  'amadeus/vim-mjml',
+  -- NOTE: technically ftdetection dictates that this shouldn't be VeryLazy, but
+  -- the chances of me opening an mjml file as the first file are relatively
+  -- low, so I think this is OK
+  { 'amadeus/vim-mjml', event = 'VeryLazy' },
 
   -- auto complete closable pairs
   {
@@ -293,9 +300,27 @@ require('lazy').setup({
   },
 
   -- auto close html/tsx tags using TreeSitter
-  -- TODO: add ft lazy loading
   {
     'windwp/nvim-ts-autotag',
+    ft = {
+      'html',
+      'javascript',
+      'typescript',
+      'javascriptreact',
+      'typescriptreact',
+      'svelte',
+      'vue',
+      'tsx',
+      'jsx',
+      'rescript',
+      'xml',
+      'php',
+      'markdown',
+      'astro',
+      'glimmer',
+      'handlebars',
+      'hbs',
+    },
     event = 'VeryLazy',
     opts = {},
   },
@@ -331,20 +356,31 @@ require('lazy').setup({
   { 'lucidstack/hex.vim', ft = { 'elixir' }, dependencies = { 'mattn/webapi-vim' } },
   -- }}},
 
-  -- add text object for HTML attributes - allows dax cix etc
-  {
-    'whatyouhide/vim-textobj-xmlattr',
-    event = 'VeryLazy',
-    ft = { 'html' },
-    dependencies = { 'kana/vim-textobj-user' },
-  },
-
   -- graphql support
   'jparise/vim-graphql',
 
   -- Vim sugar for the UNIX shell commands that need it the most.
-  -- TODO: add cmd lazy loading
-  { 'tpope/vim-eunuch', event = 'VeryLazy' },
+  {
+    'tpope/vim-eunuch',
+    cmd = {
+      'Remove',
+      'Delete',
+      'Move',
+      'Rename',
+      'Copy',
+      'Duplicate',
+      'Chmod',
+      'Mkdir',
+      'Cfind',
+      'Clocate',
+      'Lfind',
+      'Llocate',
+      'Wall',
+      'SudoWrite',
+      'SudoEdit',
+    },
+    event = 'VeryLazy',
+  },
 
   -- allow (non-native) plugins to the . command
   { 'tpope/vim-repeat', event = 'VeryLazy' },
@@ -416,6 +452,7 @@ require('lazy').setup({
   -- show trailing white spaces and automatically delete them on write
   {
     'zakharykaplan/nvim-retrail',
+    event = 'VeryLazy',
     config = function()
       require('plugins.retrail').setup()
     end,
@@ -436,6 +473,7 @@ require('lazy').setup({
   -- Toggle between different language verbs or syntax styles
   {
     'AndrewRadev/switch.vim',
+    event = 'VeryLazy',
     init = function()
       vim.g.switch_custom_definitions = {
         { 'up', 'down', 'change' },
@@ -521,32 +559,24 @@ require('lazy').setup({
   },
 
   -- same as tabular but by Junegunn and way easier
-  -- TODO: add command and mapping lazy loading
   {
     'junegunn/vim-easy-align',
-    config = function()
-      core_mappings.easy_align_mappings()
-    end,
+    cmd = 'EasyAlign',
+    keys = core_mappings.easy_align_mappings,
   },
 
   -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
   {
     'sindrets/diffview.nvim',
-    event = 'VeryLazy',
+    cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
     },
   },
 
-  -- manage github gists
-  { 'mattn/gist-vim', cmd = 'Gist', dependencies = { 'mattn/webapi-vim' } },
-
-  -- PostgreSQL highlighting
-  'exu/pgsql.vim',
-
   -- Helm Chart syntax
-  'towolf/vim-helm',
+  { 'towolf/vim-helm', event = { 'BufRead', 'BufNewFile' } },
 
   -- attempt stuff using scratch buffer and pre-configured bootstrap
   {
@@ -564,13 +594,13 @@ require('lazy').setup({
   { 'tmux-plugins/vim-tmux', ft = 'tmux' },
 
   -- seamless tmux/vim pane navigation
-  'christoomey/vim-tmux-navigator',
+  { 'christoomey/vim-tmux-navigator', event = 'VeryLazy' },
 
   -- Resize tmux panes and Vim windows with ease.
-  'RyanMillerC/better-vim-tmux-resizer',
+  { 'RyanMillerC/better-vim-tmux-resizer', event = 'VeryLazy' },
 
   -- support editorconfig files
-  'gpanders/editorconfig.nvim',
+  { 'gpanders/editorconfig.nvim', event = 'VeryLazy' },
 
   -- notifications
   {
