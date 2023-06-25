@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.3.1](https://github.com/dkarter/dotfiles/compare/v10.3.0...v10.3.1) (2023-06-25)
+
+
+### Performance Improvements
+
+* **nvim:** additional startup performance improvements ([95a146e](https://github.com/dkarter/dotfiles/commit/95a146eb87b973943ca9d64db0fb371ea2f2133b))
+
 ## [10.3.0](https://github.com/dkarter/dotfiles/compare/v10.2.0...v10.3.0) (2023-06-25)
 
 
