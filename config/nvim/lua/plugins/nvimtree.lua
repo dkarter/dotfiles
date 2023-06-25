@@ -48,7 +48,6 @@ local M = {}
 
 M.setup = function()
   nvimtree.setup(config)
-  require('core.mappings').nvim_tree_mappings()
 end
 
 return M

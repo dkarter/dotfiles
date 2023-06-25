@@ -192,9 +192,9 @@ M.hop_mappings = function()
   nmap { '<leader>hw', '<cmd>HopWord<cr>', { desc = '[H]op [W]ord' } }
 end
 
-M.nvim_tree_mappings = function()
-  nmap { '<leader>nt', ':NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } }
-end
+M.nvim_tree_mappings = {
+  { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
+}
 
 M.telescope_mappings = function()
   -- muscle memory

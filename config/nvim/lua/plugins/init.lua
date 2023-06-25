@@ -300,6 +300,8 @@ require('lazy').setup({
   -- file tree
   {
     'nvim-tree/nvim-tree.lua',
+    keys = require('core.mappings').nvim_tree_mappings,
+    cmd = 'NvimTreeToggle',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('plugins.nvimtree').setup()
