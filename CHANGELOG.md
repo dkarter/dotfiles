@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.3.0](https://github.com/dkarter/dotfiles/compare/v10.2.0...v10.3.0) (2023-06-25)
+
+
+### Features
+
+* **installer:** add npkill ([ebcea71](https://github.com/dkarter/dotfiles/commit/ebcea7150f34290723d7c9c59e3c9225761fe49d))
+* **nvim:** add dismiss notifications mapping ([8bdf89a](https://github.com/dkarter/dotfiles/commit/8bdf89a9ba8069f1589be653b7e41084ed8d8216))
+* **nvim:** lazy load additional plugins ([93e8149](https://github.com/dkarter/dotfiles/commit/93e81492c8e10f4ff7fa548e0b3ebbf450d8148f))
+* **nvim:** lazy load nvim-tree ([1a5b3b3](https://github.com/dkarter/dotfiles/commit/1a5b3b3c5f5dfe9da4063ff7f0559b9213da7917))
+* **nvim:** lazy load Trouble and Hop ([99b6d72](https://github.com/dkarter/dotfiles/commit/99b6d729dfec23b3c980bbb50fa4e546d35b8a48))
+* **nvim:** make many plugins VeryLazy ([c2dd791](https://github.com/dkarter/dotfiles/commit/c2dd79104bb7a6e676df2fb9fcde37dbd19cd80e))
+
+
+### Bug Fixes
+
+* **nvim:** make mason-tool-installer delay 3000 seconds before running ([bfb3777](https://github.com/dkarter/dotfiles/commit/bfb37771f68c703f2404388463a293beadb76ba6))
+
 ## [10.2.0](https://github.com/dkarter/dotfiles/compare/v10.1.0...v10.2.0) (2023-06-22)
 
 
