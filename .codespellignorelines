@@ -6,4 +6,4 @@ nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4
   ^^^^^ _o_: old files        _w_: file bro[w]ser    ^
 # Mnemonic [V]ersion [M]anager [I]nstall
   nmap { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', { desc = '[B]uffer [C]ommits' } }
-  nmap { 'gR', '<cmd>Trouble lsp_references<cr>', { desc = '[G]o to [R]eferences (Trouble)' } }
+  { 'gR', '<cmd>Trouble lsp_references<cr>', desc = '[G]o to [R]eferences (Trouble)' },

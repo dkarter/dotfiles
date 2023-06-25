@@ -179,18 +179,18 @@ M.lsp_saga_mappings = function()
   nmap { ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = 'Next Diagnostic Error' } }
 end
 
-M.trouble_mappings = function()
-  nmap { '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', { desc = 'Workspace Diagnostics' } }
-  nmap { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', { desc = 'Document Diagnostics' } }
-  nmap { '<leader>xl', '<cmd>Trouble loclist<cr>', { desc = 'Open Loclist' } }
-  nmap { '<leader>xq', '<cmd>Trouble quickfix<cr>', { desc = 'Open Quickfix' } }
-  nmap { 'gR', '<cmd>Trouble lsp_references<cr>', { desc = '[G]o to [R]eferences (Trouble)' } }
-end
+M.trouble_mappings = {
+  { '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', desc = 'Workspace Diagnostics' },
+  { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', desc = 'Document Diagnostics' },
+  { '<leader>xl', '<cmd>Trouble loclist<cr>', desc = 'Open Loclist' },
+  { '<leader>xq', '<cmd>Trouble quickfix<cr>', desc = 'Open Quickfix' },
+  { 'gR', '<cmd>Trouble lsp_references<cr>', desc = '[G]o to [R]eferences (Trouble)' },
+}
 
-M.hop_mappings = function()
-  nmap { '<leader>hp', '<cmd>HopPattern<cr>', { desc = '[H]op [P]attern' } }
-  nmap { '<leader>hw', '<cmd>HopWord<cr>', { desc = '[H]op [W]ord' } }
-end
+M.hop_mappings = {
+  { '<leader>hp', '<cmd>HopPattern<cr>', { desc = '[H]op [P]attern' } },
+  { '<leader>hw', '<cmd>HopWord<cr>', { desc = '[H]op [W]ord' } },
+}
 
 M.nvim_tree_mappings = {
   { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },

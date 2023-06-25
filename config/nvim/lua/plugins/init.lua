@@ -1,3 +1,5 @@
+local core_mappings = require 'core.mappings'
+
 require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
@@ -112,19 +114,19 @@ require('lazy').setup({
   {
     'phaazon/hop.nvim',
     branch = 'v2',
-    config = function()
-      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-      require('core.mappings').hop_mappings()
-    end,
+    keys = core_mappings.hop_mappings,
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran',
+    },
   },
 
-  --  pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+  --  pretty diagnostics, references, telescope results, quickfix and location
+  --  list to help you solve all the trouble your code is causing.
   {
     'folke/trouble.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('plugins.trouble').setup()
-    end,
+    keys = core_mappings.trouble_mappings,
+    opts = {},
   },
 
   -- modern vim command line replacement, requires nvim 0.9 or higher
