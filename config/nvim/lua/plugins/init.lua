@@ -543,6 +543,8 @@ require('lazy').setup({
         background_colour = '#000',
       }
       vim.notify = notify
+
+      core_mappings.notify_mappings()
     end,
   },
 }, { concurrency = 8 })

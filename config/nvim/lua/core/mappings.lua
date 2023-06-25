@@ -360,4 +360,9 @@ M.gitsigns_mappings = function(bufnr)
   map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
 end
 
+M.notify_mappings = function()
+  local notify = require 'notify'
+  nmap { '<leader>nd', notify.dismiss, { desc = '[N]otification [D]ismiss' } }
+end
+
 return M
