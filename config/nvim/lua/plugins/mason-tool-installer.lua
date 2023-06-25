@@ -1,4 +1,5 @@
 return {
+  start_delay = 3000,
   -- a list of all tools you want to ensure are installed upon
   -- start; they should be the names Mason uses for each tool
   ensure_installed = {
