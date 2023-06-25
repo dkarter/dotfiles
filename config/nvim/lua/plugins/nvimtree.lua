@@ -1,10 +1,4 @@
-local present, nvimtree = pcall(require, 'nvim-tree')
-
-if not present then
-  return
-end
-
-local config = {
+return {
   renderer = {
     icons = {
       show = {
@@ -43,11 +37,3 @@ local config = {
     exclude = {},
   },
 }
-
-local M = {}
-
-M.setup = function()
-  nvimtree.setup(config)
-end
-
-return M

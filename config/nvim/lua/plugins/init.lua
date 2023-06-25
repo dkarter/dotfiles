@@ -72,8 +72,9 @@ require('lazy').setup({
     'glepnir/lspsaga.nvim',
     branch = 'main',
     config = function()
-      require('plugins.lspsaga').setup()
+      require('core.mappings').lsp_saga_mappings()
     end,
+    opts = require 'plugins.lspsaga',
   },
 
   -- LSP Output Panel
@@ -89,9 +90,7 @@ require('lazy').setup({
     dependencies = {
       'williamboman/mason.nvim',
     },
-    config = function()
-      require('plugins.mason-tool-installer').setup()
-    end,
+    opts = require 'plugins.mason-tool-installer',
   },
 
   -- Neovim as a language server to inject LSP diagnostics, code
@@ -201,9 +200,7 @@ require('lazy').setup({
   {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('plugins.gitsigns').setup()
-    end,
+    opts = require 'plugins.gitsigns',
   },
 
   -- syntax highlighting for zinit (zsh plugin manager)
@@ -224,19 +221,17 @@ require('lazy').setup({
   { 'schickling/vim-bufonly', cmd = 'BO' },
 
   -- nginx syntax support
-  { 'chr4/nginx.vim' },
+  'chr4/nginx.vim',
 
   -- run tests at the speed of thought
   {
     'janko-m/vim-test',
+    keys = core_mappings.vim_test_mappings,
     dependencies = { 'benmills/vimux' },
     init = function()
       vim.g['test#strategy'] = 'vimux'
       -- accommodations for Malomo's unusual folder structure on Dash
       vim.cmd [[let test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|__tests__))\.(js|jsx|coffee|ts|tsx)$']]
-    end,
-    config = function()
-      require('core.mappings').vim_test_mappings()
     end,
   },
 
@@ -244,7 +239,7 @@ require('lazy').setup({
   {
     'tpope/vim-fugitive',
     config = function()
-      require('core.mappings').fugitive_mappings()
+      core_mappings.fugitive_mappings()
     end,
   },
 
@@ -271,9 +266,7 @@ require('lazy').setup({
   },
 
   -- support for MJML templates
-  {
-    'amadeus/vim-mjml',
-  },
+  'amadeus/vim-mjml',
 
   -- auto complete closable pairs
   {
@@ -291,12 +284,10 @@ require('lazy').setup({
   -- file tree
   {
     'nvim-tree/nvim-tree.lua',
-    keys = require('core.mappings').nvim_tree_mappings,
+    keys = core_mappings.nvim_tree_mappings,
     cmd = 'NvimTreeToggle',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('plugins.nvimtree').setup()
-    end,
+    opts = require 'plugins.nvimtree',
   },
 
   -- growing collection of settings, commands and mappings put together to make
@@ -429,9 +420,7 @@ require('lazy').setup({
   -- The ultimate undo history visualizer for VIM
   {
     'mbbill/undotree',
-    config = function()
-      require('core.mappings').undotree_mappings()
-    end,
+    keys = core_mappings.undotree_mappings,
   },
 
   --  Indent lines (visual indication)
@@ -480,7 +469,7 @@ require('lazy').setup({
       vim.g.rg_highlight = 1
     end,
     config = function()
-      require('core.mappings').ripgrep_mappings()
+      core_mappings.ripgrep_mappings()
     end,
   },
 
@@ -499,7 +488,7 @@ require('lazy').setup({
   {
     'junegunn/vim-easy-align',
     config = function()
-      require('core.mappings').easy_align_mappings()
+      core_mappings.easy_align_mappings()
     end,
   },
 
@@ -524,12 +513,11 @@ require('lazy').setup({
   -- attempt stuff using scratch buffer and pre-configured bootstrap
   {
     'm-demare/attempt.nvim',
+    keys = core_mappings.attempt_mappings,
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
-    config = function()
-      require('plugins.attempt').setup()
-    end,
+    opts = require 'plugins.attempt',
   },
 
   --- TMUX ---

@@ -293,31 +293,32 @@ M.easy_align_mappings = function()
   nmap { '<leader>ea', ':EasyAlign ', { desc = '[E]asy [A]lign' } }
 end
 
-M.vim_test_mappings = function()
-  nmap { '<leader>tn', ':TestNearest<CR>', { desc = '[T]est [N]earest' } }
-  nmap { '<leader>tf', ':TestFile<CR>', { desc = '[T]est [F]ile' } }
-  nmap { '<leader>ts', ':TestSuite<CR>', { desc = '[T]est [S]uite' } }
-  nmap { '<leader>tl', ':TestLast<CR>', { desc = '[T]est [L]ast' } }
-end
+M.vim_test_mappings = {
+  { '<leader>tn', ':TestNearest<CR>', desc = '[T]est [N]earest' },
+  { '<leader>tf', ':TestFile<CR>', desc = '[T]est [F]ile' },
+  { '<leader>ts', ':TestSuite<CR>', desc = '[T]est [S]uite' },
+  { '<leader>tl', ':TestLast<CR>', desc = '[T]est [L]ast' },
+}
 
-M.undotree_mappings = function()
-  nmap { '<leader>ut', '<cmd>UndotreeToggle<CR>', { desc = '[U]ndo [T]ree' } }
-end
+M.undotree_mappings = {
+  { '<leader>ut', '<cmd>UndotreeToggle<CR>', desc = '[U]ndo [T]ree' },
+}
 
-M.attempt_mappings = function(attempt)
+M.attempt_mappings = {
   -- new attempt, selecting extension
-  nmap { '<leader>sn', attempt.new_select, { desc = '[S]cratch [N]ew' } }
+  { '<leader>sn', '<cmd>lua require("attempt").new_select()<CR>', desc = '[S]cratch [N]ew' },
   -- run current attempt buffer
-  nmap { '<leader>sr', attempt.run, { desc = '[S]cratch [R]un' } }
+  { '<leader>sr', '<cmd>lua require("attempt").run()<CR>', desc = '[S]cratch [R]un' },
   -- delete attempt from current buffer
-  nmap { '<leader>sd', attempt.delete_buf, { desc = '[S]cratch [D]elete (current buffer)' } }
+  { '<leader>sd', '<cmd>lua require("attempt").delete_buf()<CR>', desc = '[S]cratch [D]elete (current buffer)' },
   -- rename attempt from current buffer
-  nmap { '<leader>sc', attempt.rename_buf, { desc = '[S]cratch Rename (current buffer)' } }
+  { '<leader>sc', '<cmd>lua require("attempt").rename_buf()<CR>', desc = '[S]cratch Rename (current buffer)' },
   -- open one of the existing scratch buffers
-  nmap { '<leader>sl', attempt.open_select, { desc = '[S]cratch [L]oad' } }
-end
+  { '<leader>sl', '<cmd>lua require("attempt").open_select()<CR>', desc = '[S]cratch [L]oad' },
+}
 
-M.gitsigns_mappings = function(gitsigns, bufnr)
+M.gitsigns_mappings = function(bufnr)
+  local gitsigns = require 'gitsigns'
   local opts = { expr = true, buffer = bufnr }
 
   local next_hunk = function()
