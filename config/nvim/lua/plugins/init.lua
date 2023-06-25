@@ -80,9 +80,7 @@ require('lazy').setup({
   {
     'mhanberg/output-panel.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('output_panel').setup()
-    end,
+    opts = {},
   },
 
   -- automatically install tools using mason
@@ -177,21 +175,17 @@ require('lazy').setup({
   -- highlight color hex codes with their color (fast!)
   {
     'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup {
-        '*',
-        '!lazy',
-      }
-    end,
+    opts = {
+      '*',
+      '!lazy',
+    },
   },
 
   -- highlight and search todo/fixme/hack etc comments
   {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('todo-comments').setup {}
-    end,
+    opts = {},
   },
 
   -- status line
@@ -294,9 +288,7 @@ require('lazy').setup({
   -- auto close html/tsx tags using TreeSitter
   {
     'windwp/nvim-ts-autotag',
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
+    opts = {},
   },
 
   -- file tree
@@ -475,9 +467,7 @@ require('lazy').setup({
   -- smooth scrolling in neovim
   {
     'declancm/cinnamon.nvim',
-    config = function()
-      require('cinnamon').setup()
-    end,
+    opts = {},
   },
 
   -- fuzzy find things
@@ -524,9 +514,7 @@ require('lazy').setup({
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    config = function()
-      require('which-key').setup {}
-    end,
+    opts = {},
   },
 
   -- same as tabular but by Junegunn and way easier
