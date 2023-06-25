@@ -3,6 +3,7 @@ local core_mappings = require 'core.mappings'
 require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
+    event = 'VeryLazy',
     dependencies = {
       -- snippet engine, required by cmp
       {
@@ -41,6 +42,7 @@ require('lazy').setup({
   -- installs/updates LSPs, linters and DAPs
   {
     'williamboman/mason.nvim',
+    event = 'VeryLazy',
     dependencies = {
       -- handles connection of LSP Configs and Mason
       'williamboman/mason-lspconfig.nvim',
@@ -70,6 +72,7 @@ require('lazy').setup({
   -- LSP UI utils
   {
     'glepnir/lspsaga.nvim',
+    event = 'VeryLazy',
     branch = 'main',
     config = function()
       require('core.mappings').lsp_saga_mappings()
@@ -87,6 +90,7 @@ require('lazy').setup({
   -- automatically install tools using mason
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'williamboman/mason.nvim',
     },
@@ -97,6 +101,7 @@ require('lazy').setup({
   -- actions, and more via Lua.
   {
     'jose-elias-alvarez/null-ls.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
 
@@ -209,6 +214,7 @@ require('lazy').setup({
   -- Comment out code easily
   {
     'numToStr/Comment.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
@@ -238,6 +244,7 @@ require('lazy').setup({
   -- git integration
   {
     'tpope/vim-fugitive',
+    event = 'VeryLazy',
     config = function()
       core_mappings.fugitive_mappings()
     end,
@@ -246,6 +253,7 @@ require('lazy').setup({
   -- github support for fugitive
   {
     'tpope/vim-rhubarb',
+    event = 'VeryLazy',
     dependencies = { 'tpope/vim-fugitive' },
   },
 
@@ -257,12 +265,21 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'RRethy/nvim-treesitter-endwise',
-      'nvim-treesitter/playground',
       'nvim-treesitter/nvim-treesitter-context',
     },
     config = function()
       require('plugins.treesitter').setup()
     end,
+  },
+
+  -- play with TreeShitter
+  {
+    'nvim-treesitter/playground',
+    cmd = 'TSPlaygroundToggle',
+    dependencies = {
+
+      'nvim-treesitter/nvim-treesitter',
+    },
   },
 
   -- support for MJML templates
@@ -276,8 +293,10 @@ require('lazy').setup({
   },
 
   -- auto close html/tsx tags using TreeSitter
+  -- TODO: add ft lazy loading
   {
     'windwp/nvim-ts-autotag',
+    event = 'VeryLazy',
     opts = {},
   },
 
@@ -292,10 +311,10 @@ require('lazy').setup({
 
   -- growing collection of settings, commands and mappings put together to make
   -- working with the location list/window and the quickfix list/window smoother
-  'romainl/vim-qf',
+  { 'romainl/vim-qf', event = 'VeryLazy' },
 
   -- Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
-  'matthias-margush/qfx.vim',
+  { 'matthias-margush/qfx.vim', event = 'VeryLazy' },
 
   -- navigate to directory of current file using `-`
   'tpope/vim-vinegar',
@@ -315,6 +334,8 @@ require('lazy').setup({
   -- add text object for HTML attributes - allows dax cix etc
   {
     'whatyouhide/vim-textobj-xmlattr',
+    event = 'VeryLazy',
+    ft = { 'html' },
     dependencies = { 'kana/vim-textobj-user' },
   },
 
@@ -322,13 +343,14 @@ require('lazy').setup({
   'jparise/vim-graphql',
 
   -- Vim sugar for the UNIX shell commands that need it the most.
-  'tpope/vim-eunuch',
+  -- TODO: add cmd lazy loading
+  { 'tpope/vim-eunuch', event = 'VeryLazy' },
 
   -- allow (non-native) plugins to the . command
-  'tpope/vim-repeat',
+  { 'tpope/vim-repeat', event = 'VeryLazy' },
 
   -- Surround text with closures
-  'tpope/vim-surround',
+  { 'tpope/vim-surround', event = 'VeryLazy' },
 
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
   {
@@ -339,22 +361,23 @@ require('lazy').setup({
   },
 
   -- vim unimpaired fixes daily annoyances
-  'tpope/vim-unimpaired',
+  { 'tpope/vim-unimpaired', event = 'VeryLazy' },
 
   -- abolish.vim: easily search for, substitute, and abbreviate multiple variants
   -- of a word
-  'tpope/vim-abolish',
+  { 'tpope/vim-abolish', event = 'VeryLazy' },
 
   -- Support emacs keybindings in insert mode
-  'tpope/vim-rsi',
+  { 'tpope/vim-rsi', event = 'VeryLazy' },
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
-  'tpope/vim-ragtag',
+  -- TODO: add ft lazy loading
+  { 'tpope/vim-ragtag', event = 'VeryLazy' },
 
   -- smarter gx mapping
   {
     'chrishrb/gx.nvim',
-    event = { 'BufEnter' },
+    keys = { 'gx' },
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {},
   },
@@ -370,18 +393,25 @@ require('lazy').setup({
         'scratch',
       }
     end,
+    ft = {
+      'markdown',
+      'text',
+      'gitcommit',
+      'scratch',
+    },
   },
 
   -- replacement for matchit
   {
     'andymass/vim-matchup',
+    event = 'VeryLazy',
     init = function()
       vim.g.matchup_matchparen_deferred = 1
     end,
   },
 
   -- window animations
-  { 'camspiers/animate.vim' },
+  { 'camspiers/animate.vim', event = 'VeryLazy' },
 
   -- show trailing white spaces and automatically delete them on write
   {
@@ -394,6 +424,7 @@ require('lazy').setup({
   -- Convert code to multiline
   {
     'AndrewRadev/splitjoin.vim',
+    event = 'VeryLazy',
     init = function()
       vim.g.splitjoin_align = 1
       vim.g.splitjoin_trailing_comma = 1
@@ -434,12 +465,14 @@ require('lazy').setup({
   -- smooth scrolling in neovim
   {
     'declancm/cinnamon.nvim',
+    event = 'VeryLazy',
     opts = {},
   },
 
   -- fuzzy find things
   {
     'nvim-telescope/telescope.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
@@ -457,12 +490,14 @@ require('lazy').setup({
   -- better ui for vim.ui commands
   {
     'stevearc/dressing.nvim',
+    event = 'VeryLazy',
     opts = {},
   },
 
   -- RipGrep - grep is dead. All hail the new king RipGrep.
   {
     'jremmen/vim-ripgrep',
+    event = 'VeryLazy',
     init = function()
       -- allow hidden files to be searched and smart case
       vim.g.rg_command = 'rg --vimgrep --hidden --smart-case'
@@ -477,6 +512,7 @@ require('lazy').setup({
   -- the next possible character
   {
     'folke/which-key.nvim',
+    event = 'VeryLazy',
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -485,6 +521,7 @@ require('lazy').setup({
   },
 
   -- same as tabular but by Junegunn and way easier
+  -- TODO: add command and mapping lazy loading
   {
     'junegunn/vim-easy-align',
     config = function()
@@ -495,6 +532,7 @@ require('lazy').setup({
   -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
   {
     'sindrets/diffview.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
@@ -505,10 +543,10 @@ require('lazy').setup({
   { 'mattn/gist-vim', cmd = 'Gist', dependencies = { 'mattn/webapi-vim' } },
 
   -- PostgreSQL highlighting
-  { 'exu/pgsql.vim' },
+  'exu/pgsql.vim',
 
   -- Helm Chart syntax
-  { 'towolf/vim-helm' },
+  'towolf/vim-helm',
 
   -- attempt stuff using scratch buffer and pre-configured bootstrap
   {
