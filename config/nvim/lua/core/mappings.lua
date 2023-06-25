@@ -277,10 +277,6 @@ M.fugitive_mappings = function()
   }
 end
 
-M.winresizer_mappings = function()
-  nmap { '<C-w>r', '<cmd>WinResizerStartResize<CR>' }
-end
-
 M.ripgrep_mappings = function()
   --  alias for above
   --  Grep project for selection with Rg

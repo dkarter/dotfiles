@@ -444,23 +444,11 @@ require('lazy').setup({
     end,
   },
 
-  -- Rust support
-  { 'rust-lang/rust.vim', ft = { 'rust' } },
-
   --  Indent lines (visual indication)
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('plugins.indent_blankline').setup()
-    end,
-  },
-
-  -- resize windows in vim naturally
-  {
-    'simeji/winresizer',
-    cmd = 'WinResizerStartResize',
-    config = function()
-      require('core.mappings').winresizer_mappings()
     end,
   },
 
