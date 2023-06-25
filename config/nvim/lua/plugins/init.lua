@@ -317,13 +317,6 @@ require('lazy').setup({
 
   -- Elixir: {{{
 
-  -- elixir text objects
-  {
-    'kevinkoltz/vim-textobj-elixir',
-    dependencies = { 'kana/vim-textobj-user' },
-    ft = { 'elixir' },
-  },
-
   -- pulls info on hex packages (dependencies mattn/webapi-vim)
   { 'lucidstack/hex.vim', ft = { 'elixir' }, dependencies = { 'mattn/webapi-vim' } },
   -- }}},
