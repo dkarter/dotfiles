@@ -153,3 +153,13 @@ augroup('GlobalGX', {
     end,
   },
 })
+
+augroup('HighlightOnYank', {
+  {
+    event = { 'TextYankPost' },
+    pattern = { '*' },
+    command = function()
+      vim.highlight.on_yank { higroup = 'IncSearch' }
+    end,
+  },
+})

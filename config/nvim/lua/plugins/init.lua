@@ -240,9 +240,6 @@ require('lazy').setup({
     end,
   },
 
-  -- Highlight Yanked String
-  { 'machakann/vim-highlightedyank' },
-
   -- git integration
   {
     'tpope/vim-fugitive',
