@@ -70,9 +70,8 @@ require('lazy').setup({
     event = 'VeryLazy',
     branch = 'main',
     config = function()
-      require('core.mappings').lsp_saga_mappings()
+      require('plugins.lspsaga').setup()
     end,
-    opts = require 'plugins.lspsaga',
   },
 
   -- LSP Output Panel
