@@ -410,7 +410,11 @@ require('lazy').setup({
     'chrishrb/gx.nvim',
     keys = { 'gx' },
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {},
+    opts = {
+      handler_options = {
+        search_engine = 'duckduckgo',
+      },
+    },
   },
 
   -- automatic bulleted lists
