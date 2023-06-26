@@ -2,13 +2,11 @@ local utils = require 'core.utils'
 
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
 local cmp_lsp_present, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-local navic_present, navic = pcall(require, 'nvim-navic')
 local elixir_present, elixir = pcall(require, 'elixir')
 
 local deps = {
   cmp_lsp_present,
   lspconfig_present,
-  navic_present,
   elixir_present,
 }
 
@@ -26,10 +24,6 @@ local on_attach = function(client, bufnr)
 
   if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
     vim.lsp.buf_detach_client(bufnr, client.id)
-  end
-
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
   end
 
   -- Use an on_attach function to only map the following keys

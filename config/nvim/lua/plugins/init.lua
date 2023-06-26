@@ -53,11 +53,6 @@ require('lazy').setup({
       -- required for setting up capabilities for cmp
       'hrsh7th/cmp-nvim-lsp',
 
-      {
-        'SmiteshP/nvim-navic',
-        dependencies = 'neovim/nvim-lspconfig',
-      },
-
       -- elixir commands from elixirls
       {
         'elixir-tools/elixir-tools.nvim',
