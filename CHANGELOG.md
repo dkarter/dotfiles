@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.3.2](https://github.com/dkarter/dotfiles/compare/v10.3.1...v10.3.2) (2023-06-26)
+
+
+### Bug Fixes
+
+* **tmux:** battery icons compatibility with nerd fonts v3 ([34b6a04](https://github.com/dkarter/dotfiles/commit/34b6a04b92b46695ed809ec6580b8be0a4a3c80f))
+
 ## [10.3.1](https://github.com/dkarter/dotfiles/compare/v10.3.0...v10.3.1) (2023-06-25)
 
 
