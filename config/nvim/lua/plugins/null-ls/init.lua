@@ -64,6 +64,10 @@ M.setup = function()
       b.formatting.pg_format,
       b.formatting.prettierd.with {
         extra_filetypes = { 'ruby' },
+        disabled_filetypes = { 'markdown' },
+      },
+      b.formatting.prettier.with {
+        filetypes = { 'markdown' },
       },
       b.formatting.shfmt,
       b.formatting.stylua,
