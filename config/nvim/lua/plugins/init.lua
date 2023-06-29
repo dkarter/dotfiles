@@ -531,6 +531,32 @@ require('lazy').setup({
     end,
   },
 
+  { 'junegunn/fzf', event = 'VeryLazy', build = ':call fzf#install()' },
+
+  {
+    'junegunn/fzf.vim',
+    event = 'VeryLazy',
+    config = function()
+      -- TODO: clean this up. This should be done via a lua plugin preferably:
+      -- {
+      --   'ibhagwan/fzf-lua',
+      --   event = 'VeryLazy',
+      --   -- optional for icon support
+      --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+      -- },
+      vim.cmd [[
+        command! -bang -nargs=* FzfRg
+          \ call fzf#vim#grep(
+          \   'rg --column --line-number --no-heading --color=always --smart-case --hidden '.shellescape(<q-args>), 1,
+          \   <bang>0 ? fzf#vim#with_preview('up:60%')
+          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \   <bang>0)
+
+        nnoremap <silent> <C-g>g :FzfRg!<CR>
+      ]]
+    end,
+  },
+
   -- better ui for vim.ui commands
   {
     'stevearc/dressing.nvim',
