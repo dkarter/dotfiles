@@ -139,6 +139,14 @@ require('lazy').setup({
           ['cmp.entry.get_documentation'] = true,
         },
       },
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 1,
+            col = '50%',
+          },
+        },
+      },
       presets = {
         -- you can enable a preset by setting it to true, or a table that will override the preset config
         -- you can also add custom presets that you can enable/disable with enabled=true
