@@ -545,8 +545,8 @@ require('lazy').setup({
 
       dashboard.section.buttons.val = {
         dashboard.button('e', '  > New file', ':ene <BAR> startinsert <CR>'),
-        dashboard.button('<leader>ff', '  > Find file', ':Telescope find_files<CR>'),
-        dashboard.button('<leader>fd', '  > Settings', ":lua require('plugins.telescope').find_dotfiles()<CR>"),
+        dashboard.button('<leader>ff', '  > Find File', ':Telescope find_files<CR>'),
+        dashboard.button('<leader>fd', '  > Find Dotfiles', ":lua require('plugins.telescope').find_dotfiles()<CR>"),
         dashboard.button('q', '󰅗  > Quit NVIM', ':qa<CR>'),
       }
 
