@@ -495,6 +495,7 @@ require('lazy').setup({
   -- The ultimate undo history visualizer for VIM
   {
     'mbbill/undotree',
+    cmd = { 'UndotreeToggle' },
     keys = core_mappings.undotree_mappings,
   },
 
