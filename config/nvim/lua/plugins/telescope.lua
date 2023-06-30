@@ -162,7 +162,6 @@ M.setup = function()
     'file_browser',
     'fzf',
     'conventional_commits',
-    'attempt',
   }
 
   for _, e in ipairs(extensions) do

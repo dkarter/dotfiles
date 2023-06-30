@@ -523,7 +523,6 @@ require('lazy').setup({
       'nvim-telescope/telescope-github.nvim',
       'olacin/telescope-cc.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'm-demare/attempt.nvim',
       'folke/tokyonight.nvim',
       'nvim-telescope/telescope-symbols.nvim',
     },
@@ -618,7 +617,10 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
-    opts = require 'plugins.attempt',
+    config = function()
+      require('attempt').setup(require 'plugins.attempt')
+      require('telescope').load_extension 'attempt'
+    end,
   },
 
   --- TMUX ---
