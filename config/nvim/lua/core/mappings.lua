@@ -216,7 +216,7 @@ M.telescope_mappings = function()
   nmap { '<leader>fd', require('plugins.telescope').find_dotfiles, { desc = '[F]ind [D]otfiles' } }
 
   --  Extensions
-  nmap { '<leader>fb', '<cmd>Telescope file_browser<cr>', { desc = '[F]ile [B]rowser' } }
+  nmap { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', { desc = '[F]ile [B]rowser' } }
 
   nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', { desc = '[L]ive [G]rep' } }
   nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'Find Buffers' } }
