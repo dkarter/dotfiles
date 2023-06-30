@@ -90,6 +90,15 @@ M.setup = function()
     return string.format('%d, %d', line, col)
   end
 
+  local function is_recording()
+    local name = vim.api.nvim_call_function('reg_recording', {})
+    return name ~= ''
+  end
+
+  local function get_recording_name()
+    return '⏺️ Rec @' .. vim.api.nvim_call_function('reg_recording', {})
+  end
+
   ---@diagnostic disable-next-line: redundant-parameter
   lualine.setup {
     winbar = {
@@ -164,8 +173,8 @@ M.setup = function()
       lualine_c = {},
       lualine_x = {
         {
-          require('noice').api.statusline.mode.get,
-          cond = require('noice').api.statusline.mode.has,
+          get_recording_name,
+          cond = is_recording,
           color = { fg = '#ff9e64' },
         },
       },
