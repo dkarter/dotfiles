@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.4.0](https://github.com/dkarter/dotfiles/compare/v10.3.3...v10.4.0) (2023-06-30)
+
+
+### Features
+
+* **nvim:** add a simple start page ([9840679](https://github.com/dkarter/dotfiles/commit/98406799a6caf478c8e4bbf65ae7e35f74633acb))
+* **nvim:** add back FzfRg ([10a03e0](https://github.com/dkarter/dotfiles/commit/10a03e092a0086233c43838f48acf43e78d171b7))
+* **nvim:** add footer to start screen ([d1dc8a8](https://github.com/dkarter/dotfiles/commit/d1dc8a80a76815b792ce5c902a62353555d9fd51))
+* **nvim:** add plugin updates available indicator ([0251c91](https://github.com/dkarter/dotfiles/commit/0251c91627964bc243cf9fc0af124c49cbbeb591))
+* **nvim:** add sql scratch buffers to attempt.nvim ([42f72ff](https://github.com/dkarter/dotfiles/commit/42f72ff576f295d0d1d2979a6d6438a233711421))
+* **nvim:** add unicode symbol search ([7832127](https://github.com/dkarter/dotfiles/commit/78321274ecc97e4b09c67f0345736e81f49d8b08))
+* **nvim:** file browser telescope mapping open current dir ([df1f050](https://github.com/dkarter/dotfiles/commit/df1f0501130e719f401b4a44481ccef8e67a6229))
+
+
+### Bug Fixes
+
+* **iterm:** use Caskaydia Cove font instead of Menlo ([83783a2](https://github.com/dkarter/dotfiles/commit/83783a216bfee7531f364965f06183ac2ddee0ab))
+* **nvim:** add UndotreeToggle cmd as lazy load trigger ([c0fa6bd](https://github.com/dkarter/dotfiles/commit/c0fa6bdf2efa62e47b89d68b1dfe2892a3ff3bc9))
+* **nvim:** escape search term in lua line ([3b380c5](https://github.com/dkarter/dotfiles/commit/3b380c58dba29ae499b76823c39723408a1ce8e0))
+* **nvim:** hide light bulb icon from LSPSaga in insert mode ([932a126](https://github.com/dkarter/dotfiles/commit/932a12617dfdb93ecec42c29475b9d87063bb465))
+* **nvim:** use prettier for formatting markdown instead of prettierd ([eab9f3b](https://github.com/dkarter/dotfiles/commit/eab9f3b8df58af9b8f9e26facd1886cf5205b730))
+* **nvim:** use telescope to select existing attempt scratch files ([56394df](https://github.com/dkarter/dotfiles/commit/56394dff9b7d164051d76a4dbb8868ca6cf0c799))
+
+
+### Performance Improvements
+
+* **nvim:** improve attempt.nvim lazy loading ([edd2ecb](https://github.com/dkarter/dotfiles/commit/edd2ecb0681a8b9ea5cd34a12c28a8db30b2c5f8))
+* **nvim:** improve indent-blankline laziness ([b89beac](https://github.com/dkarter/dotfiles/commit/b89beacf1c4d855185cc324c19d57316bbd8c3a6))
+* **nvim:** remove unused rtp plugins ([dc63373](https://github.com/dkarter/dotfiles/commit/dc63373bc93fbd9f3889e1a1123fa34dd954bc17))
+
 ## [10.3.3](https://github.com/dkarter/dotfiles/compare/v10.3.2...v10.3.3) (2023-06-26)
 
 
