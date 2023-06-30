@@ -112,11 +112,18 @@ M.setup = function()
           -- icon =    {'X', align='right'}
           -- Icon string ^ in table is ignored in filetype component
         },
-        { 'filename', separator = { right = ' ' }, color = { bg = colors.grey, fg = colors.black } },
+        { 'filename', separator = { right = '' }, color = { bg = colors.grey, fg = colors.black } },
       },
       lualine_b = {},
       lualine_c = {},
-      lualine_x = {},
+      lualine_x = {
+        -- show available updates
+        {
+          require('lazy.status').updates,
+          cond = require('lazy.status').has_updates,
+          color = { fg = '#ff9e64' },
+        },
+      },
       lualine_y = {},
       lualine_z = {},
     },

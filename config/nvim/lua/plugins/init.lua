@@ -711,6 +711,10 @@ require('lazy').setup({
   },
 }, {
   concurrency = 8,
+  checker = {
+    enabled = true,
+    notify = false,
+  },
   performance = {
     rtp = {
       ---@type string[] list any plugins you want to disable here
