@@ -709,4 +709,20 @@ require('lazy').setup({
       core_mappings.notify_mappings()
     end,
   },
-}, { concurrency = 8 })
+}, {
+  concurrency = 8,
+  performance = {
+    rtp = {
+      ---@type string[] list any plugins you want to disable here
+      disabled_plugins = {
+        'gzip',
+        'matchit',
+        'matchparen',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
+})
