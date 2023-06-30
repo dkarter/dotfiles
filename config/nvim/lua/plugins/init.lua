@@ -106,14 +106,17 @@ require('lazy').setup({
     end,
   },
 
-  -- like leap, but with tiny hops
+  -- jump anywhere
   {
-    'phaazon/hop.nvim',
-    branch = 'v2',
-    keys = core_mappings.hop_mappings,
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@diagnostic disable-next-line: undefined-doc-name
+    ---@type Flash.Config
     opts = {
-      keys = 'etovxqpdygfblzhckisuran',
+      mode = 'fuzzy',
+      incremental = true,
     },
+    keys = core_mappings.flash_mappings,
   },
 
   --  pretty diagnostics, references, telescope results, quickfix and location
