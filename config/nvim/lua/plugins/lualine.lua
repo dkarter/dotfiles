@@ -4,6 +4,13 @@ if not present then
   return
 end
 
+local stl_escape = function(str)
+  if type(str) ~= 'string' then
+    return str
+  end
+  return str:gsub('%%', '%%%%')
+end
+
 local M = {}
 
 M.setup = function()
@@ -65,7 +72,7 @@ M.setup = function()
 
     local searchcount = vim.fn.searchcount { maxcount = 9999 }
 
-    return last_search .. '(' .. searchcount.current .. '/' .. searchcount.total .. ')'
+    return stl_escape(last_search) .. '(' .. searchcount.current .. '/' .. searchcount.total .. ')'
   end
 
   local function modified()
