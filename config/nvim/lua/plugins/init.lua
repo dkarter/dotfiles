@@ -522,6 +522,38 @@ require('lazy').setup({
     },
   },
 
+  -- start page
+  {
+    'goolord/alpha-nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local alpha = require 'alpha'
+      local dashboard = require 'alpha.themes.dashboard'
+
+      -- Set header
+      dashboard.section.header.val = {
+        '                                                     ',
+        '  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ',
+        '  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ',
+        '  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ',
+        '  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ',
+        '  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
+        '  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
+        '                                                     ',
+      }
+
+      dashboard.section.buttons.val = {
+        dashboard.button('e', '  > New file', ':ene <BAR> startinsert <CR>'),
+        dashboard.button('<leader>ff', '  > Find file', ':Telescope find_files<CR>'),
+        dashboard.button('<leader>fd', '  > Settings', ":lua require('plugins.telescope').find_dotfiles()<CR>"),
+        dashboard.button('q', '󰅗  > Quit NVIM', ':qa<CR>'),
+      }
+
+      alpha.setup(dashboard.opts)
+    end,
+  },
+
   -- smooth scrolling in neovim
   {
     'declancm/cinnamon.nvim',
