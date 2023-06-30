@@ -315,7 +315,7 @@ M.attempt_mappings = {
   -- rename attempt from current buffer
   { '<leader>sc', '<cmd>lua require("attempt").rename_buf()<CR>', desc = '[S]cratch Rename (current buffer)' },
   -- open one of the existing scratch buffers
-  { '<leader>sl', '<cmd>lua require("attempt").open_select()<CR>', desc = '[S]cratch [L]oad' },
+  { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
 }
 
 M.gitsigns_mappings = function(bufnr)
