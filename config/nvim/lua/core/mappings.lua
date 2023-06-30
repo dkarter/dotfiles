@@ -233,6 +233,10 @@ M.telescope_mappings = function()
   nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', { desc = '[D]ocument [S]ymbols' } }
 
   nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', { desc = '[C]onventional [C]ommits' } }
+
+  -- search unicode symbols 
+  nmap { '<leader>fu', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' }
+  imap { '<C-q>', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' }
 end
 
 M.fugitive_mappings = function()

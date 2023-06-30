@@ -525,6 +525,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'm-demare/attempt.nvim',
       'folke/tokyonight.nvim',
+      'nvim-telescope/telescope-symbols.nvim',
     },
     config = function()
       require('plugins.telescope').setup()
