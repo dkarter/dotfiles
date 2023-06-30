@@ -84,6 +84,12 @@ M.setup = function()
     return ''
   end
 
+  local function location()
+    local line = vim.fn.line '.'
+    local col = vim.fn.virtcol '.'
+    return string.format('%d, %d', line, col)
+  end
+
   ---@diagnostic disable-next-line: redundant-parameter
   lualine.setup {
     winbar = {
@@ -164,7 +170,7 @@ M.setup = function()
         },
       },
       lualine_y = { search_result, 'filetype' },
-      lualine_z = { '%l:%c', '%p%%/%L' },
+      lualine_z = { location, '%p%%/%L' },
     },
     inactive_sections = {
       lualine_c = { '%f %y %m' },
