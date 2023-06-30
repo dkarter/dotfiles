@@ -501,9 +501,24 @@ require('lazy').setup({
   --  Indent lines (visual indication)
   {
     'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('plugins.indent_blankline').setup()
-    end,
+    event = { 'BufRead', 'BufNewFile' },
+    opts = {
+      char = '│',
+      filetype_exclude = {
+        'TelescopePrompt',
+        'dashboard',
+        'NvimTree',
+        'lazy',
+        'terminal',
+        'nofile',
+        'quickfix',
+        'lspinfo',
+        'checkhealth',
+        'help',
+        'man',
+        '',
+      },
+    },
   },
 
   -- smooth scrolling in neovim
