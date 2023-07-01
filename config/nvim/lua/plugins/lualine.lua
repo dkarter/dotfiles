@@ -87,7 +87,7 @@ M.setup = function()
   local function location()
     local line = vim.fn.line '.'
     local col = vim.fn.virtcol '.'
-    return string.format('%d, %d', line, col)
+    return string.format(' %d,  %d', line, col)
   end
 
   local function is_recording()
