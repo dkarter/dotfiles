@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# v: shortcut for opening a file in the current folder and its subfolders using
+# a fuzzy finder. Supports tmux popup
+#
+
+preview="bat --style numbers,changes --color=always {}"
+
+if [[ -n "$1" ]]; then
+  file="$1"
+elif [[ -n "$TMUX" ]]; then
+  file=$(fzf-tmux -p --reverse --preview "$preview")
+else
+  file=$(fzf --border --reverse --preview "$preview" --height 100% --margin 20%)
+fi
+
+nvim "$file"
