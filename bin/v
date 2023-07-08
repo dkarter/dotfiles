@@ -1,17 +1,45 @@
 #!/usr/bin/env bash
 #
 # v: shortcut for opening a file in the current folder and its subfolders using
-# a fuzzy finder. Supports tmux popup
+# a fuzzy finder. Supports tmux popup.
 #
 
-preview="bat --style numbers,changes --color=always {}"
+preview="bat --style changes --color=always {}"
 
 if [[ -n "$1" ]]; then
   file="$1"
 elif [[ -n "$TMUX" ]]; then
-  file=$(fzf-tmux -p --reverse --preview "$preview")
+  file=$(
+    fzf-tmux \
+      --info=inline-right \
+      --pointer='→' \
+      --preview-label=' PREVIEW ' \
+      --preview-window=border-bold \
+      --preview="$preview" \
+      --prompt=' ' \
+      --reverse \
+      -p \
+      -w 90%
+  )
 else
-  file=$(fzf --border --reverse --preview "$preview" --height 100% --margin 5%)
+  file=$(
+    fzf \
+      --border \
+      --height=50% \
+      --info=inline-right \
+      --margin=5% \
+      --pointer='→' \
+      --preview "$preview" \
+      --preview-label=' PREVIEW ' \
+      --preview-window=border-bold \
+      --prompt=' ' \
+      --reverse
+  )
 fi
 
-nvim "$file"
+# Check that the fzf command didn't exit with an error or non-zero code (as it
+# does when the user cancels the dialog)
+# shellcheck disable=2181
+if [ $? == 0 ]; then
+  nvim "$file"
+fi
