@@ -35,6 +35,7 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
+  %w[./config/bat ~/.config/bat],
   %w[./config/nvim ~/.config/nvim],
   %w[./config/kitty ~/.config/kitty],
   %w[./config/ripgrep ~/.config/ripgrep],
