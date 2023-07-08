@@ -11,7 +11,7 @@ if [[ -n "$1" ]]; then
 elif [[ -n "$TMUX" ]]; then
   file=$(fzf-tmux -p --reverse --preview "$preview")
 else
-  file=$(fzf --border --reverse --preview "$preview" --height 100% --margin 20%)
+  file=$(fzf --border --reverse --preview "$preview" --height 100% --margin 5%)
 fi
 
 nvim "$file"
