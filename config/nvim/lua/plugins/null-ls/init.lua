@@ -38,6 +38,7 @@ M.setup = function()
       ----------------------
       --    Formatters    --
       ----------------------
+      b.formatting.clang_format,
       b.formatting.gofmt,
       b.formatting.goimports,
 

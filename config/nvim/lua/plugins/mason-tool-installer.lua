@@ -24,6 +24,7 @@ return {
     'arduino-language-server',
     'bash-language-server',
     'clangd',
+    'clang-format',
     'cmake-language-server',
     'css-lsp',
     'dockerfile-language-server',
