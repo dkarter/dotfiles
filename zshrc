@@ -59,13 +59,6 @@ export PATH="/usr/local/go/bin:$PATH"
 # dotfiles scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
 
-# fzf stuff
-export FZF_DEFAULT_COMMAND='fd --type f --follow --color=always --exclude .git --exclude node_modules --exclude vendor --exclude build --exclude _build --exclude bundle --exclude Godeps'
-# add support for ctrl+o to open selected file in VS Code, also ansi for fd
-# color
-export FZF_DEFAULT_OPTS="--ansi --bind='ctrl-o:execute(code {})+abort'"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # for android sdk (installed via homebrew)
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
