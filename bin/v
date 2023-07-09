@@ -39,7 +39,6 @@ fi
 
 # Check that the fzf command didn't exit with an error or non-zero code (as it
 # does when the user cancels the dialog)
-# shellcheck disable=2181
-if [ $? == 0 ]; then
+if [ "x$file" != "x" ]; then
   nvim "$file"
 fi
