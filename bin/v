@@ -6,6 +6,7 @@
 # Usage:
 #   v           # open an interactive fuzzy finder
 #   v plug init # open pre-filled query for 'plug' and filter 'init'
+#   v bell.yml  # skips fuzzy finder when there's only one match
 
 preview="bat --style changes --color=always {}"
 
@@ -20,6 +21,7 @@ if [[ -n "$TMUX" ]]; then
       --prompt=' ' \
       --query="$*" \
       --reverse \
+      --select-1 \
       -p \
       -w 90%
   )
@@ -36,7 +38,8 @@ else
       --preview-window=border-bold \
       --prompt=' ' \
       --query="$*" \
-      --reverse
+      --reverse \
+      --select-1
   )
 fi
 
