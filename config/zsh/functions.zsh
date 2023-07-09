@@ -7,24 +7,24 @@ ghpre() {
   gh pr edit --body "$(cat $temp_file)"
   rm "$temp_file"
 }
+
 # fo [FUZZY PATTERN] - Open the selected file with the default editor
-#   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
 #   - CTRL-O to open with `open` command,
 #   - CTRL-E or Enter key to open with the $EDITOR
 fo() {
   local out file key
-  out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
+  out=$(fzf-tmux --reverse -p --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
   key=$(head -1 <<<"$out")
   file=$(head -2 <<<"$out" | tail -1)
   if [ -n "$file" ]; then
-    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-nvim} "$file"
+    [ "$key" = ctrl-o ] && open "$file" || nvim "$file"
   fi
 }
 
 # fh - repeat history
 fh() {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac --scheme=history | sed 's/ *[0-9]* *//')
 }
 
 # fkill - kill process
@@ -49,10 +49,10 @@ fgco() {
   ) || return
   target=$(
     (
-      echo "$tags"
       echo "$branches"
+      echo "$tags"
     ) |
-      fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
+      fzf-tmux -p --reverse -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
   ) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
