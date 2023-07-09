@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#
+# Install (one or multiple) selected application(s)
+# using "brew search" as source input
+# mnemonic Brew Install Package
+#
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided."
+  echo
+  echo "Usage: bip <space separated package(s) name to search>"
+  exit 1
+fi
+
+packages=$(brew search "$@" | grep -v '^$' | tr '\n' ' ' | xargs brew info --json=v2)
+formulas_json=$(echo "$packages" | jq '.formulae | map({name, desc})')
+longest_formula_name=$(echo "$formulas_json" | jq -r 'max_by(.name | length) | .name | length')
+table=$(
+  echo "$formulas_json" |
+    jq -r '.[] | [.name, .desc] | @tsv' |
+    awk -F '\t' "{ printf \"%-$((longest_formula_name + 4))s\033[1;34m%s\033[0m\n\", \$1, \$2 }"
+)
+inst=$(echo "$table" | fzf -m --no-hscroll | awk '{ print $1 }')
+
+if [[ $inst ]]; then
+  echo "$inst" | tr '\n' ' ' | xargs brew install
+fi
