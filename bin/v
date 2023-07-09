@@ -3,12 +3,13 @@
 # v: shortcut for opening a file in the current folder and its subfolders using
 # a fuzzy finder. Supports tmux popup.
 #
+# Usage:
+#   v           # open an interactive fuzzy finder
+#   v plug init # open pre-filled query for 'plug' and filter 'init'
 
 preview="bat --style changes --color=always {}"
 
-if [[ -n "$1" ]]; then
-  file="$1"
-elif [[ -n "$TMUX" ]]; then
+if [[ -n "$TMUX" ]]; then
   file=$(
     fzf-tmux \
       --info=inline-right \
@@ -17,6 +18,7 @@ elif [[ -n "$TMUX" ]]; then
       --preview-window=border-bold \
       --preview="$preview" \
       --prompt=' ' \
+      --query="$*" \
       --reverse \
       -p \
       -w 90%
@@ -33,6 +35,7 @@ else
       --preview-label=' PREVIEW ' \
       --preview-window=border-bold \
       --prompt=' ' \
+      --query="$*" \
       --reverse
   )
 fi
