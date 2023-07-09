@@ -101,9 +101,6 @@ brew 'make'
 # terminal multiplexer
 brew 'tmux'
 
-# TMux for remote pairing
-brew 'tmate'
-
 # download files from the terminal, used by some scripts
 brew 'wget'
 
