@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#
+# Install (one or multiple) selected application(s)
+# using "brew search" as source input
+# mnemonic Brew Install Cask
+#
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided."
+  echo
+  echo "Usage: bic <space separated package(s) name to search>"
+  exit 1
+fi
+
+packages=$(brew search "$@" | grep -v '^$' | tr '\n' ' ' | xargs brew info --json=v2)
+casks_json=$(echo "$packages" | jq '.casks | map({name: .token, desc})')
+longest_cask=$(echo "$casks_json" | jq -r 'max_by(.name | length) | .name | length')
+table=$(
+  echo "$casks_json" |
+    jq -r '.[] | [.name, .desc] | @tsv' |
+    awk -F '\t' "{ printf \"%-$((longest_cask + 4))s\033[1;34m%s\033[0m\n\", \$1, \$2 }"
+)
+inst=$(echo "$table" | fzf -m --no-hscroll | awk '{ print $1 }')
+
+if [[ $inst ]]; then
+  echo "$inst" | tr '\n' ' ' | xargs brew install --cask
+fi
