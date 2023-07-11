@@ -157,6 +157,18 @@ require('lazy').setup({
         long_message_to_split = true, -- long messages will be sent to a split
         lsp_doc_border = true, -- add a border to hover docs and signature help
       },
+
+      routes = {
+        {
+          view = 'mini',
+          filter = {
+            event = 'msg_show',
+            kind = '',
+            find = 'written',
+          },
+          opts = {},
+        },
+      },
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
