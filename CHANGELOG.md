@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.5.0](https://github.com/dkarter/dotfiles/compare/v10.4.0...v10.5.0) (2023-07-11)
+
+
+### Features
+
+* **bat:** add config and set tokyonight_storm as default theme ([b41c0ac](https://github.com/dkarter/dotfiles/commit/b41c0acc1026bcbc879c27f8645bdb8e6ac7c2a1))
+* **nvim:** add clang-format to format C files ([a4890b8](https://github.com/dkarter/dotfiles/commit/a4890b8f43ccb9ff05ff0e9d8797089644757161))
+* **zsh:** add `v` script for opening a file in neovim ([2cb9716](https://github.com/dkarter/dotfiles/commit/2cb97165d5e09b608ba6f66b792e46d6103d325b))
+* **zsh:** add bic (brew install cask) ([999004f](https://github.com/dkarter/dotfiles/commit/999004fc4d9c9ba00037d4e962b4d19cb442a4ef))
+* **zsh:** add bip (brew install package) ([543422e](https://github.com/dkarter/dotfiles/commit/543422e26f68e7918ab19546ddd85e8d27ac44cd))
+* **zsh:** add fdr and cdf commands ([7e9e83d](https://github.com/dkarter/dotfiles/commit/7e9e83ddd2fd336f5b958e04659310624c8ae028))
+* **zsh:** add fman to search man pages ([ad2bfc0](https://github.com/dkarter/dotfiles/commit/ad2bfc00d4b9d42927fd3e9fbc840d3a92683b6b))
+* **zsh:** move FZF config to dedicated file + set colorscheme ([ac2c5c9](https://github.com/dkarter/dotfiles/commit/ac2c5c9ee994448512604fa1da5ed1872bf4ebfc))
+* **zsh:** skip fuzzy finder for v when there's only 1 match ([7f26a65](https://github.com/dkarter/dotfiles/commit/7f26a65028236a6fb82eec289428d201b1418311))
+
+
+### Bug Fixes
+
+* **nvim:** incorrect config key for lspsaga ([3ce26af](https://github.com/dkarter/dotfiles/commit/3ce26affac236ad108d9927c3e01209f6a6f6c92))
+* **nvim:** use correct icons for line and column ([a1a34f4](https://github.com/dkarter/dotfiles/commit/a1a34f429e163c4977f3ff2f4b311dc4216638a9))
+
 ## [10.4.0](https://github.com/dkarter/dotfiles/compare/v10.3.3...v10.4.0) (2023-06-30)
 
 
