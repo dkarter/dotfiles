@@ -168,6 +168,21 @@ require('lazy').setup({
           },
           opts = {},
         },
+        -- hide the annoying code_action notifications from null ls
+        {
+          filter = {
+            event = 'lsp',
+            kind = 'progress',
+            cond = function(message)
+              local title = vim.tbl_get(message.opts, 'progress', 'title')
+              local client = vim.tbl_get(message.opts, 'progress', 'client')
+
+              -- skip null-ls noisy messages
+              return client == 'null-ls' and title == 'code_action'
+            end,
+          },
+          opts = { skip = true },
+        },
       },
     },
     dependencies = {
