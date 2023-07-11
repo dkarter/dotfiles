@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.5.1](https://github.com/dkarter/dotfiles/compare/v10.5.0...v10.5.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* **nvim:** silence null-ls code_action notifs ([fd6532a](https://github.com/dkarter/dotfiles/commit/fd6532ab820aeb85dffbfa31426554ccd9439cd4))
+
 ## [10.5.0](https://github.com/dkarter/dotfiles/compare/v10.4.0...v10.5.0) (2023-07-11)
 
 
