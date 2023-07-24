@@ -13,6 +13,27 @@ function M.load_local_vimrc()
   end
 end
 
+M.icons = {
+  dap = {
+    Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
+    Breakpoint = ' ',
+    BreakpointCondition = ' ',
+    BreakpointRejected = { ' ', 'DiagnosticError' },
+    LogPoint = '.>',
+  },
+  diagnostics = {
+    Error = ' ',
+    Warn = ' ',
+    Hint = ' ',
+    Info = ' ',
+  },
+  git = {
+    added = ' ',
+    modified = ' ',
+    removed = ' ',
+  },
+}
+
 -- Returns a list of border characters
 ---@param name 'double' | 'none' | 'rounded' | 'shadow' | 'single'
 ---@return table<string>

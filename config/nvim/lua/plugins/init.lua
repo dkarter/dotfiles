@@ -64,16 +64,6 @@ require('lazy').setup({
     end,
   },
 
-  -- LSP UI utils
-  {
-    'glepnir/lspsaga.nvim',
-    event = 'VeryLazy',
-    branch = 'main',
-    config = function()
-      require('plugins.lspsaga').setup()
-    end,
-  },
-
   -- automatically install tools using mason
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',

@@ -165,26 +165,23 @@ M.lsp_mappings = function()
 end
 
 M.lsp_diagnostic_mappings = function()
-  -- TODO: These are a bit redundant with LSP Saga and Trouble.nvim - consider removing them
+  local function diagnostic_goto(next, severity)
+    local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+    severity = severity and vim.diagnostic.severity[severity] or nil
+    return function()
+      go { severity = severity }
+    end
+  end
+
   nmap { '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = '[D]iagnostic [O]pen [F]loat' } }
-  nmap { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = 'Prev Diagnostic' } }
-  nmap { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = 'Next Diagnostic' } }
+  nmap { ']d', diagnostic_goto(true), { desc = 'Next Diagnostic' } }
+  nmap { '[d', diagnostic_goto(false), { desc = 'Prev Diagnostic' } }
+  nmap { ']e', diagnostic_goto(true, 'ERROR'), { desc = 'Next Error' } }
+  nmap { '[e', diagnostic_goto(false, 'ERROR'), { desc = 'Prev Error' } }
+  nmap { ']w', diagnostic_goto(true, 'WARN'), { desc = 'Next Warning' } }
+  nmap { '[w', diagnostic_goto(false, 'WARN'), { desc = 'Prev Warning' } }
+
   nmap { '<leader>qd', '<cmd>lua vim.diagnostic.setloclist()<CR>', { desc = 'Set loclist to LSP diagnostics' } }
-end
-
-M.lsp_saga_mappings = function()
-  -- Lsp finder find the symbol definition implmement reference
-  nmap { '<leader>lf', '<cmd>Lspsaga lsp_finder<CR>', { desc = '[L]sp [F]inder' } }
-
-  -- Rename
-  nmap { '<leader>rn', '<cmd>Lspsaga rename<CR>', { desc = 'Rename LSP Symbol' } }
-
-  -- Definition preview
-  nmap { 'gp', '<cmd>Lspsaga peek_definition<CR>', { desc = 'Peek definition' } }
-
-  -- Diagnsotic jump
-  nmap { '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = 'Previous Diagnostic Error' } }
-  nmap { ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = 'Next Diagnostic Error' } }
 end
 
 M.elixir_mappings = function()

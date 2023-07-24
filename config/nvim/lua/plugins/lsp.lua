@@ -28,34 +28,75 @@ local on_attach = function(client, bufnr)
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
-  require('core.mappings').lsp_mappings(bufnr)
+  require('core.mappings').lsp_mappings()
+end
+
+-- Add completion and documentation capabilities for cmp completion
+---@param opts table|nil
+M.create_capabilities = function(opts)
+  local default_opts = {
+    with_snippet_support = true,
+  }
+  opts = opts or default_opts
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = opts.with_snippet_support
+  if opts.with_snippet_support then
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+      properties = {
+        'documentation',
+        'detail',
+        'additionalTextEdits',
+      },
+    }
+  end
+
+  return cmp_lsp.default_capabilities(capabilities)
+end
+
+M.elixir_setup = function()
+  elixir.setup {
+    elixirls = {
+      enabled = true,
+      on_attach = function(client, bufnr)
+        require('core.mappings').elixir_mappings()
+        on_attach(client, bufnr)
+      end,
+    },
+  }
+end
+
+M.setup_diagnostics = function()
+  -- icons
+  for name, icon in pairs(require('core.utils').icons.diagnostics) do
+    name = 'DiagnosticSign' .. name
+    vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
+  end
+
+  local diagnostic_config = {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = {
+      spacing = 4,
+      source = 'if_many',
+      prefix = '●',
+      -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+      -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+      -- prefix = "icons",
+    },
+    severity_sort = true,
+    float = {
+      border = 'rounded',
+    },
+  }
+
+  vim.diagnostic.config(diagnostic_config)
 end
 
 M.setup = function()
   -- set up global mappings for diagnostics
   require('core.mappings').lsp_diagnostic_mappings()
 
-  -- Add completion and documentation capabilities for cmp completion
-  ---@param opts table|nil
-  local function create_capabilities(opts)
-    local default_opts = {
-      with_snippet_support = true,
-    }
-    opts = opts or default_opts
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = opts.with_snippet_support
-    if opts.with_snippet_support then
-      capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {
-          'documentation',
-          'detail',
-          'additionalTextEdits',
-        },
-      }
-    end
-
-    return cmp_lsp.default_capabilities(capabilities)
-  end
+  M.setup_diagnostics()
 
   -- inject our custom on_attach after the built in on_attach from the lspconfig
   lspconfig.util.on_setup = lspconfig.util.add_hook_after(lspconfig.util.on_setup, function(config)
@@ -65,7 +106,7 @@ M.setup = function()
       config.on_attach = on_attach
     end
 
-    config.capabilities = create_capabilities()
+    config.capabilities = M.create_capabilities()
   end)
 
   ---@diagnostic disable-next-line: redundant-parameter
@@ -73,17 +114,7 @@ M.setup = function()
     on_attach = on_attach,
   }
 
-  elixir.setup {
-    elixirls = {
-      enabled = true,
-      on_attach = function(client, bufnr)
-        vim.keymap.set('n', '<space>fp', ':ElixirFromPipe<cr>', { buffer = true, noremap = true })
-        vim.keymap.set('n', '<space>tp', ':ElixirToPipe<cr>', { buffer = true, noremap = true })
-        vim.keymap.set('v', '<space>em', ':ElixirExpandMacro<cr>', { buffer = true, noremap = true })
-        on_attach(client, bufnr)
-      end,
-    },
-  }
+  M.elixir_setup()
 end
 
 return M
