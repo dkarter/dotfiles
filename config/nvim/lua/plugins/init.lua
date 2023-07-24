@@ -65,6 +65,9 @@ require('lazy').setup({
     end,
   },
 
+  -- TODO: is it possible to get rid of this plugin and use a similar solution
+  -- to what LazyVim does with ensure_installed?
+  --
   -- automatically install tools using mason
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -264,6 +267,18 @@ require('lazy').setup({
       require('plugins.comment').setup()
     end,
   },
+
+  --   TODO: can vim-bufonly be replaced with mini bufremove?
+  --   -- buffer remove
+  -- {
+  --   "echasnovski/mini.bufremove",
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+  --     { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+  --   },
+  -- },
+  --
 
   -- delete unused buffers
   { 'schickling/vim-bufonly', cmd = 'BO' },
