@@ -207,6 +207,7 @@ require('lazy').setup({
     event = 'VeryLazy',
     dependencies = 'nvim-lua/plenary.nvim',
     opts = {},
+    keys = core_mappings.todo_comments_mappings,
   },
 
   -- status line
