@@ -146,7 +146,7 @@ nmap { '<leader>pc', '<cmd>Lazy clean<CR>', { desc = '[P]lugin [C]lean' } }
 
 local M = {}
 
-M.lsp_mappings = function(bufnr)
+M.lsp_mappings = function()
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' })
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = true, desc = '[G]o to [d]efinition' })
