@@ -310,7 +310,7 @@ require('lazy').setup({
   -- github support for fugitive
   {
     'tpope/vim-rhubarb',
-    cmd = { 'GBrowse' },
+    event = 'VeryLazy',
     dependencies = { 'tpope/vim-fugitive' },
   },
 
