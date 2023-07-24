@@ -39,6 +39,7 @@ local tmap = function(tbl)
   vim.keymap.set('t', tbl[1], tbl[2], tbl[3])
 end
 
+---@diagnostic disable-next-line: unused-local, unused-function
 local cmap = function(tbl)
   vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
 end
