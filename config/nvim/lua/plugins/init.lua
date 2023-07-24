@@ -3,7 +3,7 @@ local core_mappings = require 'core.mappings'
 require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
-    event = 'VeryLazy',
+    event = 'InsertEnter',
     dependencies = {
       -- snippet engine, required by cmp
       {
@@ -106,6 +106,7 @@ require('lazy').setup({
   --  list to help you solve all the trouble your code is causing.
   {
     'folke/trouble.nvim',
+    cmd = { 'Trouble', 'TroubleToggle' },
     dependencies = 'nvim-tree/nvim-web-devicons',
     keys = core_mappings.trouble_mappings,
     opts = {},
@@ -170,7 +171,7 @@ require('lazy').setup({
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
+      { 'MunifTanjim/nui.nvim', lazy = true },
       'rcarriga/nvim-notify',
     },
   },
@@ -194,7 +195,7 @@ require('lazy').setup({
   -- highlight color hex codes with their color (fast!)
   {
     'norcalli/nvim-colorizer.lua',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {
       '*',
       '!lazy',
@@ -204,7 +205,8 @@ require('lazy').setup({
   -- highlight and search todo/fixme/hack etc comments
   {
     'folke/todo-comments.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
+    cmd = { 'TodoTrouble', 'TodoTelescope' },
     dependencies = 'nvim-lua/plenary.nvim',
     opts = {},
     keys = core_mappings.todo_comments_mappings,
@@ -223,7 +225,7 @@ require('lazy').setup({
   -- Visual git gutter (also used by feline)
   {
     'lewis6991/gitsigns.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = require 'plugins.gitsigns',
   },
@@ -234,7 +236,7 @@ require('lazy').setup({
   -- Comment out code easily
   {
     'numToStr/Comment.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
@@ -273,7 +275,7 @@ require('lazy').setup({
   -- github support for fugitive
   {
     'tpope/vim-rhubarb',
-    event = 'VeryLazy',
+    cmd = { 'GBrowse' },
     dependencies = { 'tpope/vim-fugitive' },
   },
 
@@ -297,7 +299,6 @@ require('lazy').setup({
     'nvim-treesitter/playground',
     cmd = 'TSPlaygroundToggle',
     dependencies = {
-
       'nvim-treesitter/nvim-treesitter',
     },
   },
@@ -337,7 +338,6 @@ require('lazy').setup({
       'handlebars',
       'hbs',
     },
-    event = 'VeryLazy',
     opts = {},
   },
 
@@ -395,14 +395,13 @@ require('lazy').setup({
       'SudoWrite',
       'SudoEdit',
     },
-    event = 'VeryLazy',
   },
 
   -- allow (non-native) plugins to the . command
   { 'tpope/vim-repeat', event = 'VeryLazy' },
 
   -- Surround text with closures
-  { 'tpope/vim-surround', event = 'VeryLazy' },
+  { 'tpope/vim-surround', event = { 'BufReadPost', 'BufNewFile' } },
 
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
   {
@@ -424,7 +423,7 @@ require('lazy').setup({
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
   -- TODO: add ft lazy loading
-  { 'tpope/vim-ragtag', event = 'VeryLazy' },
+  { 'tpope/vim-ragtag', event = { 'BufReadPost', 'BufNewFile' } },
 
   -- smarter gx mapping
   {
@@ -460,7 +459,7 @@ require('lazy').setup({
   -- replacement for matchit
   {
     'andymass/vim-matchup',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     init = function()
       vim.g.matchup_matchparen_deferred = 1
     end,
@@ -472,16 +471,14 @@ require('lazy').setup({
   -- show trailing white spaces and automatically delete them on write
   {
     'zakharykaplan/nvim-retrail',
-    event = 'VeryLazy',
-    config = function()
-      require('plugins.retrail').setup()
-    end,
+    event = { 'BufReadPost', 'BufNewFile' },
+    opt = require 'plugins.retrail',
   },
 
   -- Convert code to multiline
   {
     'AndrewRadev/splitjoin.vim',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     init = function()
       vim.g.splitjoin_align = 1
       vim.g.splitjoin_trailing_comma = 1
@@ -493,7 +490,7 @@ require('lazy').setup({
   -- Toggle between different language verbs or syntax styles
   {
     'AndrewRadev/switch.vim',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     init = function()
       vim.g.switch_custom_definitions = {
         { 'up', 'down', 'change' },
@@ -516,7 +513,7 @@ require('lazy').setup({
   --  Indent lines (visual indication)
   {
     'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufRead', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {
       char = '│',
       filetype_exclude = {
@@ -633,14 +630,25 @@ require('lazy').setup({
   -- better ui for vim.ui commands
   {
     'stevearc/dressing.nvim',
-    event = 'VeryLazy',
-    opts = {},
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.input(...)
+      end
+    end,
   },
 
   -- RipGrep - grep is dead. All hail the new king RipGrep.
   {
     'jremmen/vim-ripgrep',
-    event = 'VeryLazy',
+    cmd = 'Rg',
     init = function()
       -- allow hidden files to be searched and smart case
       vim.g.rg_command = 'rg --vimgrep --hidden --smart-case'
@@ -679,7 +687,7 @@ require('lazy').setup({
   },
 
   -- Helm Chart syntax
-  { 'towolf/vim-helm', event = { 'BufRead', 'BufNewFile' } },
+  { 'towolf/vim-helm', event = { 'BufReadPost', 'BufNewFile' } },
 
   -- attempt stuff using scratch buffer and pre-configured bootstrap
   {
@@ -705,24 +713,38 @@ require('lazy').setup({
   -- Resize tmux panes and Vim windows with ease.
   { 'RyanMillerC/better-vim-tmux-resizer', event = 'VeryLazy' },
 
-  -- support editorconfig files
-  { 'gpanders/editorconfig.nvim', event = 'VeryLazy' },
-
   -- notifications
   {
     'rcarriga/nvim-notify',
-    config = function()
+    opts = {
+      background_colour = '#000',
+    },
+    config = function(_notify, opts)
       local notify = require 'notify'
-      notify.setup {
-        background_colour = '#000',
-      }
+      notify.setup(opts)
       vim.notify = notify
-
       core_mappings.notify_mappings()
     end,
   },
 }, {
   concurrency = 8,
+  -- Uncomment to debug an issue with a plugin by disabling all other plugins
+  -- defaults = {
+  --   cond = function(plugin)
+  --     local _, plugin_name = next(plugin)
+  --
+  --     local enabledPlugins = { 'foo', 'bar', 'baz' }
+  --     local found = false
+  --
+  --     for _, value in ipairs(enabledPlugins) do
+  --       if value == plugin_name then
+  --         return true
+  --       end
+  --     end
+  --
+  --     return false
+  --   end,
+  -- },
   checker = {
     enabled = true,
     notify = false,
