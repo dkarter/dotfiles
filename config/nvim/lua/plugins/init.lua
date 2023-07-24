@@ -646,9 +646,7 @@ require('lazy').setup({
       vim.g.rg_command = 'rg --vimgrep --hidden --smart-case'
       vim.g.rg_highlight = 1
     end,
-    config = function()
-      core_mappings.ripgrep_mappings()
-    end,
+    keys = core_mappings.ripgrep_mappings,
   },
 
   -- displays a popup with possible key bindings e.g. <leader>f will show f as

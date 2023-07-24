@@ -334,17 +334,13 @@ M.fugitive_mappings = function()
   }
 end
 
-M.ripgrep_mappings = function()
+M.ripgrep_mappings = {
   --  alias for above
   --  Grep project for selection with Rg
-  vmap { '<leader>rg', 'y :Rg "<CR>', { desc = '[R]ip[G]rep selection' } }
+  { '<leader>rg', 'y :Rg "<CR>', mode = 'v', desc = '[R]ip[G]rep selection' },
   --  Grep project for word under the cursor with Rg
-  nmap { '<Leader>rg', ':Rg <C-r><C-w><CR>', { desc = '[R]ip[G]rep word under cursor' } }
-
-  --  Grep selection with Rg (excluding tests and migrations)
-  vmap { '<leader>gt', "y :Rg \" -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
-  nmap { '<Leader>gt', ":Rg <C-r><C-w> -g '!*/**/test/*' -g '!*/**/migrations/*'<CR>" }
-end
+  { '<Leader>rg', ':Rg <C-r><C-w><CR>', desc = '[R]ip[G]rep word under cursor' },
+}
 
 M.easy_align_mappings = {
   { '<leader>ea', ':EasyAlign ', desc = '[E]asy [A]lign' },
