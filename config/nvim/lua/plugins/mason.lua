@@ -1,12 +1,10 @@
 local utils = require 'core.utils'
 
-local elixir_present, elixir = pcall(require, 'elixir.language_server')
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
 local mason_lspconfig_present, mason_lspconfig = pcall(require, 'mason-lspconfig')
 local mason_present, mason = pcall(require, 'mason')
 
 local deps = {
-  elixir_present,
   mason_present,
   mason_lspconfig_present,
   lspconfig_present,
