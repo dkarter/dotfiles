@@ -148,13 +148,20 @@ local M = {}
 
 M.lsp_mappings = function()
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' })
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = true, desc = '[G]o to [d]efinition' })
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = true, desc = '[G]o to [I]mplementation' })
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = true, desc = 'Type [D]ef' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = true, desc = '[C]ode [A]ction' })
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = true, desc = '[G]o to [R]eferences' })
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = true, desc = 'LSP Hover Doc' })
+  nmap { 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' } }
+  nmap {
+    'gd',
+    function()
+      require('telescope.builtin').lsp_definitions { reuse_win = true }
+    end,
+    { buffer = true, desc = '[G]o to [d]efinition' },
+  }
+
+  nmap { 'gi', vim.lsp.buf.implementation, { buffer = true, desc = '[G]o to [I]mplementation' } }
+  nmap { '<leader>D', vim.lsp.buf.type_definition, { buffer = true, desc = 'Type [D]ef' } }
+  map { { 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = true, desc = '[C]ode [A]ction' } }
+  nmap { 'gr', require('telescope.builtin').lsp_references, { buffer = true, desc = '[G]o to [R]eferences' } }
+  nmap { 'K', vim.lsp.buf.hover, { buffer = true, desc = 'LSP Hover Doc' } }
 end
 
 M.lsp_diagnostic_mappings = function()
