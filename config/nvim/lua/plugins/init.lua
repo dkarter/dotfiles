@@ -370,13 +370,6 @@ require('lazy').setup({
     opts = require 'plugins.nvimtree',
   },
 
-  -- growing collection of settings, commands and mappings put together to make
-  -- working with the location list/window and the quickfix list/window smoother
-  { 'romainl/vim-qf', event = 'VeryLazy' },
-
-  -- Simple plugin for placing signs in buffer's gutter next to lines that appear in the QuickFix results.
-  { 'matthias-margush/qfx.vim', event = 'VeryLazy' },
-
   -- navigate to directory of current file using `-`
   'tpope/vim-vinegar',
 
@@ -391,9 +384,6 @@ require('lazy').setup({
   -- pulls info on hex packages (dependencies mattn/webapi-vim)
   { 'lucidstack/hex.vim', ft = { 'elixir' }, dependencies = { 'mattn/webapi-vim' } },
   -- }}},
-
-  -- graphql support
-  'jparise/vim-graphql',
 
   -- Vim sugar for the UNIX shell commands that need it the most.
   {
@@ -484,9 +474,6 @@ require('lazy').setup({
       vim.g.matchup_matchparen_deferred = 1
     end,
   },
-
-  -- window animations
-  { 'camspiers/animate.vim', event = 'VeryLazy' },
 
   -- show trailing white spaces and automatically delete them on write
   {
@@ -596,13 +583,6 @@ require('lazy').setup({
     end,
   },
 
-  -- smooth scrolling in neovim
-  {
-    'declancm/cinnamon.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
-
   -- fuzzy find things
   {
     'nvim-telescope/telescope.nvim',
@@ -627,13 +607,6 @@ require('lazy').setup({
     'junegunn/fzf.vim',
     event = 'VeryLazy',
     config = function()
-      -- TODO: clean this up. This should be done via a lua plugin preferably:
-      -- {
-      --   'ibhagwan/fzf-lua',
-      --   event = 'VeryLazy',
-      --   -- optional for icon support
-      --   dependencies = { 'nvim-tree/nvim-web-devicons' },
-      -- },
       vim.cmd [[
         command! -bang -nargs=* FzfRg
           \ call fzf#vim#grep(
