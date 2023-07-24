@@ -42,6 +42,7 @@ require('lazy').setup({
   -- installs/updates LSPs, linters and DAPs
   {
     'williamboman/mason.nvim',
+    build = ':MasonUpdate',
     event = 'VeryLazy',
     dependencies = {
       -- handles connection of LSP Configs and Mason
