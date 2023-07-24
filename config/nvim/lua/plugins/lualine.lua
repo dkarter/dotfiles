@@ -14,7 +14,7 @@ end
 local M = {}
 
 M.setup = function()
-  local tokyonight_colors = require('tokyonight.colors').setup { style = 'storm' }
+  local tokyonight_colors = require('tokyonight.colors').setup { style = 'moon' }
 
   ---@diagnostic disable:undefined-field
   local colors = {

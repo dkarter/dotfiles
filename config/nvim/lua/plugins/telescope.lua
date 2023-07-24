@@ -93,7 +93,7 @@ local default = {
 }
 
 local apply_highlights = function()
-  local colors = require('tokyonight.colors').setup {}
+  local colors = require('tokyonight.colors').setup { style = 'moon' }
   local util = require 'tokyonight.util'
   -- not sure why lua ls cannot see this field.. it's there..
   ---@diagnostic disable-next-line: undefined-field
