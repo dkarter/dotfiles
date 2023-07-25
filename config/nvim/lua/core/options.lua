@@ -9,7 +9,7 @@ vim.cmd 'filetype plugin indent on'
 
 opt.hidden = true --  enable hidden unsaved buffers
 opt.termguicolors = true --  enable true colors
-opt.cursorline = false -- highlight the current line
+opt.cursorline = true -- highlight the current line
 
 -- search
 opt.smartcase = true -- use case sensitive if capital letter present or \C
