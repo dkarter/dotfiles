@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.0](https://github.com/dkarter/dotfiles/compare/v10.5.1...v11.0.0) (2023-07-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** restructure Rg mappings
+
+### Features
+
+* **nvim:** add [q ]q for jumping between Trouble listings ([e22d171](https://github.com/dkarter/dotfiles/commit/e22d17189a7b9da7879a09d8be88f506de17f464))
+* **nvim:** add git status files dashboard command ([5b958ab](https://github.com/dkarter/dotfiles/commit/5b958ab17788e8eb0f7f38e35fa49d33a2bc56ee))
+* **nvim:** add illuminate to highlight word under cursor ([5f155dc](https://github.com/dkarter/dotfiles/commit/5f155dcd1374331bd40238cade4522c00ace128c))
+* **nvim:** add mini.indentscope for highlighting current scope ([2088088](https://github.com/dkarter/dotfiles/commit/208808880a2246a70dc2eaea2d9d5da4c48528da))
+* **nvim:** add todo comment mappings ([303bd11](https://github.com/dkarter/dotfiles/commit/303bd115613e8678e54561f260debebb457cfed9))
+* **nvim:** change dashboard menu items ([034ab97](https://github.com/dkarter/dotfiles/commit/034ab97c6cfd018f09081c7f66d994ba164e25d6))
+
+
+### Bug Fixes
+
+* **nvim:** need to properly set up lazy loading for :GBrowse ([e3338bc](https://github.com/dkarter/dotfiles/commit/e3338bcddc0185287457187d6b19ca476cc97837))
+* **nvim:** remove output-panel plugin ([ddad16f](https://github.com/dkarter/dotfiles/commit/ddad16f21d290bc3acb377ae39cfb3ebb3efbf27))
+* **nvim:** remove unused plugins ([c02444e](https://github.com/dkarter/dotfiles/commit/c02444ed996568bab407b8dc0613d711398a8c9d))
+* **zsh:** prevent conflict between teleport and 1password cli ([a6211f2](https://github.com/dkarter/dotfiles/commit/a6211f28396eb7ca1daba12e1435264489f9cb55))
+
+
+### Performance Improvements
+
+* **nvim:** improve plugin loading config ([e336149](https://github.com/dkarter/dotfiles/commit/e3361491e0949da18a03295822d0bf23d3837a17))
+
+
+### Code Refactoring
+
+* **nvim:** restructure Rg mappings ([b9d08aa](https://github.com/dkarter/dotfiles/commit/b9d08aa030638479cad57403024087372c361540))
+
 ## [10.5.1](https://github.com/dkarter/dotfiles/compare/v10.5.0...v10.5.1) (2023-07-11)
 
 
