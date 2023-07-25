@@ -250,22 +250,23 @@ M.nvim_tree_mappings = {
 }
 
 M.telescope_mappings = function()
+  local telescope = require 'telescope.builtin'
   -- muscle memory
-  nmap { '<C-p>', '<cmd>Telescope find_files<cr>', default_opts }
-  nmap { '<C-b>', '<cmd>Telescope buffers<cr>', default_opts }
+  nmap { '<C-p>', telescope.find_files, default_opts }
+  nmap { '<C-b>', telescope.buffers, default_opts }
 
   -- Compatible with hydra setup
-  nmap { '<leader>f/', '<cmd>Telescope current_buffer_fuzzy_find<cr>', { desc = 'Buffer fuzzy find' } }
-  nmap { '<leader>f:', '<cmd>Telescope commands<cr>', { desc = 'Command search' } }
-  nmap { '<leader>f;', '<cmd>Telescope command_history<cr>', { desc = 'Command History' } }
-  nmap { '<leader>f?', '<cmd>Telescope search_history<cr>', { desc = 'Search History' } }
-  nmap { '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = '[F]ind [F]iles' } }
-  nmap { '<leader>fg', '<cmd>Telescope live_grep<cr>', { desc = '[F]ind w/ [G]rep' } }
-  nmap { '<leader>fh', '<cmd>Telescope help_tags<cr>', { desc = '[F]ind [H]elp' } }
-  nmap { '<leader>fk', '<cmd>Telescope keymaps<cr>', { desc = '[F]ind [K]eymaps' } }
-  nmap { '<leader>fo', '<cmd>Telescope oldfiles<cr>', { desc = '[F]ind [o]ld files' } }
-  nmap { '<leader>fO', '<cmd>Telescope vim_options<cr>', { desc = '[F]ind [O]ptions' } }
-  nmap { '<leader>fr', '<cmd>Telescope resume<cr>', { desc = '[F]ind [R]esume' } }
+  nmap { '<leader>f/', telescope.current_buffer_fuzzy_find, { desc = 'Buffer fuzzy find' } }
+  nmap { '<leader>f:', telescope.commands, { desc = 'Command search' } }
+  nmap { '<leader>f;', telescope.command_history, { desc = 'Command History' } }
+  nmap { '<leader>f?', telescope.search_history, { desc = 'Search History' } }
+  nmap { '<leader>ff', telescope.find_files, { desc = '[F]ind [F]iles' } }
+  nmap { '<leader>fg', telescope.live_grep, { desc = '[F]ind w/ [G]rep' } }
+  nmap { '<leader>fh', telescope.help_tags, { desc = '[F]ind [H]elp' } }
+  nmap { '<leader>fk', telescope.keymaps, { desc = '[F]ind [K]eymaps' } }
+  nmap { '<leader>fo', telescope.oldfiles, { desc = '[F]ind [o]ld files' } }
+  nmap { '<leader>fO', telescope.vim_options, { desc = '[F]ind [O]ptions' } }
+  nmap { '<leader>fr', telescope.resume, { desc = '[F]ind [R]esume' } }
   nmap { '<leader>fd', require('plugins.telescope').find_dotfiles, { desc = '[F]ind [D]otfiles' } }
 
   --  Extensions
