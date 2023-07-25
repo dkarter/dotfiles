@@ -268,6 +268,7 @@ M.telescope_mappings = function()
   nmap { '<leader>fO', telescope.vim_options, { desc = '[F]ind [O]ptions' } }
   nmap { '<leader>fr', telescope.resume, { desc = '[F]ind [R]esume' } }
   nmap { '<leader>fd', require('plugins.telescope').find_dotfiles, { desc = '[F]ind [D]otfiles' } }
+  nmap { '<leader>fs', telescope.git_status, { desc = '[F]ind (Git) [S]tatus' } }
 
   --  Extensions
   nmap { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', { desc = '[F]ile [B]rowser' } }
