@@ -302,37 +302,40 @@ M.fugitive_mappings = function()
 
   --  Revert file
   nmap { '<Leader>gR', ':Gread<CR>', { desc = '[G]it [R]ead (reverts file)' } }
+end
 
+M.rhubarb_mappings = {
   -- open github page for file
-  nmap { '<leader>gO', ':GBrowse<CR>', { desc = '[G]ithub [O]pen File' } }
+  { '<leader>gO', ':GBrowse<CR>', desc = '[G]ithub [O]pen File' },
 
   -- open github page for line under cursor
-  nmap { '<leader>go', ':.GBrowse<CR>', { desc = '[G]ithub [o]pen Line' } }
+  { '<leader>go', ':.GBrowse<CR>', desc = '[G]ithub [o]pen Line' },
 
   -- open github page for selection
-  vmap { '<leader>go', ':GBrowse<CR>', { desc = '[G]ithub [o]pen Line' } }
+  { '<leader>go', ':GBrowse<CR>', mode = 'v', desc = '[G]ithub [o]pen Line' },
 
   -- copy github link for file
-  nmap {
+  {
     '<leader>gY',
     ':GBrowse! | lua vim.notify("Copied file URL to clipboard")<CR>',
-    { desc = '[G]ithub [Y]ank file URL' },
-  }
+    desc = '[G]ithub [Y]ank file URL',
+  },
 
   -- copy github link for line under cursor
-  nmap {
+  {
     '<leader>gy',
     ':.GBrowse! | lua vim.notify("Copied line URL to clipboard")<CR>',
-    { desc = '[G]ithub [y]ank line URL' },
-  }
+    desc = '[G]ithub [y]ank line URL',
+  },
 
   -- copy github link for selection
-  vmap {
+  {
     '<leader>gy',
     ':GBrowse! | lua vim.notify("Copied selection URL to clipboard")<CR>',
-    { desc = '[G]ithub [Y]ank selection link' },
-  }
-end
+    mode = 'v',
+    desc = '[G]ithub [Y]ank selection link',
+  },
+}
 
 M.ripgrep_mappings = {
   --  alias for above
