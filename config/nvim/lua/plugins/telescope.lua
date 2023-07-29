@@ -1,9 +1,3 @@
-local present, telescope = pcall(require, 'telescope')
-
-if not present then
-  return
-end
-
 local default = {
   defaults = {
     results_title = false,
@@ -154,6 +148,8 @@ M.find_dotfiles = function()
 end
 
 M.setup = function()
+  local telescope = require 'telescope'
+
   ---@diagnostic disable-next-line: redundant-parameter
   telescope.setup(default)
 
@@ -169,8 +165,6 @@ M.setup = function()
   end
 
   apply_highlights()
-
-  require('core.mappings').telescope_mappings()
 end
 
 return M

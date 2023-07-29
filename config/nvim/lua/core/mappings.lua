@@ -44,6 +44,17 @@ local cmap = function(tbl)
   vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
 end
 
+--- returns a function that calls the specified telescope builtin
+local telescope = function(fun, opts)
+  if opts == nil then
+    opts = {}
+  end
+
+  return function()
+    require('telescope.builtin')[fun](opts)
+  end
+end
+
 local silent = { silent = true }
 local default_opts = { noremap = true, silent = true }
 
@@ -146,21 +157,15 @@ nmap { '<leader>pc', '<cmd>Lazy clean<CR>', { desc = '[P]lugin [C]lean' } }
 
 local M = {}
 
+-- stylua: ignore
 M.lsp_mappings = function()
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   nmap { 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' } }
-  nmap {
-    'gd',
-    function()
-      require('telescope.builtin').lsp_definitions { reuse_win = true }
-    end,
-    { buffer = true, desc = '[G]o to [d]efinition' },
-  }
-
+  nmap { 'gd', telescope('lsp_definitions', { reuse_win = true }), { buffer = true, desc = '[G]o to [d]efinition' }, }
   nmap { 'gi', vim.lsp.buf.implementation, { buffer = true, desc = '[G]o to [I]mplementation' } }
   nmap { '<leader>D', vim.lsp.buf.type_definition, { buffer = true, desc = 'Type [D]ef' } }
   map { { 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = true, desc = '[C]ode [A]ction' } }
-  nmap { 'gr', require('telescope.builtin').lsp_references, { buffer = true, desc = '[G]o to [R]eferences' } }
+  nmap { 'gr', telescope('lsp_references'), { buffer = true, desc = '[G]o to [R]eferences' } }
   nmap { 'K', vim.lsp.buf.hover, { buffer = true, desc = 'LSP Hover Doc' } }
 end
 
@@ -195,6 +200,7 @@ M.trouble_mappings = {
   { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', desc = 'Document Diagnostics' },
   { '<leader>xl', '<cmd>Trouble loclist<cr>', desc = 'Open Loclist' },
   { '<leader>xq', '<cmd>Trouble quickfix<cr>', desc = 'Open Quickfix' },
+  -- smart `[q` and `]q` mappings that work for both qf list and trouble
   {
     '[q',
     function()
@@ -249,50 +255,50 @@ M.nvim_tree_mappings = {
   { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
 }
 
-M.telescope_mappings = function()
-  local telescope = require 'telescope.builtin'
+M.telescope_mappings = {
   -- muscle memory
-  nmap { '<C-p>', telescope.find_files, default_opts }
-  nmap { '<C-b>', telescope.buffers, default_opts }
+  { '<C-p>', telescope 'find_files', default_opts },
+  { '<C-b>', telescope 'buffers', default_opts },
 
   -- Compatible with hydra setup
-  nmap { '<leader>f/', telescope.current_buffer_fuzzy_find, { desc = 'Buffer fuzzy find' } }
-  nmap { '<leader>f:', telescope.commands, { desc = 'Command search' } }
-  nmap { '<leader>f;', telescope.command_history, { desc = 'Command History' } }
-  nmap { '<leader>f?', telescope.search_history, { desc = 'Search History' } }
-  nmap { '<leader>ff', telescope.find_files, { desc = '[F]ind [F]iles' } }
-  nmap { '<leader>fg', telescope.live_grep, { desc = '[F]ind w/ [G]rep' } }
-  nmap { '<leader>fh', telescope.help_tags, { desc = '[F]ind [H]elp' } }
-  nmap { '<leader>fk', telescope.keymaps, { desc = '[F]ind [K]eymaps' } }
-  nmap { '<leader>fo', telescope.oldfiles, { desc = '[F]ind [o]ld files' } }
-  nmap { '<leader>fO', telescope.vim_options, { desc = '[F]ind [O]ptions' } }
-  nmap { '<leader>fr', telescope.resume, { desc = '[F]ind [R]esume' } }
-  nmap { '<leader>fd', require('plugins.telescope').find_dotfiles, { desc = '[F]ind [D]otfiles' } }
-  nmap { '<leader>fs', telescope.git_status, { desc = '[F]ind (Git) [S]tatus' } }
+  { '<leader>f/', telescope 'current_buffer_fuzzy_find', desc = 'Buffer fuzzy find' },
+  { '<leader>f:', telescope 'commands', desc = 'Command search' },
+  { '<leader>f;', telescope 'command_history', desc = 'Command History' },
+  { '<leader>f?', telescope 'search_history', desc = 'Search History' },
+  { '<leader>ff', telescope 'find_files', desc = '[F]ind [F]iles' },
+  { '<leader>fg', telescope 'live_grep', desc = '[F]ind w/ [G]rep' },
+  { '<leader>fh', telescope 'help_tags', desc = '[F]ind [H]elp' },
+  { '<leader>fk', telescope 'keymaps', desc = '[F]ind [K]eymaps' },
+  { '<leader>fo', telescope 'oldfiles', desc = '[F]ind [o]ld files' },
+  { '<leader>fO', telescope 'vim_options', desc = '[F]ind [O]ptions' },
+  { '<leader>fr', telescope 'resume', desc = '[F]ind [R]esume' },
+  { '<leader>fd', require('plugins.telescope').find_dotfiles, desc = '[F]ind [D]otfiles' },
+  { '<leader>fs', telescope 'git_status', desc = '[F]ind (Git) [S]tatus' },
+  { '<leader>fw', telescope 'grep_string', desc = '[F]ind [W]ord' },
 
   --  Extensions
-  nmap { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', { desc = '[F]ile [B]rowser' } }
+  { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', desc = '[F]ile [B]rowser' },
 
-  nmap { '<leader>lg', '<cmd>Telescope live_grep<cr>', { desc = '[L]ive [G]rep' } }
-  nmap { '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'Find Buffers' } }
+  { '<leader>lg', '<cmd>Telescope live_grep<cr>', desc = '[L]ive [G]rep' },
+  { '<leader>bb', '<cmd>Telescope buffers<cr>', desc = 'Find Buffers' },
 
   -- better spell suggestions
-  nmap { 'z=', '<cmd>Telescope spell_suggest<cr>', { desc = 'Spelling Suggestions' } }
+  { 'z=', '<cmd>Telescope spell_suggest<cr>', desc = 'Spelling Suggestions' },
 
   -- Git
   -- bc = buffer commits (like gitv!)
-  nmap { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', { desc = '[B]uffer [C]ommits' } }
+  { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', desc = '[B]uffer [C]ommits' },
 
   -- LSP
   -- ds = document symbols
-  nmap { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', { desc = '[D]ocument [S]ymbols' } }
+  { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', desc = '[D]ocument [S]ymbols' },
 
-  nmap { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', { desc = '[C]onventional [C]ommits' } }
+  { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', desc = '[C]onventional [C]ommits' },
 
   -- search unicode symbols 
-  nmap { '<leader>fu', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' }
-  imap { '<C-q>', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' }
-end
+  { '<leader>fu', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' },
+  { '<C-q>', '<cmd>Telescope symbols<cr>', mode = 'i', desc = '[F]ind [U]nicode' },
+}
 
 M.fugitive_mappings = function()
   -- Git Stage file

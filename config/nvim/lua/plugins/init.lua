@@ -651,7 +651,7 @@ require('lazy').setup({
   -- fuzzy find things
   {
     'nvim-telescope/telescope.nvim',
-    event = 'VeryLazy',
+    cmd = 'Telescope',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-file-browser.nvim',
@@ -664,6 +664,7 @@ require('lazy').setup({
     config = function()
       require('plugins.telescope').setup()
     end,
+    keys = core_mappings.telescope_mappings,
   },
 
   { 'junegunn/fzf', event = 'VeryLazy', build = ':call fzf#install()' },
