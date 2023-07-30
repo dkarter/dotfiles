@@ -65,19 +65,6 @@ require('lazy').setup({
     end,
   },
 
-  -- TODO: is it possible to get rid of this plugin and use a similar solution
-  -- to what LazyVim does with ensure_installed?
-  --
-  -- automatically install tools using mason
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'williamboman/mason.nvim',
-    },
-    opts = require 'plugins.mason-tool-installer',
-  },
-
   -- Neovim as a language server to inject LSP diagnostics, code
   -- actions, and more via Lua.
   {
