@@ -279,19 +279,19 @@ M.telescope_mappings = {
   --  Extensions
   { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', desc = '[F]ile [B]rowser' },
 
-  { '<leader>lg', '<cmd>Telescope live_grep<cr>', desc = '[L]ive [G]rep' },
-  { '<leader>bb', '<cmd>Telescope buffers<cr>', desc = 'Find Buffers' },
+  { '<leader>lg', telescope 'live_grep', desc = '[L]ive [G]rep' },
+  { '<leader>bb', telescope 'buffers', desc = 'Find Buffers' },
 
   -- better spell suggestions
-  { 'z=', '<cmd>Telescope spell_suggest<cr>', desc = 'Spelling Suggestions' },
+  { 'z=', telescope 'spell_suggest', desc = 'Spelling Suggestions' },
 
   -- Git
   -- bc = buffer commits (like gitv!)
-  { '<leader>bc', '<cmd>Telescope git_bcommits<cr>', desc = '[B]uffer [C]ommits' },
+  { '<leader>bc', telescope 'git_bcommits', desc = '[B]uffer [C]ommits' },
 
   -- LSP
   -- ds = document symbols
-  { '<leader>ds', '<cmd>Telescope lsp_document_symbols<cr>', desc = '[D]ocument [S]ymbols' },
+  { '<leader>ds', telescope 'lsp_document_symbols', desc = '[D]ocument [S]ymbols' },
 
   { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', desc = '[C]onventional [C]ommits' },
 
