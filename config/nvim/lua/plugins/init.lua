@@ -69,10 +69,10 @@ require('lazy').setup({
   -- actions, and more via Lua.
   {
     'jose-elias-alvarez/null-ls.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'nvim-lua/plenary.nvim',
-
+      'williamboman/mason.nvim',
       'lukas-reineke/lsp-format.nvim',
     },
     config = function()
@@ -305,6 +305,7 @@ require('lazy').setup({
   --  Better syntax highlighting (and more)
   {
     'nvim-treesitter/nvim-treesitter',
+    event = { 'BufReadPost', 'BufNewFile' },
     build = ':TSUpdate',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
