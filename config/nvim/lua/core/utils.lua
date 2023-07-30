@@ -157,9 +157,18 @@ function M.fold(callback, list, accum)
   return accum
 end
 
+---@class Autocmd
+---@field desc string
+---@field event  string[] list of autocommand events
+---@field pattern string[] list of autocommand patterns
+---@field command string | function
+---@field nested  boolean
+---@field once    boolean
+---@field buffer  number
+
 --- Validate the keys passed to as.augroup are valid
 ---@param name string
----@param cmd Autocommand
+---@param cmd Autocmd
 local function validate_autocmd(name, cmd)
   local keys = { 'event', 'buffer', 'pattern', 'desc', 'command', 'group', 'once', 'nested' }
   local incorrect = M.fold(function(accum, _, key)
@@ -178,19 +187,10 @@ local function validate_autocmd(name, cmd)
   end)
 end
 
----@class Autocommand
----@field desc string
----@field event  string[] list of autocommand events
----@field pattern string[] list of autocommand patterns
----@field command string | function
----@field nested  boolean
----@field once    boolean
----@field buffer  number
-
 ---Create an autocommand
 ---returns the group ID so that it can be cleared or manipulated.
 ---@param name string
----@param commands Autocommand[]
+---@param commands Autocmd[]
 ---@return number
 function M.augroup(name, commands)
   assert(name ~= 'User', 'The name of an augroup CANNOT be User')
