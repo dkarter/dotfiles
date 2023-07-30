@@ -87,10 +87,8 @@ M.setup = function()
   end
 
   if mr.refresh then
-    vim.notify 'mason refresh'
     mr.refresh(ensure_installed)
   else
-    vim.notify 'not mason refresh, ensure installed'
     ensure_installed()
   end
 
