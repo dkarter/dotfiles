@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.0.0](https://github.com/dkarter/dotfiles/compare/v11.0.0...v12.0.0) (2023-07-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change flash mappings
+
+### Features
+
+* **nvim:** add telescope git status mappings ([ac7ee85](https://github.com/dkarter/dotfiles/commit/ac7ee852fc1418038f0e02b08acee2f9e8264d96))
+* **nvim:** enable cursorline (again) ([3558cbf](https://github.com/dkarter/dotfiles/commit/3558cbff5d14b060b2b3d10bdfb7b15da653a408))
+
+
+### Bug Fixes
+
+* **nvim:** lint warning for lua types ([ed5825a](https://github.com/dkarter/dotfiles/commit/ed5825a6132e9569f60104c68c0d797f45cce894))
+* **nvim:** remove debug notifs ([4e2c8e0](https://github.com/dkarter/dotfiles/commit/4e2c8e035aac2f6d7e1f74ae0dc5b26b212ea7db))
+
+
+### Performance Improvements
+
+* **nvim:** improve startup time ([e0b9fe2](https://github.com/dkarter/dotfiles/commit/e0b9fe2edf536c492d55bc551534fa5a68d2aa18))
+* **nvim:** lazy load telescope on demand ([7936d6c](https://github.com/dkarter/dotfiles/commit/7936d6cf60fcb816d1ba98b1cfa45a81e7924066))
+
+
+### Code Refactoring
+
+* **nvim:** change flash mappings ([82421de](https://github.com/dkarter/dotfiles/commit/82421def3109b7c1ce64cabe9a13e2fb989e55aa))
+
 ## [11.0.0](https://github.com/dkarter/dotfiles/compare/v10.5.1...v11.0.0) (2023-07-25)
 
 
