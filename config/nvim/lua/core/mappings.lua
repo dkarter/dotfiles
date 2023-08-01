@@ -382,6 +382,36 @@ M.attempt_mappings = {
   { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
 }
 
+local bufremove_others = function(force)
+  return function()
+    local bufremove = require('mini.bufremove').delete
+    local curr_buf = vim.api.nvim_get_current_buf()
+    local buf_list = vim.api.nvim_list_bufs()
+    local deleted_count = 0
+
+    for _, bufnr in pairs(buf_list) do
+      if bufnr ~= curr_buf then
+        bufremove(bufnr, force)
+        deleted_count = deleted_count + 1
+      end
+    end
+    vim.notify('Removed ' .. deleted_count .. ' buffers')
+  end
+end
+
+local bufremove_curr = function(force)
+  return function()
+    require('mini.bufremove').delete(0, force)
+  end
+end
+
+M.bufremove_mappings = {
+  { '<leader>bd', bufremove_curr(false), desc = 'Delete Buffer' },
+  { '<leader>bD', bufremove_curr(true), desc = 'Delete Buffer (Force)' },
+  { '<leader>bo', bufremove_others(false), desc = 'Delete Other Buffers' },
+  { '<leader>bO', bufremove_others(true), desc = 'Delete Other Buffers (Force)' },
+}
+
 M.gitsigns_mappings = function(bufnr)
   local gitsigns = require 'gitsigns'
   local opts = { expr = true, buffer = bufnr }

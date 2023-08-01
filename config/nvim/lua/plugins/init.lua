@@ -278,20 +278,10 @@ require('lazy').setup({
     end,
   },
 
-  --   TODO: can vim-bufonly be replaced with mini bufremove?
-  --   -- buffer remove
-  -- {
-  --   "echasnovski/mini.bufremove",
-  --   -- stylua: ignore
-  --   keys = {
-  --     { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-  --     { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
-  --   },
-  -- },
-  --
-
-  -- delete unused buffers
-  { 'schickling/vim-bufonly', cmd = 'BO' },
+  {
+    'echasnovski/mini.bufremove',
+    keys = core_mappings.bufremove_mappings,
+  },
 
   -- nginx syntax support
   'chr4/nginx.vim',
