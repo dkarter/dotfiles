@@ -53,16 +53,39 @@ require('lazy').setup({
 
       -- required for setting up capabilities for cmp
       'hrsh7th/cmp-nvim-lsp',
-
-      -- elixir commands from elixirls
-      {
-        'elixir-tools/elixir-tools.nvim',
-        dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim' },
-      },
     },
     config = function()
       require('plugins.lsp').setup()
     end,
+  },
+
+  -- elixir lsp support
+  {
+    'elixir-tools/elixir-tools.nvim',
+    version = '*',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local elixir = require 'elixir'
+      local elixirls = require 'elixir.elixirls'
+
+      elixir.setup {
+        nextls = { enable = true },
+        credo = { enable = true },
+        elixirls = {
+          enable = true,
+          settings = elixirls.settings {
+            dialyzerEnabled = true,
+            enableTestLenses = false,
+          },
+          on_attach = function(_client, _bufnr)
+            core_mappings.elixir_mappings()
+          end,
+        },
+      }
+    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
   },
 
   -- Neovim as a language server to inject LSP diagnostics, code

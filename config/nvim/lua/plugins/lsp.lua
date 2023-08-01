@@ -2,12 +2,10 @@ local utils = require 'core.utils'
 
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
 local cmp_lsp_present, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-local elixir_present, elixir = pcall(require, 'elixir')
 
 local deps = {
   cmp_lsp_present,
   lspconfig_present,
-  elixir_present,
 }
 
 if utils.contains(deps, false) then
@@ -51,18 +49,6 @@ M.create_capabilities = function(opts)
   end
 
   return cmp_lsp.default_capabilities(capabilities)
-end
-
-M.elixir_setup = function()
-  elixir.setup {
-    elixirls = {
-      enabled = true,
-      on_attach = function(client, bufnr)
-        require('core.mappings').elixir_mappings()
-        on_attach(client, bufnr)
-      end,
-    },
-  }
 end
 
 M.setup_diagnostics = function()
@@ -109,12 +95,7 @@ M.setup = function()
     config.capabilities = M.create_capabilities()
   end)
 
-  ---@diagnostic disable-next-line: redundant-parameter
-  require('plugins.mason').setup {
-    on_attach = on_attach,
-  }
-
-  M.elixir_setup()
+  require('plugins.mason').setup()
 end
 
 return M
