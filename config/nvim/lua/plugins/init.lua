@@ -77,8 +77,9 @@ require('lazy').setup({
             dialyzerEnabled = true,
             enableTestLenses = false,
           },
-          on_attach = function(_client, _bufnr)
+          on_attach = function(client, bufnr)
             core_mappings.elixir_mappings()
+            require('plugins.lsp').on_attach(client, bufnr)
           end,
         },
       }

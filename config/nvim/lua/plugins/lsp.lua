@@ -15,7 +15,7 @@ end
 
 local M = {}
 
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
   -- cmp plugin)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -87,9 +87,9 @@ M.setup = function()
   -- inject our custom on_attach after the built in on_attach from the lspconfig
   lspconfig.util.on_setup = lspconfig.util.add_hook_after(lspconfig.util.on_setup, function(config)
     if config.on_attach then
-      config.on_attach = lspconfig.util.add_hook_after(config.on_attach, on_attach)
+      config.on_attach = lspconfig.util.add_hook_after(config.on_attach, M.on_attach)
     else
-      config.on_attach = on_attach
+      config.on_attach = M.on_attach
     end
 
     config.capabilities = M.create_capabilities()
