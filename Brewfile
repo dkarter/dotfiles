@@ -154,5 +154,6 @@ brew 'fwup'
 brew 'coreutils'
 
 # Enable Sudo Touch ID on macOS
-brew 'sudo-touchid'
+tap 'artginzburg/tap'
+brew 'artginzburg/tap/sudo-touchid'
 

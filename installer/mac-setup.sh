@@ -21,8 +21,12 @@ if ! command -v brew &>/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-echo 'getting brew packages...'
+echo 'Getting brew packages...'
 brew bundle
+
+echo 'Starting services...'
+sudo brew services start sudo-touchid
+sudo-touchid
 
 # Install TerminalVim
 echo 'Installing TerminalVim app'
