@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.1.0](https://github.com/dkarter/dotfiles/compare/v12.0.0...v12.1.0) (2023-08-04)
+
+
+### Features
+
+* **brew:** add missing formulas ([d6edd5e](https://github.com/dkarter/dotfiles/commit/d6edd5e4d9c13d86926c8ae15b114c24e1ceb764))
+
+
+### Bug Fixes
+
+* **installer:** use tap to install sudo-touchid + start service ([452bc06](https://github.com/dkarter/dotfiles/commit/452bc06748c9f0d7bb174ea06f90b7384f7f7641))
+* **nvim:** auto load treesitter when loading telescope ([019f767](https://github.com/dkarter/dotfiles/commit/019f7674829b43cef103e5b0681b4e43b041f52e))
+* **nvim:** disable next-ls ([bc46c52](https://github.com/dkarter/dotfiles/commit/bc46c528266f7b528bf14ce65c3c181f9b6b52ae))
+* **nvim:** exclude quickfix buffers from indentline/indentscope ([13b3eac](https://github.com/dkarter/dotfiles/commit/13b3eace4b086731186150f8a0beb94973e27df1))
+* **nvim:** include global on_attach for elixir ls ([df44905](https://github.com/dkarter/dotfiles/commit/df449055a72f6e7bcf4cb441b8a828df721f8c3f))
+* **nvim:** make test mappings silent ([e49a319](https://github.com/dkarter/dotfiles/commit/e49a319979c49445b66239cebb52b059a0996a78))
+
 ## [12.0.0](https://github.com/dkarter/dotfiles/compare/v11.0.0...v12.0.0) (2023-07-30)
 
 
