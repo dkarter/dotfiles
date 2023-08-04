@@ -157,3 +157,22 @@ brew 'coreutils'
 tap 'artginzburg/tap'
 brew 'artginzburg/tap/sudo-touchid'
 
+# TUI utils for scripting
+brew 'gum'
+
+# a modern API client with a friendly DX
+brew 'httpie'
+
+# a more up to date version of curl than what macOS offers
+brew 'curl'
+
+# run things in parallel
+brew 'parallel'
+
+# ask questions in natural language and get results in the terminal
+brew 'howdoi'
+
+# kubernetes tools
+brew 'kubernetes-cli'
+brew 'kubectx'
+brew 'helm'
