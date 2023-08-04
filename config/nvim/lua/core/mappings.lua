@@ -358,11 +358,12 @@ M.easy_align_mappings = {
   { '<leader>ea', ':EasyAlign ', mode = 'v', desc = '[E]asy [A]lign' },
 }
 
+---@type LazyKeys[]
 M.vim_test_mappings = {
-  { '<leader>tn', ':TestNearest<CR>', desc = '[T]est [N]earest' },
-  { '<leader>tf', ':TestFile<CR>', desc = '[T]est [F]ile' },
-  { '<leader>ts', ':TestSuite<CR>', desc = '[T]est [S]uite' },
-  { '<leader>tl', ':TestLast<CR>', desc = '[T]est [L]ast' },
+  { '<leader>tn', ':TestNearest<CR>', silent = true, desc = '[T]est [N]earest' },
+  { '<leader>tf', ':TestFile<CR>', silent = true, desc = '[T]est [F]ile' },
+  { '<leader>ts', ':TestSuite<CR>', silent = true, desc = '[T]est [S]uite' },
+  { '<leader>tl', ':TestLast<CR>', silent = true, desc = '[T]est [L]ast' },
 }
 
 M.undotree_mappings = {
