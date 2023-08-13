@@ -176,3 +176,6 @@ brew 'howdoi'
 brew 'kubernetes-cli'
 brew 'kubectx'
 brew 'helm'
+
+# Mac App Store CLI
+brew 'mas'
