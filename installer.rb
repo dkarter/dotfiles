@@ -150,10 +150,9 @@ TASKS = [
   {
     name: 'ASDF',
     sync: false,
-    confirmation: 'Install ASDF and latest tool versions?',
+    confirmation: 'Install ASDF latest tool versions?',
     callback:
       proc do
-        install_asdf
         update_asdf
         install_asdf_plugins
         install_asdf_tools
@@ -242,12 +241,6 @@ class Installer
       rm -rf "$ZINIT_HOME" && \
       git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
     BASH
-  end
-
-  def install_asdf
-    puts '===== Installing asdf'.blue
-
-    git_install('git@github.com:asdf-vm/asdf.git', ASDF_INSTALL_DIR)
   end
 
   def update_asdf

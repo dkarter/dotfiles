@@ -44,6 +44,9 @@ echo "$MACH"
 echo "==========================================="
 echo
 
+echo 'Installing shared steps...'
+./installer/shared.sh
+
 if [[ $DISTRO_BASE = 'debian' ]]; then
   echo "Debian based distro detected, getting required packages..."
   ./installer/debian-setup.sh
