@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.2.0](https://github.com/dkarter/dotfiles/compare/v12.1.0...v12.2.0) (2023-08-14)
+
+
+### Features
+
+* **brew:** add mas - Mac App Store CLI ([238b61f](https://github.com/dkarter/dotfiles/commit/238b61fdf5f107f4e492d4999c614e78375919ac))
+* **installer:** add unicornleap installer ([1dbcb00](https://github.com/dkarter/dotfiles/commit/1dbcb007db3d961b2a09ce7bd79b341b7d836e56))
+* **installer:** set up tmux term info ([ca5da3f](https://github.com/dkarter/dotfiles/commit/ca5da3f16d8d2d766e75ad63098d3188b4544b97))
+
+
+### Bug Fixes
+
+* **fzf:** search hidden files ([e8dfdcf](https://github.com/dkarter/dotfiles/commit/e8dfdcfc057f2b4db6dce08a777e76a545d330c6))
+* **installer:** only install desktop apps when not already installed ([1d13825](https://github.com/dkarter/dotfiles/commit/1d13825a4a627d6471ebecbc0beeb3bea9c07b79))
+* **installer:** use manual install for sudo-touchid ([52be976](https://github.com/dkarter/dotfiles/commit/52be976582a5b2f7db503fa74ed1d8a610a8f5fc))
+
 ## [12.1.0](https://github.com/dkarter/dotfiles/compare/v12.0.0...v12.1.0) (2023-08-04)
 
 
