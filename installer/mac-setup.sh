@@ -32,6 +32,30 @@ if ! command -v sudo-touchid &>/dev/null; then
     /usr/local/bin/sudo-touchid
 fi
 
+# TODO: this requires XCode to be installed, maybe it can be added via `mas`
+# CLI?
+# NOTE: check this page if getting an error from xcodebuild:
+# https://stackoverflow.com/questions/17980759/xcode-select-active-developer-directory-error
+if ! command -v unicornleap &>/dev/null; then
+  echo 'Installing unicornleap... (requires XCode)'
+  mkdir -p ~/dev/forks
+
+  # clone unicornleap
+  rm -rf ~/dev/forks/unicornleap
+  git clone --depth=1 git@github.com:jgdavey/unicornleap.git ~/dev/forks/unicornleap
+
+  # create install dir
+  mkdir ~/.bin
+
+  # Install
+  # shellcheck disable=2164
+  pushd ~/dev/forks/unicornleap &&
+    make &&
+    make images &&
+    cp build/unicornleap ~/.bin/ &&
+    popd || exit
+fi
+
 # Install TerminalVim
 echo 'Installing TerminalVim app'
 cp -r ./iterm/TerminalVim.app /Applications/TerminalVim.app
