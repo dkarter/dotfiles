@@ -24,9 +24,13 @@ fi
 echo 'Getting brew packages...'
 brew bundle
 
-echo 'Starting services...'
-sudo brew services start sudo-touchid
-sudo-touchid
+if ! command -v sudo-touchid &>/dev/null; then
+  echo 'Installing Sudo TouchID...'
+  curl -# https://raw.githubusercontent.com/artginzburg/sudo-touchid/main/sudo-touchid.sh -o /usr/local/bin/sudo-touchid &&
+    chmod +x /usr/local/bin/sudo-touchid &&
+    sudo curl -# https://raw.githubusercontent.com/artginzburg/sudo-touchid/main/com.user.sudo-touchid.plist -o /Library/LaunchDaemons/com.user.sudo-touchid.plist &&
+    /usr/local/bin/sudo-touchid
+fi
 
 # Install TerminalVim
 echo 'Installing TerminalVim app'
