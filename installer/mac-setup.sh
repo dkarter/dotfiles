@@ -57,11 +57,15 @@ if ! command -v unicornleap &>/dev/null; then
 fi
 
 # Install TerminalVim
-echo 'Installing TerminalVim app'
-cp -r ./iterm/TerminalVim.app /Applications/TerminalVim.app
+if [[ ! -f "/Applications/TerminalVim.app" ]]; then
+  echo 'Installing TerminalVim app'
+  cp -r ./iterm/TerminalVim.app /Applications/TerminalVim.app
+fi
 
-echo 'Installing BTop app'
-cp -r ./iterm/BTop.app /Applications/BTop.app
+if [[ ! -f "/Applications/BTop.app" ]]; then
+  echo 'Installing BTop app'
+  cp -r ./iterm/BTop.app /Applications/BTop.app
+fi
 
 # setup file handlers for TerminalVim
 terminal_vim_id="$(osascript -e 'id of app "TerminalVim"')"
