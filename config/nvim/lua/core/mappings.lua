@@ -345,6 +345,11 @@ M.rhubarb_mappings = {
   },
 }
 
+M.diffview_mappings = {
+  { '<leader>gv', '<cmd>DiffviewFileHistory %<CR>', desc = '[G]it [V]iew (:gitv! alt)' },
+  { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[G]it [D]iff' },
+}
+
 M.ripgrep_mappings = {
   --  alias for above
   --  Grep project for selection with Rg

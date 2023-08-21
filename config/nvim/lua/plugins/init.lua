@@ -749,6 +749,7 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
     },
+    keys = core_mappings.diffview_mappings,
   },
 
   -- Helm Chart syntax
