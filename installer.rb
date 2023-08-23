@@ -170,6 +170,12 @@ TASKS = [
         install_rust_cargos
       end,
   },
+  {
+    name: 'Reshim ASDF tools',
+    sync: false,
+    confirmation: 'Reshim ASDF tools?',
+    callback: proc { reshim_asdf_tools },
+  },
 ].freeze
 
 # Installs dotfiles and configures the machine to my preferences
@@ -378,6 +384,14 @@ class Installer
 
   def asdf_command(cmd)
     popen("zsh -c '. #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}'")
+  end
+
+  def reshim_asdf_tools
+    puts '===== Reshimming'.blue
+
+    ASDF_PLUGINS.each do |plugin, _url|
+      asdf_command("asdf reshim #{plugin}")
+    end
   end
 
   def link_folder(source, target)
