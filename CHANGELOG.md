@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.3.0](https://github.com/dkarter/dotfiles/compare/v12.2.0...v12.3.0) (2023-08-31)
+
+
+### Features
+
+* **installer:** add reshim asdf tools task ([0b7ca10](https://github.com/dkarter/dotfiles/commit/0b7ca106c2451e858dedd11fd397e4131998b2e0))
+* **nvim:** add mappings for Diffview ([fc70e62](https://github.com/dkarter/dotfiles/commit/fc70e62b1b821a34a215cf76b1ab923b0fc6042f))
+
 ## [12.2.0](https://github.com/dkarter/dotfiles/compare/v12.1.0...v12.2.0) (2023-08-14)
 
 
