@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.3.1](https://github.com/dkarter/dotfiles/compare/v12.3.0...v12.3.1) (2023-09-07)
+
+
+### Bug Fixes
+
+* **zsh:** add yarn bin folder to PATH on linux ([966b191](https://github.com/dkarter/dotfiles/commit/966b191e6507b52c0eebfeb4ff5d4896f976a44b))
+
 ## [12.3.0](https://github.com/dkarter/dotfiles/compare/v12.2.0...v12.3.0) (2023-08-31)
 
 
