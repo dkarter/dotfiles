@@ -773,11 +773,11 @@ require('lazy').setup({
   -- tmux config file stuff
   { 'tmux-plugins/vim-tmux', ft = 'tmux' },
 
-  -- seamless tmux/vim pane navigation
-  { 'christoomey/vim-tmux-navigator', event = 'VeryLazy' },
-
-  -- Resize tmux panes and Vim windows with ease.
-  { 'RyanMillerC/better-vim-tmux-resizer', event = 'VeryLazy' },
+  {
+    'aserowy/tmux.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
 
   -- notifications
   {
