@@ -22,6 +22,9 @@ export SAVEHIST=4096
 export DIRSTACKSIZE=5
 export HIST_STAMPS="yyyy-mm-dd"
 
+# support comments in shell (makes it easy to comment out a command)
+setopt interactivecomments
+
 # 10ms for key sequences
 export KEYTIMEOUT=1
 
