@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.3.3](https://github.com/dkarter/dotfiles/compare/v12.3.2...v12.3.3) (2023-09-15)
+
+
+### Bug Fixes
+
+* **nvim:** annoying indentation for comments in Elixir ([546eeb0](https://github.com/dkarter/dotfiles/commit/546eeb09e67221685db4889c226199c33e35bcb8))
+
 ## [12.3.2](https://github.com/dkarter/dotfiles/compare/v12.3.1...v12.3.2) (2023-09-15)
 
 
