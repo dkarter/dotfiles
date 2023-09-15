@@ -28,7 +28,6 @@ M.setup = function()
       'diff',
       'dockerfile',
       'eex',
-      -- Elixir treesitter is very slow
       'elixir',
       'elm',
       'erlang',
@@ -73,7 +72,7 @@ M.setup = function()
     autotag = { enable = true },
     highlight = { enable = true },
     indent = {
-      enable = true
+      enable = true,
     },
     context_commentstring = {
       enable = true,
