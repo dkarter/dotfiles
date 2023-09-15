@@ -25,6 +25,7 @@ M.setup = function()
       'comment',
       'cpp',
       'css',
+      'csv',
       'diff',
       'dockerfile',
       'eex',
