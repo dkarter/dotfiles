@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.3.2](https://github.com/dkarter/dotfiles/compare/v12.3.1...v12.3.2) (2023-09-15)
+
+
+### Bug Fixes
+
+* **asdf:** add Golang env var for ASDF ([a40d79f](https://github.com/dkarter/dotfiles/commit/a40d79f24f5263f6ce2362b225042138c0ff03f8))
+* **zsh:** enable interactive comments ([b2a234f](https://github.com/dkarter/dotfiles/commit/b2a234fda4f6b9d33a4cb30b83d49c75275e2992))
+
 ## [12.3.1](https://github.com/dkarter/dotfiles/compare/v12.3.0...v12.3.1) (2023-09-07)
 
 
