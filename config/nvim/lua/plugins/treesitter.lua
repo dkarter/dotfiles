@@ -72,6 +72,9 @@ M.setup = function()
     },
     autotag = { enable = true },
     highlight = { enable = true },
+    indent = {
+      enable = true
+    },
     context_commentstring = {
       enable = true,
       enable_autocmd = false,

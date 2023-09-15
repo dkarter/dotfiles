@@ -29,7 +29,9 @@ opt.shiftwidth = indent -- Number of spaces to use for each step of (auto)indent
 opt.softtabstop = indent
 opt.expandtab = true --  Use the spaces to insert a <Tab>
 opt.shiftround = true -- Round indent to multiple of 'shiftwidth'
-opt.smartindent = true
+-- this was messing up comments starting with `#`
+-- see https://vim.fandom.com/wiki/Restoring_indent_after_typing_hash
+opt.smartindent = false
 
 -- text appearance
 opt.textwidth = 80 --  set row width size in characters
