@@ -75,6 +75,8 @@
   ; ff = only
   summary = true
   tool = nvimdiff
+  conflictstyle = diff3
+
 [merge "bundlelock"]
   name = lock Gemfile
   driver = bundle install
