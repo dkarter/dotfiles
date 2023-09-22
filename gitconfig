@@ -2,10 +2,13 @@
 
 [init]
 	defaultBranch = main
+
 [push]
   default = tracking
+  
 [color]
   ui = true
+
 [alias]
   aa = add --all
   ap = add --patch
@@ -80,33 +83,44 @@
 [merge "bundlelock"]
   name = lock Gemfile
   driver = bundle install
+
 [merge "bundle"]
   name = bundle
   driver = bundle
+
 [merge "npm-merge-driver"]
   name = automatically merge npm lockfiles
   driver = npx npm-merge-driver merge %A %O %B %P
+
 [merge "yarn-merge-driver"]
   name = automatically merge yarn lockfiles
   driver = npx npm-merge-driver merge %A %O %B %P -c yarn
+
 [commit]
   template = ~/.gitmessage
+
 [fetch]
   prune = true
+  
 [rebase]
   autosquash = true
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
+
 [branch]
   autosetuprebase = always
+
 [help]
   autocorrect = 10
+
 [interactive]
   diffFilter = delta --color-only
   singlekey = true
+
 [diff]
   algorithm = patience
   colorMoved = default
