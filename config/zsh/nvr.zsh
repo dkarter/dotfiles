@@ -28,14 +28,13 @@ local __listen_address="/tmp/nvimsocket-${__current_tmux_session}-${__current_se
 
 alias nvim="nvim --listen $__listen_address"
 
-# TODO: this is broken because of env munging in tmux
-# this should call to a function that will recompute the listen address
 export EDITOR="nvr --servername $__listen_address"
 export VISUAL="nvr --servername $__listen_address"
 
 function e() {
   # TODO: select the pane containing neovim instead of last pane
-  nvr --servername $__listen_address "$1" && tmux select-pane -l
+  # && tmux select-pane -l
+  nvr --servername $__listen_address "$1"
 }
 
 # Elixir Editor Support
@@ -46,9 +45,17 @@ function e() {
 # probably a better way to do that.)
 # open exh source files in neovim in the last pane
 # see https://github.com/rowlandcodes/exhelp#open-source-code-in-an-editor
-export ELIXIR_EDITOR="$EDITOR +'__LINE__' __FILE__ && tmux select-pane -l"
+# --nostart is an arg to nvr - neovim can't start inside an interactive iex
+# shell so it was hanging
+# -s is an argument to nvr - to tell it not to show the warning when the server
+# doesn't exist
+export ELIXIR_EDITOR="$EDITOR --nostart -s +'__LINE__' __FILE__"
 
 # open ecto generated source files in neovim in the last pane
 # see https://hexdocs.pm/ecto/Mix.Tasks.Ecto.Gen.Repo.html
 # and https://hexdocs.pm/ecto_sql/Mix.Tasks.Ecto.Gen.Migration.html
-export ECTO_EDITOR="$EDITOR +'__LINE__' __FILE__ && tmux select-pane -l"
+# --nostart is an arg to nvr - neovim can't start inside an interactive iex
+# shell so it was hanging
+# -s is an argument to nvr - to tell it not to show the warning when the server
+# doesn't exist
+export ECTO_EDITOR="$EDITOR --nostart -s +'__LINE__' __FILE__"
