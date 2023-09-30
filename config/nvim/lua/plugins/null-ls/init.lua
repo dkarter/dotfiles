@@ -72,6 +72,9 @@ M.setup = function()
       },
       b.formatting.shfmt,
       b.formatting.stylua,
+      b.formatting.xq.with {
+        extra_filetypes = { 'plist' },
+      },
     },
     on_attach = function(client)
       if client.supports_method 'textDocument/formatting' then
