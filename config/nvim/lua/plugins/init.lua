@@ -91,8 +91,9 @@ require('lazy').setup({
 
   -- Neovim as a language server to inject LSP diagnostics, code
   -- actions, and more via Lua.
+  -- This is now using the community fork: https://github.com/nvimtools/none-ls.nvim
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'nvim-lua/plenary.nvim',
