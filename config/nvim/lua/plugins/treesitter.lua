@@ -67,6 +67,7 @@ M.setup = function()
       'typescript',
       'vim',
       'vimdoc',
+      'xml',
       'yaml',
       'zig',
     },
