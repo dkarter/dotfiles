@@ -69,7 +69,7 @@ fi
 
 # setup file handlers for TerminalVim
 terminal_vim_id="$(osascript -e 'id of app "TerminalVim"')"
-for ext in md txt js ts json lua rb ex exs eex heex; do
+for ext in md txt js jsx ts tsx json lua rb ex exs eex heex yaml yml plist; do
   echo "Setting TerminalVim as handler for .$ext"
-  duti -s "$terminal_vim_id" ".$ext" all
+  duti -s "$terminal_vim_id" ".$ext" editor
 done
