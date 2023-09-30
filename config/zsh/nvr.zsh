@@ -24,15 +24,18 @@ local __current_tmux_session="$(tmux display-message -p '#S')"
 local __current_session_window="$(tmux display-message -p '#I')"
 # Replace slashes on session name to prevent socket creation errors
 __current_tmux_session="${__current_tmux_session//\//-}"
-export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket-${__current_tmux_session}-${__current_session_window}"
+local __listen_address="/tmp/nvimsocket-${__current_tmux_session}-${__current_session_window}"
 
-alias nvim="nvim --listen $NVIM_LISTEN_ADDRESS"
+alias nvim="nvim --listen $__listen_address"
 
-export EDITOR="nvr --servername $NVIM_LISTEN_ADDRESS"
-export VISUAL="nvr --servername $NVIM_LISTEN_ADDRESS"
+# TODO: this is broken because of env munging in tmux
+# this should call to a function that will recompute the listen address
+export EDITOR="nvr --servername $__listen_address"
+export VISUAL="nvr --servername $__listen_address"
 
 function e() {
-  nvr --servername $NVIM_LISTEN_ADDRESS "$1" && tmux select-pane -l
+  # TODO: select the pane containing neovim instead of last pane
+  nvr --servername $__listen_address "$1" && tmux select-pane -l
 }
 
 # Elixir Editor Support
