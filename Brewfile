@@ -179,3 +179,6 @@ brew 'helm'
 
 # Mac App Store CLI
 brew 'mas'
+
+# for formatting XML files
+brew 'xq'
