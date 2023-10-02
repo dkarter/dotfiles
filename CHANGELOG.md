@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.4.0](https://github.com/dkarter/dotfiles/compare/v12.3.3...v12.4.0) (2023-10-02)
+
+
+### Features
+
+* add LSP rename mapping ([7b7a0e8](https://github.com/dkarter/dotfiles/commit/7b7a0e872b05154c582b8c9e7843d9bdb5466d50))
+* **git:** enable diff3 conflict style ([00a31fc](https://github.com/dkarter/dotfiles/commit/00a31fc3dc46bb50009f1c768fd5e224d7f1035b))
+* **installer:** add additional duti mappings ([88980ea](https://github.com/dkarter/dotfiles/commit/88980ea9611e8e6734ef7f4b30dcbb79715a1e28))
+* **nvim:** add CSV syntax highlighting ([69df162](https://github.com/dkarter/dotfiles/commit/69df16233ce4dccf055d270cd27321ee79322a9e))
+* **nvim:** add xml formatting via xq ([dca0c29](https://github.com/dkarter/dotfiles/commit/dca0c29482774aa422a7795a2c8d154385953ad0))
+* **nvim:** add xml synxtax highlighting via TreeSitter ([86e0a9b](https://github.com/dkarter/dotfiles/commit/86e0a9b7580aaa712a5c25b68f26198e0e126b87))
+
+
+### Bug Fixes
+
+* **nvim:** migrate indent-blankline config to v3 ([8fa98e6](https://github.com/dkarter/dotfiles/commit/8fa98e65b62e26c40f9f3125333ed5e125dcd5fd))
+* **nvim:** remove deprecated setting for indent-blankline ([9063f38](https://github.com/dkarter/dotfiles/commit/9063f38d398644587d666ac8ab2f30b702de1de9))
+* remove personal info from gitconfig ([cc8fdba](https://github.com/dkarter/dotfiles/commit/cc8fdba6340d40f53a121b244352ac41710c7a80))
+* **zsh,nvr:** don't use NVIM_LISTEN_ADDRESS ([7bf5598](https://github.com/dkarter/dotfiles/commit/7bf5598b34eca29496d58e199aa065c36d1ad96a))
+* **zsh,nvr:** improve behavior for ECTO_EDITOR ([7a18d1a](https://github.com/dkarter/dotfiles/commit/7a18d1a922d51231df7a2cac063eed4c8ef5fd49))
+
 ## [12.3.3](https://github.com/dkarter/dotfiles/compare/v12.3.2...v12.3.3) (2023-09-15)
 
 
