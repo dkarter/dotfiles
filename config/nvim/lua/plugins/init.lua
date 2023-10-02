@@ -566,7 +566,6 @@ require('lazy').setup({
           'terminal',
         },
       },
-      show_trailing_blankline_indent = false,
       scope = {
         enabled = false,
       },
