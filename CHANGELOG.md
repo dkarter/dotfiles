@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.4.1](https://github.com/dkarter/dotfiles/compare/v12.4.0...v12.4.1) (2023-10-16)
+
+
+### Bug Fixes
+
+* remove SHADA config ([39dde29](https://github.com/dkarter/dotfiles/commit/39dde298800227d5a09158dcc97e481ba171b53e))
+
 ## [12.4.0](https://github.com/dkarter/dotfiles/compare/v12.3.3...v12.4.0) (2023-10-02)
 
 
