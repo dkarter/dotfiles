@@ -20,9 +20,19 @@ M.on_attach = function(client, bufnr)
   -- cmp plugin)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- /BEGIN: Helm file support
   if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
+    vim.lsp.stop_client(client.id)
     vim.lsp.buf_detach_client(bufnr, client.id)
   end
+
+  if vim.bo[bufnr].buftype ~= '' or vim.bo.filetype == 'helm' then
+    vim.diagnostic.disable(bufnr)
+    vim.defer_fn(function()
+      vim.diagnostic.reset(nil, bufnr)
+    end, 1000)
+  end
+  -- /END: Helm file support
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
