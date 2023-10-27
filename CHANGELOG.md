@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.5.0](https://github.com/dkarter/dotfiles/compare/v12.4.2...v12.5.0) (2023-10-27)
+
+
+### Features
+
+* **installer:** add codespell ([a7dd2d4](https://github.com/dkarter/dotfiles/commit/a7dd2d427525ae038d382baa9ca4903581994f13))
+* **installer:** add Taskfile ([31af44b](https://github.com/dkarter/dotfiles/commit/31af44b270aa2965fd3885b9da737cb19269275a))
+
 ## [12.4.2](https://github.com/dkarter/dotfiles/compare/v12.4.1...v12.4.2) (2023-10-27)
 
 
