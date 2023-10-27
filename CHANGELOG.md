@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.4.2](https://github.com/dkarter/dotfiles/compare/v12.4.1...v12.4.2) (2023-10-27)
+
+
+### Bug Fixes
+
+* **nvim:** disable SHAred DAta writing to fix annoying notifs ([e02a4d6](https://github.com/dkarter/dotfiles/commit/e02a4d680e31e21ae398cb635c6a7a16368daaf5))
+* **nvim:** helm file support ([f5bee17](https://github.com/dkarter/dotfiles/commit/f5bee17d30ab3bbd962c42271124ae93fbf67e56))
+
 ## [12.4.1](https://github.com/dkarter/dotfiles/compare/v12.4.0...v12.4.1) (2023-10-16)
 
 
