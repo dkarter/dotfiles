@@ -60,6 +60,7 @@ GEMS = [
 ].freeze
 
 PIPS3 = [
+  'codespell', # check for spelling mistakes in code.
   'neovim', # NeoVim python3 support
   'neovim-remote', # allow controlling neovim remotely
   'yq', # like jq but for yaml files
