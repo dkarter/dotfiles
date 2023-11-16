@@ -113,6 +113,7 @@ M.setup = function()
           ['<leader>pp'] = '@parameter.inner',
         },
       },
+
       move = {
         enable = true,
         -- whether to set jumps in the jumplist
@@ -132,6 +133,15 @@ M.setup = function()
         goto_previous_end = {
           ['[M'] = '@function.outer',
           ['[]'] = '@class.outer',
+        },
+      },
+      lsp_interop = {
+        enable = true,
+        border = 'none',
+        floating_preview_opts = {},
+        peek_definition_code = {
+          ['<leader>df'] = '@function.outer',
+          ['<leader>dF'] = '@class.outer',
         },
       },
     },
