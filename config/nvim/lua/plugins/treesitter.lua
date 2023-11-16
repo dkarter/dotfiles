@@ -99,8 +99,11 @@ M.setup = function()
           ['ab'] = '@block.outer',
           ['ik'] = '@comment.inner',
           ['ak'] = '@comment.outer',
+          ['is'] = '@scope.inner',
+          ['as'] = '@scope.outer',
         },
       },
+
       swap = {
         enable = true,
         swap_next = {
