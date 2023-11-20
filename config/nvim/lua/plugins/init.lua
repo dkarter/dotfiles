@@ -324,13 +324,18 @@ require('lazy').setup({
     build = ':TSUpdate',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
       'RRethy/nvim-treesitter-endwise',
       'nvim-treesitter/nvim-treesitter-context',
     },
     config = function()
       require('plugins.treesitter').setup()
     end,
+  },
+
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {},
   },
 
   -- play with TreeShitter
