@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.6.0](https://github.com/dkarter/dotfiles/compare/v12.5.0...v12.6.0) (2023-11-20)
+
+
+### Features
+
+* **nvim:** add peek definition to treesitter text objects ([6f2c860](https://github.com/dkarter/dotfiles/commit/6f2c860e40c3abcfb69a7f530c24bd5137c5d19f))
+* **nvim:** add treesitter scope textobjects ([5b683d6](https://github.com/dkarter/dotfiles/commit/5b683d6a9af2ee39c0aec8df75276da144be7f87))
+
+
+### Bug Fixes
+
+* **nvim:** fix deprecated config for context-commentstring ([f2791ed](https://github.com/dkarter/dotfiles/commit/f2791ed2ec03427da521643b32a89a3dbf40eace))
+
 ## [12.5.0](https://github.com/dkarter/dotfiles/compare/v12.4.2...v12.5.0) (2023-10-27)
 
 
