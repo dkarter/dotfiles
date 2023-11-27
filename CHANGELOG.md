@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.6.1](https://github.com/dkarter/dotfiles/compare/v12.6.0...v12.6.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* **nvim:** remove lazy loading for treesitter ([5c41011](https://github.com/dkarter/dotfiles/commit/5c4101129c0e02a54d8caa3835aa62b5d3edbbc3))
+
 ## [12.6.0](https://github.com/dkarter/dotfiles/compare/v12.5.0...v12.6.0) (2023-11-20)
 
 
