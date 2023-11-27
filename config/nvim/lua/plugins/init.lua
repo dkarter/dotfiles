@@ -178,6 +178,7 @@ require('lazy').setup({
       },
 
       routes = {
+        -- hide buffer written messages
         {
           view = 'mini',
           filter = {
