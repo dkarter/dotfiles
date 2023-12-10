@@ -45,6 +45,7 @@ SYMLINK_DIRS = [
   %w[./config/yamllint ~/.config/yamllint],
   %w[./config/zsh ~/.config/zsh],
   %w[./config/btop ~/.config/btop],
+  %w[./config/wezterm ~/.config/wezterm],
 ].freeze
 
 GEMS = [
