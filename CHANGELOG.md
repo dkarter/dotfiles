@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.7.0](https://github.com/dkarter/dotfiles/compare/v12.6.1...v12.7.0) (2023-12-10)
+
+
+### Features
+
+* **wezterm:** add wezterm config ([26d1a98](https://github.com/dkarter/dotfiles/commit/26d1a98ad6c9f78a6fb2cf06f7f1bf64c1f8016b))
+* **wezterm:** use CaskaydiaCove patched fonts in wezterm ([39b14bc](https://github.com/dkarter/dotfiles/commit/39b14bcafcc3c488e01b0996ff024f2fb1a54358))
+
+
+### Bug Fixes
+
+* **psql:** improve config for pspg ([86937d2](https://github.com/dkarter/dotfiles/commit/86937d277f08deaca882eb1c307152c7764cb8ea))
+
 ## [12.6.1](https://github.com/dkarter/dotfiles/compare/v12.6.0...v12.6.1) (2023-11-27)
 
 
