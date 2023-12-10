@@ -4,6 +4,16 @@ local config = {}
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 20
 
+-- wezterm comes with JetBrains Mono and a default fallback font for symbols
+-- so technically, this is not needed. But the fallback symbols are a bit odd
+-- looking compared to JetBrains Mono (seem too big or stretched out)
+config.font = wezterm.font_with_fallback {
+  { family = 'CaskaydiaCove Nerd Font Mono', weight = 'Regular', stretch = 'Normal', style = 'Normal' },
+  { family = 'CaskaydiaCove Nerd Font Mono', weight = 'Regular', stretch = 'Normal', style = 'Italic' },
+  { family = 'CaskaydiaCove Nerd Font Mono', weight = 'Bold', stretch = 'Normal', style = 'Normal' },
+  { family = 'CaskaydiaCove Nerd Font Mono', weight = 'Bold', stretch = 'Normal', style = 'Italic' },
+}
+
 -- config.disable_default_key_bindings = true
 config.keys = {
   {
