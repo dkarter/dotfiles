@@ -2,8 +2,9 @@
 \set QUIET 1
 \pset null '[NULL]'
 
--- pisspig
-\setenv PAGER 'pspg -s 4'
+-- use pspg as the pager for psql. It is an ncurses like interface for browsing
+-- tabular data https://github.com/okbob/pspg
+\setenv PAGER 'pspg --style 17 --menu-always --ignore-case --highlight-odd-rec --double-header --bold-labels --bold-cursor'
 
 -- fancy borders
 \pset linestyle unicode
@@ -19,7 +20,6 @@
 \timing
 
 -- Use best available output format
-\x auto
 \set VERBOSITY verbose
 \set HISTFILE ~/.local/share/psql/.psql_history- :DBNAME
 \set HISTCONTROL ignoredups
