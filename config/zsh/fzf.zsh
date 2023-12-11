@@ -7,7 +7,8 @@ export FZF_DEFAULT_OPTS="--ansi"
 
 # Tokyonight Theme
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-  --color=fg:#c5cdd9,bg:#24283b,hl:#6cb6eb
-  --color=fg+:#c5cdd9,bg+:#292e42,hl+:#5dbbc1
+  --margin 0,0
+  --color=fg:#c5cdd9,bg:#000000,hl:#6cb6eb
+  --color=fg+:#c5cdd9,bg+:#000000,hl+:#5dbbc1
   --color=info:#88909f,prompt:#ec7279,pointer:#d38aea
   --color=marker:#a0c980,spinner:#ec7279,header:#5dbbc1'
