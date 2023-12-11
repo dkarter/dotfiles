@@ -14,6 +14,9 @@ config.font = wezterm.font_with_fallback {
   { family = 'CaskaydiaCove Nerd Font Mono', weight = 'Bold', stretch = 'Normal', style = 'Italic' },
 }
 
+-- disable tab bar (tabs are handled by tmux)
+config.enable_tab_bar = false
+
 -- config.disable_default_key_bindings = true
 config.keys = {
   {
