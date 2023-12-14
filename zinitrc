@@ -44,6 +44,10 @@ zinit ice lucid wait \
   atinit'source <(kubectl completion zsh)'
 zinit light Dbz/kube-aliases
 
+# vim mode in zsh
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 # cht.sh
 zinit wait"2a" lucid \
   id-as"cht.sh" \
