@@ -73,7 +73,6 @@ ASDF_PLUGINS = %w[
   direnv
   elixir
   erlang
-  exa
   fd
   fzf
   github-cli
@@ -108,6 +107,8 @@ CARGOS = [
   'airmux',
   # file system tree visualizer with icons and git support
   'erdtree',
+  # ls replacement with icons and git support + more
+  'eza',
   # fast regex code modifications
   'fastmod',
   # nicer git diffs
@@ -391,9 +392,7 @@ class Installer
   def reshim_asdf_tools
     puts '===== Reshimming'.blue
 
-    ASDF_PLUGINS.each do |plugin, _url|
-      asdf_command("asdf reshim #{plugin}")
-    end
+    ASDF_PLUGINS.each { |plugin, _url| asdf_command("asdf reshim #{plugin}") }
   end
 
   def link_folder(source, target)
