@@ -253,6 +253,12 @@ alias vifmconfig="vim ~/.config/vifm/vifmrc"
 
 # tmux
 alias mux='airmux'
+# tmux new
+function tn() {
+  tmux new -s "$(basename $PWD)"
+}
+# tmux attach
+alias ta='tmux attach -t'
 
 # ripgrep - rg is taken by rails generate alias from the oh-my-zsh rails plugin
 alias rgrep='command rg'
