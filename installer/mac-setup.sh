@@ -8,12 +8,19 @@ if [ ! -d "$HOME/.1password" ]; then
 fi
 
 echo 'Disabling annoying features...'
+# ------------------------------------
 # disables the hold key menu to allow key repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
+
 # The speed of repetition of characters
 defaults write -g KeyRepeat -int 2
+
 # Delay until repeat
 defaults write -g InitialKeyRepeat -int 15
+
+# Set dock to auto hide with no delay
+defaults write com.apple.dock autohide -int 1
+# ------------------------------------
 
 if ! command -v brew &>/dev/null; then
   echo 'Homebrew not installed, installing...'
