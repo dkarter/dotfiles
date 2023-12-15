@@ -119,6 +119,11 @@ CARGOS = [
   'zoxide',
 ].freeze
 
+GH_PLUGINS = [
+  # PR dashboard
+  'dlvhdr/gh-dash',
+]
+
 TASKS = [
   {
     name: 'Default Shell',
@@ -178,6 +183,12 @@ TASKS = [
     sync: false,
     confirmation: 'Reshim ASDF tools?',
     callback: proc { reshim_asdf_tools },
+  },
+  {
+    name: 'GH Plugins',
+    sync: false,
+    confirmation: 'Install GH Plugins?',
+    callback: proc { install_gh_plugins },
   },
 ].freeze
 
@@ -287,6 +298,15 @@ class Installer
       asdf_command(
         "asdf install #{plugin} latest && asdf global #{plugin} latest",
       )
+    end
+  end
+
+  def install_gh_plugins
+    puts '===== Installing gh packages'.blue
+    GH_PLUGINS.each do |plugin|
+      puts "Installing #{plugin}...".light_blue
+
+      popen("gh extension install #{plugin}")
     end
   end
 
