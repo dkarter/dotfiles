@@ -28,7 +28,6 @@ DOTFILES = %w[
   pryrc
   psqlrc
   stylelintrc
-  tmux.conf
   zinitrc
   zshenv
   zshrc
@@ -46,6 +45,7 @@ SYMLINK_DIRS = [
   %w[./config/zsh ~/.config/zsh],
   %w[./config/btop ~/.config/btop],
   %w[./config/wezterm ~/.config/wezterm],
+  %w[./config/tmux ~/.config/tmux],
 ].freeze
 
 GEMS = [

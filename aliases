@@ -242,7 +242,7 @@ alias help='tldr'
 
 # quick config
 alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
-alias muxconfig='vim ~/.tmux.conf && tmux source-file ~/.tmux.conf'
+alias muxconfig='vim ~/.config/tmux/tmux.conf && tmux source-file ~/.config/tmux/tmux.conf'
 alias sshconfig='vim ~/.ssh/config'
 alias aliasconfig='vim ~/.aliases && source ~/.aliases'
 alias hostsconfig='sudo nvim /etc/hosts'
