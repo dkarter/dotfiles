@@ -86,15 +86,18 @@ config.keys = {
     action = wezterm.action.SendString '\x1AT',
   },
 
+  -- this requires disabling the app's default keybindings in macOS
+  -- Keyboard settings. Also `{` = `[` (it changes because of the Shift key)
+  -- https://github.com/wez/wezterm/issues/4251#issuecomment-1718239499
   {
-    key = '[',
-    mods = 'SUPER',
+    key = '{',
+    mods = 'CMD|SHIFT',
     action = wezterm.action.SendString '\x1Ap',
   },
 
   {
-    key = ']',
-    mods = 'SUPER',
+    key = '}',
+    mods = 'CMD|SHIFT',
     action = wezterm.action.SendString '\x1An',
   },
 
