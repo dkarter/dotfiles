@@ -65,7 +65,14 @@ config.keys = {
     action = wezterm.action.SendString '\x1Ac',
   },
 
-  -- jump windows
+  -- open urls
+  {
+    key = 'u',
+    mods = 'SUPER',
+    action = wezterm.action.SendString '\x1Au',
+  },
+
+  -- jump tmux windows
   {
     key = 'k',
     mods = 'SUPER',
