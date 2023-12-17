@@ -32,6 +32,9 @@ config.colors = {
   background = '#000000',
 }
 
+-- disable annoying window close confirmation
+config.window_close_confirmation = 'NeverPrompt'
+
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if not overrides.window_background_opacity then
