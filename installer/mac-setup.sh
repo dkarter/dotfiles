@@ -28,6 +28,24 @@ if ! command -v brew &>/dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+echo 'Setting up App Shortcuts...'
+
+# ^ for Control, @ for Command, $ for shift
+set_app_shortcut() {
+  defaults write "$1" NSUserKeyEquivalents -dict-add "$2" "$3"
+}
+
+# WezTerm bundle identifier
+# got it using `mdls -name kMDItemCFBundleIdentifier -r /Applications/WezTerm.app`
+app_id='com.github.wez.wezterm'
+
+# these can be set on the UI and then read to replicate using the following
+# command: `defaults read com.github.wez.wezterm NSUserKeyEquivalents`
+
+# Disable default shortcuts for tabs in wezterm
+set_app_shortcut "$app_id" 'Activate the tab to the left' '\0'
+set_app_shortcut "$app_id" 'Activate the tab to the right' '\0'
+
 echo 'Getting brew packages...'
 brew bundle
 
