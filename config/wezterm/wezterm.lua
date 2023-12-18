@@ -14,7 +14,11 @@ local keys = require 'utils.keys'
 
 local config = {}
 
+-- provides better errors
+config = wezterm.config_builder()
+
 config.font_size = 18
+config.command_palette_font_size = 18
 
 local font_family = 'CaskaydiaCove Nerd Font Mono'
 
@@ -44,6 +48,13 @@ config.enable_tab_bar = false
 -- if enabling this, check https://github.com/stepanzak/dotfiles/blob/main/dot_config/wezterm/wezterm.lua
 -- config.disable_default_key_bindings = true
 config.keys = {
+  -- activate WezTerm's Command Palette
+  {
+    key = 'P',
+    mods = 'SUPER|SHIFT',
+    action = wezterm.action.ActivateCommandPalette,
+  },
+
   -- toggle opacity and blur
   {
     key = 'O',
