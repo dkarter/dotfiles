@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.0.0](https://github.com/dkarter/dotfiles/compare/v12.7.0...v13.0.0) (2023-12-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tmux:** move tmux config to ~/.config/tmux
+
+### Features
+
+* **installer:** add gh-dash ([cd38432](https://github.com/dkarter/dotfiles/commit/cd38432233461c8627c2b4a8449acd232796c74d))
+* **installer:** automate auto-hide dock on macOS ([289417c](https://github.com/dkarter/dotfiles/commit/289417ceead13a28c358f542a4643b54ba4188e5))
+* **mac:** set additional defaults/disable annoyances ([6b6cf8f](https://github.com/dkarter/dotfiles/commit/6b6cf8fb2fc152856dbcf119e3b702f7721ba3cf))
+* **tmux:** add CMD+u to open fzf url popup ([9a14d4b](https://github.com/dkarter/dotfiles/commit/9a14d4be90446d7dac383ee4969c4d891336a59b))
+* **tmux:** add tmux session manager ([69e20e6](https://github.com/dkarter/dotfiles/commit/69e20e629ff79b77d39f3656d74777aa76e1276d))
+* **tmux:** add tmux-fzf-url for opening urls using fzf ([98f9308](https://github.com/dkarter/dotfiles/commit/98f9308734310fbb4c67b0897b83106fcca938f1))
+* **tmux:** open tmux-fzf-url in a tmux popup ([b5658bb](https://github.com/dkarter/dotfiles/commit/b5658bb6f08e44661c4699de8ab306b8a8c655cd))
+* **wezterm:** add command palette keybinding + font size ([0fbc4f9](https://github.com/dkarter/dotfiles/commit/0fbc4f9a3a96de49e8e4ba6aa7ed36d5c8641b71))
+* **wezterm:** add mapping to toggle opacity+blur ([cd0c644](https://github.com/dkarter/dotfiles/commit/cd0c644f29d28e506e8944410cffbb62c23181b4))
+* **zsh:** add some tmux aliases ([81bdc93](https://github.com/dkarter/dotfiles/commit/81bdc93cbacb34557423a75567530fc8b7f1dd90))
+* **zsh:** add vi mode with zvm ([704d018](https://github.com/dkarter/dotfiles/commit/704d01877224db34bda490f762286e1b97d66e3f))
+
+
+### Bug Fixes
+
+* remove accidentally committed tmux-nerd-font-window-name ([de0eed9](https://github.com/dkarter/dotfiles/commit/de0eed945a521030e068e3612cab43313fc6a800))
+* **tmux:** remove tmux-thumbs (unused) ([deb2941](https://github.com/dkarter/dotfiles/commit/deb294174d8f4eaf51850b3c367ebeab1cb4f78c))
+* **wezterm:** allow CMD+SHIFT+[/] to cycle tmux tabs ([e8e20ac](https://github.com/dkarter/dotfiles/commit/e8e20ac57e333cabad619add5842758cdcf68b65))
+* **wezterm:** allow setting CMD+SHIFT+[\] ([660db2e](https://github.com/dkarter/dotfiles/commit/660db2eaeff82b3744e1b815a2887383080de658))
+* **wezterm:** disable native tab bar (in favor of tmux) ([3e484be](https://github.com/dkarter/dotfiles/commit/3e484be3d370e890727bed3d932a058b7a1b336a))
+* **wezterm:** disable window close confirmation ([1f80a0a](https://github.com/dkarter/dotfiles/commit/1f80a0a67f6f7e7b36ca668d4620e0b2b4ff1b82))
+
+
+### Code Refactoring
+
+* **tmux:** move tmux config to ~/.config/tmux ([dfb6c1f](https://github.com/dkarter/dotfiles/commit/dfb6c1f67fee70904d32b6ff2cc3a3f08ba50b4d))
+
 ## [12.7.0](https://github.com/dkarter/dotfiles/compare/v12.6.1...v12.7.0) (2023-12-10)
 
 
