@@ -9,6 +9,9 @@
 -- https://wezfurlong.org/wezterm/
 
 local wezterm = require 'wezterm'
+local events = require 'utils.events'
+local keys = require 'utils.keys'
+
 local config = {}
 
 config.font_size = 18
@@ -35,30 +38,20 @@ config.colors = {
 -- disable annoying window close confirmation
 config.window_close_confirmation = 'NeverPrompt'
 
-wezterm.on('toggle-opacity', function(window, pane)
-  local overrides = window:get_config_overrides() or {}
-  if not overrides.window_background_opacity then
-    overrides.window_background_opacity = 0.8
-    overrides.macos_window_background_blur = 20
-  else
-    overrides.window_background_opacity = nil
-    overrides.macos_window_background_blur = nil
-  end
-  window:set_config_overrides(overrides)
-end)
-
 -- disable tab bar (tabs are handled by tmux)
 config.enable_tab_bar = false
 
 -- if enabling this, check https://github.com/stepanzak/dotfiles/blob/main/dot_config/wezterm/wezterm.lua
 -- config.disable_default_key_bindings = true
 config.keys = {
+  -- toggle opacity and blur
   {
     key = 'O',
     mods = 'SUPER|SHIFT',
-    action = wezterm.action.EmitEvent 'toggle-opacity',
+    action = events.toggle_opacity,
   },
 
+  -- open new tab
   {
     key = 'T',
     mods = 'SUPER|SHIFT',
@@ -100,60 +93,15 @@ config.keys = {
     mods = 'CMD|SHIFT',
     action = wezterm.action.SendString '\x1An',
   },
-
-  {
-    key = '1',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A1',
-  },
-
-  {
-    key = '2',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A2',
-  },
-
-  {
-    key = '3',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A3',
-  },
-
-  {
-    key = '4',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A4',
-  },
-
-  {
-    key = '5',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A5',
-  },
-
-  {
-    key = '6',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A6',
-  },
-
-  {
-    key = '7',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A7',
-  },
-
-  {
-    key = '8',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A8',
-  },
-
-  {
-    key = '9',
-    mods = 'SUPER',
-    action = wezterm.action.SendString '\x1A9',
-  },
 }
+
+-- add SUPER + <1 - 9> for navigating tabs
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'SUPER',
+    action = keys.tmux_prefix(i),
+  })
+end
 
 return config
