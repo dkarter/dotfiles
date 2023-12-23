@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+#
+# Ping Forever
+# Keep retrying a host until the script is closed
+# Useful for when you wait on a new remote host to come up
+#
+
+if [ $# -eq 0 ]; then
+  echo "No arguments provided."
+  echo
+  echo "Usage: pingf <hostname/ip> <... any other ping arguments>"
+  exit 1
+fi
+
+# Run the ping command in a loop
+while true; do
+  ping "$@"
+done
