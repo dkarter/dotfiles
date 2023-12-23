@@ -13,6 +13,16 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
+# Function to handle the SIGINT signal (Ctrl + C)
+function cleanup {
+  echo ""
+  echo "Stopping..."
+  exit 0
+}
+
+# Register cleanup function to handle the SIGINT signal
+trap cleanup SIGINT
+
 # Run the ping command in a loop
 while true; do
   ping "$@"
