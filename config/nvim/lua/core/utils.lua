@@ -189,8 +189,8 @@ local function validate_autocmd(name, cmd)
   end)
 end
 
----Create an autocommand
----returns the group ID so that it can be cleared or manipulated.
+--- Create an autocommand
+--- returns the group ID so that it can be cleared or manipulated.
 ---@param name string
 ---@param commands MyAutocmd[]
 ---@return number
