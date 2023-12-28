@@ -66,43 +66,60 @@ config.keys = {
   {
     key = 'T',
     mods = 'SUPER|SHIFT',
-    action = wezterm.action.SendString '\x1Ac',
+    action = keys.tmux_prefix 'c',
   },
 
   -- open urls
   {
     key = 'u',
     mods = 'SUPER',
-    action = wezterm.action.SendString '\x1Au',
+    action = keys.tmux_prefix 'u',
   },
 
   -- jump tmux windows
   {
     key = 'k',
     mods = 'SUPER',
-    action = wezterm.action.SendString '\x1AP',
+    action = keys.tmux_prefix 'P',
   },
 
   -- open t - tmux smart session manager
   {
     key = 'j',
     mods = 'SUPER',
-    action = wezterm.action.SendString '\x1AT',
+    action = keys.tmux_prefix 'T',
   },
 
   -- this requires disabling the app's default keybindings in macOS
   -- Keyboard settings. Also `{` = `[` (it changes because of the Shift key)
   -- https://github.com/wez/wezterm/issues/4251#issuecomment-1718239499
+  --
+  -- Focus tab (previous)
   {
     key = '{',
     mods = 'CMD|SHIFT',
-    action = wezterm.action.SendString '\x1Ap',
+    action = keys.tmux_prefix 'p',
   },
 
+  -- Focus tab (next)
   {
     key = '}',
     mods = 'CMD|SHIFT',
-    action = wezterm.action.SendString '\x1An',
+    action = keys.tmux_prefix 'n',
+  },
+
+  -- Move tab left
+  {
+    key = 'LeftArrow',
+    mods = 'SUPER|SHIFT',
+    action = keys.tmux_prefix_combo { key = 'LeftArrow' },
+  },
+
+  -- Move tab right
+  {
+    key = 'RightArrow',
+    mods = 'SUPER|SHIFT',
+    action = keys.tmux_prefix_combo { key = 'RightArrow' },
   },
 }
 
