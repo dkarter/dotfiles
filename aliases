@@ -134,12 +134,8 @@ jpr() {
   gh pr create --base $(gb --format='%(refname:short)' | fzf --border=rounded --prompt='Select base branch: ' --margin 25%) --draft --title "$(jira i | fzf --border=rounded --prompt='Select ticket: ' --margin 25% | ruby -ne 'i = $_.strip.split(/\s{2,}/); puts "[#{i[0]}] #{i[2]}"')"
 }
 
-# hashrocket uses gpr and I like gup, this prevents typos
-alias gpr='gup'
-
 # fancy weather
 alias wttr='curl --silent https://wttr.in'
-alias moon='curl --silent https://wttr.in/Moon'
 
 # howdoi (pip install howdoi) https://github.com/gleitz/howdoi
 hdi() {
