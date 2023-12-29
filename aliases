@@ -39,9 +39,8 @@ jt() {
   jira i "$(jira i | fzf | awk '{ print $1 }')" -t
 }
 
-alias et="et -I"
-alias tree="et"
-alias gtree="et"
+alias tree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name --no-ignore"
+alias gtree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name"
 
 # Bundler
 alias b="bundle"
