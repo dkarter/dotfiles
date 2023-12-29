@@ -173,7 +173,7 @@ alias fcd='cd $(fd --type d --exclude node_modules --exclude vendor --exclude bu
 alias flushdns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo cache flushed'
 
 localip() {
-  ifconfig en0 | rg inet | awk '{ print \$2 }'
+  ifconfig en0 | rg 'inet ' | awk '{print $2}'
 }
 
 # Usage: hr freethousand [port]
