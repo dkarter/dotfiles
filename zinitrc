@@ -61,3 +61,8 @@ zinit wait"2b" lucid \
   mv"cht* -> _cht" \
   as"completion" \
   for https://cheat.sh/:zsh
+
+
+# PRETTYPING
+zinit ice lucid wait="" as="program" pick="prettyping" atload="alias pping=prettyping"
+zinit load denilsonsa/prettyping
