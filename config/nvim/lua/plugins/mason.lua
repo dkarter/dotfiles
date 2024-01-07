@@ -71,6 +71,9 @@ M.setup = function()
     'vim-language-server',
     'yaml-language-server',
     'zls',
+
+    -- Other utils
+    'tree-sitter-cli',
   }
 
   ---@diagnostic disable-next-line: redundant-parameter
