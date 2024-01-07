@@ -26,6 +26,7 @@ M.setup = function()
       --    Diagnostics   --
       ----------------------
       b.diagnostics.actionlint,
+      b.diagnostics.ansiblelint,
       b.diagnostics.codespell,
 
       b.diagnostics.eslint_d,
