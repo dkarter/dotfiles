@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.1.0](https://github.com/dkarter/dotfiles/compare/v13.0.0...v13.1.0) (2024-01-10)
+
+
+### Features
+
+* **nvim:** automatically install TreeSitter parsers ([436aa8e](https://github.com/dkarter/dotfiles/commit/436aa8e0ad0c5bbd4f387cf1b05058e99925464b))
+* **nvim:** lint ansible files ([71b075f](https://github.com/dkarter/dotfiles/commit/71b075fbce3fea72154d8e0906d050f77b1e30be))
+* **nvim:** use relativenumber ([74a21d3](https://github.com/dkarter/dotfiles/commit/74a21d322bee301f333c814c4ce33f13aeeac200))
+* **wezterm:** add mappings for move tab left / right ([9822080](https://github.com/dkarter/dotfiles/commit/9822080133f51ee2f8443055c4d217e057679f24))
+* **zsh:** add nvims (NvimSwitcher utility) ([afc67b2](https://github.com/dkarter/dotfiles/commit/afc67b2312aef888d35d14d21b0cac156bf2813e))
+* **zsh:** add pingf command ([53d7436](https://github.com/dkarter/dotfiles/commit/53d743660dde96b8ad8d16ed9d313a38cea78681))
+* **zsh:** add prettyping (pping) ([0b847d1](https://github.com/dkarter/dotfiles/commit/0b847d1090480d8643e9a3fb559a4313146d5804))
+
+
+### Bug Fixes
+
+* **nvim:** jsonls: -32601: Unhandled method textDocument/diagnostic ([4c6bcce](https://github.com/dkarter/dotfiles/commit/4c6bcce0d120dbc1ba9cb2f76dad25c5213c0459))
+* **nvim:** remove flash.nvim ([e85b622](https://github.com/dkarter/dotfiles/commit/e85b6228994acf54a593043074fbd220246e6c95))
+* **nvim:** remove unnecessary code ([e086c65](https://github.com/dkarter/dotfiles/commit/e086c659caf276183d4117c99ec4d20b9688c6f0))
+* **nvim:** type annotations ([9532bb0](https://github.com/dkarter/dotfiles/commit/9532bb0826d221e00e05d96e6270204ed23dc4b1))
+* **tmux:** don't detach tmux when exiting session ([a6e5fbc](https://github.com/dkarter/dotfiles/commit/a6e5fbc8d2a774db04004f6ec562a7007f82f11c))
+* **zsh:** humanize file sizes for erd ([f2bce37](https://github.com/dkarter/dotfiles/commit/f2bce372cdead1c9b0968e9af6126d85a6a9cc43))
+* **zsh:** localip function was not working ([1ed625f](https://github.com/dkarter/dotfiles/commit/1ed625fa6d6076e22bf01dabd79ce7b7fa2eab2c))
+* **zsh:** remove covid stuff ([cd85de2](https://github.com/dkarter/dotfiles/commit/cd85de2c9766b6c4482c70481fdd8a6cbfabd4eb))
+* **zsh:** remove old alias to oh-my-zsh ([fcc1072](https://github.com/dkarter/dotfiles/commit/fcc1072f537c93aefabaa4d3f5d289054a2f4f21))
+* **zsh:** remove unused aliases ([f217ddc](https://github.com/dkarter/dotfiles/commit/f217ddce3bcca9f00ddf4f70a8df21a1a39e2e1c))
+* **zsh:** support killing pingf with SIGINT ([51c6c5b](https://github.com/dkarter/dotfiles/commit/51c6c5bba31977596d5dc742641cd27a1db47fb3))
+* **zsh:** use erd for tree commands ([653d847](https://github.com/dkarter/dotfiles/commit/653d84779cf23b50d507ed636a5c5ce30b6e0de8))
+
 ## [13.0.0](https://github.com/dkarter/dotfiles/compare/v12.7.0...v13.0.0) (2023-12-18)
 
 
