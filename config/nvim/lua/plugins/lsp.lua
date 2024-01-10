@@ -16,10 +16,6 @@ end
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
-  -- cmp plugin)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- /BEGIN: Helm file support
   if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
     vim.lsp.stop_client(client.id)
