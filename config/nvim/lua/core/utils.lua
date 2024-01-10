@@ -71,37 +71,6 @@ local json_schemas_catalog_path = function()
   return base_path:joinpath 'json_schema_catalog.json'
 end
 
--- Fetches the JSON Schemas catalog from the SchemaStore API and stores it in a
--- local file
-function M.download_json_schemas()
-  local catalog_path = json_schemas_catalog_path()
-
-  -- download the latest json schema catalog
-  local json = vim.fn.system {
-    'curl',
-    'https://json.schemastore.org/api/json/catalog.json',
-    '--silent',
-  }
-
-  -- write file
-  catalog_path:write(json, 'w')
-
-  -- notify user
-  vim.notify(string.format('Wrote JSON Schemas catalog to %s', catalog_path))
-end
-
--- Reads JSON Schemas from cache location
-function M.read_json_schemas()
-  local catalog_path = json_schemas_catalog_path()
-
-  if catalog_path:exists() then
-    local contents = catalog_path:read()
-    return vim.json.decode(contents --[[@as string]])
-  else
-    return nil
-  end
-end
-
 -- Reloads the current Lua file
 function M.reload_current_luafile()
   local current_file = vim.fn.expand '%'

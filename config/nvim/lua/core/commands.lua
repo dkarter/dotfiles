@@ -10,8 +10,6 @@ cmd('CopyFullName', "let @+=expand('%')", {})
 cmd('CopyPath', "let @+=expand('%:h')", {})
 cmd('CopyFileName', "let @+=expand('%:t')", {})
 
-cmd('RefreshJsonSchemas', utils.download_json_schemas, {})
-
 cmd('ReloadModules', utils.reload_modules, {})
 
 local function grepFileNames(opts)
