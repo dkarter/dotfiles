@@ -28,6 +28,9 @@ brew 'scc'
 # SQLite3
 brew 'sqlite'
 
+# Taskfile task runner
+brew 'go-task'
+
 # image manipulation
 brew 'imagemagick'
 
