@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.2.0](https://github.com/dkarter/dotfiles/compare/v13.1.0...v13.2.0) (2024-01-29)
+
+
+### Features
+
+* **brew:** add go-task (aka Taskfile) ([62a46ec](https://github.com/dkarter/dotfiles/commit/62a46ec486d79e45911ae78b208eaae26d0226f1))
+* **task:** add sync task ([fb96be2](https://github.com/dkarter/dotfiles/commit/fb96be2c8537062614ce4a0c9d122a36733cb78f))
+
+
+### Bug Fixes
+
+* **installer:** allow setup.sh to pass args to installer.rb ([2c5d89c](https://github.com/dkarter/dotfiles/commit/2c5d89c270018d26411be54b4d75e3f79281d8dd))
+* **nvim:** gx.nvim mapping change for new version ([dc379d8](https://github.com/dkarter/dotfiles/commit/dc379d8a3862dbca88fd8b4b239aef9941e4a4ef))
+
 ## [13.1.0](https://github.com/dkarter/dotfiles/compare/v13.0.0...v13.1.0) (2024-01-10)
 
 
