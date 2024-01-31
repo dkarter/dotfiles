@@ -243,6 +243,12 @@ M.todo_comments_mappings = {
   { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
 }
 
+-- stylua: ignore
+M.flash_mappings ={
+  { "<leader><leader>", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+  { "<leader><cr>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+}
+
 M.nvim_tree_mappings = {
   { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
 }

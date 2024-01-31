@@ -62,6 +62,21 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {
+      modes = {
+        char = {
+          enabled = false,
+        },
+      },
+    },
+    -- stylua: ignore
+    keys = core_mappings.flash_mappings,
+  },
+
   -- elixir lsp support
   {
     'elixir-tools/elixir-tools.nvim',
