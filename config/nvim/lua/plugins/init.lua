@@ -801,6 +801,7 @@ require('lazy').setup({
     'rcarriga/nvim-notify',
     opts = {
       background_colour = '#000',
+      render = 'compact',
     },
     config = function(_notify, opts)
       local notify = require 'notify'
