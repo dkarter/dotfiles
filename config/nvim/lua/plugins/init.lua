@@ -804,6 +804,7 @@ require('lazy').setup({
     },
     config = function(_notify, opts)
       local notify = require 'notify'
+      ---@diagnostic disable-next-line: undefined-field
       notify.setup(opts)
       vim.notify = notify
       core_mappings.notify_mappings()
