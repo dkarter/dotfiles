@@ -13,7 +13,7 @@ return {
   initial_content = {
     ex = elixir_template,
   },
-  ext_options = { 'lua', 'js', 'ex', 'rb', 'sql', '' },
+  ext_options = { 'lua', 'js', 'ex', 'rb', 'sql', 'sh', '' },
   format_opts = {
     [''] = '[None]',
     js = 'JavaScript',
@@ -21,9 +21,11 @@ return {
     rb = 'Ruby',
     ex = 'Elixir',
     sql = 'SQL',
+    sh = 'Bash',
   },
   run = {
     ex = { 'w', '!elixir %' },
     rb = { 'w', '!ruby %' },
+    sh = { 'w', '!bash %' },
   },
 }
