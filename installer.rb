@@ -122,7 +122,7 @@ CARGOS = [
 GH_PLUGINS = [
   # PR dashboard
   'dlvhdr/gh-dash',
-]
+].freeze
 
 TASKS = [
   {
