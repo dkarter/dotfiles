@@ -1,6 +1,23 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
 tasks:
   install:
+    desc: Install dotfiles
+    summary: |
+      Install dotfiles
+
+      Installs all dependencies and symlink dotfiles.
+
+      Idempotent, can be used to update packages.
     cmds:
       - ./setup.sh
+
+  sync:
+    desc: Synchronize dotfiles
+    summary: |
+      Synchronize dotfiles
+
+      Only symlinks dotfiles, does not install packages
+    cmds:
+      - ruby ./installer.rb --sync --force

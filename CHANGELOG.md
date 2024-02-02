@@ -2,6 +2,65 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.3.0](https://github.com/dkarter/dotfiles/compare/v13.2.0...v13.3.0) (2024-02-01)
+
+
+### Features
+
+* **nvim:** add support for bash runnable scratch buffers ([9b59729](https://github.com/dkarter/dotfiles/commit/9b597291e2a69ebb6dbfc5bc8ea8f5ba676dbafe))
+* **nvim:** change notifications to compact theme ([65689bb](https://github.com/dkarter/dotfiles/commit/65689bb05d82ddf0d2d8474f6456bf81f5fd75f7))
+* **nvim:** re-add Flash, but without annoying features ([793cee0](https://github.com/dkarter/dotfiles/commit/793cee0ba0eb400001ce400a57739fecf11b33eb))
+* **nvim:** support syntax injections for Elixir custom sigils ([7408e99](https://github.com/dkarter/dotfiles/commit/7408e99759921f49bbd12c7fa715423d2b5fdace))
+
+
+### Bug Fixes
+
+* **nvim:** disable incorrect diagnostic ([ea03eb3](https://github.com/dkarter/dotfiles/commit/ea03eb36dcb6b04dd8b21fa3accbfd74d66d313a))
+* **wezterm:** don't adjust window size when changing font size ([dec63cf](https://github.com/dkarter/dotfiles/commit/dec63cfdde20c56cc7f99c80fef74a99ee1d3741))
+
+## [13.2.0](https://github.com/dkarter/dotfiles/compare/v13.1.0...v13.2.0) (2024-01-29)
+
+
+### Features
+
+* **brew:** add go-task (aka Taskfile) ([62a46ec](https://github.com/dkarter/dotfiles/commit/62a46ec486d79e45911ae78b208eaae26d0226f1))
+* **task:** add sync task ([fb96be2](https://github.com/dkarter/dotfiles/commit/fb96be2c8537062614ce4a0c9d122a36733cb78f))
+
+
+### Bug Fixes
+
+* **installer:** allow setup.sh to pass args to installer.rb ([2c5d89c](https://github.com/dkarter/dotfiles/commit/2c5d89c270018d26411be54b4d75e3f79281d8dd))
+* **nvim:** gx.nvim mapping change for new version ([dc379d8](https://github.com/dkarter/dotfiles/commit/dc379d8a3862dbca88fd8b4b239aef9941e4a4ef))
+
+## [13.1.0](https://github.com/dkarter/dotfiles/compare/v13.0.0...v13.1.0) (2024-01-10)
+
+
+### Features
+
+* **nvim:** automatically install TreeSitter parsers ([436aa8e](https://github.com/dkarter/dotfiles/commit/436aa8e0ad0c5bbd4f387cf1b05058e99925464b))
+* **nvim:** lint ansible files ([71b075f](https://github.com/dkarter/dotfiles/commit/71b075fbce3fea72154d8e0906d050f77b1e30be))
+* **nvim:** use relativenumber ([74a21d3](https://github.com/dkarter/dotfiles/commit/74a21d322bee301f333c814c4ce33f13aeeac200))
+* **wezterm:** add mappings for move tab left / right ([9822080](https://github.com/dkarter/dotfiles/commit/9822080133f51ee2f8443055c4d217e057679f24))
+* **zsh:** add nvims (NvimSwitcher utility) ([afc67b2](https://github.com/dkarter/dotfiles/commit/afc67b2312aef888d35d14d21b0cac156bf2813e))
+* **zsh:** add pingf command ([53d7436](https://github.com/dkarter/dotfiles/commit/53d743660dde96b8ad8d16ed9d313a38cea78681))
+* **zsh:** add prettyping (pping) ([0b847d1](https://github.com/dkarter/dotfiles/commit/0b847d1090480d8643e9a3fb559a4313146d5804))
+
+
+### Bug Fixes
+
+* **nvim:** jsonls: -32601: Unhandled method textDocument/diagnostic ([4c6bcce](https://github.com/dkarter/dotfiles/commit/4c6bcce0d120dbc1ba9cb2f76dad25c5213c0459))
+* **nvim:** remove flash.nvim ([e85b622](https://github.com/dkarter/dotfiles/commit/e85b6228994acf54a593043074fbd220246e6c95))
+* **nvim:** remove unnecessary code ([e086c65](https://github.com/dkarter/dotfiles/commit/e086c659caf276183d4117c99ec4d20b9688c6f0))
+* **nvim:** type annotations ([9532bb0](https://github.com/dkarter/dotfiles/commit/9532bb0826d221e00e05d96e6270204ed23dc4b1))
+* **tmux:** don't detach tmux when exiting session ([a6e5fbc](https://github.com/dkarter/dotfiles/commit/a6e5fbc8d2a774db04004f6ec562a7007f82f11c))
+* **zsh:** humanize file sizes for erd ([f2bce37](https://github.com/dkarter/dotfiles/commit/f2bce372cdead1c9b0968e9af6126d85a6a9cc43))
+* **zsh:** localip function was not working ([1ed625f](https://github.com/dkarter/dotfiles/commit/1ed625fa6d6076e22bf01dabd79ce7b7fa2eab2c))
+* **zsh:** remove covid stuff ([cd85de2](https://github.com/dkarter/dotfiles/commit/cd85de2c9766b6c4482c70481fdd8a6cbfabd4eb))
+* **zsh:** remove old alias to oh-my-zsh ([fcc1072](https://github.com/dkarter/dotfiles/commit/fcc1072f537c93aefabaa4d3f5d289054a2f4f21))
+* **zsh:** remove unused aliases ([f217ddc](https://github.com/dkarter/dotfiles/commit/f217ddce3bcca9f00ddf4f70a8df21a1a39e2e1c))
+* **zsh:** support killing pingf with SIGINT ([51c6c5b](https://github.com/dkarter/dotfiles/commit/51c6c5bba31977596d5dc742641cd27a1db47fb3))
+* **zsh:** use erd for tree commands ([653d847](https://github.com/dkarter/dotfiles/commit/653d84779cf23b50d507ed636a5c5ce30b6e0de8))
+
 ## [13.0.0](https://github.com/dkarter/dotfiles/compare/v12.7.0...v13.0.0) (2023-12-18)
 
 

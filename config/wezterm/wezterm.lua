@@ -22,6 +22,8 @@ config.command_palette_font_size = 18
 
 local font_family = 'CaskaydiaCove Nerd Font Mono'
 
+config.adjust_window_size_when_changing_font_size = false
+
 -- wezterm comes with JetBrains Mono and a default fallback font for symbols
 -- so technically, this is not needed. But the fallback symbols are a bit odd
 -- looking compared to JetBrains Mono (seem too big or stretched out)

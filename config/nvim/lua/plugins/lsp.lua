@@ -16,10 +16,6 @@ end
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o> (not sure this is necessary with
-  -- cmp plugin)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- /BEGIN: Helm file support
   if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
     vim.lsp.stop_client(client.id)
@@ -40,25 +36,61 @@ M.on_attach = function(client, bufnr)
 end
 
 -- Add completion and documentation capabilities for cmp completion
----@param opts table|nil
-M.create_capabilities = function(opts)
-  local default_opts = {
-    with_snippet_support = true,
-  }
-  opts = opts or default_opts
+M.create_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = opts.with_snippet_support
-  if opts.with_snippet_support then
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-      properties = {
-        'documentation',
-        'detail',
-        'additionalTextEdits',
-      },
-    }
-  end
 
-  return cmp_lsp.default_capabilities(capabilities)
+  -- this is a fix for nvim 10 - it appears that cmp_nvim_lsp was overwriting
+  -- the capabilities.textDocument which caused errors in json-lsp
+  capabilities.textDocument.completion = {
+    dynamicRegistration = false,
+    completionItem = {
+      snippetSupport = true,
+      commitCharactersSupport = true,
+      deprecatedSupport = true,
+      preselectSupport = true,
+      tagSupport = {
+        valueSet = {
+          1, -- Deprecated
+        },
+      },
+      insertReplaceSupport = true,
+      resolveSupport = {
+        properties = {
+          'documentation',
+          'detail',
+          'additionalTextEdits',
+          'sortText',
+          'filterText',
+          'insertText',
+          'textEdit',
+          'insertTextFormat',
+          'insertTextMode',
+        },
+      },
+      insertTextModeSupport = {
+        valueSet = {
+          1, -- asIs
+          2, -- adjustIndentation
+        },
+      },
+      labelDetailsSupport = true,
+    },
+    contextSupport = true,
+    insertTextMode = 1,
+    completionList = {
+      itemDefaults = {
+        'commitCharacters',
+        'editRange',
+        'insertTextFormat',
+        'insertTextMode',
+        'data',
+      },
+    },
+  }
+
+  return capabilities
+
+  -- return cmp_lsp.default_capabilities(capabilities.textDocument)
 end
 
 M.setup_diagnostics = function()

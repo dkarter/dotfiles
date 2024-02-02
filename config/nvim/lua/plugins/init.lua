@@ -53,10 +53,28 @@ require('lazy').setup({
 
       -- required for setting up capabilities for cmp
       'hrsh7th/cmp-nvim-lsp',
+
+      -- required for jsonls and yamlls
+      { 'b0o/schemastore.nvim', lazy = true },
     },
     config = function()
       require('plugins.lsp').setup()
     end,
+  },
+
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {
+      modes = {
+        char = {
+          enabled = false,
+        },
+      },
+    },
+    -- stylua: ignore
+    keys = core_mappings.flash_mappings,
   },
 
   -- elixir lsp support
@@ -449,7 +467,7 @@ require('lazy').setup({
   -- smarter gx mapping
   {
     'chrishrb/gx.nvim',
-    keys = { 'gx' },
+    keys = { { 'gx', '<cmd>Browse<cr>', mode = { 'n', 'x' } } },
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       handler_options = {
@@ -783,9 +801,11 @@ require('lazy').setup({
     'rcarriga/nvim-notify',
     opts = {
       background_colour = '#000',
+      render = 'compact',
     },
     config = function(_notify, opts)
       local notify = require 'notify'
+      ---@diagnostic disable-next-line: undefined-field
       notify.setup(opts)
       vim.notify = notify
       core_mappings.notify_mappings()
