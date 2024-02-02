@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.3.1](https://github.com/dkarter/dotfiles/compare/v13.3.0...v13.3.1) (2024-02-02)
+
+
+### Bug Fixes
+
+* **installer:** rubocop lint ([fe683e1](https://github.com/dkarter/dotfiles/commit/fe683e1b4714dd93bcf6b6e62075e4c261c3a064))
+
 ## [13.3.0](https://github.com/dkarter/dotfiles/compare/v13.2.0...v13.3.0) (2024-02-01)
 
 
