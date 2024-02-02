@@ -24,21 +24,6 @@ jobs:
           yamllint_strict: true
           yamllint_config_filepath: config/yamllint/config
 
-  ruby-lint:
-    name: 'Lint: Ruby'
-
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: RuboCop Linter Action
-        uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   lua-formatting:
     name: 'Format: Lua'
 
