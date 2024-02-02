@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.3.0](https://github.com/dkarter/dotfiles/compare/v13.2.0...v13.3.0) (2024-02-01)
+
+
+### Features
+
+* **nvim:** add support for bash runnable scratch buffers ([9b59729](https://github.com/dkarter/dotfiles/commit/9b597291e2a69ebb6dbfc5bc8ea8f5ba676dbafe))
+* **nvim:** change notifications to compact theme ([65689bb](https://github.com/dkarter/dotfiles/commit/65689bb05d82ddf0d2d8474f6456bf81f5fd75f7))
+* **nvim:** re-add Flash, but without annoying features ([793cee0](https://github.com/dkarter/dotfiles/commit/793cee0ba0eb400001ce400a57739fecf11b33eb))
+* **nvim:** support syntax injections for Elixir custom sigils ([7408e99](https://github.com/dkarter/dotfiles/commit/7408e99759921f49bbd12c7fa715423d2b5fdace))
+
+
+### Bug Fixes
+
+* **nvim:** disable incorrect diagnostic ([ea03eb3](https://github.com/dkarter/dotfiles/commit/ea03eb36dcb6b04dd8b21fa3accbfd74d66d313a))
+* **wezterm:** don't adjust window size when changing font size ([dec63cf](https://github.com/dkarter/dotfiles/commit/dec63cfdde20c56cc7f99c80fef74a99ee1d3741))
+
 ## [13.2.0](https://github.com/dkarter/dotfiles/compare/v13.1.0...v13.2.0) (2024-01-29)
 
 
