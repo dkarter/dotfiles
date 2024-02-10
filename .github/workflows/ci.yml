@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run stylua check
-        uses: JohnnyMorganz/stylua-action@v3
+        uses: JohnnyMorganz/stylua-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: 0.20.0
