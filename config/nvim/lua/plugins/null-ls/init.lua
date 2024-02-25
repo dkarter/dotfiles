@@ -18,8 +18,6 @@ M.setup = function()
       ----------------------
       --   Code Actions   --
       ----------------------
-      b.code_actions.eslint_d,
-      b.code_actions.shellcheck,
       b.code_actions.gomodifytags,
 
       ----------------------
@@ -29,9 +27,7 @@ M.setup = function()
       b.diagnostics.ansiblelint,
       b.diagnostics.codespell,
 
-      b.diagnostics.eslint_d,
       b.diagnostics.rubocop,
-      b.diagnostics.shellcheck,
       b.diagnostics.yamllint,
       b.diagnostics.zsh,
       require 'plugins.null-ls.commitlint',
@@ -39,7 +35,6 @@ M.setup = function()
       ----------------------
       --    Formatters    --
       ----------------------
-      b.formatting.clang_format,
       b.formatting.gofmt,
       b.formatting.goimports,
 
@@ -72,9 +67,6 @@ M.setup = function()
       },
       b.formatting.shfmt,
       b.formatting.stylua,
-      b.formatting.xq.with {
-        extra_filetypes = { 'plist' },
-      },
     },
     on_attach = function(client)
       if client.supports_method 'textDocument/formatting' then

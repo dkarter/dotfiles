@@ -26,10 +26,8 @@ M.setup = function()
     'actionlint',
     'ansible-lint',
     'codespell',
-    'eslint_d',
     'prettierd',
     'rubocop',
-    'shellcheck',
     'shfmt',
     'stylua',
     'yamllint',
@@ -60,9 +58,13 @@ M.setup = function()
     'helm-ls',
     'html-lsp',
     'json-lsp',
+    -- XML
+    'lemminx',
     'lua-language-server',
+    -- Markdown
     'prosemd-lsp',
     'rust-analyzer',
+    -- Ruby
     'solargraph',
     'sqlls',
     'tailwindcss-language-server',
