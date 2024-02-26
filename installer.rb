@@ -111,6 +111,8 @@ CARGOS = [
   'eza',
   # fast regex code modifications
   'fastmod',
+  # json explorer
+  'jless',
   # nicer git diffs
   'git-delta',
   # rename a list of files in your editor
