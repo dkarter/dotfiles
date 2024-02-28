@@ -131,6 +131,12 @@ require('lazy').setup({
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {
       delay = 200,
+      filetypes_denylist = {
+        'dirbuf',
+        'dirvish',
+        'fugitive',
+        'gotmpl',
+      },
       large_file_cutoff = 2000,
       large_file_overrides = {
         providers = { 'lsp' },
@@ -769,9 +775,6 @@ require('lazy').setup({
     },
     keys = core_mappings.diffview_mappings,
   },
-
-  -- Helm Chart syntax
-  { 'towolf/vim-helm', event = { 'BufReadPre', 'BufNewFile' } },
 
   -- attempt stuff using scratch buffer and pre-configured bootstrap
   {
