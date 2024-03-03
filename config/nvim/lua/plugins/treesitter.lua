@@ -14,16 +14,6 @@ M.setup = function()
     set nofoldenable
   ]]
 
-  local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-  parser_config.gotmpl = {
-    install_info = {
-      url = 'https://github.com/ngalaiko/tree-sitter-go-template',
-      files = { 'src/parser.c' },
-    },
-    filetype = 'gotmpl',
-    used_by = { 'gohtmltmpl', 'gotexttmpl', 'gotmpl', 'yaml' },
-  }
-
   treesitter.setup {
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -57,10 +47,10 @@ M.setup = function()
       'gitignore',
       'gleam',
       'go',
-      'gotmpl',
       'graphql',
       'haskell',
       'heex',
+      'helm',
       'hjson',
       'html',
       'http',
