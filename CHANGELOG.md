@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.4.0](https://github.com/dkarter/dotfiles/compare/v13.3.1...v13.4.0) (2024-03-03)
+
+
+### Features
+
+* **installer:** add jless ([f4fce1b](https://github.com/dkarter/dotfiles/commit/f4fce1b9dcdf106a51090085e1075532ce181f9d))
+* **nvim:** add Helm file support ([40aec36](https://github.com/dkarter/dotfiles/commit/40aec36b641685452baf9ddda19773ef189399a8))
+
+
+### Bug Fixes
+
+* disable prettier for ruby ([d26225b](https://github.com/dkarter/dotfiles/commit/d26225bc975f5563c3acfb1e28903d499b3b4498))
+* **nvim:** replace deprecated none-ls built-ins with native LSPs ([ef02255](https://github.com/dkarter/dotfiles/commit/ef02255bd4afe697446fdafe0980ae75a157f59e))
+
 ## [13.3.1](https://github.com/dkarter/dotfiles/compare/v13.3.0...v13.3.1) (2024-02-02)
 
 
