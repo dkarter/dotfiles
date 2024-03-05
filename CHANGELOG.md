@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.5.0](https://github.com/dkarter/dotfiles/compare/v13.4.0...v13.5.0) (2024-03-05)
+
+
+### Features
+
+* **nvim:** add additional filetype mappings ([4a17b74](https://github.com/dkarter/dotfiles/commit/4a17b746b0349844383f7c1d9fa617ec37e0f889))
+
+
+### Bug Fixes
+
+* **nvim:** add improved helm file detection ([30c1e6b](https://github.com/dkarter/dotfiles/commit/30c1e6bca10782b7c7c9d6b84c567e3b0685631d))
+* remove helm file detection ([998876b](https://github.com/dkarter/dotfiles/commit/998876bf8255b023b74e11c6c31b3b5af8c34601))
+
 ## [13.4.0](https://github.com/dkarter/dotfiles/compare/v13.3.1...v13.4.0) (2024-03-03)
 
 
