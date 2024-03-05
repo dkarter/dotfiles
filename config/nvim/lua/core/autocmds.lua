@@ -24,34 +24,6 @@ augroup('Firenvim', {
   },
 })
 
--- share data between nvim instances (registers etc)
--- augroup('Shada', {
---   {
---     event = { 'CursorHold', 'TextYankPost', 'FocusGained', 'FocusLost' },
---     pattern = { '*' },
---     command = "if exists(':rshada') | rshada | wshada | endif",
---   },
--- })
-
--- Redefine FileTypes
-augroup('FileTypes AutoCmds', {
-  {
-    event = { 'BufRead', 'BufNewFile' },
-    pattern = { '.eslintrc', '.prettierrc', '.babelrc' },
-    command = 'set filetype=json',
-  },
-  {
-    event = { 'BufRead', 'BufNewFile' },
-    pattern = { '*.yrl' },
-    command = 'set filetype=erlang',
-  },
-  {
-    event = { 'BufRead', 'BufNewFile' },
-    pattern = { '.envrc' },
-    command = 'set filetype=bash',
-  },
-})
-
 -- When editing a file, always jump to the last known cursor position.
 -- Don't do it for gitcommit messages
 augroup('Auto Resume', {

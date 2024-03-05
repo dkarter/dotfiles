@@ -57,6 +57,7 @@ local modules = {
   'core.commands',
   'core.autocmds',
   'core.mappings',
+  'core.filetypes',
   'plugins',
 }
 
