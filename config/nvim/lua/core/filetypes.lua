@@ -5,6 +5,7 @@ vim.filetype.add {
     ['.prettierrc'] = 'json',
     ['.babelrc'] = 'json',
     ['.codespellrc'] = 'ini',
+    ['zinitrc'] = 'zsh',
   },
   extension = {
     yrl = 'erlang',
