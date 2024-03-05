@@ -17,16 +17,19 @@ local M = {}
 
 M.on_attach = function(client, bufnr)
   -- /BEGIN: Helm file support
-  if client.config.name == 'yamlls' and vim.bo.filetype == 'gotmpl' then
+  if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
     vim.lsp.stop_client(client.id)
     vim.lsp.buf_detach_client(bufnr, client.id)
   end
 
-  if vim.bo[bufnr].buftype ~= '' or vim.bo.filetype == 'gotmpl' then
+  if vim.bo[bufnr].buftype ~= '' or vim.bo.filetype == 'helm' then
     vim.diagnostic.disable(bufnr)
+    -- remove existing diagnostic messages that appear about a second after load
+    -- (in the status bar). They do end up coming back though after awhile, not
+    -- sure why
     vim.defer_fn(function()
       vim.diagnostic.reset(nil, bufnr)
-    end, 1000)
+    end, 2000)
   end
   -- /END: Helm file support
 

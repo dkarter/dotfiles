@@ -52,12 +52,12 @@ end
 
 -- require new configuration
 local modules = {
+  'core.filetypes',
   'core.globals',
   'core.options',
   'core.commands',
   'core.autocmds',
   'core.mappings',
-  'core.filetypes',
   'plugins',
 }
 
