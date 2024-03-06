@@ -59,12 +59,7 @@ M.setup = function()
         end,
       },
       b.formatting.pg_format,
-      b.formatting.prettierd.with {
-        disabled_filetypes = { 'markdown' },
-      },
-      b.formatting.prettier.with {
-        filetypes = { 'markdown' },
-      },
+      b.formatting.prettier,
       b.formatting.shfmt,
       b.formatting.stylua,
     },
