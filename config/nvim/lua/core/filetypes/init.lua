@@ -11,6 +11,8 @@ vim.filetype.add {
     ['Chart.yaml'] = 'yaml',
     ['Chart.yml'] = 'yaml',
     ['Chart.lock'] = 'yaml',
+    ['helmfile.yaml'] = 'helm',
+    ['Helmfile.yaml'] = 'helm',
   },
   extension = {
     yrl = 'erlang',
