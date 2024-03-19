@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.5.1](https://github.com/dkarter/dotfiles/compare/v13.5.0...v13.5.1) (2024-03-19)
+
+
+### Bug Fixes
+
+* **nvim:** add filetype mapping for helmfile ([f5ec408](https://github.com/dkarter/dotfiles/commit/f5ec408929b93e8276a46c912676e4bd852ad9a6))
+* **nvim:** replace prettierd with prettier ([5938c51](https://github.com/dkarter/dotfiles/commit/5938c51e1c4722b8ba3151d5e2468304bb3e8128))
+
 ## [13.5.0](https://github.com/dkarter/dotfiles/compare/v13.4.0...v13.5.0) (2024-03-05)
 
 
