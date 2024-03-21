@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.5.2](https://github.com/dkarter/dotfiles/compare/v13.5.1...v13.5.2) (2024-03-21)
+
+
+### Bug Fixes
+
+* **nvim:** disable codespell on NvimTree buffer ([c769a00](https://github.com/dkarter/dotfiles/commit/c769a0057bd22bca15b1c10c611dea887842f3ad)), closes [#156](https://github.com/dkarter/dotfiles/issues/156)
+
 ## [13.5.1](https://github.com/dkarter/dotfiles/compare/v13.5.0...v13.5.1) (2024-03-19)
 
 
