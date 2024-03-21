@@ -25,7 +25,9 @@ M.setup = function()
       ----------------------
       b.diagnostics.actionlint,
       b.diagnostics.ansiblelint,
-      b.diagnostics.codespell,
+      b.diagnostics.codespell.with {
+        disabled_filetypes = { 'NvimTree' },
+      },
 
       b.diagnostics.rubocop,
       b.diagnostics.yamllint,
