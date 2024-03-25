@@ -253,6 +253,10 @@ M.nvim_tree_mappings = {
   { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
 }
 
+M.neogen_mappings = {
+  { '<leader>nf', ":lua require('neogen').generate()<CR>", { desc = '[N]eogen [F]unction' } },
+}
+
 M.telescope_mappings = {
   -- muscle memory
   { '<C-p>', telescope 'find_files', default_opts },

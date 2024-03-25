@@ -364,6 +364,14 @@ require('lazy').setup({
   -- low, so I think this is OK
   { 'amadeus/vim-mjml', event = 'VeryLazy' },
 
+  -- generate annotations for documenting functions
+  -- supported languages: https://github.com/danymat/neogen#supported-languages
+  {
+    'danymat/neogen',
+    keys = core_mappings.neogen_mappings,
+    opts = { snippet_engine = 'luasnip' },
+  },
+
   -- auto complete closable pairs
   {
     'windwp/nvim-autopairs',
