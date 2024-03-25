@@ -23,6 +23,9 @@ alias less='less -r'
 alias top="sudo htop" # alias top and fix high sierra bug
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
+# remove .orig files created after `git mergetool` is run
+alias rmorig='rm $(fd --hidden "\.orig")'
+
 # copy directory recursively
 alias cpr='cp -r'
 
