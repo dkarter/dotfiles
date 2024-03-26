@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.7.0](https://github.com/dkarter/dotfiles/compare/v13.6.0...v13.7.0) (2024-03-26)
+
+
+### Features
+
+* **nvim:** add tooling for python ([a2453ef](https://github.com/dkarter/dotfiles/commit/a2453efcefc5657fa5a8667bd5f3a13b26416686))
+
 ## [13.6.0](https://github.com/dkarter/dotfiles/compare/v13.5.2...v13.6.0) (2024-03-25)
 
 
