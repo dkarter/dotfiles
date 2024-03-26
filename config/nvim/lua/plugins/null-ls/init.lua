@@ -62,6 +62,7 @@ M.setup = function()
       },
       b.formatting.pg_format,
       b.formatting.prettier,
+      b.formatting.black,
       b.formatting.shfmt,
       b.formatting.stylua,
     },

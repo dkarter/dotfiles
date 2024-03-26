@@ -25,6 +25,8 @@ M.setup = function()
     -- Null LS
     'actionlint',
     'ansible-lint',
+    -- python formatter
+    'black',
     'codespell',
     'prettierd',
     'rubocop',
@@ -63,6 +65,7 @@ M.setup = function()
     'lua-language-server',
     -- Markdown
     'prosemd-lsp',
+    'python-lsp-server',
     'rust-analyzer',
     -- Ruby
     'solargraph',
