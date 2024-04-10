@@ -23,6 +23,12 @@ alias less='less -r'
 alias top="sudo htop" # alias top and fix high sierra bug
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
+# postgres
+# --------
+#
+# Temporary Postgres Instance
+alias pgtmp='docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust -v$(pwd)/tmp/pgdata:/var/lib/postgresql/data postgres:alpine'
+
 # remove .orig files created after `git mergetool` is run
 alias rmorig='rm $(fd --hidden "\.orig")'
 
