@@ -51,6 +51,9 @@ brew 'pgformatter'
 # Postgres pager
 brew 'pspg'
 
+# Postgres client
+brew 'libpq'
+
 # for NeoVim
 brew 'lua'
 
