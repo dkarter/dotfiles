@@ -4,9 +4,6 @@
 cask 'marta'
 
 # Fast GPU rendered terminal emulator
-cask 'alacritty'
-
-# Another.. Fast GPU rendered terminal emulator
 cask 'wezterm'
 
 # allow accessing passwords from a CLI
