@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.7.0](https://github.com/dkarter/dotfiles/compare/v13.6.0...v13.7.0) (2024-04-10)
+
+
+### Features
+
+* **brew,zsh:** add Postgres client ([097e139](https://github.com/dkarter/dotfiles/commit/097e139ceda462cda2a7b4d9126f7cdd1bc05f2a))
+* **nvim:** add tooling for python ([a2453ef](https://github.com/dkarter/dotfiles/commit/a2453efcefc5657fa5a8667bd5f3a13b26416686))
+* **zsh:** add pgtmp alias ([36c4f86](https://github.com/dkarter/dotfiles/commit/36c4f86d39293e9718d5ee410ad471a106c4a0db))
+
+
+### Bug Fixes
+
+* **zsh:** add ARM support for $BREW_PREFIX ([1cfaa49](https://github.com/dkarter/dotfiles/commit/1cfaa49b890e0d4f53435cfc0a9b291956904753))
+
 ## [13.6.0](https://github.com/dkarter/dotfiles/compare/v13.5.2...v13.6.0) (2024-03-25)
 
 
