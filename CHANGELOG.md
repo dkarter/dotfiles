@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.7.1](https://github.com/dkarter/dotfiles/compare/v13.7.0...v13.7.1) (2024-04-17)
+
+
+### Bug Fixes
+
+* **nvim:** disable tmux&lt;-&gt;nvim copy sync ([7b1c0a8](https://github.com/dkarter/dotfiles/commit/7b1c0a8c10ed41f4ad32944a5a700c3a404e6100))
+
 ## [13.7.0](https://github.com/dkarter/dotfiles/compare/v13.6.0...v13.7.0) (2024-04-10)
 
 
