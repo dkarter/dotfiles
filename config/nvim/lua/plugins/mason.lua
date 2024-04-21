@@ -68,7 +68,7 @@ M.setup = function()
     'python-lsp-server',
     'rust-analyzer',
     -- Ruby
-    'solargraph',
+    'ruby-lsp',
     'sqlls',
     'tailwindcss-language-server',
     'taplo',
