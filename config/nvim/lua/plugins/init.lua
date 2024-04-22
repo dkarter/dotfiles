@@ -158,6 +158,56 @@ require('lazy').setup({
     opts = {},
   },
 
+  -- ZEN MODE 🧘
+  {
+    'folke/zen-mode.nvim',
+    cmd = { 'ZenMode' },
+    keys = core_mappings.zen_mode_mappings,
+    opts = {
+      plugins = {
+        -- disables git signs
+        gitsigns = { enabled = true },
+        -- disables the tmux statusline
+        tmux = { enabled = true },
+        twilight = { enabled = true },
+        wezterm = {
+          enabled = true,
+          -- can be either an absolute font size or the number of incremental steps
+          font = '+4', -- (10% increase per step)
+        },
+      },
+      -- callback where you can add custom code when the Zen window opens
+      on_open = function(_win)
+        -- disable relative numbers
+        vim.o.relativenumber = false
+
+        -- disable indentscope animation
+        vim.g.miniindentscope_disable = true
+
+        -- disable colorcolumn
+        vim.o.colorcolumn = false
+      end,
+      -- callback where you can add custom code when the Zen window closes
+      on_close = function()
+        -- re-enable relative numbers
+        vim.o.relativenumber = true
+
+        -- re-enable indentscope animation
+        vim.g.miniindentscope_disable = false
+
+        -- re-enable color column
+        vim.o.colorcolumn = '80'
+      end,
+    },
+  },
+
+  -- Dim inactive portions of the code (for improved focus)
+  {
+    'folke/twilight.nvim',
+    cmd = { 'Twilight', 'TwilightEnable', 'TwilightDisable' },
+    opts = {},
+  },
+
   -- modern vim command line replacement, requires nvim 0.9 or higher
   {
     'folke/noice.nvim',
