@@ -295,7 +295,7 @@ class Installer
         ASDF_PLUGINS - ASDF_ARM_INCOMPATIBLE
       end
 
-    plugins.each do |plugin, _url|
+    plugins.each_key do |plugin|
       puts "Installing #{plugin}...".light_blue
       asdf_command(
         "asdf install #{plugin} latest && asdf global #{plugin} latest",
@@ -414,7 +414,7 @@ class Installer
   def reshim_asdf_tools
     puts '===== Reshimming'.blue
 
-    ASDF_PLUGINS.each { |plugin, _url| asdf_command("asdf reshim #{plugin}") }
+    ASDF_PLUGINS.each_key { |plugin| asdf_command("asdf reshim #{plugin}") }
   end
 
   def link_folder(source, target)
