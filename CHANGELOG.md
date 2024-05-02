@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.8.0](https://github.com/dkarter/dotfiles/compare/v13.7.1...v13.8.0) (2024-05-02)
+
+
+### Features
+
+* **nvim:** add zen mode ([d3e6e6c](https://github.com/dkarter/dotfiles/commit/d3e6e6c73e0c12aa41de7761d003284ecd3fc2c1))
+
+
+### Bug Fixes
+
+* **iterm:** update font to CaskaydiaCove ([9dbab84](https://github.com/dkarter/dotfiles/commit/9dbab84f66d070d6bc5e8111e94e534077e54d4e))
+
 ## [13.7.1](https://github.com/dkarter/dotfiles/compare/v13.7.0...v13.7.1) (2024-04-17)
 
 
