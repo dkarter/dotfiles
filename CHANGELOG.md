@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.9.0](https://github.com/dkarter/dotfiles/compare/v13.8.0...v13.9.0) (2024-05-15)
+
+
+### Features
+
+* **nvim:** add a better git blame ([5a0f16a](https://github.com/dkarter/dotfiles/commit/5a0f16aa1e2c3f2ae9f7f0751673dea61dc51a1f))
+* **nvim:** add experimental local LLM integration ([4366be4](https://github.com/dkarter/dotfiles/commit/4366be43dd9e3fa74bddb67088b7482022f3a0b2))
+* **nvim:** enable rainbow flash.nvim markers ([a586f8a](https://github.com/dkarter/dotfiles/commit/a586f8a468a1989636302c5800fe5ee7d3a0cbac))
+
+
+### Bug Fixes
+
+* **nvim:** improve winbar ([5e521b8](https://github.com/dkarter/dotfiles/commit/5e521b8aba35a7711a312ab1fa4b0fbf3aabf489))
+
 ## [13.8.0](https://github.com/dkarter/dotfiles/compare/v13.7.1...v13.8.0) (2024-05-02)
 
 
