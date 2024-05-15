@@ -160,9 +160,11 @@ M.setup = function()
       disabled_filetypes = {
         winbar = {
           'NvimTree',
+          'alpha',
         },
         statusline = {
           'NvimTree',
+          'alpha',
         },
       },
     },

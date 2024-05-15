@@ -332,7 +332,7 @@ require('lazy').setup({
   -- status line
   {
     'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('plugins.lualine').setup()
