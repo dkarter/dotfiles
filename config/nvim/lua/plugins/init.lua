@@ -362,6 +362,14 @@ require('lazy').setup({
     end,
   },
 
+  -- a modern fugitive style git blame
+  {
+    'FabijanZulj/blame.nvim',
+    keys = core_mappings.blame_nvim_mappings,
+    cmd = { 'BlameToggle' },
+    opts = {},
+  },
+
   -- git integration
   {
     'tpope/vim-fugitive',

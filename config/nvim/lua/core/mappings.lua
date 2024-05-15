@@ -306,13 +306,14 @@ M.telescope_mappings = {
   { '<C-q>', '<cmd>Telescope symbols<cr>', mode = 'i', desc = '[F]ind [U]nicode' },
 }
 
+M.blame_nvim_mappings = {
+  -- Git Blame
+  { '<leader>gb', ':BlameToggle<CR>', desc = '[G]it [B]lame' },
+}
+
 M.fugitive_mappings = function()
   -- Git Stage file
   nmap { '<leader>gS', ':Gwrite<CR>', { desc = '[G]it [S]tage' } }
-
-  -- Git Blame
-  nmap { '<leader>gb', ':Git blame<CR>', { desc = '[G]it [B]lame' } }
-  vmap { '<leader>gb', ':Git blame<CR>', { desc = '[G]it [B]lame' } }
 
   --  Revert file
   nmap { '<Leader>gR', ':Gread<CR>', { desc = '[G]it [R]ead (reverts file)' } }
