@@ -72,6 +72,13 @@ require('lazy').setup({
           enabled = false,
         },
       },
+      label = {
+        rainbow = {
+          enabled = true,
+          -- number between 1 and 9
+          shade = 5,
+        },
+      },
     },
     -- stylua: ignore
     keys = core_mappings.flash_mappings,
