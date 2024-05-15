@@ -311,6 +311,19 @@ M.blame_nvim_mappings = {
   { '<leader>gb', ':BlameToggle<CR>', desc = '[G]it [B]lame' },
 }
 
+M.gen_nvim_mappings = {
+  { '<leader>ai', ':Gen<CR>', mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
+  { '<leader>aa', ':Gen Ask<CR>', mode = { 'n', 'v' }, desc = '[A]I [A]sk' },
+  {
+    '<leader>am',
+    function()
+      require('gen').select_model()
+    end,
+    mode = { 'n', 'v' },
+    desc = 'Select [A]I [m]odel',
+  },
+}
+
 M.fugitive_mappings = function()
   -- Git Stage file
   nmap { '<leader>gS', ':Gwrite<CR>', { desc = '[G]it [S]tage' } }
