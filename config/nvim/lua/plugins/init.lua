@@ -532,7 +532,12 @@ require('lazy').setup({
   { 'tpope/vim-repeat', event = 'VeryLazy' },
 
   -- Surround text with closures
-  { 'tpope/vim-surround', event = { 'BufReadPost', 'BufNewFile' } },
+  {
+    'kylechui/nvim-surround',
+    event = { 'BufReadPost', 'BufNewFile' },
+    version = '*',
+    opts = {},
+  },
 
   -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
   {
