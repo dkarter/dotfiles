@@ -99,38 +99,72 @@ M.setup = function()
     return '⏺️ Rec @' .. vim.api.nvim_call_function('reg_recording', {})
   end
 
+  local winbar = {
+    lualine_a = {
+      {
+        'filetype',
+        colored = true, -- Displays filetype icon in color if set to true
+        icon_only = true, -- Display only an icon for filetype
+        icon = { align = 'right' }, -- Display filetype icon on the right hand side
+        color = { bg = colors.grey, fg = colors.black },
+        padding = { left = 1, right = 0 },
+        -- icon =    {'X', align='right'}
+        -- Icon string ^ in table is ignored in filetype component
+      },
+      {
+        'filename',
+        separator = { right = '' },
+        padding = { left = 0, right = 1 },
+        color = { bg = colors.grey, fg = colors.black },
+      },
+    },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {
+      -- show available plugin updates
+      {
+        require('lazy.status').updates,
+        cond = require('lazy.status').has_updates,
+        color = { fg = '#ff9e64' },
+      },
+    },
+    lualine_y = {},
+    lualine_z = {},
+  }
+
   ---@diagnostic disable-next-line: redundant-parameter
   lualine.setup {
-    winbar = {
+    winbar = winbar,
+    inactive_winbar = {
       lualine_a = {
         {
           'filetype',
-          colored = true, -- Displays filetype icon in color if set to true
+          colored = false, -- Displays filetype icon in color if set to true
           icon_only = true, -- Display only an icon for filetype
           icon = { align = 'right' }, -- Display filetype icon on the right hand side
-          color = { bg = colors.grey, fg = colors.black },
-          -- icon =    {'X', align='right'}
-          -- Icon string ^ in table is ignored in filetype component
+          padding = { left = 1, right = 0 },
+          color = { fg = colors.grey },
         },
-        { 'filename', separator = { right = '' }, color = { bg = colors.grey, fg = colors.black } },
-      },
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = {
-        -- show available updates
         {
-          require('lazy.status').updates,
-          cond = require('lazy.status').has_updates,
-          color = { fg = '#ff9e64' },
+          'filename',
+          separator = { right = '' },
+          padding = { left = 0, right = 1 },
+          color = { fg = colors.grey },
         },
       },
-      lualine_y = {},
-      lualine_z = {},
     },
     options = {
       -- theme = theme,
       component_separators = '',
       section_separators = { left = '', right = '' },
+      disabled_filetypes = {
+        winbar = {
+          'NvimTree',
+        },
+        statusline = {
+          'NvimTree',
+        },
+      },
     },
     sections = process_sections {
       lualine_a = {
