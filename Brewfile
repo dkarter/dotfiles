@@ -107,6 +107,10 @@ brew 'make'
 # terminal multiplexer
 brew 'tmux'
 
+# a smart session manager for tmux
+tap 'joshmedeski/sesh'
+brew 'joshmedeski/sesh/sesh'
+
 # download files from the terminal, used by some scripts
 brew 'wget'
 
