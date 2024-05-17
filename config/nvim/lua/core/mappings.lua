@@ -257,6 +257,17 @@ M.nvim_tree_mappings = {
   { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
 }
 
+M.oil_nvim_mappings = {
+  { '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' } },
+  {
+    '<leader>-',
+    function()
+      require('oil').toggle_float()
+    end,
+    { desc = 'Open parent directory (float)' },
+  },
+}
+
 M.neogen_mappings = {
   { '<leader>nf', ":lua require('neogen').generate()<CR>", { desc = '[N]eogen [F]unction' } },
 }
