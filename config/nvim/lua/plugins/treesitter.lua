@@ -82,7 +82,6 @@ M.setup = function()
       'yaml',
       'zig',
     },
-    autotag = { enable = true },
     highlight = { enable = true },
     indent = {
       enable = true,
