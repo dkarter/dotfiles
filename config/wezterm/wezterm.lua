@@ -12,10 +12,8 @@ local wezterm = require 'wezterm'
 local events = require 'utils.events'
 local keys = require 'utils.keys'
 
-local config = {}
-
 -- provides better errors
-config = wezterm.config_builder()
+local config = wezterm.config_builder()
 
 config.font_size = 18
 config.command_palette_font_size = 18
@@ -34,12 +32,21 @@ config.font = wezterm.font_with_fallback {
   { family = font_family, weight = 'Bold', stretch = 'Normal', style = 'Italic' },
 }
 
-config.color_scheme = 'tokyonight'
+if wezterm.gui.get_appearance():find 'Dark' then
+  config.color_scheme = 'tokyonight'
 
--- that sweet dark background
-config.colors = {
-  background = '#000000',
-}
+  -- that sweet high-contrast dark background
+  config.colors = {
+    background = '#000000',
+  }
+else
+  config.color_scheme = 'tokyonight_day'
+  config.colors = {
+    background = '#E1E2E8',
+  }
+end
+
+-- config.color_scheme = 'tokyonight'
 
 -- disable annoying window close confirmation
 config.window_close_confirmation = 'NeverPrompt'

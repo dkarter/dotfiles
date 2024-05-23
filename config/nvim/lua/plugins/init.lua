@@ -305,8 +305,24 @@ require('lazy').setup({
         transparent = true,
       }
 
-      vim.cmd [[colorscheme tokyonight]]
+      vim.cmd.colorscheme 'tokyonight'
     end,
+  },
+
+  -- automatically set color scheme based on system
+  {
+    'f-person/auto-dark-mode.nvim',
+    opts = {
+      update_interval = 1000,
+      set_dark_mode = function()
+        vim.api.nvim_set_option('background', 'dark')
+        vim.cmd.colorscheme 'tokyonight'
+      end,
+      set_light_mode = function()
+        vim.api.nvim_set_option('background', 'light')
+        vim.cmd.colorscheme 'tokyonight-day'
+      end,
+    },
   },
 
   -- highlight color hex codes with their color (fast!)
