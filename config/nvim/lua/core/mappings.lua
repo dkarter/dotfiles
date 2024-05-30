@@ -201,16 +201,26 @@ M.zen_mode_mappings = {
 }
 
 M.trouble_mappings = {
-  { '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', desc = 'Workspace Diagnostics' },
-  { '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', desc = 'Document Diagnostics' },
-  { '<leader>xl', '<cmd>Trouble loclist<cr>', desc = 'Open Loclist' },
-  { '<leader>xq', '<cmd>Trouble quickfix<cr>', desc = 'Open Quickfix' },
+  { '<leader>xw', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Workspace Diagnostics' },
+  { '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Document Diagnostics' },
+  { '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Open Loclist' },
+  { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Open Quickfix' },
+  {
+    '<leader>cs',
+    '<cmd>Trouble symbols toggle focus=false<cr>',
+    desc = 'Symbols (Trouble)',
+  },
+  {
+    '<leader>cl',
+    '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+    desc = 'LSP Definitions / references / ... (Trouble)',
+  },
   -- smart `[q` and `]q` mappings that work for both qf list and trouble
   {
     '[q',
     function()
       if require('trouble').is_open() then
-        require('trouble').previous { skip_groups = true, jump = true }
+        require('trouble').prev { skip_groups = true, jump = true }
       else
         local ok, err = pcall(vim.cmd.cprev)
         if not ok then
