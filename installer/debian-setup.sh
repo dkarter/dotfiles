@@ -30,6 +30,7 @@ sudo apt -y install \
   libsqlite3-dev \
   libssh-dev \
   libssl-dev \
+  libterm-readkey-perl \
   libwxgtk3.0-gtk3-dev \
   libxml2-dev \
   libxml2-utils \
