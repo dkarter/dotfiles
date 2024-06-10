@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.10.0](https://github.com/dkarter/dotfiles/compare/v13.9.0...v13.10.0) (2024-06-10)
+
+
+### Features
+
+* **brew:** add sesh tmux session manager ([4ade0dc](https://github.com/dkarter/dotfiles/commit/4ade0dcb5cf58daf361e0a6cae9d9165cef0a46a))
+* **nvim:** automatically switch dark/light mode ([5323862](https://github.com/dkarter/dotfiles/commit/5323862777e031f8c8d8db78afb5fdd2e0b40f76))
+* **nvim:** display package update count on home screen ([26e2985](https://github.com/dkarter/dotfiles/commit/26e298517e423473438a98163f5eedf45825643c))
+
+
+### Bug Fixes
+
+* **debian,git:** add support for git singleKey ([33d8f08](https://github.com/dkarter/dotfiles/commit/33d8f08db1880dbc56e36b9f7aa644fae8b8701b))
+* **installer:** ruby syntax was incorrect ([c12d881](https://github.com/dkarter/dotfiles/commit/c12d8814e5e968976b3ebd00477f05fb228b3f4b))
+* **nvim:** remove autotag nvim setup from treesitter ([e7e97ea](https://github.com/dkarter/dotfiles/commit/e7e97ea94ff65f26eaf845f3931110c62afce9b1))
+* **nvim:** trouble.nvim mappings for trouble v3 ([fa35c0c](https://github.com/dkarter/dotfiles/commit/fa35c0c130b90f48a5cd8ecf6e84a88a729b7021))
+
 ## [13.9.0](https://github.com/dkarter/dotfiles/compare/v13.8.0...v13.9.0) (2024-05-15)
 
 
