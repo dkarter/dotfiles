@@ -98,7 +98,6 @@ NPMS = %w[
   neovim
   prettier
   tldr
-  trash-cli
   npkill
 ].freeze
 

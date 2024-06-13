@@ -31,6 +31,9 @@ brew 'fop'
 brew 'libiodbc'
 brew 'openjdk'
 
+# trash cli
+brew 'macos-trash'
+
 # code stats
 brew 'scc'
 
