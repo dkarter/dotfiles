@@ -49,15 +49,8 @@ SYMLINK_DIRS = [
 ].freeze
 
 GEMS = [
-  'awesome_print', # colorize output of pry (required by .pryrc)
   'bundler', # manage gem bundles for a project
-  'prettier_print', # required by prettier ruby plugin
-  'syntax_tree', # required by prettier ruby plugin
-  'syntax_tree-rbs', # required by prettier ruby plugin
-  'syntax_tree-haml', # required by prettier ruby plugin
-  'neovim', # for NeoVim ruby plugins
   'pry', # ruby debugger
-  'solargraph', # ruby language server
 ].freeze
 
 PIPS3 = [
