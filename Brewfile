@@ -9,6 +9,12 @@ cask 'wezterm'
 # best screenshot tool on mac
 cask 'cleanshot'
 
+# setup a hyper key modifier
+cask 'hyperkey'
+
+# note taking app and Zettlekasten
+cask 'obsidian'
+
 # allow accessing passwords from a CLI
 cask '1password/tap/1password-cli'
 
