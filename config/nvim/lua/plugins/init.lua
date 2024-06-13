@@ -43,6 +43,7 @@ require('lazy').setup({
   {
     'williamboman/mason.nvim',
     build = ':MasonUpdate',
+    cmd = { 'Mason' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- handles connection of LSP Configs and Mason
