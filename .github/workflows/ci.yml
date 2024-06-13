@@ -56,7 +56,7 @@ jobs:
 
       - name: ASDF Plugin Add
         run: |
-          asdf plugin add lua-language-server https://github.com/shun-shobon/asdf-lua-language-server.git
+          asdf plugin add lua-language-server
 
       - name: ASDF Install
         uses: asdf-vm/actions/install@v3
