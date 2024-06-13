@@ -6,6 +6,9 @@ cask 'marta'
 # Fast GPU rendered terminal emulator
 cask 'wezterm'
 
+# best screenshot tool on mac
+cask 'cleanshot'
+
 # allow accessing passwords from a CLI
 cask '1password/tap/1password-cli'
 
