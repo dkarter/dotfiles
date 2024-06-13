@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.11.0](https://github.com/dkarter/dotfiles/compare/v13.10.0...v13.11.0) (2024-06-13)
+
+
+### Features
+
+* **brew:** add cleanshot cask ([68b5c81](https://github.com/dkarter/dotfiles/commit/68b5c81df79ed633de04ee9aaf94283222feddd4))
+* **brew:** add hyperkey and obsidian ([2e3dff1](https://github.com/dkarter/dotfiles/commit/2e3dff1579168bc69915c3e92b4c87bc31c97597))
+* **brew:** add iterm2 ([19c6ce0](https://github.com/dkarter/dotfiles/commit/19c6ce0386913e6043abaff73edee9563a19e6ab))
+* **brew:** add raycast ([a86aa6d](https://github.com/dkarter/dotfiles/commit/a86aa6d312fed863eb52204975366cfc7f880439))
+* **installer:** show battery percentage in menu bar ([44e2796](https://github.com/dkarter/dotfiles/commit/44e2796aaec8278d21bb3048b9361b8c75edc881))
+
+
+### Bug Fixes
+
+* **brew:** remove unused Alfred dependencies ([df6f235](https://github.com/dkarter/dotfiles/commit/df6f2358018b2d0035ab526d5e52adf6f83c9922))
+* **installer:** add missing lua-language-server plugin ([cb73b0f](https://github.com/dkarter/dotfiles/commit/cb73b0f798fd58022bf1023d6254c4320542714c))
+* **installer:** install xcode before unicornleap ([d85a956](https://github.com/dkarter/dotfiles/commit/d85a956b4b56ab59f2409481dc83d56fa6fc2336))
+* **installer:** only install xcode if unicorn not installed ([ba9394b](https://github.com/dkarter/dotfiles/commit/ba9394bcf33230fce6b260b11003ce4a541e7b66))
+* **installer:** remove unused ruby gems ([8d24bd1](https://github.com/dkarter/dotfiles/commit/8d24bd17524f02ae63b0ba3a661f934d4565c1cb))
+* **nvim:** add commitlint to Mason ensure_installed ([b74c2b3](https://github.com/dkarter/dotfiles/commit/b74c2b37e7198dff742fab16afde29271457e0f2))
+
+
+### Reverts
+
+* "refactor(installer): use macos-trash instead of trash-cli" ([3b79004](https://github.com/dkarter/dotfiles/commit/3b7900453cedb8ca38e6e4bf7b1a29b0f95d9550))
+
 ## [13.10.0](https://github.com/dkarter/dotfiles/compare/v13.9.0...v13.10.0) (2024-06-10)
 
 
