@@ -604,7 +604,7 @@ require('lazy').setup({
     submodules = false,
     opts = {
       handler_options = {
-        search_engine = 'duckduckgo',
+        search_engine = 'https://kagi.com/search?q=',
       },
     },
   },
