@@ -18,6 +18,9 @@ cask 'obsidian'
 # spotlight alternative
 cask 'raycast'
 
+# a terminal emulator (used primarily for wrapping terminal apps)
+cask 'iterm2'
+
 # allow accessing passwords from a CLI
 cask '1password/tap/1password-cli'
 
