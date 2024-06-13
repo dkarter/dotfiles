@@ -15,6 +15,9 @@ cask 'hyperkey'
 # note taking app and Zettlekasten
 cask 'obsidian'
 
+# spotlight alternative
+cask 'raycast'
+
 # allow accessing passwords from a CLI
 cask '1password/tap/1password-cli'
 
