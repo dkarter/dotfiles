@@ -60,8 +60,7 @@ jobs:
 
       - name: ASDF Install
         run: |
-          asdf install lua-language-server latest
-          asdf global lua-language-server latest
+          asdf install lua-language-server
 
       - name: Run Diagnostics Check
         run: |
