@@ -81,7 +81,6 @@ ASDF_PLUGINS = %w[
   ruby
   rust
   tmux
-  yarn
 ].freeze
 
 ASDF_ARM_INCOMPATIBLE = %w[github-cli fzf fd ripgrep neovim].freeze
