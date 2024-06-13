@@ -25,9 +25,6 @@ brew 'fop'
 brew 'libiodbc'
 brew 'openjdk'
 
-# used by my Alfred Workflow (Default Browser)
-brew 'defaultbrowser'
-
 # code stats
 brew 'scc'
 
@@ -149,9 +146,6 @@ brew 'tree'
 
 # keep ZSH up to date
 brew 'zsh'
-
-# enable OCR via an Alfred workflow
-brew 'tesseract'
 
 # required by ccls
 brew 'llvm'
