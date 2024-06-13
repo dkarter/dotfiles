@@ -58,7 +58,7 @@ brew 'libpq'
 brew 'lua'
 
 # ls replacement with icons and colors (rust)
-brew 'exa'
+brew 'eza'
 
 # quickly jump to recently used folders
 brew 'autojump'
