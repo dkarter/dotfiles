@@ -70,8 +70,15 @@ if ! command -v sudo-touchid &>/dev/null; then
     /usr/local/bin/sudo-touchid
 fi
 
-# TODO: this requires XCode to be installed, maybe it can be added via `mas`
-# CLI?
+# install full xcode (required for unicorn)
+mas install 497799835
+
+# accept license
+sudo xcodebuild -license
+
+# finish Xcode setup
+xcodebuild -runFirstLaunch
+
 # NOTE: check this page if getting an error from xcodebuild:
 # https://stackoverflow.com/questions/17980759/xcode-select-active-developer-directory-error
 if ! command -v unicornleap &>/dev/null; then
