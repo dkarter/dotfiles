@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.11.1](https://github.com/dkarter/dotfiles/compare/v13.11.0...v13.11.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* **codespell:** exclude additional files ([051a34f](https://github.com/dkarter/dotfiles/commit/051a34f432132e828f29d0d9a7c76b095a0409a8))
+* ignore pnpm-lock.yaml in yamllint ([4752845](https://github.com/dkarter/dotfiles/commit/47528458e9892dab6283986d996067d1943aa8e8))
+* **nvim:** add Mason cmd to lazy load triggers ([63690db](https://github.com/dkarter/dotfiles/commit/63690dbc1d79868282ebae4cc85ae2faae044ebb))
+* **zsh:** put brew path at the end ([d9e594f](https://github.com/dkarter/dotfiles/commit/d9e594f242aab19849a581bae7d4814ff95acd55))
+
 ## [13.11.0](https://github.com/dkarter/dotfiles/compare/v13.10.0...v13.11.0) (2024-06-13)
 
 
