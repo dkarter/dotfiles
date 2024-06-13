@@ -33,6 +33,9 @@ defaults write com.apple.dock autohide -bool true
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
+# Show battery percentage in menubar
+defaults -currentHost write com.apple.controlcenter.plist BatteryShowPercentage -bool true
+
 # ------------------------------------
 
 if ! command -v brew &>/dev/null; then
