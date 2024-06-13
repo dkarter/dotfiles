@@ -79,6 +79,7 @@ ASDF_PLUGINS = %w[
   golang
   lazygit
   lua
+  lua-language-server
   neovim
   nodejs
   python
