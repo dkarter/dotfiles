@@ -46,6 +46,7 @@ M.setup = function()
     'clangd',
     'clang-format',
     'cmake-language-server',
+    'commitlint',
     'css-lsp',
     'dockerfile-language-server',
     'elm-language-server',
