@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.12.0](https://github.com/dkarter/dotfiles/compare/v13.11.1...v13.12.0) (2024-06-15)
+
+
+### Features
+
+* **nvim:** set search engine for gx.nvim to Kagi ([3930d46](https://github.com/dkarter/dotfiles/commit/3930d46389e7d8f3170c556b2efa1fcf28ae669c))
+
+
+### Bug Fixes
+
+* **zsh:** export SSH_FINGERPRINT if key exists ([5655f67](https://github.com/dkarter/dotfiles/commit/5655f67fa357abad137a313212a15428097580c8))
+
 ## [13.11.1](https://github.com/dkarter/dotfiles/compare/v13.11.0...v13.11.1) (2024-06-13)
 
 
