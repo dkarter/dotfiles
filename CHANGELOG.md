@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.12.1](https://github.com/dkarter/dotfiles/compare/v13.12.0...v13.12.1) (2024-06-15)
+
+
+### Bug Fixes
+
+* **nvim:** disable colorcolumn correctly in ZenMode ([50d25d2](https://github.com/dkarter/dotfiles/commit/50d25d24e496ada5b6a9be1835c6101be863783f))
+
 ## [13.12.0](https://github.com/dkarter/dotfiles/compare/v13.11.1...v13.12.0) (2024-06-15)
 
 
