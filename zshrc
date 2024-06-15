@@ -61,7 +61,10 @@ export PATH="$HOME/dotfiles/bin:$PATH"
 
 # for android sdk (installed via homebrew)
 export ANDROID_HOME=/usr/local/opt/android-sdk
-export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
+
+if [[ -f ~/.ssh/id_rsa.pub ]]; then
+  export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
+fi
 
 case "$(uname -s)" in
   Darwin*)
