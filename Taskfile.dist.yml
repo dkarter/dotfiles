@@ -19,6 +19,21 @@ tasks:
       - asdf reshim nodejs
       - pnpm --version
 
+  install_ollama:
+    desc: Installs Ollama and pulls useful models
+    summary: |
+      Works only on macOS for now.
+
+      Installs the following models:
+      - llama3
+      - mistral
+      - codellama
+    cmds:
+      - brew install --cask ollama
+      - ollama pull llama3
+      - ollama pull codellama
+      - ollama pull mistral
+
   install:
     desc: Install dotfiles
     summary: |
