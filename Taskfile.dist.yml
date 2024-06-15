@@ -2,6 +2,23 @@
 version: '3'
 
 tasks:
+  install_asdf:
+    desc: Installs asdf packages for this project
+    cmds:
+      - asdf install
+
+  install_pnpm:
+    desc: Sets up PNPM on the local machine
+    summary: |
+      Enables and activates pnpm in the current project
+
+      Requires Node.js to be properly set up
+    cmds:
+      - corepack enable
+      - corepack enable pnpm
+      - asdf reshim nodejs
+      - pnpm --version
+
   install:
     desc: Install dotfiles
     summary: |
