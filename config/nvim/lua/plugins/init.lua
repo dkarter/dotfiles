@@ -206,7 +206,7 @@ require('lazy').setup({
         vim.g.miniindentscope_disable = true
 
         -- disable colorcolumn
-        vim.o.colorcolumn = false
+        vim.o.colorcolumn = ''
       end,
       -- callback where you can add custom code when the Zen window closes
       on_close = function()
