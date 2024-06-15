@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.13.0](https://github.com/dkarter/dotfiles/compare/v13.12.1...v13.13.0) (2024-06-15)
+
+
+### Features
+
+* **task:** add task for installing ollama ([add20e0](https://github.com/dkarter/dotfiles/commit/add20e0a076ff3b18db9cebedc102ac323fa1474))
+
 ## [13.12.1](https://github.com/dkarter/dotfiles/compare/v13.12.0...v13.12.1) (2024-06-15)
 
 
