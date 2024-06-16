@@ -1,4 +1,18 @@
 local config = {
+  -- Rust
+  ['Cargo.toml'] = {
+    ['*.rs'] = {
+      make = 'cargo build',
+    },
+    ['src/*.rs'] = {
+      type = 'source',
+      alternate = { 'tests/{}.rs' },
+    },
+    ['tests/*.rs'] = {
+      type = 'test',
+      alternate = { 'src/{}.rs' },
+    },
+  },
   -- JavaScript / TypeScript
   ['package.json'] = {
     ['*.js'] = {
