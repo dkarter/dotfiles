@@ -1,10 +1,8 @@
 local utils = require 'core.utils'
 
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
-local cmp_lsp_present, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 
 local deps = {
-  cmp_lsp_present,
   lspconfig_present,
 }
 
@@ -92,8 +90,6 @@ M.create_capabilities = function()
   }
 
   return capabilities
-
-  -- return cmp_lsp.default_capabilities(capabilities.textDocument)
 end
 
 M.setup_diagnostics = function()
