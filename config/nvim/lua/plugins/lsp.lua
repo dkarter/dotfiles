@@ -21,7 +21,7 @@ M.on_attach = function(client, bufnr)
   end
 
   if vim.bo[bufnr].buftype ~= '' or vim.bo.filetype == 'helm' then
-    vim.diagnostic.disable(bufnr)
+    vim.diagnostic.enable(false, bufnr)
     -- remove existing diagnostic messages that appear about a second after load
     -- (in the status bar). They do end up coming back though after awhile, not
     -- sure why
