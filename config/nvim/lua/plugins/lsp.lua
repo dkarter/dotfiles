@@ -1,9 +1,11 @@
 local utils = require 'core.utils'
 
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
+local lsp_format_present, lsp_format = pcall(require, 'lsp-format')
 
 local deps = {
   lspconfig_present,
+  lsp_format_present,
 }
 
 if utils.contains(deps, false) then
@@ -31,6 +33,9 @@ M.on_attach = function(client, bufnr)
   end
   -- /END: Helm file support
 
+  if client.supports_method 'textDocument/formatting' then
+    lsp_format.on_attach(client)
+  end
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   require('core.mappings').lsp_mappings()

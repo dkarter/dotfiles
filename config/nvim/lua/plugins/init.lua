@@ -55,6 +55,9 @@ require('lazy').setup({
       -- required for setting up capabilities for cmp
       'hrsh7th/cmp-nvim-lsp',
 
+      -- automatically format based on LSP capabilities
+      'lukas-reineke/lsp-format.nvim',
+
       -- required for jsonls and yamlls
       { 'b0o/schemastore.nvim', lazy = true },
     },
