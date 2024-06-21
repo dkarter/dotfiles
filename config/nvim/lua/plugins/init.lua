@@ -784,7 +784,6 @@ require('lazy').setup({
         dashboard.button('n', ' ' .. ' New file', ':ene <BAR> startinsert <CR>'),
         dashboard.button('s', ' ' .. ' Git Status files', ':Telescope git_status<CR>'),
         dashboard.button('r', ' ' .. ' Recent files', ':Telescope oldfiles <CR>'),
-        dashboard.button('g', ' ' .. ' Grep', ':FzfRg!<CR>'),
         dashboard.button('c', ' ' .. ' Config', ":lua require('plugins.telescope').find_dotfiles()<CR>"),
         dashboard.button('l', '󰒲 ' .. ' Lazy', ':Lazy<CR>'),
         dashboard.button('q', ' ' .. ' Quit', ':qa<CR>'),
