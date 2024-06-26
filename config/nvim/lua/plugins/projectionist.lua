@@ -24,22 +24,6 @@ local config = {
       type = 'source',
       make = 'yarn',
     },
-    -- malomo.js
-    ['src/*.js'] = {
-      alternate = {
-        'test/{dirname}/{basename}.test.js',
-      },
-      type = 'source',
-      make = 'yarn',
-    },
-    ['test/*.test.js'] = {
-      alternate = {
-        'src/{dirname}/{basename}.js',
-      },
-      type = 'test',
-      make = 'yarn',
-    },
-    -- end malomo.js
     ['*.__tests__.js'] = {
       alternate = { '{dirname}/{basename}.js', '{dirname}/../{basename}.js' },
       type = 'test',
