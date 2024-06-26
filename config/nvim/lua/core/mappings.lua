@@ -279,7 +279,7 @@ M.oil_nvim_mappings = {
 }
 
 M.neogen_mappings = {
-  { '<leader>nf', ":lua require('neogen').generate()<CR>", { desc = '[N]eogen [F]unction' } },
+  { '<leader>ng', ":lua require('neogen').generate()<CR>", { desc = '[N]eogen [F]unction' } },
 }
 
 M.telescope_mappings = {
