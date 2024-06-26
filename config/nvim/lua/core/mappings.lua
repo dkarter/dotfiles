@@ -264,7 +264,8 @@ M.flash_mappings ={
 }
 
 M.nvim_tree_mappings = {
-  { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
+  { '<leader>nt', '<cmd>NvimTreeToggle<CR>',         { desc = '[N]vimTree [T]oggle' } },
+  { '<leader>nf', '<cmd>NvimTreeFindFileToggle<CR>', { desc = '[N]vimTree [F]ile (toggle)' } },
 }
 
 M.oil_nvim_mappings = {
