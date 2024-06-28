@@ -65,6 +65,8 @@ M.setup = function()
       b.formatting.black,
       b.formatting.shfmt,
       b.formatting.stylua,
+      b.formatting.rubyfmt,
+      b.formatting.rubocop,
     },
     on_attach = function(client)
       if client.supports_method 'textDocument/formatting' then

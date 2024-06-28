@@ -69,7 +69,9 @@ M.setup = function()
     'python-lsp-server',
     'rust-analyzer',
     -- Ruby
+    'rubocop',
     'ruby-lsp',
+    'rubyfmt',
     'sqlls',
     'tailwindcss-language-server',
     'taplo',
