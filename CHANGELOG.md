@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.14.0](https://github.com/dkarter/dotfiles/compare/v13.13.0...v13.14.0) (2024-06-21)
+
+
+### Features
+
+* **nvim:** add Rust projections ([8626c71](https://github.com/dkarter/dotfiles/commit/8626c71c8863bdc5dd8880d710363700361d149b))
+
+
+### Bug Fixes
+
+* **nvim:** add formatting for all supported LSPs ([f035f28](https://github.com/dkarter/dotfiles/commit/f035f2868bcbc6f9e09bf12f8408ec22102d114e))
+* **nvim:** remove g map from home screen ([2fad939](https://github.com/dkarter/dotfiles/commit/2fad9390767b139bb51ed318a984fd1071ee3552))
+
 ## [13.13.0](https://github.com/dkarter/dotfiles/compare/v13.12.1...v13.13.0) (2024-06-15)
 
 
