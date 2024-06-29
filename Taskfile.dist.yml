@@ -45,6 +45,16 @@ tasks:
     cmds:
       - ./setup.sh
 
+  install_sudo_touch_id:
+    desc: Sets up touch id as sufficient sudo permission
+    summary: Sets up touch id as sufficient sudo permission
+
+      This survives OS updates after macOS Sonoma.
+
+      Requires sudo.
+    cmds:
+      - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local
+
   sync:
     desc: Synchronize dotfiles
     summary: |
