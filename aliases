@@ -251,6 +251,11 @@ alias mux='airmux'
 function tn() {
   tmux new -s "$(basename $PWD)"
 }
+
+# session manager using sesh + fzf
+# https://github.com/joshmedeski/sesh
+alias t='sesh connect $(sesh list | fzf)'
+
 # tmux attach
 alias ta='tmux attach -t'
 
