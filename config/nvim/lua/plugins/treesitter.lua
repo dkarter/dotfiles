@@ -23,7 +23,7 @@ M.setup = function()
     auto_install = true,
 
     -- List of parsers to ignore installing (or "all")
-    ignore_install = {},
+    ignore_install = { 'tmux' },
 
     -- see full list here:
     -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
@@ -155,7 +155,7 @@ M.setup = function()
     playground = {
       enable = true,
       disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
       persist_queries = false, -- Whether the query persists across vim sessions
       keybindings = {
         toggle_query_editor = 'gq',
