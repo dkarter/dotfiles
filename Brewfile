@@ -24,6 +24,9 @@ cask 'iterm2'
 # allow accessing passwords from a CLI
 cask '1password/tap/1password-cli'
 
+# macOS automation using Lua
+cask 'hammerspoon'
+
 # for Erlang
 brew 'wxwidgets'
 brew 'autoconf'

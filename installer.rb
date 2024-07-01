@@ -46,6 +46,7 @@ SYMLINK_DIRS = [
   %w[./config/btop ~/.config/btop],
   %w[./config/wezterm ~/.config/wezterm],
   %w[./config/tmux ~/.config/tmux],
+  %w[./config/hammerspoon ~/.config/hammerspoon],
 ].freeze
 
 GEMS = [
