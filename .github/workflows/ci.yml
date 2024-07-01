@@ -39,7 +39,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: 0.20.0
-          args: --check .
+          args: --check -g '*.lua' -g '!config/hammerspoon/Spoons/*' .
 
   lua-diagnotics:
     name: 'Diagnostics: Lua'
