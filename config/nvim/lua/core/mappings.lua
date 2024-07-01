@@ -201,10 +201,10 @@ M.zen_mode_mappings = {
 }
 
 M.trouble_mappings = {
-  { '<leader>xw', '<cmd>Trouble diagnostics toggle<cr>',              desc = 'Workspace Diagnostics' },
+  { '<leader>xw', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Workspace Diagnostics' },
   { '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Document Diagnostics' },
-  { '<leader>xl', '<cmd>Trouble loclist toggle<cr>',                  desc = 'Open Loclist' },
-  { '<leader>xq', '<cmd>Trouble qflist toggle<cr>',                   desc = 'Open Quickfix' },
+  { '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Open Loclist' },
+  { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Open Quickfix' },
   {
     '<leader>cs',
     '<cmd>Trouble symbols toggle focus=false<cr>',
@@ -264,7 +264,7 @@ M.flash_mappings = {
 }
 
 M.nvim_tree_mappings = {
-  { '<leader>nt', '<cmd>NvimTreeToggle<CR>',         { desc = '[N]vimTree [T]oggle' } },
+  { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
   { '<leader>nf', '<cmd>NvimTreeFindFileToggle<CR>', { desc = '[N]vimTree [F]ile (toggle)' } },
 }
 
@@ -285,46 +285,46 @@ M.neogen_mappings = {
 
 M.telescope_mappings = {
   -- muscle memory
-  { '<C-p>',      telescope 'find_files',                                          default_opts },
-  { '<C-b>',      telescope 'buffers',                                             default_opts },
+  { '<C-p>', telescope 'find_files', default_opts },
+  { '<C-b>', telescope 'buffers', default_opts },
 
   -- Compatible with hydra setup
-  { '<leader>f/', telescope 'current_buffer_fuzzy_find',                           desc = 'Buffer fuzzy find' },
-  { '<leader>f:', telescope 'commands',                                            desc = 'Command search' },
-  { '<leader>f;', telescope 'command_history',                                     desc = 'Command History' },
-  { '<leader>f?', telescope 'search_history',                                      desc = 'Search History' },
-  { '<leader>ff', telescope 'find_files',                                          desc = '[F]ind [F]iles' },
-  { '<leader>fg', telescope 'live_grep',                                           desc = '[F]ind w/ [G]rep' },
-  { '<leader>fh', telescope 'help_tags',                                           desc = '[F]ind [H]elp' },
-  { '<leader>fk', telescope 'keymaps',                                             desc = '[F]ind [K]eymaps' },
-  { '<leader>fo', telescope 'oldfiles',                                            desc = '[F]ind [o]ld files' },
-  { '<leader>fO', telescope 'vim_options',                                         desc = '[F]ind [O]ptions' },
-  { '<leader>fr', telescope 'resume',                                              desc = '[F]ind [R]esume' },
-  { '<leader>fd', require('plugins.telescope').find_dotfiles,                      desc = '[F]ind [D]otfiles' },
-  { '<leader>fs', telescope 'git_status',                                          desc = '[F]ind (Git) [S]tatus' },
-  { '<leader>fw', telescope 'grep_string',                                         desc = '[F]ind [W]ord' },
+  { '<leader>f/', telescope 'current_buffer_fuzzy_find', desc = 'Buffer fuzzy find' },
+  { '<leader>f:', telescope 'commands', desc = 'Command search' },
+  { '<leader>f;', telescope 'command_history', desc = 'Command History' },
+  { '<leader>f?', telescope 'search_history', desc = 'Search History' },
+  { '<leader>ff', telescope 'find_files', desc = '[F]ind [F]iles' },
+  { '<leader>fg', telescope 'live_grep', desc = '[F]ind w/ [G]rep' },
+  { '<leader>fh', telescope 'help_tags', desc = '[F]ind [H]elp' },
+  { '<leader>fk', telescope 'keymaps', desc = '[F]ind [K]eymaps' },
+  { '<leader>fo', telescope 'oldfiles', desc = '[F]ind [o]ld files' },
+  { '<leader>fO', telescope 'vim_options', desc = '[F]ind [O]ptions' },
+  { '<leader>fr', telescope 'resume', desc = '[F]ind [R]esume' },
+  { '<leader>fd', require('plugins.telescope').find_dotfiles, desc = '[F]ind [D]otfiles' },
+  { '<leader>fs', telescope 'git_status', desc = '[F]ind (Git) [S]tatus' },
+  { '<leader>fw', telescope 'grep_string', desc = '[F]ind [W]ord' },
 
   --  Extensions
   { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', desc = '[F]ile [B]rowser' },
 
-  { '<leader>lg', telescope 'live_grep',                                           desc = '[L]ive [G]rep' },
-  { '<leader>bb', telescope 'buffers',                                             desc = 'Find Buffers' },
+  { '<leader>lg', telescope 'live_grep', desc = '[L]ive [G]rep' },
+  { '<leader>bb', telescope 'buffers', desc = 'Find Buffers' },
 
   -- better spell suggestions
-  { 'z=',         telescope 'spell_suggest',                                       desc = 'Spelling Suggestions' },
+  { 'z=', telescope 'spell_suggest', desc = 'Spelling Suggestions' },
 
   -- Git
   -- bc = buffer commits (like gitv!)
-  { '<leader>bc', telescope 'git_bcommits',                                        desc = '[B]uffer [C]ommits' },
+  { '<leader>bc', telescope 'git_bcommits', desc = '[B]uffer [C]ommits' },
 
   -- LSP
   -- ds = document symbols
-  { '<leader>ds', telescope 'lsp_document_symbols',                                desc = '[D]ocument [S]ymbols' },
+  { '<leader>ds', telescope 'lsp_document_symbols', desc = '[D]ocument [S]ymbols' },
 
-  { '<leader>cc', '<cmd>Telescope conventional_commits<cr>',                       desc = '[C]onventional [C]ommits' },
+  { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', desc = '[C]onventional [C]ommits' },
 
   -- search unicode symbols 
-  { '<leader>fu', '<cmd>Telescope symbols<cr>',                                    desc = '[F]ind [U]nicode' },
+  { '<leader>fu', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' },
   {
     '<C-q>',
     '<cmd>Telescope symbols<cr>',
@@ -339,7 +339,7 @@ M.blame_nvim_mappings = {
 }
 
 M.gen_nvim_mappings = {
-  { '<leader>ai', ':Gen<CR>',     mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
+  { '<leader>ai', ':Gen<CR>', mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
   { '<leader>aa', ':Gen Ask<CR>', mode = { 'n', 'v' }, desc = '[A]I [A]sk' },
   {
     '<leader>am',
@@ -361,13 +361,13 @@ end
 
 M.rhubarb_mappings = {
   -- open github page for file
-  { '<leader>gO', ':GBrowse<CR>',  desc = '[G]ithub [O]pen File' },
+  { '<leader>gO', ':GBrowse<CR>', desc = '[G]ithub [O]pen File' },
 
   -- open github page for line under cursor
   { '<leader>go', ':.GBrowse<CR>', desc = '[G]ithub [o]pen Line' },
 
   -- open github page for selection
-  { '<leader>go', ':GBrowse<CR>',  mode = 'v',                   desc = '[G]ithub [o]pen Line' },
+  { '<leader>go', ':GBrowse<CR>', mode = 'v', desc = '[G]ithub [o]pen Line' },
 
   -- copy github link for file
   {
@@ -394,28 +394,28 @@ M.rhubarb_mappings = {
 
 M.diffview_mappings = {
   { '<leader>gv', '<cmd>DiffviewFileHistory %<CR>', desc = '[G]it [V]iew (:gitv! alt)' },
-  { '<leader>gd', '<cmd>DiffviewOpen<CR>',          desc = '[G]it [D]iff' },
+  { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[G]it [D]iff' },
 }
 
 M.ripgrep_mappings = {
   --  alias for above
   --  Grep project for selection with Rg
-  { '<leader>rg', 'y :Rg "<CR>',       mode = 'v',                            desc = '[R]ip[G]rep selection' },
+  { '<leader>rg', 'y :Rg "<CR>', mode = 'v', desc = '[R]ip[G]rep selection' },
   --  Grep project for word under the cursor with Rg
   { '<Leader>rg', ':Rg <C-r><C-w><CR>', desc = '[R]ip[G]rep word under cursor' },
 }
 
 M.easy_align_mappings = {
   { '<leader>ea', ':EasyAlign ', desc = '[E]asy [A]lign' },
-  { '<leader>ea', ':EasyAlign ', mode = 'v',             desc = '[E]asy [A]lign' },
+  { '<leader>ea', ':EasyAlign ', mode = 'v', desc = '[E]asy [A]lign' },
 }
 
 ---@type LazyKeys[]
 M.vim_test_mappings = {
   { '<leader>tn', ':TestNearest<CR>', silent = true, desc = '[T]est [N]earest' },
-  { '<leader>tf', ':TestFile<CR>',    silent = true, desc = '[T]est [F]ile' },
-  { '<leader>ts', ':TestSuite<CR>',   silent = true, desc = '[T]est [S]uite' },
-  { '<leader>tl', ':TestLast<CR>',    silent = true, desc = '[T]est [L]ast' },
+  { '<leader>tf', ':TestFile<CR>', silent = true, desc = '[T]est [F]ile' },
+  { '<leader>ts', ':TestSuite<CR>', silent = true, desc = '[T]est [S]uite' },
+  { '<leader>tl', ':TestLast<CR>', silent = true, desc = '[T]est [L]ast' },
 }
 
 M.undotree_mappings = {
@@ -426,13 +426,13 @@ M.attempt_mappings = {
   -- new attempt, selecting extension
   { '<leader>sn', '<cmd>lua require("attempt").new_select()<CR>', desc = '[S]cratch [N]ew' },
   -- run current attempt buffer
-  { '<leader>sr', '<cmd>lua require("attempt").run()<CR>',        desc = '[S]cratch [R]un' },
+  { '<leader>sr', '<cmd>lua require("attempt").run()<CR>', desc = '[S]cratch [R]un' },
   -- delete attempt from current buffer
   { '<leader>sd', '<cmd>lua require("attempt").delete_buf()<CR>', desc = '[S]cratch [D]elete (current buffer)' },
   -- rename attempt from current buffer
   { '<leader>sc', '<cmd>lua require("attempt").rename_buf()<CR>', desc = '[S]cratch Rename (current buffer)' },
   -- open one of the existing scratch buffers
-  { '<leader>sl', '<cmd>Telescope attempt<CR>',                   desc = '[S]cratch [L]oad' },
+  { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
 }
 
 local bufremove_others = function(force)
@@ -459,10 +459,10 @@ local bufremove_curr = function(force)
 end
 
 M.bufremove_mappings = {
-  { '<leader>bd', bufremove_curr(false),   desc = 'Delete Buffer' },
-  { '<leader>bD', bufremove_curr(true),    desc = 'Delete Buffer (Force)' },
+  { '<leader>bd', bufremove_curr(false), desc = 'Delete Buffer' },
+  { '<leader>bD', bufremove_curr(true), desc = 'Delete Buffer (Force)' },
   { '<leader>bo', bufremove_others(false), desc = 'Delete Other Buffers' },
-  { '<leader>bO', bufremove_others(true),  desc = 'Delete Other Buffers (Force)' },
+  { '<leader>bO', bufremove_others(true), desc = 'Delete Other Buffers (Force)' },
 }
 
 M.gitsigns_mappings = function(bufnr)
