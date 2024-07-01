@@ -65,14 +65,6 @@ set_app_shortcut "$app_id" 'Activate the tab to the right' '\0'
 echo 'Getting brew packages...'
 brew bundle
 
-if ! command -v sudo-touchid &>/dev/null; then
-  echo 'Installing Sudo TouchID...'
-  curl -# https://raw.githubusercontent.com/artginzburg/sudo-touchid/main/sudo-touchid.sh -o /usr/local/bin/sudo-touchid &&
-    chmod +x /usr/local/bin/sudo-touchid &&
-    sudo curl -# https://raw.githubusercontent.com/artginzburg/sudo-touchid/main/com.user.sudo-touchid.plist -o /Library/LaunchDaemons/com.user.sudo-touchid.plist &&
-    /usr/local/bin/sudo-touchid
-fi
-
 # NOTE: check this page if getting an error from xcodebuild:
 # https://stackoverflow.com/questions/17980759/xcode-select-active-developer-directory-error
 if ! command -v unicornleap &>/dev/null; then
