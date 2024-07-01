@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [14.0.0](https://github.com/dkarter/dotfiles/compare/v13.14.0...v14.0.0) (2024-07-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change neogen mapping to <leader>ng
+
+### Features
+
+* add HammerSpoon ([9d75ce6](https://github.com/dkarter/dotfiles/commit/9d75ce6efae3d2118551f1b9883bd81dc3ed018b))
+* **hammerspoon:** add WindowLayoutMode custom spoon ([f0b78b6](https://github.com/dkarter/dotfiles/commit/f0b78b6be50089a84a6a5823603ac83d3197d7ee))
+* **nvim:** add mapping for NvimTreeFindFileToggle ([67f41f8](https://github.com/dkarter/dotfiles/commit/67f41f852e9c0cf99b71f895283f8f7322bf1ef9))
+* **nvim:** format Ruby using rubyfmt and rubocop ([c991ca3](https://github.com/dkarter/dotfiles/commit/c991ca313a6119974b88f164cb94367799505b3f))
+* **nvim:** improve Cfd and Cfd! ([8e0a1b7](https://github.com/dkarter/dotfiles/commit/8e0a1b7fd49fb8e9079a16730b5680af621741de))
+* **taskfile:** add install_sudo_touch_id task ([fba4fb3](https://github.com/dkarter/dotfiles/commit/fba4fb3706056607e7f96bbf619f0c0f19791a7d))
+
+
+### Bug Fixes
+
+* **brew:** remove deprecated sudo-touchid package ([3bc9f9f](https://github.com/dkarter/dotfiles/commit/3bc9f9feafb5da4cb64a003af01f859fb443bf87))
+* **nvim:** add missing arg to nvim_set_option_value ([0bf15dc](https://github.com/dkarter/dotfiles/commit/0bf15dca8b59c3a97a1d778e242bfcce32062ae8))
+* **nvim:** allow NvimTree to lazy load on NvimTreeFindFileToggle ([91bd163](https://github.com/dkarter/dotfiles/commit/91bd16366d5b2877dfc95c7a8dc8a2f3ed6dcd8b))
+* **nvim:** temporarily ignore tmux treesitter ([c1ac175](https://github.com/dkarter/dotfiles/commit/c1ac175e8686b290abd4759f8bc49976392ff1ba))
+* **stylua:** exclude spoons ([64d05b6](https://github.com/dkarter/dotfiles/commit/64d05b6cf98eb2692d6240a4776edee03becdf5a))
+
+
+### Code Refactoring
+
+* **nvim:** change neogen mapping to &lt;leader&gt;ng ([218ed5b](https://github.com/dkarter/dotfiles/commit/218ed5b3bf9c803df25ae92c73499b879c50c121))
+
 ## [13.14.0](https://github.com/dkarter/dotfiles/compare/v13.13.0...v13.14.0) (2024-06-21)
 
 
