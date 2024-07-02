@@ -309,7 +309,7 @@ require('lazy').setup({
         transparent = true,
       }
 
-      vim.cmd.colorscheme 'tokyonight'
+      vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
 
@@ -515,6 +515,8 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = require 'plugins.nvimtree',
   },
+
+  { 'rktjmp/lush.nvim', lazy = true },
 
   -- Neovim file explorer: edit your filesystem like a buffer
   {
