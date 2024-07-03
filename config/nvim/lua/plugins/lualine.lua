@@ -154,7 +154,7 @@ M.setup = function()
       },
     },
     options = {
-      -- theme = theme,
+      theme = 'tokyonight-moon',
       component_separators = '',
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
