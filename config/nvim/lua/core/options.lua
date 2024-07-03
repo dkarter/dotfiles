@@ -42,7 +42,6 @@ opt.listchars = 'tab:»·,trail:·,nbsp:·' --  Display extra whitespace
 -- line numbers
 opt.number = true
 opt.numberwidth = 2
-opt.relativenumber = true
 opt.ruler = false -- status line will already show the ruler (line and column number of the cursor position)
 
 -- always show the sign column
