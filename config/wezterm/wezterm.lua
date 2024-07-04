@@ -8,9 +8,9 @@
 -- A GPU-accelerated cross-platform terminal emulator
 -- https://wezfurlong.org/wezterm/
 
-local wezterm = require 'wezterm'
 local events = require 'utils.events'
 local keys = require 'utils.keys'
+local wezterm = require 'wezterm'
 
 -- provides better errors
 local config = wezterm.config_builder()
