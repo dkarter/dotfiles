@@ -43,11 +43,14 @@ require('lazy').setup({
   {
     'williamboman/mason.nvim',
     build = ':MasonUpdate',
-    cmd = { 'Mason' },
+    cmd = { 'Mason', 'MasonUpdate', 'MasonUpdateAll' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- handles connection of LSP Configs and Mason
       'williamboman/mason-lspconfig.nvim',
+
+      -- adds MasonUpdateAll
+      'Zeioth/mason-extra-cmds',
 
       -- Collection of configurations for the built-in LSP client
       'neovim/nvim-lspconfig',
@@ -96,8 +99,8 @@ require('lazy').setup({
     opts = {
       model = 'mistral',
       display_mode = 'split', -- The display mode. Can be "float" or "split".
-      show_prompt = true, -- Shows the prompt submitted to Ollama.
-      show_model = true, -- Displays which model you are using at the beginning of your chat session.
+      show_prompt = true,     -- Shows the prompt submitted to Ollama.
+      show_model = true,      -- Displays which model you are using at the beginning of your chat session.
     },
   },
 
@@ -257,9 +260,9 @@ require('lazy').setup({
       presets = {
         -- you can enable a preset by setting it to true, or a table that will override the preset config
         -- you can also add custom presets that you can enable/disable with enabled=true
-        bottom_search = true, -- use a classic bottom cmdline for search
+        bottom_search = true,         -- use a classic bottom cmdline for search
         long_message_to_split = true, -- long messages will be sent to a split
-        lsp_doc_border = true, -- add a border to hover docs and signature help
+        lsp_doc_border = true,        -- add a border to hover docs and signature help
       },
 
       routes = {
@@ -301,7 +304,7 @@ require('lazy').setup({
   ----------------
   {
     'folke/tokyonight.nvim',
-    lazy = false, -- make sure we load this during startup
+    lazy = false,    -- make sure we load this during startup
     priority = 1000, -- make sure to load this before all the other start plugins
     opts = {
       style = 'moon',
@@ -474,7 +477,7 @@ require('lazy').setup({
   -- NOTE: technically ftdetection dictates that this shouldn't be VeryLazy, but
   -- the chances of me opening an mjml file as the first file are relatively
   -- low, so I think this is OK
-  { 'amadeus/vim-mjml', event = 'VeryLazy' },
+  { 'amadeus/vim-mjml',                   event = 'VeryLazy' },
 
   -- generate annotations for documenting functions
   -- supported languages: https://github.com/danymat/neogen#supported-languages
@@ -530,7 +533,7 @@ require('lazy').setup({
     opts = require 'plugins.nvimtree',
   },
 
-  { 'rktjmp/lush.nvim', lazy = true },
+  { 'rktjmp/lush.nvim',     lazy = true },
 
   -- Neovim file explorer: edit your filesystem like a buffer
   {
@@ -562,7 +565,7 @@ require('lazy').setup({
   -- Elixir: {{{
 
   -- pulls info on hex packages (dependencies mattn/webapi-vim)
-  { 'lucidstack/hex.vim', ft = { 'elixir' }, dependencies = { 'mattn/webapi-vim' } },
+  { 'lucidstack/hex.vim',   ft = { 'elixir' }, dependencies = { 'mattn/webapi-vim' } },
   -- }}},
 
   -- Vim sugar for the UNIX shell commands that need it the most.
@@ -588,7 +591,7 @@ require('lazy').setup({
   },
 
   -- allow (non-native) plugins to the . command
-  { 'tpope/vim-repeat', event = 'VeryLazy' },
+  { 'tpope/vim-repeat',     event = 'VeryLazy' },
 
   -- Surround text with closures
   {
@@ -611,14 +614,14 @@ require('lazy').setup({
 
   -- abolish.vim: easily search for, substitute, and abbreviate multiple variants
   -- of a word
-  { 'tpope/vim-abolish', event = 'VeryLazy' },
+  { 'tpope/vim-abolish',    event = 'VeryLazy' },
 
   -- Support emacs keybindings in insert mode
-  { 'tpope/vim-rsi', event = 'VeryLazy' },
+  { 'tpope/vim-rsi',        event = 'VeryLazy' },
 
   -- RagTag: Auto-close html tags + mappings for template scripting languages
   -- TODO: add ft lazy loading
-  { 'tpope/vim-ragtag', event = { 'BufReadPost', 'BufNewFile' } },
+  { 'tpope/vim-ragtag',     event = { 'BufReadPost', 'BufNewFile' } },
 
   -- smarter gx mapping
   {
@@ -686,12 +689,12 @@ require('lazy').setup({
     event = { 'BufReadPost', 'BufNewFile' },
     init = function()
       vim.g.switch_custom_definitions = {
-        { 'up', 'down', 'change' },
-        { 'add', 'drop', 'remove' },
+        { 'up',     'down',   'change' },
+        { 'add',    'drop',   'remove' },
         { 'create', 'drop' },
-        { 'row', 'column' },
-        { 'first', 'second', 'third', 'fourth', 'fifth' },
-        { 'yes', 'no' },
+        { 'row',    'column' },
+        { 'first',  'second', 'third', 'fourth', 'fifth' },
+        { 'yes',    'no' },
       }
     end,
   },
@@ -810,7 +813,7 @@ require('lazy').setup({
     keys = core_mappings.telescope_mappings,
   },
 
-  { 'junegunn/fzf', event = 'VeryLazy', build = ':call fzf#install()' },
+  { 'junegunn/fzf',          event = 'VeryLazy', build = ':call fzf#install()' },
 
   {
     'junegunn/fzf.vim',
