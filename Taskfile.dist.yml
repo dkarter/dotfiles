@@ -73,13 +73,21 @@ tasks:
       - ruby ./installer.rb --sync --force
 
   sync:nvim:
-    desc: Updates Neovim plugins, CLI utils, and TreeSitter plugins
+    desc: Syncs/updates Neovim plugins, CLI utils, and TreeSitter plugins
+    summary: |
+      Updates Neovim plugins, CLI utils, and TreeSitter plugins
+
+      Then automatically commits the changes to the lazy-lock file, if there are any.
     cmds:
       - ./scripts/nvim-update.sh
       - task: commit:nvim-plugins
 
   sync:brew:
     desc: Synchronize homebrew packages
+    summary: |
+      Updates Homebrew packages
+
+      Then automatically commits the changes to the Brewfile.lock.json file, if there are any.
     cmds:
       - brew bundle
       - |
