@@ -47,6 +47,7 @@ SYMLINK_DIRS = [
   %w[./config/wezterm ~/.config/wezterm],
   %w[./config/tmux ~/.config/tmux],
   %w[./config/hammerspoon ~/.config/hammerspoon],
+  %w[./config/gitui ~/.config/gitui],
 ].freeze
 
 GEMS = [
@@ -109,6 +110,8 @@ CARGOS = [
   'jless',
   # nicer git diffs
   'git-delta',
+  # Git GUI
+  'gitui',
   # rename a list of files in your editor
   'pipe-rename',
   # a modern version of autojump
