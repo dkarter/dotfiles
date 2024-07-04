@@ -63,3 +63,8 @@ tasks:
       Only symlinks dotfiles, does not install packages
     cmds:
       - ruby ./installer.rb --sync --force
+
+  sync:brew:
+    desc: Synchronize homebrew packages
+    cmds:
+      - brew bundle
