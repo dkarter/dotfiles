@@ -10,6 +10,16 @@ tasks:
             './config/nvim/lazy-lock.json' \
             'chore(nvim): update plugins'
 
+  format:lua:check:
+    desc: Runs a Lua format check using stylua
+    cmds:
+      - stylua --allow-hidden --respect-ignores --check .
+
+  format:lua:
+    desc: Runs a Lua format using stylua
+    cmds:
+      - stylua --allow-hidden --respect-ignores .
+
   install:asdf:
     desc: Installs asdf packages for this project
     cmds:
