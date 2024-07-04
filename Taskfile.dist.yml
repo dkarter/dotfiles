@@ -10,12 +10,12 @@ tasks:
             './config/nvim/lazy-lock.json' \
             'chore(nvim): update plugins'
 
-  install_asdf:
+  install:asdf:
     desc: Installs asdf packages for this project
     cmds:
       - asdf install
 
-  install_pnpm:
+  install:pnpm:
     desc: Sets up PNPM on the local machine
     summary: |
       Enables and activates pnpm in the current project
@@ -27,7 +27,7 @@ tasks:
       - asdf reshim nodejs
       - pnpm --version
 
-  install_ollama:
+  install:ollama:
     desc: Installs Ollama and pulls useful models
     summary: |
       Works only on macOS for now.
