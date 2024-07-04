@@ -2,7 +2,7 @@
 version: '3'
 
 tasks:
-  commit:nvim:plugins:
+  commit:nvim-plugins:
     desc: Commits the lazy-lock.json file if changed
     cmds:
       - |
@@ -15,17 +15,16 @@ tasks:
     cmds:
       - asdf install
 
-  install:pnpm:
-    desc: Sets up PNPM on the local machine
+  install:dotfiles:
+    desc: Install dotfiles
     summary: |
-      Enables and activates pnpm in the current project
+      Install dotfiles
 
-      Requires Node.js to be properly set up
+      Installs all dependencies and symlink dotfiles.
+
+      Idempotent, can be used to update packages.
     cmds:
-      - corepack enable
-      - corepack enable pnpm
-      - asdf reshim nodejs
-      - pnpm --version
+      - ./setup.sh
 
   install:ollama:
     desc: Installs Ollama and pulls useful models
@@ -42,18 +41,19 @@ tasks:
       - ollama pull codellama
       - ollama pull mistral
 
-  install:
-    desc: Install dotfiles
+  install:pnpm:
+    desc: Sets up PNPM on the local machine
     summary: |
-      Install dotfiles
+      Enables and activates pnpm in the current project
 
-      Installs all dependencies and symlink dotfiles.
-
-      Idempotent, can be used to update packages.
+      Requires Node.js to be properly set up
     cmds:
-      - ./setup.sh
+      - corepack enable
+      - corepack enable pnpm
+      - asdf reshim nodejs
+      - pnpm --version
 
-  install_sudo_touch_id:
+  install:sudo-touch-id:
     desc: Sets up touch id as sufficient sudo permission
     summary: Sets up touch id as sufficient sudo permission
 
