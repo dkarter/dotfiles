@@ -72,6 +72,12 @@ tasks:
     cmds:
       - ruby ./installer.rb --sync --force
 
+  sync:nvim:
+    desc: Updates Neovim plugins, CLI utils, and TreeSitter plugins
+    cmds:
+      - ./scripts/nvim-update.sh
+      - task: commit:nvim-plugins
+
   sync:brew:
     desc: Synchronize homebrew packages
     cmds:
