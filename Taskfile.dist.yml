@@ -63,7 +63,7 @@ tasks:
     cmds:
       - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local
 
-  sync:
+  sync:dotfiles:
     desc: Synchronize dotfiles
     summary: |
       Synchronize dotfiles
