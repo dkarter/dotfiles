@@ -68,3 +68,7 @@ tasks:
     desc: Synchronize homebrew packages
     cmds:
       - brew bundle
+      - |
+        ./scripts/commit_changed_file.sh \
+            'Brewfile.lock.json' \
+            'chore(brew): update Brewfile.lock.json'
