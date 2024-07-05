@@ -205,9 +205,6 @@ require('lazy').setup({
       },
       -- callback where you can add custom code when the Zen window opens
       on_open = function(_win)
-        -- disable relative numbers
-        vim.o.relativenumber = false
-
         -- disable indentscope animation
         vim.g.miniindentscope_disable = true
 
@@ -216,9 +213,6 @@ require('lazy').setup({
       end,
       -- callback where you can add custom code when the Zen window closes
       on_close = function()
-        -- re-enable relative numbers
-        vim.o.relativenumber = true
-
         -- re-enable indentscope animation
         vim.g.miniindentscope_disable = false
 
