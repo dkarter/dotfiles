@@ -16,13 +16,16 @@ end
 local M = {}
 
 M.on_attach = function(client, bufnr)
+  local client_name = client.config.name
+  local ft = vim.bo.filetype
+
   -- /BEGIN: Helm file support
-  if client.config.name == 'yamlls' and vim.bo.filetype == 'helm' then
+  if client_name == 'yamlls' and ft == 'helm' then
     vim.lsp.stop_client(client.id)
     vim.lsp.buf_detach_client(bufnr, client.id)
   end
 
-  if vim.bo[bufnr].buftype ~= '' or vim.bo.filetype == 'helm' then
+  if vim.bo[bufnr].buftype ~= '' or ft == 'helm' then
     vim.diagnostic.enable(false, bufnr)
     -- remove existing diagnostic messages that appear about a second after load
     -- (in the status bar). They do end up coming back though after awhile, not
@@ -33,7 +36,7 @@ M.on_attach = function(client, bufnr)
   end
   -- /END: Helm file support
 
-  if client.supports_method 'textDocument/formatting' then
+  if client.supports_method 'textDocument/formatting' and not client_name == 'lua_ls' then
     lsp_format.on_attach(client)
   end
   -- Use an on_attach function to only map the following keys
