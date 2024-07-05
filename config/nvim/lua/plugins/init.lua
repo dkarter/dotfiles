@@ -533,8 +533,6 @@ require('lazy').setup({
     opts = require 'plugins.nvimtree',
   },
 
-  { 'rktjmp/lush.nvim', lazy = true },
-
   -- Neovim file explorer: edit your filesystem like a buffer
   {
     'stevearc/oil.nvim',

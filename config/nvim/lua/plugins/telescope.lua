@@ -88,16 +88,17 @@ local default = {
 
 local apply_highlights = function()
   local colors = require('tokyonight.colors').setup { style = 'moon' }
-
-  local hsl = require('lush').hsl
-  local results_bg = hsl(colors.bg_highlight).darken(20).hex
+  local util = require 'tokyonight.util'
+  -- not sure why lua ls cannot see this field.. it's there..
+  ---@diagnostic disable-next-line: undefined-field
+  local results_bg = util.darken(colors.bg_highlight, 0.2)
 
   local TelescopePrompt = {
     TelescopePreviewNormal = {
-      bg = hsl(colors.bg_dark).darken(80).hex,
+      bg = util.darken(colors.bg_dark, 0.8),
     },
     TelescopePreviewBorder = {
-      bg = hsl(colors.bg_dark).darken(80).hex,
+      bg = util.darken(colors.bg_dark, 0.8),
     },
     TelescopePromptNormal = {
       bg = '#2d3149',
@@ -106,7 +107,7 @@ local apply_highlights = function()
       bg = '#2d3149',
     },
     TelescopePromptTitle = {
-      fg = hsl('#2d3149').lighten(80).hex,
+      fg = util.lighten('#2d3149', 0.8),
       bg = '#2d3149',
     },
     TelescopePreviewTitle = {
