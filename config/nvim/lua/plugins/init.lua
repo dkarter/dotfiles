@@ -208,6 +208,9 @@ require('lazy').setup({
         -- disable indentscope animation
         vim.g.miniindentscope_disable = true
 
+        -- disable indentation markers
+        require('ibl').update { enabled = false }
+
         -- disable colorcolumn
         vim.o.colorcolumn = ''
       end,
@@ -215,6 +218,9 @@ require('lazy').setup({
       on_close = function()
         -- re-enable indentscope animation
         vim.g.miniindentscope_disable = false
+
+        -- re-enable indentation markers
+        require('ibl').update { enabled = true }
 
         -- re-enable color column
         vim.o.colorcolumn = '80'
