@@ -10,6 +10,16 @@ tasks:
             './config/nvim/lazy-lock.json' \
             'chore(nvim): update plugins'
 
+  format:lua:check:
+    desc: Runs a Lua format check using stylua
+    cmds:
+      - stylua --allow-hidden --respect-ignores --check .
+
+  format:lua:
+    desc: Runs a Lua format using stylua
+    cmds:
+      - stylua --allow-hidden --respect-ignores .
+
   install:asdf:
     desc: Installs asdf packages for this project
     cmds:
@@ -62,6 +72,11 @@ tasks:
       Requires sudo.
     cmds:
       - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local
+
+  lint:yaml:
+    desc: Runs yamllint on this repo
+    cmds:
+      - yamllint --strict --config-file ./config/yamllint/config .
 
   sync:dotfiles:
     desc: Synchronize dotfiles

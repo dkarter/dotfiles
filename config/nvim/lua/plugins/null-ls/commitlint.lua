@@ -1,6 +1,6 @@
-local nullls = require 'null-ls'
 local h = require 'null-ls.helpers'
 local methods = require 'null-ls.methods'
+local nullls = require 'null-ls'
 local DIAGNOSTICS = methods.internal.DIAGNOSTICS
 
 local commitlint = {
