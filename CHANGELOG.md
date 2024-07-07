@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [14.1.0](https://github.com/dkarter/dotfiles/compare/v14.0.0...v14.1.0) (2024-07-07)
+
+
+### Features
+
+* **gitui:** add gitui ([c5d80d0](https://github.com/dkarter/dotfiles/commit/c5d80d04df5d570fd8f1041f5c29932388fcf010))
+* **nvim:** add MasonUpdateAll command ([83b55c9](https://github.com/dkarter/dotfiles/commit/83b55c9edd0a854a9178920f975fcead418e0d7b))
+* **nvim:** disable indent-blankline for zenmode ([a9def15](https://github.com/dkarter/dotfiles/commit/a9def1591062bfd0141fca0f2a08346c0a027aa3))
+* **nvim:** highlight taskfile commands as bash ([e6581be](https://github.com/dkarter/dotfiles/commit/e6581be2d8282d410343dc1ea9fa828c17a180e1))
+* **task:** add sync:brew ([45045a9](https://github.com/dkarter/dotfiles/commit/45045a9a17784f3b37cdbd070b433919c24d2b11))
+* **task:** add task to sync neovim ([45e5dec](https://github.com/dkarter/dotfiles/commit/45e5dec72b24fdeab9047444d5e477f6592dd004))
+* **task:** automatically commit brew lock file on change ([4c2f7f4](https://github.com/dkarter/dotfiles/commit/4c2f7f4d453639eb70d946c321187661f3b5e3f1))
+* **task:** task for committing nvim plugin updates ([e5ea0c8](https://github.com/dkarter/dotfiles/commit/e5ea0c8bdd65d95ed5c818fab279643c9c1512fb))
+
+
+### Bug Fixes
+
+* **nvim:** correctly set color scheme ([84e3c4a](https://github.com/dkarter/dotfiles/commit/84e3c4a1cff0d426a291f83529e7ed3cf05831c6))
+* **nvim:** disable formatting with lua_ls ([22ded3a](https://github.com/dkarter/dotfiles/commit/22ded3a695c74ef31d2761d583e217a3cf4c52e9))
+* **nvim:** disable relativenumber ([bdc0d7e](https://github.com/dkarter/dotfiles/commit/bdc0d7e78935a29b40bf0688de1d2f0cbb6a442d))
+* **nvim:** disable relativenumber for zenmode too ([a403437](https://github.com/dkarter/dotfiles/commit/a40343778473992e4ec7276a600c57a97bcd4212))
+* **nvim:** lualine theme was broken on direct file open ([646c085](https://github.com/dkarter/dotfiles/commit/646c085080305c5709f2f8b2e131da4c23f762c6))
+* **zsh,pnpm:** add pnpm global support ([1a5c85f](https://github.com/dkarter/dotfiles/commit/1a5c85f47f1ee9d05f4a0f78654addba90cf4407))
+* **zsh:** enable fzf shell integration ([2a2b975](https://github.com/dkarter/dotfiles/commit/2a2b975f34e3d1b5a7b1b52808fe9044b03e57aa))
+
 ## [14.0.0](https://github.com/dkarter/dotfiles/compare/v13.14.0...v14.0.0) (2024-07-01)
 
 
