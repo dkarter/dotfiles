@@ -190,6 +190,10 @@ brew 'parallel'
 # ask questions in natural language and get results in the terminal
 brew 'howdoi'
 
+# pretty text display utils
+brew 'figlet'
+brew 'lolcat'
+
 # kubernetes tools
 brew 'kubernetes-cli'
 brew 'kubectx'
