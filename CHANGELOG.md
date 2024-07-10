@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [14.2.0](https://github.com/dkarter/dotfiles/compare/v14.1.0...v14.2.0) (2024-07-10)
+
+
+### Features
+
+* **gh:** add github dash config ([d29de1c](https://github.com/dkarter/dotfiles/commit/d29de1c7a25b45aa0524233e80cb6a45cd4f81dc))
+
+
+### Bug Fixes
+
+* **nvim:** remove lush ([3699a89](https://github.com/dkarter/dotfiles/commit/3699a8955ea3ab899e90fe835cc1b43226bd3e13))
+
 ## [14.1.0](https://github.com/dkarter/dotfiles/compare/v14.0.0...v14.1.0) (2024-07-07)
 
 
