@@ -48,6 +48,7 @@ SYMLINK_DIRS = [
   %w[./config/tmux ~/.config/tmux],
   %w[./config/hammerspoon ~/.config/hammerspoon],
   %w[./config/gitui ~/.config/gitui],
+  %w[./config/gh-dash ~/.config/gh-dash],
 ].freeze
 
 GEMS = [

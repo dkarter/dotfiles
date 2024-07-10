@@ -1,0 +1,36 @@
+prSections:
+  - title: My Pull Requests
+    filters: is:open author:@me repo:pdq/houston
+    layout:
+      author:
+        hidden: true
+
+  - title: Needs My Review
+    filters: is:pr is:open sort:updated-desc draft:false review-requested:@me repo:pdq/houston
+
+  - title: Involved
+    filters: is:pr is:open -author:@me involves:@me sort:updated-desc org:pdq
+
+  - title: Subscribed
+    filters: is:open -author:@me draft:false sort:updated-desc repo:pdq/houston
+    limit: 50
+
+defaults:
+  layout:
+    prs:
+      repo:
+        grow: true,
+        width: 10
+        hidden: false
+  prsLimit: 20 # global limit
+  issuesLimit: 20 # global limit
+  preview:
+    open: true # whether to have the preview pane open by default
+    width: 60 # width in columns
+  refetchIntervalMinutes: 30 # will refetch all sections every 30 minutes
+
+repoPaths:
+  pdq/*: ~/dev/*
+
+pager:
+  diff: delta
