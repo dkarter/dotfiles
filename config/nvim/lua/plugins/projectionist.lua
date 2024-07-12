@@ -13,6 +13,28 @@ local config = {
       alternate = { 'src/{}.rs' },
     },
   },
+  --
+  -- BEGIN mod for PDQ codebase
+  ['mix.exs'] = {
+    ['lib/*_test.exs'] = {
+      type = 'test',
+      alternate = 'lib/{}.ex',
+      template = {
+        'defmodule {camelcase|capitalize|dot|elixir_module}Test do',
+        '  use ExUnit.Case, async: true',
+        '',
+        '  alias {camelcase|capitalize|dot|elixir_module}',
+        'end',
+      },
+    },
+    ['lib/*.ex'] = {
+      type = 'source',
+      alternate = { 'test/{}_test.exs', 'lib/{}_test.exs' },
+      template = { 'defmodule {camelcase|capitalize|dot} do', 'end' },
+    },
+  },
+  -- END mod for PDQ codebase
+  --
   -- JavaScript / TypeScript
   ['package.json'] = {
     ['*.js'] = {
