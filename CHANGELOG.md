@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.0.0](https://github.com/dkarter/dotfiles/compare/v14.2.0...v15.0.0) (2024-07-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change trouble symbol sidebar mappings
+
+### Features
+
+* **brew:** add figlet and lolcat ([c3d0338](https://github.com/dkarter/dotfiles/commit/c3d033824d6354d4e01b82f6f75ac2332e25d314))
+* **nvim:** add projections to support PDQ codebase ([096d852](https://github.com/dkarter/dotfiles/commit/096d852411021e37a3e3134f44643228284b1957))
+
+
+### Bug Fixes
+
+* **nvim:** support which-key v3 ([ac6d4ce](https://github.com/dkarter/dotfiles/commit/ac6d4ce864d557cee4bb4dd54c4c8d8321c0fe7e))
+* **task:** rename `install:asdf` -&gt; `sync:asdf` ([27c06b7](https://github.com/dkarter/dotfiles/commit/27c06b7a1b5ff7f309e6727a89c79cd730b225f9))
+
+
+### Code Refactoring
+
+* **nvim:** change trouble symbol sidebar mappings ([c77c601](https://github.com/dkarter/dotfiles/commit/c77c6014958a77d8569dbb2f846b827d2250d2c9))
+
 ## [14.2.0](https://github.com/dkarter/dotfiles/compare/v14.1.0...v14.2.0) (2024-07-10)
 
 
