@@ -20,11 +20,6 @@ tasks:
     cmds:
       - stylua --allow-hidden --respect-ignores .
 
-  install:asdf:
-    desc: Installs asdf packages for this project
-    cmds:
-      - asdf install
-
   install:dotfiles:
     desc: Install dotfiles
     summary: |
@@ -77,6 +72,12 @@ tasks:
     desc: Runs yamllint on this repo
     cmds:
       - yamllint --strict --config-file ./config/yamllint/config .
+
+  sync:asdf:
+    desc: Updates asdf plugins and installs asdf packages for this project
+    cmds:
+      - asdf plugin-update --all
+      - asdf install
 
   sync:dotfiles:
     desc: Synchronize dotfiles
