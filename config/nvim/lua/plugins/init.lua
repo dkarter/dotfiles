@@ -865,11 +865,20 @@ require('lazy').setup({
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {},
+    ---@class wk.Opts
+    opts = {
+      preset = 'modern',
+      plugins = {
+        spelling = { enabled = false },
+      },
+    },
   },
 
   -- same as tabular but by Junegunn and way easier
