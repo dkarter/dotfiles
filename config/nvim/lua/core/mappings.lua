@@ -206,13 +206,13 @@ M.trouble_mappings = {
   { '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Open Loclist' },
   { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Open Quickfix' },
   {
-    '<leader>cs',
-    '<cmd>Trouble symbols toggle focus=false<cr>',
+    '<leader>ss',
+    '<cmd>Trouble symbols toggle focus=true<cr>',
     desc = 'Symbols (Trouble)',
   },
   {
-    '<leader>cl',
-    '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+    '<leader>sl',
+    '<cmd>Trouble lsp toggle focus=true win.position=right<cr>',
     desc = 'LSP Definitions / references / ... (Trouble)',
   },
   -- smart `[q` and `]q` mappings that work for both qf list and trouble
