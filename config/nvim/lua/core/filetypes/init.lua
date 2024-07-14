@@ -18,5 +18,6 @@ vim.filetype.add {
     yrl = 'erlang',
     yaml = utils.yaml_detect,
     yml = utils.yaml_detect,
+    plist = 'xml',
   },
 }
