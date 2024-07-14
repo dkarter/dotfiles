@@ -40,7 +40,21 @@ defaults -currentHost write com.apple.controlcenter.plist BatteryShowPercentage 
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 
 # ------------------------------------
+if [ "$(hidutil property --get 'UserKeyMapping')" == '(null)' ]; then
+  echo 'Remapping macOS modifiers...'
+  # remap CapsLock to Escape (now)
+  ./scripts/remap_macos_modifiers.sh
 
+  # remap CapsLock to Escape (survives system restarts)
+  # this was generated using https://hidutil-generator.netlify.app/
+  PLIST_TARGET="$HOME/Library/LaunchAgents/com.local.KeyRemapping.plist"
+
+  if [ ! -f "$PLIST_TARGET" ]; then
+    sudo cp ./macos/com.local.KeyRemapping.plist "$PLIST_TARGET"
+  fi
+fi
+
+# install homebrew
 if ! command -v brew &>/dev/null; then
   echo 'Homebrew not installed, installing...'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
