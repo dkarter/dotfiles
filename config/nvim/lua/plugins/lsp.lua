@@ -36,7 +36,7 @@ M.on_attach = function(client, bufnr)
   end
   -- /END: Helm file support
 
-  if client.supports_method 'textDocument/formatting' and not client_name == 'lua_ls' then
+  if client.supports_method 'textDocument/formatting' and client_name ~= 'lua_ls' then
     lsp_format.on_attach(client)
   end
   -- Use an on_attach function to only map the following keys
