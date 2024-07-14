@@ -14,7 +14,6 @@ ASDF_INSTALL_DIR = '~/.asdf'
 DIRS = %w[~/.config ~/.local/share/psql].freeze
 
 DOTFILES = %w[
-  airmux.yml
   aliases
   asdfrc
   ctags
@@ -99,8 +98,6 @@ NPMS = %w[
 ].freeze
 
 CARGOS = [
-  # manage tmux sessions via yaml files (similar to tmuxinator)
-  'airmux',
   # file system tree visualizer with icons and git support
   'erdtree',
   # ls replacement with icons and git support + more
