@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [15.1.0](https://github.com/dkarter/dotfiles/compare/v15.0.0...v15.1.0) (2024-07-14)
+
+
+### Features
+
+* **installer:** automate CAPSLOCK -&gt; Escape remapping on macOS ([1f5f79c](https://github.com/dkarter/dotfiles/commit/1f5f79c713aa1a2978f2b5b982fc5d4434915cbd))
+* **nvim:** add plist filetype support ([d644e8b](https://github.com/dkarter/dotfiles/commit/d644e8b5ab3f43b9c19d4b344fa5572cd5e95b12))
+* **task:** add task for committing Brewfile.lock.json ([48a8536](https://github.com/dkarter/dotfiles/commit/48a8536ac493ed8814ca4bf91a9c38ad10da5c84))
+
 ## [15.0.0](https://github.com/dkarter/dotfiles/compare/v14.2.0...v15.0.0) (2024-07-13)
 
 
