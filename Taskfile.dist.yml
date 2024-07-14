@@ -2,6 +2,14 @@
 version: '3'
 
 tasks:
+  commit:brew-packages:
+    desc: Commits the Brewfile.lock.json file if changed
+    cmds:
+      - |
+        ./scripts/commit_changed_file.sh \
+            'Brewfile.lock.json' \
+            'chore(brew): update packages'
+
   commit:nvim-plugins:
     desc: Commits the lazy-lock.json file if changed
     cmds:
@@ -106,7 +114,4 @@ tasks:
       Then automatically commits the changes to the Brewfile.lock.json file, if there are any.
     cmds:
       - brew bundle
-      - |
-        ./scripts/commit_changed_file.sh \
-            'Brewfile.lock.json' \
-            'chore(brew): update Brewfile.lock.json'
+      - task: commit:brew-packages
