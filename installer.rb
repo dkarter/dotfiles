@@ -303,7 +303,7 @@ class Installer
     GH_PLUGINS.each do |plugin|
       puts "Installing #{plugin}...".light_blue
 
-      popen("gh extension install #{plugin}")
+      popen("gh extension install #{plugin} && gh extension upgrade #{plugin}")
     end
   end
 
