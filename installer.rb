@@ -349,7 +349,7 @@ class Installer
   def install_rust_cargos
     puts '===== Installing Rust Cargos'.blue
 
-    CARGOS.each { |cargo| popen("cargo install #{cargo}") }
+    CARGOS.each { |cargo| popen("cargo install #{cargo} --force") }
   end
 
   def symlink_dotfiles
