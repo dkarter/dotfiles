@@ -85,16 +85,23 @@ ASDF_PLUGINS = %w[
   tmux
 ].freeze
 
+# some tools cannot be installed via asdf on ARM, but are still useful for
+# x86 machines and linux
 ASDF_ARM_INCOMPATIBLE = %w[github-cli fzf fd ripgrep neovim].freeze
 
-NPMS = %w[
-  @commitlint/cli
-  @prettier/plugin-ruby
-  neovim
-  prettier
-  tldr
-  trash-cli
-  npkill
+NPMS = [
+  # linter for checking that commits are following conventional commits
+  '@commitlint/cli',
+  # support for javascript plugins in neovim
+  'neovim',
+  # code formatter
+  'prettier',
+  # useful usage instructions for CLI apps
+  'tldr',
+  # rm -> system trash (cross platform)
+  'trash-cli',
+  # easily find and delete heavy node modules
+  'npkill',
 ].freeze
 
 CARGOS = [
