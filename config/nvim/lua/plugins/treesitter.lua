@@ -15,6 +15,9 @@ M.setup = function()
   ]]
 
   treesitter.setup {
+    -- this is required by the TSConfig type, but it not actually doing anything
+    modules = {},
+
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
