@@ -118,7 +118,14 @@ M.setup = function()
         color = { bg = colors.grey, fg = colors.black },
       },
     },
-    lualine_b = {},
+    lualine_b = {
+      {
+        'navic',
+        color_correction = 'static',
+        navic_opts = nil,
+        separator = { right = ' ' },
+      },
+    },
     lualine_c = {},
     lualine_x = {
       -- show available plugin updates

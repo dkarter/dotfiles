@@ -370,7 +370,17 @@ require('lazy').setup({
   {
     'nvim-lualine/lualine.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    --- @type LazySpec[]
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      {
+        'SmiteshP/nvim-navic',
+        dependencies = { 'neovim/nvim-lspconfig' },
+        opts = {
+          highlight = true
+        },
+      },
+    },
     config = function()
       require('plugins.lualine').setup()
     end,
@@ -451,7 +461,6 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'RRethy/nvim-treesitter-endwise',
-      'nvim-treesitter/nvim-treesitter-context',
     },
     config = function()
       require('plugins.treesitter').setup()

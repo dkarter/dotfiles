@@ -2,10 +2,12 @@ local utils = require 'core.utils'
 
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
 local lsp_format_present, lsp_format = pcall(require, 'lsp-format')
+local navic_present, navic = pcall(require, 'nvim-navic')
 
 local deps = {
   lspconfig_present,
   lsp_format_present,
+  navic_present,
 }
 
 if utils.contains(deps, false) then
@@ -39,6 +41,12 @@ M.on_attach = function(client, bufnr)
   if client.supports_method 'textDocument/formatting' and client_name ~= 'lua_ls' then
     lsp_format.on_attach(client)
   end
+
+  -- support for lsp based breadcrumbs
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   require('core.mappings').lsp_mappings()
