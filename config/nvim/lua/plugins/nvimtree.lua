@@ -1,5 +1,8 @@
 return {
   renderer = {
+    indent_markers = {
+      enable = true,
+    },
     icons = {
       show = {
         git = true,
