@@ -69,9 +69,6 @@ brew 'libpq'
 # for NeoVim
 brew 'lua'
 
-# ls replacement with icons and colors (rust)
-brew 'eza'
-
 # quickly jump to recently used folders
 brew 'autojump'
 
