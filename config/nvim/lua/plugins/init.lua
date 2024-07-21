@@ -377,7 +377,7 @@ require('lazy').setup({
         'SmiteshP/nvim-navic',
         dependencies = { 'neovim/nvim-lspconfig' },
         opts = {
-          highlight = true
+          highlight = true,
         },
       },
     },
@@ -660,6 +660,13 @@ require('lazy').setup({
       'gitcommit',
       'scratch',
     },
+  },
+
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    ft = { 'markdown' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    opts = {},
   },
 
   -- replacement for matchit
