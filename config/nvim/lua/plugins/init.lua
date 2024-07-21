@@ -58,9 +58,6 @@ require('lazy').setup({
       -- required for setting up capabilities for cmp
       'hrsh7th/cmp-nvim-lsp',
 
-      -- automatically format based on LSP capabilities
-      'lukas-reineke/lsp-format.nvim',
-
       -- required for jsonls and yamlls
       { 'b0o/schemastore.nvim', lazy = true },
     },
@@ -143,11 +140,18 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'williamboman/mason.nvim',
-      'lukas-reineke/lsp-format.nvim',
     },
     config = function()
       require('plugins.null-ls').setup()
     end,
+  },
+
+  {
+    'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo', 'Format', 'FormatDisable', 'FormatEnable' },
+    opts = require('plugins.conform').opts,
+    init = require('plugins.conform').init,
   },
 
   -- Automatically highlights other instances of the word under your cursor.

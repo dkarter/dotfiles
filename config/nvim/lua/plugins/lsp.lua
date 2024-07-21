@@ -1,12 +1,10 @@
 local utils = require 'core.utils'
 
 local lspconfig_present, lspconfig = pcall(require, 'lspconfig')
-local lsp_format_present, lsp_format = pcall(require, 'lsp-format')
 local navic_present, navic = pcall(require, 'nvim-navic')
 
 local deps = {
   lspconfig_present,
-  lsp_format_present,
   navic_present,
 }
 
@@ -37,10 +35,6 @@ M.on_attach = function(client, bufnr)
     end, 2000)
   end
   -- /END: Helm file support
-
-  if client.supports_method 'textDocument/formatting' and client_name ~= 'lua_ls' then
-    lsp_format.on_attach(client)
-  end
 
   -- support for lsp based breadcrumbs
   if client.server_capabilities.documentSymbolProvider then
