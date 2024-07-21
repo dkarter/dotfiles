@@ -16,6 +16,8 @@ M.setup = function()
       --   Code Actions   --
       ----------------------
       b.code_actions.gomodifytags,
+      -- Injects code actions for Git operations at the current cursor position (stage / preview / reset hunks, blame, etc.).
+      b.code_actions.gitsigns,
 
       ----------------------
       --    Diagnostics   --
