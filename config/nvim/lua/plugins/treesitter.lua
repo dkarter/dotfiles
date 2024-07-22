@@ -70,6 +70,7 @@ return {
         'make',
         'markdown',
         'markdown_inline',
+        'nginx',
         'python',
         'query',
         'regex',
