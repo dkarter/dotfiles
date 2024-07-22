@@ -3,10 +3,6 @@ return {
   -- syntax highlighting for zinit (zsh plugin manager)
   { 'zdharma-continuum/zinit-vim-syntax', ft = { 'zsh' } },
 
-  -- TODO: deprecate in favor of treesitter
-  -- nginx syntax support
-  'chr4/nginx.vim',
-
   -- support for MJML templates
   -- NOTE: technically ftdetection dictates that this shouldn't be VeryLazy, but
   -- the chances of me opening an mjml file as the first file are relatively
