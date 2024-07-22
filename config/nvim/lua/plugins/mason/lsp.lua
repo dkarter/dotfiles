@@ -145,8 +145,6 @@ M.setup = function()
 
     config.capabilities = M.create_capabilities()
   end)
-
-  require('plugins.mason').setup()
 end
 
 return M

@@ -58,7 +58,6 @@ local modules = {
   'core.commands',
   'core.autocmds',
   'core.mappings',
-  'plugins',
 }
 
 for _, module in ipairs(modules) do
@@ -67,6 +66,47 @@ for _, module in ipairs(modules) do
     error('Error loading ' .. module .. '\n\n' .. err)
   end
 end
+
+require('lazy').setup({
+  { import = 'plugins' },
+}, {
+  concurrency = 8,
+  -- Uncomment to debug an issue with a plugin by disabling all other plugins
+  -- defaults = {
+  --   cond = function(plugin)
+  --     local _, plugin_name = next(plugin)
+  --
+  --     local enabledPlugins = { 'foo', 'bar', 'baz' }
+  --     local found = false
+  --
+  --     for _, value in ipairs(enabledPlugins) do
+  --       if value == plugin_name then
+  --         return true
+  --       end
+  --     end
+  --
+  --     return false
+  --   end,
+  -- },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
+  performance = {
+    rtp = {
+      ---@type string[] list any plugins you want to disable here
+      disabled_plugins = {
+        'gzip',
+        'matchit',
+        'matchparen',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
+})
 
 -- Load project specific vimrc
 require('core.utils').load_local_vimrc()
