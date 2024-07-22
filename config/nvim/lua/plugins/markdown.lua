@@ -1,3 +1,4 @@
+-- pretty renderer for markdown files
 return {
   'MeanderingProgrammer/markdown.nvim',
   ft = { 'markdown' },
