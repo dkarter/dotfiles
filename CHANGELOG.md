@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.1.0](https://github.com/dkarter/dotfiles/compare/v16.0.0...v16.1.0) (2024-07-22)
+
+
+### Features
+
+* **installer:** install go-task on debian ([fc5f3b9](https://github.com/dkarter/dotfiles/commit/fc5f3b9ad193050146928b17f1da0804b32d78cf))
+
 ## [16.0.0](https://github.com/dkarter/dotfiles/compare/v15.1.0...v16.0.0) (2024-07-22)
 
 
