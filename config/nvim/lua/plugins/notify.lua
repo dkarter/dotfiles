@@ -1,5 +1,3 @@
-local core_mappings = require 'core.mappings'
-
 -- notifications
 return {
   'rcarriga/nvim-notify',
@@ -12,6 +10,6 @@ return {
     ---@diagnostic disable-next-line: undefined-field
     notify.setup(opts)
     vim.notify = notify
-    core_mappings.notify_mappings()
+    require('core.mappings').notify_mappings()
   end,
 }

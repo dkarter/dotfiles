@@ -1,5 +1,3 @@
-local core_mappings = require 'core.mappings'
-
 -- fuzzy find things
 return {
   'nvim-telescope/telescope.nvim',
@@ -18,5 +16,5 @@ return {
   config = function()
     require('plugins.telescope.setup').setup()
   end,
-  keys = core_mappings.telescope_mappings,
+  keys = require('core.mappings').telescope_mappings,
 }

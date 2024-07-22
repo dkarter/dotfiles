@@ -1,5 +1,3 @@
-local core_mappings = require 'core.mappings'
-
 return {
   'folke/flash.nvim',
   event = 'VeryLazy',
@@ -19,5 +17,5 @@ return {
     },
   },
     -- stylua: ignore
-    keys = core_mappings.flash_mappings,
+    keys = require('core.mappings').flash_mappings,
 }

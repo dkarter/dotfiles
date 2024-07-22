@@ -1,11 +1,9 @@
-local core_mappings = require 'core.mappings'
-
 -- ZEN MODE 🧘
 return {
   'folke/zen-mode.nvim',
   cmd = { 'ZenMode' },
   dependencies = { 'folke/twilight.nvim' },
-  keys = core_mappings.zen_mode_mappings,
+  keys = require('core.mappings').zen_mode_mappings,
   opts = {
     plugins = {
       -- disables git signs

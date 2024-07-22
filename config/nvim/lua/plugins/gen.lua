@@ -1,10 +1,8 @@
-local core_mappings = require 'core.mappings'
-
 -- Ollama integration for local LLM
 return {
   'David-Kunz/gen.nvim',
   cmd = { 'Gen' },
-  keys = core_mappings.gen_nvim_mappings,
+  keys = require('core.mappings').gen_nvim_mappings,
   opts = {
     model = 'mistral',
     display_mode = 'split', -- The display mode. Can be "float" or "split".

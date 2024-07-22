@@ -1,5 +1,3 @@
-local core_mappings = require 'core.mappings'
-
 -- elixir lsp support
 return {
   'elixir-tools/elixir-tools.nvim',
@@ -19,7 +17,7 @@ return {
           enableTestLenses = false,
         },
         on_attach = function(client, bufnr)
-          core_mappings.elixir_mappings()
+          require('core.mappings').elixir_mappings()
           require('plugins.mason.lsp').on_attach(client, bufnr)
         end,
       },

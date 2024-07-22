@@ -1,5 +1,3 @@
-local core_mappings = require 'core.mappings'
-
 -- attempt stuff using scratch buffer and pre-configured bootstrap
 
 local elixir_template = [[
@@ -14,7 +12,7 @@ Example.run()
 
 return {
   'm-demare/attempt.nvim',
-  keys = core_mappings.attempt_mappings,
+  keys = require('core.mappings').attempt_mappings,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',

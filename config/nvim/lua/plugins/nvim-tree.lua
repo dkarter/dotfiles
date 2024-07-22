@@ -1,9 +1,7 @@
-local core_mappings = require 'core.mappings'
-
 -- file tree
 return {
   'nvim-tree/nvim-tree.lua',
-  keys = core_mappings.nvim_tree_mappings,
+  keys = require('core.mappings').nvim_tree_mappings,
   cmd = {
     'NvimTreeToggle',
     'NvimTreeFindFileToggle',
