@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.0.0](https://github.com/dkarter/dotfiles/compare/v15.1.0...v16.0.0) (2024-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** move plugins to individual files
+* **nvim:** remove FzfRg + fzf plugin
+* **alacritty:** delete config
+
+### Features
+
+* **nvim:** add gitsigns code actions ([4cdf5cf](https://github.com/dkarter/dotfiles/commit/4cdf5cfa3d04400a46a554523439f2254e00bd15))
+* **nvim:** add markdown.nvim ([305c4f7](https://github.com/dkarter/dotfiles/commit/305c4f76a817e83a958efcab59be928c0fac5513))
+
+
+### Bug Fixes
+
+* **gitignore:** ignore .ruby-lsp folder ([b5b1e29](https://github.com/dkarter/dotfiles/commit/b5b1e2968fd08d3ba3bd50df82762bce4733b802))
+* **installer:** always update cargo packages ([6c3c016](https://github.com/dkarter/dotfiles/commit/6c3c016f617805e278f5e8db30764644e4b10d36))
+* **installer:** automatically upgrade gh extensions ([6111d0e](https://github.com/dkarter/dotfiles/commit/6111d0eaa191d35f08577c8a1e140c5bedc9edbc))
+* **installer:** install cargos locked ([c7ee177](https://github.com/dkarter/dotfiles/commit/c7ee17748b35776a359a23732af0c7c3162b9d9e))
+* **nvim:** format files via LSP if supported ([281c8b6](https://github.com/dkarter/dotfiles/commit/281c8b6d82ea8923867f33b327cfd79f51cbf727))
+
+
+### Miscellaneous Chores
+
+* **alacritty:** delete config ([ef13119](https://github.com/dkarter/dotfiles/commit/ef13119764385d62084ef76294023f1fdf141af0))
+* **nvim:** remove FzfRg + fzf plugin ([98ddf32](https://github.com/dkarter/dotfiles/commit/98ddf32479d4b1c3ba0b1dea0f5a4773e294ca00))
+
+
+### Code Refactoring
+
+* **nvim:** move plugins to individual files ([df581e2](https://github.com/dkarter/dotfiles/commit/df581e23e0b76bba4a4bb3cdfafc82b04cbd1ba4))
+
 ## [15.1.0](https://github.com/dkarter/dotfiles/compare/v15.0.0...v15.1.0) (2024-07-14)
 
 
