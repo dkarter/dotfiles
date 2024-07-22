@@ -1,5 +1,10 @@
 #!/bin/bash
 
+TMP_FOLDER=/tmp/dots
+mkdir -p "$TMP_FOLDER"
+wget --output-document "$TMP_FOLDER/task_linux_386.deb" https://github.com/go-task/task/releases/latest/download/task_linux_386.deb
+sudo dpkg -i "$TMP_FOLDER/task_linux_386.deb"
+
 # install all debian packages needed for my dotfiles
 sudo apt -y install \
   autoconf \
