@@ -22,7 +22,6 @@ DOTFILES = %w[
   gitignore
   gitmessage
   ignore
-  p10k.zsh
   prettierrc
   pryrc
   psqlrc
@@ -48,6 +47,7 @@ SYMLINK_DIRS = [
   %w[./config/hammerspoon ~/.config/hammerspoon],
   %w[./config/gitui ~/.config/gitui],
   %w[./config/gh-dash ~/.config/gh-dash],
+  %w[./config/starship ~/.config/starship],
 ].freeze
 
 GEMS = [
@@ -105,6 +105,8 @@ NPMS = [
 ].freeze
 
 CARGOS = [
+  # command prompt styling
+  'starship',
   # file system tree visualizer with icons and git support
   'erdtree',
   # ls replacement with icons and git support + more

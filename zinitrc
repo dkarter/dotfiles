@@ -7,12 +7,6 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-rust \
   zdharma-continuum/zinit-annex-man
 
-# Load the pure theme, with zsh-async library that's bundled with it.
-# zinit ice pick"async.zsh" src"pure.zsh"
-# zinit light sindresorhus/pure
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
-
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
