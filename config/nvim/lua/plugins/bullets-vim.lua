@@ -8,6 +8,7 @@ return {
       'gitcommit',
       'scratch',
     }
+    vim.g.bullets_outline_levels = {}
   end,
   ft = {
     'markdown',
