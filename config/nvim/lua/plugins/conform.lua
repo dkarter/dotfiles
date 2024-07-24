@@ -25,7 +25,12 @@ return {
       json = prettier,
       typescript = prettier,
       typescriptreact = prettier,
-      elixir = { 'mix' },
+      -- mix format is taking long to format, so I bumped the timeout, I'm not
+      -- sure why it's taking long though (is it large files, is it all files,
+      -- is it the warm up time - maybe I can build a mix_format_d to prevent
+      -- the need for warm up). Actually it could be elixir-styler that we use
+      -- at PDQ is slow AF - can disable it momentarily and see if this improves
+      elixir = { 'mix', timeout_ms = 2000 },
       sh = { 'shfmt' },
     },
     -- Set default options
@@ -40,7 +45,7 @@ return {
         return
       end
 
-      return { timeout_ms = 500, lsp_format = 'fallback' }
+      return {}
     end,
     -- Customize formatters
     formatters = {
