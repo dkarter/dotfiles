@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.2.0](https://github.com/dkarter/dotfiles/compare/v16.1.0...v16.2.0) (2024-07-25)
+
+
+### Features
+
+* **installer:** add cargo install-update and cargo show subcommands ([b67bfed](https://github.com/dkarter/dotfiles/commit/b67bfed41909c8416786bf1d9df322fab1daf130))
+* **installer:** sync task now installs + updates external packages ([7c49c09](https://github.com/dkarter/dotfiles/commit/7c49c09f41c54d12320b29db07299df1d5bc6389))
+
+
+### Bug Fixes
+
+* **nvim:** disable bullets-vim outline levels ([6dd0577](https://github.com/dkarter/dotfiles/commit/6dd0577eb106d91f7b87aee15939cb18807ee4d5))
+* **nvim:** increase timeout for mix format ([39b1cf8](https://github.com/dkarter/dotfiles/commit/39b1cf8a3aa691788376af0e5f2d84b5f4ef62a1))
+
+
+### Performance Improvements
+
+* **installer:** only update cargo crates if outdated ([0284de0](https://github.com/dkarter/dotfiles/commit/0284de0e6e878837bbd98ac6a704c77058bff0ad))
+
 ## [16.1.0](https://github.com/dkarter/dotfiles/compare/v16.0.0...v16.1.0) (2024-07-22)
 
 
