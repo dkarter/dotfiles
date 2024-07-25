@@ -362,7 +362,16 @@ class Installer
   def install_rust_cargos
     puts '===== Installing Rust Cargos'.blue
 
-    CARGOS.each { |cargo| popen("cargo install #{cargo} --force --locked") }
+    already_installed = IO.popen(<<-BASH).read.chomp.split("\n")
+    cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' '
+    BASH
+
+    puts 'Installing new crates...'.light_blue
+    CARGOS.reject { |pkg| already_installed.include?(pkg) }
+          .each { |cargo| popen("cargo install #{cargo} --force --locked") }
+
+    puts 'Updating existing crates...'.light_blue
+    popen('cargo install-update -a')
   end
 
   def symlink_dotfiles
