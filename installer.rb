@@ -431,7 +431,8 @@ class Installer
   def reshim_asdf_tools
     puts '===== Reshimming'.blue
 
-    ASDF_PLUGINS.each { |plugin| asdf_command("asdf reshim #{plugin}") }
+    ASDF_PLUGINS.map { |plugin| Thread.new { asdf_command("asdf reshim #{plugin}") } }
+                .each(&:join)
   end
 
   def link_folder(source, target)
