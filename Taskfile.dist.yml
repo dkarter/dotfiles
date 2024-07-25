@@ -94,6 +94,9 @@ tasks:
 
       Only symlinks dotfiles, does not install packages
     cmds:
+      # we need to sync asdf for the local project before we try to install any packages
+      - task: sync:asdf
+      - task: install:pnpm
       - ruby ./installer.rb --sync --force
 
   sync:nvim:
