@@ -178,7 +178,7 @@ TASKS = [
   },
   {
     name: 'Extrenal Packages',
-    sync: false,
+    sync: true,
     confirmation: 'Install external packages (gems, pips, cargos, npms)?',
     callback:
       proc do
@@ -190,13 +190,13 @@ TASKS = [
   },
   {
     name: 'Reshim ASDF tools',
-    sync: false,
+    sync: true,
     confirmation: 'Reshim ASDF tools?',
     callback: proc { reshim_asdf_tools },
   },
   {
     name: 'GH Plugins',
-    sync: false,
+    sync: true,
     confirmation: 'Install GH Plugins?',
     callback: proc { install_gh_plugins },
   },
