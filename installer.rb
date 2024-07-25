@@ -105,6 +105,10 @@ NPMS = [
 ].freeze
 
 CARGOS = [
+  # cargo subcommand to print package metadata like pip show, apt-cache show, npm view, gem query, etc.
+  'cargo-show',
+  # cargo subcommand to automatically update cargo installed binaries
+  'cargo-update',
   # command prompt styling
   'starship',
   # file system tree visualizer with icons and git support
