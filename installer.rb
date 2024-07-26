@@ -291,11 +291,6 @@ class Installer
   def install_asdf_tools
     puts '===== Installing asdf packages latest version'.blue
 
-    # import OpenPGP keysfornode
-    popen(
-      "zsh -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'",
-    )
-
     plugins =
       if `uname -m`.match?(/x86/)
         ASDF_PLUGINS
