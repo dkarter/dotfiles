@@ -196,10 +196,12 @@ M.elixir_mappings = function()
   vmap { '<space>em', ':ElixirExpandMacro<cr>', { desc = '[E]xpand [M]acro', buffer = true, noremap = true } }
 end
 
+---@type LazyKeysSpec[]
 M.zen_mode_mappings = {
   { '<leader>zm', '<cmd>ZenMode<cr>', desc = 'Zen Mode (Toggle)' },
 }
 
+---@type LazyKeysSpec[]
 M.trouble_mappings = {
   { '<leader>xw', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Workspace Diagnostics' },
   { '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Document Diagnostics' },
@@ -220,6 +222,7 @@ M.trouble_mappings = {
     '[q',
     function()
       if require('trouble').is_open() then
+        ---@diagnostic disable-next-line: missing-parameter
         require('trouble').prev { skip_groups = true, jump = true }
       else
         local ok, err = pcall(vim.cmd.cprev)
@@ -234,6 +237,7 @@ M.trouble_mappings = {
     ']q',
     function()
       if require('trouble').is_open() then
+        ---@diagnostic disable-next-line: missing-parameter
         require('trouble').next { skip_groups = true, jump = true }
       else
         local ok, err = pcall(vim.cmd.cnext)
@@ -273,16 +277,19 @@ M.todo_comments_mappings = {
 }
 
 -- stylua: ignore
+---@type LazyKeysSpec[]
 M.flash_mappings = {
   { "<leader><leader>", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
   { "<leader><cr>",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
 }
 
+---@type LazyKeysSpec[]
 M.nvim_tree_mappings = {
   { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
   { '<leader>nf', '<cmd>NvimTreeFindFileToggle<CR>', { desc = '[N]vimTree [F]ile (toggle)' } },
 }
 
+---@type LazyKeysSpec[]
 M.oil_nvim_mappings = {
   { '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' } },
   {
@@ -294,10 +301,12 @@ M.oil_nvim_mappings = {
   },
 }
 
+---@type LazyKeysSpec[]
 M.neogen_mappings = {
   { '<leader>ng', ":lua require('neogen').generate()<CR>", { desc = '[N]eogen [F]unction' } },
 }
 
+---@type LazyKeysSpec[]
 M.telescope_mappings = {
   -- muscle memory
   { '<C-p>', telescope 'find_files', default_opts },
@@ -348,11 +357,13 @@ M.telescope_mappings = {
   },
 }
 
+---@type LazyKeysSpec[]
 M.blame_nvim_mappings = {
   -- Git Blame
   { '<leader>gb', ':BlameToggle<CR>', desc = '[G]it [B]lame' },
 }
 
+---@type LazyKeysSpec[]
 M.gen_nvim_mappings = {
   { '<leader>ai', ':Gen<CR>', mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
   { '<leader>aa', ':Gen Ask<CR>', mode = { 'n', 'v' }, desc = '[A]I [A]sk' },
@@ -374,6 +385,7 @@ M.fugitive_mappings = function()
   nmap { '<Leader>gR', ':Gread<CR>', { desc = '[G]it [R]ead (reverts file)' } }
 end
 
+---@type LazyKeysSpec[]
 M.rhubarb_mappings = {
   -- open github page for file
   { '<leader>gO', ':GBrowse<CR>', desc = '[G]ithub [O]pen File' },
@@ -407,11 +419,13 @@ M.rhubarb_mappings = {
   },
 }
 
+---@type LazyKeysSpec[]
 M.diffview_mappings = {
   { '<leader>gv', '<cmd>DiffviewFileHistory %<CR>', desc = '[G]it [V]iew (:gitv! alt)' },
   { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[G]it [D]iff' },
 }
 
+---@type LazyKeysSpec[]
 M.ripgrep_mappings = {
   --  alias for above
   --  Grep project for selection with Rg
@@ -420,12 +434,13 @@ M.ripgrep_mappings = {
   { '<Leader>rg', ':Rg <C-r><C-w><CR>', desc = '[R]ip[G]rep word under cursor' },
 }
 
+---@type LazyKeysSpec[]
 M.easy_align_mappings = {
   { '<leader>ea', ':EasyAlign ', desc = '[E]asy [A]lign' },
   { '<leader>ea', ':EasyAlign ', mode = 'v', desc = '[E]asy [A]lign' },
 }
 
----@type LazyKeys[]
+---@type LazyKeysSpec[]
 M.vim_test_mappings = {
   { '<leader>tn', ':TestNearest<CR>', silent = true, desc = '[T]est [N]earest' },
   { '<leader>tf', ':TestFile<CR>', silent = true, desc = '[T]est [F]ile' },
@@ -433,10 +448,12 @@ M.vim_test_mappings = {
   { '<leader>tl', ':TestLast<CR>', silent = true, desc = '[T]est [L]ast' },
 }
 
+---@type LazyKeysSpec[]
 M.undotree_mappings = {
   { '<leader>ut', '<cmd>UndotreeToggle<CR>', desc = '[U]ndo [T]ree' },
 }
 
+---@type LazyKeysSpec[]
 M.attempt_mappings = {
   -- new attempt, selecting extension
   { '<leader>sn', '<cmd>lua require("attempt").new_select()<CR>', desc = '[S]cratch [N]ew' },
@@ -473,6 +490,7 @@ local bufremove_curr = function(force)
   end
 end
 
+---@type LazyKeysSpec[]
 M.bufremove_mappings = {
   { '<leader>bd', bufremove_curr(false), desc = 'Delete Buffer' },
   { '<leader>bD', bufremove_curr(true), desc = 'Delete Buffer (Force)' },
