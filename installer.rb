@@ -148,7 +148,11 @@ TASKS = [
     confirmation: 'Install fonts?',
     callback: proc { install_fonts },
   },
-  { name: 'Create Dirs', sync: true, callback: proc { create_dirs } },
+  {
+    name: 'Create Dirs',
+    sync: true,
+    callback: proc { create_dirs },
+  },
   {
     name: 'Symlink Dotfiles',
     sync: true,
@@ -167,7 +171,7 @@ TASKS = [
   },
   {
     name: 'ASDF',
-    sync: false,
+    sync: true,
     confirmation: 'Install ASDF latest tool versions?',
     callback:
       proc do
