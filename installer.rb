@@ -11,7 +11,11 @@ Warning[:experimental] = false
 
 ASDF_INSTALL_DIR = '~/.asdf'
 
-DIRS = %w[~/.config ~/.local/share/psql].freeze
+DIRS = %w[
+  ~/.cache/zsh/completions
+  ~/.config
+  ~/.local/share/psql
+].freeze
 
 DOTFILES = %w[
   aliases
@@ -133,6 +137,15 @@ CARGOS = [
   'zoxide',
 ].freeze
 
+COMPLETIONS = [
+  ['delta', 'delta --generate-completion zsh'],
+  ['erd', 'erd --completions zsh'],
+  ['fx', 'fx --comp zsh'],
+  ['kubectl', 'kubectl completion zsh'],
+  ['sg', 'sg completions zsh'],
+  ['starship', 'starship completions zsh'],
+].freeze
+
 GH_PLUGINS = [
   # PR dashboard
   'dlvhdr/gh-dash',
@@ -201,6 +214,12 @@ TASKS = [
     sync: true,
     confirmation: 'Reshim ASDF tools?',
     callback: proc { reshim_asdf_tools },
+  },
+  {
+    name: 'Generate completions cache',
+    sync: true,
+    confirmation: 'Generate completions cache?',
+    callback: proc { generate_completions_cache },
   },
   {
     name: 'GH Plugins',
@@ -445,6 +464,21 @@ class Installer
 
     ASDF_PLUGINS.map { |plugin| Thread.new { popen("asdf reshim #{plugin}") } }
                 .each(&:join)
+  end
+
+  def generate_completions_cache
+    COMPLETIONS.map do |name, command|
+      Thread.new do
+        puts "===== Creating completions cache for #{name}...".blue
+        popen(<<-BASH)
+        #{command} > ~/.cache/zsh/completions/_#{name}
+        BASH
+      end
+    end
+    .each(&:join)
+
+    puts '===== Refreshing completions'.blue
+    popen('compinit')
   end
 
   def link_folder(source, target)

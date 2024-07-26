@@ -2,10 +2,10 @@
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+export COMPLETION_WAITING_DOTS="true"
 
 # load our own completion functions
-fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
+fpath=(~/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
 
 # append asdf completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
