@@ -276,16 +276,20 @@ class Installer
   def update_asdf
     puts '===== Updating asdf to latest version'.blue
 
-    asdf_command('asdf update')
+    popen('asdf update')
   end
 
   def install_asdf_plugins
     puts '===== Installing asdf plugins'.blue
 
-    ASDF_PLUGINS.each do |plugin, url|
-      puts "Installing #{plugin} plugin...".light_blue
-      asdf_command("asdf plugin add #{plugin} #{url}")
-    end
+    ASDF_PLUGINS
+      .map do |plugin, url|
+        Thread.new do
+          puts "Installing #{plugin} plugin...".light_blue
+          popen("asdf plugin add #{plugin} #{url}")
+        end
+      end
+      .each(&:join)
   end
 
   def install_asdf_tools
@@ -413,29 +417,25 @@ class Installer
   def install_rubygems
     puts '===== Installing necessary RubyGems'.blue
 
-    asdf_command("gem install #{GEMS.join(' ')}")
+    popen("gem install #{GEMS.join(' ')}")
   end
 
   def install_python_packages
     puts '===== Installing Python packages'.blue
 
-    asdf_command("pip3 install #{PIPS3.join(' ')}")
+    popen("pip3 install #{PIPS3.join(' ')}")
   end
 
   def install_npm_packages
     puts '===== Installing NPM packages'.blue
 
-    asdf_command("npm install -g #{NPMS.join(' ')}")
-  end
-
-  def asdf_command(cmd)
-    popen("zsh -c '. #{ASDF_INSTALL_DIR}/asdf.sh && #{cmd}'")
+    popen("npm install -g #{NPMS.join(' ')}")
   end
 
   def reshim_asdf_tools
     puts '===== Reshimming'.blue
 
-    ASDF_PLUGINS.map { |plugin| Thread.new { asdf_command("asdf reshim #{plugin}") } }
+    ASDF_PLUGINS.map { |plugin| Thread.new { popen("asdf reshim #{plugin}") } }
                 .each(&:join)
   end
 
