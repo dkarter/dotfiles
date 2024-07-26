@@ -372,7 +372,7 @@ class Installer
 
     puts 'Installing new crates...'.light_blue
     CARGOS.reject { |pkg| already_installed.include?(pkg) }
-          .each { |cargo| popen("cargo install #{cargo} --force --locked") }
+          .each { |cargo| popen("cargo install #{cargo} --force") }
 
     puts 'Updating existing crates...'.light_blue
     popen('cargo install-update -a')
