@@ -127,6 +127,8 @@ CARGOS = [
   'gitui',
   # rename a list of files in your editor
   'pipe-rename',
+  # A command-line tool to batch rename files and directories
+  'rnr',
   # a modern version of autojump
   'zoxide',
 ].freeze
