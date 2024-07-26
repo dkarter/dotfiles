@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.3.0](https://github.com/dkarter/dotfiles/compare/v16.2.0...v16.3.0) (2024-07-26)
+
+
+### Features
+
+* **installer:** run asdf install as part of sync ([11ea2aa](https://github.com/dkarter/dotfiles/commit/11ea2aa6d5f30c750ec6384fa5882f50b912f832))
+
+
+### Bug Fixes
+
+* **installer:** improve asdf commands so they can be run as part of sync ([7335ebd](https://github.com/dkarter/dotfiles/commit/7335ebd6bda8560cf4fbf370530b0d4a747946fb))
+* **installer:** install nodejs lts version ([aaa3405](https://github.com/dkarter/dotfiles/commit/aaa34052b4b6bd5b52365eb157c94d659abe39cf))
+* **installer:** remove --locked from cargo install ([f850376](https://github.com/dkarter/dotfiles/commit/f8503762a46f4b7576c5f7a2e0d5c410274da6a6))
+* **installer:** remove OpenPGP key import for ASDF node ([9ac8464](https://github.com/dkarter/dotfiles/commit/9ac84648d2eac7c649ca14d63c2759cf2fdfe819))
+* **task:** sync dotfiles now syncs asdf and installs pnpm ([52d6aea](https://github.com/dkarter/dotfiles/commit/52d6aea08e15b6c8e3c041f0569329b58962379b))
+
+
+### Performance Improvements
+
+* **installer:** run asdf reshim in parallel ([43a76cd](https://github.com/dkarter/dotfiles/commit/43a76cdfb97557461370e57ec3c18d3820ca31ff))
+
 ## [16.2.0](https://github.com/dkarter/dotfiles/compare/v16.1.0...v16.2.0) (2024-07-25)
 
 
