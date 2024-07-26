@@ -66,10 +66,11 @@ return {
     dap.listeners.before.event_terminated.dapui_config = dapui.close
     dap.listeners.before.event_exited.dapui_config = dapui.close
 
-    dap.adapters.nlua = function(cb, config)
-      cb { type = 'server', host = config.host or '127.0.0.1', port = config.port or 8088 }
-    end
-
+    -----------------------------------------
+    --- SETUP ADAPTERS AND CONFIGURATIONS ---
+    -----------------------------------------
+    -- More here: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
+    -----------------------------------------
     dap.adapters.mix_task = function(cb, config)
       if config.preLaunchTask then
         vim.fn.system(config.preLaunchTask)
@@ -81,51 +82,6 @@ return {
         args = {},
       }
     end
-
-    dap.adapters.node2 = function(cb, config)
-      if config.preLaunchTask then
-        vim.fn.system(config.preLaunchTask)
-      end
-      cb {
-        type = 'executable',
-        command = 'node',
-        args = {
-          -- os.getenv("HOME") .. "/build/vscode-node-debug2/out/src/nodeDebug.js",
-          vim.fn.stdpath 'data' .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js',
-        },
-      }
-    end
-
-    dap.adapters.reactnative = function(cb, config)
-      if config.preLaunchTask then
-        vim.fn.system(config.preLaunchTask)
-      end
-
-      cb {
-        type = 'executable',
-        command = 'node',
-        args = {
-          vim.fn.stdpath 'data' .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js',
-        },
-      }
-    end
-
-    dap.configurations.lua = {
-      {
-        type = 'nlua',
-        request = 'attach',
-        name = 'Attach to running Neovim instance',
-        host = function()
-          local value = vim.fn.input 'Host [default: 127.0.0.1]: '
-          return value ~= '' and value or '127.0.0.1'
-        end,
-        port = function()
-          local val = tonumber(vim.fn.input 'Port: ')
-          assert(val, 'Please provide a port number')
-          return val
-        end,
-      },
-    }
 
     dap.configurations.elixir = {
       {
