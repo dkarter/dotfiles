@@ -7,7 +7,7 @@ return {
   ---@class lazydev.Config
   opts = {
     library = {
-      { 'lazy.nvim', words = { 'lazy', 'LazySpec' } },
+      { 'lazy.nvim', words = { 'lazy', 'LazySpec', 'LazyKeys', 'LazyKeysSpec' } },
       -- See the configuration section for more details
       -- Load luvit types when the `vim.uv` word is found
       { path = 'luvit-meta/library', words = { 'vim%.uv' } },
