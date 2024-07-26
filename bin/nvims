@@ -10,4 +10,4 @@ elif [[ $config == "default" ]]; then
   config=""
 fi
 
-NVIM_APPNAME="$config" nvim $@
+NVIM_APPNAME="$config" nvim "$@"

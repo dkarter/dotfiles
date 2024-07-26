@@ -37,7 +37,7 @@ defaults write com.apple.dock showhidden -bool true
 defaults -currentHost write com.apple.controlcenter.plist BatteryShowPercentage -bool true
 
 # change hammerspoon config dir to XDG Home:
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 
 # ------------------------------------
 if [ "$(hidutil property --get 'UserKeyMapping')" == '(null)' ]; then
