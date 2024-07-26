@@ -22,18 +22,23 @@ return {
     'theHamsta/nvim-dap-virtual-text',
 
     -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
     {
       'jay-babu/mason-nvim-dap.nvim',
+      ---@module "mason-nvim-dap"
+      ---@type MasonNvimDapSettings
       opts = {
         -- Makes a best effort to setup the various debuggers with
         -- reasonable debug configurations
-        automatic_setup = true,
+        automatic_installation = true,
 
         ensure_installed = {
           -- Update this to ensure that you have the debuggers for the langs you want
           'js-debug-adapter',
         },
+        handlers = {},
+      },
+      dependencies = {
+        'williamboman/mason.nvim',
       },
     },
 
