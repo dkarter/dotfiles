@@ -304,9 +304,18 @@ class Installer
       end
 
     plugins.each do |(plugin, _url)|
+      # Thanks JavaScript! Node is released via the LTS model, so the latest
+      # version is usually not what you want. This is a smoothbrained solution,
+      # but I don't think it's worth investing in an abstraction here unless I
+      # start using more than one runtime that has that requirement
+      version =
+        plugin == 'nodejs' ? IO.popen(<<-BASH).read.chomp : 'latest'
+        asdf list-all nodejs | grep '^20' | sort -r --version-sort | head -n 1
+        BASH
+
       puts "Installing #{plugin}...".light_blue
-      asdf_command(
-        "asdf install #{plugin} latest && asdf global #{plugin} latest",
+      popen(
+        "asdf install #{plugin} #{version} && asdf global #{plugin} #{version}",
       )
     end
   end
