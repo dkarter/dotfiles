@@ -105,6 +105,8 @@ NPMS = [
 ].freeze
 
 CARGOS = [
+  # like grep by on code structure!
+  'ast-grep',
   # cargo subcommand to print package metadata like pip show, apt-cache show, npm view, gem query, etc.
   'cargo-show',
   # cargo subcommand to automatically update cargo installed binaries
