@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [16.4.0](https://github.com/dkarter/dotfiles/compare/v16.3.0...v16.4.0) (2024-07-26)
+
+
+### Features
+
+* **nvim:** add nvim-dap for step debugging ([bffe799](https://github.com/dkarter/dotfiles/commit/bffe799b2de956d77648406ddc665d8900f5c6b5))
+* **nvim:** improve auto-complete for lua files using lazydev.nvim ([f471a87](https://github.com/dkarter/dotfiles/commit/f471a879b26f80673a03c6fb69cd0b8f6743dd3d))
+
+
+### Bug Fixes
+
+* **nvim:** automatically load types on LazyKeys ([457bdc8](https://github.com/dkarter/dotfiles/commit/457bdc8e1ac13e2a32043c71eed8639f49f963ad))
+
 ## [16.3.0](https://github.com/dkarter/dotfiles/compare/v16.2.0...v16.3.0) (2024-07-26)
 
 
