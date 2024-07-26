@@ -3,6 +3,7 @@
 -- try prettierd, and fallback to prettier, if the first one works stop
 local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 
+---@type LazySpec
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },

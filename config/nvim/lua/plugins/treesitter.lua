@@ -1,4 +1,5 @@
 --  Better syntax highlighting (and more)
+---@type LazySpec
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',

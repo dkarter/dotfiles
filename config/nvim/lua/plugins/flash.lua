@@ -1,6 +1,8 @@
+---@type LazySpec
 return {
   'folke/flash.nvim',
   event = 'VeryLazy',
+  ---@module "flash"
   ---@type Flash.Config
   opts = {
     modes = {
@@ -16,6 +18,5 @@ return {
       },
     },
   },
-    -- stylua: ignore
-    keys = require('core.mappings').flash_mappings,
+  keys = require('core.mappings').flash_mappings,
 }

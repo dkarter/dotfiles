@@ -1,4 +1,5 @@
 -- pretty renderer for markdown files
+---@type LazySpec
 return {
   'MeanderingProgrammer/markdown.nvim',
   ft = { 'markdown' },

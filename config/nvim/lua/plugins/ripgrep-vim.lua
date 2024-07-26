@@ -1,4 +1,5 @@
 -- RipGrep - grep is dead. All hail the new king RipGrep.
+---@type LazySpec
 return {
   'jremmen/vim-ripgrep',
   cmd = 'Rg',

@@ -1,4 +1,5 @@
 -- vim projectionist allows creating :Esomething custom shortcuts (required by vim rake)
+---@type LazySpec
 return {
   'tpope/vim-projectionist',
   config = function()

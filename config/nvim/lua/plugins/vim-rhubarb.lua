@@ -1,4 +1,5 @@
 -- github support for fugitive
+---@type LazySpec
 return {
   'tpope/vim-rhubarb',
   event = { 'BufReadPost', 'BufNewFile' },

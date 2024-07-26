@@ -1,6 +1,7 @@
 -- Neovim as a language server to inject LSP diagnostics, code
 -- actions, and more via Lua.
 -- This is now using the community fork: https://github.com/nvimtools/none-ls.nvim
+---@type LazySpec
 return {
   'nvimtools/none-ls.nvim',
   event = { 'BufReadPre', 'BufNewFile' },

@@ -139,7 +139,7 @@ M.setup = function()
     lualine_z = {},
   }
 
-  ---@diagnostic disable-next-line: redundant-parameter
+  ---@module "lualine"
   lualine.setup {
     winbar = winbar,
     inactive_winbar = {

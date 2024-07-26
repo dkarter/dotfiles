@@ -1,4 +1,5 @@
 -- Toggle between different language verbs or syntax styles
+---@type LazySpec
 return {
   'AndrewRadev/switch.vim',
   event = { 'BufReadPost', 'BufNewFile' },

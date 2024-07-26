@@ -1,4 +1,5 @@
 -- highlight and search todo/fixme/hack etc comments
+---@type LazySpec
 return {
   'folke/todo-comments.nvim',
   event = { 'BufReadPost', 'BufNewFile' },

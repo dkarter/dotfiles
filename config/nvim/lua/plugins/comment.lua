@@ -1,4 +1,5 @@
 -- Comment out code easily
+---@type LazySpec
 return {
   'numToStr/Comment.nvim',
   event = { 'BufReadPost', 'BufNewFile' },

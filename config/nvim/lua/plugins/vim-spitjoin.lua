@@ -1,4 +1,5 @@
 -- Convert code to multiline
+---@type LazySpec
 return {
   'AndrewRadev/splitjoin.vim',
   event = { 'BufReadPost', 'BufNewFile' },

@@ -1,4 +1,5 @@
 -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+---@type LazySpec
 return {
   'sindrets/diffview.nvim',
   cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },

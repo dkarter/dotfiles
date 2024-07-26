@@ -1,3 +1,5 @@
+-- Tmux + nvim integration (seamless navigation etc)
+---@type LazySpec
 return {
   'aserowy/tmux.nvim',
   event = 'VeryLazy',

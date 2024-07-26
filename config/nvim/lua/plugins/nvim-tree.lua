@@ -1,4 +1,5 @@
 -- file tree
+---@type LazySpec
 return {
   'nvim-tree/nvim-tree.lua',
   keys = require('core.mappings').nvim_tree_mappings,

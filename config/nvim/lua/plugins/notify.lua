@@ -1,4 +1,5 @@
 -- notifications
+---@type LazySpec
 return {
   'rcarriga/nvim-notify',
   opts = {

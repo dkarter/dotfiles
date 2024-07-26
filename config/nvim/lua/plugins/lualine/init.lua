@@ -1,8 +1,9 @@
 -- status line + winbar
+
+---@type LazySpec
 return {
   'nvim-lualine/lualine.nvim',
   event = { 'BufReadPost', 'BufNewFile' },
-  --- @type LazySpec[]
   dependencies = {
     'nvim-tree/nvim-web-devicons',
     {

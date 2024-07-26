@@ -1,4 +1,5 @@
 -- automatic bulleted lists
+---@type LazySpec
 return {
   'dkarter/bullets.vim',
   init = function()

@@ -1,4 +1,5 @@
 -- elixir lsp support
+---@type LazySpec
 return {
   'elixir-tools/elixir-tools.nvim',
   version = '*',

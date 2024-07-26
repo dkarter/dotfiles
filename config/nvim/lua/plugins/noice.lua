@@ -1,4 +1,5 @@
 -- modern vim command line replacement, requires nvim 0.9 or higher
+---@type LazySpec
 return {
   'folke/noice.nvim',
   enabled = true,

@@ -1,5 +1,6 @@
 -- TokyoNight color scheme
 
+---@type LazySpec
 return {
   'folke/tokyonight.nvim',
   lazy = false, -- make sure we load this during startup

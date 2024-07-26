@@ -1,4 +1,5 @@
 -- show trailing white spaces and automatically delete them on write
+---@type LazySpec
 return {
   'zakharykaplan/nvim-retrail',
   event = { 'BufReadPost', 'BufNewFile' },

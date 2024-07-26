@@ -10,6 +10,7 @@ end
 Example.run()
 ]]
 
+---@type LazySpec
 return {
   'm-demare/attempt.nvim',
   keys = require('core.mappings').attempt_mappings,

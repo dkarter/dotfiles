@@ -1,4 +1,5 @@
 -- replacement for matchit
+---@type LazySpec
 return {
   'andymass/vim-matchup',
   event = { 'BufReadPost', 'BufNewFile' },

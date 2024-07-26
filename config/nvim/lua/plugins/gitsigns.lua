@@ -1,4 +1,5 @@
 -- Visual git gutter (also used by feline)
+---@type LazySpec
 return {
   'lewis6991/gitsigns.nvim',
   event = { 'BufReadPre', 'BufNewFile' },

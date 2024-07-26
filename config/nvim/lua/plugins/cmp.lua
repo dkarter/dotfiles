@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -204,6 +205,7 @@ return {
     ---@diagnostic disable-next-line:undefined-field
     cmp.setup.filetype('lua', {
       sources = cmp.config.sources({
+        { name = 'lazydev', group_index = 0 },
         { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },

@@ -1,4 +1,5 @@
 -- Neovim file explorer: edit your filesystem like a buffer
+---@type LazySpec
 return {
   'stevearc/oil.nvim',
   -- we need this to work when running nvim .

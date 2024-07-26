@@ -1,4 +1,5 @@
 -- better ui for vim.ui commands
+---@type LazySpec
 return {
   'stevearc/dressing.nvim',
   lazy = true,

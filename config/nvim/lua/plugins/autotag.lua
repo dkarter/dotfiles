@@ -1,4 +1,5 @@
 -- auto close html/tsx tags using TreeSitter
+---@type LazySpec
 return {
   'windwp/nvim-ts-autotag',
   ft = {

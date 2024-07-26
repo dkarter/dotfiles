@@ -1,4 +1,5 @@
 -- start page
+---@type LazySpec
 return {
   'goolord/alpha-nvim',
   event = 'VimEnter',

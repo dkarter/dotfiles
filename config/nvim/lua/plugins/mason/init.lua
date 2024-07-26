@@ -1,4 +1,5 @@
 -- installs/updates LSPs, linters and DAPs
+---@type LazySpec
 return {
   'williamboman/mason.nvim',
   build = ':MasonUpdate',

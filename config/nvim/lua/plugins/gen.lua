@@ -1,4 +1,5 @@
 -- Ollama integration for local LLM
+---@type LazySpec
 return {
   'David-Kunz/gen.nvim',
   cmd = { 'Gen' },

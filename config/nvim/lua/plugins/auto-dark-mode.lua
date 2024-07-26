@@ -1,4 +1,5 @@
 -- automatically set color scheme based on system
+---@type LazySpec
 return {
   'f-person/auto-dark-mode.nvim',
   event = 'VeryLazy',
