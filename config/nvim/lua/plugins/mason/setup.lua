@@ -81,6 +81,11 @@ M.setup = function()
     'yaml-language-server',
     'zls',
 
+    -- DAP
+    'bash-debug-adapter',
+    'delve',
+    'js-debug-adapter',
+
     -- Other utils
     'tree-sitter-cli',
   }

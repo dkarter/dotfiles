@@ -34,6 +34,7 @@ return {
         ensure_installed = {
           -- Update this to ensure that you have the debuggers for the langs you want
           'js-debug-adapter',
+          'bash-debug-adapter',
         },
         handlers = {},
       },
@@ -108,6 +109,34 @@ return {
         request = 'launch',
         task = 'phx.server',
         projectDir = '.',
+      },
+    }
+
+    dap.adapters.bashdb = {
+      type = 'executable',
+      command = vim.fn.stdpath 'data' .. '/mason/packages/bash-debug-adapter/bash-debug-adapter',
+      name = 'bashdb',
+    }
+
+    dap.configurations.sh = {
+      {
+        type = 'bashdb',
+        request = 'launch',
+        name = 'Launch file',
+        showDebugOutput = true,
+        pathBashdb = vim.fn.stdpath 'data' .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb',
+        pathBashdbLib = vim.fn.stdpath 'data' .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir',
+        trace = true,
+        file = '${file}',
+        program = '${file}',
+        cwd = '${workspaceFolder}',
+        pathCat = 'cat',
+        pathBash = vim.fn.exepath 'bash',
+        pathMkfifo = 'mkfifo',
+        pathPkill = 'pkill',
+        args = {},
+        env = {},
+        terminalKind = 'integrated',
       },
     }
 
