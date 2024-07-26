@@ -30,11 +30,9 @@ zinit light Aloxaf/fzf-tab
 # reminders for aliases if whole command is typed
 zinit light djui/alias-tips
 
-# kubernetes completions and aliases
-zinit ice lucid wait \
-  has'kubectl' \
-  atinit'source <(kubectl completion zsh)'
-zinit light Dbz/kube-aliases
+# kubernetes aliases
+zinit ice lucid wait has'kubectl'
+zinit light dkarter/kube-aliases
 
 # vim mode in zsh
 zinit ice depth=1
