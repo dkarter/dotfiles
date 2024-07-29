@@ -179,7 +179,6 @@ M.lsp_diagnostic_mappings = function()
     end
   end
 
-  nmap { '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = '[D]iagnostic [O]pen [F]loat' } }
   nmap { ']d', diagnostic_goto(true), { desc = 'Next Diagnostic' } }
   nmap { '[d', diagnostic_goto(false), { desc = 'Prev Diagnostic' } }
   nmap { ']e', diagnostic_goto(true, 'ERROR'), { desc = 'Next Error' } }
@@ -254,15 +253,16 @@ M.trouble_mappings = {
 -- stylua: ignore
 ---@type LazyKeysSpec[]
 M.nvim_dap_mappings = {
-  { '<F5>',       function() require('dap').continue() end, desc = 'Debug: Start/Continue' },
-  { '<F10>',      function() require('dap').step_into() end , desc = 'Debug: Step Into' },
-  { '<F11>',      function() require('dap').step_over() end, desc = 'Debug: Step Over' },
-  { '<F12>',      function() require('dap').step_out() end, desc = 'Debug: Step Out' },
-  { '<leader>bp', function() require('dap').toggle_breakpoint() end, desc = 'Debug: Toggle Breakpoint' },
-  { '<leader>bP', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Toggle Conditional Breakpoint' },
-  { '<space>?',   function() require('dapui').eval(nil, { enter = true }) end, desc = 'Debug: Show Value' },
+  { '<leader>dd',       function() require('dap').continue() end, desc = '[D]ebug: Start/Continue' },
+  { '<leader>dc',       function() require('dap').continue() end, desc = '[D]ebug: Continue' },
+  { '<leader>di',      function() require('dap').step_into() end , desc = '[D]ebug: Step [I]nto' },
+  { '<leader>do',      function() require('dap').step_over() end, desc = '[D]ebug: Step [o]ver' },
+  { '<leader>dO',      function() require('dap').step_out() end, desc = '[D]ebug: Step [O]ut' },
+  { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = '[D]ebug: Toggle [B]reakpoint' },
+  { '<leader>dB', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = '[D]ebug: Toggle (Conditional) [B]reakpoint' },
+  { '<leader>?',   function() require('dapui').eval(nil, { enter = true }) end, desc = 'Debug: Show Value' },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-  { '<F7>', function() require('dapui').toggle() end, desc = 'Debug: See last session result.' },
+  { '<leader>dt', function() require('dapui').toggle() end, desc = '[D]ebug [T]oggle' },
 }
 
 -- stylua: ignore
