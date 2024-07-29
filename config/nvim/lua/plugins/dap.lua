@@ -19,7 +19,25 @@ return {
       },
       dependencies = { 'nvim-neotest/nvim-nio' },
     },
-    'theHamsta/nvim-dap-virtual-text',
+    {
+      'theHamsta/nvim-dap-virtual-text',
+      opts = {
+        enabled = true, -- enable this plugin (the default)
+        enabled_commands = true, -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+        highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+        highlight_new_as_changed = false, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+        show_stop_reason = true, -- show stop reason when stopped for exceptions
+        commented = false, -- prefix virtual text with comment string
+        only_first_definition = true, -- only show virtual text at first definition (if there are multiple)
+        all_references = false, -- show virtual text on all all references of the variable (not only definitions)
+        filter_references_pattern = '<module', -- filter references (not definitions) pattern when all_references is activated (Lua gmatch pattern, default filters out Python modules)
+        -- Experimental Features:
+        virt_text_pos = 'eol', -- position of virtual text, see `:h nvim_buf_set_extmark()`
+        all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+        virt_lines = false, -- show virtual lines instead of virtual text (will flicker!)
+        virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
+      },
+    },
 
     -- Installs the debug adapters for you
     {
@@ -43,8 +61,38 @@ return {
       },
     },
 
-    -- Add your own debuggers here
+    {
+      'LiadOz/nvim-dap-repl-highlights',
+      opts = {},
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter',
+      },
+      build = function()
+        -- the dap_repl parser can only be found after the plugin has loaded
+        if not require('nvim-treesitter.parsers').has_parser 'dap_repl' then
+          vim.cmd ':TSInstall dap_repl'
+        end
+      end,
+    },
+
+    -- GO
     'leoluz/nvim-dap-go',
+
+    -- JS/TS/React/Node
+    {
+      'microsoft/vscode-js-debug',
+      -- After install, build it and rename the dist directory to out
+      build = 'asdf local nodejs 20.16.0 && npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git restore .',
+    },
+    {
+      'mxsdev/nvim-dap-vscode-js',
+      ---@module "dap-vscode-js"
+      ---@type Settings
+      opts = {
+        debugger_path = vim.fn.resolve(vim.fn.stdpath 'data' .. '/lazy/vscode-js-debug'),
+        adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
+      },
+    },
   },
   config = function()
     local dap = require 'dap'
@@ -159,17 +207,32 @@ return {
         {
           type = 'pwa-node',
           request = 'launch',
-          name = 'Debug Jest Tests',
+          name = 'Debug Jest (current file)',
           -- trace = true, -- include debugger info
           runtimeExecutable = 'node',
           runtimeArgs = {
             './node_modules/jest/bin/jest.js',
             '--runInBand',
           },
+          args = { '${file}', '--coverage', 'false' },
+          sourceMaps = true,
           rootPath = '${workspaceFolder}',
           cwd = '${workspaceFolder}',
           console = 'integratedTerminal',
           internalConsoleOptions = 'neverOpen',
+          skipFiles = { '<node_internals>/**', 'node_modules/**' },
+        },
+        {
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Debug Vitest (current file)',
+          cwd = '${workspaceFolder}',
+          program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+          args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
+          autoAttachChildProcesses = true,
+          smartStep = true,
+          console = 'integratedTerminal',
+          skipFiles = { '<node_internals>/**', 'node_modules/**' },
         },
       }
     end
