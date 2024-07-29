@@ -478,7 +478,7 @@ class Installer
     .each(&:join)
 
     puts '===== Refreshing completions'.blue
-    popen('compinit')
+    popen("zsh -c 'builtin autoload -Uz +X compinit'")
   end
 
   def link_folder(source, target)
