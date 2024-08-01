@@ -195,6 +195,13 @@ M.elixir_mappings = function()
   vmap { '<space>em', ':ElixirExpandMacro<cr>', { desc = '[E]xpand [M]acro', buffer = true, noremap = true } }
 end
 
+-- stylua: ignore
+---@type LazyKeysSpec[]
+M.splitjoin_mappings = {
+  {'gJ', function() require('treesj').join() end, desc = 'Join Code Block' },
+  {'gS', function() require('treesj').split() end, desc = 'Split Code Block' },
+}
+
 ---@type LazyKeysSpec[]
 M.zen_mode_mappings = {
   { '<leader>zm', '<cmd>ZenMode<cr>', desc = 'Zen Mode (Toggle)' },
