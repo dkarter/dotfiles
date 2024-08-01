@@ -260,14 +260,14 @@ M.trouble_mappings = {
 -- stylua: ignore
 ---@type LazyKeysSpec[]
 M.nvim_dap_mappings = {
-  { '<leader>dd',       function() require('dap').continue() end, desc = '[D]ebug: Start/Continue' },
-  { '<leader>dc',       function() require('dap').continue() end, desc = '[D]ebug: Continue' },
-  { '<leader>di',      function() require('dap').step_into() end , desc = '[D]ebug: Step [I]nto' },
-  { '<leader>do',      function() require('dap').step_over() end, desc = '[D]ebug: Step [o]ver' },
-  { '<leader>dO',      function() require('dap').step_out() end, desc = '[D]ebug: Step [O]ut' },
+  { '<leader>dd', function() require('dap').continue() end, desc = '[D]ebug: Start/Continue' },
+  { '<leader>dc', function() require('dap').continue() end, desc = '[D]ebug: Continue' },
+  { '<leader>di', function() require('dap').step_into() end , desc = '[D]ebug: Step [I]nto' },
+  { '<leader>do', function() require('dap').step_over() end, desc = '[D]ebug: Step [o]ver' },
+  { '<leader>dO', function() require('dap').step_out() end, desc = '[D]ebug: Step [O]ut' },
   { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = '[D]ebug: Toggle [B]reakpoint' },
   { '<leader>dB', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = '[D]ebug: Toggle (Conditional) [B]reakpoint' },
-  { '<leader>?',   function() require('dapui').eval(nil, { enter = true }) end, desc = 'Debug: Show Value' },
+  { '<leader>?',  function() require('dapui').eval(nil, { enter = true }) end, desc = 'Debug: Show Value' },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
   { '<leader>dt', function() require('dapui').toggle() end, desc = '[D]ebug [T]oggle' },
 }
