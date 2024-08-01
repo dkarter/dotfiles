@@ -33,10 +33,13 @@ opt.shiftround = true -- Round indent to multiple of 'shiftwidth'
 -- see https://vim.fandom.com/wiki/Restoring_indent_after_typing_hash
 opt.smartindent = false
 
+-- automatically insert a comment leader if the previous line was a comment
+opt.formatoptions:append 'r'
+
 -- text appearance
-opt.textwidth = 80 --  set row width size in characters
+opt.textwidth = 80 -- set row width size in characters (will be overwritten by vim-sleuth)
 opt.wrap = false
-opt.list = true --  show invisible characters
+opt.list = true -- show invisible characters
 opt.listchars = 'tab:»·,trail:·,nbsp:·' --  Display extra whitespace
 
 -- line numbers
