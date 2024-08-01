@@ -3,7 +3,7 @@
 return {
   'elixir-tools/elixir-tools.nvim',
   version = '*',
-  event = { 'BufReadPre', 'BufNewFile' },
+  ft = { 'elixir', 'heex', 'eelixir' },
   config = function()
     local elixir = require 'elixir'
     local elixirls = require 'elixir.elixirls'
