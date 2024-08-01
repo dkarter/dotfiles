@@ -5,10 +5,8 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     dependencies = {},
+    ---@type TSConfig
     opts = {
-      -- this is required by the TSConfig type, but it not actually doing anything
-      modules = {},
-
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
 
@@ -97,7 +95,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
+      ---@type TSConfig
       require('nvim-treesitter.configs').setup {
         textobjects = {
           select = {
@@ -189,7 +187,7 @@ return {
     'nvim-treesitter/playground',
     cmd = 'TSPlaygroundToggle',
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
+      ---@type TSConfig
       require('nvim-treesitter.configs').setup {
         -- :TSPlaygroundToggle
         playground = {
