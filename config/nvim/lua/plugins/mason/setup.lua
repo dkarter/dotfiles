@@ -90,7 +90,7 @@ M.setup = function()
     'tree-sitter-cli',
   }
 
-  ---@diagnostic disable-next-line: redundant-parameter
+  ---@type MasonSettings
   mason.setup {}
 
   local mr = require 'mason-registry'
