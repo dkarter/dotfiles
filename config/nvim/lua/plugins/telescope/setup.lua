@@ -158,6 +158,7 @@ M.setup = function()
     'file_browser',
     'fzf',
     'conventional_commits',
+    'frecency',
   }
 
   for _, e in ipairs(extensions) do

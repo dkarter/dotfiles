@@ -22,7 +22,7 @@ opt.mouse = 'a' -- enable mouse usage
 -- font for gui
 vim.cmd [[set guifont=CaskaydiaCove\ Nerd\ Font\ Mono]]
 
--- keep indentation consistent
+-- keep indentation consistent (will be overwritten by vim-sleuth)
 local indent = 2
 opt.tabstop = indent -- Softtabs or die! use 2 spaces for tabs.
 opt.shiftwidth = indent -- Number of spaces to use for each step of (auto)indent.
