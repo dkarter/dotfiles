@@ -84,6 +84,8 @@ augroup('LSP Stuff', {
   },
 })
 
+-- insert debugger statements quickly - in reality I don't use this much anymore
+-- now that I have DAP
 augroup('DebuggerBrevs', {
   {
     event = { 'FileType' },
@@ -97,19 +99,11 @@ augroup('DebuggerBrevs', {
   },
 })
 
+-- jump to package docs with gx - this is mostly handled by the gx plugin for
+-- other languages, but some langs don't have support, so I use plugins. There's
+-- also an easy way to write custom gx resolutions, I have some code in git
+-- history if that's ever needed.
 augroup('GlobalGX', {
-  -- {
-  --   event = { 'BufRead', 'BufNewFile' },
-  --   pattern = { 'package.json' },
-  --   command = function()
-  --     vim.keymap.set(
-  --       'n',
-  --       'gx',
-  --       require('plugins.gx').package_json_gx,
-  --       { noremap = true, buffer = true, desc = 'Open in npm' }
-  --     )
-  --   end,
-  -- },
   {
     event = { 'BufRead', 'BufNewFile' },
     pattern = { 'mix.exs' },
@@ -132,6 +126,33 @@ augroup('HighlightOnYank', {
     pattern = { '*' },
     command = function()
       vim.highlight.on_yank { higroup = 'IncSearch' }
+    end,
+  },
+})
+
+-- toggle `autoindent` based on treesitter support - for langs that don't support
+-- treesitter `autoindent` is fine, but for langs that do have support, I'd rather
+-- use treesitter for indentation (this was an issue in Lua when pressing `o` on
+-- a line, in a table of strings, the line below would deindent to the left and
+-- a message showed up saying "Workspace edit Indent Fix". Turning off
+-- `autoindent` fixed the issue)
+augroup('AutoIndent', {
+  {
+    event = { 'FileType' },
+    pattern = { '*' },
+    command = function()
+      local function is_supported_by_treesitter()
+        local parsers = require 'nvim-treesitter.parsers'
+        local buf = vim.api.nvim_get_current_buf()
+        local lang = parsers.get_buf_lang(buf)
+        return parsers.has_parser(lang)
+      end
+
+      if is_supported_by_treesitter() then
+        vim.bo.autoindent = false
+      else
+        vim.bo.autoindent = true
+      end
     end,
   },
 })
