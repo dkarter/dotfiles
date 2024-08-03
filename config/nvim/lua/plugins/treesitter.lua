@@ -30,6 +30,7 @@ return {
         'csv',
         'diff',
         'dockerfile',
+        'editorconfig',
         'eex',
         'elixir',
         'elm',
