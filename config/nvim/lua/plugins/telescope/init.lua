@@ -12,7 +12,7 @@ return {
     'folke/tokyonight.nvim',
     'nvim-telescope/telescope-symbols.nvim',
     -- Telescope uses treesitter for previews
-    'nvim-treesitter/nvim-treesitter',
+    'dkarter/nvim-treesitter',
 
     'nvim-telescope/telescope-frecency.nvim',
   },

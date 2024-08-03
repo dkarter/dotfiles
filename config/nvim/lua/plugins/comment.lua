@@ -4,7 +4,7 @@ return {
   'numToStr/Comment.nvim',
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
-    'nvim-treesitter/nvim-treesitter',
+    'dkarter/nvim-treesitter',
   },
   config = function()
     local comment = require 'Comment'

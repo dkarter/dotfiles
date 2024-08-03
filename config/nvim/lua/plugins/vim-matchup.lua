@@ -7,7 +7,7 @@ return {
     vim.g.matchup_matchparen_deferred = 1
   end,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter',
+    'dkarter/nvim-treesitter',
   },
   config = function()
     require('nvim-treesitter.configs').setup {

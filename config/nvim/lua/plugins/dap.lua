@@ -65,7 +65,7 @@ return {
       'LiadOz/nvim-dap-repl-highlights',
       opts = {},
       dependencies = {
-        'nvim-treesitter/nvim-treesitter',
+        'dkarter/nvim-treesitter',
       },
       build = function()
         -- the dap_repl parser can only be found after the plugin has loaded

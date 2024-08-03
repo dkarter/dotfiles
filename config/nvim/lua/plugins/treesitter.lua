@@ -2,7 +2,7 @@
 ---@type LazySpec[]
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
+    'dkarter/nvim-treesitter',
     build = ':TSUpdate',
     dependencies = {},
     ---@type TSConfig
@@ -14,7 +14,7 @@ return {
       -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
       auto_install = true,
 
-      -- List of parsers to ignore installing (or "all")
+      -- List of parsers to ignore installing
       ignore_install = { 'tmux' },
 
       -- see full list here:
@@ -75,20 +75,20 @@ return {
         'yaml',
         'zig',
       },
+      ---@type TSModule
       highlight = { enable = true },
+      ---@type TSModule
       indent = {
         enable = true,
       },
     },
     config = function(_, opts)
-      vim.cmd [[
-      set foldmethod=expr
-      set foldexpr=nvim_treesitter#foldexpr()
-      " disable folds at startup
-      set nofoldenable
-      ]]
-
       require('nvim-treesitter.configs').setup(opts)
+
+      vim.o.foldmethod = 'expr'
+      vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      -- disable folds at startup
+      vim.o.foldenable = false
     end,
   },
   {
@@ -165,22 +165,23 @@ return {
       }
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      'dkarter/nvim-treesitter',
     },
   },
   {
     'RRethy/nvim-treesitter-endwise',
     event = { 'BufReadPost', 'BufNewFile' },
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
+      ---@type TSConfig
       require('nvim-treesitter.configs').setup {
+        ---@type TSModule
         endwise = {
           enable = true,
         },
       }
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      'dkarter/nvim-treesitter',
     },
   },
   {
@@ -190,6 +191,7 @@ return {
       ---@type TSConfig
       require('nvim-treesitter.configs').setup {
         -- :TSPlaygroundToggle
+        ---@type TSModule
         playground = {
           enable = true,
           disable = {},
@@ -208,6 +210,7 @@ return {
             show_help = '?',
           },
         },
+        ---@type TSModule
         query_linter = {
           enable = true,
           use_virtual_text = true,
@@ -216,7 +219,7 @@ return {
       }
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      'dkarter/nvim-treesitter',
     },
   },
 }

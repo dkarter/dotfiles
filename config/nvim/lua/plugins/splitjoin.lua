@@ -4,7 +4,7 @@ return {
   'Wansmer/treesj',
   keys = require('core.mappings').splitjoin_mappings,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter',
+    'dkarter/nvim-treesitter',
   },
   opts = {
     ---@type boolean Use default keymaps (<space>m - toggle, <space>j - join, <space>s - split)
