@@ -68,9 +68,6 @@ nmap { '<Leader>mv', ":Move <C-R>=expand('%')<CR>", { desc = 'Move current file'
 -- copy current file
 nmap { '<Leader>sa', ":saveas <C-R>=expand('%')<CR><Left><Left><Left>", { desc = '[S]ave [A]s current file' } }
 
--- sort selected lines
-vmap { 'gs', ':sort<CR>' }
-
 -- remove highlighting on escape
 nmap { '<esc>', ':nohlsearch<cr>', silent }
 
