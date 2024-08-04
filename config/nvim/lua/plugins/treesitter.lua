@@ -86,10 +86,51 @@ return {
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
 
-      vim.o.foldmethod = 'expr'
-      vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      -- disable folds at startup
-      vim.o.foldenable = false
+      local augroup = require('core.utils').augroup
+
+      augroup('TreesitterStuff', {
+        -- toggle `autoindent` based on treesitter support - for langs that don't support
+        -- treesitter `autoindent` is fine, but for langs that do have support, I'd rather
+        -- use treesitter for indentation (this was an issue in Lua when pressing `o` on
+        -- a line, in a table of strings, the line below would deindent to the left and
+        -- a message showed up saying "Workspace edit Indent Fix". Turning off
+        -- `autoindent` fixed the issue)
+        {
+          event = { 'FileType' },
+          pattern = { '*' },
+          command = function()
+            local function is_supported_by_treesitter()
+              local parsers = require 'nvim-treesitter.parsers'
+              local buf = vim.api.nvim_get_current_buf()
+              local lang = parsers.get_buf_lang(buf)
+              return parsers.has_parser(lang)
+            end
+
+            if is_supported_by_treesitter() then
+              vim.bo.autoindent = false
+            else
+              vim.bo.autoindent = true
+            end
+          end,
+        },
+        -- disable folding for some langs to avoid errors
+        -- I was seeing some treesitter error about folding in gitcommit files
+        -- and I don't really care to support folding in that file type
+        {
+          event = { 'FileType' },
+          pattern = { '*' },
+          command = function(args)
+            local disabled_fts = { 'gitcommit' }
+
+            if not vim.tbl_contains(disabled_fts, args.match) then
+              vim.wo.foldmethod = 'expr'
+              vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+              -- disable folds at startup
+              vim.wo.foldenable = false
+            end
+          end,
+        },
+      })
     end,
   },
   {
