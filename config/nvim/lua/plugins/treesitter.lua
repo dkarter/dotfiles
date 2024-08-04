@@ -123,10 +123,11 @@ return {
             local disabled_fts = { 'gitcommit' }
 
             if not vim.tbl_contains(disabled_fts, args.match) then
-              vim.wo.foldmethod = 'expr'
-              vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+              local winid = vim.api.nvim_get_current_win()
+              vim.wo[winid][args.buf].foldmethod = 'expr'
+              vim.wo[winid][args.buf].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
               -- disable folds at startup
-              vim.wo.foldenable = false
+              vim.wo[winid][args.buf].foldenable = false
             end
           end,
         },
