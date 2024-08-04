@@ -48,8 +48,6 @@ local default = {
         '--strip-cwd-prefix',
         '--hidden',
         '--follow',
-        '-E',
-        '.git',
         '--ignore-file',
         '~/.gitignore',
       },
