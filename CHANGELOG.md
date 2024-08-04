@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.0.0](https://github.com/dkarter/dotfiles/compare/v16.4.0...v17.0.0) (2024-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** remove `gs` mapping for sorting (use `go` instead)
+* **nvim:** improve DAP mappings
+
+### Features
+
+* **installer:** add ast-grep ([83cf058](https://github.com/dkarter/dotfiles/commit/83cf058783a796d0595eac3535d93902c6215ce8))
+* **installer:** add generate completions step ([561ce88](https://github.com/dkarter/dotfiles/commit/561ce882ba880cfc7af6a9efed5b3c0d54f1ad52))
+* **installer:** add rnr cargo ([d22a44e](https://github.com/dkarter/dotfiles/commit/d22a44e835ed2d4b65079d12845712f2b93efaa8))
+* **nvim:** add bash debugger ([361ab0f](https://github.com/dkarter/dotfiles/commit/361ab0f3e3921d18a97c5fc3e1469dd6140e3d7b))
+* **nvim:** add editorconfig treesitter parser ([0740f13](https://github.com/dkarter/dotfiles/commit/0740f13573716131cc1c8ae4b862f1c87998457d))
+* **nvim:** add mason link to homepage ([e17ec14](https://github.com/dkarter/dotfiles/commit/e17ec14b0955d3d4c84f2d0d3da6f31dc63aacf6))
+* **nvim:** add sort.nvim ([f479785](https://github.com/dkarter/dotfiles/commit/f47978581edf88b107012b410a44b48a15e6d67f))
+* **nvim:** add telescope frecency ([339bc59](https://github.com/dkarter/dotfiles/commit/339bc594584ee39f84c63f0b127a9757698392c9))
+* **nvim:** add working js/ts debugger ([632ba0c](https://github.com/dkarter/dotfiles/commit/632ba0c889da77346c9ec31205681f3934dfa4e9))
+* **nvim:** enable vim-matchup treesitter integration ([abce252](https://github.com/dkarter/dotfiles/commit/abce252f1afaa37a107657c2cd6a0f8009e88a04))
+* **starship:** update config ([e7ce243](https://github.com/dkarter/dotfiles/commit/e7ce24315e4ac6a7c455fc389ce1afcd98cb8711))
+
+
+### Bug Fixes
+
+* **installer:** compinit didn't work ([54b1070](https://github.com/dkarter/dotfiles/commit/54b1070a51d60a193f01105cbbfe983c96d58565))
+* **nvim:** automatically insert comment leader for all languages ([636e694](https://github.com/dkarter/dotfiles/commit/636e694b9c1b5876460c616e8483bf006b7d9eb8))
+* **nvim:** disable autoindent on treesitter langs ([93bdf47](https://github.com/dkarter/dotfiles/commit/93bdf4713000bea6e4e54576d290fdbfd4bc541b))
+* **nvim:** disable treesitter folding for some fts ([22a9341](https://github.com/dkarter/dotfiles/commit/22a93418b874c3e5183df83083b1073c6b8acfe1))
+* **nvim:** force stable version of coerce ([d134b9d](https://github.com/dkarter/dotfiles/commit/d134b9de991404044e0167e5e5cd6824f153d458))
+* **nvim:** improve DAP mappings ([a16492f](https://github.com/dkarter/dotfiles/commit/a16492fbe422a197c0c08a57c5bc637f09a3cda9))
+* **nvim:** lazy load cmp when entering cmdline ([a5c6ac8](https://github.com/dkarter/dotfiles/commit/a5c6ac862ab3205b6c3d24bbe9526e955a03482e))
+* **nvim:** only disable folds within a specific buffer ([21d70b6](https://github.com/dkarter/dotfiles/commit/21d70b6bbc5391f87c33e99ab839eddfafd11774))
+* **nvim:** remove conform formatexpr ([252bea5](https://github.com/dkarter/dotfiles/commit/252bea5177da59467fec1be25b28e85f4aac5c78))
+* **nvim:** update config for mason-nvim-dap ([fa88712](https://github.com/dkarter/dotfiles/commit/fa88712fbb8a36c4a9006a32d2c3f20790fa752a))
+* **starship:** disable lua plugin ([441019f](https://github.com/dkarter/dotfiles/commit/441019f230babea45b4b7b0971cc6f9a55a378b4))
+* temporarily use my treesitter fork ([2441804](https://github.com/dkarter/dotfiles/commit/244180444186f438f2a66d4a5bfc6242f410f33b))
+* **zinit:** switch to my fork of kube-aliases ([860f06b](https://github.com/dkarter/dotfiles/commit/860f06b06b1f920ebf2801bd92901463c7ef0817))
+
+
+### Performance Improvements
+
+* **nvim:** improve Elixir lazy loading ([10996a5](https://github.com/dkarter/dotfiles/commit/10996a55cf7ee306f6b3de4dc48655eb3bca9a2e))
+* **nvim:** improve lazy loading ([6671f01](https://github.com/dkarter/dotfiles/commit/6671f01a805e7246e4feaec25075be83da44efdd))
+* **nvim:** improve lazy loading of treesitter plugins ([297c5d5](https://github.com/dkarter/dotfiles/commit/297c5d57f731dbfc235e77486347cdffec4971ed))
+
+
+### Miscellaneous Chores
+
+* **nvim:** remove `gs` mapping for sorting (use `go` instead) ([ff2d7e5](https://github.com/dkarter/dotfiles/commit/ff2d7e524bf3ae2c8a91f8f4b63d0c6ebead64bd))
+
 ## [16.4.0](https://github.com/dkarter/dotfiles/compare/v16.3.0...v16.4.0) (2024-07-26)
 
 
