@@ -208,6 +208,16 @@ M.zen_mode_mappings = {
 }
 
 ---@type LazyKeysSpec[]
+M.sort_mappings = {
+  { 'go', ':Sort<CR>', mode = 'v', desc = '(go) Order (sort lines/line params)' },
+  { "goi'", "vi'<ESC>:Sort<CR>", mode = 'n', desc = "(go) [O]rder [i]n [']" },
+  { 'goi"', 'vi"<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n ["]' },
+  { 'goi(', 'vi(<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n (' },
+  { 'goi[', 'vi[<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n [' },
+  { 'goi{', 'vi{<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n {' },
+}
+
+---@type LazyKeysSpec[]
 M.trouble_mappings = {
   { '<leader>xw', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Workspace Diagnostics' },
   { '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Document Diagnostics' },
