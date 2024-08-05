@@ -310,13 +310,10 @@ class Installer
     puts '===== Installing asdf plugins'.blue
 
     ASDF_PLUGINS
-      .map do |plugin, url|
-        Thread.new do
-          puts "Installing #{plugin} plugin...".light_blue
-          popen("asdf plugin add #{plugin} #{url}")
-        end
+      .each do |plugin, url|
+        puts "Installing #{plugin} plugin...".light_blue
+        popen("asdf plugin add #{plugin} #{url}")
       end
-      .each(&:join)
   end
 
   def install_asdf_tools
