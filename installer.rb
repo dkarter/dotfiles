@@ -123,6 +123,8 @@ CARGOS = [
   'eza',
   # fast regex code modifications
   'fastmod',
+  # benchmarking tool
+  'hyperfine',
   # json explorer
   'jless',
   # nicer git diffs
