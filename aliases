@@ -231,8 +231,11 @@ alias ss='imgur-screenshot.sh'
 # creates a pbcopy command using xclip
 command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
 
-# tldr (quicker to type help than tldr)
-alias help='tldr'
+# parse + highlight help for cli tools
+alias bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}
 
 # quick config
 alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
