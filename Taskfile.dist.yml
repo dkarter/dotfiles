@@ -96,6 +96,7 @@ tasks:
     cmds:
       # we need to sync asdf for the local project before we try to install any packages
       - task: sync:asdf
+      - task: sync:brew
       - task: install:pnpm
       - ruby ./installer.rb --sync --force
 
