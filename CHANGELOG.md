@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.1.0](https://github.com/dkarter/dotfiles/compare/v17.0.0...v17.1.0) (2024-08-08)
+
+
+### Features
+
+* include sync brew in dotfiles sync ([0901eb1](https://github.com/dkarter/dotfiles/commit/0901eb1764f0bb0c00a13fd85d3d2a6b5641294c))
+* **installer:** add hyperfine ([b2e658b](https://github.com/dkarter/dotfiles/commit/b2e658b15fd5c7bdb3863613e3a95f06624ee279))
+* **zsh:** add bathelp ([e1d17eb](https://github.com/dkarter/dotfiles/commit/e1d17eb67eeaed480f9d6508c5c4953ed3af4c79))
+
+
+### Bug Fixes
+
+* **installer:** disable parallelism on asdf plugin add ([d84307d](https://github.com/dkarter/dotfiles/commit/d84307dee0cb812212192b2e77b66612020c07e1))
+* **nvim:** ignore certain files in fuzzy finding tools ([c0d27ce](https://github.com/dkarter/dotfiles/commit/c0d27ce0fd921700e0e540071f4ef56bc8548f6e)), closes [#48](https://github.com/dkarter/dotfiles/issues/48)
+
 ## [17.0.0](https://github.com/dkarter/dotfiles/compare/v16.4.0...v17.0.0) (2024-08-04)
 
 
