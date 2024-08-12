@@ -285,6 +285,8 @@ alias mcc='mix compile --force --all-warnings --warnings-as-errors'
 alias mpr='mix phx.routes'
 alias mps='mix phx.server'
 alias mt='mix test'
+# resets the test database
+alias mtr='MIX_ENV=test mix ecto.drop'
 alias mdg='mix deps.get'
 alias mdca='mix deps.clean --all'
 alias ecto.reset='mix ecto.drop && mix ecto.create && mix ecto.migrate && mix ecto.seed'
