@@ -1,5 +1,6 @@
 --  Better syntax highlighting (and more)
 ---@type LazySpec[]
+---@diagnostic disable: missing-fields
 return {
   {
     'dkarter/nvim-treesitter',
@@ -37,6 +38,7 @@ return {
         'erlang',
         'gitcommit',
         'git_rebase',
+        'git_config',
         'gitignore',
         'gleam',
         'go',
