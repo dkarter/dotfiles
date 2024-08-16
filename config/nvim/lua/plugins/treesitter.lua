@@ -69,6 +69,7 @@ return {
         'scss',
         'sql',
         'surface',
+        'terraform',
         'toml',
         'tsx',
         'typescript',
