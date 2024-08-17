@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [17.1.0](https://github.com/dkarter/dotfiles/compare/v17.0.0...v17.1.0) (2024-08-17)
+
+
+### Features
+
+* **git:** add git clear alias for git clean -id ([5741245](https://github.com/dkarter/dotfiles/commit/5741245c0d5dbc6f5c6be100c5c120ebc6939b84))
+* include sync brew in dotfiles sync ([0901eb1](https://github.com/dkarter/dotfiles/commit/0901eb1764f0bb0c00a13fd85d3d2a6b5641294c))
+* **installer:** add hyperfine ([b2e658b](https://github.com/dkarter/dotfiles/commit/b2e658b15fd5c7bdb3863613e3a95f06624ee279))
+* **nvim:** add git_config treesitter parser ([57bd153](https://github.com/dkarter/dotfiles/commit/57bd153f44d05538d4afc5f98b1a71bcaff77c10))
+* **nvim:** add terraform formatting ([d52adc3](https://github.com/dkarter/dotfiles/commit/d52adc39cbbfc7894e381d723a0e242c01ab7c99))
+* **nvim:** add terraform syntax support ([31c0bb5](https://github.com/dkarter/dotfiles/commit/31c0bb54b88e354d72395893b9686399d785069e))
+* **zsh:** add alias for resetting Elixir test db ([ed920f1](https://github.com/dkarter/dotfiles/commit/ed920f1762c1072830fecbd3718baef37230aca6))
+* **zsh:** add bathelp ([e1d17eb](https://github.com/dkarter/dotfiles/commit/e1d17eb67eeaed480f9d6508c5c4953ed3af4c79))
+
+
+### Bug Fixes
+
+* **installer:** disable parallelism on asdf plugin add ([d84307d](https://github.com/dkarter/dotfiles/commit/d84307dee0cb812212192b2e77b66612020c07e1))
+* **nvim:** disable indentscope animation ([7f7bb7c](https://github.com/dkarter/dotfiles/commit/7f7bb7c7caa166335cf8b51870a2dd22bf2db6b9))
+* **nvim:** ignore certain files in fuzzy finding tools ([c0d27ce](https://github.com/dkarter/dotfiles/commit/c0d27ce0fd921700e0e540071f4ef56bc8548f6e)), closes [#48](https://github.com/dkarter/dotfiles/issues/48)
+* **nvim:** use correct root when formatting Elixir ([428123d](https://github.com/dkarter/dotfiles/commit/428123dec6f874602ef3907424ffb73c63b8504f))
+
 ## [17.0.0](https://github.com/dkarter/dotfiles/compare/v16.4.0...v17.0.0) (2024-08-04)
 
 
