@@ -33,6 +33,7 @@ return {
       -- at PDQ is slow AF - can disable it momentarily and see if this improves
       elixir = { 'mix', timeout_ms = 2000 },
       sh = { 'shfmt' },
+      terraform = { 'tofu_fmt' },
     },
     -- Set default options
     default_format_opts = {

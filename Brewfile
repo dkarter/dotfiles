@@ -58,7 +58,11 @@ brew 'htmlq'
 # easily copy tabular data
 brew 'yank'
 
+# format postgres sql files
 brew 'pgformatter'
+
+# required for formatting terraform files
+brew 'opentofu'
 
 # Postgres pager
 brew 'pspg'
