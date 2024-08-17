@@ -1,6 +1,5 @@
 -- Active indent guide and indent text objects. When you're browsing
--- code, this highlights the current level of indentation, and animates
--- the highlighting.
+-- code, this highlights the current level of indentation.
 ---@type LazySpec
 return {
   'echasnovski/mini.indentscope',
@@ -10,6 +9,12 @@ return {
     -- symbol = "▏",
     symbol = '│',
     options = { try_as_border = true },
+    draw = {
+      -- disable animation, remove to re-enable
+      animation = function()
+        return 0
+      end,
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd('FileType', {
