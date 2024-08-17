@@ -54,6 +54,11 @@ return {
       shfmt = {
         prepend_args = { '-i', '2' },
       },
+      mix = {
+        cwd = function(self, ctx)
+          (require('conform.util').root_file { 'mix.exs' })(self, ctx)
+        end,
+      },
     },
   },
   init = function()
