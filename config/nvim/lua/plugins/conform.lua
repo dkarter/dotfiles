@@ -55,6 +55,13 @@ return {
         prepend_args = { '-i', '2' },
       },
       mix = {
+        -- NOTE: conform was running mix format from the current directory of
+        -- the file, which prevented formatting from working in cases where
+        -- there is a nested .formatter.exs file that refers to a dependency a
+        -- few folders above. For example in Phoenix projects, the
+        -- .formatter.exs is created in the priv/repo/migrations dir and it
+        -- references :ecto_sql, which can not be found if mix format is run
+        -- directly from the migrations dir
         cwd = function(self, ctx)
           (require('conform.util').root_file { 'mix.exs' })(self, ctx)
         end,
