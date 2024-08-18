@@ -46,6 +46,17 @@ jt() {
 
 alias tree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name --human --no-ignore"
 alias gtree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name --human"
+# tree paged
+treep ()
+{
+  tree --color=force "$@" | bat -p
+}
+
+# gtree paged
+gtreep ()
+{
+  gtree --color=force "$@" | bat -p
+}
 
 # Bundler
 alias b="bundle"
