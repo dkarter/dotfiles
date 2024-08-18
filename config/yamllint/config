@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://json.schemastore.org/yamllint.json
+# vim:ft=yaml
 ---
 
 ignore: |
@@ -17,10 +19,14 @@ rules:
     level: warning
     max-spaces-inside: 1
     min-spaces-inside: 1
+    min-spaces-inside-empty: 0
+    max-spaces-inside-empty: 0
 
   brackets:
     level: warning
     max-spaces-inside: 1
+    min-spaces-inside-empty: 0
+    max-spaces-inside-empty: 0
 
   comments:
     min-spaces-from-content: 1
