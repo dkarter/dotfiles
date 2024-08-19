@@ -50,7 +50,6 @@ M.setup = function()
     'css-lsp',
     'dockerfile-language-server',
     'elm-language-server',
-    'erlang-ls',
     'eslint-lsp',
     'gopls',
     'go-debug-adapter',
