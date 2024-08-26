@@ -207,11 +207,12 @@ M.zen_mode_mappings = {
 ---@type LazyKeysSpec[]
 M.sort_mappings = {
   { 'go', ':Sort<CR>', mode = 'v', desc = '(go) Order (sort lines/line params)' },
-  { "goi'", "vi'<ESC>:Sort<CR>", mode = 'n', desc = "(go) [O]rder [i]n [']" },
-  { 'goi"', 'vi"<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n ["]' },
-  { 'goi(', 'vi(<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n (' },
-  { 'goi[', 'vi[<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n [' },
-  { 'goi{', 'vi{<ESC>:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n {' },
+  { "goi'", "vi':Sort<CR>", mode = 'n', desc = "(go) [O]rder [i]n [']" },
+  { 'goi"', 'vi":Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n ["]' },
+  { 'goi(', 'vi(:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n (' },
+  { 'goi[', 'vi[:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n [' },
+  { 'goip', 'vip:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n [p]aragraph' },
+  { 'goi{', 'vi{:Sort<CR>', mode = 'n', desc = '(go) [O]rder [i]n {' },
 }
 
 ---@type LazyKeysSpec[]
