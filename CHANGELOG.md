@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.0.0](https://github.com/dkarter/dotfiles/compare/v17.1.0...v18.0.0) (2024-08-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change parameter (arg) text object to ia / aa
+
+### Features
+
+* **nvim:** add goip for ordering/sorting inside a paragraph ([6fddb73](https://github.com/dkarter/dotfiles/commit/6fddb735c94f6e2eacc77ef2a91fad7118594dcf))
+* **nvim:** add nextls config (disabled) ([b972b05](https://github.com/dkarter/dotfiles/commit/b972b05f7de468290df2185159edb9019184add7))
+* **zsh:** add treep and gtreep for paginated tree view with color ([506f8bf](https://github.com/dkarter/dotfiles/commit/506f8bfca92482ba22f5faa7d8169f7fea1be6a2))
+
+
+### Bug Fixes
+
+* **nvim:** hide "No information available" notifs from LSPs ([f279248](https://github.com/dkarter/dotfiles/commit/f27924870a00d3293000f3a24f36a1315f174898))
+* **nvim:** temporarily remove erlang-ls from mason ([dfc16de](https://github.com/dkarter/dotfiles/commit/dfc16de5cc8b921abc8e6d6cebdd7c036f020b0e))
+* **yamllint:** improve config for empty brackets/braces ([84bef98](https://github.com/dkarter/dotfiles/commit/84bef98d3766f8873f17180cb588ff368bf00380))
+
+
+### Code Refactoring
+
+* **nvim:** change parameter (arg) text object to ia / aa ([7e92333](https://github.com/dkarter/dotfiles/commit/7e923336c8e9f8d3eaa27915d8805391aca5c80c))
+
 ## [17.1.0](https://github.com/dkarter/dotfiles/compare/v17.0.0...v17.1.0) (2024-08-17)
 
 
