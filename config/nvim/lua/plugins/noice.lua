@@ -4,6 +4,7 @@ return {
   'folke/noice.nvim',
   enabled = true,
   event = 'VeryLazy',
+  ---@type NoiceConfig
   opts = {
     lsp = {
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -30,7 +31,17 @@ return {
     },
 
     routes = {
-      -- hide buffer written messages
+      -- suppress no information available from LSP on K
+      -- when there are multiple LSPs this can be annoying
+      {
+        filter = {
+          event = 'notify',
+          find = 'No information available',
+        },
+        opts = { skip = true },
+      },
+
+      -- show buffer written messages in mini
       {
         view = 'mini',
         filter = {
