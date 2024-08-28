@@ -1,0 +1,13 @@
+[default_session]
+startup_command = 'nvim'
+
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+startup_command = "smug start dotfiles -i && exit"
+
+[[session]]
+name = "houston"
+path = "~/dev/houston"
+startup_command = "smug start pdq-houston -i && exit"

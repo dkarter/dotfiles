@@ -1,0 +1,46 @@
+session: houston
+root: '~/dev/houston'
+windows:
+  - name: backend
+    root: ~/dev/houston
+    panes:
+      - commands: []
+    commands:
+      - vim
+
+  - name: frontend
+    root: ~/dev/houston/assets
+    panes:
+      - commands: []
+    commands:
+      - vim
+
+  - name: server
+    root: ~/dev/houston
+    commands:
+      # gotta wait for the docker compose services spin up before starting the
+      # server
+      - wait_for_port 3333
+      - wait_for_port 5432
+      - wait_for_port 9090
+      - wait_for_port 6379
+      - wait_for_port 4001
+      - wait_for_port 4002
+      - wait_for_port 8085
+      - mix start
+
+  - name: compose-houston
+    root: ~/dev/houston
+    commands:
+      - docker-compose up
+
+  - name: compose-devops
+    root: ~/dev/devops/local-dev
+    commands:
+      # need to wait for the first docker-compose to bring up postgres
+      - wait_for_port 5432
+      - docker-compose --profile houston up
+
+  - name: tunnel
+    root: ~/dev/houston
+    commands: []

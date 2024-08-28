@@ -36,22 +36,24 @@ DOTFILES = %w[
 ].freeze
 
 SYMLINK_DIRS = [
-  %w[./config/bat ~/.config/bat],
-  %w[./config/nvim ~/.config/nvim],
-  %w[./config/kitty ~/.config/kitty],
-  %w[./config/ripgrep ~/.config/ripgrep],
   %w[./config/alacritty ~/.config/alacritty],
-  %w[./config/vifm ~/.config/vifm],
+  %w[./config/bat ~/.config/bat],
+  %w[./config/btop ~/.config/btop],
+  %w[./config/gh-dash ~/.config/gh-dash],
+  %w[./config/gitui ~/.config/gitui],
+  %w[./config/hammerspoon ~/.config/hammerspoon],
+  %w[./config/kitty ~/.config/kitty],
+  %w[./config/nvim ~/.config/nvim],
+  %w[./config/ripgrep ~/.config/ripgrep],
   %w[./config/rubocop ~/.config/rubocop],
+  %w[./config/sesh ~/.config/sesh],
+  %w[./config/smug ~/.config/smug],
+  %w[./config/starship ~/.config/starship],
+  %w[./config/tmux ~/.config/tmux],
+  %w[./config/vifm ~/.config/vifm],
+  %w[./config/wezterm ~/.config/wezterm],
   %w[./config/yamllint ~/.config/yamllint],
   %w[./config/zsh ~/.config/zsh],
-  %w[./config/btop ~/.config/btop],
-  %w[./config/wezterm ~/.config/wezterm],
-  %w[./config/tmux ~/.config/tmux],
-  %w[./config/hammerspoon ~/.config/hammerspoon],
-  %w[./config/gitui ~/.config/gitui],
-  %w[./config/gh-dash ~/.config/gh-dash],
-  %w[./config/starship ~/.config/starship],
 ].freeze
 
 GEMS = [
