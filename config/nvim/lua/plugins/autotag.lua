@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   'windwp/nvim-ts-autotag',
+  event = { 'InsertEnter' },
   ft = {
     'html',
     'javascript',
