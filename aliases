@@ -268,7 +268,9 @@ function tn() {
 
 # session manager using sesh + fzf
 # https://github.com/joshmedeski/sesh
-alias t='sesh connect $(sesh list | fzf)'
+# the awk seen part filters out duplicates without affecting the sorting - this
+# was needed since starting to use smug
+alias t="sesh connect $(sesh list | awk '!seen[$0]++' | fzf)"
 
 # tmux attach
 alias ta='tmux attach -t'
