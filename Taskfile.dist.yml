@@ -81,16 +81,6 @@ tasks:
     cmds:
       - yamllint --strict --config-file ./config/yamllint/config .
 
-  reload:tmux:
-    desc: Reload Tmux Configuration
-    cmds:
-      - cmd: tmux source-file ~/.config/tmux/tmux.conf
-        silent: true
-      - cmd: tmux display-message 'tmux.conf reloaded'
-        silent: true
-      - cmd: echo "Reloaded!"
-        silent: true
-
   sync:asdf:
     desc: Updates asdf plugins and installs asdf packages for this project
     cmds:
@@ -129,3 +119,34 @@ tasks:
     cmds:
       - brew bundle
       - task: commit:brew-packages
+
+  tmux:reload:
+    desc: Reload Tmux Configuration
+    cmds:
+      - cmd: tmux source-file ~/.config/tmux/tmux.conf
+        silent: true
+      - cmd: tmux display-message 'tmux.conf reloaded'
+        silent: true
+      - cmd: echo "Tmux Config Reloaded!"
+        silent: true
+
+  tmux:plugins:install:
+    desc: Install Tmux Plugins
+    cmds:
+      - task: tmux:reload
+      - cmd: ./config/tmux/plugins/tpm/bin/install_plugins
+        silent: true
+
+  tmux:plugins:update:
+    desc: Update Tmux Plugins
+    cmds:
+      - task: tmux:reload
+      - cmd: ./config/tmux/plugins/tpm/bin/update_plugins all
+        silent: true
+
+  tmux:plugins:clean:
+    desc: Clean Tmux Plugins
+    cmds:
+      - task: tmux:reload
+      - cmd: ./config/tmux/plugins/tpm/bin/clean_plugins
+        silent: true
