@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.1.0](https://github.com/dkarter/dotfiles/compare/v18.0.0...v18.1.0) (2024-08-30)
+
+
+### Features
+
+* **brew:** add smug ([20075c7](https://github.com/dkarter/dotfiles/commit/20075c77f7ff8bc54bc08ba5a6bb38710eb09365))
+* **smug:** add smug sesh integration ([8418c98](https://github.com/dkarter/dotfiles/commit/8418c980089cac90fe50d8575496fbb330394583))
+* **task:** add tasks for tmux plugin management ([4216d48](https://github.com/dkarter/dotfiles/commit/4216d4816166a9aaeb09769c29dce2a47aafab95))
+* **task:** reload tmux ([d75e5de](https://github.com/dkarter/dotfiles/commit/d75e5de1791c4efd4c721a715d4c6b113d4543d4))
+
+
+### Bug Fixes
+
+* **task:** use correct order of steps for sync task ([c57be41](https://github.com/dkarter/dotfiles/commit/c57be416db6b9bcc7a03f3fa9560fa5bf36bdcc6))
+* **tmux,sesh,smug:** remove duplicates due to smug ([b3d4c71](https://github.com/dkarter/dotfiles/commit/b3d4c71a7aabc84c122700671c5591803d2df25e))
+* **tmux:** correct tmux config path name in notif ([c4fa0ba](https://github.com/dkarter/dotfiles/commit/c4fa0ba638f73d411dd82a26a910d60eb35cf756))
+* **zsh:** fix the t alias ([2ac007a](https://github.com/dkarter/dotfiles/commit/2ac007a55838c3afe9461736bde6403df781401d))
+
+
+### Performance Improvements
+
+* **nvim:** lazy load autotag on insertenter ([6a0a3fb](https://github.com/dkarter/dotfiles/commit/6a0a3fb7d3f27df3afa3350cbb01c5845aa15c78))
+
 ## [18.0.0](https://github.com/dkarter/dotfiles/compare/v17.1.0...v18.0.0) (2024-08-26)
 
 
