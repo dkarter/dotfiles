@@ -81,6 +81,16 @@ tasks:
     cmds:
       - yamllint --strict --config-file ./config/yamllint/config .
 
+  reload:tmux:
+    desc: Reload Tmux Configuration
+    cmds:
+      - cmd: tmux source-file ~/.config/tmux/tmux.conf
+        silent: true
+      - cmd: tmux display-message 'tmux.conf reloaded'
+        silent: true
+      - cmd: echo "Reloaded!"
+        silent: true
+
   sync:asdf:
     desc: Updates asdf plugins and installs asdf packages for this project
     cmds:
