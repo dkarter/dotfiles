@@ -10,6 +10,7 @@ return {
       'scratch',
     }
     vim.g.bullets_outline_levels = {}
+    vim.g.bullets_nested_checkboxes = 0
   end,
   ft = {
     'markdown',
