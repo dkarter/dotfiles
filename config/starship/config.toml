@@ -13,7 +13,7 @@ sudo.disabled = false
 lua.disabled = true
 rust.disabled = true
 
+# to hide this from the prompt you can run kctx -u to unset the current context
 [kubernetes]
 disabled = false
-detect_env_vars = ["KUBECONFIG"]
 style = "bright-green"
