@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.1.1](https://github.com/dkarter/dotfiles/compare/v18.1.0...v18.1.1) (2024-09-02)
+
+
+### Bug Fixes
+
+* **nvim:** disable markdown nested checkboxes ([e966685](https://github.com/dkarter/dotfiles/commit/e966685cdfc952a4e593c4f6ad21b43c50b05a3c))
+
 ## [18.1.0](https://github.com/dkarter/dotfiles/compare/v18.0.0...v18.1.0) (2024-08-30)
 
 
