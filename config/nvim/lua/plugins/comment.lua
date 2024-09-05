@@ -5,11 +5,13 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     'dkarter/nvim-treesitter',
+    {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      opts = {},
+    },
   },
-  config = function()
-    local comment = require 'Comment'
-
-    comment.setup {
+  opts = function(_self, _opts)
+    return {
       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
     }
   end,
