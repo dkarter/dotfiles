@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.1.2](https://github.com/dkarter/dotfiles/compare/v18.1.1...v18.1.2) (2024-09-05)
+
+
+### Bug Fixes
+
+* **nvim:** checkout vscode-js-debug after install ([a19258a](https://github.com/dkarter/dotfiles/commit/a19258af53e6e851155b50935ef6edc49651e079))
+* **starship:** remove requirement for KUBECONFIG for context prompt ([a3ff747](https://github.com/dkarter/dotfiles/commit/a3ff7473b90f8e4dc3859a7e1f3b5d8b4190a127))
+
 ## [18.1.1](https://github.com/dkarter/dotfiles/compare/v18.1.0...v18.1.1) (2024-09-02)
 
 
