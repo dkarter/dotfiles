@@ -189,4 +189,28 @@ function M.augroup(name, commands)
   return id
 end
 
+--- Uses TreeSitter to delete all comments in the buffer
+function M.delete_comments_in_buffer()
+  local parser = vim.treesitter.get_parser(0)
+  local tree = parser:parse()[1]
+
+  local function delete_comments(node)
+    if
+      node:type() == 'comment'
+      or node:type() == 'line_comment'
+      or node:type() == 'block_comment'
+      or node:type() == 'html_comment'
+    then
+      local start_row, start_col, end_row, end_col = node:range()
+      vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, {})
+    end
+
+    for child in node:iter_children() do
+      delete_comments(child)
+    end
+  end
+
+  delete_comments(tree:root())
+end
+
 return M

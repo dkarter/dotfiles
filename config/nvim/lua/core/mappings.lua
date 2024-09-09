@@ -561,4 +561,10 @@ M.notify_mappings = function()
   nmap { '<leader>nd', notify.dismiss, { desc = '[N]otification [D]ismiss' } }
 end
 
+nmap {
+  '<leader>dx',
+  require('core.utils').delete_comments_in_buffer,
+  { noremap = true, silent = true, desc = 'Delete all comments' },
+}
+
 return M
