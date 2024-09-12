@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.2.0](https://github.com/dkarter/dotfiles/compare/v18.1.2...v18.2.0) (2024-09-12)
+
+
+### Features
+
+* **nvim:** add delete all comments in buffer mapping ([7b5c463](https://github.com/dkarter/dotfiles/commit/7b5c4638f9768acc124906b0beb11e878610d6e9))
+
+
+### Bug Fixes
+
+* **nvim:** improve comment.nvim loading ([ff009ed](https://github.com/dkarter/dotfiles/commit/ff009ed2fe97958a151b25e68a19a7309775e6d6))
+
 ## [18.1.2](https://github.com/dkarter/dotfiles/compare/v18.1.1...v18.1.2) (2024-09-05)
 
 
