@@ -92,11 +92,18 @@ config.keys = {
     action = keys.tmux_prefix 'P',
   },
 
-  -- open t - tmux smart session manager
+  -- open sesh - tmux session manager
   {
     key = 'j',
     mods = 'SUPER',
     action = keys.tmux_prefix 'T',
+  },
+
+  -- toggle to last tmux session
+  {
+    key = 'l',
+    mods = 'SUPER',
+    action = keys.tmux_prefix 'L',
   },
 
   -- this requires disabling the app's default keybindings in macOS
