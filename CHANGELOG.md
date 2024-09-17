@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.3.0](https://github.com/dkarter/dotfiles/compare/v18.2.0...v18.3.0) (2024-09-17)
+
+
+### Features
+
+* **nvim:** auto install powershell language server ([76a76ea](https://github.com/dkarter/dotfiles/commit/76a76ea8de085ad49c4ff29c7f660ca9cfc44ead))
+* **tmux,wezterm,sesh:** add &lt;prefix&gt;L / <super>L toggle last session ([6df0418](https://github.com/dkarter/dotfiles/commit/6df0418c04219551f916f11a7354f49b5677f64a))
+
+
+### Bug Fixes
+
+* **conform:** attempt to fix format commands disappearing ([6b77704](https://github.com/dkarter/dotfiles/commit/6b777042b598750eb3677de5f97fd54dbaaa5e33))
+
 ## [18.2.0](https://github.com/dkarter/dotfiles/compare/v18.1.2...v18.2.0) (2024-09-12)
 
 
