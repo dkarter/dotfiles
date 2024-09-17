@@ -68,7 +68,11 @@ return {
       },
     },
   },
-  init = function()
+  config = function(_self, opts)
+    local conform = require 'conform'
+
+    conform.setup(opts)
+
     vim.api.nvim_create_user_command('FormatDisable', function(args)
       if args.bang then
         -- FormatDisable! will disable formatting just for this buffer
@@ -89,7 +93,7 @@ return {
     })
 
     vim.api.nvim_create_user_command('Format', function()
-      require('conform').format { async = true }
+      conform.format { async = true }
     end, {
       desc = 'Format file',
     })
