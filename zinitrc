@@ -38,6 +38,16 @@ zinit light dkarter/kube-aliases
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
+# make fzf available
+zinit for \
+    from'gh-r'  \
+    sbin'fzf'   \
+  junegunn/fzf
+
+# integrate fzf keybindings and completions
+zinit for \
+    https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh
+
 # cht.sh
 zinit wait"2a" lucid \
   id-as"cht.sh" \

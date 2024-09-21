@@ -87,8 +87,6 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 # add go path bin to path
 export PATH=$PATH:$GOPATH/bin
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-
 # qt
 case "$(uname -s)" in
   Darwin*)
