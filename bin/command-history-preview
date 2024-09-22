@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+input="$1"
+command_history=$(echo -ne "${input}" | sed 's/^[0-9]*[[:space:]]*//')
+
+(echo -ne "${command_history}" | bat --color=always --wrap never -l sh --style=plain || echo -ne "${command_history}") 2>/dev/null

@@ -3,6 +3,15 @@
 # fzf stuff
 export FZF_DEFAULT_COMMAND='fd --type f --follow --hidden --color=always --exclude .git --exclude node_modules --exclude vendor --exclude build --exclude _build --exclude bundle --exclude Godeps'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS="
+  --preview 'command-history-preview {}'
+  --bind '?:toggle-preview,ctrl-a:select-all,ctrl-d:preview-page-down,ctrl-u:preview-page-up'
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'ctrl-y: copy, ctrl-/: toggle preview'
+  --preview-window down:20%:wrap
+  --height 50%"
 
 # add support for Ansi for fd color
 export FZF_DEFAULT_OPTS="--ansi"
