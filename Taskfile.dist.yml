@@ -116,6 +116,7 @@ tasks:
       Updates Homebrew packages
 
       Then automatically commits the changes to the Brewfile.lock.json file, if there are any.
+    platforms: ['darwin']
     cmds:
       - brew bundle
       - task: commit:brew-packages
