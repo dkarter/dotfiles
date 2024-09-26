@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.4.0](https://github.com/dkarter/dotfiles/compare/v18.3.0...v18.4.0) (2024-09-26)
+
+
+### Features
+
+* **zsh,fzf:** add history search preview ([9fd0c5e](https://github.com/dkarter/dotfiles/commit/9fd0c5ecede8a9e93b7ff6f3b48504369ac2af62))
+
+
+### Bug Fixes
+
+* **installer:** use --locked for rust packages ([7dd4059](https://github.com/dkarter/dotfiles/commit/7dd40590d08a9909da9224a56c9e1f34d2134e62))
+* **task:** only run sync:brew on darwin ([d85120c](https://github.com/dkarter/dotfiles/commit/d85120c4f4bfaa686c9903e77ea77a7263c7cbcb))
+* **zsh,fzf:** enable zsh fzf integration in insert mode ([e5e13b1](https://github.com/dkarter/dotfiles/commit/e5e13b1bb16dba273cda29b4eb82029c59bf77d6))
+
 ## [18.3.0](https://github.com/dkarter/dotfiles/compare/v18.2.0...v18.3.0) (2024-09-17)
 
 
