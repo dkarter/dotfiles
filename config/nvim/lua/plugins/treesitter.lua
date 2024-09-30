@@ -61,6 +61,7 @@ return {
         'markdown',
         'markdown_inline',
         'nginx',
+        'promql',
         'python',
         'query',
         'regex',
