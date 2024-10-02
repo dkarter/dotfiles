@@ -82,7 +82,7 @@ return {
     {
       'microsoft/vscode-js-debug',
       -- After install, build it and rename the dist directory to out
-      build = 'asdf local nodejs 20.16.0 && npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git checkout .',
+      build = 'git checkout .; asdf local nodejs 20.16.0 && npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out; git checkout .',
     },
     {
       'mxsdev/nvim-dap-vscode-js',
