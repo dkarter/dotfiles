@@ -4,19 +4,17 @@ version: '3'
 tasks:
   commit:brew-packages:
     desc: Commits the Brewfile.lock.json file if changed
-    cmds:
-      - |
-        ./scripts/commit_changed_file.sh \
-            'Brewfile.lock.json' \
-            'chore(brew): update packages'
+    cmd: |
+      ./scripts/commit_changed_file.sh \
+          'Brewfile.lock.json' \
+          'chore(brew): update packages'
 
   commit:nvim-plugins:
     desc: Commits the lazy-lock.json file if changed
-    cmds:
-      - |
-        ./scripts/commit_changed_file.sh \
-            './config/nvim/lazy-lock.json' \
-            'chore(nvim): update plugins'
+    cmd: |
+      ./scripts/commit_changed_file.sh \
+          './config/nvim/lazy-lock.json' \
+          'chore(nvim): update plugins'
 
   format:lua:check:
     desc: Runs a Lua format check using stylua
