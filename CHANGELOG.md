@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.6.0](https://github.com/dkarter/dotfiles/compare/v18.5.0...v18.6.0) (2024-10-06)
+
+
+### Features
+
+* **task:** add gh:automerge:renovate ([ce90808](https://github.com/dkarter/dotfiles/commit/ce9080854f9300c934350611b72f31dc967bd5f0))
+* **task:** add gh:release task ([0e21a5d](https://github.com/dkarter/dotfiles/commit/0e21a5daa8155495fdc1621750d58a1f2ceb09fe))
+
+
+### Bug Fixes
+
+* **task:** gh:release change search state to open ([35592d0](https://github.com/dkarter/dotfiles/commit/35592d0cdff8070e13e301f60669d16281f61468))
+
 ## [18.5.0](https://github.com/dkarter/dotfiles/compare/v18.4.0...v18.5.0) (2024-10-06)
 
 
