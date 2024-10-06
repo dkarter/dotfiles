@@ -23,6 +23,9 @@ alias less='less -r'
 alias top="sudo htop" # alias top and fix high sierra bug
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
+# check internet connection
+alias chkint='pingf kagi.com'
+
 # postgres
 # --------
 #
