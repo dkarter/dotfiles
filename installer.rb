@@ -137,6 +137,8 @@ CARGOS = [
   'pipe-rename',
   # A command-line tool to batch rename files and directories
   'rnr',
+  # a modern alternative for sed with sensible defaults
+  'sd',
   # a modern version of autojump
   'zoxide',
 ].freeze
