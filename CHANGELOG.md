@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.5.0](https://github.com/dkarter/dotfiles/compare/v18.4.0...v18.5.0) (2024-10-06)
+
+
+### Features
+
+* **brew,zsh:** add homebrew support for linux ([7d1b6ce](https://github.com/dkarter/dotfiles/commit/7d1b6cefcee00b198551e6bb4ad6b1e57ac4d619))
+* **installer:** add sd ([c6e149b](https://github.com/dkarter/dotfiles/commit/c6e149b675a0dab561d4781b287912654d087d2d))
+* **nvim:** add grapple and portal ([8ceb159](https://github.com/dkarter/dotfiles/commit/8ceb15909816961547275cff6358483bd190d6b1))
+* **nvim:** add promql treesitter ([40bc911](https://github.com/dkarter/dotfiles/commit/40bc91188976971c6ebc8303c27577bbcdcc9f8c))
+* **nvim:** add yaml injections for GH Actions + Prom AlertManger ([feba012](https://github.com/dkarter/dotfiles/commit/feba01293f16b4bb588e173488c788a02a22a383))
+* **zsh:** add chkint to check internet connection ([b7b7749](https://github.com/dkarter/dotfiles/commit/b7b7749fc449490d1f6325caf71242a7470d5eb3))
+
+
+### Bug Fixes
+
+* **nvim:** attempt to fix vscode-js-debug ([183d026](https://github.com/dkarter/dotfiles/commit/183d02680fb4651328292e83937a4055094cfd3f))
+* **nvim:** improve Taskfile injections ([ae11b38](https://github.com/dkarter/dotfiles/commit/ae11b38a89c1296276e82121454aff0e14e74313))
+* **zsh:** add sleep to pingf to slow it down a bit ([e0a7cb2](https://github.com/dkarter/dotfiles/commit/e0a7cb2e98985ee7cfbada9cb9282362664b5716))
+
 ## [18.4.0](https://github.com/dkarter/dotfiles/compare/v18.3.0...v18.4.0) (2024-09-26)
 
 
