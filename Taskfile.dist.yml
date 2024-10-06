@@ -50,7 +50,7 @@ tasks:
       - creates a github release
     silent: true
     cmd: |
-      gh pr list --author "@me" --state closed --search 'chore(master): release' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
+      gh pr list --author "@me" --state open --search 'chore(master): release' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
 
   install:dotfiles:
     desc: Install dotfiles
