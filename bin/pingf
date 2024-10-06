@@ -26,4 +26,5 @@ trap cleanup SIGINT
 # Run the ping command in a loop
 while true; do
   ping "$@"
+  sleep 1
 done
