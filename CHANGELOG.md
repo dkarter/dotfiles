@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.7.0](https://github.com/dkarter/dotfiles/compare/v18.6.0...v18.7.0) (2024-10-07)
+
+
+### Features
+
+* **brew:** add tmux-fingers ([63cb97e](https://github.com/dkarter/dotfiles/commit/63cb97eac23ff5a9deecd9cda84c6c2e7a3a1190))
+* **tmux:** add tmux-open-nvim and tmux-fingers ([2212890](https://github.com/dkarter/dotfiles/commit/2212890ac4f805815837ff1733a06fdbce185b76))
+
+
+### Bug Fixes
+
+* **tmux:** file + line + col regex ([edc88a8](https://github.com/dkarter/dotfiles/commit/edc88a8dc2433b864773d7e19cfe8860bc78de1d))
+* **tmux:** set default shell to zsh ([f72f767](https://github.com/dkarter/dotfiles/commit/f72f76783a2d696b96764f6cbcd60cb6b91fc51f))
+* **tmux:** ton prioritize window ([eb25d8a](https://github.com/dkarter/dotfiles/commit/eb25d8a90703d524c71dbe09b861e78710999e09))
+
 ## [18.6.0](https://github.com/dkarter/dotfiles/compare/v18.5.0...v18.6.0) (2024-10-06)
 
 
