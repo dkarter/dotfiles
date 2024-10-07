@@ -127,6 +127,10 @@ brew 'tmux'
 tap 'joshmedeski/sesh'
 brew 'joshmedeski/sesh/sesh'
 
+# vimium like jumps in tmux
+tap 'morantron/tmux-fingers'
+brew 'tmux-fingers'
+
 # download files from the terminal, used by some scripts
 brew 'wget'
 
