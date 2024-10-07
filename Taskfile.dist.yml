@@ -122,6 +122,9 @@ tasks:
       - task: sync:asdf
       - task: install:pnpm
       - task: sync:brew
+      - task: tmux:plugins:clean
+      - task: tmux:plugins:install
+      - task: tmux:plugins:update
       - ruby ./installer.rb --sync --force
 
   sync:nvim:
@@ -161,6 +164,7 @@ tasks:
       - task: tmux:reload
       - cmd: ./config/tmux/plugins/tpm/bin/install_plugins
         silent: true
+      - task: tmux:reload
 
   tmux:plugins:update:
     desc: Update Tmux Plugins
