@@ -85,6 +85,13 @@ config.keys = {
     action = keys.tmux_prefix 'u',
   },
 
+  -- vimium like actions
+  {
+    key = 'f',
+    mods = 'SUPER',
+    action = keys.tmux_prefix 'F',
+  },
+
   -- jump tmux windows
   {
     key = 'k',
