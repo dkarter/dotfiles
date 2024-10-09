@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.8.0](https://github.com/dkarter/dotfiles/compare/v18.7.0...v18.8.0) (2024-10-09)
+
+
+### Features
+
+* **task:** add tmux tasks to dotfile sync ([cb8af61](https://github.com/dkarter/dotfiles/commit/cb8af61935b5a4e3777dcb7bb52ff42e5fad5ce4))
+* **tmux:** add regex for files without a dir ([39138bb](https://github.com/dkarter/dotfiles/commit/39138bbeb3ad618805f6db2c6483400740052108))
+
+
+### Bug Fixes
+
+* **zsh:** set homebrew path as first ([4f616b9](https://github.com/dkarter/dotfiles/commit/4f616b93b99e03f33189d810441de1a7340d2034))
+
 ## [18.7.0](https://github.com/dkarter/dotfiles/compare/v18.6.0...v18.7.0) (2024-10-07)
 
 
