@@ -9,6 +9,7 @@ fi
 export HOMEBREW_NO_ANALYTICS=1
 
 # set homebrew on path (Intel)
-export PATH="$PATH:/usr/local/bin"
-# set homebrew on path (Apple Silicon)
-export PATH="$PATH:/opt/homebrew/bin"
+export PATH="/usr/local/bin:$PATH"
+# set homebrew on path (Apple Silicon) - should be first to override system bins
+# (e.g. for updating zsh or bash)
+export PATH="/opt/homebrew/bin:$PATH"
