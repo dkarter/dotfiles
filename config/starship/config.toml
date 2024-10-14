@@ -1,19 +1,21 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-elixir.disabled = true
-nodejs.disabled = true
-gcloud.disabled = true
-ruby.disabled = true
-docker_context.disabled = true
-python.disabled = true
-package.disabled = true
 cmd_duration.format = "[$duration]($style) "
-sudo.disabled = false
-lua.disabled = true
-rust.disabled = true
+
+# language plugins
 deno.disabled = true
+docker_context.disabled = true
+elixir.disabled = true
 erlang.disabled = true
+gcloud.disabled = true
+lua.disabled = true
+nodejs.disabled = true
+package.disabled = true
+python.disabled = true
+ruby.disabled = true
+rust.disabled = true
+sudo.disabled = false
 
 # to hide this from the prompt you can run kctx -u to unset the current context
 [kubernetes]
