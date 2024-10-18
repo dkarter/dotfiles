@@ -115,7 +115,7 @@ M.setup = function()
       lspconfig[server_name].setup {}
     end,
 
-    ['tailwindcss'] = function()
+    tailwindcss = function()
       lspconfig.tailwindcss.setup {
         root_dir = root_pattern(
           'assets/tailwind.config.js',
@@ -189,19 +189,19 @@ M.setup = function()
     end,
 
     -- JSON
-    ['jsonls'] = function()
+    jsonls = function()
       local overrides = require 'plugins.lsp.jsonls'
       lspconfig.jsonls.setup(overrides)
     end,
 
     -- YAML
-    ['yamlls'] = function()
+    yamlls = function()
       local overrides = require('plugins.lsp.yamlls').setup()
       lspconfig.yamlls.setup(overrides)
     end,
 
     -- Lua
-    ['lua_ls'] = function()
+    lua_ls = function()
       -- Make runtime files discoverable to the lua server
       local runtime_path = vim.split(package.path, ';')
       table.insert(runtime_path, 'lua/?.lua')
@@ -233,6 +233,27 @@ M.setup = function()
             },
           },
         },
+      }
+    end,
+
+    denols = function()
+      lspconfig.denols.setup {
+        lint = true,
+        root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+      }
+    end,
+
+    -- TypeScript
+    ts_ls = function()
+      lspconfig.ts_ls.setup {
+        root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', 'node_modules'),
+        on_attach = function(client, bufnr)
+          -- prevent conflict with Deno (ts_ls was showing false positives)
+          if lspconfig.util.root_pattern('deno.json', 'deno.jsonc')(vim.fn.getcwd()) then
+            vim.lsp.stop_client(client.id)
+            vim.lsp.buf_detach_client(bufnr, client.id)
+          end
+        end,
       }
     end,
   }
