@@ -34,6 +34,9 @@ brew 'fop'
 brew 'libiodbc'
 brew 'openjdk'
 
+# for generating graphics
+brew 'graphviz'
+
 # code stats
 brew 'scc'
 
