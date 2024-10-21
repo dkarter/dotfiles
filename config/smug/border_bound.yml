@@ -1,0 +1,12 @@
+session: border_bound
+root: '~/dev/learning/border_bound'
+windows:
+  - name: vim
+    panes:
+      - commands: []
+    commands:
+      - nvim
+
+  - name: db
+    commands:
+      - pgtmp
