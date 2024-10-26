@@ -102,7 +102,14 @@ opt.complete:append 'kspell'
 -- for nvim-cmp
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
-opt.fillchars = { eob = '~' }
+opt.foldcolumn = '1'
+opt.fillchars = {
+  eob = '~',
+  fold = ' ',
+  foldopen = '',
+  foldsep = '│',
+  foldclose = '',
+}
 --
 -- solid window border requires Nerd Font
 vim.opt.fillchars:append { vert = '│' }
