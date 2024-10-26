@@ -16,6 +16,7 @@ return {
     keymaps = {
       ['<C-h>'] = false,
       ['<S-CR>'] = 'actions.select_split',
+      ['q'] = 'actions.close',
     },
     ---@diagnostic disable-next-line: missing-fields
     view_options = {
@@ -24,6 +25,13 @@ return {
       is_always_hidden = function(name, _bufnr)
         return name == '..' or name == '.git'
       end,
+    },
+
+    float = {
+      -- Padding around the floating window
+      padding = 8,
+      max_width = 120,
+      max_height = 120,
     },
   },
   -- Optional dependencies
