@@ -109,10 +109,9 @@ opt.fillchars = {
   foldopen = '',
   foldsep = '│',
   foldclose = '',
+  -- solid window border
+  vert = '│',
 }
---
--- solid window border requires Nerd Font
-vim.opt.fillchars:append { vert = '│' }
 
 -- hide vertical split
 vim.cmd 'highlight vertsplit guifg=fg guibg=bg'
