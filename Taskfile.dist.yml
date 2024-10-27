@@ -39,7 +39,7 @@ tasks:
       - automatically delete the branch after merge
     silent: true
     cmd: |
-      gh pr list --state open --author 'renovate' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
+      gh pr list --state open --author 'app/renovate' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
 
   gh:release:
     desc: Merges the release PR
