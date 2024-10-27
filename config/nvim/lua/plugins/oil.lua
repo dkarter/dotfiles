@@ -15,7 +15,9 @@ return {
     columns = { 'icon' },
     keymaps = {
       ['<C-h>'] = false,
-      ['<S-CR>'] = 'actions.select_split',
+      ['<C-l>'] = false,
+      ['<C-p>'] = false,
+      ['<tab>'] = 'actions.preview',
       ['q'] = 'actions.close',
     },
     ---@diagnostic disable-next-line: missing-fields
@@ -27,6 +29,7 @@ return {
       end,
     },
 
+    ---@diagnostic disable-next-line: missing-fields
     float = {
       -- Padding around the floating window
       padding = 8,
