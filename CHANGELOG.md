@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.8.0](https://github.com/dkarter/dotfiles/compare/v18.7.0...v18.8.0) (2024-10-27)
+
+
+### Features
+
+* **brew:** add graphviz ([775f931](https://github.com/dkarter/dotfiles/commit/775f9319c2e24ee11702b9328ed856ab5c2ebfdb))
+* **nvim:** add deno support ([1a1c2c6](https://github.com/dkarter/dotfiles/commit/1a1c2c69c97530785c3a45cfdcd9414f72eed56a))
+* **nvim:** add fold markers ([ab0934b](https://github.com/dkarter/dotfiles/commit/ab0934bdb5c5602e1b22589e7b45e036e82add0f))
+* **nvim:** add JSON sigil ([736f7f5](https://github.com/dkarter/dotfiles/commit/736f7f5583e41aaeb6b6931e04778494685d922e))
+* **nvim:** add stay-centered plugin ([be199f0](https://github.com/dkarter/dotfiles/commit/be199f0a70214167731a8a3c46121179dab3f9b0))
+* **nvim:** improve oil.nvim config ([84e22dd](https://github.com/dkarter/dotfiles/commit/84e22ddc1060d8ee2e5dfb96bbe788393707551b))
+* **sesh,smug:** add border_bound ([5fefc3d](https://github.com/dkarter/dotfiles/commit/5fefc3defc8a14ebc8885d2a76abfc1d5b2dfc9a))
+* **task:** add tmux tasks to dotfile sync ([cb8af61](https://github.com/dkarter/dotfiles/commit/cb8af61935b5a4e3777dcb7bb52ff42e5fad5ce4))
+* **tmux:** add regex for files without a dir ([39138bb](https://github.com/dkarter/dotfiles/commit/39138bbeb3ad618805f6db2c6483400740052108))
+
+
+### Bug Fixes
+
+* **nvim:** disable codespell on oil buffers ([2c19d82](https://github.com/dkarter/dotfiles/commit/2c19d82c4c9324125e8acb58be83dfdbb8390839))
+* **nvim:** improve oil mappings ([ebc0428](https://github.com/dkarter/dotfiles/commit/ebc0428645c7a4f098230eaf4c798f1fc983eef5))
+* **oil:** improve oil.nvim config ([47bdd50](https://github.com/dkarter/dotfiles/commit/47bdd50980e6147098f5370203fdb4bc4b7d177b))
+* **zsh:** set homebrew path as first ([4f616b9](https://github.com/dkarter/dotfiles/commit/4f616b93b99e03f33189d810441de1a7340d2034))
+
 ## [18.7.0](https://github.com/dkarter/dotfiles/compare/v18.6.0...v18.7.0) (2024-10-07)
 
 
