@@ -43,14 +43,27 @@ return {
 
       -- show buffer written messages in mini
       {
-        view = 'mini',
         filter = {
           event = 'msg_show',
           kind = '',
           find = 'written',
         },
+        view = 'mini',
         opts = {},
       },
+
+      -- show alternate file creation prompt in popup (the notify.nvim animation
+      -- was messing with it)
+      {
+        filter = {
+          event = 'msg_show',
+          kind = '',
+          find = 'Create alternate file?',
+        },
+        view = 'popup',
+        opts = {},
+      },
+
       -- hide the annoying code_action notifications from null ls
       {
         filter = {
