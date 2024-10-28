@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.8.1](https://github.com/dkarter/dotfiles/compare/v18.8.0...v18.8.1) (2024-10-28)
+
+
+### Bug Fixes
+
+* **task:** use correct author for renovate ([8bc2b9d](https://github.com/dkarter/dotfiles/commit/8bc2b9dee197d54d9c3b1ca65ab3965aadf7703a))
+
 ## [18.8.0](https://github.com/dkarter/dotfiles/compare/v18.7.0...v18.8.0) (2024-10-27)
 
 
