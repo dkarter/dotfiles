@@ -157,6 +157,10 @@ return {
               ['if'] = '@function.inner',
               ['ac'] = '@class.outer',
               ['ic'] = '@class.inner',
+              -- repeat for module - does the same thing but maps differently in
+              -- my 🧠
+              ['am'] = '@class.outer',
+              ['im'] = '@class.inner',
               ['ia'] = '@parameter.inner',
               ['aa'] = '@parameter.outer',
               ['ib'] = '@block.inner',
