@@ -41,6 +41,7 @@ local default = {
   },
   pickers = {
     find_files = {
+      hidden = true,
       find_command = {
         'fd',
         '--type',
@@ -51,6 +52,12 @@ local default = {
         '--ignore-file',
         '~/.gitignore',
       },
+    },
+    grep_string = {
+      additional_args = { '--hidden' },
+    },
+    live_grep = {
+      additional_args = { '--hidden' },
     },
   },
   extensions = {
