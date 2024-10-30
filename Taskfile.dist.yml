@@ -122,6 +122,7 @@ tasks:
       - task: sync:asdf
       - task: install:pnpm
       - task: sync:brew
+      - task: sync:bat
       - task: tmux:plugins:clean
       - task: tmux:plugins:install
       - task: tmux:plugins:update
@@ -147,6 +148,12 @@ tasks:
     cmds:
       - brew bundle
       - task: commit:brew-packages
+
+  sync:bat:
+    desc: Rebuilds bat cache to make it aware of themes
+    cmds:
+      - cmd: bat cache --build
+        silent: true
 
   tmux:reload:
     desc: Reload Tmux Configuration
