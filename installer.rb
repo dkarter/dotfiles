@@ -63,10 +63,11 @@ GEMS = [
 
 PIPS3 = [
   'codespell', # check for spelling mistakes in code.
+  'howdoi', # ask for coding help directly from the terminal
   'neovim', # NeoVim python3 support
   'neovim-remote', # allow controlling neovim remotely
+  'register-python-argcomplete', # adds completions for python tools (used by pipx)
   'yq', # like jq but for yaml files
-  'howdoi', # ask for coding help directly from the terminal
 ].freeze
 
 ASDF_PLUGINS = %w[
@@ -148,6 +149,7 @@ COMPLETIONS = [
   ['erd', 'erd --completions zsh'],
   ['fx', 'fx --comp zsh'],
   ['kubectl', 'kubectl completion zsh'],
+  ['pipx', 'register-python-argcomplete pipx'],
   ['sg', 'sg completions zsh'],
   ['starship', 'starship completions zsh'],
 ].freeze
