@@ -215,3 +215,6 @@ brew 'smug'
 
 # for formatting XML files
 brew 'xq'
+
+# install python tools globally (outside asdf - to avoid version shim conflicts)
+brew 'pipx'

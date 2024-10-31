@@ -453,7 +453,7 @@ class Installer
   def install_python_packages
     puts '===== Installing Python packages'.blue
 
-    popen("pip3 install #{PIPS3.join(' ')}")
+    popen("pipx install #{PIPS3.join(' ')}")
   end
 
   def install_npm_packages
