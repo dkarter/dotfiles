@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.9.0](https://github.com/dkarter/dotfiles/compare/v18.8.1...v18.9.0) (2024-10-31)
+
+
+### Features
+
+* **nvim:** add `am` and `im` text objects for `inner module` `a module` ([ddd9031](https://github.com/dkarter/dotfiles/commit/ddd9031c2e2222dfe5356d9c51f052fba3a1bc82))
+
+
+### Bug Fixes
+
+* **bat:** rebuild cache on dotfiles sync ([88dc54c](https://github.com/dkarter/dotfiles/commit/88dc54c9df6ab8d17504d7ff56b7c18fd897492e))
+* **nvim:** move create alternate file prompt to popup ([0aed16e](https://github.com/dkarter/dotfiles/commit/0aed16e1468cbf0cc65017a1377dc3f7ad443320))
+* **nvim:** search hidden files in live grep ([c8be7dd](https://github.com/dkarter/dotfiles/commit/c8be7dd8b07be84ecd50c6de2ae7a7778ccb496f))
+
 ## [18.8.1](https://github.com/dkarter/dotfiles/compare/v18.8.0...v18.8.1) (2024-10-28)
 
 
