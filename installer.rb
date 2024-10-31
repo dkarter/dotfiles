@@ -43,6 +43,7 @@ SYMLINK_DIRS = [
   %w[./config/gitui ~/.config/gitui],
   %w[./config/hammerspoon ~/.config/hammerspoon],
   %w[./config/kitty ~/.config/kitty],
+  %w[./config/lazygit ~/.config/lazygit],
   %w[./config/nvim ~/.config/nvim],
   %w[./config/ripgrep ~/.config/ripgrep],
   %w[./config/rubocop ~/.config/rubocop],
