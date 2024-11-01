@@ -1,13 +1,62 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 
 git:
-  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
   paging:
-    # Value of the --color arg in the git diff command. Some pagers want this to be set to 'always' and some want it set to 'never'
     colorArg: always
+    pager: delta --dark --paging=never --hunk-header-style=omit --file-style=omit
 
-    # e.g.
-    # diff-so-fancy
-    # delta --dark --paging=never
-    # ydiff -p cat -s --wrap --width={{columnWidth}}
-    # pager: "delta --dark --paging=never"
+gui:
+  nerdFontsVersion: '3'
+
+customCommands:
+  - key: '<c-c>'
+    command: 'git commit -m "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}: {{ .Form.Description }}"'
+    description: 'commit with commitizen'
+    context: 'files'
+    prompts:
+      - type: 'menu'
+        title: 'Select the type of change you are committing.'
+        key: 'Type'
+        options:
+          - name: 'Feature'
+            description: 'a new feature'
+            value: 'feat'
+          - name: 'Fix'
+            description: 'a bug fix'
+            value: 'fix'
+          - name: 'Documentation'
+            description: 'Documentation only changes'
+            value: 'docs'
+          - name: 'Styles'
+            description: 'Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)'
+            value: 'style'
+          - name: 'Code Refactoring'
+            description: 'A code change that neither fixes a bug nor adds a feature'
+            value: 'refactor'
+          - name: 'Performance Improvements'
+            description: 'A code change that improves performance'
+            value: 'perf'
+          - name: 'Tests'
+            description: 'Adding missing tests or correcting existing tests'
+            value: 'test'
+          - name: 'Builds'
+            description: 'Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)'
+            value: 'build'
+          - name: 'Continuous Integration'
+            description: 'Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)'
+            value: 'ci'
+          - name: 'Chores'
+            description: "Other changes that don't modify src or test files"
+            value: 'chore'
+          - name: 'Reverts'
+            description: 'Reverts a previous commit'
+            value: 'revert'
+      - type: 'input'
+        title: 'Enter the scope(s) of this change.'
+        key: 'Scopes'
+      - type: 'input'
+        title: 'Enter the short description of the change.'
+        key: 'Description'
+      - type: 'confirm'
+        title: 'Is the commit message correct?'
+        body: '{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}: {{ .Form.Description }}'
