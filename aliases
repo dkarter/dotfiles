@@ -6,8 +6,6 @@
 alias l="ls"
 # just like l but a single column
 alias l1="l -1"
-# just like l but with git status
-alias lg="l --git"
 # full long list with permissions, size, ownership etc
 alias ll="l -l"
 # just like ll but with git status
@@ -25,6 +23,9 @@ alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 # check internet connection
 alias chkint='pingf kagi.com'
+
+# just like l but with git status
+alias lg="lazygit"
 
 # postgres
 # --------
