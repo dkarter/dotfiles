@@ -150,9 +150,9 @@ COMPLETIONS = [
   ['erd', 'erd --completions zsh'],
   ['fx', 'fx --comp zsh'],
   ['kubectl', 'kubectl completion zsh'],
-  ['pipx', 'register-python-argcomplete pipx'],
   ['sg', 'sg completions zsh'],
   ['starship', 'starship completions zsh'],
+  ['uv', 'uv generate-shell-completion zsh'],
 ].freeze
 
 GH_PLUGINS = [
@@ -456,7 +456,7 @@ class Installer
   def install_python_packages
     puts '===== Installing Python packages'.blue
 
-    popen("pipx install #{PIPS3.join(' ')}")
+    popen("uv tool install #{PIPS3.join(' ')}")
   end
 
   def install_npm_packages

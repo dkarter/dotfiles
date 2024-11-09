@@ -217,4 +217,4 @@ brew 'smug'
 brew 'xq'
 
 # install python tools globally (outside asdf - to avoid version shim conflicts)
-brew 'pipx'
+brew 'uv'
