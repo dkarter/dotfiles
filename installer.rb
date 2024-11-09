@@ -67,7 +67,6 @@ PIPS3 = [
   'howdoi', # ask for coding help directly from the terminal
   'neovim', # NeoVim python3 support
   'neovim-remote', # allow controlling neovim remotely
-  'register-python-argcomplete', # adds completions for python tools (used by pipx)
   'yq', # like jq but for yaml files
 ].freeze
 
@@ -145,16 +144,6 @@ CARGOS = [
   'zoxide',
 ].freeze
 
-COMPLETIONS = [
-  ['delta', 'delta --generate-completion zsh'],
-  ['erd', 'erd --completions zsh'],
-  ['fx', 'fx --comp zsh'],
-  ['kubectl', 'kubectl completion zsh'],
-  ['sg', 'sg completions zsh'],
-  ['starship', 'starship completions zsh'],
-  ['uv', 'uv generate-shell-completion zsh'],
-].freeze
-
 GH_PLUGINS = [
   # PR dashboard
   'dlvhdr/gh-dash',
@@ -223,12 +212,6 @@ TASKS = [
     sync: true,
     confirmation: 'Reshim ASDF tools?',
     callback: proc { reshim_asdf_tools },
-  },
-  {
-    name: 'Generate completions cache',
-    sync: true,
-    confirmation: 'Generate completions cache?',
-    callback: proc { generate_completions_cache },
   },
   {
     name: 'GH Plugins',
@@ -470,21 +453,6 @@ class Installer
 
     ASDF_PLUGINS.map { |plugin| Thread.new { popen("asdf reshim #{plugin}") } }
                 .each(&:join)
-  end
-
-  def generate_completions_cache
-    COMPLETIONS.map do |name, command|
-      Thread.new do
-        puts "===== Creating completions cache for #{name}...".blue
-        popen(<<-BASH)
-        #{command} > ~/.cache/zsh/completions/_#{name}
-        BASH
-      end
-    end
-    .each(&:join)
-
-    puts '===== Refreshing completions'.blue
-    popen("zsh -c 'builtin autoload -Uz +X compinit'")
   end
 
   def link_folder(source, target)

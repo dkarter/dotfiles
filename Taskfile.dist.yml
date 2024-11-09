@@ -18,6 +18,44 @@ tasks:
           './config/nvim/lazy-lock.json' \
           'chore(nvim): update plugins'
 
+  completions:generate:
+    desc: Generates completions for some CLI tools
+    summary: |
+      Generates completions for some CLI tools
+    vars:
+      COMPLETIONS:
+        - 'delta|delta --generate-completion zsh'
+        - 'erd|erd --completions zsh'
+        - 'fx|fx --comp zsh'
+        - 'kubectl|kubectl completion zsh'
+        - 'sg|sg completions zsh'
+        - 'starship|starship completions zsh'
+        - 'uv|uv generate-shell-completion zsh'
+
+    cmds:
+      - for:
+          var: COMPLETIONS
+          as: COMP
+        cmd: |
+          app='{{splitList "|" .COMP | first}}'
+          cmd='{{splitList "|" .COMP | last}}'
+          cache_path="$(echo ~/.cache/zsh/completions/_$app)"
+          echo -n "Generating completions for $app..."
+          eval "$cmd" > $cache_path
+          echo "DONE"
+        silent: true
+
+      - task: completions:cache:reload
+
+  completions:cache:reload:
+    desc: Reloads completion cache
+    cmd: |
+      echo -n Reloading completions cache...
+      zsh -c 'builtin autoload -Uz +X compinit'
+      zsh -c 'autoload -Uz compinit && compinit'
+      echo "DONE"
+    silent: true
+
   format:lua:check:
     desc: Runs a Lua format check using stylua
     silent: true
@@ -127,6 +165,7 @@ tasks:
       - task: tmux:plugins:install
       - task: tmux:plugins:update
       - ruby ./installer.rb --sync --force
+      - task: completions:generate
 
   sync:nvim:
     desc: Syncs/updates Neovim plugins, CLI utils, and TreeSitter plugins
