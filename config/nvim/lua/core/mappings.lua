@@ -500,35 +500,24 @@ M.attempt_mappings = {
   { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
 }
 
-local bufremove_others = function(force)
-  return function()
-    local bufremove = require('mini.bufremove').delete
-    local curr_buf = vim.api.nvim_get_current_buf()
-    local buf_list = vim.api.nvim_list_bufs()
-    local deleted_count = 0
-
-    for _, bufnr in pairs(buf_list) do
-      if bufnr ~= curr_buf then
-        bufremove(bufnr, force)
-        deleted_count = deleted_count + 1
-      end
-    end
-    vim.notify('Removed ' .. deleted_count .. ' buffers')
-  end
-end
-
-local bufremove_curr = function(force)
-  return function()
-    require('mini.bufremove').delete(0, force)
-  end
-end
-
 ---@type LazyKeysSpec[]
-M.bufremove_mappings = {
-  { '<leader>bd', bufremove_curr(false), desc = 'Delete Buffer' },
-  { '<leader>bD', bufremove_curr(true), desc = 'Delete Buffer (Force)' },
-  { '<leader>bo', bufremove_others(false), desc = 'Delete Other Buffers' },
-  { '<leader>bO', bufremove_others(true), desc = 'Delete Other Buffers (Force)' },
+-- stylua: ignore
+M.snack_mappings = {
+  { '<leader>nd', function() Snacks.notifier.hide() end, desc = 'Notification Dismiss' },
+  { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+  { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+  { '<leader>bD', function() Snacks.bufdelete({ force = true }) end, desc = 'Delete Buffer (Force)' },
+  { '<leader>bo', function() Snacks.bufdelete.other() end, desc = 'Delete Other Buffers' },
+  { '<leader>bO', function() Snacks.bufdelete.other({ force = true }) end, desc = 'Delete Other Buffers (Force)' },
+  { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+  { "<leader>bl", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
+  { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+  { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
+  { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
+  { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+  { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+  { "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
+  { "[r",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
 }
 
 M.gitsigns_mappings = function(bufnr)
@@ -572,11 +561,6 @@ M.gitsigns_mappings = function(bufnr)
 
   -- Text object for git hunks (e.g. vih will select the hunk)
   map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
-end
-
-M.notify_mappings = function()
-  local notify = require 'notify'
-  nmap { '<leader>nd', notify.dismiss, { desc = '[N]otification [D]ismiss' } }
 end
 
 nmap {
