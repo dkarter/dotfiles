@@ -515,7 +515,6 @@ M.snack_mappings = {
   { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
   { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
   { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-  { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
   { "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
   { "[r",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
 }
