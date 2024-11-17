@@ -4,7 +4,6 @@ version: 3
 
 tasks:
   reload:
-    dir: ../
     desc: Reload Tmux Configuration
     cmds:
       - cmd: tmux source-file ~/.config/tmux/tmux.conf
@@ -15,7 +14,6 @@ tasks:
         silent: true
 
   plugins:install:
-    dir: ../
     desc: Install Tmux Plugins
     cmds:
       - task: reload
@@ -24,7 +22,6 @@ tasks:
       - task: reload
 
   plugins:update:
-    dir: ../
     desc: Update Tmux Plugins
     cmds:
       - task: reload
@@ -32,7 +29,6 @@ tasks:
         silent: true
 
   plugins:clean:
-    dir: ../
     desc: Clean Tmux Plugins
     cmds:
       - task: reload
