@@ -54,6 +54,7 @@ SYMLINK_DIRS = [
   %w[./config/vifm ~/.config/vifm],
   %w[./config/wezterm ~/.config/wezterm],
   %w[./config/yamllint ~/.config/yamllint],
+  %w[./config/zellij ~/.config/zellij],
   %w[./config/zsh ~/.config/zsh],
 ].freeze
 
