@@ -1,0 +1,58 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+includes:
+  asdf:
+    taskfile: ./asdf.yml
+    internal: true
+
+  bat:
+    taskfile: ./bat.yml
+    internal: true
+
+  brew:
+    taskfile: ./brew.yml
+    internal: true
+
+  completions:
+    taskfile: ./completions.yml
+    internal: true
+
+  pnpm:
+    taskfile: ./pnpm.yml
+    internal: true
+
+  tmux:
+    taskfile: ./tmux.yml
+    internal: true
+
+tasks:
+  install:
+    desc: Install dotfiles
+    summary: |
+      Install dotfiles
+
+      Installs all dependencies and symlink dotfiles.
+
+      Idempotent, can be used to update packages.
+    silent: true
+    cmd: ./setup.sh
+
+  sync:
+    dir: ../
+    desc: Synchronize dotfiles
+    summary: |
+      Synchronize dotfiles
+
+      Only symlinks dotfiles, does not install packages
+    cmds:
+      # we need to sync asdf for the local project before we try to install any packages
+      - task: asdf:sync
+      - task: pnpm:install
+      - task: brew:sync
+      - task: bat:sync
+      - task: tmux:plugins:clean
+      - task: tmux:plugins:install
+      - task: tmux:plugins:update
+      - ruby ./installer.rb --sync --force
+      - task: completions:generate

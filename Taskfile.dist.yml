@@ -1,26 +1,36 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
-version: '3'
+version: 3
 
 includes:
+  asdf:
+    aliases: [a]
+    taskfile: ./taskfiles/asdf.yml
+
+  bat:
+    taskfile: ./taskfiles/bat.yml
+
+  brew:
+    aliases: [b]
+    taskfile: ./taskfiles/brew.yml
+
   comp:
-    aliases: [completions]
+    aliases: [c, completions]
     taskfile: ./taskfiles/completions.yml
 
+  dot:
+    taskfile: ./taskfiles/dotfiles.yml
+
+  pnpm:
+    taskfile: ./taskfiles/pnpm.yml
+
   tmux:
+    aliases: [t]
     taskfile: ./taskfiles/tmux.yml
 
 tasks:
   default:
     cmd: task -l
     silent: true
-
-  commit:brew-packages:
-    desc: Commits the Brewfile.lock.json file if changed
-    silent: true
-    cmd: |
-      ./scripts/commit_changed_file.sh \
-          'Brewfile.lock.json' \
-          'chore(brew): update packages'
 
   commit:nvim-plugins:
     desc: Commits the lazy-lock.json file if changed
@@ -64,44 +74,6 @@ tasks:
     cmd: |
       gh pr list --author "@me" --state open --search 'chore(master): release' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
 
-  install:dotfiles:
-    desc: Install dotfiles
-    summary: |
-      Install dotfiles
-
-      Installs all dependencies and symlink dotfiles.
-
-      Idempotent, can be used to update packages.
-    silent: true
-    cmd: ./setup.sh
-
-  install:ollama:
-    desc: Installs Ollama and pulls useful models
-    summary: |
-      Works only on macOS for now.
-
-      Installs the following models:
-      - llama3.1
-      - mistral
-      - codellama
-    cmds:
-      - brew install --cask ollama
-      - ollama pull llama3.1
-      - ollama pull codellama
-      - ollama pull mistral
-
-  install:pnpm:
-    desc: Sets up PNPM on the local machine
-    summary: |
-      Enables and activates pnpm in the current project
-
-      Requires Node.js to be properly set up
-    cmds:
-      - corepack enable
-      - corepack enable pnpm
-      - asdf reshim nodejs
-      - pnpm --version
-
   install:sudo-touch-id:
     desc: Sets up touch id as sufficient sudo permission
     summary: Sets up touch id as sufficient sudo permission
@@ -117,30 +89,6 @@ tasks:
     cmds:
       - yamllint --strict --config-file ./config/yamllint/config .
 
-  sync:asdf:
-    desc: Updates asdf plugins and installs asdf packages for this project
-    cmds:
-      - asdf plugin-update --all
-      - asdf install
-
-  sync:dotfiles:
-    desc: Synchronize dotfiles
-    summary: |
-      Synchronize dotfiles
-
-      Only symlinks dotfiles, does not install packages
-    cmds:
-      # we need to sync asdf for the local project before we try to install any packages
-      - task: sync:asdf
-      - task: install:pnpm
-      - task: sync:brew
-      - task: sync:bat
-      - task: tmux:plugins:clean
-      - task: tmux:plugins:install
-      - task: tmux:plugins:update
-      - ruby ./installer.rb --sync --force
-      - task: completions:generate
-
   sync:nvim:
     desc: Syncs/updates Neovim plugins, CLI utils, and TreeSitter plugins
     summary: |
@@ -150,20 +98,3 @@ tasks:
     cmds:
       - ./scripts/nvim-update.sh
       - task: commit:nvim-plugins
-
-  sync:brew:
-    desc: Synchronize homebrew packages
-    summary: |
-      Updates Homebrew packages
-
-      Then automatically commits the changes to the Brewfile.lock.json file, if there are any.
-    platforms: ['darwin']
-    cmds:
-      - brew bundle
-      - task: commit:brew-packages
-
-  sync:bat:
-    desc: Rebuilds bat cache to make it aware of themes
-    cmds:
-      - cmd: bat cache --build
-        silent: true

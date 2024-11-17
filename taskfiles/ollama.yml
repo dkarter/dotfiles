@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+#
+version: 3
+
+tasks:
+  install:ollama:
+    desc: Installs Ollama and pulls useful models
+    summary: |
+      Works only on macOS for now.
+
+      Installs the following models:
+      - llama3.1
+      - mistral
+      - codellama
+    cmds:
+      - brew install --cask ollama
+      - ollama pull llama3.1
+      - ollama pull codellama
+      - ollama pull mistral

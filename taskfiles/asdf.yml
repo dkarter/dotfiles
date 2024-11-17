@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  sync:
+    dir: ../
+    desc: Updates asdf plugins and installs asdf packages for this project
+    cmds:
+      - asdf plugin-update --all
+      - asdf install
