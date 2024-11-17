@@ -22,6 +22,10 @@ includes:
     taskfile: ./pnpm.yml
     internal: true
 
+  python:
+    taskfile: ./python.yml
+    internal: true
+
   tmux:
     taskfile: ./tmux.yml
     internal: true
@@ -39,7 +43,6 @@ tasks:
     cmd: ./setup.sh
 
   sync:
-    dir: ../
     desc: Synchronize dotfiles
     summary: |
       Synchronize dotfiles
@@ -51,6 +54,8 @@ tasks:
       - task: pnpm:install
       - task: brew:sync
       - task: bat:sync
+      - task: python:install:tools
+      - task: python:update:tools
       - task: tmux:plugins:clean
       - task: tmux:plugins:install
       - task: tmux:plugins:update

@@ -62,14 +62,6 @@ GEMS = [
   'pry', # ruby debugger
 ].freeze
 
-PIPS3 = [
-  'codespell', # check for spelling mistakes in code.
-  'howdoi', # ask for coding help directly from the terminal
-  'neovim', # NeoVim python3 support
-  'neovim-remote', # allow controlling neovim remotely
-  'yq', # like jq but for yaml files
-].freeze
-
 ASDF_PLUGINS = %w[
   bat
   direnv
@@ -198,12 +190,11 @@ TASKS = [
   {
     name: 'Extrenal Packages',
     sync: true,
-    confirmation: 'Install external packages (gems, pips, cargos, npms)?',
+    confirmation: 'Install external packages (gems, cargos, npms)?',
     callback:
       proc do
         install_rubygems
         install_npm_packages
-        install_python_packages
         install_rust_cargos
       end,
   },
@@ -434,12 +425,6 @@ class Installer
     puts '===== Installing necessary RubyGems'.blue
 
     popen("gem install #{GEMS.join(' ')}")
-  end
-
-  def install_python_packages
-    puts '===== Installing Python packages'.blue
-
-    popen("uv tool install #{PIPS3.join(' ')}")
   end
 
   def install_npm_packages
