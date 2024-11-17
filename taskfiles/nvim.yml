@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  commit:
+    desc: Commits the lazy-lock.json file if changed
+    silent: true
+    cmd: |
+      ./scripts/commit_changed_file.sh \
+          './config/nvim/lazy-lock.json' \
+          'chore(nvim): update plugins'
+
+  sync:
+    desc: Syncs/updates Neovim plugins, CLI utils, and TreeSitter plugins
+    summary: |
+      Updates Neovim plugins, CLI utils, and TreeSitter plugins
+
+      Then automatically commits the changes to the lazy-lock file, if there are any.
+    cmds:
+      - ./scripts/nvim-update.sh
+      - task: commit

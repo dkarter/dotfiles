@@ -20,6 +20,9 @@ includes:
   dot:
     taskfile: ./taskfiles/dotfiles.yml
 
+  nvim:
+    taskfile: ./taskfiles/nvim.yml
+
   pnpm:
     taskfile: ./taskfiles/pnpm.yml
 
@@ -34,14 +37,6 @@ tasks:
   default:
     cmd: task -l
     silent: true
-
-  commit:nvim-plugins:
-    desc: Commits the lazy-lock.json file if changed
-    silent: true
-    cmd: |
-      ./scripts/commit_changed_file.sh \
-          './config/nvim/lazy-lock.json' \
-          'chore(nvim): update plugins'
 
   format:lua:check:
     desc: Runs a Lua format check using stylua
@@ -91,13 +86,3 @@ tasks:
     desc: Runs yamllint on this repo
     cmds:
       - yamllint --strict --config-file ./config/yamllint/config .
-
-  sync:nvim:
-    desc: Syncs/updates Neovim plugins, CLI utils, and TreeSitter plugins
-    summary: |
-      Updates Neovim plugins, CLI utils, and TreeSitter plugins
-
-      Then automatically commits the changes to the lazy-lock file, if there are any.
-    cmds:
-      - ./scripts/nvim-update.sh
-      - task: commit:nvim-plugins
