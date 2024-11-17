@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+#
+version: 3
+
+tasks:
+  reload:
+    desc: Reload Tmux Configuration
+    cmds:
+      - cmd: tmux source-file ~/.config/tmux/tmux.conf
+        silent: true
+      - cmd: tmux display-message 'tmux.conf reloaded'
+        silent: true
+      - cmd: echo "Tmux Config Reloaded!"
+        silent: true
+
+  plugins:install:
+    desc: Install Tmux Plugins
+    cmds:
+      - task: reload
+      - cmd: ./config/tmux/plugins/tpm/bin/install_plugins
+        silent: true
+      - task: reload
+
+  plugins:update:
+    desc: Update Tmux Plugins
+    cmds:
+      - task: reload
+      - cmd: ./config/tmux/plugins/tpm/bin/update_plugins all
+        silent: true
+
+  plugins:clean:
+    desc: Clean Tmux Plugins
+    cmds:
+      - task: reload
+      - cmd: ./config/tmux/plugins/tpm/bin/clean_plugins
+        silent: true

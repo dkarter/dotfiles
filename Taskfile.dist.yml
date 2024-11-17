@@ -2,9 +2,12 @@
 version: '3'
 
 includes:
-  completions:
-    aliases: [comp]
+  comp:
+    aliases: [completions]
     taskfile: ./taskfiles/completions.yml
+
+  tmux:
+    taskfile: ./taskfiles/tmux.yml
 
 tasks:
   commit:brew-packages:
@@ -159,36 +162,4 @@ tasks:
     desc: Rebuilds bat cache to make it aware of themes
     cmds:
       - cmd: bat cache --build
-        silent: true
-
-  tmux:reload:
-    desc: Reload Tmux Configuration
-    cmds:
-      - cmd: tmux source-file ~/.config/tmux/tmux.conf
-        silent: true
-      - cmd: tmux display-message 'tmux.conf reloaded'
-        silent: true
-      - cmd: echo "Tmux Config Reloaded!"
-        silent: true
-
-  tmux:plugins:install:
-    desc: Install Tmux Plugins
-    cmds:
-      - task: tmux:reload
-      - cmd: ./config/tmux/plugins/tpm/bin/install_plugins
-        silent: true
-      - task: tmux:reload
-
-  tmux:plugins:update:
-    desc: Update Tmux Plugins
-    cmds:
-      - task: tmux:reload
-      - cmd: ./config/tmux/plugins/tpm/bin/update_plugins all
-        silent: true
-
-  tmux:plugins:clean:
-    desc: Clean Tmux Plugins
-    cmds:
-      - task: tmux:reload
-      - cmd: ./config/tmux/plugins/tpm/bin/clean_plugins
         silent: true
