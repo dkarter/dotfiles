@@ -44,7 +44,14 @@ tasks:
 
       Idempotent, can be used to update packages.
     silent: true
-    cmd: ./setup.sh
+    cmds:
+      - task: asdf:sync
+      - cmd: ./setup.sh
+      - task: pnpm:install
+      - task: brew:sync
+      - task: bat:sync
+      - task: python:install:tools
+      - task: tmux:plugins:install
 
   sync:
     desc: Synchronize dotfiles
