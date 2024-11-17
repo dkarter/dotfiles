@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+#
+version: 3
+
+tasks:
+  generate:
+    aliases: [gen]
+    desc: Generates completions for some CLI tools
+    summary: |
+      Generates completions for some CLI tools
+    vars:
+      COMPLETIONS:
+        - 'delta|delta --generate-completion zsh'
+        - 'erd|erd --completions zsh'
+        - 'fx|fx --comp zsh'
+        - 'kubectl|kubectl completion zsh'
+        - 'sg|sg completions zsh'
+        - 'starship|starship completions zsh'
+        - 'uv|uv generate-shell-completion zsh'
+
+    cmds:
+      - for:
+          var: COMPLETIONS
+          as: COMP
+        cmd: |
+          app='{{splitList "|" .COMP | first}}'
+          cmd='{{splitList "|" .COMP | last}}'
+          cache_path="$(echo ~/.cache/zsh/completions/_$app)"
+          echo -n "Generating completions for $app..."
+          eval "$cmd" > $cache_path
+          echo "DONE"
+        silent: true
+
+      - task: cache:reload
+
+  cache:reload:
+    desc: Reloads completion cache
+    cmd: |
+      echo -n Reloading completions cache...
+      zsh -c 'builtin autoload -Uz +X compinit'
+      zsh -c 'autoload -Uz compinit && compinit'
+      echo "DONE"
+    silent: true
