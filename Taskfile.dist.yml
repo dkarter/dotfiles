@@ -10,6 +10,10 @@ includes:
     taskfile: ./taskfiles/tmux.yml
 
 tasks:
+  default:
+    cmd: task -l
+    silent: true
+
   commit:brew-packages:
     desc: Commits the Brewfile.lock.json file if changed
     silent: true
