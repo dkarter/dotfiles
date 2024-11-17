@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  automerge:renovate:
+    desc: Auto merges all PRs
+    summary: |
+      Auto merges all PRs
+
+      Does the following:
+      - sets PRs to auto merge
+      - uses squash to merge
+      - automatically delete the branch after merge
+    silent: true
+    cmd: |
+      gh pr list --state open --author 'app/renovate' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
+
+  release:
+    desc: Merges the release PR
+    summary: |
+      Merges the release PR which:
+      - bumps the version
+      - updates the changelog
+      - creates a github release
+    silent: true
+    cmd: |
+      gh pr list --author "@me" --state open --search 'chore(master): release' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
