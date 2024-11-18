@@ -20,8 +20,8 @@ includes:
     taskfile: ./completions.yml
     internal: true
 
-  pnpm:
-    taskfile: ./pnpm.yml
+  node:
+    taskfile: ./node.yml
     dir: ../
     internal: true
 
@@ -52,7 +52,7 @@ tasks:
     cmds:
       - task: asdf:sync
       - cmd: ./setup.sh
-      - task: pnpm:install
+      - task: node:install:pnpm
       - task: brew:sync
       - task: bat:sync
       - task: python:install:tools
@@ -68,7 +68,7 @@ tasks:
     cmds:
       # we need to sync asdf for the local project before we try to install any packages
       - task: asdf:sync
-      - task: pnpm:install
+      - task: node:install:pnpm
       - task: brew:sync
       - task: bat:sync
       - task: python:install:tools

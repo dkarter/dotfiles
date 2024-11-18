@@ -89,21 +89,6 @@ ASDF_PLUGINS = %w[
 # x86 machines and linux
 ASDF_ARM_INCOMPATIBLE = %w[github-cli fzf fd ripgrep neovim].freeze
 
-NPMS = [
-  # linter for checking that commits are following conventional commits
-  '@commitlint/cli',
-  # support for javascript plugins in neovim
-  'neovim',
-  # code formatter
-  'prettier',
-  # useful usage instructions for CLI apps
-  'tldr',
-  # rm -> system trash (cross platform)
-  'trash-cli',
-  # easily find and delete heavy node modules
-  'npkill',
-].freeze
-
 GH_PLUGINS = [
   # PR dashboard
   'dlvhdr/gh-dash',
@@ -158,11 +143,10 @@ TASKS = [
   {
     name: 'Extrenal Packages',
     sync: true,
-    confirmation: 'Install external packages (gems, npms)?',
+    confirmation: 'Install external packages (gems)?',
     callback:
       proc do
         install_rubygems
-        install_npm_packages
       end,
   },
   {
@@ -377,12 +361,6 @@ class Installer
     puts '===== Installing necessary RubyGems'.blue
 
     popen("gem install #{GEMS.join(' ')}")
-  end
-
-  def install_npm_packages
-    puts '===== Installing NPM packages'.blue
-
-    popen("npm install -g #{NPMS.join(' ')}")
   end
 
   def reshim_asdf_tools
