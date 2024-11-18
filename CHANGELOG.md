@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.10.0](https://github.com/dkarter/dotfiles/compare/v18.9.0...v18.10.0) (2024-11-18)
+
+
+### Features
+
+* **brew:** add carapace ([88b05d8](https://github.com/dkarter/dotfiles/commit/88b05d85e9f22082f268435da0dab81f415f0726))
+* **installer:** add completions for pipx ([b74425a](https://github.com/dkarter/dotfiles/commit/b74425a5d23a46da2331a6890822bf6371235f38))
+* **installer:** add zellij config ([aa0d2cf](https://github.com/dkarter/dotfiles/commit/aa0d2cf7e7319a5875f58420ed528e4f5349205f))
+* **lazygit:** add config ([45a3a13](https://github.com/dkarter/dotfiles/commit/45a3a1300f36dedf145f964b28acb90726457192))
+* **nvim:** add dadbod.nvim ([de0bdf8](https://github.com/dkarter/dotfiles/commit/de0bdf8c2d66ec5ee46b3e50b5ff31377ab2dcf2))
+* **task:** add default task ([ee3333c](https://github.com/dkarter/dotfiles/commit/ee3333c4ff7a706d66814ccac4c82baf613c31a8))
+* **task:** add zinit plugin update task ([96c641d](https://github.com/dkarter/dotfiles/commit/96c641d1e46f517e8f4fd345907b5bbbd6f18032))
+
+
+### Bug Fixes
+
+* **lazygit:** improve config + add custom command ([dea5c0b](https://github.com/dkarter/dotfiles/commit/dea5c0ba5bf7d3bae3fa7bf22ab285b311401a6f))
+* **nvim:** gitsigns hunk nav deprecation ([1533bb0](https://github.com/dkarter/dotfiles/commit/1533bb008b7dec86c7cd578ae8ab92f200f9a5ab))
+* **nvim:** snacks breaking changes + remove terminal ([a69e034](https://github.com/dkarter/dotfiles/commit/a69e0344db001004f520c5a60de096fcc7f36832))
+* **task:** improve dotfiles install task ([ecdef8a](https://github.com/dkarter/dotfiles/commit/ecdef8afa9c80b302ca0a39cd054a8719b7a6328))
+* **task:** relative dirs for internal includes ([133e4b5](https://github.com/dkarter/dotfiles/commit/133e4b598807e78fc8e01336415ac145cd5a6a9d))
+* **zsh:** change lg alias to lazygit ([53a0b41](https://github.com/dkarter/dotfiles/commit/53a0b41d163cc1e9e70beda81e691e720a3c45de))
+* **zsh:** path conflicts btw Brew and ASDF ([40f8f0b](https://github.com/dkarter/dotfiles/commit/40f8f0b7ecbdfd1c2244988c3058017dd9149501))
+
 ## [18.9.0](https://github.com/dkarter/dotfiles/compare/v18.8.1...v18.9.0) (2024-10-31)
 
 
