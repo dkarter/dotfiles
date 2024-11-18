@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  format:lua:check:
+    desc: Runs a Lua format check using stylua
+    silent: true
+    cmd: stylua --allow-hidden --respect-ignores --check .
+
+  format:lua:
+    desc: Runs a Lua format using stylua
+    silent: true
+    cmd: stylua --allow-hidden --respect-ignores .
+
+  yaml:
+    desc: Runs yamllint on this repo
+    cmds:
+      - yamllint --strict --config-file ./config/yamllint/config .

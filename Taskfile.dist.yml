@@ -24,6 +24,9 @@ includes:
     aliases: [github]
     taskfile: ./taskfiles/github.yml
 
+  lint:
+    taskfile: ./taskfiles/lint.yml
+
   nvim:
     taskfile: ./taskfiles/nvim.yml
 
@@ -42,16 +45,6 @@ tasks:
     cmd: task -l
     silent: true
 
-  format:lua:check:
-    desc: Runs a Lua format check using stylua
-    silent: true
-    cmd: stylua --allow-hidden --respect-ignores --check .
-
-  format:lua:
-    desc: Runs a Lua format using stylua
-    silent: true
-    cmd: stylua --allow-hidden --respect-ignores .
-
   install:sudo-touch-id:
     desc: Sets up touch id as sufficient sudo permission
     summary: Sets up touch id as sufficient sudo permission
@@ -61,8 +54,3 @@ tasks:
       Requires sudo.
     cmds:
       - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local
-
-  lint:yaml:
-    desc: Runs yamllint on this repo
-    cmds:
-      - yamllint --strict --config-file ./config/yamllint/config .
