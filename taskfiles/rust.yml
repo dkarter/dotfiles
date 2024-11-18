@@ -38,14 +38,17 @@ vars:
 
 tasks:
   install:tools:
+    desc: Install Rust based CLI tools
     cmds:
-      - for:
-          var: CARGOS
-          as: CARGO
-        cmd: cargo install {{.CARGO}} --locked
-      - asdf reshim rust
+      - cargo install {{.CARGOS | join " "}} --locked
+      - task: reshim
 
   update:tools:
+    desc: Update Rust based CLI tools
     cmds:
       - cargo install-update -a
-      - asdf reshim rust
+      - task: reshim
+
+  reshim:
+    desc: Refreshes symlinks for the latest installed tool version
+    cmd: asdf reshim rust
