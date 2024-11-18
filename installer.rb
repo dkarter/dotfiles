@@ -11,53 +11,6 @@ Warning[:experimental] = false
 
 ASDF_INSTALL_DIR = '~/.asdf'
 
-DIRS = %w[
-  ~/.cache/zsh/completions
-  ~/.config
-  ~/.local/share/psql
-].freeze
-
-DOTFILES = %w[
-  aliases
-  asdfrc
-  ctags
-  gemrc
-  gitconfig
-  gitignore
-  gitmessage
-  ignore
-  prettierrc
-  pryrc
-  psqlrc
-  stylelintrc
-  zinitrc
-  zshenv
-  zshrc
-].freeze
-
-SYMLINK_DIRS = [
-  %w[./config/alacritty ~/.config/alacritty],
-  %w[./config/bat ~/.config/bat],
-  %w[./config/btop ~/.config/btop],
-  %w[./config/gh-dash ~/.config/gh-dash],
-  %w[./config/gitui ~/.config/gitui],
-  %w[./config/hammerspoon ~/.config/hammerspoon],
-  %w[./config/kitty ~/.config/kitty],
-  %w[./config/lazygit ~/.config/lazygit],
-  %w[./config/nvim ~/.config/nvim],
-  %w[./config/ripgrep ~/.config/ripgrep],
-  %w[./config/rubocop ~/.config/rubocop],
-  %w[./config/sesh ~/.config/sesh],
-  %w[./config/smug ~/.config/smug],
-  %w[./config/starship ~/.config/starship],
-  %w[./config/tmux ~/.config/tmux],
-  %w[./config/vifm ~/.config/vifm],
-  %w[./config/wezterm ~/.config/wezterm],
-  %w[./config/yamllint ~/.config/yamllint],
-  %w[./config/zellij ~/.config/zellij],
-  %w[./config/zsh ~/.config/zsh],
-].freeze
-
 GEMS = [
   'bundler', # manage gem bundles for a project
   'pry', # ruby debugger
@@ -107,21 +60,6 @@ TASKS = [
     sync: false,
     confirmation: 'Install fonts?',
     callback: proc { install_fonts },
-  },
-  {
-    name: 'Create Dirs',
-    sync: true,
-    callback: proc { create_dirs },
-  },
-  {
-    name: 'Symlink Dotfiles',
-    sync: true,
-    confirmation: 'Link dotfiles?',
-    callback:
-      proc do
-        symlink_dotfiles
-        symlink_nested_dotfiles
-      end,
   },
   {
     name: 'ZSH Plugin Manager',
@@ -216,11 +154,6 @@ class Installer
     file = File.open('installer/title.txt')
     title = file.read
     puts title.red
-  end
-
-  def create_dirs
-    puts '===== Creating dirs'.blue
-    DIRS.each { |dir| mkdir(dir) }
   end
 
   def install_zinit
@@ -325,38 +258,6 @@ class Installer
     end
   end
 
-  def symlink_dotfiles
-    puts '===== Symlinking dotfiles'.blue
-
-    DOTFILES.each do |source|
-      raise(StandardError, "Cannot find #{source}") unless File.exist?(source)
-
-      target = "~/.#{source}"
-      print(
-        'Symlinking '.light_blue + target + ' -> '.light_blue + source +
-          '...'.light_blue,
-      )
-
-      link(source, target)
-      puts 'Done'.green
-    end
-  end
-
-  def symlink_nested_dotfiles
-    puts '===== Symlinking nested dotfiles'.blue
-
-    SYMLINK_DIRS.each do |source, target|
-      print(
-        'Symlinking '.light_blue + target + ' -> '.light_blue + source +
-          '...'.light_blue,
-      )
-
-      link_folder(source, target)
-
-      puts 'Done'.green
-    end
-  end
-
   def install_rubygems
     puts '===== Installing necessary RubyGems'.blue
 
@@ -368,24 +269,6 @@ class Installer
 
     ASDF_PLUGINS.map { |plugin| Thread.new { popen("asdf reshim #{plugin}") } }
                 .each(&:join)
-  end
-
-  def link_folder(source, target)
-    full_source_path = File.expand_path(source)
-    target_parent = Pathname.new(target).parent
-    cmd = "zsh -c 'cd #{target_parent} && ln -s -f #{full_source_path} .'"
-    popen(cmd, silent: true)
-  end
-
-  def link(source, target)
-    source = File.expand_path(source)
-    target = File.expand_path(target)
-    popen("zsh -c 'ln -s -f #{source} #{target}'", silent: true)
-  end
-
-  def mkdir(path)
-    puts 'Creating '.light_blue + path
-    FileUtils.mkdir_p(File.expand_path(path))
   end
 
   def git_install(repo_url, install_dir)

@@ -50,6 +50,8 @@ tasks:
       Idempotent, can be used to update packages.
     silent: true
     cmds:
+      - task: create:dirs
+      - task: symlink
       - task: asdf:sync
       - cmd: ./setup.sh
       - task: node:install:pnpm
@@ -67,6 +69,8 @@ tasks:
       Only symlinks dotfiles, does not install packages
     cmds:
       # we need to sync asdf for the local project before we try to install any packages
+      - task: create:dirs
+      - task: symlink
       - task: asdf:sync
       - task: node:install:pnpm
       - task: brew:sync
@@ -80,3 +84,53 @@ tasks:
       - task: tmux:plugins:update
       - ruby ./installer.rb --sync --force
       - task: completions:generate
+
+  create:dirs:
+    desc: Creates directories for dotfiles
+    vars:
+      DIRS:
+        - '~/.cache/zsh/completions'
+        - '~/.config'
+        - '~/.local/share/psql'
+    cmds:
+      - cmd: mkdir -p {{.DIRS | join " "}}
+        # we don't care about failures if they already exist
+        ignore_error: true
+
+  symlink:
+    desc: Symlinks dotfiles and folders
+    vars:
+      FILES:
+        # ideally this list should be as small as possible, use XDG_CONFIG
+        # folder instead
+        - aliases
+        - asdfrc
+        - ctags
+        - gemrc
+        - gitconfig
+        - gitignore
+        - gitmessage
+        - ignore
+        - prettierrc
+        - pryrc
+        - psqlrc
+        - stylelintrc
+        - zinitrc
+        - zshenv
+        - zshrc
+    cmds:
+      - for:
+          var: FILES
+          as: FILE
+        cmd: |
+          ln -s -f "$(realpath ./{{.FILE}})" ~/.{{.FILE}}
+
+      - cmd: |
+          for folder in ./config/*; do
+            echo "Symlinking $(basename $folder)..."
+            source_path=$(realpath $folder)
+            pushd ~/.config > /dev/null 2>&1
+            ln -s -f "$source_path" . > /dev/null 2>&1
+            popd > /dev/null 2>&1
+          done
+        silent: true
