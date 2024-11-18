@@ -104,39 +104,6 @@ NPMS = [
   'npkill',
 ].freeze
 
-CARGOS = [
-  # like grep by on code structure!
-  'ast-grep',
-  # cargo subcommand to print package metadata like pip show, apt-cache show, npm view, gem query, etc.
-  'cargo-show',
-  # cargo subcommand to automatically update cargo installed binaries
-  'cargo-update',
-  # command prompt styling
-  'starship',
-  # file system tree visualizer with icons and git support
-  'erdtree',
-  # ls replacement with icons and git support + more
-  'eza',
-  # fast regex code modifications
-  'fastmod',
-  # benchmarking tool
-  'hyperfine',
-  # json explorer
-  'jless',
-  # nicer git diffs
-  'git-delta',
-  # Git GUI
-  'gitui',
-  # rename a list of files in your editor
-  'pipe-rename',
-  # A command-line tool to batch rename files and directories
-  'rnr',
-  # a modern alternative for sed with sensible defaults
-  'sd',
-  # a modern version of autojump
-  'zoxide',
-].freeze
-
 GH_PLUGINS = [
   # PR dashboard
   'dlvhdr/gh-dash',
@@ -191,12 +158,11 @@ TASKS = [
   {
     name: 'Extrenal Packages',
     sync: true,
-    confirmation: 'Install external packages (gems, cargos, npms)?',
+    confirmation: 'Install external packages (gems, npms)?',
     callback:
       proc do
         install_rubygems
         install_npm_packages
-        install_rust_cargos
       end,
   },
   {
@@ -373,21 +339,6 @@ class Installer
       puts 'Done'.green
       puts ''
     end
-  end
-
-  def install_rust_cargos
-    puts '===== Installing Rust Cargos'.blue
-
-    already_installed = IO.popen(<<-BASH).read.chomp.split("\n")
-    cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' '
-    BASH
-
-    puts 'Installing new crates...'.light_blue
-    CARGOS.reject { |pkg| already_installed.include?(pkg) }
-          .each { |cargo| popen("cargo install #{cargo} --locked --force") }
-
-    puts 'Updating existing crates...'.light_blue
-    popen('cargo install-update -a')
   end
 
   def symlink_dotfiles

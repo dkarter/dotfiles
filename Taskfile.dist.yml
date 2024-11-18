@@ -36,6 +36,9 @@ includes:
   python:
     taskfile: ./taskfiles/python.yml
 
+  rust:
+    taskfile: ./taskfiles/rust.yml
+
   tmux:
     aliases: [t]
     taskfile: ./taskfiles/tmux.yml

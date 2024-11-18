@@ -29,6 +29,11 @@ includes:
     taskfile: ./python.yml
     internal: true
 
+  rust:
+    taskfile: ./rust.yml
+    dir: ../
+    internal: true
+
   tmux:
     taskfile: ./tmux.yml
     dir: ../
@@ -51,6 +56,7 @@ tasks:
       - task: brew:sync
       - task: bat:sync
       - task: python:install:tools
+      - task: rust:install:tools
       - task: tmux:plugins:install
 
   sync:
@@ -67,6 +73,8 @@ tasks:
       - task: bat:sync
       - task: python:install:tools
       - task: python:update:tools
+      - task: rust:install:tools
+      - task: rust:update:tools
       - task: tmux:plugins:clean
       - task: tmux:plugins:install
       - task: tmux:plugins:update

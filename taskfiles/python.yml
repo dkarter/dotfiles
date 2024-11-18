@@ -30,6 +30,7 @@ tasks:
         cmd: uv tool update --python {{.MAX_PYTHON_VERSION}} {{.PIP}}
 
   install:libs:
+    desc: Libs are PIP packages with no executables
     cmds:
       - for:
           var: PIP_LIBS
