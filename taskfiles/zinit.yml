@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  ZINIT_HOME: ~/.local/share/zinit/zinit.git
+
+tasks:
+  plugins:update:
+    desc: Updates all zinit plugins
+    cmds:
+      - cmd: |
+          zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all'

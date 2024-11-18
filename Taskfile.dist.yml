@@ -43,6 +43,9 @@ includes:
     aliases: [t]
     taskfile: ./taskfiles/tmux.yml
 
+  zinit:
+    taskfile: ./taskfiles/zinit.yml
+
 tasks:
   default:
     cmd: task -l

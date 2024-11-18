@@ -39,6 +39,11 @@ includes:
     dir: ../
     internal: true
 
+  zinit:
+    taskfile: ./zinit.yml
+    dir: ../
+    internal: true
+
 tasks:
   install:
     desc: Install dotfiles
@@ -84,6 +89,7 @@ tasks:
       - task: tmux:plugins:update
       - ruby ./installer.rb --sync --force
       - task: completions:generate
+      - task: zinit:plugins:update
 
   create:dirs:
     desc: Creates directories for dotfiles
