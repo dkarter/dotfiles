@@ -34,3 +34,10 @@ tasks:
       - task: reload
       - cmd: ./config/tmux/plugins/tpm/bin/clean_plugins
         silent: true
+
+  sync:
+    desc: Install, updates and cleans plugins
+    cmds:
+      - task: plugins:clean
+      - task: plugins:install
+      - task: plugins:update

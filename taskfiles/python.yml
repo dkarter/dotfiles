@@ -29,6 +29,12 @@ tasks:
           as: PIP
         cmd: uv tool update --python {{.MAX_PYTHON_VERSION}} {{.PIP}}
 
+  sync:
+    desc: Install and updates tools
+    cmds:
+      - task: tools:install
+      - task: tools:update
+
   libs:install:
     desc: Libs are PIP packages with no executables
     cmds:

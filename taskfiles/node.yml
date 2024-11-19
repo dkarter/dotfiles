@@ -33,3 +33,9 @@ tasks:
     desc: Installs all NPM based CLIs
     cmds:
       - cmd: npm install -g {{.NPMS | join " "}}
+
+  sync:
+    desc: Installs and updates tools
+    cmds:
+      - task: pnpm:install
+      - task: tools:install

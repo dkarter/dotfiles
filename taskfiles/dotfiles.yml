@@ -78,19 +78,15 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: asdf:sync
-      - task: node:pnpm:install
+      - task: node:sync
       - task: brew:sync
       - task: bat:sync
-      - task: python:tools:install
-      - task: python:tools:update
-      - task: rust:tools:install
-      - task: rust:tools:update
-      - task: tmux:plugins:clean
-      - task: tmux:plugins:install
-      - task: tmux:plugins:update
-      - ruby ./installer.rb --sync --force
+      - task: python:sync
+      - task: rust:sync
+      - task: tmux:sync
       - task: completions:generate
       - task: zinit:plugins:update
+      - ruby ./installer.rb --sync --force
 
   create:dirs:
     desc: Creates directories for dotfiles

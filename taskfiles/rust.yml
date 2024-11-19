@@ -50,5 +50,13 @@ tasks:
       - task: reshim
 
   reshim:
+    run: once
     desc: Refreshes symlinks for the latest installed tool version
     cmd: asdf reshim rust
+
+  sync:
+    desc: Installs and updates tools
+    cmds:
+      - task: tools:install
+      - task: tools:update
+      - task: reshim
