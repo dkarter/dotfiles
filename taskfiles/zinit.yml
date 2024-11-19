@@ -10,3 +10,8 @@ tasks:
     cmds:
       - cmd: |
           zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all'
+
+  sync:
+    desc: Installs and updates plugins
+    cmds:
+      - task: plugins:update

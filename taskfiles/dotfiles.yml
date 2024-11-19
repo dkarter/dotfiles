@@ -84,8 +84,8 @@ tasks:
       - task: python:sync
       - task: rust:sync
       - task: tmux:sync
-      - task: completions:generate
-      - task: zinit:plugins:update
+      - task: completions:sync
+      - task: zinit:sync
       - ruby ./installer.rb --sync --force
 
   create:dirs:

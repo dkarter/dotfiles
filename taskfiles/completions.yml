@@ -41,3 +41,8 @@ tasks:
       zsh -c 'autoload -Uz compinit && compinit'
       echo "DONE"
     silent: true
+
+  sync:
+    desc: Generates and updates completions
+    cmds:
+      - task: generate
