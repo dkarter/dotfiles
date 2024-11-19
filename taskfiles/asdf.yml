@@ -1,7 +1,45 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+vars:
+  PLUGINS:
+    - bat
+    - direnv
+    - elixir
+    - erlang
+    - fd
+    - fzf
+    - github-cli
+    - golang
+    - lazygit
+    - lua
+    - lua-language-server
+    - neovim
+    - nodejs
+    - python
+    - rebar
+    - ripgrep
+    - ruby
+    - rust
+    - tmux
+
 tasks:
+  plugins:install:
+    desc: Installs all asdf plugins
+    cmds:
+      - for:
+          var: PLUGINS
+          as: PLUGIN
+        cmd: asdf plugin add {{.PLUGIN}}
+
+  plugins:update:
+    desc: Updates all asdf plugins
+    cmd: asdf plugin-update --all
+
+  update:
+    desc: Updates asdf itself
+    cmd: asdf update
+
   sync:
     desc: Updates asdf plugins and installs asdf packages for this project
     cmds:
