@@ -9,38 +9,10 @@ require_relative 'installer/request'
 
 Warning[:experimental] = false
 
-ASDF_INSTALL_DIR = '~/.asdf'
-
 GEMS = [
   'bundler', # manage gem bundles for a project
   'pry', # ruby debugger
 ].freeze
-
-ASDF_PLUGINS = %w[
-  bat
-  direnv
-  elixir
-  erlang
-  fd
-  fzf
-  github-cli
-  golang
-  lazygit
-  lua
-  lua-language-server
-  neovim
-  nodejs
-  python
-  rebar
-  ripgrep
-  ruby
-  rust
-  tmux
-].freeze
-
-# some tools cannot be installed via asdf on ARM, but are still useful for
-# x86 machines and linux
-ASDF_ARM_INCOMPATIBLE = %w[github-cli fzf fd ripgrep neovim].freeze
 
 GH_PLUGINS = [
   # PR dashboard
@@ -68,17 +40,6 @@ TASKS = [
     callback: proc { install_zinit },
   },
   {
-    name: 'ASDF',
-    sync: true,
-    confirmation: 'Install ASDF latest tool versions?',
-    callback:
-      proc do
-        update_asdf
-        install_asdf_plugins
-        install_asdf_tools
-      end,
-  },
-  {
     name: 'Extrenal Packages',
     sync: true,
     confirmation: 'Install external packages (gems)?',
@@ -86,12 +47,6 @@ TASKS = [
       proc do
         install_rubygems
       end,
-  },
-  {
-    name: 'Reshim ASDF tools',
-    sync: true,
-    confirmation: 'Reshim ASDF tools?',
-    callback: proc { reshim_asdf_tools },
   },
   {
     name: 'GH Plugins',
@@ -167,49 +122,6 @@ class Installer
     BASH
   end
 
-  def update_asdf
-    puts '===== Updating asdf to latest version'.blue
-
-    popen('asdf update')
-  end
-
-  def install_asdf_plugins
-    puts '===== Installing asdf plugins'.blue
-
-    ASDF_PLUGINS
-      .each do |plugin, url|
-        puts "Installing #{plugin} plugin...".light_blue
-        popen("asdf plugin add #{plugin} #{url}")
-      end
-  end
-
-  def install_asdf_tools
-    puts '===== Installing asdf packages latest version'.blue
-
-    plugins =
-      if `uname -m`.match?(/x86/)
-        ASDF_PLUGINS
-      else
-        ASDF_PLUGINS - ASDF_ARM_INCOMPATIBLE
-      end
-
-    plugins.each do |(plugin, _url)|
-      # Thanks JavaScript! Node is released via the LTS model, so the latest
-      # version is usually not what you want. This is a smoothbrained solution,
-      # but I don't think it's worth investing in an abstraction here unless I
-      # start using more than one runtime that has that requirement
-      version =
-        plugin == 'nodejs' ? IO.popen(<<-BASH).read.chomp : 'latest'
-        asdf list-all nodejs | grep '^20' | sort -r --version-sort | head -n 1
-        BASH
-
-      puts "Installing #{plugin}...".light_blue
-      popen(
-        "asdf install #{plugin} #{version} && asdf global #{plugin} #{version}",
-      )
-    end
-  end
-
   def install_gh_plugins
     puts '===== Installing gh packages'.blue
     GH_PLUGINS.each do |plugin|
@@ -262,13 +174,6 @@ class Installer
     puts '===== Installing necessary RubyGems'.blue
 
     popen("gem install #{GEMS.join(' ')}")
-  end
-
-  def reshim_asdf_tools
-    puts '===== Reshimming'.blue
-
-    ASDF_PLUGINS.map { |plugin| Thread.new { popen("asdf reshim #{plugin}") } }
-                .each(&:join)
   end
 
   def git_install(repo_url, install_dir)

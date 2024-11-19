@@ -23,13 +23,38 @@ vars:
     - rust
     - tmux
 
+  # some tools cannot be installed via asdf on ARM, but are still useful for
+  # x86 machines and linux
+  ARM_INCOMPATIBLE_PLUGINS:
+    - github-cli
+    - fzf
+    - fd
+    - ripgrep
+    - neovim
+
+  # remove incompatible plugins from full plugin list
+  ARM_COMPATIBLE_PLUGINS:
+    sh: echo {{range $plugin := .PLUGINS}}{{if not (has $plugin $.ARM_INCOMPATIBLE_PLUGINS)}}{{$plugin}} {{end}}{{end}}
+
+  NODE_LTS_PREFIX: '22'
+
+  PYTHON_LTS_PREFIX: '3.12'
+
 tasks:
   plugins:install:
     desc: Installs all asdf plugins
     cmds:
-      - for:
+      - platforms: [amd64]
+        for:
           var: PLUGINS
           as: PLUGIN
+        cmd: asdf plugin add {{.PLUGIN}}
+
+      - platforms: [arm64]
+        for:
+          var: ARM_COMPATIBLE_PLUGINS
+          as: PLUGIN
+          split: ' '
         cmd: asdf plugin add {{.PLUGIN}}
 
   plugins:update:
@@ -41,7 +66,45 @@ tasks:
     cmd: asdf update
 
   sync:
-    desc: Updates asdf plugins and installs asdf packages for this project
+    desc: Updates asdf plugins, asdf itself and installs packages for this project
     cmds:
-      - asdf plugin-update --all
+      - task: plugins:install
+      - task: plugins:update
+      - task: update
       - asdf install
+
+  tool:install:
+    internal: true
+    requires:
+      vars: [PLUGIN]
+    silent: true
+    cmd: |
+      {{if eq .PLUGIN "nodejs" }}
+        version='latest:{{.NODE_LTS_PREFIX}}'
+      {{else if eq .PLUGIN "python"}}
+        version='latest:{{.PYTHON_LTS_PREFIX}}'
+      {{else}}
+        version='latest'
+      {{end}}
+      echo
+      asdf install {{.PLUGIN}} "$version"
+      echo -n "Setting {{.PLUGIN}} $version as global.."
+      asdf global {{.PLUGIN}} "$version"
+      echo "DONE"
+
+  tools:install:
+    desc: Installs/updates all asdf based tools
+    cmds:
+      - platforms: [amd64]
+        for:
+          var: PLUGINS
+          as: PLUGIN
+        cmd: task asdf:tool:install PLUGIN={{.PLUGIN}}
+
+      - platforms: [arm64]
+        for:
+          var: ARM_COMPATIBLE_PLUGINS
+          as: PLUGIN
+          split: ' '
+        task: tool:install
+        vars: { PLUGIN: '{{.PLUGIN}}' }

@@ -57,7 +57,8 @@ tasks:
     cmds:
       - task: create:dirs
       - task: symlink
-      - task: asdf:sync
+      - task: asdf:plugins:install
+      - task: asdf:tools:install
       - cmd: ./setup.sh
       - task: node:pnpm:install
       - task: brew:sync
