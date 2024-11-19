@@ -73,8 +73,8 @@ tasks:
       Synchronize dotfiles
 
       Only symlinks dotfiles, does not install packages
-    cmds:
-      # we need to sync asdf for the local project before we try to install any packages
+    # deps run in parallel!
+    deps:
       - task: create:dirs
       - task: symlink
       - task: asdf:sync
@@ -86,6 +86,7 @@ tasks:
       - task: tmux:sync
       - task: completions:sync
       - task: zinit:sync
+    cmds:
       - ruby ./installer.rb --sync --force
 
   create:dirs:
