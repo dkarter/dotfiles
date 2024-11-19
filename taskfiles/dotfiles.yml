@@ -59,11 +59,11 @@ tasks:
       - task: symlink
       - task: asdf:sync
       - cmd: ./setup.sh
-      - task: node:install:pnpm
+      - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
-      - task: python:install:tools
-      - task: rust:install:tools
+      - task: python:tools:install
+      - task: rust:tools:install
       - task: tmux:plugins:install
 
   sync:
@@ -77,13 +77,13 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: asdf:sync
-      - task: node:install:pnpm
+      - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
-      - task: python:install:tools
-      - task: python:update:tools
-      - task: rust:install:tools
-      - task: rust:update:tools
+      - task: python:tools:install
+      - task: python:tools:update
+      - task: rust:tools:install
+      - task: rust:tools:update
       - task: tmux:plugins:clean
       - task: tmux:plugins:install
       - task: tmux:plugins:update

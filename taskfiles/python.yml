@@ -15,21 +15,21 @@ vars:
   MAX_PYTHON_VERSION: '3.12'
 
 tasks:
-  install:tools:
+  tools:install:
     cmds:
       - for:
           var: PIPS
           as: PIP
         cmd: uv tool install --python {{.MAX_PYTHON_VERSION}} {{.PIP}}
 
-  update:tools:
+  tools:update:
     cmds:
       - for:
           var: PIPS
           as: PIP
         cmd: uv tool update --python {{.MAX_PYTHON_VERSION}} {{.PIP}}
 
-  install:libs:
+  libs:install:
     desc: Libs are PIP packages with no executables
     cmds:
       - for:

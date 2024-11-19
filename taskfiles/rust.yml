@@ -37,13 +37,13 @@ vars:
     - zoxide
 
 tasks:
-  install:tools:
+  tools:install:
     desc: Install Rust based CLI tools
     cmds:
       - cargo install {{.CARGOS | join " "}} --locked
       - task: reshim
 
-  update:tools:
+  tools:update:
     desc: Update Rust based CLI tools
     cmds:
       - cargo install-update -a
