@@ -20,11 +20,10 @@ return {
     vim.api.nvim_create_autocmd('FileType', {
       pattern = {
         '',
-        'alpha',
+        'snacks_dashboard',
         'NvimTree',
         'TelescopePrompt',
         'checkhealth',
-        'dashboard',
         'help',
         'lazy',
         'lazyterm',

@@ -14,7 +14,7 @@ return {
         'TelescopePrompt',
         'Trouble',
         'WhichKey',
-        'alpha',
+        'snacks_dashboard',
         'checkhealth',
         'diff',
         'fugitive',

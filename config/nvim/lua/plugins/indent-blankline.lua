@@ -11,11 +11,10 @@ return {
     exclude = {
       filetypes = {
         '',
-        'alpha',
+        'snacks_dashboard',
         'NvimTree',
         'TelescopePrompt',
         'checkhealth',
-        'dashboard',
         'help',
         'lazy',
         'lazyterm',
