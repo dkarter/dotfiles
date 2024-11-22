@@ -138,20 +138,6 @@ end
 
 local M = {}
 
-M.find_dotfiles = function()
-  require('telescope.builtin').find_files {
-    shorten_path = false,
-    cwd = '~/dotfiles/',
-    prompt = '~ dotfiles ~',
-    hidden = true,
-
-    layout_strategy = 'horizontal',
-    layout_config = {
-      preview_width = 0.55,
-    },
-  }
-end
-
 M.setup = function()
   local telescope = require 'telescope'
 
