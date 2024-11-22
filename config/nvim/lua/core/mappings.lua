@@ -202,6 +202,7 @@ M.splitjoin_mappings = {
 ---@type LazyKeysSpec[]
 M.zen_mode_mappings = {
   { '<leader>zm', '<cmd>ZenMode<cr>', desc = 'Zen Mode (Toggle)' },
+  { '<leader>zt', '<cmd>Twilight<cr>', desc = 'Zen Twilight (Toggle)' },
 }
 
 ---@type LazyKeysSpec[]
