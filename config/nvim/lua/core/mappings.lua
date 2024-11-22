@@ -483,6 +483,33 @@ M.vim_test_mappings = {
 }
 
 ---@type LazyKeysSpec[]
+M.vimux_mappings = {
+  { '<leader>rr', '<CMD>VimuxPromptCommand<CR>', desc = 'run the runsman' },
+  { '<leader>r.', '<CMD>VimuxRunLastCommand<CR>', desc = 'run the last run command' },
+  { '<leader>rc', '<CMD>VimuxClearTerminalScreen<CR>', desc = 'clear the current run terminal' },
+  { '<leader>rq', '<CMD>VimuxCloseRunner<CR>', desc = 'close the runner' },
+  { '<leader>r?', '<CMD>VimuxInspectRunner<CR>', desc = 'inspect the runner' },
+  { '<leader>r!', '<CMD>VimuxInterruptRunner<CR>', desc = "interrupt the runner (bang'er)" },
+  { '<leader>rz', '<CMD>VimuxZoomRunner<CR>', desc = 'zoom the runner' },
+  {
+    '<C-c><C-c>',
+    function()
+      -- yank text into v register
+      if vim.api.nvim_get_mode()['mode'] == 'n' then
+        vim.cmd 'normal vip"vy'
+      else
+        vim.cmd 'normal "vy'
+      end
+
+      -- construct command with v register as command to send
+      -- vim.cmd(string.format('call VimuxRunCommand("%s")', vim.trim(vim.fn.getreg('v'))))
+      vim.cmd 'call VimuxRunCommand(@v)'
+    end,
+    desc = 'run command under cursor',
+  },
+}
+
+---@type LazyKeysSpec[]
 M.undotree_mappings = {
   { '<leader>ut', '<cmd>UndotreeToggle<CR>', desc = '[U]ndo [T]ree' },
 }
