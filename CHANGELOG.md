@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.11.0](https://github.com/dkarter/dotfiles/compare/v18.10.0...v18.11.0) (2024-11-23)
+
+
+### Features
+
+* **nvim:** add mapping for twilight ([4c02363](https://github.com/dkarter/dotfiles/commit/4c023639425024f1e86ebc7c33d3e4e505f04b28))
+* **nvim:** add vimux mappings ([93c2f9f](https://github.com/dkarter/dotfiles/commit/93c2f9fdefaa4f22a52579544f78ac719f9a20b4))
+
+
+### Performance Improvements
+
+* **task:** run sync deps in parallel ([66828e2](https://github.com/dkarter/dotfiles/commit/66828e294e91ad747e6c40b595eedd6f426e5fb4))
+
 ## [18.10.0](https://github.com/dkarter/dotfiles/compare/v18.9.0...v18.10.0) (2024-11-18)
 
 
