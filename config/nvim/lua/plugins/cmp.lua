@@ -10,6 +10,8 @@ return {
         -- snippets!
         'rafamadriz/friendly-snippets',
       },
+
+      build = 'make install_jsregexp',
     },
     -- LSP driven completions
     'hrsh7th/cmp-nvim-lsp',
