@@ -20,6 +20,10 @@ includes:
     taskfile: ./completions.yml
     internal: true
 
+  gh:
+    taskfile: ./github.yml
+    internal: true
+
   node:
     taskfile: ./node.yml
     dir: ../
@@ -66,6 +70,7 @@ tasks:
       - task: python:tools:install
       - task: rust:tools:install
       - task: tmux:plugins:install
+      - task: gh:plugins:install
 
   sync:
     desc: Synchronize dotfiles
@@ -86,6 +91,7 @@ tasks:
       - task: tmux:sync
       - task: completions:sync
       - task: zinit:sync
+      - task: gh:sync
     cmds:
       - ruby ./installer.rb --sync --force
 

@@ -1,6 +1,11 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+vars:
+  GH_PLUGINS:
+    - 'dlvhdr/gh-dash'
+    - 'meiji163/gh-notify'
+
 tasks:
   automerge:renovate:
     desc: Auto merges all PRs
@@ -15,6 +20,24 @@ tasks:
     cmd: |
       gh pr list --state open --author 'app/renovate' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
 
+  plugins:install:
+    desc: Install Github CLI plugins
+    cmds:
+      - for:
+          var: GH_PLUGINS
+          as: PLUGIN
+        cmd: gh extension install {{.PLUGIN}}
+        silent: true
+
+  plugins:update:
+    desc: Update Github CLI plugins
+    cmds:
+      - for:
+          var: GH_PLUGINS
+          as: PLUGIN
+        cmd: gh extension upgrade {{.PLUGIN}}
+        silent: true
+
   release:
     desc: Merges the release PR
     summary: |
@@ -25,3 +48,9 @@ tasks:
     silent: true
     cmd: |
       gh pr list --author "@me" --state open --search 'chore(master): release' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
+
+  sync:
+    desc: Synchronize gh plugins
+    cmds:
+      - task: plugins:install
+      - task: plugins:update

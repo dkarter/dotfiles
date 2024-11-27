@@ -2,7 +2,7 @@
 version: 3
 
 vars:
-  PLUGINS:
+  ASDF_PLUGINS:
     - bat
     - direnv
     - elixir
@@ -34,7 +34,7 @@ vars:
 
   # remove incompatible plugins from full plugin list
   ARM_COMPATIBLE_PLUGINS:
-    sh: echo {{range $plugin := .PLUGINS}}{{if not (has $plugin $.ARM_INCOMPATIBLE_PLUGINS)}}{{$plugin}} {{end}}{{end}}
+    sh: echo {{range $plugin := .ASDF_PLUGINS}}{{if not (has $plugin $.ARM_INCOMPATIBLE_PLUGINS)}}{{$plugin}} {{end}}{{end}}
 
   NODE_LTS_PREFIX: '22'
 
@@ -46,7 +46,7 @@ tasks:
     cmds:
       - platforms: [amd64]
         for:
-          var: PLUGINS
+          var: ASDF_PLUGINS
           as: PLUGIN
         cmd: asdf plugin add {{.PLUGIN}}
 
@@ -97,7 +97,7 @@ tasks:
     cmds:
       - platforms: [amd64]
         for:
-          var: PLUGINS
+          var: ASDF_PLUGINS
           as: PLUGIN
         cmd: task asdf:tool:install PLUGIN={{.PLUGIN}}
 

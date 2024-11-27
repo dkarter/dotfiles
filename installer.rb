@@ -14,11 +14,6 @@ GEMS = [
   'pry', # ruby debugger
 ].freeze
 
-GH_PLUGINS = [
-  # PR dashboard
-  'dlvhdr/gh-dash',
-].freeze
-
 TASKS = [
   {
     name: 'Default Shell',
@@ -47,12 +42,6 @@ TASKS = [
       proc do
         install_rubygems
       end,
-  },
-  {
-    name: 'GH Plugins',
-    sync: true,
-    confirmation: 'Install GH Plugins?',
-    callback: proc { install_gh_plugins },
   },
 ].freeze
 
@@ -120,15 +109,6 @@ class Installer
       rm -rf "$ZINIT_HOME" && \
       git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
     BASH
-  end
-
-  def install_gh_plugins
-    puts '===== Installing gh packages'.blue
-    GH_PLUGINS.each do |plugin|
-      puts "Installing #{plugin}...".light_blue
-
-      popen("gh extension install #{plugin} && gh extension upgrade #{plugin}")
-    end
   end
 
   def install_fonts
