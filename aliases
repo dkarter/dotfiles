@@ -94,6 +94,7 @@ gref() {
 # Git
 alias gap="git add -p"
 alias gnap='git add -N . && gap && gref'
+alias gan='git add -N'
 # disable zsh git plugin
 alias gsr='gst'
 alias gcd1='git clone --depth=1'
