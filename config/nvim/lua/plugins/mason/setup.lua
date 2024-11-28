@@ -109,6 +109,8 @@ M.setup = function()
     ensure_installed()
   end
 
+  lspconfig.nushell.setup {}
+
   mason_lspconfig.setup {}
   mason_lspconfig.setup_handlers {
     function(server_name)
