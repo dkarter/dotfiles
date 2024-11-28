@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [18.12.0](https://github.com/dkarter/dotfiles/compare/v18.11.0...v18.12.0) (2024-11-28)
+
+
+### Features
+
+* **nvim:** add nushell lsp support ([bf01896](https://github.com/dkarter/dotfiles/commit/bf018969a05a91e79f25562cdc1c9f592e0749b7))
+* **zsh,cli:** add dust (du alternative) ([9ef8ecc](https://github.com/dkarter/dotfiles/commit/9ef8eccf18eb6e6e0da4a3199e83ce7af464c20e))
+* **zsh:** add colors for common tools ([bbe480a](https://github.com/dkarter/dotfiles/commit/bbe480a390855bcff7900d8edb90c40cce2e1f74))
+* **zsh:** add gan alias for git add -N ([514d8f7](https://github.com/dkarter/dotfiles/commit/514d8f76ddf133e2a8c26ddc7518327154fec4f8))
+
+
+### Bug Fixes
+
+* **zsh,carapace:** add overlay for git checkout and reset ([2cdf00e](https://github.com/dkarter/dotfiles/commit/2cdf00ee6e6cbe83aa56921eca51ae3935ffd82a))
+
 ## [18.11.0](https://github.com/dkarter/dotfiles/compare/v18.10.0...v18.11.0) (2024-11-23)
 
 
