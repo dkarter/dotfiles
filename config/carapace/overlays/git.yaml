@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://carapace.sh/schemas/command.json
+name: git
+commands:
+  # fix to allow completion for unstaged files on git checkout
+  # not sure why it's not there by default
+  - name: checkout
+    description: Switch branches or restore worktree files
+    group: main commands
+    completion:
+      positionalany:
+        ['$carapace.tools.git.Changes({staged: false, unstaged: true})']
+  # fix to allow completion for staged files on git reset
+  # not sure why it's not there by default
+  - name: reset
+    description: Reset current HEAD or files to the specified state
+    group: main commands
+    completion:
+      positionalany:
+        ['$carapace.tools.git.Changes({staged: true, unstaged: false})']
