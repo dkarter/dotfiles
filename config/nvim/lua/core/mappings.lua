@@ -297,6 +297,12 @@ M.todo_comments_mappings = {
 M.flash_mappings = {
   { "<leader><leader>", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
   { "<leader><cr>",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+  { "f" },
+  { "F"},
+  {"t"},
+  {"T"},
+  {";"},
+  {","}
 }
 
 ---@type LazyKeysSpec[]
