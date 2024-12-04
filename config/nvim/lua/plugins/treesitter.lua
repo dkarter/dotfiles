@@ -187,20 +187,26 @@ return {
             -- whether to set jumps in the jumplist
             set_jumps = true,
             goto_next_start = {
-              [']m'] = '@function.outer',
-              [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-              [']M'] = '@function.outer',
-              [']['] = '@class.outer',
+              [']m'] = { query = '@function.outer', desc = 'Next method/fun' },
+              [']c'] = { query = '@class.outer', desc = 'Next class start' },
+              [']o'] = { query = { '@loop.inner', '@loop.outer' }, desc = 'Next loop' },
+              [']S'] = { query = '@local.scope', query_group = 'locals', desc = 'Next scope' },
+              [']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
             },
             goto_previous_start = {
-              ['[m'] = '@function.outer',
-              ['[['] = '@class.outer',
+              ['[m'] = { query = '@function.outer', desc = 'Prev method/fun' },
+              ['[c'] = { query = '@class.outer', desc = 'Prev class start' },
+              ['[o'] = { query = { '@loop.inner', '@loop.outer' }, desc = 'Prev loop' },
+              ['[S'] = { query = '@local.scope', query_group = 'locals', desc = 'Prev scope' },
+              ['[z'] = { query = '@fold', query_group = 'folds', desc = 'Prev fold' },
+            },
+            goto_next_end = {
+              [']M'] = { query = '@function.outer', desc = 'Next method/fun end' },
+              [']C'] = { query = '@class.outer', desc = 'Next class/module end' },
             },
             goto_previous_end = {
-              ['[M'] = '@function.outer',
-              ['[]'] = '@class.outer',
+              [']M'] = { query = '@function.outer', desc = 'Prev method/fun end' },
+              [']C'] = { query = '@class.outer', desc = 'Prev class/module end' },
             },
           },
           lsp_interop = {
