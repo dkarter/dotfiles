@@ -18,6 +18,7 @@ includes:
     taskfile: ./taskfiles/completions.yml
 
   dot:
+    aliases: [dots]
     taskfile: ./taskfiles/dotfiles.yml
 
   gh:
@@ -51,6 +52,11 @@ tasks:
     cmd: task -l
     silent: true
 
+  install:
+    desc: An alias to dot:install
+    cmds:
+      - task: dot:install
+
   install:sudo-touch-id:
     desc: Sets up touch id as sufficient sudo permission
     summary: Sets up touch id as sufficient sudo permission
@@ -58,5 +64,6 @@ tasks:
       This survives OS updates after macOS Sonoma.
 
       Requires sudo.
+    platforms: [darwin]
     cmds:
       - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local

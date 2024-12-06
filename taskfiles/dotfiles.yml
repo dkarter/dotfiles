@@ -55,8 +55,6 @@ tasks:
       Install dotfiles
 
       Installs all dependencies and symlink dotfiles.
-
-      Idempotent, can be used to update packages.
     silent: true
     cmds:
       - task: create:dirs
