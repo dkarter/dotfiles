@@ -17,12 +17,6 @@ TASKS = [
     run_if: proc { !shell_already_zsh? },
     callback: proc { change_shell },
   },
-  {
-    name: 'Fonts',
-    sync: false,
-    confirmation: 'Install fonts?',
-    callback: proc { install_fonts },
-  },
 ].freeze
 
 # Installs dotfiles and configures the machine to my preferences
@@ -80,55 +74,6 @@ class Installer
     puts title.red
   end
 
-  def install_fonts
-    puts '==== Installing fonts'.blue
-
-    # download_fonts
-    [
-      # Regular
-      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Regular/CaskaydiaCoveNerdFontMono-Regular.ttf',
-      # Italic
-      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Regular/CaskaydiaCoveNerdFontMono-Italic.ttf',
-      # Bold
-      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Bold/CaskaydiaCoveNerdFontMono-Bold.ttf',
-      # Bold Italic
-      'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/CascadiaCode/Bold/CaskaydiaCoveNerdFontMono-BoldItalic.ttf',
-    ].each do |url|
-      filename = CGI.unescape(File.basename(url))
-      dir =
-        if mac?
-          '~/Library/Fonts'
-        elsif linux?
-          '~/.fonts'
-        else
-          raise 'WTF? not a mac or linux.. who are you?'
-        end
-
-      target_path = File.expand_path(File.join(dir, filename))
-
-      print(
-        'Downloading '.light_blue + filename + ' -> '.light_blue + target_path +
-          '...'.light_blue,
-      )
-
-      response = Request.new(url).resolve
-      File.binwrite(target_path, response.body)
-
-      puts 'Done'.green
-      puts ''
-    end
-  end
-
-  def git_install(repo_url, install_dir)
-    install_dir = File.expand_path(install_dir)
-
-    if Dir.exist?(install_dir)
-      puts '...already installed.'.pink
-    else
-      popen("git clone #{repo_url} #{install_dir}")
-    end
-  end
-
   # changes the default shell to zsh
   def change_shell
     popen('chsh -s zsh')
@@ -150,14 +95,6 @@ class Installer
     resp = gets.strip.downcase
     puts ''
     %w[y yes].include?(resp) || resp == ''
-  end
-
-  def mac?
-    RUBY_PLATFORM.include?('darwin')
-  end
-
-  def linux?
-    RUBY_PLATFORM.include?('linux')
   end
 
   def force?

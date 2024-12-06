@@ -20,6 +20,10 @@ includes:
     taskfile: ./completions.yml
     internal: true
 
+  fonts:
+    taskfile: ./fonts.yml
+    internal: true
+
   gh:
     taskfile: ./github.yml
     internal: true
@@ -64,6 +68,7 @@ tasks:
       - task: asdf:install
       - task: asdf:plugins:install
       - task: asdf:tools:install
+      - task: fonts:sync
       - cmd: ./setup.sh
       - task: node:pnpm:install
       - task: brew:sync
@@ -96,6 +101,7 @@ tasks:
       - task: completions:sync
       - task: zinit:sync
       - task: gh:sync
+      - task: fonts:sync
     cmds:
       - ruby ./installer.rb --sync --force
 

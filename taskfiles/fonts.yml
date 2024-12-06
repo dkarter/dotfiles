@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  BASE_URL: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/'
+  FONTS:
+    # Regular
+    - 'CascadiaCode/Regular/CaskaydiaCoveNerdFontMono-Regular.ttf'
+    # Italic
+    - 'CascadiaCode/Regular/CaskaydiaCoveNerdFontMono-Italic.ttf'
+    # Bold
+    - 'CascadiaCode/Bold/CaskaydiaCoveNerdFontMono-Bold.ttf'
+    # Bold Italic
+    - 'CascadiaCode/Bold/CaskaydiaCoveNerdFontMono-BoldItalic.ttf'
+
+tasks:
+  sync:
+    desc: Installs/updates fonts
+    vars:
+      FONT_DIR:
+        sh: |
+          if [ "$(uname)" = "Darwin" ]; then
+            echo "$HOME/Library/Fonts"
+          elif [ "$(uname)" = "Linux" ]; then
+            echo "$HOME/.fonts"
+          else
+            echo "WTF? not a mac or linux.. who are you?" >&2
+            exit 1
+          fi
+
+    cmds:
+      - for:
+          var: FONTS
+          as: FONT
+        cmd: |
+          filename=$(basename {{.FONT}})
+          echo -n "Installing $filename..."
+          curl --silent -L -o "{{.FONT_DIR}}/$filename" '{{joinPath .BASE_URL .FONT}}'
+          echo "DONE"
+        silent: true
