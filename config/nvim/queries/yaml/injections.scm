@@ -96,7 +96,7 @@
             value: (block_node
                      (block_mapping
                        (block_mapping_pair
-                         key: (flow_node) @_cmds (#eq? @_cmds "cmds")
+                         key: (flow_node) @_cmds (#any-of? @_cmds "cmds" "deps" "status")
                          value: (
                             (block_node
                               (block_sequence
