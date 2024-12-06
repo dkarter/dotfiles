@@ -38,7 +38,22 @@ tasks:
       # change hammerspoon config dir to XDG Home:
       - defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 
+  op:setup:
+    desc: mac/linux 1password ssh agent sock file compatibility
+    summary: |
+      symlink 1password ssh agent sock file so that the paths are compatible between
+      mac and linux (linux uses the ~/.1password, and mac uses that ugly path below)
+    platforms: [darwin]
+    status:
+      - test -d "$HOME/.1password"
+    silent: true
+    cmds:
+      - echo 'Symlinking 1Password SSH Agent Sock'
+      - mkdir -p ~/.1password
+      - ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+
   sync:
     desc: Updates defaults and install mac specific tools
+    platforms: [darwin]
     cmds:
       - task: set:defaults
