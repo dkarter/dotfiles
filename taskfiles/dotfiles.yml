@@ -28,6 +28,10 @@ includes:
     taskfile: ./github.yml
     internal: true
 
+  mac:
+    taskfile: ./mac.yml
+    internal: true
+
   node:
     taskfile: ./node.yml
     dir: ../
@@ -68,6 +72,7 @@ tasks:
       - task: shell:zsh:default
       - task: create:dirs
       - task: symlink
+      - task: mac:set:defaults
       - task: zinit:install
       - task: zinit:plugins:update
       - task: asdf:install
@@ -107,6 +112,7 @@ tasks:
       - task: zinit:sync
       - task: gh:sync
       - task: fonts:sync
+      - task: mac:sync
     cmds:
       - echo "DONE"
 

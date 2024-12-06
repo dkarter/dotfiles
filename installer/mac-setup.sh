@@ -7,39 +7,6 @@ if [ ! -d "$HOME/.1password" ]; then
   mkdir -p ~/.1password && ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
 fi
 
-echo 'Disabling annoying features...'
-# ------------------------------------
-# disables the hold key menu to allow key repeat
-defaults write -g ApplePressAndHoldEnabled -bool false
-
-# The speed of repetition of characters
-defaults write -g KeyRepeat -int 2
-
-# Delay until repeat
-defaults write -g InitialKeyRepeat -int 15
-
-# Set dock to auto hide with no delay
-defaults write com.apple.dock autohide -int 1
-
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
-
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
-
-# Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
-
-# Show battery percentage in menubar
-defaults -currentHost write com.apple.controlcenter.plist BatteryShowPercentage -bool true
-
-# change hammerspoon config dir to XDG Home:
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
-
-# ------------------------------------
 if [ "$(hidutil property --get 'UserKeyMapping')" == '(null)' ]; then
   echo 'Remapping macOS modifiers...'
   # remap CapsLock to Escape (now)
