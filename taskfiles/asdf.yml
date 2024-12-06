@@ -41,6 +41,15 @@ vars:
   PYTHON_LTS_PREFIX: '3.12'
 
 tasks:
+  install:
+    desc: Installs asdf itself
+    cmds:
+      - cmd: git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
+        platforms: [linux]
+
+      - cmd: brew install asdf
+        platforms: [darwin]
+
   plugins:install:
     desc: Installs all asdf plugins
     cmds:
