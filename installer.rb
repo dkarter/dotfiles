@@ -9,11 +9,6 @@ require_relative 'installer/request'
 
 Warning[:experimental] = false
 
-GEMS = [
-  'bundler', # manage gem bundles for a project
-  'pry', # ruby debugger
-].freeze
-
 TASKS = [
   {
     name: 'Default Shell',
@@ -27,15 +22,6 @@ TASKS = [
     sync: false,
     confirmation: 'Install fonts?',
     callback: proc { install_fonts },
-  },
-  {
-    name: 'Extrenal Packages',
-    sync: true,
-    confirmation: 'Install external packages (gems)?',
-    callback:
-      proc do
-        install_rubygems
-      end,
   },
 ].freeze
 
@@ -131,12 +117,6 @@ class Installer
       puts 'Done'.green
       puts ''
     end
-  end
-
-  def install_rubygems
-    puts '===== Installing necessary RubyGems'.blue
-
-    popen("gem install #{GEMS.join(' ')}")
   end
 
   def git_install(repo_url, install_dir)
