@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.0.0](https://github.com/dkarter/dotfiles/compare/v18.12.0...v19.0.0) (2024-12-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** improve treesitter textobj mappings
+
+### Features
+
+* **nvim:** add better lua debugging utils via Snacks ([a31255d](https://github.com/dkarter/dotfiles/commit/a31255dcd559098987b28e38122adee77693ba33))
+* **nvim:** disable flash backdrop and enable fFtT;, ([d1b56a5](https://github.com/dkarter/dotfiles/commit/d1b56a59e8cb3a4424b4159f6ade3dbd7ed1977a))
+* **task:** add alias for dot:sync ([5a4b1d0](https://github.com/dkarter/dotfiles/commit/5a4b1d012cd93425d43660391b457f518211d367))
+
+
+### Bug Fixes
+
+* **smug:** remove houston docker-compose tabs ([6088c26](https://github.com/dkarter/dotfiles/commit/6088c26def4834519958f5a936414bf2b5491bc1))
+* **task:** add task to install asdf ([0049058](https://github.com/dkarter/dotfiles/commit/0049058a4803dbb4ebd57d08500a0156fffeaa21))
+* **task:** correct path for shell tasks ([c7e45ab](https://github.com/dkarter/dotfiles/commit/c7e45abf10272e58dccb5c7b6a363f731b544c1b))
+* **task:** improve installer ([703b121](https://github.com/dkarter/dotfiles/commit/703b121bd66bccdfab7d53a72776cb275758fa8e))
+* **task:** install asdf when already installed ([d6e8647](https://github.com/dkarter/dotfiles/commit/d6e86470d2d843f747a5e1295ba6ade3f10e21ba))
+* **task:** install zinit plugins on dot install ([d7ea0c8](https://github.com/dkarter/dotfiles/commit/d7ea0c8c08d791ec63409e9ef6db789c45b90781))
+
+
+### Code Refactoring
+
+* **nvim:** improve treesitter textobj mappings ([8806d0a](https://github.com/dkarter/dotfiles/commit/8806d0a28aa544d6ea9b796bea74202b5597e886))
+
 ## [18.12.0](https://github.com/dkarter/dotfiles/compare/v18.11.0...v18.12.0) (2024-11-28)
 
 
