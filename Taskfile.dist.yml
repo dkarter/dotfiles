@@ -57,6 +57,11 @@ tasks:
     cmds:
       - task: dot:install
 
+  sync:
+    desc: An alias to dot:sync
+    cmds:
+      - task: dot:sync
+
   install:sudo-touch-id:
     desc: Sets up touch id as sufficient sudo permission
     summary: Sets up touch id as sufficient sudo permission
