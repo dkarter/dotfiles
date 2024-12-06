@@ -29,12 +29,6 @@ TASKS = [
     callback: proc { install_fonts },
   },
   {
-    name: 'ZSH Plugin Manager',
-    sync: false,
-    confirmation: 'Install zinit?',
-    callback: proc { install_zinit },
-  },
-  {
     name: 'Extrenal Packages',
     sync: true,
     confirmation: 'Install external packages (gems)?',
@@ -98,17 +92,6 @@ class Installer
     file = File.open('installer/title.txt')
     title = file.read
     puts title.red
-  end
-
-  def install_zinit
-    puts '===== Installing zinit'.blue
-
-    IO.popen(<<-BASH.chomp)
-      ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" && \
-      mkdir -p "$(dirname $ZINIT_HOME)" && \
-      rm -rf "$ZINIT_HOME" && \
-      git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-    BASH
   end
 
   def install_fonts
