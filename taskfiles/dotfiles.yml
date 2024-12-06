@@ -62,6 +62,7 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: zinit:install
+      - task: zinit:plugins:update
       - task: asdf:install
       - task: asdf:plugins:install
       - task: asdf:tools:install
