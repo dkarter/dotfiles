@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  zsh:default:
+    desc: Set zsh as the default shell
+    status:
+      # check if already set
+      - test $SHELL = '/bin/zsh'
+    # will require password
+    interactive: true
+    cmds:
+      - cmd: chsh -s zsh

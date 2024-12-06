@@ -43,6 +43,10 @@ includes:
   rust:
     taskfile: ./taskfiles/rust.yml
 
+  shell:
+    aliases: [sh]
+    taskfile: ./taskfiles/shell.yml
+
   tmux:
     aliases: [t]
     taskfile: ./taskfiles/tmux.yml

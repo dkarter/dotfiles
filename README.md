@@ -21,25 +21,6 @@
 
 This is my personal collection of configuration files.
 
-Here are some details about my setup:
-
-- **OS**: [Pop!\_OS](https://pop.system76.com/) / macOS
-- **DE**: [Gnome](https://www.gnome.org)
-- **WM**: [Mutter](https://gitlab.gnome.org/GNOME/mutter)
-- **Shell**: [zsh](https://www.zsh.org/)
-- **Editor**: [Neovim](https://github.com/neovim/neovim/)
-  - utilizes the built-in lsp ❤️
-  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) — autocompletion
-  - [tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  - [tokyonight](https://github.com/folke/tokyonight.nvim) — color theme
-  - [telescope](https://github.com/nvim-telescope/telescope.nvim) — fuzzy finder
-  - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) — status line
-  - [bufferline](https://github.com/akinsho/nvim-bufferline.lua)
-- **Browser**: [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-- **Terminal**: [Alacritty](https://alacritty.org/)
-- **Term Prompt**: [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- **Terminal Multiplexer**: [Tmux](https://github.com/tmux/tmux)
-
 ![screenshot](./screenshot.png)
 ![image](https://user-images.githubusercontent.com/551858/188434274-2df6fe83-7824-4b45-a797-51a96a1b928b.png)
 <img width="2226" alt="image" src="https://user-images.githubusercontent.com/551858/189501141-a442b7b8-4089-4721-aaff-7d467b3d8bf4.png">
@@ -54,9 +35,11 @@ The goal is to have all dependencies for the config automatically installed with
 the setup script. More details can be found by reading the following files:
 
 - [setup.sh](./setup.sh)
-  - For mac: [Brewfile](./Brewfile)
-  - For linux: [debian-setup.sh](./installer/debian-setup.sh)
-- [installer.rb](./installer.rb)
+- [Taskfile.dist.yml](./Taskfile.dist.yml)
+
+> [!NOTE]
+> The setup script relies on [Taskfile](https://taskfile.dev)! A modern alternative to `make`
+> There are still some steps that have not been migrated, but will be soon
 
 Gotchas for NeoVim setup:
 
@@ -80,18 +63,42 @@ Cd into the dotfiles dir: `cd dotfiles`
 ./setup.sh
 ```
 
-I don't recommend using other people's dotfiles, at least not when you're just starting with Vim.. these are customized to my personal taste and preferences, and are subject to change at any time. Instead consider forking [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), which is modern and very minimal, and using it as your base to build upon.
+## Synchronizing
 
-## Ended up cloning anyway?
+The dotfiles get updated often, and with that some new tools and configurations might be added.
 
-My dotfiles are now automatically versioned and contain a [Changelog](./CHANGELOG.md)! The main branch will be continuously updated, and you can use git tags to check out specific versions.
+In order to keep the dotfiles up to date, I recommend running the following:
 
-> :warning: notice how I said automatically version and not semantically
-> versioned. While I do try to keep a good git hygiene, and the versioning script
-> follows conventional commits to determine the semantic version, I may still
-> introduce a breaking change without a warning (these are my personal dotfiles
-> after all :). The best course of action might be to have an independent fork
-> and follow the changelog.
+```bash
+git pull # get latest
+task sync # installs/updates tools and symlinks new configs
+```
+
+The `sync` task is optimized for speed, which is why all the sub tasks run concurrently. If you're running into issues with `task sync`, try setting the concurrency to `1`, like so:
+
+```bash
+task sync -C 1
+```
+
+Alternatively open `./taskfiles/dotfiles.yml` and move all the tasks in `deps` to the `cmds` section, so you can find out which one is failing.
+
+# Note about forking/versioning
+
+I generally don't recommend using other people's dotfiles, at least not when you're just starting with Vim.. these are customized to my personal taste and preferences, and are subject to change at any time.
+
+Instead consider forking [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim), which is modern and very minimal, and using it as your base to build upon.
+Alternatively, there are some great NeoVim distributions out there such as [Lazy.nvim](https://github.com/folke/lazy.nvim), LunarVim, AstroVim, and NVChad.
+
+## Versioning
+
+My dotfiles are now automatically (and semantically) versioned and contain a [Changelog](./CHANGELOG.md)! The main branch will be continuously updated, and you can use git tags to check out specific versions.
+
+> [!WARNING]
+> I do my best try to keep a good git hygiene. The versioning script I use here
+> follows conventional commits to determine the semantic versioning. However, I
+> may still introduce a breaking change without a warning (these are my personal
+> dotfiles after all :). The best course of action might be to have an
+> independent fork and follow the changelog.
 
 Releases and versioning is done using [Release Please](https://github.com/googleapis/release-please), GitHub Actions, and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 

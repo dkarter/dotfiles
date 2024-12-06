@@ -42,6 +42,10 @@ includes:
     dir: ../
     internal: true
 
+  shell:
+    taskfile: ./taskfiles/shell.yml
+    internal: true
+
   tmux:
     taskfile: ./tmux.yml
     dir: ../
@@ -61,6 +65,7 @@ tasks:
       Installs all dependencies and symlink dotfiles.
     silent: true
     cmds:
+      - task: shell:zsh:default
       - task: create:dirs
       - task: symlink
       - task: zinit:install
@@ -103,7 +108,7 @@ tasks:
       - task: gh:sync
       - task: fonts:sync
     cmds:
-      - ruby ./installer.rb --sync --force
+      - echo "DONE"
 
   create:dirs:
     desc: Creates directories for dotfiles

@@ -55,4 +55,4 @@ elif [[ $OS = 'mac' ]]; then
   ./installer/mac-setup.sh
 fi
 
-ruby installer.rb "$@"
+task install "$@"
