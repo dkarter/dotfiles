@@ -89,9 +89,35 @@ tasks:
       - task: gh:plugins:install
 
   sync:
-    desc: Synchronize dotfiles
+    desc: Synchronize dotfiles (synchronous and slow)
     summary: |
       Synchronize dotfiles
+
+      Use this task to get the latest tool versions and configuration changes
+    cmds:
+      - task: create:dirs
+      - task: symlink
+      - task: asdf:sync
+      - task: node:sync
+      - task: brew:sync
+      - task: bat:sync
+      - task: python:sync
+      - task: rust:sync
+      - task: tmux:sync
+      - task: completions:sync
+      - task: zinit:sync
+      - task: gh:sync
+      - task: fonts:sync
+      - task: mac:sync
+      - cmd: figlet done
+        silent: true
+
+  sync:fast:
+    desc: Synchronize dotfiles (really fast, but more error prone)
+    summary: |
+      Synchronize dotfiles concurrently.
+
+      This is really fast, but more error prone.
 
       Use this task to get the latest tool versions and configuration changes
 
@@ -114,7 +140,8 @@ tasks:
       - task: fonts:sync
       - task: mac:sync
     cmds:
-      - echo "DONE"
+      - cmd: figlet done | lolcat
+        silent: true
 
   create:dirs:
     desc: Creates directories for dotfiles
