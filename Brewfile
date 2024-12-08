@@ -1,220 +1,223 @@
+# vim: ft=ruby
 # frozen_string_literal: true
 
-# Dual Panel File Browser
-cask 'marta'
-
-# Fast GPU rendered terminal emulator
-cask 'wezterm'
-
-# best screenshot tool on mac
-cask 'cleanshot'
-
-# setup a hyper key modifier
-cask 'hyperkey'
-
-# note taking app and Zettlekasten
-cask 'obsidian'
-
-# spotlight alternative
-cask 'raycast'
-
-# a terminal emulator (used primarily for wrapping terminal apps)
-cask 'iterm2'
-
-# allow accessing passwords from a CLI
-cask '1password/tap/1password-cli'
-
-# macOS automation using Lua
-cask 'hammerspoon'
-
 # for Erlang
-brew 'wxwidgets'
-brew 'autoconf'
-brew 'fop'
-brew 'libiodbc'
-brew 'openjdk'
+brew("wxwidgets")
+brew("autoconf")
+brew("fop")
+brew("libiodbc")
+brew("openjdk")
 
 # for generating graphics
-brew 'graphviz'
+brew("graphviz")
 
 # code stats
-brew 'scc'
+brew("scc")
 
 # SQLite3
-brew 'sqlite'
+brew("sqlite")
 
 # Taskfile task runner
-brew 'go-task'
+brew("go-task")
 
 # image manipulation
-brew 'imagemagick'
+brew("imagemagick")
 
 # json querying + pretty printing
-brew 'jq'
+brew("jq")
 
 # json exploration
-brew 'fx'
+brew("fx")
 
 # html querying aka hq
-brew 'htmlq'
+brew("htmlq")
 
 # easily copy tabular data
-brew 'yank'
+brew("yank")
 
 # format postgres sql files
-brew 'pgformatter'
+brew("pgformatter")
 
 # required for formatting terraform files
-brew 'opentofu'
+brew("opentofu")
 
 # Postgres pager
-brew 'pspg'
+brew("pspg")
 
 # Postgres client
-brew 'libpq'
+brew("libpq")
 
 # for NeoVim
-brew 'lua'
+brew("lua")
 
 # quickly jump to recently used folders
-brew 'autojump'
+brew("autojump")
 
 # better cat with syntax highlighting
-brew 'bat'
+brew("bat")
 
 # compile C stuff
-brew 'cmake'
+brew("cmake")
 
 # auto run env scripts when entering a dir
-brew 'direnv'
+brew("direnv")
 
 # fuzzy finder
-brew 'fzf'
+brew("fzf")
 
 # c++ compiler
-brew 'gcc'
+brew("gcc")
 
 # source control
-brew 'git'
+brew("git")
 
 # GTags for use in Vim
-brew 'global'
+brew("global")
 
 # Encryption + verification of signed downloads
-brew 'gnupg'
-
-# keep grep up to date
-brew 'grep'
+brew("gnupg")
 
 # show active process and their telemetry
-brew 'htop'
-brew 'btop'
+brew("htop")
+brew("btop")
 
 # GitHub CLIs
-brew 'gh'
-
-# docker desktop for containers
-cask 'docker'
+brew("gh")
 
 # curses interface for docker + git
-brew 'lazydocker'
-brew 'lazygit'
+brew("lazydocker")
+brew("lazygit")
 
 # build tool
-brew 'make'
+brew("make")
 
 # terminal multiplexer
-brew 'tmux'
+brew("tmux")
 
 # a smart session manager for tmux
-tap 'joshmedeski/sesh'
-brew 'joshmedeski/sesh/sesh'
-
-# vimium like jumps in tmux
-tap 'morantron/tmux-fingers'
-brew 'morantron/tmux-fingers/tmux-fingers'
+tap("joshmedeski/sesh")
+brew("joshmedeski/sesh/sesh")
 
 # download files from the terminal, used by some scripts
-brew 'wget'
-
-# Reattach process (e.g., TMux) to background
-brew 'reattach-to-user-namespace'
+brew("wget")
 
 # display system info
-brew 'neofetch'
+brew("neofetch")
 
 # best code editor on planet earth
-brew 'neovim'
-
-# OpenSSL - important for compiling things that support SSL
-brew 'openssl@1.1'
+brew("neovim")
 
 # better, faster grep
-brew 'ripgrep'
+brew("ripgrep")
 
 # like grep but for files and folder names
-brew 'fd'
+brew("fd")
 
 # linter for bash scripts
-brew 'shellcheck'
+brew("shellcheck")
 
 # keep tree up to date
-brew 'tree'
+brew("tree")
 
 # keep ZSH up to date
-brew 'zsh'
+brew("zsh")
 
 # required by ccls
-brew 'llvm'
+brew("llvm")
 
 # the watch command
-brew 'watch'
-
-# set default application for opening files on mac
-brew 'duti'
+brew("watch")
 
 # for Nerves
-brew 'xz'
-brew 'pkg-config'
-brew 'squashfs'
-brew 'fwup'
+brew("xz")
+brew("pkg-config")
+brew("squashfs")
+brew("fwup")
 
 # GNU File, Shell, and Text utilities (also required by Nerves)
 # https://www.gnu.org/software/coreutils
-brew 'coreutils'
+brew("coreutils")
 
 # TUI utils for scripting
-brew 'gum'
+brew("gum")
 
 # a modern API client with a friendly DX
-brew 'httpie'
+brew("httpie")
 
 # a more up to date version of curl than what macOS offers
-brew 'curl'
+brew("curl")
 
 # run things in parallel
-brew 'parallel'
+brew("parallel")
 
 # ask questions in natural language and get results in the terminal
-brew 'howdoi'
+brew("howdoi")
 
 # pretty text display utils
-brew 'figlet'
-brew 'lolcat'
+brew("figlet")
+brew("lolcat")
 
 # kubernetes tools
-brew 'kubernetes-cli'
-brew 'kubectx'
-brew 'helm'
-
-# Mac App Store CLI
-brew 'mas'
+brew("kubernetes-cli")
+brew("kubectx")
+brew("helm")
 
 # yet another tmux session manager
-brew 'smug'
+brew("smug")
 
 # for formatting XML files
-brew 'xq'
+brew("xq")
 
 # install python tools globally (outside asdf - to avoid version shim conflicts)
-brew 'pipx'
+brew("pipx")
+
+if OS.mac?
+  # Dual Panel File Browser
+  cask("marta")
+
+  # Fast GPU rendered terminal emulator
+  cask("wezterm")
+
+  # best screenshot tool on mac
+  cask("cleanshot")
+
+  # setup a hyper key modifier
+  cask("hyperkey")
+
+  # note taking app and Zettlekasten
+  cask("obsidian")
+
+  # spotlight alternative
+  cask("raycast")
+
+  # a terminal emulator (used primarily for wrapping terminal apps)
+  cask("iterm2")
+
+  # allow accessing passwords from a CLI
+  cask("1password/tap/1password-cli")
+
+  # macOS automation using Lua
+  cask("hammerspoon")
+
+  # docker desktop for containers
+  cask("docker")
+
+  # keep grep up to date
+  brew("grep")
+
+  # OpenSSL - important for compiling things that support SSL
+  brew("openssl@1.1")
+
+  # set default application for opening files on mac
+  brew("duti")
+
+  # Mac App Store CLI
+  brew("mas")
+
+  # Reattach process (e.g., TMux) to background
+  brew("reattach-to-user-namespace")
+
+  # vimium like jumps in tmux
+  tap("morantron/tmux-fingers")
+  brew("morantron/tmux-fingers/tmux-fingers")
+end

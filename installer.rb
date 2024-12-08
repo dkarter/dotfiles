@@ -404,7 +404,7 @@ class Installer
     puts '===== Installing Rust Cargos'.blue
 
     already_installed = IO.popen(<<-BASH).read.chomp.split("\n")
-    cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' '
+    cargo install --list | grep -E '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' '
     BASH
 
     puts 'Installing new crates...'.light_blue

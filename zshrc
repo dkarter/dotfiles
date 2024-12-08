@@ -30,6 +30,10 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 # ===================================
 
+if [ -d /home/linuxbrew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # load all config files
 for f in ${XDG_CONFIG_HOME}/zsh/*; do
   source $f
