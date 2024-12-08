@@ -25,8 +25,8 @@ sudo apt -y install \
   libffi-dev \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
-  libmnl-dev \
   liblzma-dev \
+  libmnl-dev \
   libncurses-dev \
   libncurses5-dev \
   libncursesw5-dev \
@@ -37,6 +37,9 @@ sudo apt -y install \
   libssl-dev \
   libterm-readkey-perl \
   libwxgtk3.0-gtk3-dev \
+  libxcb-shape0-dev \
+  libxcb-xfixes0-dev \
+  libxcb1-dev \
   libxml2-dev \
   libxml2-utils \
   libxmlsec1-dev \
