@@ -45,6 +45,8 @@ tasks:
     desc: Install Rust based CLI tools
     cmds:
       - cargo install {{.CARGOS | join " "}} --locked
+      # uv relies on unpublished cargos
+      - cargo install --locked --git https://github.com/astral-sh/uv uv
       - task: reshim
 
   tools:update:

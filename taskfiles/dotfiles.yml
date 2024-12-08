@@ -83,8 +83,8 @@ tasks:
       - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
-      - task: python:tools:install
       - task: rust:tools:install
+      - task: python:tools:install
       - task: tmux:plugins:install
       - task: gh:plugins:install
 
