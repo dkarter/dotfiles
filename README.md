@@ -96,9 +96,10 @@ My dotfiles are now automatically (and semantically) versioned and contain a [Ch
 > [!WARNING]
 > I do my best try to keep a good git hygiene. The versioning script I use here
 > follows conventional commits to determine the semantic versioning. However, I
-> may still introduce a breaking change without a warning (these are my personal
-> dotfiles after all :). The best course of action might be to have an
-> independent fork and follow the changelog.
+> may still inadvertently introduce a breaking change without a warning. The
+> best course of action might be to have an independent fork and follow the
+> changelog + rebase often - otherwise it could become painful to keep up (I
+> update my dots all the time to keep things fresh and fight entropy).
 
 Releases and versioning is done using [Release Please](https://github.com/googleapis/release-please), GitHub Actions, and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
