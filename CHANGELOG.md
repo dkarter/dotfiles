@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.1.0](https://github.com/dkarter/dotfiles/compare/v19.0.0...v19.1.0) (2024-12-08)
+
+
+### Features
+
+* **nvim:** add bash syntax injection to taskfile status, deps ([a511257](https://github.com/dkarter/dotfiles/commit/a511257243aba4f49384642f087837034681a600))
+* **task:** add sync:fast, and make the regular sync synchronous ([9b8762e](https://github.com/dkarter/dotfiles/commit/9b8762e50d75502df4ddd566159418212c156a92))
+
+
+### Bug Fixes
+
+* **debian:** add missing deps for jless ([7047059](https://github.com/dkarter/dotfiles/commit/7047059968b23faf6e7283ceb74a605019590f9e))
+* **nvim:** disable treesitter for large files ([df668d6](https://github.com/dkarter/dotfiles/commit/df668d6e24659a2c27b4427fae915bfa811b3ca8))
+* **zsh:** egrep deprecation ([d0f0eeb](https://github.com/dkarter/dotfiles/commit/d0f0eeb67f6aad951d6d111c3a895291f772b261))
+
 ## [19.0.0](https://github.com/dkarter/dotfiles/compare/v18.12.0...v19.0.0) (2024-12-06)
 
 
