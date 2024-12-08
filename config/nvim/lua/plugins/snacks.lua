@@ -5,6 +5,24 @@ return {
   priority = 1000,
   keys = require('core.mappings').snack_mappings,
   lazy = false,
+  init = function(_self)
+    -- Setup some globals for debugging (lazy-loaded)
+    _G.dbg = function(...)
+      Snacks.debug.inspect(...)
+    end
+
+    ---@diagnostic disable-next-line: duplicate-set-field
+    _G.dd = function(...)
+      Snacks.debug.inspect(...)
+    end
+
+    ---@diagnostic disable-next-line: duplicate-set-field
+    _G.bt = function()
+      Snacks.debug.backtrace()
+    end
+
+    vim.print = _G.dd
+  end,
   ---@module "snacks"
   ---@type snacks.Config
   opts = {
