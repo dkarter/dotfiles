@@ -79,7 +79,6 @@ tasks:
       - task: asdf:plugins:install
       - task: asdf:tools:install
       - task: fonts:sync
-      - cmd: ./setup.sh
       - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
