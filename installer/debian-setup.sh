@@ -22,9 +22,13 @@ sudo apt -y install \
   inotify-tools \
   libbz2-dev \
   libclang-13-dev \
+  libdb-dev \
   libffi-dev \
+  libgdbm-dev \
+  libgdbm6 \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
+  libgmp-dev \
   liblzma-dev \
   libmnl-dev \
   libncurses-dev \
@@ -32,6 +36,7 @@ sudo apt -y install \
   libncursesw5-dev \
   libpng-dev \
   libreadline-dev \
+  libreadline6-dev \
   libsqlite3-dev \
   libssh-dev \
   libssl-dev \
@@ -43,14 +48,17 @@ sudo apt -y install \
   libxml2-dev \
   libxml2-utils \
   libxmlsec1-dev \
+  libyaml-dev \
   m4 \
   openjdk-11-jdk \
+  patch \
   pkg-config \
   postgresql \
   postgresql-client \
   pspg \
   python3-tk \
   ruby \
+  rustc \
   squashfs-tools \
   ssh-askpass \
   tk-dev \
@@ -58,6 +66,7 @@ sudo apt -y install \
   tree \
   universal-ctags \
   unixodbc-dev \
+  uuid-dev \
   wx-common \
   xsltproc \
   xz-utils \
