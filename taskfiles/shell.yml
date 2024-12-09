@@ -6,8 +6,8 @@ tasks:
     desc: Set zsh as the default shell
     status:
       # check if already set
-      - test $SHELL = "$(which zsh)"
+      - test "$(basename "$SHELL")" = 'zsh'
     # will require password
     interactive: true
     cmds:
-      - cmd: chsh -s "$(which zsh)"
+      - cmd: chsh -s zsh
