@@ -200,12 +200,6 @@ M.splitjoin_mappings = {
 }
 
 ---@type LazyKeysSpec[]
-M.zen_mode_mappings = {
-  { '<leader>zm', '<cmd>ZenMode<cr>', desc = 'Zen Mode (Toggle)' },
-  { '<leader>zt', '<cmd>Twilight<cr>', desc = 'Zen Twilight (Toggle)' },
-}
-
----@type LazyKeysSpec[]
 M.sort_mappings = {
   { 'go', ':Sort<CR>', mode = 'v', desc = '(go) Order (sort lines/line params)' },
   { "goi'", "vi':Sort<CR>", mode = 'n', desc = "(go) [O]rder [i]n [']" },
@@ -537,6 +531,7 @@ M.attempt_mappings = {
 ---@type LazyKeysSpec[]
 -- stylua: ignore
 M.snack_mappings = {
+  { '<leader>zm', function() Snacks.zen() end, desc = 'Zen Mode (Toggle)' },
   { '<leader>nd', function() Snacks.notifier.hide() end, desc = 'Notification Dismiss' },
   { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
   { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },

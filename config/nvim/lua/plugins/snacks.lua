@@ -38,6 +38,8 @@ return {
       chunk = { enabled = true },
     },
     words = { enabled = true },
+    ---@class snacks.zen.Config
+    zen = { enabled = true },
     dashboard = {
       enabled = true,
       preset = {
