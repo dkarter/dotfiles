@@ -30,6 +30,13 @@ return {
     notifier = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
+    ---@class snacks.indent.Config
+    indent = {
+      enabled = true,
+      animate = { enabled = false },
+      -- this is what makes the scope look like an arrow
+      chunk = { enabled = true },
+    },
     words = { enabled = true },
     dashboard = {
       enabled = true,
