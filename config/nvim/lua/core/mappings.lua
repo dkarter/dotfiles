@@ -531,6 +531,8 @@ M.attempt_mappings = {
 ---@type LazyKeysSpec[]
 -- stylua: ignore
 M.snack_mappings = {
+  { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+  { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
   { '<leader>zm', function() Snacks.zen() end, desc = 'Zen Mode (Toggle)' },
   { '<leader>nd', function() Snacks.notifier.hide() end, desc = 'Notification Dismiss' },
   { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
