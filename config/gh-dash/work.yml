@@ -1,18 +1,18 @@
 prSections:
   - title: My Pull Requests
-    filters: is:open author:@me
+    filters: is:open author:@me org:pdq
     layout:
       author:
         hidden: true
 
   - title: Needs My Review
-    filters: is:pr is:open sort:updated-desc draft:false review-requested:@me
+    filters: is:pr is:open sort:updated-desc draft:false review-requested:@me org:pdq
 
   - title: Involved
-    filters: is:pr is:open -author:@me involves:@me sort:updated-desc
+    filters: is:pr is:open -author:@me involves:@me sort:updated-desc org:pdq
 
   - title: Subscribed
-    filters: is:open -author:@me draft:false sort:updated-desc
+    filters: is:open -author:@me draft:false sort:updated-desc org:pdq
     limit: 50
 
 defaults:
