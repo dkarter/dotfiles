@@ -85,7 +85,6 @@ tasks:
       - asdf install
 
   tool:install:
-    internal: true
     requires:
       vars: [PLUGIN]
     silent: true
