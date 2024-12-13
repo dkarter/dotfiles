@@ -93,7 +93,7 @@ tasks:
       - task: gh:plugins:install
       # completions needs the tools to be installed
       - task: completions:sync
-      - cmd: echo DONE | figlet | lolcat -a
+      - cmd: echo DONE | figlet | lolcrab -a
         silent: true
 
   sync:
@@ -119,7 +119,7 @@ tasks:
       - task: go:sync
       # completions needs the tools to be installed
       - task: completions:sync
-      - cmd: echo DONE | figlet | lolcat -a
+      - cmd: echo DONE | figlet | lolcrab -a
         silent: true
 
   sync:fast:
@@ -152,7 +152,7 @@ tasks:
     cmds:
       # completions needs the tools to be installed
       - task: completions:sync
-      - cmd: echo DONE | figlet | lolcat -a
+      - cmd: echo DONE | figlet | lolcrab -a
         silent: true
 
   create:dirs:

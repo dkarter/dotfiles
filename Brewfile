@@ -196,7 +196,6 @@ brew 'howdoi'
 
 # pretty text display utils
 brew 'figlet'
-brew 'lolcat'
 
 # kubernetes tools
 brew 'kubernetes-cli'
