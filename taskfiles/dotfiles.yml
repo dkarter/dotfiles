@@ -28,6 +28,10 @@ includes:
     taskfile: ./github.yml
     internal: true
 
+  go:
+    taskfile: ./go.yml
+    internal: true
+
   mac:
     taskfile: ./mac.yml
     internal: true
@@ -84,8 +88,13 @@ tasks:
       - task: bat:sync
       - task: rust:tools:install
       - task: python:tools:install
+      - task: go:tools:install
       - task: tmux:plugins:install
       - task: gh:plugins:install
+      # completions needs the tools to be installed
+      - task: completions:sync
+      - cmd: echo DONE | figlet | lolcat -a
+        silent: true
 
   sync:
     desc: Synchronize dotfiles (synchronous and slow)
@@ -103,12 +112,14 @@ tasks:
       - task: python:sync
       - task: rust:sync
       - task: tmux:sync
-      - task: completions:sync
       - task: zinit:sync
       - task: gh:sync
       - task: fonts:sync
       - task: mac:sync
-      - cmd: figlet done
+      - task: go:sync
+      # completions needs the tools to be installed
+      - task: completions:sync
+      - cmd: echo DONE | figlet | lolcat -a
         silent: true
 
   sync:fast:
@@ -133,13 +144,15 @@ tasks:
       - task: python:sync
       - task: rust:sync
       - task: tmux:sync
-      - task: completions:sync
       - task: zinit:sync
       - task: gh:sync
       - task: fonts:sync
       - task: mac:sync
+      - task: go:sync
     cmds:
-      - cmd: figlet done | lolcat
+      # completions needs the tools to be installed
+      - task: completions:sync
+      - cmd: echo DONE | figlet | lolcat -a
         silent: true
 
   create:dirs:

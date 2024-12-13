@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  GO_PKGS:
+    # fx: a better jq
+    - github.com/antonmedv/fx@latest
+
+tasks:
+  tools:install:
+    desc: Installs all Go based CLIs
+    cmds:
+      - for:
+          var: GO_PKGS
+          as: PKG
+        cmd: go install {{.PKG}}
+
+  sync:
+    desc: Installs and updates tools
+    cmds:
+      - task: tools:install

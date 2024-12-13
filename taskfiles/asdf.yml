@@ -87,6 +87,7 @@ tasks:
   tool:install:
     requires:
       vars: [PLUGIN]
+    internal: true
     silent: true
     cmd: |
       {{if eq .PLUGIN "nodejs" }}
@@ -109,7 +110,8 @@ tasks:
         for:
           var: ASDF_PLUGINS
           as: PLUGIN
-        cmd: task asdf:tool:install PLUGIN={{.PLUGIN}}
+        task: tool:install
+        vars: { PLUGIN: '{{.PLUGIN}}' }
 
       - platforms: [arm64]
         for:
