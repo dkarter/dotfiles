@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.2.0](https://github.com/dkarter/dotfiles/compare/v19.1.0...v19.2.0) (2024-12-13)
+
+
+### Features
+
+* **nvim:** add scratch buffer from Snacks ([aa97bfc](https://github.com/dkarter/dotfiles/commit/aa97bfc4c9be32fedba743e23b14dd0cb1a5aa71))
+
+
+### Bug Fixes
+
+* **installer:** add missing dependencies for debian for ruby ([f1afc51](https://github.com/dkarter/dotfiles/commit/f1afc51e42d03f906163ef0b4fb7583eacb1e08d))
+* **task:** add missing utils for linux ([bd3d3e8](https://github.com/dkarter/dotfiles/commit/bd3d3e8dd4c4e6ae126a34704a8842a0bd6337e6))
+* **task:** asdf tool install wasn't working ([cb9fcaa](https://github.com/dkarter/dotfiles/commit/cb9fcaa69383cf3249a3daef37a3bac31ffa6ae1))
+* **task:** default shell setup was too env specific ([37e205f](https://github.com/dkarter/dotfiles/commit/37e205f2dbacec6d1031268f70fc09a31df6c4ad))
+* **task:** remove infinite loop from installer ([787a83c](https://github.com/dkarter/dotfiles/commit/787a83c5d62837651f49d2f9a18324dd4630a156))
+* **task:** shell install status check ([9f0ebb0](https://github.com/dkarter/dotfiles/commit/9f0ebb0d05242cdcd1e0169c16403f4d0c8a4e5e))
+
 ## [19.1.0](https://github.com/dkarter/dotfiles/compare/v19.0.0...v19.1.0) (2024-12-08)
 
 
