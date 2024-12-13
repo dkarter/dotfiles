@@ -126,10 +126,6 @@ brew 'make'
 # terminal multiplexer
 brew 'tmux'
 
-# a smart session manager for tmux
-tap 'joshmedeski/sesh'
-brew 'joshmedeski/sesh/sesh'
-
 # vimium like jumps in tmux
 tap 'morantron/tmux-fingers'
 brew 'morantron/tmux-fingers/tmux-fingers'

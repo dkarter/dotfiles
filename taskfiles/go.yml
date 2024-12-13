@@ -5,6 +5,8 @@ vars:
   GO_PKGS:
     # fx: a better jq
     - github.com/antonmedv/fx@latest
+    # tmux session manager
+    - github.com/joshmedeski/sesh@latest
 
 tasks:
   tools:install:
