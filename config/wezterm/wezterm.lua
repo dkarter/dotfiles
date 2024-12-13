@@ -54,6 +54,21 @@ config.window_close_confirmation = 'NeverPrompt'
 -- disable tab bar (tabs are handled by tmux)
 config.enable_tab_bar = false
 
+-- Set the super based on OS
+local os_mod
+
+-- most common triples:
+local oses = {
+  ['x86_64-pc-windows-msvc'] = 'windows',
+  -- apple intel
+  ['x86_64-apple-darwin'] = 'mac',
+  -- apple silicon
+  ['aarch64-apple-darwin'] = 'mac',
+  ['x86_64-unknown-linux-gnu'] = 'linux',
+}
+
+local os = oses[wezterm.target_triple]
+
 -- if enabling this, check https://github.com/stepanzak/dotfiles/blob/main/dot_config/wezterm/wezterm.lua
 -- config.disable_default_key_bindings = true
 config.keys = {
@@ -74,42 +89,42 @@ config.keys = {
   -- open new tab
   {
     key = 'T',
-    mods = 'SUPER|SHIFT',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix 'c',
   },
 
   -- open urls
   {
     key = 'u',
-    mods = 'SUPER',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix 'u',
   },
 
   -- vimium like actions
   {
     key = 'f',
-    mods = 'SUPER',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix 'F',
   },
 
   -- jump tmux windows
   {
     key = 'k',
-    mods = 'SUPER',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix 'P',
   },
 
   -- open sesh - tmux session manager
   {
     key = 'j',
-    mods = 'SUPER',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix 'T',
   },
 
   -- toggle to last tmux session
   {
     key = 'l',
-    mods = 'SUPER',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix 'L',
   },
 
@@ -120,28 +135,28 @@ config.keys = {
   -- Focus tab (previous)
   {
     key = '{',
-    mods = 'CMD|SHIFT',
+    mods = 'SUPER|SHIFT',
     action = keys.tmux_prefix 'p',
   },
 
   -- Focus tab (next)
   {
     key = '}',
-    mods = 'CMD|SHIFT',
+    mods = 'SUPER|SHIFT',
     action = keys.tmux_prefix 'n',
   },
 
   -- Move tab left
   {
     key = 'LeftArrow',
-    mods = 'SUPER|SHIFT',
+    mods = (os == 'mac') and 'SUPER|SHIFT' or 'CTRL|SHIFT',
     action = keys.tmux_prefix_combo { key = 'LeftArrow' },
   },
 
   -- Move tab right
   {
     key = 'RightArrow',
-    mods = 'SUPER|SHIFT',
+    mods = (os == 'mac') and 'SUPER|SHIFT' or 'CTRL|SHIFT',
     action = keys.tmux_prefix_combo { key = 'RightArrow' },
   },
 }
