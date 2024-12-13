@@ -164,8 +164,6 @@ hdi() {
   howdoi "$*" -c -n 5
 }
 
-alias h='hdi'
-
 # self-hosted ngrok clone
 tnnl() {
   local_port=$1
@@ -249,6 +247,8 @@ alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
 }
+alias h='help'
+
 
 # quick config
 alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
