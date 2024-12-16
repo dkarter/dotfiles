@@ -40,6 +40,7 @@ return {
     words = { enabled = true },
     ---@class snacks.zen.Config
     zen = { enabled = true },
+    scope = { enabled = true },
     dashboard = {
       enabled = true,
       preset = {
