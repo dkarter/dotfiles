@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.0.0](https://github.com/dkarter/dotfiles/compare/v19.2.0...v20.0.0) (2024-12-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **zsh:** alias h to bathelp
+
+### Features
+
+* **gh-dash:** add separate work config ([e7ed793](https://github.com/dkarter/dotfiles/commit/e7ed79341d73aa0b26a08846fc59c72255f4644f))
+* **nvim:** enable Snacks scope feature ([35dd959](https://github.com/dkarter/dotfiles/commit/35dd959b6664469b84a1b3c77ac95dde609ccff4))
+* **nvim:** notify LSP on file rename from nvim-tree ([12a169d](https://github.com/dkarter/dotfiles/commit/12a169d6de391af552922521bf2a1d8a39301456))
+* **smug:** add json schema ([51d0ac6](https://github.com/dkarter/dotfiles/commit/51d0ac6c14284da30938a43872c198feccbabd56))
+* **zsh:** alias h to bathelp ([28be2e2](https://github.com/dkarter/dotfiles/commit/28be2e2c4df41d4355fcbc01ef23606dae9c43b9))
+
+
+### Bug Fixes
+
+* **wezterm:** keybinds based on OS ([ae215fe](https://github.com/dkarter/dotfiles/commit/ae215fe3de10b840379009529ca2100537300873))
+
 ## [19.2.0](https://github.com/dkarter/dotfiles/compare/v19.1.0...v19.2.0) (2024-12-13)
 
 
