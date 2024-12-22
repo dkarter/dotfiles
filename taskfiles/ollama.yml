@@ -9,11 +9,11 @@ tasks:
       Works only on macOS for now.
 
       Installs the following models:
-      - llama3.1
+      - llama3.3
       - mistral
       - codellama
     cmds:
       - brew install --cask ollama
-      - ollama pull llama3.1
+      - ollama pull llama3.3
       - ollama pull codellama
       - ollama pull mistral
