@@ -72,17 +72,31 @@ tasks:
     desc: Updates all asdf plugins
     cmd: asdf plugin-update --all
 
-  update:
-    desc: Updates asdf itself
-    cmd: asdf update
-
   sync:
-    desc: Updates asdf plugins, asdf itself and installs packages for this project
+    desc: Updates asdf plugins, asdf itself, asdf tools (runtimes) and installs packages for this project
     cmds:
       - task: plugins:install
       - task: plugins:update
-      - task: update
+      - task: tools:install
       - asdf install
+
+  tools:install:
+    desc: Installs/updates all asdf based tools
+    cmds:
+      - platforms: [amd64]
+        for:
+          var: ASDF_PLUGINS
+          as: PLUGIN
+        task: tool:install
+        vars: { PLUGIN: '{{.PLUGIN}}' }
+
+      - platforms: [arm64]
+        for:
+          var: ARM_COMPATIBLE_PLUGINS
+          as: PLUGIN
+          split: ' '
+        task: tool:install
+        vars: { PLUGIN: '{{.PLUGIN}}' }
 
   tool:install:
     requires:
@@ -103,20 +117,3 @@ tasks:
       asdf global {{.PLUGIN}} "$version"
       echo "DONE"
 
-  tools:install:
-    desc: Installs/updates all asdf based tools
-    cmds:
-      - platforms: [amd64]
-        for:
-          var: ASDF_PLUGINS
-          as: PLUGIN
-        task: tool:install
-        vars: { PLUGIN: '{{.PLUGIN}}' }
-
-      - platforms: [arm64]
-        for:
-          var: ARM_COMPATIBLE_PLUGINS
-          as: PLUGIN
-          split: ' '
-        task: tool:install
-        vars: { PLUGIN: '{{.PLUGIN}}' }
