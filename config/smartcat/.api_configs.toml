@@ -1,0 +1,9 @@
+[ollama] # local API, no key required
+url = "http://localhost:11434/api/chat"
+default_model = "llama3.3"
+timeout_seconds = 180
+
+[openai] # each supported api has their own config section with api and url
+api_key_command = "op read 'op://Private/OpenAI - smartcat-mac/credential'"
+default_model = "o1-mini"
+url = "https://api.openai.com/v1/chat/completions"
