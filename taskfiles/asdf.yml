@@ -87,21 +87,18 @@ tasks:
         for:
           var: ASDF_PLUGINS
           as: PLUGIN
-        task: tool:install
-        vars: { PLUGIN: '{{.PLUGIN}}' }
+        cmd: task asdf:tool:install PLUGIN={{.PLUGIN}}
 
       - platforms: [arm64]
         for:
           var: ARM_COMPATIBLE_PLUGINS
           as: PLUGIN
           split: ' '
-        task: tool:install
-        vars: { PLUGIN: '{{.PLUGIN}}' }
+        cmd: task asdf:tool:install PLUGIN={{.PLUGIN}}
 
   tool:install:
     requires:
       vars: [PLUGIN]
-    internal: true
     silent: true
     cmd: |
       {{if eq .PLUGIN "nodejs" }}
@@ -116,4 +113,3 @@ tasks:
       echo -n "Setting {{.PLUGIN}} $version as global.."
       asdf global {{.PLUGIN}} "$version"
       echo "DONE"
-
