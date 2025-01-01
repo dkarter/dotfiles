@@ -51,16 +51,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup ASDF
-        uses: asdf-vm/actions/setup@v3
-
-      - name: ASDF Plugin Add
-        run: |
-          asdf plugin add lua-language-server
-
-      - name: ASDF Install
-        run: |
-          asdf install lua-language-server
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@v2
 
       - name: Run Diagnostics Check
         run: |
