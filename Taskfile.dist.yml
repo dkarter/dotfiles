@@ -2,10 +2,6 @@
 version: 3
 
 includes:
-  asdf:
-    aliases: [a]
-    taskfile: ./taskfiles/asdf.yml
-
   bat:
     taskfile: ./taskfiles/bat.yml
 
@@ -36,6 +32,9 @@ includes:
 
   mac:
     taskfile: ./taskfiles/mac.yml
+
+  mise:
+    taskfile: ./taskfiles/mise.yml
 
   nvim:
     taskfile: ./taskfiles/nvim.yml

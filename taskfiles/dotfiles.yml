@@ -2,11 +2,6 @@
 version: '3'
 
 includes:
-  asdf:
-    taskfile: ./asdf.yml
-    dir: ../
-    internal: true
-
   bat:
     taskfile: ./bat.yml
     internal: true
@@ -34,6 +29,11 @@ includes:
 
   mac:
     taskfile: ./mac.yml
+    internal: true
+
+  mise:
+    taskfile: ./mise.yml
+    dir: ../
     internal: true
 
   node:
@@ -79,9 +79,8 @@ tasks:
       - task: mac:set:defaults
       - task: zinit:install
       - task: zinit:plugins:update
-      - task: asdf:install
-      - task: asdf:plugins:install
-      - task: asdf:tools:install
+      - task: mise:install
+      - task: mise:tools:install
       - task: fonts:sync
       - task: node:pnpm:install
       - task: brew:sync
@@ -105,7 +104,7 @@ tasks:
     cmds:
       - task: create:dirs
       - task: symlink
-      - task: asdf:sync
+      - task: mise:sync
       - task: node:sync
       - task: brew:sync
       - task: bat:sync
@@ -137,7 +136,7 @@ tasks:
     deps:
       - task: create:dirs
       - task: symlink
-      - task: asdf:sync
+      - task: mise:sync
       - task: node:sync
       - task: brew:sync
       - task: bat:sync
@@ -174,7 +173,6 @@ tasks:
         # ideally this list should be as small as possible, use XDG_CONFIG
         # folder instead
         - aliases
-        - asdfrc
         - ctags
         - gemrc
         - gitconfig

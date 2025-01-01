@@ -19,7 +19,7 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
-# these must be here because otherwise asdf will get pushed after brew (files
+# these must be here because otherwise mise packages will get pushed after brew (files
 # are loaded in alphabetical order) - this is not ideal, but it's the best
 # solution for now
 # ===================================

@@ -90,26 +90,6 @@ fman() {
   man -k . | fzf -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
 
-# Install one or more versions of specified language
-# e.g. `vmi rust` # => fzf multimode, tab to mark, enter to install
-# if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
-# Mnemonic [V]ersion [M]anager [I]nstall
-vmi() {
-  local lang=${1}
-
-  if [[ ! $lang ]]; then
-    lang=$(asdf plugin-list | fzf)
-  fi
-
-  if [[ $lang ]]; then
-    local versions=$(asdf list-all $lang | fzf -m)
-    if [[ $versions ]]; then
-      for version in $(echo $versions);
-      do; asdf install $lang $version; done;
-    fi
-  fi
-}
-
 # fdr - cd to selected parent directory
 fdr() {
   local declare dirs=()
