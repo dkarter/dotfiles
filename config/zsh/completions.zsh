@@ -22,9 +22,6 @@ export COMPLETION_WAITING_DOTS="true"
 # load our own completion functions
 fpath=(~/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
 
-# append asdf completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-
 # append homebrew completions to fpath
 fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 

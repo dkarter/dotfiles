@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  install:
+    desc: Installs mise itself
+    silent: true
+    # https://mise.jdx.dev/getting-started.html
+    cmds:
+      - cmd: brew install mise
+        platforms: [darwin]
+
+      - cmd: |
+          sudo apt update -y && sudo apt install -y gpg sudo wget curl
+          sudo install -dm 755 /etc/apt/keyrings
+          wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
+          echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+          sudo apt update
+          sudo apt install -y mise
+        platforms: [linux/amd64]
+
+      - cmd: |
+          sudo apt update -y && sudo apt install -y gpg sudo wget curl
+          sudo install -dm 755 /etc/apt/keyrings
+          wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
+          echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=arm64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+          sudo apt update
+          sudo apt install -y mise
+        platforms: [linux/arm64]
+
+  sync:
+    desc: Updates mise tools (runtimes), mise itself and installs packages for this project
+    cmds:
+      - task: tools:install
+      - task: tools:update
+
+  tools:install:
+    desc: Installs/updates all mise based tools
+    cmds:
+      - cmd: mise install
+
+  tools:update:
+    desc: Updates all mise based tools
+    cmds:
+      - cmd: mise up
