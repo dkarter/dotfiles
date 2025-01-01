@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.0.0](https://github.com/dkarter/dotfiles/compare/v19.2.0...v20.0.0) (2025-01-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **asdf,mise:** use mise instead of asdf ([#293](https://github.com/dkarter/dotfiles/issues/293))
+* **zsh:** alias h to bathelp
+
+### Features
+
+* **gh-dash:** add separate work config ([e7ed793](https://github.com/dkarter/dotfiles/commit/e7ed79341d73aa0b26a08846fc59c72255f4644f))
+* **nvim:** enable Snacks scope feature ([35dd959](https://github.com/dkarter/dotfiles/commit/35dd959b6664469b84a1b3c77ac95dde609ccff4))
+* **nvim:** notify LSP on file rename from nvim-tree ([12a169d](https://github.com/dkarter/dotfiles/commit/12a169d6de391af552922521bf2a1d8a39301456))
+* **smug:** add json schema ([51d0ac6](https://github.com/dkarter/dotfiles/commit/51d0ac6c14284da30938a43872c198feccbabd56))
+* **zsh:** alias h to bathelp ([28be2e2](https://github.com/dkarter/dotfiles/commit/28be2e2c4df41d4355fcbc01ef23606dae9c43b9))
+
+
+### Bug Fixes
+
+* **task:** asdf update deprecation + add update tools to sync ([6cae338](https://github.com/dkarter/dotfiles/commit/6cae338f69e0b0324da445240ca9a9177306d2c2))
+* **task:** platforms + task didn't work ([54e573e](https://github.com/dkarter/dotfiles/commit/54e573ed3831d8c5b08e21ab40a4a5037424eb46))
+* **wezterm:** keybinds based on OS ([ae215fe](https://github.com/dkarter/dotfiles/commit/ae215fe3de10b840379009529ca2100537300873))
+
+
+### Code Refactoring
+
+* **asdf,mise:** use mise instead of asdf ([#293](https://github.com/dkarter/dotfiles/issues/293)) ([70bf93e](https://github.com/dkarter/dotfiles/commit/70bf93eea8cf4c1f4d21297bb3ed6218dc608517))
+
 ## [19.2.0](https://github.com/dkarter/dotfiles/compare/v19.1.0...v19.2.0) (2024-12-13)
 
 
