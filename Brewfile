@@ -142,12 +142,6 @@ brew 'neofetch'
 # OpenSSL - important for compiling things that support SSL
 brew 'openssl@1.1'
 
-# better, faster grep
-brew 'ripgrep'
-
-# like grep but for files and folder names
-brew 'fd'
-
 # linter for bash scripts
 brew 'shellcheck'
 
