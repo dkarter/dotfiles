@@ -73,13 +73,6 @@ In order to keep the dotfiles up to date, I recommend running the following:
 git pull # get latest
 task sync # installs/updates tools and symlinks new configs
 ```
-
-The `sync` task is optimized for speed, which is why all the sub tasks run concurrently. If you're running into issues with `task sync`, try setting the concurrency to `1`, like so:
-
-```bash
-task sync -C 1
-```
-
 Alternatively open `./taskfiles/dotfiles.yml` and move all the tasks in `deps` to the `cmds` section, so you can find out which one is failing.
 
 # Note about forking/versioning

@@ -121,39 +121,6 @@ tasks:
       - cmd: echo DONE | figlet | lolcrab -a
         silent: true
 
-  sync:fast:
-    desc: Synchronize dotfiles (really fast, but more error prone)
-    summary: |
-      Synchronize dotfiles concurrently.
-
-      This is really fast, but more error prone.
-
-      Use this task to get the latest tool versions and configuration changes
-
-    # deps run in parallel! (if you're running into issues with one of the tasks
-    # you can try running task dot:sync --concurrency 1 or manually copy the
-    # tasks in deps to cmds)
-    deps:
-      - task: create:dirs
-      - task: symlink
-      - task: mise:sync
-      - task: node:sync
-      - task: brew:sync
-      - task: bat:sync
-      - task: python:sync
-      - task: rust:sync
-      - task: tmux:sync
-      - task: zinit:sync
-      - task: gh:sync
-      - task: fonts:sync
-      - task: mac:sync
-      - task: go:sync
-    cmds:
-      # completions needs the tools to be installed
-      - task: completions:sync
-      - cmd: echo DONE | figlet | lolcrab -a
-        silent: true
-
   create:dirs:
     desc: Creates directories for dotfiles
     vars:
