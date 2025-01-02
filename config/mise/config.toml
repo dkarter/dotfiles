@@ -1,6 +1,6 @@
 [tools]
 elixir = "1.18.1-otp-27"
-node = "22"
+node = { version = "22", postinstall = 'corepack enable && corepack enable pnpm' }
 direnv = "2.35.0"
 go = "1.23.4"
 erlang = "27.2"
