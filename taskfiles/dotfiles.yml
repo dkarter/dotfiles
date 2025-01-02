@@ -92,8 +92,7 @@ tasks:
       - task: gh:plugins:install
       # completions needs the tools to be installed
       - task: completions:sync
-      - cmd: echo DONE | figlet | lolcrab -a
-        silent: true
+      - task: print:done
 
   sync:
     desc: Synchronize dotfiles (synchronous and slow)
@@ -118,8 +117,7 @@ tasks:
       - task: go:sync
       # completions needs the tools to be installed
       - task: completions:sync
-      - cmd: echo DONE | figlet | lolcrab -a
-        silent: true
+      - task: print:done
 
   create:dirs:
     desc: Creates directories for dotfiles
@@ -169,3 +167,9 @@ tasks:
             popd > /dev/null 2>&1
           done
         silent: true
+
+  print:done:
+    desc: Prints done with a cool font and some nice gradients (animated)
+    internal: true
+    cmd: echo DONE | figlet | lolcrab -a --speed 1 --duration 1 --gradient warm
+    silent: true
