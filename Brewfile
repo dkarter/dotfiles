@@ -139,9 +139,6 @@ brew 'reattach-to-user-namespace'
 # display system info
 brew 'neofetch'
 
-# best code editor on planet earth
-brew 'neovim'
-
 # OpenSSL - important for compiling things that support SSL
 brew 'openssl@1.1'
 
