@@ -10,7 +10,8 @@ vars:
     - bat
     - bison
     - build-essential
-    - clangd-18
+    - carapace-bin
+    - clangd
     - cmake
     - curl
     - figlet
@@ -85,6 +86,7 @@ tasks:
     platforms: [linux]
     cmds:
       - task: tools:op:pkg
+      - task: tools:carapace:pkg
       - cmd: |
           if command -v apt &>/dev/null; then
             sudo apt update
@@ -128,3 +130,15 @@ tasks:
             sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
           fi
         silent: true
+
+  tools:carapace:pkg:
+    internal: true
+    desc: Installs pkg config for carapace
+    silent: true
+    status:
+      - test -f /etc/apt/sources.list.d/fury.list
+    cmds:
+      - cmd: |
+         echo 'deb [trusted=yes] https://apt.fury.io/rsteube/ /' | \
+         sudo tee /etc/apt/sources.list.d/fury.list
+
