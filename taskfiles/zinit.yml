@@ -6,7 +6,13 @@ vars:
 
 tasks:
   install:
-    desc: Installs zinit
+    desc: Installs zinit (if not installed already)
+    summary: |
+      Installs zinit (if not installed already)
+
+      To override, run with -f
+    status:
+      - test -d "${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
     cmds:
       - cmd: |
           ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git" && \
