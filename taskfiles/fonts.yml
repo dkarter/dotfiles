@@ -16,6 +16,7 @@ vars:
 tasks:
   sync:
     desc: Installs/updates fonts
+    platforms: [linux, darwin]
     vars:
       FONT_DIR:
         sh: |
@@ -24,7 +25,7 @@ tasks:
           elif [ "$(uname)" = "Linux" ]; then
             echo "$HOME/.fonts"
           else
-            echo "WTF? not a mac or linux.. who are you?" >&2
+            echo "Can't install fonts. Unsupported OS." >&2
             exit 1
           fi
 

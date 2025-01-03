@@ -1,0 +1,130 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  APT_PKGS:
+    - 1password-cli
+    - autoconf
+    - autojump
+    - automake
+    - bat
+    - bison
+    - build-essential
+    - clangd-18
+    - cmake
+    - curl
+    - figlet
+    - fop
+    - git
+    - global
+    - httpie
+    - inotify-tools
+    - libbz2-dev
+    - libclang-18-dev
+    - libdb-dev
+    - libffi-dev
+    - libgdbm-dev
+    - libgdbm6
+    - libgl1-mesa-dev
+    - libglu1-mesa-dev
+    - libgmp-dev
+    - liblzma-dev
+    - libmnl-dev
+    - libncurses-dev
+    - libncurses5-dev
+    - libncursesw5-dev
+    - libpng-dev
+    - libreadline-dev
+    - libreadline6-dev
+    - libsqlite3-dev
+    - libssh-dev
+    - libssl-dev
+    - libterm-readkey-perl
+    - libwxgtk3.2-dev
+    - libxcb-shape0-dev
+    - libxcb-xfixes0-dev
+    - libxcb1-dev
+    - libxml2-dev
+    - libxml2-utils
+    - libxmlsec1-dev
+    - libyaml-dev
+    - m4
+    - openjdk-11-jdk
+    - patch
+    - pkg-config
+    - postgresql
+    - postgresql-client
+    - pspg
+    - python3-tk
+    - ruby
+    - rustc
+    - squashfs-tools
+    - ssh-askpass
+    - tk-dev
+    - tmux
+    - tree
+    - universal-ctags
+    - unixodbc-dev
+    - uuid-dev
+    - wx-common
+    - xsltproc
+    - xz-utils
+    - zlib1g-dev
+    - zsh
+
+tasks:
+  sync:
+    desc: Installs and updates tools
+    platforms: [linux]
+    cmds:
+      - task: tools:install
+
+
+  tools:install:
+    desc: Installs all apt packages
+    platforms: [linux]
+    cmds:
+      - task: tools:op:pkg
+      - cmd: |
+          if command -v apt &>/dev/null; then
+            sudo apt update
+            sudo apt -y install {{.APT_PKGS | join " "}}
+          fi
+        silent: true
+      - task: tools:wslu:install
+
+  tools:wslu:install:
+    internal: true
+    desc: Installs WSL utils for windows
+    platforms: [linux]
+    cmd: |
+      # ignore when not in wsl
+      [[ "$(uname -r)" != *microsoft* ]] && exit 0
+      if command -v apt &>/dev/null; then
+        sudo apt update
+        sudo apt -y install wslu
+      fi
+    silent: true
+
+
+  tools:op:pkg:
+    internal: true
+    desc: Installs the pkg config for 1password CLI
+    platforms: [linux]
+    status:
+      - test -f /etc/debsig/policies/AC2D62742012EA22/1password.pol
+    cmds:
+      - cmd: |
+          if command -v apt &>/dev/null; then
+            curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+            sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg && \
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | \
+            sudo tee /etc/apt/sources.list.d/1password.list && \
+            sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/ && \
+            curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+            sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol && \
+            sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22 && \
+            curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+            sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+          fi
+        silent: true

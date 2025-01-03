@@ -13,6 +13,9 @@ includes:
     aliases: [c, completions]
     taskfile: ./taskfiles/completions.yml
 
+  debian:
+    taskfile: ./taskfiles/debian.yml
+
   dot:
     aliases: [dots]
     taskfile: ./taskfiles/dotfiles.yml
