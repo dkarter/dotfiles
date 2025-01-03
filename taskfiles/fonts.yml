@@ -34,6 +34,10 @@ tasks:
           var: FONTS
           as: FONT
         cmd: |
+          # temporarily skip Windows in WSL, until I can figure out how to
+          # install fonts here.
+          [[ "$(uname -r)" == *microsoft* ]] && exit 0
+
           filename=$(basename {{.FONT}})
           echo -n "Installing $filename..."
           curl --silent -L -o "{{.FONT_DIR}}/$filename" '{{joinPath .BASE_URL .FONT}}'
