@@ -189,7 +189,6 @@ brew 'howdoi'
 brew 'figlet'
 
 # kubernetes tools
-brew 'kubernetes-cli'
 brew 'kubectx'
 brew 'helm'
 
