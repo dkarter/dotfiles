@@ -16,6 +16,7 @@ tasks:
           var: GO_PKGS
           as: PKG
         cmd: go install {{.PKG}}
+      - cmd: mise reshim golang
 
   sync:
     desc: Installs and updates tools

@@ -33,6 +33,7 @@ tasks:
     desc: Installs all NPM based CLIs
     cmds:
       - cmd: npm install -g {{.NPMS | join " "}}
+      - cmd: mise reshim node
 
   sync:
     desc: Installs and updates tools
