@@ -47,12 +47,18 @@ echo
 echo 'Installing shared steps...'
 ./installer/shared.sh
 
-if [[ $DISTRO_BASE = 'debian' ]]; then
-  echo "Debian based distro detected, getting required packages..."
-  ./installer/debian-setup.sh
-elif [[ $OS = 'mac' ]]; then
+if [[ $OS = 'mac' ]]; then
   echo 'macOS detected'
   ./installer/mac-setup.sh
 fi
 
+if [[ -f ~/.local/bin/task ]]; then
+  # Install task
+  mkdir -p ~/.local/bin
+  sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
+fi
+
+export PATH="$PATH:$HOME/.local/bin"
+
+# Run task
 task install "$@"

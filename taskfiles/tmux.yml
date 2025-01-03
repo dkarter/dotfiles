@@ -13,9 +13,20 @@ tasks:
       - cmd: echo "Tmux Config Reloaded!"
         silent: true
 
+  plugins:manager:install:
+    desc: Install TPM (if not already installed)
+    summary: |
+      Install TPM (if not already installed)
+
+      To force run with -f
+    status:
+      - test -d ~/.local/share/tmux/plugins/tpm
+    cmd: git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
+
   plugins:install:
     desc: Install Tmux Plugins
     cmds:
+      - task: plugins:manager:install
       - task: reload
       - cmd: ./config/tmux/plugins/tpm/bin/install_plugins
         silent: true

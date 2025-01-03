@@ -15,6 +15,10 @@ includes:
     taskfile: ./completions.yml
     internal: true
 
+  debian:
+    taskfile: ./debian.yml
+    internal: true
+
   fonts:
     taskfile: ./fonts.yml
     internal: true
@@ -73,6 +77,7 @@ tasks:
       Installs all dependencies and symlink dotfiles.
     silent: true
     cmds:
+      - task: debian:sync
       - task: shell:zsh:default
       - task: create:dirs
       - task: symlink
@@ -101,6 +106,7 @@ tasks:
 
       Use this task to get the latest tool versions and configuration changes
     cmds:
+      - task: debian:sync
       - task: create:dirs
       - task: symlink
       - task: mise:sync
