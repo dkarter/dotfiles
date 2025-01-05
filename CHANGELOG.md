@@ -30,6 +30,10 @@ All notable changes to this project will be documented in this file. See [standa
 * **asdf,mise:** use mise instead of asdf ([#293](https://github.com/dkarter/dotfiles/issues/293))
 * **zsh:** alias h to bathelp
 
+> [!WARNING]
+> Be sure to delete `~/.tool_versions` and `~/.asdf` then run `task install` in
+> a fresh terminal
+
 ### Features
 
 * **gh-dash:** add separate work config ([e7ed793](https://github.com/dkarter/dotfiles/commit/e7ed79341d73aa0b26a08846fc59c72255f4644f))
