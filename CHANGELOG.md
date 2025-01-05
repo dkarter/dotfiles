@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.1.0](https://github.com/dkarter/dotfiles/compare/v20.0.0...v20.1.0) (2025-01-05)
+
+
+### Features
+
+* **mise:** add postinstall for node to enable corepack and pnpm ([966d0d2](https://github.com/dkarter/dotfiles/commit/966d0d20d61532e8ee7109acb5215c4df537ca92))
+* **task,debian:** add nala for package management ([df6e877](https://github.com/dkarter/dotfiles/commit/df6e877a9fc4caae934efc62e007a029b8e407f7))
+
+
+### Bug Fixes
+
+* **shellcheck:** add missing shebang ([b6db505](https://github.com/dkarter/dotfiles/commit/b6db5052154bfaa0ab1847e375369fc8857e15b0))
+* **task,debian:** remove redundant readline package ([b1e44a0](https://github.com/dkarter/dotfiles/commit/b1e44a0d2911e714aa76c1259d33deec9a516839))
+* **task,debian:** remove version from libclang-dev ([259cafc](https://github.com/dkarter/dotfiles/commit/259cafc0de2018c760ea45b49ccd29fd9675d2d0))
+* **task:** add carapace install on debian via apt ([cbefe34](https://github.com/dkarter/dotfiles/commit/cbefe34460df13b62f1b9692576264bd352ecdd5))
+* **task:** add missing install TPM task ([2862787](https://github.com/dkarter/dotfiles/commit/2862787e2c806a7d9c2721a33c5d1378bd258199))
+* **task:** disable font install in windows (temporarily) ([f2a4fc1](https://github.com/dkarter/dotfiles/commit/f2a4fc19ae7affb3df4a9d8ea8b3b55073fdac04))
+* **task:** don't install tpm if already installed ([4ea4227](https://github.com/dkarter/dotfiles/commit/4ea4227e2ab150bb8633d6f168be19b1ce763e37))
+* **task:** missed reshim task asdf -&gt; mise ([733ade0](https://github.com/dkarter/dotfiles/commit/733ade0bf4541f9915bdaaf375c7accd7eca5bd3))
+
 ## [20.0.0](https://github.com/dkarter/dotfiles/compare/v19.2.0...v20.0.0) (2025-01-01)
 
 
