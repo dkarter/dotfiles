@@ -73,9 +73,6 @@ brew 'pspg'
 # Postgres client
 brew 'libpq'
 
-# for NeoVim
-brew 'lua'
-
 # quickly jump to recently used folders
 brew 'autojump'
 
