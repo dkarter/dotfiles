@@ -1,21 +1,6 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
-vars:
-  NPMS:
-    # linter for checking that commits are following conventional commits
-    - '@commitlint/cli'
-    # support for javascript plugins in neovim
-    - neovim
-    # code formatter
-    - prettier
-    # useful usage instructions for CLI apps
-    - tldr
-    # rm -> system trash (cross platform)
-    - trash-cli
-    # easily find and delete heavy node modules
-    - npkill
-
 tasks:
   pnpm:install:
     desc: Sets up PNPM on the local machine
@@ -29,14 +14,7 @@ tasks:
       - mise reshim node
       - pnpm --version
 
-  tools:install:
-    desc: Installs all NPM based CLIs
-    cmds:
-      - cmd: npm install -g {{.NPMS | join " "}}
-      - cmd: mise reshim node
-
   sync:
     desc: Installs and updates tools
     cmds:
       - task: pnpm:install
-      - task: tools:install
