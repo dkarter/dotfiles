@@ -150,9 +150,6 @@ brew 'figlet'
 # Mac App Store CLI
 brew 'mas'
 
-# yet another tmux session manager
-brew 'smug'
-
 # for formatting XML files
 brew 'xq'
 

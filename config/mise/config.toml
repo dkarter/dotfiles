@@ -9,6 +9,7 @@
 "cargo:lolcrab" = "latest"        # like lolcat but in rust and with noise
 "cargo:rnr" = "latest"            # A command-line tool to batch rename files and directories
 "cargo:sd" = "latest"             # a modern alternative for sed with sensible defaults
+"gem:tmuxinator" = "latest"       # tmux session manager
 "npm:@commitlint/cli" = "latest"  # linter for checking that commits are following conventional commits
 "npm:neovim" = "latest"           # support for javascript plugins in neovim
 "npm:npkill" = "latest"           # easily find and delete heavy node modules
@@ -26,7 +27,7 @@ erlang = "27"                     # Erlang programming language
 fd = "latest"                     # modern `find`
 fx = "latest"                     # like jq, but allows interactive exploration and copying paths
 github-cli = "latest"             # GitHub CLI
-go = "1"                          # Go programming launguage
+go = "1"                          # Go programming language
 gum = "latest"                    # CLI / scripting UI tools
 helm = "latest"                   # install k8s packages
 hyperfine = "latest"              # benchmarking tool
@@ -56,3 +57,7 @@ zoxide = "latest"                 # a modern version of autojump
 [tools.node]
 version = "22"
 postinstall = 'corepack enable && corepack enable pnpm'
+
+[settings]
+# needed to enable ruby gems install
+experimental = true

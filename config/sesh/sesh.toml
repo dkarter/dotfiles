@@ -1,18 +1,3 @@
 [default_session]
 startup_command = 'nvim'
-
-
-[[session]]
-name = "dotfiles"
-path = "~/dotfiles"
-startup_command = "smug start dotfiles -i && tmux select-window -t 1 && exit"
-
-[[session]]
-name = "houston"
-path = "~/dev/houston"
-startup_command = "smug start pdq-houston -i && tmux select-window -t 1 && exit"
-
-[[session]]
-name = "border_bound"
-path = "~/dev/learning/border_bound"
-startup_command = "smug start border_bound -i && tmux select-window -t 1 && exit"
+preview_command = "eza --all --git --icons --color=always {}"

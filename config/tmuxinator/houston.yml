@@ -1,0 +1,18 @@
+# /Users/dorian/.config/tmuxinator/houston.yml
+
+name: houston
+root: ~/dev/houston
+
+windows:
+  - backend:
+      layout: main-vertical
+      panes:
+        - vim
+        -
+  - frontend:
+      root: ~/dev/houston/assets
+      layout: main-vertical
+      panes:
+        - vim
+        -
+  - server: mix start
