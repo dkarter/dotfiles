@@ -27,10 +27,6 @@ includes:
     taskfile: ./github.yml
     internal: true
 
-  go:
-    taskfile: ./go.yml
-    internal: true
-
   mac:
     taskfile: ./mac.yml
     internal: true
@@ -86,7 +82,6 @@ tasks:
       - task: brew:sync
       - task: bat:sync
       - task: python:tools:install
-      - task: go:tools:install
       - task: tmux:plugins:install
       - task: gh:plugins:install
       # completions needs the tools to be installed
@@ -113,7 +108,6 @@ tasks:
       - task: gh:sync
       - task: fonts:sync
       - task: mac:sync
-      - task: go:sync
       # completions needs the tools to be installed
       - task: completions:sync
       - task: print:done
