@@ -7,6 +7,8 @@ vars:
     - github.com/antonmedv/fx@latest
     # tmux session manager
     - github.com/joshmedeski/sesh@latest
+    # DNS client (like dig but better)
+    - github.com/mr-karan/doggo/cmd/doggo@latest
 
 tasks:
   tools:install:
