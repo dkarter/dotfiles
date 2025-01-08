@@ -276,7 +276,7 @@ function tn() {
 # the awk seen part filters out duplicates without affecting the sorting - this
 # was needed since starting to use smug
 function t() {
-  sesh connect $(sesh list | awk '!seen[$0]++' | fzf)
+  sesh connect $(sesh list --icons | awk '!seen[$0]++' | fzf-tmux -p)
 }
 
 # tmux attach
