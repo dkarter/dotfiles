@@ -101,7 +101,6 @@ brew 'gnupg'
 brew 'grep'
 
 # show active process and their telemetry
-brew 'htop'
 brew 'btop'
 
 # GitHub CLIs
