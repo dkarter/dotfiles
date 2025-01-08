@@ -81,9 +81,6 @@ case "$(uname -s)" in
     ;;
 esac
 
-# enable direnv
-eval "$(direnv hook zsh)"
-
 # tell RipGrep where to look for it's config file
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 
