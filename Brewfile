@@ -138,9 +138,6 @@ brew 'openssl@1.1'
 # linter for bash scripts
 brew 'shellcheck'
 
-# keep tree up to date
-brew 'tree'
-
 # keep ZSH up to date
 brew 'zsh'
 
