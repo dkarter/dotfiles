@@ -49,11 +49,6 @@ includes:
     taskfile: ./python.yml
     internal: true
 
-  rust:
-    taskfile: ./rust.yml
-    dir: ../
-    internal: true
-
   shell:
     taskfile: ./shell.yml
     internal: true
@@ -90,7 +85,6 @@ tasks:
       - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
-      - task: rust:tools:install
       - task: python:tools:install
       - task: go:tools:install
       - task: tmux:plugins:install
@@ -114,7 +108,6 @@ tasks:
       - task: brew:sync
       - task: bat:sync
       - task: python:sync
-      - task: rust:sync
       - task: tmux:sync
       - task: zinit:sync
       - task: gh:sync
