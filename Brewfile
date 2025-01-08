@@ -82,9 +82,6 @@ brew 'bat'
 # compile C stuff
 brew 'cmake'
 
-# auto run env scripts when entering a dir
-brew 'direnv'
-
 # fuzzy finder
 brew 'fzf'
 
