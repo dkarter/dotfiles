@@ -391,12 +391,6 @@ M.telescope_mappings = {
 }
 
 ---@type LazyKeysSpec[]
-M.blame_nvim_mappings = {
-  -- Git Blame
-  { '<leader>gb', ':BlameToggle<CR>', desc = '[G]it [B]lame' },
-}
-
----@type LazyKeysSpec[]
 M.gen_nvim_mappings = {
   { '<leader>ai', ':Gen<CR>', mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
   { '<leader>aa', ':Gen Ask<CR>', mode = { 'n', 'v' }, desc = '[A]I [A]sk' },
@@ -416,6 +410,9 @@ M.fugitive_mappings = function()
 
   --  Revert file
   nmap { '<Leader>gR', ':Gread<CR>', { desc = '[G]it [R]ead (reverts file)' } }
+
+  -- Git blame
+  nmap { '<leader>gb', ':Git blame<CR>', { desc = '[G]it [B]lame' } }
 end
 
 ---@type LazyKeysSpec[]
