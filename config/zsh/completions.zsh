@@ -37,7 +37,9 @@ done
 
 compinit -C
 
-# requires brew install carapace
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-source <(carapace _carapace)
+if command -v carapace &>/dev/null; then
+  # requires brew install carapace
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+  source <(carapace _carapace)
+fi
 
