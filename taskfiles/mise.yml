@@ -43,3 +43,10 @@ tasks:
     desc: Updates all mise based tools
     cmds:
       - cmd: mise up
+        silent: true
+
+  tools:outdated:
+    desc: List all outdated tools, including major bumps
+    cmds:
+      - cmd: mise outdated -l
+        silent: true
