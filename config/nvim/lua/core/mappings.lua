@@ -357,7 +357,6 @@ M.telescope_mappings = {
   { '<leader>fk', telescope 'keymaps', desc = '[F]ind [K]eymaps' },
   { '<leader>fo', telescope 'oldfiles', desc = '[F]ind [o]ld files' },
   { '<leader>fO', telescope 'vim_options', desc = '[F]ind [O]ptions' },
-  { '<leader>fr', '<cmd>Telescope frecency workspace=CWD<CR>', desc = '[F][R]ecency' },
   { '<leader>fd', require('plugins.telescope.setup').find_dotfiles, desc = '[F]ind [D]otfiles' },
   { '<leader>fs', telescope 'git_status', desc = '[F]ind (Git) [S]tatus' },
   { '<leader>fw', telescope 'grep_string', desc = '[F]ind [W]ord' },

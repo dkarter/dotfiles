@@ -13,8 +13,6 @@ return {
     'nvim-telescope/telescope-symbols.nvim',
     -- Telescope uses treesitter for previews
     'dkarter/nvim-treesitter',
-
-    'nvim-telescope/telescope-frecency.nvim',
   },
   config = function()
     require('plugins.telescope.setup').setup()
