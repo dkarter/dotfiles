@@ -546,48 +546,159 @@ M.snack_mappings = {
   { "[r",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
 }
 
-M.gitsigns_mappings = function(bufnr)
-  local gitsigns = require 'gitsigns'
-  local opts = { expr = true, buffer = bufnr }
-
-  local next_hunk = function()
-    if vim.wo.diff then
-      return ']c'
-    end
-    vim.schedule(function()
-      gitsigns.nav_hunk 'next'
-    end)
-    return '<Ignore>'
-  end
-
-  local prev_hunk = function()
-    if vim.wo.diff then
-      return '[c'
-    end
-    vim.schedule(function()
-      gitsigns.nav_hunk 'prev'
-    end)
-    return '<Ignore>'
-  end
+---@type LazyKeysSpec[]
+M.gitsigns_mappings = {
 
   -- Navigation
-  nmap { ']h', next_hunk, opts }
-  nmap { '[h', prev_hunk, opts }
+  {
+    ']h',
+    function()
+      if vim.wo.diff then
+        vim.cmd.normal { ']c', bang = true }
+      else
+        require('gitsigns').nav_hunk 'next'
+      end
+    end,
+    desc = 'Next Hunk',
+  },
 
-  -- Hunk operations
-  -- Reset Hunk
-  nmap { '<leader>gr', ':Gitsigns reset_hunk<CR>', { buffer = bufnr, desc = '[G]it [R]eset Hunk' } }
-  vmap { '<leader>gr', ':Gitsigns reset_hunk<CR>', { buffer = bufnr, desc = '[G]it [R]eset Hunk' } }
-  -- Stage Hunk
-  nmap { '<leader>gs', ':Gitsigns stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [S]age Hunk' } }
-  vmap { '<leader>gs', ':Gitsigns stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [S]age Hunk' } }
-  -- Undo Stage Hunk
-  nmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [U]ndo Stage Hunk' } }
-  vmap { '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { buffer = bufnr, desc = '[G]it [U]ndo Stage Hunk' } }
+  {
+    '[h',
+    function()
+      if vim.wo.diff then
+        vim.cmd.normal { '[c', bang = true }
+      else
+        require('gitsigns').nav_hunk 'prev'
+      end
+    end,
+    desc = 'Prev Hunk',
+  },
 
+  -- Actions
+  {
+    '<leader>hs',
+    function()
+      require('gitsigns').stage_hunk()
+    end,
+    desc = 'Stage Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>hr',
+    function()
+      require('gitsigns').reset_hunk()
+    end,
+    desc = 'Reset Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>hs',
+    function()
+      require('gitsigns').stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+    end,
+    desc = 'Stage Hunk',
+    mode = 'v',
+  },
+  {
+    '<leader>hr',
+    function()
+      require('gitsigns').reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+    end,
+    desc = 'Reset Hunk',
+    mode = 'v',
+  },
+  {
+    '<leader>hS',
+    function()
+      require('gitsigns').stage_buffer()
+    end,
+    desc = 'Stage Buffer',
+    mode = 'n',
+  },
+  {
+    '<leader>hR',
+    function()
+      require('gitsigns').reset_buffer()
+    end,
+    desc = 'Reset Buffer',
+    mode = 'n',
+  },
+  {
+    '<leader>hp',
+    function()
+      require('gitsigns').preview_hunk()
+    end,
+    desc = 'Preview Hunk',
+    mode = 'n',
+  },
+  {
+    '<leader>hi',
+    function()
+      require('gitsigns').preview_hunk_inline()
+    end,
+    desc = 'Preview Hunk Inline',
+    mode = 'n',
+  },
+  {
+    '<leader>hb',
+    function()
+      require('gitsigns').blame_line { full = true }
+    end,
+    desc = 'Blame Line',
+    mode = 'n',
+  },
+  {
+    '<leader>hd',
+    function()
+      require('gitsigns').diffthis()
+    end,
+    desc = 'Diff This',
+    mode = 'n',
+  },
+  {
+    '<leader>hD',
+    function()
+      require('gitsigns').diffthis '~'
+    end,
+    desc = 'Diff This (~)',
+    mode = 'n',
+  },
+  {
+    '<leader>hQ',
+    function()
+      require('gitsigns').setqflist 'all'
+    end,
+    desc = 'Git Hunks to QF List (All)',
+    mode = 'n',
+  },
+  {
+    '<leader>hq',
+    function()
+      require('gitsigns').setqflist(0)
+    end,
+    desc = 'Git Hunks to QF List (Buffer)',
+    mode = 'n',
+  },
+  -- Toggles
+  {
+    '<leader>tb',
+    function()
+      require('gitsigns').toggle_current_line_blame()
+    end,
+    desc = 'Toggle Current Line Blame',
+    mode = 'n',
+  },
+  {
+    '<leader>tw',
+    function()
+      require('gitsigns').toggle_word_diff()
+    end,
+    desc = 'Toggle Word Diff',
+    mode = 'n',
+  },
   -- Text object for git hunks (e.g. vih will select the hunk)
-  map { { 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>' }
-end
+  { 'ih', ':<C-U>Gitsigns select_hunk<CR>', mode = { 'o', 'x' }, desc = '[I]n [H]unk' },
+}
 
 nmap {
   '<leader>dx',
