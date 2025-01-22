@@ -527,6 +527,12 @@ M.attempt_mappings = {
 ---@type LazyKeysSpec[]
 -- stylua: ignore
 M.snack_mappings = {
+  -- picker
+  { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
+  { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+  { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+  { '<leader>pp', function() Snacks.picker.registers() end, desc = "Registers" },
+  -- scratch
   { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
   { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
   { '<leader>zm', function() Snacks.zen() end, desc = 'Zen Mode (Toggle)' },
