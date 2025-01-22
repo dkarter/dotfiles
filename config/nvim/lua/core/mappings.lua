@@ -535,18 +535,28 @@ M.snack_mappings = {
   -- scratch
   { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
   { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+
+  -- zen
   { '<leader>zm', function() Snacks.zen() end, desc = 'Zen Mode (Toggle)' },
+
+  -- notifier
   { '<leader>nd', function() Snacks.notifier.hide() end, desc = 'Notification Dismiss' },
   { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+
+  -- bufdelete
   { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
   { '<leader>bD', function() Snacks.bufdelete({ force = true }) end, desc = 'Delete Buffer (Force)' },
   { '<leader>bo', function() Snacks.bufdelete.other() end, desc = 'Delete Other Buffers' },
   { '<leader>bO', function() Snacks.bufdelete.other({ force = true }) end, desc = 'Delete Other Buffers (Force)' },
+
+  -- git
   { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
   { "<leader>bl", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
   { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
   { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
   { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
+
+  -- LSP
   { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "Rename File" },
   { "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
   { "[r",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
