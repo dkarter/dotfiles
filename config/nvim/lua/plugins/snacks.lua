@@ -56,6 +56,15 @@ return {
     ---@class snacks.zen.Config
     zen = { enabled = true },
     scope = { enabled = true },
+    picker = {
+      win = {
+        input = {
+          keys = {
+            ['<c-a>'] = false,
+          },
+        },
+      },
+    },
     dashboard = {
       enabled = true,
       preset = {
