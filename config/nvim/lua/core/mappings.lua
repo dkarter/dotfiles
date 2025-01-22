@@ -480,7 +480,7 @@ M.vim_test_mappings = {
 
 ---@type LazyKeysSpec[]
 M.vimux_mappings = {
-  { '<leader>rr', '<CMD>VimuxPromptCommand<CR>', desc = 'run the runsman' },
+  { '<leader>rr', '<CMD>VimuxPromptCommand<CR>', desc = 'run a command (prompt)' },
   { '<leader>r.', '<CMD>VimuxRunLastCommand<CR>', desc = 'run the last run command' },
   { '<leader>rc', '<CMD>VimuxClearTerminalScreen<CR>', desc = 'clear the current run terminal' },
   { '<leader>rq', '<CMD>VimuxCloseRunner<CR>', desc = 'close the runner' },
