@@ -389,15 +389,6 @@ M.telescope_mappings = {
   { '<leader>ds', telescope 'lsp_document_symbols', desc = '[D]ocument [S]ymbols' },
 
   { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', desc = '[C]onventional [C]ommits' },
-
-  -- search unicode symbols 
-  { '<leader>fu', '<cmd>Telescope symbols<cr>', desc = '[F]ind [U]nicode' },
-  {
-    '<C-q>',
-    '<cmd>Telescope symbols<cr>',
-    mode = 'i',
-    desc = '[F]ind [U]nicode',
-  },
 }
 
 ---@type LazyKeysSpec[]
@@ -542,6 +533,9 @@ M.snack_mappings = {
   { "<leader>/", picker('grep'), desc = "Grep" },
   { "<leader>:", picker('command_history'), desc = "Command History" },
   { '<leader>pp', picker('registers'), desc = "Registers" },
+  { '<leader>fu', picker('icons'), desc = '[F]ind [U]nicode' },
+  { '<C-q>', picker('icons'), mode = 'i', desc = '[F]ind [U]nicode', },
+
   -- scratch
   { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
   { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
