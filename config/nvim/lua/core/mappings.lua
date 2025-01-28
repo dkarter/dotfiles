@@ -55,6 +55,16 @@ local telescope = function(fun, opts)
   end
 end
 
+local picker = function(fun, opts)
+  if opts == nil then
+    opts = {}
+  end
+
+  return function()
+    Snacks.picker[fun](opts)
+  end
+end
+
 local silent = { silent = true }
 local default_opts = { noremap = true, silent = true }
 
@@ -528,10 +538,10 @@ M.attempt_mappings = {
 -- stylua: ignore
 M.snack_mappings = {
   -- picker
-  { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-  { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-  { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-  { '<leader>pp', function() Snacks.picker.registers() end, desc = "Registers" },
+  { "<leader>,", picker('buffers'), desc = "Buffers" },
+  { "<leader>/", picker('grep'), desc = "Grep" },
+  { "<leader>:", picker('command_history'), desc = "Command History" },
+  { '<leader>pp', picker('registers'), desc = "Registers" },
   -- scratch
   { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
   { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
