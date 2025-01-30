@@ -152,6 +152,3 @@ brew 'mas'
 
 # for formatting XML files
 brew 'xq'
-
-# better shell completions
-brew 'carapace'
