@@ -41,10 +41,6 @@ includes:
     dir: ../
     internal: true
 
-  python:
-    taskfile: ./python.yml
-    internal: true
-
   shell:
     taskfile: ./shell.yml
     internal: true
@@ -81,7 +77,6 @@ tasks:
       - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
-      - task: python:tools:install
       - task: tmux:plugins:install
       - task: gh:plugins:install
       # completions needs the tools to be installed
@@ -102,7 +97,6 @@ tasks:
       - task: node:sync
       - task: brew:sync
       - task: bat:sync
-      - task: python:sync
       - task: tmux:sync
       - task: zinit:sync
       - task: gh:sync
