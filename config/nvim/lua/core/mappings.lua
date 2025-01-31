@@ -44,17 +44,6 @@ local cmap = function(tbl)
   vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
 end
 
---- returns a function that calls the specified telescope builtin
-local telescope = function(fun, opts)
-  if opts == nil then
-    opts = {}
-  end
-
-  return function()
-    require('telescope.builtin')[fun](opts)
-  end
-end
-
 local picker = function(fun, opts)
   if opts == nil then
     opts = {}
@@ -168,11 +157,9 @@ local M = {}
 M.lsp_mappings = function()
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   nmap { 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' } }
-  nmap { 'gd', telescope('lsp_definitions', { reuse_win = true }), { buffer = true, desc = '[G]o to [d]efinition' }, }
   nmap { 'gi', vim.lsp.buf.implementation, { buffer = true, desc = '[G]o to [I]mplementation' } }
   nmap { '<leader>D', vim.lsp.buf.type_definition, { buffer = true, desc = 'Type [D]ef' } }
   map { { 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = true, desc = '[C]ode [A]ction' } }
-  nmap { 'gr', telescope('lsp_references'), { buffer = true, desc = '[G]o to [R]eferences' } }
   nmap { 'K', vim.lsp.buf.hover, { buffer = true, desc = 'LSP Hover Doc' } }
   nmap { '<leader>rn', vim.lsp.buf.rename, { buffer = true, desc = '[R]e[n]ame Symbol Under Cursor' } }
 end
@@ -292,8 +279,8 @@ M.todo_comments_mappings = {
   { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
   { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
   { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
-  { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
-  { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
+  { "<leader>st", picker('todo_comments'),                            desc = "Todo" },
+  { "<leader>sT", picker('todo_comments', { keywords = { "TODO", "FIX", "FIXME" } }),    desc = "Todo/Fix/Fixme" },
 }
 
 -- stylua: ignore
@@ -352,41 +339,6 @@ M.neogen_mappings = {
 
 ---@type LazyKeysSpec[]
 M.telescope_mappings = {
-  -- muscle memory
-  { '<C-p>', telescope 'find_files', default_opts },
-  { '<C-b>', telescope 'buffers', default_opts },
-
-  -- Compatible with hydra setup
-  { '<leader>f/', telescope 'current_buffer_fuzzy_find', desc = 'Buffer fuzzy find' },
-  { '<leader>f:', telescope 'commands', desc = 'Command search' },
-  { '<leader>f;', telescope 'command_history', desc = 'Command History' },
-  { '<leader>f?', telescope 'search_history', desc = 'Search History' },
-  { '<leader>ff', telescope 'find_files', desc = '[F]ind [F]iles' },
-  { '<leader>fg', telescope 'live_grep', desc = '[F]ind w/ [G]rep' },
-  { '<leader>fh', telescope 'help_tags', desc = '[F]ind [H]elp' },
-  { '<leader>fk', telescope 'keymaps', desc = '[F]ind [K]eymaps' },
-  { '<leader>fo', telescope 'oldfiles', desc = '[F]ind [o]ld files' },
-  { '<leader>fO', telescope 'vim_options', desc = '[F]ind [O]ptions' },
-  { '<leader>fd', require('plugins.telescope.setup').find_dotfiles, desc = '[F]ind [D]otfiles' },
-  { '<leader>fs', telescope 'git_status', desc = '[F]ind (Git) [S]tatus' },
-  { '<leader>fw', telescope 'grep_string', desc = '[F]ind [W]ord' },
-
-  --  Extensions
-  { '<leader>fb', '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>', desc = '[F]ile [B]rowser' },
-
-  { '<leader>lg', telescope 'live_grep', desc = '[L]ive [G]rep' },
-  { '<leader>bb', telescope 'buffers', desc = 'Find Buffers' },
-
-  -- better spell suggestions
-  { 'z=', telescope 'spell_suggest', desc = 'Spelling Suggestions' },
-
-  -- Git
-  -- bc = buffer commits (like gitv!)
-  { '<leader>bc', telescope 'git_bcommits', desc = '[B]uffer [C]ommits' },
-
-  -- LSP
-  -- ds = document symbols
-  { '<leader>ds', telescope 'lsp_document_symbols', desc = '[D]ocument [S]ymbols' },
 
   { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', desc = '[C]onventional [C]ommits' },
 }
@@ -511,16 +463,22 @@ M.undotree_mappings = {
   { '<leader>ut', '<cmd>UndotreeToggle<CR>', desc = '[U]ndo [T]ree' },
 }
 
+local attempt = function(fun)
+  return function()
+    require('attempt')[fun]()
+  end
+end
+
 ---@type LazyKeysSpec[]
 M.attempt_mappings = {
   -- new attempt, selecting extension
-  { '<leader>sn', '<cmd>lua require("attempt").new_select()<CR>', desc = '[S]cratch [N]ew' },
+  { '<leader>sn', attempt 'new_select', desc = '[S]cratch [N]ew' },
   -- run current attempt buffer
-  { '<leader>sr', '<cmd>lua require("attempt").run()<CR>', desc = '[S]cratch [R]un' },
+  { '<leader>sr', attempt 'run', desc = '[S]cratch [R]un' },
   -- delete attempt from current buffer
-  { '<leader>sd', '<cmd>lua require("attempt").delete_buf()<CR>', desc = '[S]cratch [D]elete (current buffer)' },
+  { '<leader>sd', attempt 'delete_buf', desc = '[S]cratch [D]elete (current buffer)' },
   -- rename attempt from current buffer
-  { '<leader>sc', '<cmd>lua require("attempt").rename_buf()<CR>', desc = '[S]cratch Rename (current buffer)' },
+  { '<leader>sc', attempt 'rename_buf', desc = '[S]cratch Rename (current buffer)' },
   -- open one of the existing scratch buffers
   { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
 }
@@ -535,6 +493,34 @@ M.snack_mappings = {
   { '<leader>pp', picker('registers'), desc = "Registers" },
   { '<leader>fu', picker('icons'), desc = '[F]ind [U]nicode' },
   { '<C-q>', picker('icons'), mode = 'i', desc = '[F]ind [U]nicode', },
+  { '<leader>lg', picker('grep', {need_search = false}), desc = '[L]ive [G]rep' },
+  { '<leader>fw', picker('grep_word'), desc = '[F]ind [W]ord' },
+  { '<leader>fd', picker('files', {cwd = '~/dotfiles'}), desc = '[F]ind [D]otfiles' },
+  -- muscle memory
+  { '<C-p>', picker('files'), default_opts },
+  { '<C-b>', picker('buffers'), default_opts },
+
+  -- Compatible with hydra setup
+  { '<leader>f/', picker('grep_buffers'), desc = 'Buffer fuzzy find' },
+  { '<leader>f:', picker('commands'), desc = 'Command search' },
+  { '<leader>f;', picker('command_history'), desc = 'Command History' },
+  { '<leader>f?', picker('search_history'), desc = 'Search History' },
+  { '<leader>ff', picker('files'), desc = '[F]ind [F]iles' },
+  { '<leader>fg', picker('grep', {need_search = false}), desc = '[F]ind w/ [G]rep' },
+  { '<leader>fh', picker('help'), desc = '[F]ind [H]elp' },
+  { '<leader>fk', picker('keymaps'), desc = '[F]ind [K]eymaps' },
+  { '<leader>fs', picker('git_status'), desc = '[F]ind (Git) [S]tatus' },
+  { '<leader>bb', picker('buffers'), desc = 'Find Buffers' },
+  -- better spell suggestions
+  { 'z=', picker('spelling'), desc = 'Spelling Suggestions' },
+  { '<leader>fb', picker('explorer'), desc = '[F]ile [B]rowser' },
+  -- bc = buffer commits (like gitv!)
+  { '<leader>bc', picker('git_log_file'), desc = '[B]uffer [C]ommits' },
+
+  -- LSP
+  { '<leader>ds', picker('lsp_symbols'), desc = '[D]ocument [S]ymbols' },
+  { 'gd', picker('lsp_definitions'), desc = '[G]o to [d]efinition' },
+  { 'gr', picker('lsp_references'), desc = '[G]o to [R]eferences' },
 
   -- scratch
   { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
