@@ -40,7 +40,6 @@ vars:
     - libssh-dev
     - libssl-dev
     - libterm-readkey-perl
-    - libwxgtk3.2-dev
     - libxcb-shape0-dev
     - libxcb-xfixes0-dev
     - libxcb1-dev
@@ -80,7 +79,6 @@ tasks:
     cmds:
       - task: tools:install
 
-
   tools:install:
     desc: Installs all apt packages
     platforms: [linux]
@@ -93,7 +91,29 @@ tasks:
             sudo apt -y install {{.APT_PKGS | join " "}}
           fi
         silent: true
+      - task: tools:wxgtk:install
       - task: tools:wslu:install
+
+  tools:wxgtk:install:
+    internal: true
+    cmds:
+      - cmd: |
+          if command -v apt >/dev/null 2>&1; then
+            # Check package availability in order of preference
+            if apt-cache show libwxgtk3.2-dev >/dev/null 2>&1; then
+              sudo apt install -y libwxgtk3.2-dev
+            elif apt-cache show libwxgtk3.0-gtk3-dev >/dev/null 2>&1; then
+              sudo apt install -y libwxgtk3.0-gtk3-dev
+            else
+              echo "No compatible wxGTK development package found"
+              exit 1
+            fi
+          else
+            echo "This task requires apt package manager"
+            exit 1
+          fi
+    status:
+      - dpkg-query -W -f='${Status}' libwxgtk3.2-dev 2>/dev/null | grep -q "ok installed" || dpkg-query -W -f='${Status}' libwxgtk3.0-gtk3-dev 2>/dev/null | grep -q "ok installed"
 
   tools:wslu:install:
     internal: true
@@ -107,7 +127,6 @@ tasks:
         sudo apt -y install wslu
       fi
     silent: true
-
 
   tools:op:pkg:
     internal: true
@@ -139,6 +158,5 @@ tasks:
       - test -f /etc/apt/sources.list.d/fury.list
     cmds:
       - cmd: |
-         echo 'deb [trusted=yes] https://apt.fury.io/rsteube/ /' | \
-         sudo tee /etc/apt/sources.list.d/fury.list
-
+          echo 'deb [trusted=yes] https://apt.fury.io/rsteube/ /' | \
+          sudo tee /etc/apt/sources.list.d/fury.list
