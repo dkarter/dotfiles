@@ -338,12 +338,6 @@ M.neogen_mappings = {
 }
 
 ---@type LazyKeysSpec[]
-M.telescope_mappings = {
-
-  { '<leader>cc', '<cmd>Telescope conventional_commits<cr>', desc = '[C]onventional [C]ommits' },
-}
-
----@type LazyKeysSpec[]
 M.gen_nvim_mappings = {
   { '<leader>ai', ':Gen<CR>', mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
   { '<leader>aa', ':Gen Ask<CR>', mode = { 'n', 'v' }, desc = '[A]I [A]sk' },
@@ -521,6 +515,7 @@ M.snack_mappings = {
   { '<leader>ds', picker('lsp_symbols'), desc = '[D]ocument [S]ymbols' },
   { 'gd', picker('lsp_definitions'), desc = '[G]o to [d]efinition' },
   { 'gr', picker('lsp_references'), desc = '[G]o to [R]eferences' },
+  { '<leader>cc', picker('pick', require('plugins.snacks.conventional_commits_picker')), desc = '[C]onventional [C]ommits' },
 
   -- scratch
   { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
