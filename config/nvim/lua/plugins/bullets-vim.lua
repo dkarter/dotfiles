@@ -2,6 +2,9 @@
 ---@type LazySpec
 return {
   'dkarter/bullets.vim',
+  -- temporarily disable until I can figure out the conflict with Snacks.picker
+  -- and <CR> imap
+  enabled = false,
   init = function()
     vim.g.bullets_enabled_file_types = {
       'markdown',
