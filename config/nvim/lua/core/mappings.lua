@@ -218,7 +218,7 @@ M.trouble_mappings = {
     desc = 'Symbols (Trouble)',
   },
   {
-    '<leader>sl',
+    '<leader>sx',
     '<cmd>Trouble lsp toggle focus=true win.position=right<cr>',
     desc = 'LSP Definitions / references / ... (Trouble)',
   },
