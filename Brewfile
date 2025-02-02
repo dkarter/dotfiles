@@ -46,9 +46,6 @@ brew 'sqlite'
 # image manipulation
 brew 'imagemagick'
 
-# html querying aka hq
-brew 'htmlq'
-
 # easily copy tabular data
 brew 'yank'
 
@@ -132,23 +129,14 @@ brew 'fwup'
 # https://www.gnu.org/software/coreutils
 brew 'coreutils'
 
-# a modern API client with a friendly DX
-brew 'httpie'
-
 # a more up to date version of curl than what macOS offers
 brew 'curl'
 
 # run things in parallel
 brew 'parallel'
 
-# ask questions in natural language and get results in the terminal
-brew 'howdoi'
-
 # pretty text display utils
 brew 'figlet'
 
 # Mac App Store CLI
 brew 'mas'
-
-# for formatting XML files
-brew 'xq'
