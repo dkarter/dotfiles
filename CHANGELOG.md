@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.0.0](https://github.com/dkarter/dotfiles/compare/v20.1.0...v21.0.0) (2025-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change <leader>fu to Find Undo
+* **nvim:** use more easily discoverable mappings for swap
+* **nvim:** update gitsigns mappings
+
+### Features
+
+* **mise,task:** add talosctl ([7d77ac2](https://github.com/dkarter/dotfiles/commit/7d77ac2197324cbe8bb2e1832e0dfe2e27024ed6))
+* **mise:** add `choose` - awk/cut alternative ([804f667](https://github.com/dkarter/dotfiles/commit/804f667a32c2839efa9f04f953a6cee5f5fafa19))
+* **mise:** add diffnav ([1e666d8](https://github.com/dkarter/dotfiles/commit/1e666d80ec31251db21b557fc9736bef85f6549e))
+* **mise:** add gping tool ([2585609](https://github.com/dkarter/dotfiles/commit/2585609fbf0d9737e210f50d00ac5aaa72761f69))
+* **mise:** add terraform globally ([42308f0](https://github.com/dkarter/dotfiles/commit/42308f05c6d3ef884c723cd018d21a412c11a648))
+* **mise:** add wireman (GRPC client) ([6359fbc](https://github.com/dkarter/dotfiles/commit/6359fbcec5b599d2cdb590f85b806673a0f96366))
+* **nvim:** add new picker mappings ([edb27cb](https://github.com/dkarter/dotfiles/commit/edb27cb31dc474ca32fe6d8f6484bc4d4faa4df1))
+* **python:** add Posting (a Postman-like TUI) ([8c7a19d](https://github.com/dkarter/dotfiles/commit/8c7a19d63338cda57350404b1256717124be19b4))
+* **task,mise:** add mise:tools:outdated task ([8fdb600](https://github.com/dkarter/dotfiles/commit/8fdb600e07cd56189b2e90a44eb21164c70ddccf))
+* **task:** add doggo (modern dig alternative) ([1a8f86e](https://github.com/dkarter/dotfiles/commit/1a8f86e3953ad930a2a4557a59ad2e96b34a4d3f))
+* **task:** add kdash (kubernetes dashboard) ([9da84a1](https://github.com/dkarter/dotfiles/commit/9da84a18c49dd428d90c1182c7a0e5fd91fe0d97))
+* **zsh:** add gdn git diffnav alias ([1a7af58](https://github.com/dkarter/dotfiles/commit/1a7af583968c65b0302ea9e8e97a4bcb61352d7e))
+
+
+### Bug Fixes
+
+* **mise:** add missing kubens ([254c365](https://github.com/dkarter/dotfiles/commit/254c365466c13e2125497abe34bc0e7c071a78d5))
+* **mise:** relax erlang version to major ([f30ae7a](https://github.com/dkarter/dotfiles/commit/f30ae7a7590636a33761e248a07c1c72ef125ad4))
+* **mise:** remove pnpm from mise ([350fb05](https://github.com/dkarter/dotfiles/commit/350fb05c7ec5b63fedd142d368651cacb28f4589))
+* **nvim:** enable c-a readline for Snacks picker ([f0d7983](https://github.com/dkarter/dotfiles/commit/f0d7983e16892b39ef87942e5c8fc2cb00497bc6))
+* **nvim:** update gitsigns mappings ([cfcd6b6](https://github.com/dkarter/dotfiles/commit/cfcd6b69c9f4af5a7b1caf0931fe8cc9d2f22434))
+* **task:** dynamically determine wxgtk package ([db6a545](https://github.com/dkarter/dotfiles/commit/db6a545a54105c17277f85bc07d4ae544a335d49))
+* **zsh,tmux:** improve t command (icons, popup) ([c7f4358](https://github.com/dkarter/dotfiles/commit/c7f43584dc1da0458eba9b5e33a1dc25a41c3db0))
+* **zsh:** only source carapace when available ([5a9f1ab](https://github.com/dkarter/dotfiles/commit/5a9f1ab68f43ec9efebaef1eef5a4241e806a28e))
+
+
+### Code Refactoring
+
+* **nvim:** change &lt;leader&gt;fu to Find Undo ([48d6e1d](https://github.com/dkarter/dotfiles/commit/48d6e1dab0ec4397eca3692c1362c5bf17b46eb3))
+* **nvim:** use more easily discoverable mappings for swap ([6d6e7a8](https://github.com/dkarter/dotfiles/commit/6d6e7a8ffcac329858751268d926d7cf96a0d269))
+
 ## [20.1.0](https://github.com/dkarter/dotfiles/compare/v20.0.0...v20.1.0) (2025-01-05)
 
 
