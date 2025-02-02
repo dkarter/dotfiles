@@ -514,8 +514,9 @@ M.snack_mappings = {
   { '<leader>zm', function() Snacks.zen() end, desc = 'Zen Mode (Toggle)' },
 
   -- notifier
-  { '<leader>nd', function() Snacks.notifier.hide() end, desc = 'Notification Dismiss' },
   { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+  { '<leader>nd', function() Snacks.notifier.hide() end, desc = 'Notification Dismiss' },
+  { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Dismiss All Notifications" },
 
   -- bufdelete
   { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
