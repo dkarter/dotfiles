@@ -296,12 +296,6 @@ M.flash_mappings = {
 }
 
 ---@type LazyKeysSpec[]
-M.nvim_tree_mappings = {
-  { '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = '[N]vimTree [T]oggle' } },
-  { '<leader>nf', '<cmd>NvimTreeFindFileToggle<CR>', { desc = '[N]vimTree [F]ile (toggle)' } },
-}
-
----@type LazyKeysSpec[]
 M.oil_nvim_mappings = {
   { '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' } },
   {
@@ -503,6 +497,10 @@ M.snack_mappings = {
   -- bc = buffer commits (like gitv!)
   { '<leader>bc', picker('git_log_file'), desc = '[B]uffer [C]ommits' },
   { '<leader>bh', picker('git_log_file'), desc = '[B]uffer [H]istory' },
+
+  { '<leader>nt', picker('explorer', {follow_file = false}), { desc = '[N]erdTree (not really) [T]oggle' } },
+  { '<leader>nf', picker('explorer', {follow_file = true}), { desc = '[N]erdTree (not really) [F]ile (toggle)' } },
+  { '<leader>tt', picker('explorer'), { desc = '[T]ree [T]oggle' } },
 
   -- muscle memory
   { '<C-p>', picker('files'), desc = 'Find Files' },
