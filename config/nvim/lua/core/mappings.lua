@@ -55,7 +55,6 @@ local picker = function(fun, opts)
 end
 
 local silent = { silent = true }
-local default_opts = { noremap = true, silent = true }
 
 -- center window on search result
 nmap { 'n', 'nzzzv' }
@@ -485,16 +484,11 @@ M.snack_mappings = {
   { "<leader>/", picker('grep'), desc = "Grep" },
   { "<leader>:", picker('command_history'), desc = "Command History" },
   { '<leader>pp', picker('registers'), desc = "Registers" },
-  { '<leader>fu', picker('icons'), desc = '[F]ind [U]nicode' },
-  { '<C-q>', picker('icons'), mode = 'i', desc = '[F]ind [U]nicode', },
+  { '<leader>fi', picker('icons'), desc = '[F]ind [I]cons' },
+  { '<leader>fu', picker('undo'), desc = '[F]ind [U]ndo' },
   { '<leader>lg', picker('grep', {need_search = false}), desc = '[L]ive [G]rep' },
   { '<leader>fw', picker('grep_word'), desc = '[F]ind [W]ord' },
   { '<leader>fd', picker('files', {cwd = '~/dotfiles'}), desc = '[F]ind [D]otfiles' },
-  -- muscle memory
-  { '<C-p>', picker('files'), default_opts },
-  { '<C-b>', picker('buffers'), default_opts },
-
-  -- Compatible with hydra setup
   { '<leader>f/', picker('grep_buffers'), desc = 'Buffer fuzzy find' },
   { '<leader>f:', picker('commands'), desc = 'Command search' },
   { '<leader>f;', picker('command_history'), desc = 'Command History' },
@@ -505,11 +499,20 @@ M.snack_mappings = {
   { '<leader>fk', picker('keymaps'), desc = '[F]ind [K]eymaps' },
   { '<leader>fs', picker('git_status'), desc = '[F]ind (Git) [S]tatus' },
   { '<leader>bb', picker('buffers'), desc = 'Find Buffers' },
-  -- better spell suggestions
-  { 'z=', picker('spelling'), desc = 'Spelling Suggestions' },
   { '<leader>fb', picker('explorer'), desc = '[F]ile [B]rowser' },
   -- bc = buffer commits (like gitv!)
   { '<leader>bc', picker('git_log_file'), desc = '[B]uffer [C]ommits' },
+  { '<leader>bh', picker('git_log_file'), desc = '[B]uffer [H]istory' },
+
+  -- muscle memory
+  { '<C-p>', picker('files'), desc = 'Find Files' },
+  { '<C-b>', picker('buffers'), desc = 'Find Buffers' },
+
+  -- insert mode pickers
+  { '<C-q>', picker('icons'), mode = 'i', desc = 'Insert Icon', },
+
+  -- better spell suggestions
+  { 'z=', picker('spelling'), desc = 'Spelling Suggestions' },
 
   -- LSP
   { '<leader>ds', picker('lsp_symbols'), desc = '[D]ocument [S]ymbols' },

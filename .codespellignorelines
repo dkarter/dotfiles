@@ -7,4 +7,5 @@ nmap { '<leader>ml', "<cmd>s/\\v(.)(nore){-}map (.{-}) (.*)/\\1map { '\\3', '\\4
 # Mnemonic [V]ersion [M]anager [I]nstall
   { 'gR', '<cmd>Trouble lsp_references<cr>', desc = '[G]o to [R]eferences (Trouble)' },
   nmap { '<leader>nd', notify.dismiss, { desc = '[N]otification [D]ismiss' } }
-  { '<leader>bc', telescope 'git_bcommits', desc = '[B]uffer [C]ommits' },
+  { '<leader>bc', picker('git_log_file'), desc = '[B]uffer [C]ommits' },
+  { '<leader>bh', picker('git_log_file'), desc = '[B]uffer [H]istory' },
