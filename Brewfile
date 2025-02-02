@@ -95,9 +95,6 @@ brew 'morantron/tmux-fingers/tmux-fingers'
 # download files from the terminal, used by some scripts
 brew 'wget'
 
-# Reattach process (e.g., TMux) to background
-brew 'reattach-to-user-namespace'
-
 # display system info
 brew 'neofetch'
 
