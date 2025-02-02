@@ -356,40 +356,6 @@ M.fugitive_mappings = function()
 end
 
 ---@type LazyKeysSpec[]
-M.rhubarb_mappings = {
-  -- open github page for file
-  { '<leader>gO', ':GBrowse<CR>', desc = '[G]ithub [O]pen File' },
-
-  -- open github page for line under cursor
-  { '<leader>go', ':.GBrowse<CR>', desc = '[G]ithub [o]pen Line' },
-
-  -- open github page for selection
-  { '<leader>go', ':GBrowse<CR>', mode = 'v', desc = '[G]ithub [o]pen Line' },
-
-  -- copy github link for file
-  {
-    '<leader>gY',
-    ':GBrowse! | lua vim.notify("Copied file URL to clipboard")<CR>',
-    desc = '[G]ithub [Y]ank file URL',
-  },
-
-  -- copy github link for line under cursor
-  {
-    '<leader>gy',
-    ':.GBrowse! | lua vim.notify("Copied line URL to clipboard")<CR>',
-    desc = '[G]ithub [y]ank line URL',
-  },
-
-  -- copy github link for selection
-  {
-    '<leader>gy',
-    ':GBrowse! | lua vim.notify("Copied selection URL to clipboard")<CR>',
-    mode = 'v',
-    desc = '[G]ithub [Y]ank selection link',
-  },
-}
-
----@type LazyKeysSpec[]
 M.diffview_mappings = {
   { '<leader>gv', '<cmd>DiffviewFileHistory %<CR>', desc = '[G]it [V]iew (:gitv! alt)' },
   { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[G]it [D]iff' },
@@ -470,6 +436,28 @@ M.attempt_mappings = {
   { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
 }
 
+local git_copy_file_url = function()
+  Snacks.gitbrowse {
+    open = function(url)
+      vim.fn.setreg('+', url)
+    end,
+    notify = false,
+    line_start = 0,
+    line_end = 0,
+  }
+  vim.notify('Copied ' .. vim.fn.getreg '+', vim.log.levels.INFO)
+end
+
+local git_copy_line_url = function()
+  Snacks.gitbrowse {
+    open = function(url)
+      vim.fn.setreg('+', url)
+    end,
+    notify = false,
+  }
+  vim.notify(vim.fn.getreg '+', vim.log.levels.INFO, { title = 'Copied' })
+end
+
 ---@type LazyKeysSpec[]
 -- stylua: ignore
 M.snack_mappings = {
@@ -539,6 +527,16 @@ M.snack_mappings = {
   { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
   { "<leader>bl", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
   { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+  -- TODO: not sure how to copy just the file - might not be supported yet, so
+  -- lines will still be added (0,0)
+  { "<leader>gY", git_copy_file_url, mode = { "n", "x" }, desc = "Git Copy File URL"},
+  { "<leader>gy", git_copy_line_url, mode = { "n", "x" }, desc = "Git Copy Line(s) URL"},
+  -- open github page for file
+  { '<leader>gO', function() Snacks.gitbrowse({line_start = 0, line_end = 0}) end, desc = '[G]ithub [O]pen File' },
+  -- open github page for line under cursor / selection
+  { '<leader>go', function() Snacks.gitbrowse() end, mode = {'n', 'v'}, desc = '[G]ithub [o]pen Line' },
+
+  -- lazygit
   { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
   { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
 
