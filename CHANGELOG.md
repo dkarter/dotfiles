@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.1.0](https://github.com/dkarter/dotfiles/compare/v21.0.0...v21.1.0) (2025-02-02)
+
+
+### Features
+
+* **nvim:** add mapping for notification history (leader nh) ([7e9680b](https://github.com/dkarter/dotfiles/commit/7e9680bcc3a81cd5f49f6c5bf067ebeaad1bc4c1))
+* **nvim:** automatically load snacks.nvim types ([7754f19](https://github.com/dkarter/dotfiles/commit/7754f1945e1ab8b263801b31c2c2220d12a5c219))
+
+
+### Bug Fixes
+
+* **nvim:** fix mapping conflict for &lt;leader&gt;sl ([11e3362](https://github.com/dkarter/dotfiles/commit/11e336281b94115faabbbe995a92264452f200f6))
+* **nvim:** improve conventional_commits_picker (insert at EOL) ([837d159](https://github.com/dkarter/dotfiles/commit/837d159a73c83868745f0289a55a66c4672e56b6))
+* **nvim:** remove remnants of NvimTree config ([62afa1f](https://github.com/dkarter/dotfiles/commit/62afa1fbacfe77ae6d44b675f0a7c9e81fa71142))
+
 ## [21.0.0](https://github.com/dkarter/dotfiles/compare/v20.1.0...v21.0.0) (2025-02-02)
 
 
