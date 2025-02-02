@@ -164,14 +164,6 @@ M.setup = function()
       theme = 'tokyonight-moon',
       component_separators = '',
       section_separators = { left = '', right = '' },
-      disabled_filetypes = {
-        winbar = {
-          'NvimTree',
-        },
-        statusline = {
-          'NvimTree',
-        },
-      },
     },
     sections = process_sections {
       lualine_a = {

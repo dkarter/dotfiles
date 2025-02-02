@@ -28,7 +28,7 @@ return {
         b.diagnostics.actionlint,
         b.diagnostics.ansiblelint,
         b.diagnostics.codespell.with {
-          disabled_filetypes = { 'NvimTree', 'oil' },
+          disabled_filetypes = { 'oil' },
         },
 
         b.diagnostics.rubocop,
