@@ -469,7 +469,7 @@ M.snack_mappings = {
   { '<leader>fi', picker('icons'), desc = '[F]ind [I]cons' },
   { '<leader>fu', picker('undo'), desc = '[F]ind [U]ndo' },
   { '<leader>lg', picker('grep', {need_search = false}), desc = '[L]ive [G]rep' },
-  { '<leader>fw', picker('grep_word'), desc = '[F]ind [W]ord' },
+  { '<leader>fw', picker('grep_word'), mode = {'n', 'v'}, desc = '[F]ind [W]ord' },
   { '<leader>fd', picker('files', {cwd = '~/dotfiles'}), desc = '[F]ind [D]otfiles' },
   { '<leader>f/', picker('grep_buffers'), desc = 'Buffer fuzzy find' },
   { '<leader>f:', picker('commands'), desc = 'Command search' },
