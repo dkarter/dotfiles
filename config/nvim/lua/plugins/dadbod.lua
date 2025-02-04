@@ -19,7 +19,8 @@ return {
         },
         init = function()
           vim.g.vim_dadbod_completion_lowercase_keywords = true
-
+        end,
+        config = function(_self, _opts)
           -- enable completion in cmp
           local cmp = require 'cmp'
           cmp.setup.filetype({ 'sql' }, {
