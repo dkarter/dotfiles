@@ -422,6 +422,7 @@ local attempt = function(fun)
   end
 end
 
+-- stylua: ignore
 ---@type LazyKeysSpec[]
 M.attempt_mappings = {
   -- new attempt, selecting extension
@@ -433,7 +434,7 @@ M.attempt_mappings = {
   -- rename attempt from current buffer
   { '<leader>sc', attempt 'rename_buf', desc = '[S]cratch Rename (current buffer)' },
   -- open one of the existing scratch buffers
-  { '<leader>sl', '<cmd>Telescope attempt<CR>', desc = '[S]cratch [L]oad' },
+  { '<leader>sl', function() require('attempt.snacks').picker() end, desc = '[S]cratch [L]oad' },
 }
 
 local git_copy_file_url = function()

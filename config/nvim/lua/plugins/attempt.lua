@@ -16,7 +16,6 @@ return {
   keys = require('core.mappings').attempt_mappings,
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
   },
   opts = {
     autosave = true,
