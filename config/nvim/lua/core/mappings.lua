@@ -346,13 +346,14 @@ M.gen_nvim_mappings = {
 
 M.fugitive_mappings = function()
   -- Git Stage file
-  nmap { '<leader>gS', ':Gwrite<CR>', { desc = '[G]it [S]tage' } }
+  nmap { '<leader>gS', ':Gwrite<CR>', { silent = true, desc = '[G]it [S]tage' } }
+  nmap { '<leader>gw', ':Gwrite<CR>', { silent = true, desc = '[G]it [W]rite' } }
 
   --  Revert file
-  nmap { '<Leader>gR', ':Gread<CR>', { desc = '[G]it [R]ead (reverts file)' } }
+  nmap { '<Leader>gR', ':Gread<CR>', { silent = true, desc = '[G]it [R]ead (reverts file)' } }
 
   -- Git blame
-  nmap { '<leader>gb', ':Git blame<CR>', { desc = '[G]it [B]lame' } }
+  nmap { '<leader>gb', ':Git blame<CR>', { silent = true, desc = '[G]it [B]lame' } }
 end
 
 ---@type LazyKeysSpec[]
@@ -484,6 +485,7 @@ M.snack_mappings = {
   { '<leader>fh', picker('help'), desc = '[F]ind [H]elp' },
   { '<leader>fk', picker('keymaps'), desc = '[F]ind [K]eymaps' },
   { '<leader>fs', picker('git_status'), desc = '[F]ind (Git) [S]tatus' },
+  { '<leader>fc', picker('git_status', {pattern = "UU"}), desc = '[F]ind (Git) [C]onflict' },
   { '<leader>bb', picker('buffers'), desc = 'Find Buffers' },
   { '<leader>fb', picker('explorer'), desc = '[F]ile [B]rowser' },
   -- bc = buffer commits (like gitv!)
