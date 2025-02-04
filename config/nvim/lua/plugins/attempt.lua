@@ -38,8 +38,4 @@ return {
       sh = { 'w', '!bash %' },
     },
   },
-  config = function(_, opts)
-    require('attempt').setup(opts)
-    require('telescope').load_extension 'attempt'
-  end,
 }
