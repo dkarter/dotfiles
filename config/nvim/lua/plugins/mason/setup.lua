@@ -226,6 +226,7 @@ M.setup = function()
             workspace = {
               -- Make the server aware of Neovim runtime files
               library = vim.api.nvim_get_runtime_file('', true),
+              ignoreDir = { 'node_modules', '.git', 'dist', 'build', '_build', 'deps' },
               -- Stop prompting about 'luassert'. See https://github.com/neovim/nvim-lspconfig/issues/1700
               checkThirdParty = false,
             },
