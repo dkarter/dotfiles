@@ -69,6 +69,8 @@ nmap { '<Leader>sa', ":saveas <C-R>=expand('%')<CR><Left><Left><Left>", { desc =
 -- remove highlighting on escape
 nmap { '<esc>', ':nohlsearch<cr>', silent }
 
+nmap { '<leader>ll', ':lua ', desc = '[L]aunch [L]ua' }
+
 -- reload (current) lua file (does not reload module though...)
 nmap {
   '<leader>rl',
