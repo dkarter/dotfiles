@@ -653,6 +653,14 @@ M.gitsigns_mappings = {
     function()
       require('gitsigns').blame_line { full = true }
     end,
+    desc = 'Blame Line (full)',
+    mode = 'n',
+  },
+  {
+    '<leader>hl',
+    function()
+      require('gitsigns').blame_line()
+    end,
     desc = 'Blame Line',
     mode = 'n',
   },
