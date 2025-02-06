@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.2.0](https://github.com/dkarter/dotfiles/compare/v21.1.0...v21.2.0) (2025-02-06)
+
+
+### Features
+
+* **nvim:** add &lt;leader&gt;ll [L]aunch [L]ua ([b339f5f](https://github.com/dkarter/dotfiles/commit/b339f5f1546687dc35346a753f57640d63ff782c))
+* **nvim:** add `q` mapping to exit fugitive blame ([2401bae](https://github.com/dkarter/dotfiles/commit/2401bae707bade9d5dd39676baac47d7fb48419a))
+* **nvim:** add additional git related mappings ([edcb1c6](https://github.com/dkarter/dotfiles/commit/edcb1c68f2c1fbd64e52d46ae1b93c7ed9572a7c))
+* **nvim:** add language specific pickers ([e775017](https://github.com/dkarter/dotfiles/commit/e7750177d356409aa544202b47a46f1e65b2e034))
+* **pg_format:** add formatter config ([55f07ba](https://github.com/dkarter/dotfiles/commit/55f07ba13c6af58e0f3c90442de3e628bcfe6100))
+
+
+### Bug Fixes
+
+* **nvim:** add ignoreDir setting for lua_ls ([3a8df63](https://github.com/dkarter/dotfiles/commit/3a8df639098b9f70ab9048bc38444ff653d13036))
+* **nvim:** enable grep_word mapping in visual mode ([2850226](https://github.com/dkarter/dotfiles/commit/285022635d3473f7d626193b6dba3fbcc7e3a8e0))
+* **nvim:** make dadbod work ([1e902be](https://github.com/dkarter/dotfiles/commit/1e902be46fdd4e3a453bbffaf0fab3427458eceb))
+* **nvim:** remove telescope references ([b3b2ef5](https://github.com/dkarter/dotfiles/commit/b3b2ef53541736b59d004699e3e82c7f4aaa4599))
+* **tmux:** improve sesh (use --hide-duplicates, vertical preview) ([aa27c12](https://github.com/dkarter/dotfiles/commit/aa27c1235db352cf7119a6a5234e15f930c04b40))
+
+
+### Performance Improvements
+
+* **nvim:** move dadbod cmp setup to `config` ([fcb5d30](https://github.com/dkarter/dotfiles/commit/fcb5d30e236a1e99684521c9804653cf5a4a431e))
+
 ## [21.1.0](https://github.com/dkarter/dotfiles/compare/v21.0.0...v21.1.0) (2025-02-02)
 
 
