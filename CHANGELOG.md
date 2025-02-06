@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [21.3.0](https://github.com/dkarter/dotfiles/compare/v21.2.0...v21.3.0) (2025-02-06)
+
+
+### Features
+
+* **nvim:** add &lt;leader&gt;hl for blame line ([bbd5f70](https://github.com/dkarter/dotfiles/commit/bbd5f70b9e311bf4d0fa2fd6d3aa78a48997636d))
+
 ## [21.2.0](https://github.com/dkarter/dotfiles/compare/v21.1.0...v21.2.0) (2025-02-06)
 
 
