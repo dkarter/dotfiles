@@ -498,7 +498,6 @@ M.snack_mappings = {
   { '<leader>lg', picker('grep', {need_search = false}), desc = '[L]ive [G]rep' },
   { '<leader>fw', picker('grep_word'), mode = {'n', 'v'}, desc = '[F]ind [W]ord' },
   { '<leader>fd', picker('files', {cwd = '~/dotfiles'}), desc = '[F]ind [D]otfiles' },
-  { '<leader>f/', picker('grep_buffers'), desc = 'Buffer fuzzy find' },
   { '<leader>f:', picker('commands'), desc = 'Command search' },
   { '<leader>f;', picker('command_history'), desc = 'Command History' },
   { '<leader>f?', picker('search_history'), desc = 'Search History' },
