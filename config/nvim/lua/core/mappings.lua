@@ -490,7 +490,7 @@ end
 M.snack_mappings = {
   -- picker
   { "<leader>,", picker('buffers'), desc = "Buffers" },
-  { "<leader>/", picker('grep'), desc = "Grep" },
+  { "<leader>/", picker('lines'), desc = "Fuzzy Buffer Lines" },
   { "<leader>:", picker('command_history'), desc = "Command History" },
   { '<leader>pp', picker('registers'), desc = "Registers" },
   { '<leader>fi', picker('icons'), desc = '[F]ind [I]cons' },
