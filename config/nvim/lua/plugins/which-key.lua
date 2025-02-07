@@ -14,7 +14,7 @@ return {
   ---@module "which-key"
   ---@class wk.Opts
   opts = {
-    preset = 'modern',
+    preset = 'helix',
     plugins = {
       spelling = { enabled = false },
     },
