@@ -419,6 +419,24 @@ M.undotree_mappings = {
   { '<leader>ut', '<cmd>UndotreeToggle<CR>', desc = '[U]ndo [T]ree' },
 }
 
+M.grug_far_mappings = {
+  {
+    '<leader>fr',
+    function()
+      local grug = require 'grug-far'
+      local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
+      grug.open {
+        transient = true,
+        prefills = {
+          filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
+        },
+      }
+    end,
+    mode = { 'n', 'v' },
+    desc = 'Search and Replace',
+  },
+}
+
 local attempt = function(fun)
   return function()
     require('attempt')[fun]()
