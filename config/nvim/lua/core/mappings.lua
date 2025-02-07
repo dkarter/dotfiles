@@ -278,8 +278,8 @@ M.nvim_dap_mappings = {
 M.todo_comments_mappings = {
   { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
   { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-  { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
-  { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
+  { "<leader>xt", "<cmd>Trouble todo toggle<cr>",                              desc = "Todo (Trouble)" },
+  { "<leader>xT", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
   { "<leader>st", picker('todo_comments'),                            desc = "Todo" },
   { "<leader>sT", picker('todo_comments', { keywords = { "TODO", "FIX", "FIXME" } }),    desc = "Todo/Fix/Fixme" },
 }
