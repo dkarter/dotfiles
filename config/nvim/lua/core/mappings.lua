@@ -512,6 +512,7 @@ M.snack_mappings = {
   { '<leader>fc', picker('git_status', {pattern = "UU"}), desc = '[F]ind (Git) [C]onflict' },
   { '<leader>bb', picker('buffers'), desc = 'Find Buffers' },
   { '<leader>fb', picker('explorer'), desc = '[F]ile [B]rowser' },
+  { '<leader>fo', picker('recent', {filter = {cwd = true, paths = {['.git/COMMIT_EDITMSG'] = false}}}), desc = '[F]ile [O]ld files' },
   -- bc = buffer commits (like gitv!)
   { '<leader>bc', picker('git_log_file'), desc = '[B]uffer [C]ommits' },
   { '<leader>bh', picker('git_log_file'), desc = '[B]uffer [H]istory' },
