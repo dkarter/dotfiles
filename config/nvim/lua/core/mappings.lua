@@ -441,6 +441,7 @@ M.attempt_mappings = {
 }
 
 local git_copy_file_url = function()
+  ---@diagnostic disable-next-line: missing-fields
   Snacks.gitbrowse {
     open = function(url)
       vim.fn.setreg('+', url)
@@ -453,6 +454,7 @@ local git_copy_file_url = function()
 end
 
 local git_copy_line_url = function()
+  ---@diagnostic disable-next-line: missing-fields
   Snacks.gitbrowse {
     open = function(url)
       vim.fn.setreg('+', url)
