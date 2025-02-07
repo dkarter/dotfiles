@@ -329,7 +329,7 @@ M.grapple_mappings = {
 
 ---@type LazyKeysSpec[]
 M.neogen_mappings = {
-  { '<leader>ng', ":lua require('neogen').generate()<CR>", { desc = '[N]eogen [F]unction' } },
+  { '<leader>ng', ":lua require('neogen').generate()<CR>", desc = 'Generate Annotation (NeoGen)' },
 }
 
 ---@type LazyKeysSpec[]
