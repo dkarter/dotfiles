@@ -444,6 +444,9 @@ local git_copy_file_url = function()
   ---@diagnostic disable-next-line: missing-fields
   Snacks.gitbrowse {
     open = function(url)
+      -- gitbrowse doesn't support file link without lines, so I'm setting the
+      -- line range to 0-0 and stripping it before copying to sys clipboard
+      url = url:gsub('#L0%-L0$', '')
       vim.fn.setreg('+', url)
     end,
     notify = false,
@@ -538,8 +541,6 @@ M.snack_mappings = {
   { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
   { "<leader>bl", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
   { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
-  -- TODO: not sure how to copy just the file - might not be supported yet, so
-  -- lines will still be added (0,0)
   { "<leader>gY", git_copy_file_url, mode = { "n", "x" }, desc = "Git Copy File URL"},
   { "<leader>gy", git_copy_line_url, mode = { "n", "x" }, desc = "Git Copy Line(s) URL"},
   -- open github page for file
