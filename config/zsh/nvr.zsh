@@ -1,10 +1,6 @@
 # Editor Wrapper to support neovim-remote
 
 # If not inside TMUX, just alias e to EDITOR, no need to all this roundabouts
-[[ -z $TMUX ]] && alias e=$EDITOR && return 0
-
-unalias e 2>/dev/null
-unalias :e 2>/dev/null
 
 # Let's export the $EDITOR and NVIM_LISTEN_ADDRESS to use nvr and the current
 # session socket.
@@ -19,15 +15,9 @@ unalias :e 2>/dev/null
 # export EDITOR="nvr --servername $__listen_address"
 # export VISUAL="nvr --servername $__listen_address"
 
-export EDITOR="ton"
-export VISUAL="ton"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
-function e() {
-  # TODO: select the pane containing neovim instead of last pane
-  # && tmux select-pane -l
-  # nvr --servername $__listen_address "$1"
-  ton "$1"
-}
 
 # Elixir Editor Support
 # -------------------------------------------
@@ -42,7 +32,7 @@ function e() {
 # -s is an argument to nvr - to tell it not to show the warning when the server
 # doesn't exist
 # export ELIXIR_EDITOR="$EDITOR --nostart -s +'__LINE__' __FILE__"
-export ELIXIR_EDITOR="ton"
+export ELIXIR_EDITOR="nvim"
 
 # open ecto generated source files in neovim in the last pane
 # see https://hexdocs.pm/ecto/Mix.Tasks.Ecto.Gen.Repo.html
@@ -52,4 +42,4 @@ export ELIXIR_EDITOR="ton"
 # -s is an argument to nvr - to tell it not to show the warning when the server
 # doesn't exist
 # export ECTO_EDITOR="$EDITOR --nostart -s +'__LINE__' __FILE__"
-export ECTO_EDITOR="ton"
+export ECTO_EDITOR="nvim"
