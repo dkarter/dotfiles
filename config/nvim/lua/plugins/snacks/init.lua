@@ -42,6 +42,7 @@ return {
     zen = { enabled = true },
     scope = { enabled = true },
     picker = {
+      enabled = true,
       -- replace vim.ui.select
       ui_select = true,
       win = {
