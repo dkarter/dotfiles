@@ -56,6 +56,9 @@ end
 
 local silent = { silent = true }
 
+-- a more useful gf
+nmap { 'gf', 'gF', { desc = 'Go to file under cursor', silent = true } }
+
 -- center window on search result
 nmap { 'n', 'nzzzv' }
 nmap { 'N', 'Nzzzv' }
