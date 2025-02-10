@@ -23,6 +23,7 @@ tasks:
           if [ "$(uname)" = "Darwin" ]; then
             echo "$HOME/Library/Fonts"
           elif [ "$(uname)" = "Linux" ]; then
+            mkdir -p "$HOME/.fonts"
             echo "$HOME/.fonts"
           else
             echo "Can't install fonts. Unsupported OS." >&2
