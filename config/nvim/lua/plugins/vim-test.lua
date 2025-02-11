@@ -3,7 +3,7 @@
 return {
   'janko-m/vim-test',
   keys = require('core.mappings').vim_test_mappings,
-  dependencies = { 'benmills/vimux' },
+  dependencies = { 'preservim/vimux' },
   init = function()
     vim.g['test#strategy'] = 'vimux'
   end,
