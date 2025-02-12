@@ -560,7 +560,6 @@ M.snack_mappings = {
 
   -- git
   { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-  { "<leader>bl", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
   { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
   { "<leader>gY", git_copy_file_url, mode = { "n", "x" }, desc = "Git Copy File URL"},
   { "<leader>gy", git_copy_line_url, mode = { "n", "x" }, desc = "Git Copy Line(s) URL"},
@@ -570,8 +569,8 @@ M.snack_mappings = {
   { '<leader>go', function() Snacks.gitbrowse() end, mode = {'n', 'v'}, desc = '[G]ithub [o]pen Line' },
 
   -- lazygit
-  { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-  { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
+  { "<leader>gl", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
+  { "<leader>gL", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
 
   -- LSP
   { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "Rename File" },
@@ -673,7 +672,7 @@ M.gitsigns_mappings = {
     mode = 'n',
   },
   {
-    '<leader>hb',
+    '<leader>bL',
     function()
       require('gitsigns').blame_line { full = true }
     end,
@@ -681,7 +680,7 @@ M.gitsigns_mappings = {
     mode = 'n',
   },
   {
-    '<leader>hl',
+    '<leader>bl',
     function()
       require('gitsigns').blame_line()
     end,
