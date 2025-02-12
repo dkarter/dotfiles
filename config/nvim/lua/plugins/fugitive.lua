@@ -15,6 +15,7 @@ return {
         pattern = { 'fugitiveblame' },
         command = function()
           vim.keymap.set('n', 'q', ':q<CR>', { noremap = true, buffer = true, desc = 'Close Blame' })
+          vim.keymap.set('n', '<leader>gb', ':q<CR>', { noremap = true, buffer = true, desc = 'Close Blame' })
         end,
       },
     })
