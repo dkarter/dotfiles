@@ -33,7 +33,7 @@ return {
 
         b.diagnostics.yamllint,
         b.diagnostics.zsh,
-        require 'plugins.none-ls.commitlint',
+        b.diagnostics.commitlint,
       },
     }
   end,
