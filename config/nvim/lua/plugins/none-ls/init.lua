@@ -31,7 +31,6 @@ return {
           disabled_filetypes = { 'oil' },
         },
 
-        b.diagnostics.rubocop,
         b.diagnostics.yamllint,
         b.diagnostics.zsh,
         require 'plugins.none-ls.commitlint',

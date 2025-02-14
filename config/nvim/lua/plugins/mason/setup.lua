@@ -29,7 +29,6 @@ M.setup = function()
     'black',
     'codespell',
     'prettierd',
-    'rubocop',
     'shfmt',
     'stylua',
     'yamllint',
