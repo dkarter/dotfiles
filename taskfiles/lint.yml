@@ -2,15 +2,20 @@
 version: 3
 
 tasks:
-  format:lua:check:
+  lua:format:check:
     desc: Runs a Lua format check using stylua
     silent: true
     cmd: stylua --allow-hidden --respect-ignores --check .
 
-  format:lua:
+  lua:format:
     desc: Runs a Lua format using stylua
     silent: true
     cmd: stylua --allow-hidden --respect-ignores .
+
+  lua:diagnostics:
+    desc: Check for Lua diagnostic warnings and errors
+    silent: true
+    cmd: lua-language-server --check config/nvim/lua --checklevel=Warning
 
   yaml:
     desc: Runs yamllint on this repo
