@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [22.0.0](https://github.com/dkarter/dotfiles/compare/v21.2.0...v22.0.0) (2025-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** more sensible mappings for git blame and lazygit logs
+
+### Features
+
+* **mise:** add glow markdown CLI renderer ([3a636c0](https://github.com/dkarter/dotfiles/commit/3a636c06d5ac3ae6de473b0bf7326129fc89d9e8))
+* **nvim:** add &lt;leader&gt;fo (find oldfiles) -> jump 2 recent files ([e4f933b](https://github.com/dkarter/dotfiles/commit/e4f933bde732bb5ea2795a6b8397c828e89e9eb2))
+* **nvim:** add &lt;leader&gt;hl for blame line ([bbd5f70](https://github.com/dkarter/dotfiles/commit/bbd5f70b9e311bf4d0fa2fd6d3aa78a48997636d))
+* **nvim:** add buffer keymaps which-key mapping ([290c191](https://github.com/dkarter/dotfiles/commit/290c1912ce02c9b0a2be05ea25947ab0101cd413))
+* **nvim:** add find and replace plugin (grug-far) ([535fa87](https://github.com/dkarter/dotfiles/commit/535fa87ad7135e2245b1837247d05793998a8e66))
+* **nvim:** add groups to which key ([0163956](https://github.com/dkarter/dotfiles/commit/0163956e8f63af6383717ae71444a5c3e4bb27eb))
+* **nvim:** more useful gf mapping ([8dc6d4d](https://github.com/dkarter/dotfiles/commit/8dc6d4dffd732f51a383badda383f41526721d39))
+* **zsh:** add terraform alias ([78dd945](https://github.com/dkarter/dotfiles/commit/78dd945f7b9395776481b73c0a1c6ea8dd33ca4d))
+
+
+### Bug Fixes
+
+* **ci:** revert lua-language-server to v2 ([93202d7](https://github.com/dkarter/dotfiles/commit/93202d7fc188fe52b03019c55d391dda7e4cb1a2))
+* **codespell:** ignore CHANGELOG.md ([30ed153](https://github.com/dkarter/dotfiles/commit/30ed1530164ed619c0444559d923a8e676b5a6f7))
+* **git:** remove unused ignore refs ([4c8d796](https://github.com/dkarter/dotfiles/commit/4c8d79631f65d4479d9e2c7b07298049217c61a9))
+* **nvim:** better &lt;leader&gt;/ -> for fuzzy line jumping ([2c16d44](https://github.com/dkarter/dotfiles/commit/2c16d4449eb8d92286b30f76bc51cf6ee96cbbc8))
+* **nvim:** explicitly set Snacks picker to enabled ([3b0f3ec](https://github.com/dkarter/dotfiles/commit/3b0f3ec4ff8b70bd9b31a906f7878f9182bcb81a))
+* **nvim:** more sensible mappings for git blame and lazygit logs ([8401ba4](https://github.com/dkarter/dotfiles/commit/8401ba4c049fa84c3bfdeb8de35952e88cbf3582))
+* **nvim:** neogen mapping desc ([9474725](https://github.com/dkarter/dotfiles/commit/947472593585085ce599c7191b2b07608dc1229a))
+* **nvim:** only lint commitlint when a config is available ([a37ada6](https://github.com/dkarter/dotfiles/commit/a37ada6d78c3c14f9379c76461d65e1caa2cef0c))
+* **nvim:** re-enable and fix bullets.vim for compatibility w/ picker ([496ea32](https://github.com/dkarter/dotfiles/commit/496ea32a8279e6e45012295d1b17cf23d626f4b8))
+* **nvim:** re-enable bullets-vim and lazy load on VeryLazy ([ce5f602](https://github.com/dkarter/dotfiles/commit/ce5f60280919780605f661a1f78fd639d3446464))
+* **nvim:** remove &lt;leader&gt;f/ -> not useful ([64cbe0c](https://github.com/dkarter/dotfiles/commit/64cbe0c50836d44662c07cb7c711f8c97f4528ae))
+* **nvim:** remove rubocop ([42dfa24](https://github.com/dkarter/dotfiles/commit/42dfa2437785eb0d2c21c552f0c9f9ae81d0b939))
+* **nvim:** strip lines from git_copy_file_url ([3c90dca](https://github.com/dkarter/dotfiles/commit/3c90dca9f03b9e47fef14bed7dff7cd306b73355))
+* **nvim:** toggle git blame buffer with &lt;leader&gt;gb ([6769750](https://github.com/dkarter/dotfiles/commit/6769750bd0d7574878823237d9bfefb1454371c2))
+* **nvim:** update trouble todo mappings ([dfb4441](https://github.com/dkarter/dotfiles/commit/dfb4441b2d6a8b7f8fde4d0f10cd887c97b6fbac))
+* **nvim:** use correct repo for vimux ([e9ae1b1](https://github.com/dkarter/dotfiles/commit/e9ae1b1f0df2d82c73a4dbf14c1614985bc914ad))
+* **task:** add new lint task and rename existing checks ([8043979](https://github.com/dkarter/dotfiles/commit/8043979b710521f1405a8174cc93dca120daa032))
+* **task:** Create .fonts dir before install ([#313](https://github.com/dkarter/dotfiles/issues/313)) ([214e3b1](https://github.com/dkarter/dotfiles/commit/214e3b1f2411554012c4aa11a4c798ba8c062efc))
+* **zsh:** disable ton as $EDITOR ([c06c661](https://github.com/dkarter/dotfiles/commit/c06c661443472bcf32921d1464495051f66df8fd))
+* **zsh:** set EDITOR to nvim always ([6ab62e0](https://github.com/dkarter/dotfiles/commit/6ab62e01ee80feae51d7bd3428812af2e96f9df2))
+
 ## [21.2.0](https://github.com/dkarter/dotfiles/compare/v21.1.0...v21.2.0) (2025-02-06)
 
 
