@@ -33,7 +33,11 @@ return {
 
         b.diagnostics.yamllint,
         b.diagnostics.zsh,
-        b.diagnostics.commitlint,
+        b.diagnostics.commitlint.with {
+          condition = function(utils)
+            return utils.root_has_file { 'commitlint.config.js' }
+          end,
+        },
       },
     }
   end,
