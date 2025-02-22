@@ -6,3 +6,6 @@ config/vifm/vifmimgpdfpage
 
 # ignore sumenko lua generated artifact
 .luarc.json
+
+# ignore tmuxinator files since they are workstation specific
+config/tmuxinator/*.yml
