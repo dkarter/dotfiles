@@ -26,6 +26,7 @@ alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 alias tf='terraform'
 alias tfa='terraform apply'
+alias tfd='terraform destroy'
 
 # check internet connection
 alias chkint='pingf kagi.com'
