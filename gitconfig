@@ -5,6 +5,8 @@
 
 [push]
   default = tracking
+  autoSetupRemote = true
+  followTags = true
   
 [color]
   ui = true
@@ -79,7 +81,7 @@
   ; ff = only
   summary = true
   tool = nvimdiff
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 
 [merge "bundlelock"]
   name = lock Gemfile
@@ -99,12 +101,21 @@
 
 [commit]
   template = ~/.gitmessage
+  verbose = true
 
 [fetch]
   prune = true
+  pruneTags = true
+  all = true
   
 [rebase]
   autosquash = true
+  autoStash = true
+  updateRefs = true
+
+[rerere]
+  enabled = true
+  autoupdate = true
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -113,18 +124,22 @@
   process = git-lfs filter-process
 
 [branch]
+  sort = -committerdate
   autosetuprebase = always
 
+[tag]
+  sort = version:refname
+
 [help]
-  autocorrect = 10
+  autocorrect = prompt
 
 [interactive]
   diffFilter = delta --color-only
   singlekey = true
 
 [diff]
-  algorithm = patience
-  colorMoved = default
+  algorithm = histogram
+  colorMoved = plain
 
 [pull]
   rebase = true
