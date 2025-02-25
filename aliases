@@ -10,6 +10,9 @@ alias l1="l -1"
 alias ll="l -l"
 # just like ll but with git status
 alias llg="ll --git"
+# sorts the list by created date asc, so that the latest file is closer to the
+# prompt
+alias llc="ll --sort=created"
 # use eza instead of system ls
 alias ls="eza -gahF --icons --group-directories-first"
 alias ln="ln -v"
