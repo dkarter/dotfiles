@@ -52,7 +52,7 @@ if [[ $OS = 'mac' ]]; then
   ./installer/mac-setup.sh
 fi
 
-if [[ -f ~/.local/bin/task ]]; then
+if [[ ! -f ~/.local/bin/task ]]; then
   # Install task
   mkdir -p ~/.local/bin
   sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
