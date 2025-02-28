@@ -7,5 +7,5 @@ nvim \
   +'Lazy! clean' \
   +'Lazy! clear' \
   +'TSUpdateSync' \
-  +'MasonUpdateAll' \
-  +'qall!'
+  +'autocmd User MasonUpdateAllCompleted qall!' \
+  +'MasonUpdateAll'
