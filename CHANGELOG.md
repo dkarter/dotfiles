@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [22.1.0](https://github.com/dkarter/dotfiles/compare/v22.0.0...v22.1.0) (2025-03-03)
+
+
+### Features
+
+* **mise:** add back direnv ([53d60de](https://github.com/dkarter/dotfiles/commit/53d60de6a285e3abff8acff8570c260c67302d87))
+* **mise:** add dive (explore docker layers) ([5c6affd](https://github.com/dkarter/dotfiles/commit/5c6affd9fec2c4b17279ec2348f173a45ebdc795))
+* **zsh:** add alias for ll sorted by date asc (llc) ([36f0ff9](https://github.com/dkarter/dotfiles/commit/36f0ff9cebf89be2374b7e1d15eaeb2becf5bd01))
+* **zsh:** add alias tfd for terraform destroy ([13b78ff](https://github.com/dkarter/dotfiles/commit/13b78ffd6e56ae62e502a1c4ee817370d6abac35))
+* **zsh:** add back direnv ([db87909](https://github.com/dkarter/dotfiles/commit/db87909069c4f2df92768a3a4902d18cb1b87a8f))
+* **zsh:** add tfa alias for terraform apply ([f001a35](https://github.com/dkarter/dotfiles/commit/f001a35cfc3dab742af093d3240974ddc40f2433))
+
+
+### Bug Fixes
+
+* condition for `task` installation ([#320](https://github.com/dkarter/dotfiles/issues/320)) ([6662f18](https://github.com/dkarter/dotfiles/commit/6662f18fd003e8bb55076222806b5ea5937bc4d1))
+* **git:** improve gitconfig ([f5a919b](https://github.com/dkarter/dotfiles/commit/f5a919b62d01a93ed3bacf261800143dbdfd3ccf))
+* **scripts:** ensure MasonUpdateAll completes ([#321](https://github.com/dkarter/dotfiles/issues/321)) ([bd46165](https://github.com/dkarter/dotfiles/commit/bd4616539b17140b5c8882e1e74bf9eb93c7965b))
+
 ## [22.0.0](https://github.com/dkarter/dotfiles/compare/v21.2.0...v22.0.0) (2025-02-16)
 
 
