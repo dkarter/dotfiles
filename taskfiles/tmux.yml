@@ -5,6 +5,8 @@ version: 3
 tasks:
   reload:
     desc: Reload Tmux Configuration
+    status:
+      - '[ -z "$TMUX" ]'
     cmds:
       - cmd: tmux source-file ~/.config/tmux/tmux.conf
         silent: true
@@ -25,6 +27,8 @@ tasks:
 
   plugins:install:
     desc: Install Tmux Plugins
+    status:
+      - '[ -z "$TMUX" ]'
     cmds:
       - task: plugins:manager:install
       - task: reload
@@ -34,6 +38,8 @@ tasks:
 
   plugins:update:
     desc: Update Tmux Plugins
+    status:
+      - '[ -z "$TMUX" ]'
     cmds:
       - task: reload
       - cmd: ./config/tmux/plugins/tpm/bin/update_plugins all
@@ -41,6 +47,8 @@ tasks:
 
   plugins:clean:
     desc: Clean Tmux Plugins
+    status:
+      - '[ -z "$TMUX" ]'
     cmds:
       - task: reload
       - cmd: ./config/tmux/plugins/tpm/bin/clean_plugins
@@ -48,6 +56,8 @@ tasks:
 
   sync:
     desc: Install, updates and cleans plugins
+    status:
+      - '[ -z "$TMUX" ]'
     cmds:
       - task: plugins:clean
       - task: plugins:install
