@@ -43,6 +43,8 @@ done
 ITERM2_INTEGRATION_SCRIPT="${HOME}/.iterm2_shell_integration.zsh"
 test -e "$ITERM2_INTEGRATION_SCRIPT" && source "$ITERM2_INTEGRATION_SCRIPT"
 
+# force delta pager even for small diffs
+export GIT_PAGER=delta
 
 # Preferred editor for local and remote sessions
 if [ -z ${EDITOR+x} ]; then
