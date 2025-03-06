@@ -212,7 +212,7 @@ localip() {
 # This command takes a port as an argument, otherwise defaulting to 3000.
 freethousand() {
   port="${1:-3000}"
-  pid="$(lsof -Fp -i tcp:$port | sed 's/p//')"
+  pid="$(lsof -t -i tcp:$port)"
 
   if [ -n "$pid" ]; then
     echo "Killing process with PID $pid listening on port $port..." >&2
