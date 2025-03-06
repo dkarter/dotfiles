@@ -117,6 +117,7 @@ alias gfc='git rev-list --max-parents=0 HEAD'
 # stash aliases
 alias gsu='git stash -u'
 alias gsp='git stash pop'
+alias gsa='git stash --all'
 
 fork() {
   repo_name=$(echo "$1" | xargs basename | cut -d. -f1)
