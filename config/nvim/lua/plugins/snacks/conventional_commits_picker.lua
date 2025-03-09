@@ -29,6 +29,7 @@ local conventional_commits_picker_opts = {
   format = 'text',
   confirm = function(picker_window, item)
     picker_window:close()
+    Snacks.input.disable()
     if not item then
       return
     end
@@ -54,6 +55,7 @@ local conventional_commits_picker_opts = {
 
     -- place cursor at the end of the line in insert mode
     vim.api.nvim_feedkeys('A', 'n', true)
+    Snacks.input.enable()
   end,
 }
 

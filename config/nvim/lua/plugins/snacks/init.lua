@@ -41,6 +41,7 @@ return {
     ---@class snacks.zen.Config
     zen = { enabled = true },
     scope = { enabled = true },
+    input = { enabled = true },
     picker = {
       enabled = true,
       -- replace vim.ui.select
