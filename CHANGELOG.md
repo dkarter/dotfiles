@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [22.2.0](https://github.com/dkarter/dotfiles/compare/v22.1.0...v22.2.0) (2025-03-09)
+
+
+### Features
+
+* enable snacks input ([5a18247](https://github.com/dkarter/dotfiles/commit/5a182478c31043cb70a38b35d50681e0cef9edcd))
+* **git:** add git better branch script ([b7c129b](https://github.com/dkarter/dotfiles/commit/b7c129bc6b06b8db694f6e0a94fe132251548db5))
+* **zsh:** add docker compose aliases ([fde8edb](https://github.com/dkarter/dotfiles/commit/fde8edbd75d14d44b32528b83967931ac08f8da7))
+* **zsh:** add git stash -all alias ([94f70fd](https://github.com/dkarter/dotfiles/commit/94f70fdde5568059cc160e4d4cd71657727ba831))
+
+
+### Bug Fixes
+
+* **git:** force delta pager even for small diffs ([1d0ab99](https://github.com/dkarter/dotfiles/commit/1d0ab99f1c068c80e97c594c96ab02a6de8575d3))
+* **mise,zsh:** fix load order of zsh scripts to be after mise ([efb7908](https://github.com/dkarter/dotfiles/commit/efb790805142402eded389b9f6a8240cf3b60688))
+* **task:** don't run tmux tasks when not inside of tmux ([12e7816](https://github.com/dkarter/dotfiles/commit/12e78164b949b134cde07f53a7faf176cff024df))
+* **zsh:** freethousand lsof syntax ([cfb9830](https://github.com/dkarter/dotfiles/commit/cfb983039e368f99dd6404707d632a162f54de3f))
+
 ## [22.1.0](https://github.com/dkarter/dotfiles/compare/v22.0.0...v22.1.0) (2025-03-03)
 
 
