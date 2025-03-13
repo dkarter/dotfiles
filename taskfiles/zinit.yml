@@ -24,9 +24,26 @@ tasks:
     desc: Updates all zinit plugins
     cmds:
       - cmd: |
-          zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all'
+          zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all --parallel'
 
+  # this task has some extra caching mechanisms to prevent it from running too often
   sync:
     desc: Installs and updates plugins
     cmds:
       - task: plugins:update
+      # Update the timestamp file
+      - touch {{.LAST_RUN_FILE}}
+    vars:
+      LAST_RUN_FILE: .task/zinit-sync.timestamp
+    preconditions:
+      # Create the timestamp directory if it doesn't exist
+      - sh: mkdir -p .task
+    status:
+      # Check 2: Did the task run within the last hour?
+      # We use a timestamp file and check its age
+      - test -f {{.LAST_RUN_FILE}} && test $(find {{.LAST_RUN_FILE}} -mmin -60)
+
+    # Check 1: Was the source file modified since last run?
+    # This is handled by Taskfile's built-in timestamp method
+    sources:
+      - zinitrc
