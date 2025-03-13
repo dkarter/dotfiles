@@ -27,6 +27,7 @@ tasks:
           zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all --parallel'
 
   # this task has some extra caching mechanisms to prevent it from running too often
+  # to force it to run pass the `-f` flag
   sync:
     desc: Installs and updates plugins
     cmds:
