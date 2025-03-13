@@ -35,7 +35,7 @@ tasks:
       # Update the timestamp file
       - touch {{.LAST_RUN_FILE}}
     vars:
-      LAST_RUN_FILE: .task/zinit-sync.timestamp
+      LAST_RUN_FILE: .task/{{.TASK | replace ":" "-"}}.timestamp
     preconditions:
       # Create the timestamp directory if it doesn't exist
       - sh: mkdir -p .task
