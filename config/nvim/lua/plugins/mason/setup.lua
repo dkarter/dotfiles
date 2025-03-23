@@ -71,6 +71,7 @@ M.setup = function()
     'rubocop',
     'ruby-lsp',
     'rubyfmt',
+    'shellcheck',
     'sqlls',
     'tailwindcss-language-server',
     'taplo',
