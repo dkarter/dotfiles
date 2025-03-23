@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [23.0.0](https://github.com/dkarter/dotfiles/compare/v22.1.0...v23.0.0) (2025-03-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace unimpaired-nvim with mini-bracketed
+
+### Features
+
+* enable snacks input ([5a18247](https://github.com/dkarter/dotfiles/commit/5a182478c31043cb70a38b35d50681e0cef9edcd))
+* **git:** add git better branch script ([b7c129b](https://github.com/dkarter/dotfiles/commit/b7c129bc6b06b8db694f6e0a94fe132251548db5))
+* **mise:** add slsa-verifier ([9c0ee09](https://github.com/dkarter/dotfiles/commit/9c0ee096a402d6bc6be46618534890ca6b9c4945))
+* **nvim:** add shellcheck to mason ensure_installed ([acbd938](https://github.com/dkarter/dotfiles/commit/acbd93880140af4e9e4c29b5769effaf02081df5))
+* **zsh:** add docker compose aliases ([fde8edb](https://github.com/dkarter/dotfiles/commit/fde8edbd75d14d44b32528b83967931ac08f8da7))
+* **zsh:** add git stash -all alias ([94f70fd](https://github.com/dkarter/dotfiles/commit/94f70fdde5568059cc160e4d4cd71657727ba831))
+
+
+### Bug Fixes
+
+* **git:** force delta pager even for small diffs ([1d0ab99](https://github.com/dkarter/dotfiles/commit/1d0ab99f1c068c80e97c594c96ab02a6de8575d3))
+* **git:** ignore .task folder ([2e72915](https://github.com/dkarter/dotfiles/commit/2e72915db737175f3e8c0d38b4b652cc649bc9b8))
+* **mise,zsh:** fix load order of zsh scripts to be after mise ([efb7908](https://github.com/dkarter/dotfiles/commit/efb790805142402eded389b9f6a8240cf3b60688))
+* **nvim:** add &lt;c-x&gt; mapping to picker ([d1e63e0](https://github.com/dkarter/dotfiles/commit/d1e63e02312b34536227d3c27efd4d51f4d8b31a))
+* **task:** don't run tmux tasks when not inside of tmux ([12e7816](https://github.com/dkarter/dotfiles/commit/12e78164b949b134cde07f53a7faf176cff024df))
+* **zsh:** freethousand lsof syntax ([cfb9830](https://github.com/dkarter/dotfiles/commit/cfb983039e368f99dd6404707d632a162f54de3f))
+
+
+### Performance Improvements
+
+* **task:** improve speed of sync task ([1453a69](https://github.com/dkarter/dotfiles/commit/1453a690e2457bd5f45d58b97434ec18505d7b7f))
+
+
+### Code Refactoring
+
+* replace unimpaired-nvim with mini-bracketed ([f8b277a](https://github.com/dkarter/dotfiles/commit/f8b277ad45e5c77a427911d9ac1269fd60c7292f))
+
 ## [22.1.0](https://github.com/dkarter/dotfiles/compare/v22.0.0...v22.1.0) (2025-03-03)
 
 
