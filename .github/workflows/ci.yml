@@ -17,12 +17,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@v2
+
       - name: Run yamllint
-        uses: karancode/yamllint-github-action@v3.0.0
-        with:
-          yamllint_file_or_dir: '.'
-          yamllint_strict: true
-          yamllint_config_filepath: config/yamllint/config
+        run: task ci:yaml:lint
 
   lua-formatting:
     name: 'Format: Lua'
@@ -34,12 +33,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run stylua check
-        uses: JohnnyMorganz/stylua-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          version: 0.20.0
-          args: --allow-hidden --respect-ignores .
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@v2
+
+      - name: Format check
+        run: task lua:format:check
 
   lua-diagnotics:
     name: 'Diagnostics: Lua'
@@ -55,8 +53,7 @@ jobs:
         uses: jdx/mise-action@v2
 
       - name: Run Diagnostics Check
-        run: |
-          lua-language-server --check config/nvim/lua --checklevel=Warning
+        run: task ci:lua:lint
 
   shell-lint:
     name: 'Lint: Shell'
@@ -68,13 +65,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ShellCheck
-        uses: ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca
-        with:
-          ignore_paths: >-
-            iterm/TerminalVim.app
-            config/zsh
-          ignore_names: 'zshrc'
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@v2
+
+      - name: Run Diagnostics Check
+        run: task ci:shell:lint
 
   spelling:
     name: 'Lint: Spelling'
@@ -86,6 +81,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check spelling in code
-        # yamllint disable-line rule:line-length
-        uses: codespell-project/actions-codespell@fad9339798e1ee3fe979ae0a022c931786a408b8
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@v2
+
+      - name: Run Diagnostics Check
+        run: task ci:spelling:lint
