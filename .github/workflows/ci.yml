@@ -37,7 +37,7 @@ jobs:
         uses: jdx/mise-action@v2
 
       - name: Format check
-        run: task lua:format:check
+        run: task ci:lua:format:check
 
   lua-diagnotics:
     name: 'Diagnostics: Lua'
