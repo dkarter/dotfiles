@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [23.1.0](https://github.com/dkarter/dotfiles/compare/v23.0.0...v23.1.0) (2025-03-23)
+
+
+### Features
+
+* **task:** add ci check tasks ([9726370](https://github.com/dkarter/dotfiles/commit/9726370ce5b3bedb0b7d2872931ab9a4314897ca))
+
 ## [23.0.0](https://github.com/dkarter/dotfiles/compare/v22.1.0...v23.0.0) (2025-03-23)
 
 
