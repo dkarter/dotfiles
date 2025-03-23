@@ -49,7 +49,11 @@ return {
       win = {
         input = {
           keys = {
+            -- I use the readline <c-a> to jump to the beginning of the line
             ['<c-a>'] = false,
+
+            -- the default is <c-s> but I'm used to <c-x> from telescope
+            ['<c-x>'] = { 'edit_split', mode = { 'i', 'n' } },
           },
         },
       },
