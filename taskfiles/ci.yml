@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  lua:format:check:
+    desc: Runs a Lua format using stylua
+    cmd: stylua --allow-hidden --respect-ignores .
+
+  lua:lint:
+    desc: Check for Lua diagnostic warnings and errors
+    cmd: lua-language-server --check config/nvim/lua --checklevel=Warning
+
+  shell:lint:
+    cmd: shellcheck $({ rg -l --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -g '!*.{*}' '^#!.*bash' .; } | sort -u)
+
+  spelling:lint:
+    desc: Check for code spelling errors
+    cmd: codespell .
+
+  yaml:lint:
+    desc: Runs yamllint on this repo
+    cmd: yamllint --strict --config-file ./config/yamllint/config .
+
+  run:
+    cmds:
+      - task: lua:lint
+      - task: lua:format:check
+      - task: shell:lint
+      - task: yaml:lint
+      - task: spelling:lint
+      - cmd: figlet done | lolcrab
+        silent: true

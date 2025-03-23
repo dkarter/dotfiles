@@ -9,6 +9,9 @@ includes:
     aliases: [b]
     taskfile: ./taskfiles/brew.yml
 
+  ci:
+    taskfile: ./taskfiles/ci.yml
+
   comp:
     aliases: [c, completions]
     taskfile: ./taskfiles/completions.yml
@@ -26,9 +29,6 @@ includes:
   gh:
     aliases: [github]
     taskfile: ./taskfiles/github.yml
-
-  lint:
-    taskfile: ./taskfiles/lint.yml
 
   mac:
     taskfile: ./taskfiles/mac.yml
