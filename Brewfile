@@ -22,7 +22,7 @@ cask 'raycast'
 cask 'iterm2'
 
 # allow accessing passwords from a CLI
-cask '1password/tap/1password-cli'
+cask '1password-cli'
 
 # macOS automation using Lua
 cask 'hammerspoon'
@@ -95,11 +95,8 @@ brew 'morantron/tmux-fingers/tmux-fingers'
 # download files from the terminal, used by some scripts
 brew 'wget'
 
-# display system info
-brew 'neofetch'
-
 # OpenSSL - important for compiling things that support SSL
-brew 'openssl@1.1'
+brew 'openssl'
 
 # linter for bash scripts
 brew 'shellcheck'
