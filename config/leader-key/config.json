@@ -19,6 +19,12 @@
           "label" : "Stream Deck",
           "type" : "application",
           "value" : "/Applications/Elgato Stream Deck.app"
+        },
+        {
+          "key" : "s",
+          "label" : null,
+          "type" : "application",
+          "value" : "/Applications/Slack.app"
         }
       ],
       "key" : "o",
@@ -27,18 +33,6 @@
     },
     {
       "actions" : [
-        {
-          "key" : "e",
-          "label" : "emoji",
-          "type" : "url",
-          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
-        },
-        {
-          "key" : "p",
-          "label" : "confetti",
-          "type" : "url",
-          "value" : "raycast://confetti"
-        },
         {
           "key" : "c",
           "label" : "",
@@ -54,6 +48,69 @@
       ],
       "key" : "r",
       "label" : "Raycast",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "i",
+          "label" : "Issues",
+          "type" : "url",
+          "value" : "raycast://extensions/linear/linear/search-issues"
+        },
+        {
+          "key" : "m",
+          "label" : "My Issues",
+          "type" : "url",
+          "value" : "raycast://extensions/linear/linear/assigned-issues"
+        },
+        {
+          "key" : "p",
+          "label" : "Projects",
+          "type" : "url",
+          "value" : "raycast://extensions/linear/linear/search-projects"
+        },
+        {
+          "key" : "c",
+          "label" : "Create Issue",
+          "type" : "url",
+          "value" : "raycast://extensions/linear/linear/create-issue"
+        }
+      ],
+      "key" : "l",
+      "label" : "Linear",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "r",
+          "label" : "Repos",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/github/search-repositories"
+        },
+        {
+          "key" : "m",
+          "label" : "My PRs",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/github/my-pull-requests"
+        }
+      ],
+      "key" : "g",
+      "label" : "Git",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "d",
+          "label" : "Daily Note",
+          "type" : "url",
+          "value" : "raycast://extensions/KevinBatdorf/obsidian/dailyNoteCommand"
+        }
+      ],
+      "key" : "n",
+      "label" : "Notes",
       "type" : "group"
     }
   ],
