@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [23.2.0](https://github.com/dkarter/dotfiles/compare/v23.1.0...v23.2.0) (2025-03-30)
+
+
+### Features
+
+* **leader-key:** add more mappings ([a6655a3](https://github.com/dkarter/dotfiles/commit/a6655a36cc4bee1df955ec8c431be6ec33b780ed))
+* **leader-key:** introduce leader key config ([3fe5817](https://github.com/dkarter/dotfiles/commit/3fe5817ec76fe3ff9db5f6404c578679f81c2217))
+
+
+### Bug Fixes
+
+* **brew:** dreprecations ([a5151b8](https://github.com/dkarter/dotfiles/commit/a5151b83821a75c3ede87eba0ed44407d838b9e6))
+
 ## [23.1.0](https://github.com/dkarter/dotfiles/compare/v23.0.0...v23.1.0) (2025-03-23)
 
 
