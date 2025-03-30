@@ -127,6 +127,24 @@ return {
             end
           end,
         },
+        -- disable folding for some langs to avoid errors
+        -- I was seeing some treesitter error about folding in gitcommit files
+        -- and I don't really care to support folding in that file type
+        {
+          event = { 'FileType' },
+          pattern = { '*' },
+          command = function(args)
+            local disabled_fts = { 'gitcommit' }
+
+            if not vim.tbl_contains(disabled_fts, args.match) then
+              local winid = vim.api.nvim_get_current_win()
+              vim.wo[winid][0].foldmethod = 'expr'
+              vim.wo[winid][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+              -- disable folds at startup
+              vim.wo[winid][0].foldenable = false
+            end
+          end,
+        },
       })
     end,
   },
