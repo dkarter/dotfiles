@@ -104,10 +104,18 @@ end
 
 M.setup_diagnostics = function()
   -- icons
-  for name, icon in pairs(require('core.utils').icons.diagnostics) do
-    name = 'DiagnosticSign' .. name
-    vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
-  end
+  local icons = require('core.utils').icons.diagnostics
+
+  vim.diagnostic.config {
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.Error,
+        [vim.diagnostic.severity.WARN] = icons.Warn,
+        [vim.diagnostic.severity.INFO] = icons.Info,
+        [vim.diagnostic.severity.HINT] = icons.Hint,
+      },
+    },
+  }
 
   local diagnostic_config = {
     underline = true,
