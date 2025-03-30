@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [23.2.1](https://github.com/dkarter/dotfiles/compare/v23.2.0...v23.2.1) (2025-03-30)
+
+
+### Bug Fixes
+
+* **nvim:** remove buggy autocmd in treesitter config ([33cbae7](https://github.com/dkarter/dotfiles/commit/33cbae765cdfc3a9ceaa0ca92eeda2135001e105))
+* **nvim:** remove DAP sign_define - deprecated ([cf55a7e](https://github.com/dkarter/dotfiles/commit/cf55a7ed6d90ee6ce2a3311692ae2f234e521a13))
+* **nvim:** sign-define deprecation in nvim 0.11 ([46ec49b](https://github.com/dkarter/dotfiles/commit/46ec49bc013046c1a353a9c032e33175fd78ca52))
+
 ## [23.2.0](https://github.com/dkarter/dotfiles/compare/v23.1.0...v23.2.0) (2025-03-30)
 
 
