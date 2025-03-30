@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.0.0](https://github.com/dkarter/dotfiles/compare/v23.2.1...v24.0.0) (2025-03-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** use virtual_lines for diagnostics
+
+### Features
+
+* **nvim:** use virtual_lines for diagnostics ([0775dd2](https://github.com/dkarter/dotfiles/commit/0775dd212246bf2e1627a2ae9cc7d928fb198c48))
+
+
+### Bug Fixes
+
+* **nvim:** restore treesitter folding functionality ([1b43a44](https://github.com/dkarter/dotfiles/commit/1b43a444ee57cd0009f16798b7be24ff5b675488))
+
 ## [23.2.1](https://github.com/dkarter/dotfiles/compare/v23.2.0...v23.2.1) (2025-03-30)
 
 
