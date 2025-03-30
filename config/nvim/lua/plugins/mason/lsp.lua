@@ -102,46 +102,9 @@ M.create_capabilities = function()
   return capabilities
 end
 
-M.setup_diagnostics = function()
-  -- icons
-  local icons = require('core.utils').icons.diagnostics
-
-  vim.diagnostic.config {
-    signs = {
-      text = {
-        [vim.diagnostic.severity.ERROR] = icons.Error,
-        [vim.diagnostic.severity.WARN] = icons.Warn,
-        [vim.diagnostic.severity.INFO] = icons.Info,
-        [vim.diagnostic.severity.HINT] = icons.Hint,
-      },
-    },
-  }
-
-  local diagnostic_config = {
-    underline = true,
-    update_in_insert = false,
-    virtual_text = {
-      spacing = 4,
-      source = 'if_many',
-      prefix = '●',
-      -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-      -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-      -- prefix = "icons",
-    },
-    severity_sort = true,
-    float = {
-      border = 'rounded',
-    },
-  }
-
-  vim.diagnostic.config(diagnostic_config)
-end
-
 M.setup = function()
   -- set up global mappings for diagnostics
   require('core.mappings').lsp_diagnostic_mappings()
-
-  M.setup_diagnostics()
 
   -- inject our custom on_attach after the built in on_attach from the lspconfig
   lspconfig.util.on_setup = lspconfig.util.add_hook_after(lspconfig.util.on_setup, function(config)

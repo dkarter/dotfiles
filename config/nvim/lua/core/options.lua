@@ -138,3 +138,24 @@ end
 
 -- highlight the 80 character column
 opt.colorcolumn = '80'
+
+-- icons
+local icons = require('core.utils').icons.diagnostics
+
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.Error,
+      [vim.diagnostic.severity.WARN] = icons.Warn,
+      [vim.diagnostic.severity.INFO] = icons.Info,
+      [vim.diagnostic.severity.HINT] = icons.Hint,
+    },
+  },
+  underline = true,
+  update_in_insert = false,
+  virtual_lines = { current_line = true },
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+  },
+}
