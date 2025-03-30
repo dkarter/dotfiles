@@ -73,6 +73,7 @@ In order to keep the dotfiles up to date, I recommend running the following:
 git pull # get latest
 task sync # installs/updates tools and symlinks new configs
 ```
+
 Alternatively open `./taskfiles/dotfiles.yml` and move all the tasks in `deps` to the `cmds` section, so you can find out which one is failing.
 
 # Note about forking/versioning
@@ -113,4 +114,35 @@ A: It makes it easier to include files in this repo if they are not named
 exactly how they would be when symlinked over (I symlink the files here to my home
 directory).  e.g. if I want to include the global `.gitignore` in this repo it
 will override this repo's `.gitignore`.
+</details>
+
+<details>
+<summary>Q: Why are both Mise and Homebrew used?</summary>
+A: [Mise](https://mise.jdx.dev) was recently introduced to manage runtimes - it
+  is an alternative to ASDF and it's super fast (at least compared to ASDF's
+  bash implementation). Furthermore, it is [more secure](https://github.com/jdx/mise/blob/main/SECURITY.md).
+
+Runtimes include things you need to run your app, such as Elixir, Erlang,
+Ruby, Go, Python etc. Mise does that well and uses a `mise.toml` in your
+project directory as an alternative to the `.tool-versions` - although it does
+support `.tool-versions` spec too.
+
+Mise has multiple backends, and you should read a little about these to get
+the most benefit out of using Mise. Specifically learn about:
+
+- [Aqua](https://mise.jdx.dev/dev-tools/backends/aqua.html)
+- [UBI](https://mise.jdx.dev/dev-tools/backends/ubi.html)
+- [Cargo](https://mise.jdx.dev/dev-tools/backends/cargo.html)
+  There are others too - but these are the ones I use the most. UBI is
+  especially cool!
+
+Mise also excels at managing binaries and CLIs and updating them to their
+latest versions - for that reason I switched pretty much every CLI I use to be
+installed with Mise - as long as I could find it or make Mise know about it
+(e.g. via UBI).
+
+However, not all tools are available via Mise, and some are simply not
+something Mise particularly excels in: compile libs, Casks (aka UI apps) -
+those are still managed with Homebrew (or in the case of Debian based distros - apt) - at least for now!
+
 </details>
