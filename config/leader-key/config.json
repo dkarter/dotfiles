@@ -22,7 +22,7 @@
         },
         {
           "key" : "s",
-          "label" : null,
+          "label" : "",
           "type" : "application",
           "value" : "/Applications/Slack.app"
         }
@@ -106,11 +106,24 @@
           "key" : "d",
           "label" : "Daily Note",
           "type" : "url",
-          "value" : "raycast://extensions/KevinBatdorf/obsidian/dailyNoteCommand"
+          "value" : "obsidian://adv-uri?vault=PDQ&daily=true"
         }
       ],
       "key" : "n",
       "label" : "Notes",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "s",
+          "label" : "Sentry",
+          "type" : "url",
+          "value" : "raycast://extensions/thomas/sentry/index"
+        }
+      ],
+      "key" : "w",
+      "label" : "Work",
       "type" : "group"
     }
   ],
