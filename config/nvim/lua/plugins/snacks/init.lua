@@ -57,6 +57,23 @@ return {
           },
         },
       },
+      sources = {
+        pr_files = {
+          title = 'PR Files',
+          format = 'text',
+          finder = function(_opts, _ctx)
+            -- TODO: make branch name dynamic based on the repo settings
+            local output = vim.fn.systemlist 'git diff --name-only main'
+            return vim.tbl_map(function(file)
+              return {
+                text = file,
+                file = file,
+                value = file,
+              }
+            end, output)
+          end,
+        },
+      },
     },
     dashboard = {
       enabled = true,

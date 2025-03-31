@@ -511,6 +511,7 @@ M.snack_mappings = {
   { '<leader>fg', picker('grep', {need_search = false}), desc = '[F]ind w/ [G]rep' },
   { '<leader>fh', picker('help'), desc = '[F]ind [H]elp' },
   { '<leader>fk', picker('keymaps'), desc = '[F]ind [K]eymaps' },
+  {'<leader>fp', picker('pr_files'), desc = "[F]ind [P]R files"},
   { '<leader>fs', picker('git_status'), desc = '[F]ind (Git) [S]tatus' },
   { '<leader>fc', picker('git_status', {pattern = "UU"}), desc = '[F]ind (Git) [C]onflict' },
   { '<leader>bb', picker('buffers'), desc = 'Find Buffers' },
