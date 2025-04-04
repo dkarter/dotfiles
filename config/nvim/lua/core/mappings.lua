@@ -44,6 +44,10 @@ local cmap = function(tbl)
   vim.keymap.set('c', tbl[1], tbl[2], tbl[3])
 end
 
+---Convenience shorthand for lazy calling picker
+---@param fun string the picker function to use
+---@param opts table? options to pass to the picker function
+---@return function
 local picker = function(fun, opts)
   if opts == nil then
     opts = {}
@@ -160,8 +164,6 @@ local M = {}
 -- stylua: ignore
 M.lsp_mappings = function()
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  nmap { 'gD', vim.lsp.buf.declaration, { buffer = true, desc = '[G]o to [D]ecleration' } }
-  nmap { 'gi', vim.lsp.buf.implementation, { buffer = true, desc = '[G]o to [I]mplementation' } }
   nmap { '<leader>D', vim.lsp.buf.type_definition, { buffer = true, desc = 'Type [D]ef' } }
   map { { 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = true, desc = '[C]ode [A]ction' } }
   nmap { 'K', vim.lsp.buf.hover, { buffer = true, desc = 'LSP Hover Doc' } }
@@ -524,6 +526,7 @@ M.snack_mappings = {
   { '<leader>nt', picker('explorer', {follow_file = false}), { desc = '[N]erdTree (not really) [T]oggle' } },
   { '<leader>nf', picker('explorer', {follow_file = true}), { desc = '[N]erdTree (not really) [F]ile (toggle)' } },
   { '<leader>tt', picker('explorer'), { desc = '[T]ree [T]oggle' } },
+  {'<leader>f<CR>', picker('resume'), desc = 'Finder Resume'},
 
   -- muscle memory
   { '<C-p>', picker('files'), desc = 'Find Files' },
@@ -538,7 +541,17 @@ M.snack_mappings = {
   -- LSP
   { '<leader>ds', picker('lsp_symbols'), desc = '[D]ocument [S]ymbols' },
   { 'gd', picker('lsp_definitions'), desc = '[G]o to [d]efinition' },
+  { 'gD', picker('lsp_declarations'),  desc = '[G]o to [D]ecleration' },
   { 'gr', picker('lsp_references'), desc = '[G]o to [R]eferences' },
+  { 'gi', picker('lsp_implementations', {
+      filter = {
+        filter = function(item, _filter)
+          -- exclude defdelegates from results, so we can jump directly to the
+          -- real impl
+          return not item.text:match("defdelegate")
+        end
+    },
+  }), desc = '[G]o to [I]mplementation' },
   { '<leader>cc', picker('pick', require('plugins.snacks.conventional_commits_picker')), desc = '[C]onventional [C]ommits' },
 
   -- scratch
