@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   'hrsh7th/nvim-cmp',
+  enabled = false,
   event = { 'CmdlineEnter', 'InsertEnter' },
   dependencies = {
     -- snippet engine, required by cmp
