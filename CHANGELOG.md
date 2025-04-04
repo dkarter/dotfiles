@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.1.0](https://github.com/dkarter/dotfiles/compare/v24.0.0...v24.1.0) (2025-04-04)
+
+
+### Features
+
+* **leader-key:** add more bindings ([d72a933](https://github.com/dkarter/dotfiles/commit/d72a9336ad5f28c81d57c88430eb7448c8c6c14f))
+* **nvim:** add improved picker mappings ([b56beb7](https://github.com/dkarter/dotfiles/commit/b56beb7d637bb7d49ac50bd1c278be57c2a6a8b1))
+* **nvim:** add picker for PR changed files ([e8993f3](https://github.com/dkarter/dotfiles/commit/e8993f3308d39e77da3c25044d454c01962180d1))
+
+
+### Bug Fixes
+
+* **nvim:** only show snippets when non trigger chars are used ([db67aeb](https://github.com/dkarter/dotfiles/commit/db67aebc0afbe89d5de1716aa654bce16d79797e))
+* **nvim:** use treesitter for lsp completions highlighting ([ac4a8b3](https://github.com/dkarter/dotfiles/commit/ac4a8b3252df34ec4e0c4168a47281e1d2e4b60a))
+
 ## [24.0.0](https://github.com/dkarter/dotfiles/compare/v23.2.1...v24.0.0) (2025-03-30)
 
 
