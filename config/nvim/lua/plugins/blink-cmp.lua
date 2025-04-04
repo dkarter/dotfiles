@@ -64,6 +64,7 @@ return {
       completion = {
         menu = {
           draw = {
+            treesitter = { 'lsp' },
             columns = {
               { 'kind_icon', 'label', gap = 1 },
               { 'source_name' },
