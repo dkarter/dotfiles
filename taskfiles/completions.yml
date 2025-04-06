@@ -41,6 +41,7 @@ tasks:
     desc: Reloads completion cache
     cmd: |
       echo -n Reloading completions cache...
+      rm -f ~/.zcompdump*
       zsh -c 'builtin autoload -Uz +X compinit'
       zsh -c 'autoload -Uz compinit && compinit'
       echo "DONE"

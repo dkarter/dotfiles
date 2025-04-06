@@ -16,30 +16,14 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 # --------------------------------
 
-# red dots to be displayed while waiting for completion
-export COMPLETION_WAITING_DOTS="true"
+# === Completion paths ===
+fpath=($HOME/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
 
-# load our own completion functions
-fpath=(~/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
+# === Optional: Homebrew completions ===
+homebrew_comps="/opt/homebrew/share/zsh/site-functions"
+[[ -d "$homebrew_comps" ]] && fpath=($homebrew_comps $fpath)
 
-# append homebrew completions to fpath
-fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
-
-# completion only refresh once a day
-# autoload -U compinit
-# compinit
-autoload -Uz +X bashcompinit && bashcompinit
-autoload -Uz +X compinit
-
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-
-compinit -C
-
-if command -v carapace &>/dev/null; then
-  # requires brew install carapace
-  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
-  source <(carapace _carapace)
-fi
-
+# === Load completion system ===
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
