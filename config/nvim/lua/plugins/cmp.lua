@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
   'hrsh7th/nvim-cmp',
-  enabled = false,
+  -- this plugin will eventually be replaced with blink-cmp
+  enabled = true,
   event = { 'CmdlineEnter', 'InsertEnter' },
   dependencies = {
     -- snippet engine, required by cmp
@@ -24,8 +25,6 @@ return {
     'hrsh7th/cmp-cmdline',
     -- neovim lua config api completion
     'hrsh7th/cmp-nvim-lua',
-    -- emoji completion (triggered by `:`)
-    'hrsh7th/cmp-emoji',
     -- snippets in completion sources
     'saadparwaiz1/cmp_luasnip',
     -- git completions
@@ -121,7 +120,6 @@ return {
             local source = ({
               buffer = '[BUF]',
               cmdline = '[CMD]',
-              emoji = '[EMJ]',
               git = '[GIT]',
               luasnip = '[SNP]',
               nvim_lsp = '[LSP]',
@@ -198,7 +196,6 @@ return {
         { name = 'path' },
       }, {
         all_buffers_completion_source,
-        { name = 'emoji' },
         tmux_source,
       }),
       preselect = cmp.PreselectMode.None,
@@ -227,7 +224,6 @@ return {
       }, {
         all_buffers_completion_source,
         tmux_source,
-        { name = 'emoji' },
       }),
     })
 
