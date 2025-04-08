@@ -16,6 +16,7 @@ local M = {}
 M.setup = function()
   local tokyonight_colors = require('tokyonight.colors').setup { style = 'moon' }
 
+  ---@diagnostic disable:undefined-field
   local colors = {
     black = tokyonight_colors.fg,
     green = tokyonight_colors.green,
@@ -26,6 +27,37 @@ M.setup = function()
     white = tokyonight_colors.bg_statusline,
     actual_white = '#f3f3f3',
   }
+  ---@diagnostic enable:undefined-field
+
+  local empty = require('lualine.component'):extend()
+  function empty:draw(default_highlight)
+    self.status = ''
+    self.applied_separator = ''
+    self:apply_highlights(default_highlight)
+    self:apply_section_separators()
+    return self.status
+  end
+
+  -- Put proper separators and gaps between components in sections
+  local function process_sections(sections)
+    for name, section in pairs(sections) do
+      local left = name:sub(9, 10) < 'x'
+
+      for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
+        table.insert(section, pos * 2, { empty, color = { fg = colors.white, bg = colors.white } })
+      end
+
+      for id, comp in ipairs(section) do
+        if type(comp) ~= 'table' then
+          comp = { comp }
+          section[id] = comp
+        end
+        comp.separator = left and { right = '' } or { left = '' }
+      end
+    end
+
+    return sections
+  end
 
   local function search_result()
     if vim.v.hlsearch == 0 then
@@ -131,9 +163,9 @@ M.setup = function()
     options = {
       theme = 'tokyonight-moon',
       component_separators = '',
-      section_separators = { left = '', right = '' },
+      section_separators = { left = '', right = '' },
     },
-    sections = {
+    sections = process_sections {
       lualine_a = {
         {
           'mode',
@@ -144,6 +176,7 @@ M.setup = function()
       },
       lualine_b = {
         'branch',
+        'diff',
         {
           'diagnostics',
           source = { 'nvim' },
@@ -156,7 +189,7 @@ M.setup = function()
           sections = { 'warn' },
           diagnostics_color = { warn = { bg = colors.orange, fg = colors.actual_white } },
         },
-        { 'filename', file_status = false, path = 1, color = { bg = colors.grey } },
+        { 'filename', file_status = false, path = 1 },
         { modified, color = { bg = colors.red, fg = colors.actual_white } },
         {
           '%w',
