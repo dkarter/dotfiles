@@ -63,7 +63,8 @@ return {
           format = 'text',
           finder = function(_opts, _ctx)
             -- TODO: make branch name dynamic based on the repo settings
-            local output = vim.fn.systemlist 'git diff --name-only main'
+            local output =
+              vim.fn.systemlist "(git diff --name-only main; git status --porcelain | awk '{print $2}') | sort | uniq"
             return vim.tbl_map(function(file)
               return {
                 text = file,
