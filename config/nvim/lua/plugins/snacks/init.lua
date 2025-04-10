@@ -62,9 +62,10 @@ return {
           title = 'PR Files',
           format = 'text',
           finder = function(_opts, _ctx)
-            -- TODO: make branch name dynamic based on the repo settings
-            local output =
-              vim.fn.systemlist "(git diff --name-only main; git status --porcelain | awk '{print $2}') | sort | uniq"
+            local main_branch = vim.trim(
+              vim.fn.system '{ gh pr view --json baseRefName --jq .baseRefName 2>/dev/null; } || gh repo view --json defaultBranchRef --jq .defaultBranchRef.name'
+            )
+            local output = vim.fn.systemlist('git diff --name-only ' .. main_branch)
             return vim.tbl_map(function(file)
               return {
                 text = file,
