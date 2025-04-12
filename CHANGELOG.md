@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.1.0](https://github.com/dkarter/dotfiles/compare/v24.0.0...v24.1.0) (2025-04-12)
+
+
+### Features
+
+* **leader-key:** add more bindings ([d72a933](https://github.com/dkarter/dotfiles/commit/d72a9336ad5f28c81d57c88430eb7448c8c6c14f))
+* **leader-key:** add TIL shortcut ([692031c](https://github.com/dkarter/dotfiles/commit/692031c9cd3f1c4e16aaade1941f16104bfe01b7))
+* **nvim:** add improved picker mappings ([b56beb7](https://github.com/dkarter/dotfiles/commit/b56beb7d637bb7d49ac50bd1c278be57c2a6a8b1))
+* **nvim:** add picker for PR changed files ([e8993f3](https://github.com/dkarter/dotfiles/commit/e8993f3308d39e77da3c25044d454c01962180d1))
+
+
+### Bug Fixes
+
+* **nvim:** dynamically get the base branch name for PR Files ([825ffad](https://github.com/dkarter/dotfiles/commit/825ffad02fea194d10deb03746a473e8889a4ce3))
+* **nvim:** include committed files in PR file picker ([b544bc1](https://github.com/dkarter/dotfiles/commit/b544bc19d03b06b0d137cf84a3ff4e8db1a2a6c3))
+* **nvim:** only show snippets when non trigger chars are used ([db67aeb](https://github.com/dkarter/dotfiles/commit/db67aebc0afbe89d5de1716aa654bce16d79797e))
+* **nvim:** temporarily revert back to cmp ([29751de](https://github.com/dkarter/dotfiles/commit/29751de7c929412878bfdd85ba4ff0891418741e))
+* **nvim:** use treesitter for lsp completions highlighting ([ac4a8b3](https://github.com/dkarter/dotfiles/commit/ac4a8b3252df34ec4e0c4168a47281e1d2e4b60a))
+* **zsh:** improve completions ([b920a84](https://github.com/dkarter/dotfiles/commit/b920a84a50257353f342806ee8f17c907e17d723))
+
+
+### Reverts
+
+* "refactor(tmux,nvim): switch style to boxes" ([eb6d592](https://github.com/dkarter/dotfiles/commit/eb6d592eff857b002e9136a50465501d9bd5a514))
+
 ## [24.0.0](https://github.com/dkarter/dotfiles/compare/v23.2.1...v24.0.0) (2025-03-30)
 
 
