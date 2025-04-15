@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.2.0](https://github.com/dkarter/dotfiles/compare/v24.1.0...v24.2.0) (2025-04-15)
+
+
+### Features
+
+* **nvim:** highlight powershell sigils in Elixir ([2380e78](https://github.com/dkarter/dotfiles/commit/2380e788ec6d85fa84beb1173e6dd34b96d694f7))
+
 ## [24.1.0](https://github.com/dkarter/dotfiles/compare/v24.0.0...v24.1.0) (2025-04-12)
 
 
