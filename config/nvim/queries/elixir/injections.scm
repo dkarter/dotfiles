@@ -22,3 +22,9 @@
   (quoted_content) @injection.content
  (#eq? @_sigil_name "JSON")
  (#set! injection.language "json"))
+
+(sigil
+  (sigil_name) @_sigil_name
+  (quoted_content) @injection.content
+ (#eq? @_sigil_name "PS1")
+ (#set! injection.language "powershell"))
