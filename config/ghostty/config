@@ -1,0 +1,28 @@
+# vim: ft=toml
+theme = tokyonight-storm
+# macos-titlebar-style = transparent
+background-opacity = 0.8
+background-blur = true
+
+# background = #000000
+macos-titlebar-proxy-icon = hidden
+title = "Ghostty"
+
+#### KEYBINDS
+# open new tab
+keybind = super+shift+t=text:\x1ac
+# navigate tabs
+keybind = super+shift+left_bracket=text:\x1ap
+keybind = super+shift+right_bracket=text:\x1an
+# move tabs
+# keybind = super+shift+left=text
+
+# open sesh
+keybind = super+j=text:\x1aT
+# open tmux windows
+keybind = super+k=text:\x1aP
+# toggle last session
+keybind = super+l=text:\x1aL
+
+# vimium like actions (tmux fingers)
+keybind = super+f=text:\x1aF
