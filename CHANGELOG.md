@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.2.0](https://github.com/dkarter/dotfiles/compare/v24.1.0...v24.2.0) (2025-04-20)
+
+
+### Features
+
+* **ghostty:** add basic ghostty config ([b50b16b](https://github.com/dkarter/dotfiles/commit/b50b16b6a99838e0bbf2f7d417b14e832c278f0c))
+* **nvim:** highlight powershell sigils in Elixir ([2380e78](https://github.com/dkarter/dotfiles/commit/2380e788ec6d85fa84beb1173e6dd34b96d694f7))
+
 ## [24.1.0](https://github.com/dkarter/dotfiles/compare/v24.0.0...v24.1.0) (2025-04-12)
 
 
