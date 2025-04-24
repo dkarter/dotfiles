@@ -18,7 +18,7 @@ local config = wezterm.config_builder()
 config.font_size = 18
 config.command_palette_font_size = 18
 
-local font_family = 'CaskaydiaCove Nerd Font Mono'
+local font_family = 'FiraCode Nerd Font Mono'
 
 config.adjust_window_size_when_changing_font_size = false
 
