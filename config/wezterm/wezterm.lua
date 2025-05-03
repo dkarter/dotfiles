@@ -20,6 +20,18 @@ config.command_palette_font_size = 18
 
 config.adjust_window_size_when_changing_font_size = false
 
+-- notify on config reload
+wezterm.on('window-config-reloaded', function(window, pane)
+  window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
+end)
+
+-- the MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR is only available on
+-- versions starting with 2025
+if string.match(wezterm.version, '^2025') ~= nil then
+  config.window_decorations =
+    'TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR'
+end
+
 -- wezterm comes with JetBrains Mono and a default fallback font for symbols
 -- so technically, this is not needed. But the fallback symbols are a bit odd
 -- looking compared to JetBrains Mono (seem too big or stretched out)
