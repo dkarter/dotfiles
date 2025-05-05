@@ -32,8 +32,12 @@ tasks:
           cmd='{{splitList "|" .COMP | last}}'
           cache_path="$(echo ~/.cache/zsh/completions/_$app)"
           echo -n "Generating completions for $app..."
-          eval "$cmd" > $cache_path
-          echo "DONE"
+          if command -v $app >/dev/null 2>&1; then
+            eval "$cmd" > $cache_path
+            echo "DONE"
+          else
+            echo "SKIPPED (executable not found)"
+          fi
         silent: true
 
       - task: cache:reload
