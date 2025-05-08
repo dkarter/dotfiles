@@ -1,16 +1,29 @@
 -- installs/updates LSPs, linters and DAPs
 ---@type LazySpec
 return {
-  'williamboman/mason.nvim',
+  'mason-org/mason.nvim',
+  -- temporarily lock to v1 to avoid dealing with breaking changes - after v2
+  -- stabilizes this can be updated to 2.0.0 or removed
+  version = '^1.0.0',
   build = ':MasonUpdate',
   cmd = { 'Mason', 'MasonUpdate', 'MasonUpdateAll' },
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     -- handles connection of LSP Configs and Mason
-    'williamboman/mason-lspconfig.nvim',
+    {
+      'mason-org/mason-lspconfig.nvim',
+      -- temporarily lock to v1 to avoid dealing with breaking changes - after v2
+      -- stabilizes this can be updated to 2.0.0 or removed
+      version = '^1.0.0',
+    },
 
     -- adds MasonUpdateAll
-    'Zeioth/mason-extra-cmds',
+    {
+      'Zeioth/mason-extra-cmds',
+      -- temporarily lock to v1 to avoid dealing with breaking changes - after v2
+      -- stabilizes this can be updated to 2.0.0 or removed
+      version = '^1.0.0',
+    },
 
     -- Collection of configurations for the built-in LSP client
     'neovim/nvim-lspconfig',
