@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   'kylechui/nvim-surround',
-  event = { 'BufReadPost', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufNewFile', 'BufAdd' },
   version = '*',
   opts = {},
 }
