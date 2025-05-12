@@ -2,7 +2,7 @@
 return {
   'hrsh7th/nvim-cmp',
   -- this plugin will eventually be replaced with blink-cmp
-  enabled = true,
+  enabled = false,
   event = { 'CmdlineEnter', 'InsertEnter' },
   dependencies = {
     -- snippet engine, required by cmp
