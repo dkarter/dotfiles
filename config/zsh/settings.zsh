@@ -15,7 +15,10 @@ colors
 export CLICOLOR=1
 
 # history settings
-setopt hist_ignore_all_dups inc_append_history
+# don't save lines starting with space in history
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
 export HISTFILE=~/.zhistory
 export HISTSIZE=4096
 export SAVEHIST=4096
