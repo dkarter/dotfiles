@@ -17,7 +17,9 @@ export CLICOLOR=1
 # history settings
 # don't save lines starting with space in history
 setopt HIST_IGNORE_SPACE
+# do not save duplicate of prior command
 setopt HIST_IGNORE_ALL_DUPS
+# don’t wait for shell to exit to save history lines
 setopt INC_APPEND_HISTORY
 export HISTFILE=~/.zhistory
 export HISTSIZE=4096
@@ -26,7 +28,7 @@ export DIRSTACKSIZE=5
 export HIST_STAMPS="yyyy-mm-dd"
 
 # support comments in shell (makes it easy to comment out a command)
-setopt interactivecomments
+setopt INTERACTIVE_COMMENTS
 
 # 10ms for key sequences
 export KEYTIMEOUT=1
