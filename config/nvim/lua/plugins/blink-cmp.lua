@@ -6,7 +6,7 @@ return {
     -- some rough edges that should be resolved before enabling:
     -- - accepting the completion should work as it is with cmp today, tab
     --   inserts it and cycles options, and enter accepts (with no new line)
-    enabled = true,
+    enabled = false,
     event = { 'CmdlineEnter', 'InsertEnter' },
     -- optional: provides snippets for the snippet source
     dependencies = {
