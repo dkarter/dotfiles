@@ -4,13 +4,11 @@
       "actions" : [
         {
           "key" : "t",
-          "label" : "",
           "type" : "application",
           "value" : "/Applications/WezTerm.app"
         },
         {
           "key" : "b",
-          "label" : "",
           "type" : "application",
           "value" : "/Applications/Arc.app"
         },
@@ -22,7 +20,6 @@
         },
         {
           "key" : "s",
-          "label" : "",
           "type" : "application",
           "value" : "/Applications/Slack.app"
         }
@@ -34,14 +31,16 @@
     {
       "actions" : [
         {
+          "iconPath" : "/Applications/Raycast.app",
           "key" : "c",
-          "label" : "",
+          "label" : "Camera",
           "type" : "url",
           "value" : "raycast://extensions/raycast/system/open-camera"
         },
         {
+          "iconPath" : "/Applications/Raycast.app",
           "key" : "b",
-          "label" : "quicklinks",
+          "label" : "Quick Links",
           "type" : "url",
           "value" : "raycast://extensions/raycast/raycast/search-quicklinks"
         }
