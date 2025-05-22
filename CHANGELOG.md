@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.3.0](https://github.com/dkarter/dotfiles/compare/v24.2.0...v24.3.0) (2025-05-22)
+
+
+### Features
+
+* **ghostty:** add quick terminal keybind ([67937c1](https://github.com/dkarter/dotfiles/commit/67937c1c01eedbaf7723f41cb636dd5367bd6667))
+* **ghostty:** add tmux tab navigation with super+[NUMBER] ([4bb9892](https://github.com/dkarter/dotfiles/commit/4bb9892f4cafa878415d62725bdd95dfe2292017))
+* **nvim:** add `codecompanion.nvim` ([480fafc](https://github.com/dkarter/dotfiles/commit/480fafc15e9de13e170fba956ce5ee570701f0eb))
+* **nvim:** add copilot.lua ([f60a15e](https://github.com/dkarter/dotfiles/commit/f60a15e25a089f26b18ad50f1acef5420a885ec8))
+* **task:** add completion for pgroll ([f080d3c](https://github.com/dkarter/dotfiles/commit/f080d3c68a06bdb97aa5000e006539dc94a11759))
+* **wezterm:** emit notif on config reload, same color titlebar ([de94024](https://github.com/dkarter/dotfiles/commit/de940244b0ca480681ddd5bf05b50adedd04e8a6))
+* **zsh:** don't save commands starting with space in history ([c932f06](https://github.com/dkarter/dotfiles/commit/c932f06829a379d4c8fdefd1f94a1006d16bd899))
+
+
+### Bug Fixes
+
+* **ghostty:** decrease background opacity ([25f1c41](https://github.com/dkarter/dotfiles/commit/25f1c411d788536515f931630514e7dc50b5c64e))
+* **ghostty:** macos titlebar consistent color ([3bfb192](https://github.com/dkarter/dotfiles/commit/3bfb1925eb5d9b4ac8e3dde6ef316094b340f3d6))
+* **nvim:** enable nvim-surround on empty buffers ([2e1419c](https://github.com/dkarter/dotfiles/commit/2e1419c0849331baaa546f9cd1653634faddb1a5))
+* **nvim:** remove cmp handlers for copilot ([d5408dd](https://github.com/dkarter/dotfiles/commit/d5408ddad6d2145006a4d1cebef901f9c6b2e958))
+* **nvim:** rename powershell sigil to PS ([acf6c18](https://github.com/dkarter/dotfiles/commit/acf6c18c65d35d5ddd78d90b7b1b1c580bacf4be))
+* **nvim:** seamless navigation fix for Snacks explorer ([bc5945d](https://github.com/dkarter/dotfiles/commit/bc5945d2e77ea31943c2e90dbb7bc581432591c0))
+* **task,wezterm:** use a different font ([cf2d4e2](https://github.com/dkarter/dotfiles/commit/cf2d4e27c8815c0b02c2f9979684f1e03788a2bd))
+* **task:** comp:generate should not fail when executable not found ([3df5bef](https://github.com/dkarter/dotfiles/commit/3df5bef64dfad97a9c0425cb9e8cacf3ce2294a9))
+* **wezterm:** switch font to jetbrains ([1b09ed4](https://github.com/dkarter/dotfiles/commit/1b09ed4b9e9f61ae4ff6bf364f5d940a2a4c3d75))
+
 ## [24.2.0](https://github.com/dkarter/dotfiles/compare/v24.1.0...v24.2.0) (2025-04-20)
 
 
