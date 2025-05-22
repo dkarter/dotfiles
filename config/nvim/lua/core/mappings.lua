@@ -196,6 +196,13 @@ M.elixir_mappings = function()
 end
 
 -- stylua: ignore
+-- ---@type LazyKeysSpec[]
+M.codecompanion_mappings = {
+  {'<leader>ac', '<cmd>CodeCompanionChat<CR>', desc = '[A]I [C]hat' },
+  {'<leader>aa', '<cmd>CodeCompanionActions<CR>', desc = '[A]I [A]ctions' },
+}
+
+-- stylua: ignore
 ---@type LazyKeysSpec[]
 M.splitjoin_mappings = {
   {'gJ', function() require('treesj').join() end, desc = 'Join Code Block' },
