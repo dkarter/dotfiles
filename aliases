@@ -254,9 +254,13 @@ alias ss='imgur-screenshot.sh'
 command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
 
 # parse + highlight help for cli tools
-alias bathelp='bat --plain --language=help'
+# usage: help <command>
+# example: help git commit
+# 
+# You can also use the alias h
+# example: h git commit
 help() {
-    "$@" --help 2>&1 | bathelp
+    "$@" --help 2>&1 | bat --plain --language=help
 }
 alias h='help'
 
