@@ -28,3 +28,9 @@
   (quoted_content) @injection.content
  (#eq? @_sigil_name "PS")
  (#set! injection.language "powershell"))
+
+(sigil
+  (sigil_name) @_sigil_name
+  (quoted_content) @injection.content
+ (#eq? @_sigil_name "LIQUID")
+ (#set! injection.language "liquid"))

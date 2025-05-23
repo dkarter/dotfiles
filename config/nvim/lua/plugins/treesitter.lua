@@ -55,6 +55,7 @@ return {
         'json',
         'json5',
         'jsonc',
+        'liquid',
         'llvm',
         'lua',
         'make',
