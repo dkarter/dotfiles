@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.4.0](https://github.com/dkarter/dotfiles/compare/v24.3.0...v24.4.0) (2025-05-23)
+
+
+### Features
+
+* **nvim:** add syntax highlighting to LIQUID sigils in Elixir ([b1d71c4](https://github.com/dkarter/dotfiles/commit/b1d71c4921ea1b54bd1f296284163aa231776e91))
+
 ## [24.3.0](https://github.com/dkarter/dotfiles/compare/v24.2.0...v24.3.0) (2025-05-22)
 
 
