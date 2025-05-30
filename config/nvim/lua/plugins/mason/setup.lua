@@ -25,6 +25,8 @@ M.setup = function()
     -- Null LS
     'actionlint',
     'ansible-lint',
+    -- js/json/yaml/ts/etc formatter
+    'biome',
     -- python formatter
     'black',
     'codespell',
