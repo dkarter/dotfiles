@@ -3,6 +3,32 @@
 -- try prettierd, and fallback to prettier, if the first one works stop
 local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 
+-- Check if biome config exists in the current working directory or any parent directory
+-- Uses vim.fs.find for cross-platform compatibility and reasonable search limits
+local function has_biome_config()
+  local config_files = vim.fs.find({ 'biome.json', 'biome.jsonc' }, {
+    upward = true,
+    type = 'file',
+    stop = vim.fs.dirname(vim.fs.find({ '.git', 'package.json' }, { upward = true })[1]),
+  })
+  return #config_files > 0
+end
+
+-- Use biome if config exists, otherwise use the provided fallback formatter
+local function get_biome_or_fallback(fallback)
+  if has_biome_config() then
+    return { 'biome', 'biome-check', 'biome-organize-imports' }
+  else
+    return fallback or {}
+  end
+end
+
+-- Compute formatters at setup time
+local js_formatters = get_biome_or_fallback(prettier)
+local json_formatters = get_biome_or_fallback(prettier)
+local css_formatters = get_biome_or_fallback(prettier)
+local graphql_formatters = get_biome_or_fallback(prettier)
+
 ---@type LazySpec
 return {
   'stevearc/conform.nvim',
@@ -16,16 +42,22 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       python = { 'isort', 'black' },
-      javascript = prettier,
-      javascriptreact = prettier,
+      javascript = js_formatters,
+      javascriptreact = js_formatters,
+      typescript = js_formatters,
+      typescriptreact = js_formatters,
+      json = json_formatters,
+      jsonc = json_formatters,
+      css = css_formatters,
+      vue = js_formatters,
+      svelte = js_formatters,
+      astro = js_formatters,
+      graphql = graphql_formatters,
       markdown = prettier,
       go = { 'gofmt', 'goimports' },
       ruby = { 'rubyfmt' },
       sql = { 'pg_format' },
       yaml = prettier,
-      json = prettier,
-      typescript = prettier,
-      typescriptreact = prettier,
       -- mix format is taking long to format, so I bumped the timeout, I'm not
       -- sure why it's taking long though (is it large files, is it all files,
       -- is it the warm up time - maybe I can build a mix_format_d to prevent
