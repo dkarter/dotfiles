@@ -186,6 +186,9 @@ tnnl() {
 alias dkc='docker container'
 alias dcu='docker compose up'
 alias dcd='docker compose up'
+alias dps="docker ps"
+alias dimg="docker image ls"
+alias dprune="docker system prune -af"  # Remove unused data
 
 # usb
 alias usbtree='ioreg -p IOUSB -l -w 0'
