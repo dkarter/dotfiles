@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.4.0](https://github.com/dkarter/dotfiles/compare/v24.3.0...v24.4.0) (2025-06-14)
+
+
+### Features
+
+* **mise:** add tidewave mcp proxy ([c5b0096](https://github.com/dkarter/dotfiles/commit/c5b0096dd55e46bf1ff6c7b5c131d58e2a2b3430))
+* **nvim:** add CSV View plugin ([a5e2412](https://github.com/dkarter/dotfiles/commit/a5e24127f6896fa08533e6ff524934e8d1006805))
+* **nvim:** add plugin spec for mcphub ([b648838](https://github.com/dkarter/dotfiles/commit/b64883818c82bf8245c0fee6a3265f6198cb9523))
+* **nvim:** add support for biome-based formatters ([c73c31e](https://github.com/dkarter/dotfiles/commit/c73c31e59fd852cba2f1207bda8dc1eda3f31bf7))
+* **nvim:** add syntax highlighting to LIQUID sigils in Elixir ([b1d71c4](https://github.com/dkarter/dotfiles/commit/b1d71c4921ea1b54bd1f296284163aa231776e91))
+* **nvim:** automatically install biome ([ecc5d2e](https://github.com/dkarter/dotfiles/commit/ecc5d2ec6507d68cc6017e2241d96654407db639))
+* **zsh:** add more docker aliases ([916f34b](https://github.com/dkarter/dotfiles/commit/916f34b2514af43adc8c8dfc6da3105a2cdd5245))
+
+
+### Bug Fixes
+
+* **nvim:** force copilot model to claude-sonnet-4 ([a298139](https://github.com/dkarter/dotfiles/commit/a29813935c0a45080f83a500e521d0a2b9bba6d0))
+* **nvim:** switch mcphub build step to npm from pnpm ([380c7bc](https://github.com/dkarter/dotfiles/commit/380c7bc6e8143ad99ae255ef4133bfdebd627065))
+
 ## [24.3.0](https://github.com/dkarter/dotfiles/compare/v24.2.0...v24.3.0) (2025-05-22)
 
 
