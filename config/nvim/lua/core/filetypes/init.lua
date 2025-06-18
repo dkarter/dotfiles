@@ -6,7 +6,6 @@ vim.filetype.add {
     ['.eslintrc'] = 'json',
     ['.prettierrc'] = 'json',
     ['.babelrc'] = 'json',
-    ['.codespellrc'] = 'ini',
     ['zinitrc'] = 'zsh',
     ['Chart.yaml'] = 'yaml',
     ['Chart.yml'] = 'yaml',

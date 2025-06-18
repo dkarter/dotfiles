@@ -27,10 +27,6 @@ return {
         ----------------------
         b.diagnostics.actionlint,
         b.diagnostics.ansiblelint,
-        b.diagnostics.codespell.with {
-          disabled_filetypes = { 'oil' },
-        },
-
         b.diagnostics.yamllint,
         b.diagnostics.zsh,
         b.diagnostics.commitlint.with {

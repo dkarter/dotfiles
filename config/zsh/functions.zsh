@@ -8,6 +8,7 @@ ghpre() {
   rm "$temp_file"
 }
 
+# spellchecker:off
 # fo [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Exit if there's no match (--exit-0)
 #   - CTRL-O to open with `open` command,
@@ -21,6 +22,7 @@ fo() {
     [ "$key" = ctrl-o ] && open "$file" || nvim "$file"
   fi
 }
+# spellchecker:on
 
 # fh - repeat history
 fh() {
