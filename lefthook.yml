@@ -5,6 +5,7 @@ commit-msg:
       run: committed --commit-file {1}
 
 pre-push:
+  parallel: true
   jobs:
     - name: run ci checks
       run: task ci:run
