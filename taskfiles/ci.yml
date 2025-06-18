@@ -22,11 +22,12 @@ tasks:
     cmd: yamllint --strict --config-file ./config/yamllint/config .
 
   run:
-    cmds:
+    deps:
       - task: lua:lint
       - task: lua:format:check
       - task: shell:lint
       - task: yaml:lint
       - task: spelling:lint
+    cmds:
       - cmd: figlet done | lolcrab
         silent: true
