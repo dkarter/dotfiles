@@ -11,8 +11,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  yaml-lint:
-    name: 'Lint: Yaml'
+  # this step was added to avoid cache write conflicts between steps
+  mise:
+    name: 'Mise Install + Cache'
 
     runs-on: ubuntu-latest
     if: always()
@@ -21,10 +22,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Runtimes w/ MISE (and cache)
+        uses: jdx/mise-action@v2.2.3
+
+  yaml-lint:
+    name: 'Lint: Yaml'
+
+    runs-on: ubuntu-latest
+    needs: mise
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
-        with:
-          reshim: true
 
       - name: Run yamllint
         run: task ci:yaml:lint
@@ -33,6 +46,7 @@ jobs:
     name: 'Format: Lua'
 
     runs-on: ubuntu-latest
+    needs: mise
     if: always()
 
     steps:
@@ -41,8 +55,6 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
-        with:
-          reshim: true
 
       - name: Format check
         run: task ci:lua:format:check
@@ -51,6 +63,7 @@ jobs:
     name: 'Diagnostics: Lua'
 
     runs-on: ubuntu-latest
+    needs: mise
     if: always()
 
     steps:
@@ -69,6 +82,7 @@ jobs:
     name: 'Lint: Shell'
 
     runs-on: ubuntu-latest
+    needs: mise
     if: always()
 
     steps:
@@ -77,8 +91,6 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
-        with:
-          reshim: true
 
       - name: Run Diagnostics Check
         run: task ci:shell:lint
@@ -87,6 +99,7 @@ jobs:
     name: 'Lint: Spelling'
 
     runs-on: ubuntu-latest
+    needs: mise
     if: always()
 
     steps:
@@ -95,8 +108,6 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
-        with:
-          reshim: true
 
       - name: Run Diagnostics Check
         run: task ci:spelling:lint
