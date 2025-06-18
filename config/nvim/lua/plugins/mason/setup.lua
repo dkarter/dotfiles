@@ -29,7 +29,6 @@ M.setup = function()
     'biome',
     -- python formatter
     'black',
-    'codespell',
     'prettierd',
     'shfmt',
     'stylua',
@@ -79,6 +78,8 @@ M.setup = function()
     'taplo',
     'terraform-ls',
     'typescript-language-server',
+    'typos',
+    'typos-lsp',
     'vim-language-server',
     'yaml-language-server',
     'zls',

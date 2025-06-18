@@ -15,7 +15,7 @@ tasks:
 
   spelling:lint:
     desc: Check for code spelling errors
-    cmd: codespell .
+    cmd: typos
 
   yaml:lint:
     desc: Runs yamllint on this repo

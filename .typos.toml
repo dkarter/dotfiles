@@ -1,0 +1,20 @@
+[default]
+extend-ignore-words-re = ["(iterm.*|ITERM.*)", "[nN]oice.*"]
+extend-ignore-re = [
+  # ignore line with: # spellchecker:disable-line
+  "(?Rm)^.*(#|//)\\s*spellchecker:disable-line$",
+  # ignore block with # spellchecker:<on|off>
+  "(?s)(#|//)\\s*spellchecker:off.*?\\n\\s*(#|//)\\s*spellchecker:on",
+]
+
+[files]
+extend-exclude = [
+  "Brewfile.lock.json",
+  "config/nvim/lua/core/mappings.lua",
+  "iterm/xterm-256color-italic.terminfo",
+  "iterm/xterm-256color-italic.ti",
+  "config/vifm/vifm-help.txt",
+  "config/vifm/devicons",
+  "CHANGELOG.md",
+  "package-lock.json",
+]
