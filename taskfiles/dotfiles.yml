@@ -73,6 +73,7 @@ tasks:
       - task: zinit:plugins:update
       - task: mise:install
       - task: mise:tools:install
+      - cmd: lefthook install
       - task: fonts:sync
       - task: node:pnpm:install
       - task: brew:sync
@@ -94,6 +95,7 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: mise:sync
+      - cmd: lefthook install
       - task: node:sync
       - task: brew:sync
       - task: bat:sync
