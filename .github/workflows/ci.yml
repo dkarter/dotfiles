@@ -23,6 +23,8 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
+        with:
+          reshim: true
 
       - name: Run yamllint
         run: task ci:yaml:lint
@@ -39,11 +41,13 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
+        with:
+          reshim: true
 
       - name: Format check
         run: task ci:lua:format:check
 
-  lua-diagnotics:
+  lua-diagnostics:
     name: 'Diagnostics: Lua'
 
     runs-on: ubuntu-latest
@@ -55,6 +59,8 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
+        with:
+          reshim: true
 
       - name: Run Diagnostics Check
         run: task ci:lua:lint
@@ -71,6 +77,8 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
+        with:
+          reshim: true
 
       - name: Run Diagnostics Check
         run: task ci:shell:lint
@@ -87,6 +95,8 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@v2.2.3
+        with:
+          reshim: true
 
       - name: Run Diagnostics Check
         run: task ci:spelling:lint
