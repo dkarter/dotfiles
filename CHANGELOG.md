@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.5.0](https://github.com/dkarter/dotfiles/compare/v24.4.0...v24.5.0) (2025-06-18)
+
+
+### Features
+
+* **mise:** add marp for generating presentations ([8c8bd3d](https://github.com/dkarter/dotfiles/commit/8c8bd3d4a8fd736fc09d145b1892d62d039ef132))
+* **zsh:** add completions for lefthook ([0e36c5f](https://github.com/dkarter/dotfiles/commit/0e36c5fe8cbe7acf890a3804da211938e6e2a489))
+
+
+### Bug Fixes
+
+* **mise:** move lefthook install step to task ([4a88d26](https://github.com/dkarter/dotfiles/commit/4a88d26ad0c8fd57427de8d2416f3296fb013bd8))
+
+
+### Performance Improvements
+
+* **task:** run ci tasks in parallel ([bb25477](https://github.com/dkarter/dotfiles/commit/bb25477062e6e84ce6773d75961d1672a05dcbef))
+
 ## [24.4.0](https://github.com/dkarter/dotfiles/compare/v24.3.0...v24.4.0) (2025-06-14)
 
 
