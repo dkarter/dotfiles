@@ -1,7 +1,11 @@
 [tools]
+
+"cargo:lolcrab" = "latest"
+"pipx:codespell" = "2"
+committed = "latest"
+lefthook = { version = "latest", postinstall = "lefthook install" }
 lua-language-server = "2"
 node = "22"
-"pipx:codespell" = "2"
 pnpm = "latest"
 ripgrep = "latest"
 ruby = "3"
@@ -9,3 +13,7 @@ shellcheck = "0.10"
 stylua = "2"
 task = "latest"
 yamllint = "1.35"
+
+[settings]
+experimental = true
+disable_backends = ["asdf"]

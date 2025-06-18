@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+commit-msg:
+  jobs:
+    - name: conventional commits
+      run: committed --commit-file {1}
+
+pre-push:
+  jobs:
+    - name: run ci checks
+      run: task ci:run
