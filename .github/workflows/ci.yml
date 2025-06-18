@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v2.2.3
 
       - name: Run yamllint
         run: task ci:yaml:lint
@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v2.2.3
 
       - name: Format check
         run: task ci:lua:format:check
@@ -54,7 +54,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v2.2.3
 
       - name: Run Diagnostics Check
         run: task ci:lua:lint
@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v2.2.3
 
       - name: Run Diagnostics Check
         run: task ci:shell:lint
@@ -86,7 +86,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v2.2.3
 
       - name: Run Diagnostics Check
         run: task ci:spelling:lint
