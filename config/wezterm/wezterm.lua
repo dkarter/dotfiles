@@ -65,9 +65,6 @@ config.window_close_confirmation = 'NeverPrompt'
 -- disable tab bar (tabs are handled by tmux)
 config.enable_tab_bar = false
 
--- Set the super based on OS
-local os_mod
-
 -- most common triples:
 local oses = {
   ['x86_64-pc-windows-msvc'] = 'windows',
@@ -93,7 +90,7 @@ config.keys = {
   -- toggle opacity and blur
   {
     key = 'O',
-    mods = 'SUPER|SHIFT',
+    mods = (os == 'mac') and 'SUPER|SHIFT' or 'CTRL|SHIFT',
     action = events.toggle_opacity,
   },
 
@@ -176,7 +173,7 @@ config.keys = {
 for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
-    mods = 'SUPER',
+    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
     action = keys.tmux_prefix(i),
   })
 end
