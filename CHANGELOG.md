@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.5.1](https://github.com/dkarter/dotfiles/compare/v24.5.0...v24.5.1) (2025-06-20)
+
+
+### Bug Fixes
+
+* **wezterm:** update config for better linux/win support ([e17ec25](https://github.com/dkarter/dotfiles/commit/e17ec25ea740adf0091bd3caf3943d34e786f128))
+
 ## [24.5.0](https://github.com/dkarter/dotfiles/compare/v24.4.0...v24.5.0) (2025-06-18)
 
 
