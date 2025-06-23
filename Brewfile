@@ -27,6 +27,9 @@ cask '1password-cli'
 # macOS automation using Lua
 cask 'hammerspoon'
 
+# run open source LLM models locally
+cask 'ollama-app'
+
 # for Erlang
 brew 'wxwidgets'
 brew 'autoconf'
@@ -80,7 +83,7 @@ brew 'grep'
 brew 'btop'
 
 # docker desktop for containers
-cask 'docker'
+cask 'docker-desktop'
 
 # build tool
 brew 'make'
