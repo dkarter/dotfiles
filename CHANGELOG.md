@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.6.0](https://github.com/dkarter/dotfiles/compare/v24.5.0...v24.6.0) (2025-06-26)
+
+
+### Features
+
+* **leader-key:** update shortcuts and icons ([b8e5a41](https://github.com/dkarter/dotfiles/commit/b8e5a4111d8b798454edf7c13ea7664e64b91848))
+* **zsh:** add completions for graphite cli ([508187a](https://github.com/dkarter/dotfiles/commit/508187aa439b57e4f6d2e880b51edd023f97cd25))
+
+
+### Bug Fixes
+
+* **brew:** update package names ([5d35380](https://github.com/dkarter/dotfiles/commit/5d3538070d3f08202fa555680c6fc937f1acf781))
+* **lefthook:** update file syntax ([aa28cd5](https://github.com/dkarter/dotfiles/commit/aa28cd5bd2188aa5cec367ed078ac166baeeb09d))
+* **wezterm:** update config for better linux/win support ([e17ec25](https://github.com/dkarter/dotfiles/commit/e17ec25ea740adf0091bd3caf3943d34e786f128))
+
 ## [24.5.0](https://github.com/dkarter/dotfiles/compare/v24.4.0...v24.5.0) (2025-06-18)
 
 
