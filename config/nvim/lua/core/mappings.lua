@@ -130,8 +130,42 @@ tmap {
 }
 
 -- easily escape terminal
-tmap { '<esc><esc>', '<C-><C-n><esc><cr>' }
-tmap { '<C-o>', '<C-><C-n><esc><cr>' }
+tmap { '<esc><esc>', '<C-\\><C-n><esc><cr>' }
+tmap { '<C-o>', '<C-\\><C-n><esc><cr>' }
+
+-- resize windows with alt+hjkl in terminal mode (matches tmux behavior)
+tmap {
+  '<M-h>',
+  function()
+    require('core.tmux_resizer').resize_left()
+    vim.cmd('startinsert')
+  end,
+  silent
+}
+tmap {
+  '<M-j>',
+  function()
+    require('core.tmux_resizer').resize_down()
+    vim.cmd('startinsert')
+  end,
+  silent
+}
+tmap {
+  '<M-k>',
+  function()
+    require('core.tmux_resizer').resize_up()
+    vim.cmd('startinsert')
+  end,
+  silent
+}
+tmap {
+  '<M-l>',
+  function()
+    require('core.tmux_resizer').resize_right()
+    vim.cmd('startinsert')
+  end,
+  silent
+}
 
 -- zoom a vim pane, <C-w> = to re-balance
 nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>', { desc = 'Zoom window' } }
