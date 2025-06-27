@@ -28,6 +28,7 @@ return {
     spec = {
       {
         mode = { 'n', 'v' },
+        { '<leader>a', group = 'AI' },
         { '<leader>g', group = 'git' },
         { '<leader>f', group = 'find/file' },
         { '<leader>h', group = 'hunks', icon = '󰄷' },
