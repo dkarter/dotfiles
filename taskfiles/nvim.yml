@@ -2,6 +2,10 @@
 version: 3
 
 tasks:
+  format:
+    desc: Formats Lua files using stylua
+    cmd: stylua --allow-hidden --respect-ignores .
+
   commit:
     desc: Commits the lazy-lock.json file if changed
     silent: true
