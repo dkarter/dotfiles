@@ -3,7 +3,7 @@
 return {
   'zakharykaplan/nvim-retrail',
   event = { 'BufReadPost', 'BufNewFile' },
-  opt = {
+  opts = {
     -- Highlight group to use for trailing whitespace.
     hlgroup = 'IncSearch',
     -- Enabled filetypes.
