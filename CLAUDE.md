@@ -180,7 +180,7 @@ The CI pipeline (`task ci:run`) includes:
 
 ### Essential Tools (Auto-installed)
 
-- fd, ripgrep, fzf (search tools)
+- fd, ripgrep - use these to search for files instead of find and grep
 - bat (cat replacement)
 - git, lazygit (version control)
 - tmux (terminal multiplexer)
