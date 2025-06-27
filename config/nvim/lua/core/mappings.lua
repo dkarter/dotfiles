@@ -344,18 +344,22 @@ M.neogen_mappings = {
   { '<leader>ng', ":lua require('neogen').generate()<CR>", desc = 'Generate Annotation (NeoGen)' },
 }
 
----@type LazyKeysSpec[]
-M.gen_nvim_mappings = {
-  { '<leader>ai', ':Gen<CR>', mode = { 'n', 'v' }, desc = 'AI tools using Ollama' },
-  { '<leader>aa', ':Gen Ask<CR>', mode = { 'n', 'v' }, desc = '[A]I [A]sk' },
+M.claudecode_mappings = {
+  { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },
+  { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
+  { '<leader>ar', '<cmd>ClaudeCode --resume<cr>', desc = 'Resume Claude' },
+  { '<leader>aC', '<cmd>ClaudeCode --continue<cr>', desc = 'Continue Claude' },
+  { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
+  { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
   {
-    '<leader>am',
-    function()
-      require('gen').select_model()
-    end,
-    mode = { 'n', 'v' },
-    desc = 'Select [A]I [m]odel',
+    '<leader>as',
+    '<cmd>ClaudeCodeTreeAdd<cr>',
+    desc = 'Add file',
+    ft = { 'oil' },
   },
+  -- Diff management
+  { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff' },
+  { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
 }
 
 M.fugitive_mappings = function()

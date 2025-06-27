@@ -2,6 +2,8 @@
 ---@type LazySpec
 return {
   'olimorris/codecompanion.nvim',
+  -- evaluating claude code instead. May come back to this later.
+  enabled = false,
   cmd = {
     'CodeCompanion',
     'CodeCompanionCmd',
