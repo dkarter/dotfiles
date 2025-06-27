@@ -138,33 +138,33 @@ tmap {
   '<M-h>',
   function()
     require('core.tmux_resizer').resize_left()
-    vim.cmd('startinsert')
+    vim.cmd 'startinsert'
   end,
-  silent
+  silent,
 }
 tmap {
   '<M-j>',
   function()
     require('core.tmux_resizer').resize_down()
-    vim.cmd('startinsert')
+    vim.cmd 'startinsert'
   end,
-  silent
+  silent,
 }
 tmap {
   '<M-k>',
   function()
     require('core.tmux_resizer').resize_up()
-    vim.cmd('startinsert')
+    vim.cmd 'startinsert'
   end,
-  silent
+  silent,
 }
 tmap {
   '<M-l>',
   function()
     require('core.tmux_resizer').resize_right()
-    vim.cmd('startinsert')
+    vim.cmd 'startinsert'
   end,
-  silent
+  silent,
 }
 
 -- zoom a vim pane, <C-w> = to re-balance
