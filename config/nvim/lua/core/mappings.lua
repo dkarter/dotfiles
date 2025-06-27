@@ -104,13 +104,33 @@ vmap { '<', '<gv' }
 vmap { '*', '"xy/<C-R>x<CR>' }
 
 --  Navigate neovim + neovim terminal emulator + tmux with ctrl+direction
-tmap { '<C-h>', function() require('tmux').move_left() end }
-tmap { '<C-j>', function() require('tmux').move_bottom() end }
-tmap { '<C-k>', function() require('tmux').move_top() end }
-tmap { '<C-l>', function() require('tmux').move_right() end }
+tmap {
+  '<C-h>',
+  function()
+    require('tmux').move_left()
+  end,
+}
+tmap {
+  '<C-j>',
+  function()
+    require('tmux').move_bottom()
+  end,
+}
+tmap {
+  '<C-k>',
+  function()
+    require('tmux').move_top()
+  end,
+}
+tmap {
+  '<C-l>',
+  function()
+    require('tmux').move_right()
+  end,
+}
 
 -- easily escape terminal
-tmap { '<leader><esc>', '<C-><C-n><esc><cr>' }
+tmap { '<esc><esc>', '<C-><C-n><esc><cr>' }
 tmap { '<C-o>', '<C-><C-n><esc><cr>' }
 
 -- zoom a vim pane, <C-w> = to re-balance
