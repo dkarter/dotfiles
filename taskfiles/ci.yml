@@ -4,7 +4,7 @@ version: 3
 tasks:
   lua:format:check:
     desc: Runs a Lua format using stylua
-    cmd: stylua --allow-hidden --respect-ignores .
+    cmd: stylua --check --allow-hidden --respect-ignores .
 
   lua:lint:
     desc: Check for Lua diagnostic warnings and errors
