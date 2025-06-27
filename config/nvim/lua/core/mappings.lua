@@ -103,11 +103,11 @@ vmap { '<', '<gv' }
 -- Search for selected text
 vmap { '*', '"xy/<C-R>x<CR>' }
 
---  Navigate neovim + neovim terminal emulator with alt+direction
-tmap { '<C-h>', '<C-><C-n><C-w>h' }
-tmap { '<C-j>', '<C-><C-n><C-w>j' }
-tmap { '<C-k>', '<C-><C-n><C-w>k' }
-tmap { '<C-l>', '<C-><C-n><C-w>l' }
+--  Navigate neovim + neovim terminal emulator + tmux with ctrl+direction
+tmap { '<C-h>', function() require('tmux').move_left() end }
+tmap { '<C-j>', function() require('tmux').move_bottom() end }
+tmap { '<C-k>', function() require('tmux').move_top() end }
+tmap { '<C-l>', function() require('tmux').move_right() end }
 
 -- easily escape terminal
 tmap { '<leader><esc>', '<C-><C-n><esc><cr>' }
