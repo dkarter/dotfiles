@@ -3,6 +3,9 @@
 -- try prettierd, and fallback to prettier, if the first one works stop
 local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 
+-- try dprint first, then fallback to prettier
+local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
+
 -- Check if biome config exists in the current working directory or any parent directory
 -- Uses vim.fs.find for cross-platform compatibility and reasonable search limits
 local function has_biome_config()
@@ -53,11 +56,12 @@ return {
       svelte = js_formatters,
       astro = js_formatters,
       graphql = graphql_formatters,
-      markdown = prettier,
+      markdown = dprint_or_prettier,
+      html = dprint_or_prettier,
       go = { 'gofmt', 'goimports' },
       ruby = { 'rubyfmt' },
       sql = { 'pg_format' },
-      yaml = prettier,
+      yaml = dprint_or_prettier,
       -- mix format is taking long to format, so I bumped the timeout, I'm not
       -- sure why it's taking long though (is it large files, is it all files,
       -- is it the warm up time - maybe I can build a mix_format_d to prevent
