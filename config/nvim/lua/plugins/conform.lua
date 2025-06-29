@@ -70,6 +70,7 @@ return {
       elixir = { 'mix', timeout_ms = 2000 },
       sh = { 'shfmt' },
       terraform = { 'terraform_fmt' },
+      toml = { 'dprint', 'taplo', stop_after_first = true },
     },
     -- Set default options
     default_format_opts = {
