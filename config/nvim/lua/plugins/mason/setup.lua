@@ -49,6 +49,8 @@ M.setup = function()
     'commitlint',
     'css-lsp',
     'dockerfile-language-server',
+    -- super fast formatter for multiple languages
+    'dprint',
     'elm-language-server',
     'eslint-lsp',
     'gopls',
