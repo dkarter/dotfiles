@@ -2,6 +2,9 @@
 #
 version: 3
 
+vars:
+  TPM_DIR: ~/.local/share/tmux/plugins/tpm
+
 tasks:
   reload:
     desc: Reload Tmux Configuration
@@ -22,8 +25,8 @@ tasks:
 
       To force run with -f
     status:
-      - test -d ~/.local/share/tmux/plugins/tpm
-    cmd: git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
+      - test -d {{.TPM_DIR}}
+    cmd: git clone https://github.com/tmux-plugins/tpm {{.TPM_DIR}}
 
   plugins:install:
     desc: Install Tmux Plugins
@@ -32,7 +35,7 @@ tasks:
     cmds:
       - task: plugins:manager:install
       - task: reload
-      - cmd: ./config/tmux/plugins/tpm/bin/install_plugins
+      - cmd: '{{.TPM_DIR}}/bin/install_plugins'
         silent: true
       - task: reload
 
@@ -42,7 +45,7 @@ tasks:
       - '[ -z "$TMUX" ]'
     cmds:
       - task: reload
-      - cmd: ./config/tmux/plugins/tpm/bin/update_plugins all
+      - cmd: '{{.TPM_DIR}}/bin/update_plugins app'
         silent: true
 
   plugins:clean:
@@ -51,7 +54,7 @@ tasks:
       - '[ -z "$TMUX" ]'
     cmds:
       - task: reload
-      - cmd: ./config/tmux/plugins/tpm/bin/clean_plugins
+      - cmd: '{{.TPM_DIR}}/bin/clean_plugins'
         silent: true
 
   sync:
