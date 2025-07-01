@@ -66,8 +66,6 @@ M.setup = function()
     'lemminx',
     'lua-language-server',
     'powershell-editor-services',
-    -- Markdown
-    'prosemd-lsp',
     'python-lsp-server',
     'rust-analyzer',
     -- Ruby
