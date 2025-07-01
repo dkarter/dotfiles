@@ -1,11 +1,5 @@
 -- Available formatters: https://github.com/stevearc/conform.nvim#formatters
 
--- try prettierd, and fallback to prettier, if the first one works stop
-local prettier = { 'prettierd', 'prettier', stop_after_first = true }
-
--- try dprint first, then fallback to prettier
-local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
-
 -- Check if biome config exists in the current working directory or any parent directory
 -- Uses vim.fs.find for cross-platform compatibility and reasonable search limits
 local function has_biome_config()
@@ -20,17 +14,20 @@ end
 -- Use biome if config exists, otherwise use the provided fallback formatter
 local function get_biome_or_fallback(fallback)
   if has_biome_config() then
-    return { 'biome', 'biome-check', 'biome-organize-imports' }
+    return { 'biome', 'biome-check' }
   else
     return fallback or {}
   end
 end
 
+-- try dprint first, then fallback to prettier
+local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
+
 -- Compute formatters at setup time
-local js_formatters = get_biome_or_fallback(prettier)
-local json_formatters = get_biome_or_fallback(prettier)
-local css_formatters = get_biome_or_fallback(prettier)
-local graphql_formatters = get_biome_or_fallback(prettier)
+local js_formatters = get_biome_or_fallback(dprint_or_prettier)
+local json_formatters = get_biome_or_fallback(dprint_or_prettier)
+local css_formatters = get_biome_or_fallback(dprint_or_prettier)
+local graphql_formatters = get_biome_or_fallback(dprint_or_prettier)
 
 ---@type LazySpec
 return {
