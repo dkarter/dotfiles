@@ -157,6 +157,11 @@ tasks:
           done
         silent: true
 
+  fmt:
+    desc: Format all formattable files
+    aliases: [format]
+    cmd: dprint fmt
+
   print:done:
     desc: Prints done with a cool font and some nice gradients (animated)
     internal: true

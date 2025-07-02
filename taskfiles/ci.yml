@@ -2,9 +2,10 @@
 version: 3
 
 tasks:
-  lua:format:check:
-    desc: Runs a Lua format using stylua
-    cmd: stylua --check --allow-hidden --respect-ignores .
+  fmt:check:
+    desc: Checks formatting
+    aliases: [format:check]
+    cmd: dprint check
 
   lua:lint:
     desc: Check for Lua diagnostic warnings and errors
@@ -24,7 +25,7 @@ tasks:
   run:
     deps:
       - task: lua:lint
-      - task: lua:format:check
+      - task: fmt:check
       - task: shell:lint
       - task: yaml:lint
       - task: spelling:lint

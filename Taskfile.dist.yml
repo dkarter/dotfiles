@@ -78,3 +78,10 @@ tasks:
     platforms: [darwin]
     cmds:
       - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local
+
+  fmt:
+    desc: Formats all formattable files
+    summary: An alias to dot:fmt
+    aliases: [format]
+    cmds:
+      - task: dot:fmt
