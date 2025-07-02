@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.7.0](https://github.com/dkarter/dotfiles/compare/v24.6.0...v24.7.0) (2025-07-02)
+
+
+### Features
+
+* **nvim:** add &lt;esc&gt;<esc> tmap to enter normal mode ([7559ca5](https://github.com/dkarter/dotfiles/commit/7559ca5b020bca6bb00719ae5ad1be9452376712))
+* **nvim:** add claude code integration ([d2592c4](https://github.com/dkarter/dotfiles/commit/d2592c4364c50e7d6ece16e97bf8277209dfa47d))
+* **nvim:** add dprint to mason ([9c7fdb3](https://github.com/dkarter/dotfiles/commit/9c7fdb3bdcb0c72aaa9e837a628b31cfe4ee47ad))
+* **nvim:** add support for dprint formatter ([04a3055](https://github.com/dkarter/dotfiles/commit/04a3055189553f140b4fda874bce4a7fee68dffa))
+* **nvim:** add whichkey category name for AI mappings ([3d0d16f](https://github.com/dkarter/dotfiles/commit/3d0d16f8793838066dba87e2447c7b1fd6c161cf))
+* **nvim:** seamless pane resize for all buffer kinds ([cbbdbc0](https://github.com/dkarter/dotfiles/commit/cbbdbc0fb99f66103d006ae2737340f6b293d84b))
+* **nvim:** support toml formatting with dprint ([0ca5526](https://github.com/dkarter/dotfiles/commit/0ca5526f81a932c071ab7903501e62eab0b30893))
+* **task:** add nvim:format ([375a76d](https://github.com/dkarter/dotfiles/commit/375a76d74048e52bc8fab637353cab41389d359f))
+
+
+### Bug Fixes
+
+* fix tpm binary path ([#354](https://github.com/dkarter/dotfiles/issues/354)) ([1b25fbc](https://github.com/dkarter/dotfiles/commit/1b25fbcd67d7e09d4a29fbc2e7add918da06e76e))
+* **git:** remove git-lfs config ([#352](https://github.com/dkarter/dotfiles/issues/352)) ([c780861](https://github.com/dkarter/dotfiles/commit/c780861d90d1df48354542e294575403f55d4216))
+* **neovim:** correct mappings for seamless nav in term bufs ([a51a743](https://github.com/dkarter/dotfiles/commit/a51a74313e21caa5ac6637b7531abd795067abcd))
+* **nvim:** formatters ([bb802e1](https://github.com/dkarter/dotfiles/commit/bb802e1f23e0d7298e0023b2be8b7630d0a00b23))
+* **nvim:** increase default timeout for formatters ([c24d9b1](https://github.com/dkarter/dotfiles/commit/c24d9b1c1cb1a47145b8279ca30ec4e64afb0a01))
+* **nvim:** retrail config was incorrect ([0b3cdab](https://github.com/dkarter/dotfiles/commit/0b3cdab754477f2c206d3a2104ec912aac966653))
+* **task:** stylua was not checking formatting ([505b601](https://github.com/dkarter/dotfiles/commit/505b6019035a407a2396ba00c9a409bfbef18aa3))
+
 ## [24.6.0](https://github.com/dkarter/dotfiles/compare/v24.5.0...v24.6.0) (2025-06-26)
 
 
