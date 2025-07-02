@@ -14,15 +14,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.8.1
         version: 19.8.1
-      '@prettier/plugin-ruby':
-        specifier: ^4.0.0
-        version: 4.0.4(prettier@3.6.2)
       '@types/node':
         specifier: '22'
         version: 22.16.0
-      prettier:
-        specifier: ^3.0.0
-        version: 3.6.2
       typescript:
         specifier: ^5.3.3
         version: 5.8.3
@@ -105,11 +99,6 @@ packages:
   '@commitlint/types@19.8.1':
     resolution: {integrity: sha512-/yCrWGCoA1SVKOks25EGadP9Pnj0oAIHGpl2wH2M2Y46dPM2ueb8wyCVOD7O3WCTkaJ0IkKvzhl1JY7+uCT2Dw==}
     engines: {node: '>=v18'}
-
-  '@prettier/plugin-ruby@4.0.4':
-    resolution: {integrity: sha512-lCpvfS/dQU5WrwN3AQ5vR8qrvj2h5gE41X08NNzAAXvHdM4zwwGRcP2sHSxfu6n6No+ljWCVx95NvJPFTTjCTg==}
-    peerDependencies:
-      prettier: ^3.0.0
 
   '@types/conventional-commits-parser@5.0.1':
     resolution: {integrity: sha512-7uz5EHdzz2TqoMfV7ee61Egf5y6NkcO4FB/1iCCQnbeiI1F3xzv3vK5dBCXUCLQgGYS+mUeigK1iKQzvED+QnQ==}
@@ -346,11 +335,6 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
-    engines: {node: '>=14'}
-    hasBin: true
-
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -545,10 +529,6 @@ snapshots:
     dependencies:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.4.1
-
-  '@prettier/plugin-ruby@4.0.4(prettier@3.6.2)':
-    dependencies:
-      prettier: 3.6.2
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
@@ -753,8 +733,6 @@ snapshots:
   path-exists@5.0.0: {}
 
   picocolors@1.1.1: {}
-
-  prettier@3.6.2: {}
 
   require-directory@2.1.1: {}
 
