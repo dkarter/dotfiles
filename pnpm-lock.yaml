@@ -16,13 +16,13 @@ importers:
         version: 19.8.1
       '@prettier/plugin-ruby':
         specifier: ^4.0.0
-        version: 4.0.4(prettier@3.6.0)
+        version: 4.0.4(prettier@3.6.2)
       '@types/node':
         specifier: '22'
         version: 22.16.0
       prettier:
         specifier: ^3.0.0
-        version: 3.6.0
+        version: 3.6.2
       typescript:
         specifier: ^5.3.3
         version: 5.8.3
@@ -346,8 +346,8 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  prettier@3.6.0:
-    resolution: {integrity: sha512-ujSB9uXHJKzM/2GBuE0hBOUgC77CN3Bnpqa+g80bkv3T3A93wL/xlzDATHhnhkzifz/UE2SNOvmbTz5hSkDlHw==}
+  prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -546,9 +546,9 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.4.1
 
-  '@prettier/plugin-ruby@4.0.4(prettier@3.6.0)':
+  '@prettier/plugin-ruby@4.0.4(prettier@3.6.2)':
     dependencies:
-      prettier: 3.6.0
+      prettier: 3.6.2
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
@@ -754,7 +754,7 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  prettier@3.6.0: {}
+  prettier@3.6.2: {}
 
   require-directory@2.1.1: {}
 
