@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.8.0](https://github.com/dkarter/dotfiles/compare/v24.7.0...v24.8.0) (2025-07-05)
+
+
+### Features
+
+* **linear:** add linear cli ([a2a9ae5](https://github.com/dkarter/dotfiles/commit/a2a9ae516a0f98ec51578372479fc2df09658802))
+
+
+### Bug Fixes
+
+* **mise:** install taplo from ubi ([d2dab9e](https://github.com/dkarter/dotfiles/commit/d2dab9e0eb2bbc756484031f6bff3ca8d3f5768b))
+* **zsh:** elixir editors need to be opened in another window ([9f10951](https://github.com/dkarter/dotfiles/commit/9f10951e524f60e82e673ea8b8442a96a479716b))
+
 ## [24.7.0](https://github.com/dkarter/dotfiles/compare/v24.6.0...v24.7.0) (2025-07-02)
 
 
