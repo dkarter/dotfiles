@@ -10,7 +10,6 @@
 "cargo:kdash" = "latest"                                                     # kubernetes dashboard
 "cargo:lolcrab" = "latest"                                                   # like lolcat but in rust and with noise
 "cargo:rnr" = "latest"                                                       # A command-line tool to batch rename files and directories
-"cargo:sd" = "latest"                                                        # a modern alternative for sed with sensible defaults
 "cargo:wireman" = "latest"                                                   # GRPC TUI client
 "gem:tmuxinator" = "latest"                                                  # tmux session manager
 "npm:@commitlint/cli" = "latest"                                             # linter for checking that commits are following conventional commits
@@ -23,6 +22,7 @@
 "pipx:neovim-remote" = "latest"                                              # allow controlling neovim remotely
 "pipx:posting" = "latest"                                                    # like postman but a TUI
 "pipx:yq" = "latest"                                                         # like jq but for yaml files
+"ubi:chmln/sd" = "latest"                                                    # a modern alternative for sed with sensible defaults
 "ubi:dlvhdr/diffnav" = "latest"                                              # A git diff pager based on delta but with a file tree, à la GitHub.
 "ubi:joshmedeski/sesh" = "latest"                                            # tmux session manager
 "ubi:mr-karan/doggo" = "latest"                                              # DNS client (like dig but better)
@@ -67,11 +67,11 @@ starship = "latest"                                                          # c
 stylua = "latest"                                                            # formatter for lua
 task = "latest"                                                              # run tasks (modern make alternative)
 terraform = "latest"                                                         # infrastructure as code
+typos = "latest"                                                             # type checker alternative to codespell
 usage = "latest"                                                             # provides CLI completions for mise
 uv = "latest"                                                                # install python packages
 vivid = "latest"                                                             # generate color schemes for different tools
 zoxide = "latest"                                                            # a modern version of autojump
-typos = "latest"                                                             # type checker alternative to codespell
 
 [tools.node]
 version = "22"
