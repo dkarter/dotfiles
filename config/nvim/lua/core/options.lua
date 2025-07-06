@@ -83,7 +83,7 @@ opt.diffopt:append 'indent-heuristic'
 -- Set spellfile to location that is guaranteed to exist, can be symlinked to
 -- Dropbox or kept in Git
 opt.spellfile = string.format('%s/.vim-spell-en.utf-8.add', vim.env.HOME)
-local tmpdir = string.format('%s/.vim/tmp, ', vim.env.HOME)
+local tmpdir = string.format('%s/.cache/nvim/tmp, ', vim.env.HOME)
 vim.opt_global.spell = true
 
 -- set where swap file and undo/backup files are saved
