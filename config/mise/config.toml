@@ -1,12 +1,9 @@
 [tools]
 
 "aqua:ahmetb/kubectx/kubens" = "latest"                                      # switch between k8s namespaces
-"cargo:ast-grep" = "latest"                                                  # like grep but on code structure!
 "cargo:erdtree" = "latest"                                                   # file system tree visualizer with icons and git support
 "cargo:fastmod" = "latest"                                                   # fast regex code modifications
 "cargo:htmlq" = "latest"                                                     # Like jq, but for HTML
-"cargo:kdash" = "latest"                                                     # kubernetes dashboard
-"cargo:lolcrab" = "latest"                                                   # like lolcat but in rust and with noise
 "cargo:wireman" = "latest"                                                   # GRPC TUI client
 "gem:tmuxinator" = "latest"                                                  # tmux session manager
 "npm:@commitlint/cli" = "latest"                                             # linter for checking that commits are following conventional commits
@@ -19,10 +16,13 @@
 "pipx:neovim-remote" = "latest"                                              # allow controlling neovim remotely
 "pipx:posting" = "latest"                                                    # like postman but a TUI
 "pipx:yq" = "latest"                                                         # like jq but for yaml files
+"ubi:ast-grep/ast-grep" = "latest"                                           # a cli tool for searching and rewriting code using AST
 "ubi:chmln/sd" = "latest"                                                    # a modern alternative for sed with sensible defaults
 "ubi:dlvhdr/diffnav" = "latest"                                              # A git diff pager based on delta but with a file tree, à la GitHub.
 "ubi:ismaelgv/rnr" = "latest"                                                # batch rename files and directories
 "ubi:joshmedeski/sesh" = "latest"                                            # tmux session manager
+"ubi:kdash-rs/kdash" = "latest"                                              # kubernetes dashboard in the terminal
+"ubi:mazznoer/lolcrab" = "latest"                                            # like lolcat, but written in Rust and with more features
 "ubi:mr-karan/doggo" = "latest"                                              # DNS client (like dig but better)
 "ubi:orf/gping" = "latest"                                                   # graph ping
 "ubi:sibprogrammer/xq" = "latest"                                            # XML and HTML beautifier and content extractor
