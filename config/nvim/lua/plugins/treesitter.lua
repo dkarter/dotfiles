@@ -3,6 +3,9 @@
 ---@diagnostic disable: missing-fields
 return {
   {
+    -- this is my own fork that adds support for lazy loading
+    -- it will not be necessary once the major version of nvim-treesitter is
+    -- released
     'dkarter/nvim-treesitter',
     build = ':TSUpdate',
     dependencies = {},
@@ -151,6 +154,9 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    -- locked to master for now to avoid breaking changes
+    -- see https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/772
+    branch = 'master',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       ---@type TSConfig
