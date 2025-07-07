@@ -423,10 +423,13 @@ M.fugitive_mappings = function()
 
   --  Revert file
   nmap { '<Leader>gR', ':Gread<CR>', { silent = true, desc = '[G]it [R]ead (reverts file)' } }
-
-  -- Git blame
-  nmap { '<leader>gb', ':Git blame<CR>', { silent = true, desc = '[G]it [B]lame' } }
 end
+
+---@type LazyKeysSpec[]
+M.blame_mappings = {
+  -- Git blame
+  { '<leader>gb', '<cmd>BlameToggle<CR>', silent = true, desc = '[G]it [B]lame' },
+}
 
 ---@type LazyKeysSpec[]
 M.diffview_mappings = {
