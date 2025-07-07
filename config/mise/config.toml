@@ -3,13 +3,10 @@
 "aqua:ahmetb/kubectx/kubens" = "latest"                                      # switch between k8s namespaces
 "cargo:ast-grep" = "latest"                                                  # like grep but on code structure!
 "cargo:erdtree" = "latest"                                                   # file system tree visualizer with icons and git support
-"cargo:eza" = "latest"                                                       # ls replacement with icons and git support + more
 "cargo:fastmod" = "latest"                                                   # fast regex code modifications
-"cargo:gping" = "latest"                                                     # graph ping
 "cargo:htmlq" = "latest"                                                     # Like jq, but for HTML
 "cargo:kdash" = "latest"                                                     # kubernetes dashboard
 "cargo:lolcrab" = "latest"                                                   # like lolcat but in rust and with noise
-"cargo:rnr" = "latest"                                                       # A command-line tool to batch rename files and directories
 "cargo:wireman" = "latest"                                                   # GRPC TUI client
 "gem:tmuxinator" = "latest"                                                  # tmux session manager
 "npm:@commitlint/cli" = "latest"                                             # linter for checking that commits are following conventional commits
@@ -24,8 +21,10 @@
 "pipx:yq" = "latest"                                                         # like jq but for yaml files
 "ubi:chmln/sd" = "latest"                                                    # a modern alternative for sed with sensible defaults
 "ubi:dlvhdr/diffnav" = "latest"                                              # A git diff pager based on delta but with a file tree, à la GitHub.
+"ubi:ismaelgv/rnr" = "latest"                                                # batch rename files and directories
 "ubi:joshmedeski/sesh" = "latest"                                            # tmux session manager
 "ubi:mr-karan/doggo" = "latest"                                              # DNS client (like dig but better)
+"ubi:orf/gping" = "latest"                                                   # graph ping
 "ubi:sibprogrammer/xq" = "latest"                                            # XML and HTML beautifier and content extractor
 "ubi:tidewave-ai/mcp_proxy_rust" = { version = "latest", exe = "mcp-proxy" } # Elixir MCP proxy
 bat = "latest"                                                               # modern `cat` with syntax highlighting
@@ -52,6 +51,7 @@ kubectl = "latest"                                                           # k
 kubectx = "latest"                                                           # switch between k8s clusters and namespaces quickly
 lazydocker = "latest"                                                        # docker TUI
 lazygit = "latest"                                                           # Git TUI
+lsd = "latest"                                                               # ls with icons and colors, like `exa` but with more features
 lua = "5"                                                                    # Lua programming language
 lua-language-server = "latest"                                               # Lua Language Server
 marp-cli = "latest"                                                          # markdown presentation tool

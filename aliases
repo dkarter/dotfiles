@@ -13,8 +13,8 @@ alias llg="ll --git"
 # sorts the list by created date asc, so that the latest file is closer to the
 # prompt
 alias llc="ll --sort=created"
-# use eza instead of system ls
-alias ls="eza -gahF --icons --group-directories-first"
+# use lsd instead of system ls
+alias ls="lsd -gahF --group-directories-first"
 alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias rm='trash'
@@ -259,7 +259,7 @@ command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
 # parse + highlight help for cli tools
 # usage: help <command>
 # example: help git commit
-# 
+#
 # You can also use the alias h
 # example: h git commit
 help() {
