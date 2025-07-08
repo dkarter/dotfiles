@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.8.0](https://github.com/dkarter/dotfiles/compare/v24.7.0...v24.8.0) (2025-07-08)
+
+
+### Features
+
+* **linear:** add linear cli ([a2a9ae5](https://github.com/dkarter/dotfiles/commit/a2a9ae516a0f98ec51578372479fc2df09658802))
+* **mise,comp:** add argocd cli ([41f68b2](https://github.com/dkarter/dotfiles/commit/41f68b2fe571212b99d174eeac481af97fdce0bb))
+
+
+### Bug Fixes
+
+* **mise:** install taplo from ubi ([d2dab9e](https://github.com/dkarter/dotfiles/commit/d2dab9e0eb2bbc756484031f6bff3ca8d3f5768b))
+* **nvim:** pin plugins to avoid breaking changes ([1bfb4d1](https://github.com/dkarter/dotfiles/commit/1bfb4d1286e362781cd910518279a1e38b87acb1))
+* **nvim:** remove commit pinning for gx ([add5a03](https://github.com/dkarter/dotfiles/commit/add5a0380a6e5dfb386f20403c8e8ce2aa0cf331))
+* **nvim:** use a more sensible tmp dir ([a3a293c](https://github.com/dkarter/dotfiles/commit/a3a293c28ddbd761527addfaf5a590d34857f952))
+* **zsh:** elixir editors need to be opened in another window ([9f10951](https://github.com/dkarter/dotfiles/commit/9f10951e524f60e82e673ea8b8442a96a479716b))
+
 ## [24.7.0](https://github.com/dkarter/dotfiles/compare/v24.6.0...v24.7.0) (2025-07-02)
 
 
