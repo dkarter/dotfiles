@@ -3,7 +3,7 @@ pre-commit:
   parallel: true
   jobs:
     - name: Check Secret Leaks
-      run: gitleaks dir
+      run: gitleaks git --pre-commit --redact --staged --verbose
 
 commit-msg:
   jobs:
