@@ -157,6 +157,10 @@ tasks:
           done
         silent: true
 
+  leaks:
+    desc: Checks for secret leaks across the history of this project
+    cmd: gitleaks git -v --redact -b gitleaks-report.json
+
   fmt:
     desc: Format all formattable files
     aliases: [format]
