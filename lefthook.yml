@@ -1,4 +1,10 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+pre-commit:
+  parallel: true
+  jobs:
+    - name: Check Secret Leaks
+      run: gitleaks dir
+
 commit-msg:
   jobs:
     - name: conventional commits
