@@ -32,4 +32,8 @@ node_modules
 # used to store cache like checksums and timestamps used by Taskfile
 .task/
 
+# ignore local settings files
+.claude/setting.local.json
+CLAUDE.local.md
+
 .linear.toml
