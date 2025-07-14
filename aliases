@@ -42,6 +42,85 @@ alias chkint='pingf kagi.com'
 # just like l but with git status
 alias lg="lazygit"
 
+# mise
+# =================================
+#
+
+# mu - mise use
+#
+# Installs and saves a tool to the local mise project's mise.toml
+#
+# Usage:
+#
+#   mu <tool> [<args>]
+#
+#   or
+#
+#   mu # this will use fzf to select a tool from mise registry
+mu() {
+  if [[ -z "$1" ]]; then
+    mise use "$(mise registry | awk '{ print $1 }' | fzf --prompt='Select tool to use locally: ' --border=rounded --margin 25%)"
+  else
+    mise use "$@"
+  fi
+}
+
+# muu - mise unuse
+#
+# Removes a tool from the local mise project's mise.toml
+#
+# Usage:
+#  muu <tool> [<args>]
+#
+#  or
+#
+#  muu # this will use fzf to select a tool from mise list
+muu() {
+  if [[ -z "$1" ]]; then
+    mise unuse "$(mise list --local | awk '{ print $1 }' | fzf --prompt='Select tool to remove: ' --border=rounded --margin 25%)"
+  else
+    mise unuse "$@"
+  fi
+}
+
+# mug - mise use --global
+#
+# Installs and saves a tool to the global mise configuration
+#
+# Usage:
+#
+#  mug <tool> [<args>]
+#
+#  or
+#
+#  mug # this will use fzf to select a tool from mise registry
+mug() {
+  if [[ -z "$1" ]]; then
+    mise use -g "$(mise registry | awk '{ print $1 }' | fzf --prompt='Select tool to use globally: ' --border=rounded --margin 25%)"
+  else
+    mise use -g "$@"
+  fi
+}
+
+# muug - mise unuse --global
+#
+# Removes a tool from the global mise configuration
+#
+# Usage:
+#
+#  muug <tool> [<args>]
+#
+#  or
+#
+#  muug # this will use fzf to select a tool from mise list
+muug() {
+  if [[ -z "$1" ]]; then
+    mise unuse -g "$(mise list --global | awk '{ print $1 }' | fzf --prompt='Select tool to remove globally: ' --border=rounded --margin 25%)"
+  else
+    mise unuse -g "$@"
+  fi
+}
+
 # postgres
 # --------
 #
