@@ -1,9 +1,9 @@
 -- Available formatters: https://github.com/stevearc/conform.nvim#formatters
 
--- Check if biome config exists in the current working directory or any parent directory
+-- Check if config files exists in the current working directory or any parent directory
 -- Uses vim.fs.find for cross-platform compatibility and reasonable search limits
-local function has_biome_config()
-  local config_files = vim.fs.find({ 'biome.json', 'biome.jsonc' }, {
+local function has_config(files)
+  local config_files = vim.fs.find(files, {
     upward = true,
     type = 'file',
     stop = vim.fs.dirname(vim.fs.find({ '.git', 'package.json' }, { upward = true })[1]),
@@ -11,17 +11,25 @@ local function has_biome_config()
   return #config_files > 0
 end
 
--- Use biome if config exists, otherwise use the provided fallback formatter
-local function get_biome_or_fallback(fallback)
-  if has_biome_config() then
-    return { 'biome', 'biome-check' }
+local function get_with_fallback(root_files, formatters, fallback)
+  if has_config(root_files) then
+    return formatters
   else
     return fallback or {}
   end
 end
 
+-- Use biome if config exists, otherwise use the provided fallback formatter
+local function get_biome_or_fallback(fallback)
+  return get_with_fallback({ 'biome.json', 'biome.jsonc' }, { 'biome', 'biome-check' }, fallback)
+end
+
 -- try dprint first, then fallback to prettier
-local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
+local dprint_or_prettier = get_with_fallback(
+  { 'dprint.json' },
+  { 'dprint' },
+  { 'prettierd', 'prettier', stop_after_first = true }
+)
 
 -- Compute formatters at setup time
 local js_formatters = get_biome_or_fallback(dprint_or_prettier)
