@@ -25,10 +25,19 @@ tasks:
   run:
     deps:
       - task: lua:lint
+        silent: true
+
       - task: fmt:check
+        silent: true
+
       - task: shell:lint
+        silent: true
+
       - task: yaml:lint
+        silent: true
+
       - task: spelling:lint
+        silent: true
     cmds:
       - cmd: figlet done | lolcrab
         silent: true
