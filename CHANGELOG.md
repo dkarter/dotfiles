@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [24.8.0](https://github.com/dkarter/dotfiles/compare/v24.7.0...v24.8.0) (2025-07-19)
+
+
+### Features
+
+* add sound effects ([9ac403d](https://github.com/dkarter/dotfiles/commit/9ac403d2ad812d10ceb3ff6a43d72ff9cea31da8))
+* **lefthook,mise:** add secret leak detection pre-commit hook ([1f1cf55](https://github.com/dkarter/dotfiles/commit/1f1cf55e55aa394d9ee508d27382cfdfe0b7e703))
+* **lefthook:** add pre-commit format check ([9e6d447](https://github.com/dkarter/dotfiles/commit/9e6d44780d662a816e6f8ffbd8931b87ea22037c))
+* **linear:** add linear cli ([a2a9ae5](https://github.com/dkarter/dotfiles/commit/a2a9ae516a0f98ec51578372479fc2df09658802))
+* **mise,comp:** add argocd cli ([41f68b2](https://github.com/dkarter/dotfiles/commit/41f68b2fe571212b99d174eeac481af97fdce0bb))
+* **mise,task:** add gitleaks globally + comps ([ff5a199](https://github.com/dkarter/dotfiles/commit/ff5a199b3e1bb29636eb2b19312a332f89d7f6d2))
+* **mise:** add bun globally ([efd642c](https://github.com/dkarter/dotfiles/commit/efd642ca5fb87df482a059c4d0fd02c9f29dba69))
+* **mise:** add pnpm globally ([598b6d8](https://github.com/dkarter/dotfiles/commit/598b6d8d8ee5c7ca7c6f92915c971d30f94543cb))
+* **task:** add historical check for leaks ([600d344](https://github.com/dkarter/dotfiles/commit/600d344a584654510fcbcc9cee86c66832450e8b))
+* **zsh:** add aliases for ai tooling ([e95f92c](https://github.com/dkarter/dotfiles/commit/e95f92cb368ec81185ec7fc23d546d545d51ca17))
+* **zsh:** add aliases for mise ([8942579](https://github.com/dkarter/dotfiles/commit/89425798958af954dd8142ef954f659ae47d575b))
+* **zsh:** add completions for usage-cli ([5e2c17e](https://github.com/dkarter/dotfiles/commit/5e2c17e1bb838a4bc3e2ee5379a7de6a3944dc74))
+
+
+### Bug Fixes
+
+* **git:** allow committing claude settings ([90f4c3e](https://github.com/dkarter/dotfiles/commit/90f4c3ebc4adc41601f17bab97375ec82a51cf78))
+* **git:** ignore local configs for claude ([8de8e5c](https://github.com/dkarter/dotfiles/commit/8de8e5cefb0f9c3a58125dbc1c461dd45c0ecf91))
+* **git:** incorrect file name ([6159c71](https://github.com/dkarter/dotfiles/commit/6159c7104bda47fe2f388691f10b0a9882b5de7b))
+* **lefthook:** use better command for gitleaks ([4fad28c](https://github.com/dkarter/dotfiles/commit/4fad28c34e6bdae16cc350efbabe68414a3e4b25))
+* **mise:** install taplo from ubi ([d2dab9e](https://github.com/dkarter/dotfiles/commit/d2dab9e0eb2bbc756484031f6bff3ca8d3f5768b))
+* **nvim:** improve dprint with prettier fallback config ([ce69711](https://github.com/dkarter/dotfiles/commit/ce6971180de5dbce05aa1266308bf3575201dbb9))
+* **nvim:** pin plugins to avoid breaking changes ([1bfb4d1](https://github.com/dkarter/dotfiles/commit/1bfb4d1286e362781cd910518279a1e38b87acb1))
+* **nvim:** remove commit pinning for gx ([add5a03](https://github.com/dkarter/dotfiles/commit/add5a0380a6e5dfb386f20403c8e8ce2aa0cf331))
+* **nvim:** use a more sensible tmp dir ([a3a293c](https://github.com/dkarter/dotfiles/commit/a3a293c28ddbd761527addfaf5a590d34857f952))
+* **uv:** tell uv not to use its own python ([4efb829](https://github.com/dkarter/dotfiles/commit/4efb829c1d5c4e9506ee67250450aac63b1a7a31))
+* **zsh:** add bun global install path to PATH env ([538e895](https://github.com/dkarter/dotfiles/commit/538e895dc48b7125f54664d8f723013a25dd9f93))
+* **zsh:** elixir editors need to be opened in another window ([9f10951](https://github.com/dkarter/dotfiles/commit/9f10951e524f60e82e673ea8b8442a96a479716b))
+* **zsh:** unalias zi for zinit to use zi for zoxide ([6e1f9de](https://github.com/dkarter/dotfiles/commit/6e1f9debcac1278e136bfc042002224640e88ac8))
+
 ## [24.7.0](https://github.com/dkarter/dotfiles/compare/v24.6.0...v24.7.0) (2025-07-02)
 
 
