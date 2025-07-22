@@ -58,6 +58,15 @@ local picker = function(fun, opts)
   end
 end
 
+---Convenience shorthand for calling tmux seamless navigator plugin
+---@param fun string the function to call
+---@return function
+local tmux = function(fun)
+  return function()
+    require('tmux')[fun]()
+  end
+end
+
 local silent = { silent = true }
 
 -- a more useful gf
@@ -103,31 +112,17 @@ vmap { '<', '<gv' }
 -- Search for selected text
 vmap { '*', '"xy/<C-R>x<CR>' }
 
+--  Navigate neovim + tmux with ctrl+direction
+vmap { '<C-h>', tmux 'move_left', { desc = 'Move to left pane' } }
+vmap { '<C-j>', tmux 'move_bottom', { desc = 'Move to bottom pane' } }
+vmap { '<C-k>', tmux 'move_top', { desc = 'Move to top pane' } }
+vmap { '<C-l>', tmux 'move_right', { desc = 'Move to right pane' } }
+
 --  Navigate neovim + neovim terminal emulator + tmux with ctrl+direction
-tmap {
-  '<C-h>',
-  function()
-    require('tmux').move_left()
-  end,
-}
-tmap {
-  '<C-j>',
-  function()
-    require('tmux').move_bottom()
-  end,
-}
-tmap {
-  '<C-k>',
-  function()
-    require('tmux').move_top()
-  end,
-}
-tmap {
-  '<C-l>',
-  function()
-    require('tmux').move_right()
-  end,
-}
+tmap { '<C-h>', tmux 'move_left' }
+tmap { '<C-j>', tmux 'move_bottom' }
+tmap { '<C-k>', tmux 'move_top' }
+tmap { '<C-l>', tmux 'move_right' }
 
 -- easily escape terminal
 tmap { '<esc><esc>', '<C-\\><C-n><esc><cr>' }
@@ -199,8 +194,8 @@ nmap { '<leader>sp', ':split <C-R>=expand("%:p:h") . "/" <CR>', { desc = '[SP]li
 nmap { '<leader>vs', ':vsplit <C-R>=expand("%:p:h") . "/" <CR>', { desc = '[V]ertical [S]plit file' } }
 
 -- move lines up and down in visual mode
-vmap { '<c-k>', ":move '<-2<CR>gv=gv", { desc = 'Move selection up' } }
-vmap { '<c-j>', ":move '>+1<CR>gv=gv", { desc = 'Move selection down' } }
+vmap { '<S-Up>', ":move '<-2<CR>gv=gv", { desc = 'Move selection up' } }
+vmap { '<S-Down>', ":move '>+1<CR>gv=gv", { desc = 'Move selection down' } }
 
 -- source current file (useful when iterating on config)
 nmap {
