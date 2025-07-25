@@ -3,7 +3,7 @@ pre-commit:
   parallel: true
   jobs:
     - name: Check Secret Leaks
-      run: gitleaks git --pre-commit --redact --staged --verbose
+      run: gitleaks git --pre-commit --redact --staged --verbose --no-banner
 
     - name: Check formatting
       run: task ci:format:check
