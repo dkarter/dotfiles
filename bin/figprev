@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+# Script to preview figlet fonts with lolcrab colorization
+# Usage: figprev [options] [text]
+# Options:
+#   -f, --font FONT         Preview specific font only
+#   -n, --no-interactive    Disable interactive mode (no pauses)
+# Default text: "Hello"
+
+set -euo pipefail
+
+# Default values
+DEFAULT_TEXT="Hello"
+INTERACTIVE=true
+TEXT=""
+SPECIFIC_FONT=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  -f | --font)
+    SPECIFIC_FONT="$2"
+    shift 2
+    ;;
+  -n | --no-interactive)
+    INTERACTIVE=false
+    shift
+    ;;
+  -h | --help)
+    echo "Usage: figprev [options] [text]"
+    echo "Options:"
+    echo "  -f, --font FONT        Preview specific font only"
+    echo "  -n, --no-interactive   Disable interactive mode (no pauses)"
+    echo "  -h, --help            Show this help message"
+    echo "Default text: '$DEFAULT_TEXT'"
+    exit 0
+    ;;
+  *)
+    TEXT="$1"
+    shift
+    ;;
+  esac
+done
+
+# Use default text if none provided
+TEXT="${TEXT:-$DEFAULT_TEXT}"
+
+# Get figlet font directory
+FONT_DIR=$(figlet -I2)
+
+# Check if lolcrab is available
+if ! command -v lolcrab &>/dev/null; then
+  echo "Error: lolcrab is not installed. Please install it first."
+  echo "You can install it with: cargo install lolcrab"
+  exit 1
+fi
+
+# Check if figlet is available
+if ! command -v figlet &>/dev/null; then
+  echo "Error: figlet is not installed. Please install it first."
+  echo "You can install it with: brew install figlet"
+  exit 1
+fi
+
+# Check if bat is available (for non-interactive mode)
+if [[ "$INTERACTIVE" == false ]] && ! command -v bat &>/dev/null; then
+  echo "Error: bat is not installed. Please install it first."
+  echo "You can install it with: brew install bat"
+  exit 1
+fi
+
+# Function to preview a specific font
+preview_font() {
+  local font_name="$1"
+
+  echo
+  echo "Font: $font_name"
+  echo "----------------------------------------"
+
+  # Generate figlet output and pipe to lolcrab
+  if figlet -f "$font_name" "$TEXT" | lolcrab -g warm; then
+    echo
+    echo "----------------------------------------"
+
+    # Wait for user input to continue (only in interactive mode)
+    if [[ "$INTERACTIVE" == true ]]; then
+      read -r -p "Press Enter for next font (or Ctrl+C to exit)..."
+    fi
+  else
+    echo "Error: Failed to render font '$font_name'"
+    return 1
+  fi
+}
+
+# Function to run the preview logic
+run_preview() {
+  # Check if specific font was requested
+  if [[ -n "$SPECIFIC_FONT" ]]; then
+    echo "Previewing font '$SPECIFIC_FONT' with text: '$TEXT'"
+    echo "=========================================="
+
+    # Check if the font file exists
+    if [[ -f "$FONT_DIR/$SPECIFIC_FONT.flf" ]]; then
+      preview_font "$SPECIFIC_FONT"
+    else
+      echo "Error: Font '$SPECIFIC_FONT' not found."
+      echo "Available fonts:"
+      for font_file in "$FONT_DIR"/*.flf; do
+        basename "$font_file" .flf
+      done | sort | head -10
+      echo "... (use 'figlet -l' to see all fonts)"
+      exit 1
+    fi
+  else
+    echo "Previewing figlet fonts with text: '$TEXT'"
+    if [[ "$INTERACTIVE" == true ]]; then
+      echo "Press Enter to continue to next font, or Ctrl+C to exit"
+    fi
+    echo "=========================================="
+
+    # Find all .flf font files and sort them
+    for font_file in "$FONT_DIR"/*.flf; do
+      # Extract font name (remove path and .flf extension)
+      font_name=$(basename "$font_file" .flf)
+      preview_font "$font_name"
+    done
+
+    echo
+    echo "All fonts previewed!"
+  fi
+}
+
+# Run preview with or without bat pager
+if [[ "$INTERACTIVE" == false ]]; then
+  run_preview | bat -p
+else
+  run_preview
+fi
