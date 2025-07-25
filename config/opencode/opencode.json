@@ -23,5 +23,14 @@
   "keybinds": {
     "input_submit": "enter",
     "input_newline": "shift+enter"
+  },
+  "experimental": {
+    "hook": {
+      "session_completed": [
+        {
+          "command": ["pplay", "happy-chime-notice.mp3"]
+        }
+      ]
+    }
   }
 }

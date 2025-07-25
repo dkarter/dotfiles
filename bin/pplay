@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# plays a sound file from the command line
+# supports relative paths ;)
+# Usage: play <file>
+#
+
+# This function enables bash completion for audio files
+_play_complete() {
+  local cur
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+
+  # Complete with audio file extensions
+  mapfile -t COMPREPLY < <(compgen -f -X '!*.@(mp3|wav|m4a|aac|ogg|flac)' -- "${cur}")
+
+  # Add directories for navigation
+  compopt -o dirnames
+
+  return 0
+}
+
+# Register the completion function
+if [[ -n $BASH_VERSION ]]; then
+  complete -F _play_complete play
+fi
+
+if [ $# -eq 0 ]; then
+  echo "Usage: play <file>"
+  exit 1
+fi
+
+file="$1"
+
+# Check if the file doesn't have a path (just a filename)
+if [[ "$file" != */* ]]; then
+  # Prefix with sounds directory
+  file="$HOME/dotfiles/sounds/$file"
+# If not an absolute path, convert relative path to absolute
+elif [[ ! "$file" = /* ]]; then
+  file="$(pwd)/$file"
+fi
+
+# Check if file exists
+if [ ! -f "$file" ]; then
+  echo "Error: File not found: $file"
+  exit 1
+fi
+
+# Determine which player to use based on platform
+if [[ "$(uname)" == "Darwin" ]]; then
+  # macOS
+  afplay "$file"
+elif [[ -f /etc/debian_version ]] || command -v apt-get &>/dev/null; then
+  # Debian-based system
+  # Try multiple players in order of preference
+  if command -v mpv &>/dev/null; then
+    mpv --no-video --no-terminal "$file"
+  elif command -v mplayer &>/dev/null; then
+    mplayer -really-quiet "$file"
+  elif command -v aplay &>/dev/null; then
+    aplay "$file"
+  elif command -v paplay &>/dev/null; then
+    paplay "$file"
+  else
+    echo "Error: No suitable audio player found. Please install mpv, mplayer, aplay, or paplay."
+    exit 1
+  fi
+else
+  echo "Error: Unsupported platform. Only macOS and Debian-based systems are supported."
+  exit 1
+fi
