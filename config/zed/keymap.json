@@ -1,0 +1,39 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-x": "terminal_panel::ToggleFocus",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-s": "workspace::ToggleLeftDock"
+      // need to figure out how to make these work so that they can navigate to both panes and sidebars like the chat and file tree/terminal panes etc
+      // "ctrl-h": "workspace::ActivatePaneLeft",
+      // "ctrl-l": "workspace::ActivatePaneRight",
+      // "ctrl-k": "workspace::ActivatePaneUp",
+      // "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "[ e": "editor::GoToPreviousDiagnostic",
+      "] e": "editor::GoToDiagnostic",
+      "space n t": "workspace::ToggleLeftDock",
+      "space t n": ["task::Spawn", { "task_name": "test-nearest" }],
+      "space t f": ["task::Spawn", { "task_name": "test-file" }],
+      "space f f": "file_finder::Toggle",
+      "space f p": "command_palette::Toggle"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown"
+    }
+  }
+]
