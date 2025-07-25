@@ -393,6 +393,17 @@ M.neogen_mappings = {
   { '<leader>ng', ":lua require('neogen').generate()<CR>", desc = 'Generate Annotation (NeoGen)' },
 }
 
+---@type LazyKeysSpec[]
+M.opencode_mappings = {
+  { '<leader>oc', '<cmd>OpencodeSend<cr>', desc = 'Send prompt to opencode' },
+  { '<leader>oc', '<cmd>OpencodeSend<cr>', mode = 'v', desc = 'Send prompt to opencode' },
+  -- spellchecker:off
+  { '<leader>ot', '<cmd>OpencodeSwitchMode<cr>', desc = 'Toggle opencode mode' },
+  -- spellchecker:on
+  { '<leader>op', '<cmd>OpencodePrompt<cr>', desc = 'Open opencode persistent prompt' },
+}
+
+---@type LazyKeysSpec[]
 M.claudecode_mappings = {
   { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },
   { '<leader>af', '<cmd>ClaudeCodeFocus<cr>', desc = 'Focus Claude' },
