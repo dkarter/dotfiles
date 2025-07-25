@@ -36,11 +36,6 @@ includes:
     dir: ../
     internal: true
 
-  node:
-    taskfile: ./node.yml
-    dir: ../
-    internal: true
-
   shell:
     taskfile: ./shell.yml
     internal: true
@@ -75,7 +70,6 @@ tasks:
       - task: mise:tools:install
       - cmd: lefthook install
       - task: fonts:sync
-      - task: node:pnpm:install
       - task: brew:sync
       - task: bat:sync
       - task: tmux:plugins:install
@@ -96,7 +90,6 @@ tasks:
       - task: symlink
       - task: mise:sync
       - cmd: lefthook install
-      - task: node:sync
       - task: brew:sync
       - task: bat:sync
       - task: tmux:sync
