@@ -11,6 +11,7 @@ return {
       { 'row', 'column' },
       { 'first', 'second', 'third', 'fourth', 'fifth' },
       { 'yes', 'no' },
+      { 'on', 'off' },
     }
   end,
 }
