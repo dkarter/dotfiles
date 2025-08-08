@@ -44,4 +44,5 @@ config/zed/prompts
 config/zed/.tmp*
 config/zed/*_backup.*
 
-
+# always ignore EtherSync dir - it may contain sensitive data
+.ethersync/
