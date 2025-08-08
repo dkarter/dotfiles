@@ -9,3 +9,8 @@ config/vifm/vifmimgpdfpage
 
 # ignore tmuxinator files since they are workstation specific
 config/tmuxinator/*.yml
+
+# ignore Claude cache files
+config/claude/statsig/
+config/claude/projects/
+config/claude/todos/
