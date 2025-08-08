@@ -4,6 +4,20 @@ return {
   'tpope/vim-projectionist',
   config = function()
     local config = {
+      -- neovim
+      ['config/nvim/init.lua'] = {
+        -- neovim plugins
+        ['config/nvim/lua/plugins/*.lua'] = {
+          type = 'plugin',
+          template = {
+            '-- <description>',
+            '---@type LazySpec',
+            'return {',
+            "  'author/plugin',",
+            '}',
+          },
+        },
+      },
       -- Rust
       ['Cargo.toml'] = {
         ['*.rs'] = {
