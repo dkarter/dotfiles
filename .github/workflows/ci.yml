@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Runtimes w/ MISE (and cache)
         uses: jdx/mise-action@df7d3c87bfdd3fe229201cd1a01b21ad31d48b95
@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@df7d3c87bfdd3fe229201cd1a01b21ad31d48b95
@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@df7d3c87bfdd3fe229201cd1a01b21ad31d48b95
@@ -70,7 +70,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@df7d3c87bfdd3fe229201cd1a01b21ad31d48b95
@@ -89,7 +89,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@df7d3c87bfdd3fe229201cd1a01b21ad31d48b95
@@ -106,7 +106,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@df7d3c87bfdd3fe229201cd1a01b21ad31d48b95
