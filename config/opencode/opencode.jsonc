@@ -1,15 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama (local)",
-      "options": { "baseURL": "http://localhost:11434/v1" },
-      "models": {
-        "gpt-oss": { "name": "gpt-oss:20b" }
-      }
-    }
-  },
   "mcp": {
     "playwright": {
       "enabled": true,
@@ -33,6 +23,22 @@
   "keybinds": {
     "input_submit": "enter",
     "input_newline": "shift+enter"
+  },
+  "permission": {
+    "webfetch": "allow",
+    "edit": "ask",
+    "bash": {
+      "git status": "allow",
+      "git diff": "allow",
+      "npm run build": "allow",
+      "ls": "allow",
+      "pwd": "allow",
+      "kubectl get secrets": "deny",
+      "kubectl get secret": "deny",
+      "kubectl get *": "allow",
+      "rg *": "allow",
+      "*": "ask"
+    }
   },
   "experimental": {
     "hook": {
