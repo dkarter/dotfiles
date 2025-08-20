@@ -87,6 +87,12 @@ return {
         },
       },
       completion = {
+        list = {
+          selection = {
+            preselect = false,
+            auto_insert = true,
+          },
+        },
         menu = {
           draw = {
             treesitter = { 'lsp' },
