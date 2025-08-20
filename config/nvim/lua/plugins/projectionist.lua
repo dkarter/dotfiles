@@ -17,6 +17,13 @@ return {
             '}',
           },
         },
+        ['config/nvim/after/lsp/*.lua'] = {
+          type = 'lsp',
+          template = {
+            'vim.lsp.config("{}", {',
+            '})',
+          },
+        },
       },
       -- Rust
       ['Cargo.toml'] = {
