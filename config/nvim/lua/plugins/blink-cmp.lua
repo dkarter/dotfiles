@@ -42,6 +42,26 @@ return {
         preset = 'super-tab',
         ['<C-Z>'] = { 'accept', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = {
+          'select_next',
+          'snippet_forward',
+          function(cmp)
+            if require('core.utils').has_words_before() or vim.api.nvim_get_mode().mode == 'c' then
+              return cmp.show()
+            end
+          end,
+          'fallback',
+        },
+        ['<S-Tab>'] = {
+          'select_prev',
+          'snippet_backward',
+          function(cmp)
+            if vim.api.nvim_get_mode().mode == 'c' then
+              return cmp.show()
+            end
+          end,
+          'fallback',
+        },
       },
 
       appearance = {
