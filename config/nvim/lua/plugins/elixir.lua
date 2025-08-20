@@ -24,7 +24,7 @@ return {
         },
         on_attach = function(client, bufnr)
           require('core.mappings').elixir_mappings()
-          require('plugins.mason.lsp').on_attach(client, bufnr)
+          require('core.lsp').on_attach(client, bufnr)
         end,
       },
       credo = { enable = true },
@@ -36,7 +36,7 @@ return {
         },
         on_attach = function(client, bufnr)
           require('core.mappings').elixir_mappings()
-          require('plugins.mason.lsp').on_attach(client, bufnr)
+          require('core.lsp').on_attach(client, bufnr)
         end,
       },
     }
