@@ -10,16 +10,21 @@ return {
   opts = {
     style = 'moon',
     transparent = true,
-    on_highlights = function(hl, c)
+    on_highlights = function(hl, colors)
       hl.DapBreakpoint = {
-        fg = c.red,
+        fg = colors.red,
       }
       hl.DapLogPoint = {
-        fg = c.blue5,
+        fg = colors.blue5,
       }
       hl.DapStopped = {
-        fg = c.green1,
+        fg = colors.green1,
       }
+      hl.BlinkCmpKindFile = { link = 'LspKindText' } -- FIX wrong bg for icons with source `path`
+      hl.BlinkCmpLabelDetail = { link = 'Comment' } -- FIX wrong color
+      hl.BlinkCmpLabelDescription = { link = 'NonText' } -- FIX wrong color
+      -- hl.BlinkCmpLabelMatch = { fg = colors.yellow } -- make matches stand out more
+      hl.BlinkCmpSource = { link = 'NonText', italic = true }
     end,
   },
   config = function(_, opts)

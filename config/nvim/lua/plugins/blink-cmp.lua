@@ -6,7 +6,7 @@ return {
     -- some rough edges that should be resolved before enabling:
     -- - accepting the completion should work as it is with cmp today, tab
     --   inserts it and cycles options, and enter accepts (with no new line)
-    enabled = false,
+    enabled = true,
     event = { 'CmdlineEnter', 'InsertEnter' },
     -- optional: provides snippets for the snippet source
     dependencies = {
@@ -94,10 +94,36 @@ return {
           },
         },
         menu = {
+          auto_show = true,
+          border = 'rounded',
           draw = {
+            components = {
+              label = {
+                text = function(ctx)
+                  -- Fix for weird rendering in ElixirLS structs/behaviours etc
+                  -- structs, behaviours and others have a label_detail emitted
+                  -- by ElixirLS, and it looks bad when there's no space between
+                  -- the module label and the label_detail.
+                  --
+                  -- The label_detail has no space because it is normally meant
+                  -- for function signatures, e.g. `my_function(arg1, arg2)` -
+                  -- this case the label is `my_function` and the label_detail
+                  -- is `(arg1, arg2)`.
+                  --
+                  -- In an ideal world ElixirLS would not emit them for these
+                  -- types - these belong in `kind` only.
+                  if ctx.item.client_name == 'ElixirLS' and ctx.kind ~= 'Function' and ctx.kind ~= 'Macro' then
+                    return ctx.label
+                  end
+
+                  return ctx.label .. ctx.label_detail
+                end,
+              },
+            },
             treesitter = { 'lsp' },
             columns = {
               { 'kind_icon', 'label', gap = 1 },
+              { 'label_description', gap = 1 },
               { 'source_name' },
             },
           },
