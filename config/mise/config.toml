@@ -61,6 +61,7 @@ lua = "5"                                                                    # L
 lua-language-server = "latest"                                               # Lua Language Server
 marp-cli = "latest"                                                          # markdown presentation tool
 neovim = "latest"                                                            # the best text editor/IDE
+node = "22"                                                                  # Node.js programming language
 opentofu = "latest"                                                          # terraform drop-in alternative, with more permissive license
 pnpm = "latest"                                                              # package manager for javascript
 python = "3.12"                                                              # Python programming language
@@ -79,10 +80,7 @@ uv = "latest"                                                                # i
 vivid = "latest"                                                             # generate color schemes for different tools
 zoxide = "latest"                                                            # a modern version of autojump
 
-[tools.node]
-version = "22"
-postinstall = 'corepack enable && corepack enable pnpm'
-
 [settings]
 # needed to enable ruby gems install
 experimental = true
+disable_backends = ["asdf"]
