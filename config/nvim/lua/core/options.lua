@@ -1,11 +1,5 @@
 -- configure general vim settings here
 local opt = vim.opt
-local g = vim.g
-
--- support syntax highlighting
-vim.cmd 'syntax enable'
--- try to recognize filetypes and load rel' plugins
-vim.cmd 'filetype plugin indent on'
 
 opt.hidden = true --  enable hidden unsaved buffers
 opt.termguicolors = true --  enable true colors
