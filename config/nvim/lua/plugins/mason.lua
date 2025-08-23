@@ -39,11 +39,7 @@ return {
       'yamllint',
 
       -- LSPs
-      -- NOTE: you do not need to add `elixir-ls` here.. it is now handled by
-      -- the elixir plugin. This is because Mason does not support downloading
-      -- and building LSPs using the project runtime. For more info see:
-      -- https://github.com/elixir-lsp/elixir-ls/issues/193
-      -- https://dragoshmocrii.com/fix-vscode-elixirls-intellisense-for-code-imported-with-use/
+      'elixir-ls',
       'ansible-language-server',
       'arduino-language-server',
       'bash-language-server',

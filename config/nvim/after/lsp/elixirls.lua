@@ -1,0 +1,56 @@
+local M = {}
+
+local get_cursor_position = function()
+  local rowcol = vim.api.nvim_win_get_cursor(0)
+  local row = rowcol[1] - 1
+  local col = rowcol[2]
+
+  return row, col
+end
+
+local manipulate_pipes = function(direction, client)
+  local row, col = get_cursor_position()
+
+  client.request_sync('workspace/executeCommand', {
+    command = 'manipulatePipes:serverid',
+    arguments = { direction, 'file://' .. vim.api.nvim_buf_get_name(0), row, col },
+  }, nil, 0)
+end
+
+function M.from_pipe(client)
+  return function()
+    manipulate_pipes('fromPipe', client)
+  end
+end
+
+function M.to_pipe(client)
+  return function()
+    manipulate_pipes('toPipe', client)
+  end
+end
+
+vim.lsp.config('elixirls', {
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = true,
+      fetchDeps = false,
+      enableTestLenses = false,
+      suggestSpecs = true,
+    },
+  },
+  on_attach = function(client, bufnr)
+    local add_user_cmd = vim.api.nvim_buf_create_user_command
+    add_user_cmd(bufnr, 'ElixirFromPipe', M.from_pipe(client), {})
+    add_user_cmd(bufnr, 'ElixirToPipe', M.to_pipe(client), {})
+    require('core.mappings').elixir_mappings()
+
+    -- setup codelens
+    vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.codelens.refresh { bufnr = bufnr }
+      end,
+    })
+    vim.lsp.codelens.refresh { bufnr = bufnr }
+  end,
+})

@@ -27,6 +27,7 @@ return {
         ----------------------
         b.diagnostics.actionlint,
         b.diagnostics.ansiblelint,
+        b.diagnostics.credo,
         b.diagnostics.yamllint,
         b.diagnostics.zsh,
         b.diagnostics.commitlint.with {

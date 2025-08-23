@@ -112,7 +112,7 @@ return {
                   --
                   -- In an ideal world ElixirLS would not emit them for these
                   -- types - these belong in `kind` only.
-                  if ctx.item.client_name == 'ElixirLS' and ctx.kind ~= 'Function' and ctx.kind ~= 'Macro' then
+                  if ctx.item.client_name == 'elixirls' and ctx.kind ~= 'Function' and ctx.kind ~= 'Macro' then
                     return ctx.label
                   end
 
