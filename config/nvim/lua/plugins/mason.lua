@@ -12,7 +12,11 @@ return {
     'mason-org/mason-lspconfig.nvim',
 
     -- Collection of configurations for the built-in LSP client
-    'neovim/nvim-lspconfig',
+    {
+      'neovim/nvim-lspconfig',
+      -- blink is needed for setting up capabilities in core.lsp
+      dependencies = { 'saghen/blink.cmp' },
+    },
 
     -- required for setting up capabilities for cmp
     'hrsh7th/cmp-nvim-lsp',
