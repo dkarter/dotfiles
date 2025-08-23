@@ -52,7 +52,7 @@ end
 -- Reload all lua configuration modules
 function M.reload_modules()
   local config_path = vim.fn.stdpath 'config' .. '/lua/'
-  local lua_files = vim.fn.glob(config_path .. '**/*.lua', 0, 1)
+  local lua_files = vim.fn.glob(config_path .. '**/*.lua', false, true)
 
   for _, file in ipairs(lua_files) do
     local module_name = string.gsub(file, '.*/(.*)/(.*).lua', '%1.%2')
@@ -61,14 +61,6 @@ function M.reload_modules()
   end
   vim.cmd [[source $MYVIMRC]]
   vim.notify 'Reloaded all config modules'
-end
-
--- Builds the path for the json schema catalog cache
----@return Path path
-local json_schemas_catalog_path = function()
-  local Path = require 'plenary.path'
-  local base_path = Path:new(vim.fn.stdpath 'data')
-  return base_path:joinpath 'json_schema_catalog.json'
 end
 
 -- Reloads the current Lua file
@@ -129,13 +121,13 @@ end
 -- this needs to be called something other than Autocmd to avoid conflict with
 -- the built-in type
 ---@class MyAutocmd
----@field desc string
----@field event  string[] list of autocommand events
----@field pattern string[] list of autocommand patterns
----@field command string | function
----@field nested  boolean
----@field once    boolean
----@field buffer  number
+---@field desc?    string
+---@field event    string[] list of autocommand events
+---@field pattern? string[] list of autocommand patterns
+---@field command  string | function
+---@field nested?  boolean
+---@field once?    boolean
+---@field buffer?  number
 
 --- Validate the keys passed to as.augroup are valid
 ---@param name string
@@ -192,6 +184,11 @@ end
 --- Uses TreeSitter to delete all comments in the buffer
 function M.delete_comments_in_buffer()
   local parser = vim.treesitter.get_parser(0)
+  if not parser then
+    vim.notify('No treesitter parser found for this buffer', vim.log.levels.WARN)
+    return
+  end
+
   local tree = parser:parse()[1]
 
   local function delete_comments(node)

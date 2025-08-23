@@ -221,11 +221,15 @@ end
 
 M.lsp_diagnostic_mappings = function()
   local function diagnostic_goto(next, severity)
-    local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-    severity = severity and vim.diagnostic.severity[severity] or nil
-    return function()
-      go { severity = severity }
+    local goto_next = function()
+      vim.diagnostic.jump { count = 1, severity = severity }
     end
+
+    local goto_prev = function()
+      vim.diagnostic.jump { count = -1, severity = severity }
+    end
+
+    return next and goto_next or goto_prev
   end
 
   nmap { ']d', diagnostic_goto(true), { desc = 'Next Diagnostic' } }
