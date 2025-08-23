@@ -34,12 +34,6 @@ local conventional_commits_picker_opts = {
       return
     end
 
-    -- set the line to the selected commit type and put the cursor in the scope
-    -- parens placeholder (these will be removed if I skip the scope)
-    local msg = string.format('%s()', item.text)
-    vim.api.nvim_set_current_line(msg)
-    vim.api.nvim_win_set_cursor(0, { 1, string.len(msg) - 1 })
-
     local new_msg = item.text
     vim.ui.input({ prompt = 'Scope? (optional - enter to skip)' }, function(scope)
       -- scope is nil if dialog is aborted
@@ -51,6 +45,7 @@ local conventional_commits_picker_opts = {
     end)
 
     -- update the line
+    vim.api.nvim_win_set_cursor(0, { 1, 1 })
     vim.api.nvim_set_current_line(new_msg)
 
     -- place cursor at the end of the line in insert mode
