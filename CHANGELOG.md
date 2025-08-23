@@ -2,6 +2,91 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [25.0.0](https://github.com/dkarter/dotfiles/compare/v24.7.0...v25.0.0) (2025-08-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** use Elixir from Mason, instead of elixir-tools.nvim
+* **nvim:** switch to blink.cmp + fix for ElixirLS
+* **nvim:** upgrade to mason v2 + simplify lsp setup
+* **nvim:** allow seamless navigation in visual mode
+
+### Features
+
+* add sound effects ([9ac403d](https://github.com/dkarter/dotfiles/commit/9ac403d2ad812d10ceb3ff6a43d72ff9cea31da8))
+* **claude:** add dotfiles reviewer subagent ([eb2603b](https://github.com/dkarter/dotfiles/commit/eb2603b0297d0d63cb47f12b5845b7b7e38d6d60))
+* **lefthook,mise:** add secret leak detection pre-commit hook ([1f1cf55](https://github.com/dkarter/dotfiles/commit/1f1cf55e55aa394d9ee508d27382cfdfe0b7e703))
+* **lefthook:** add pre-commit format check ([9e6d447](https://github.com/dkarter/dotfiles/commit/9e6d44780d662a816e6f8ffbd8931b87ea22037c))
+* **linear:** add linear cli ([a2a9ae5](https://github.com/dkarter/dotfiles/commit/a2a9ae516a0f98ec51578372479fc2df09658802))
+* **mise,comp:** add argocd cli ([41f68b2](https://github.com/dkarter/dotfiles/commit/41f68b2fe571212b99d174eeac481af97fdce0bb))
+* **mise,task:** add gitleaks globally + comps ([ff5a199](https://github.com/dkarter/dotfiles/commit/ff5a199b3e1bb29636eb2b19312a332f89d7f6d2))
+* **mise:** add bun globally ([efd642c](https://github.com/dkarter/dotfiles/commit/efd642ca5fb87df482a059c4d0fd02c9f29dba69))
+* **mise:** add ethersync ([374a634](https://github.com/dkarter/dotfiles/commit/374a63447807985f0fbc885ecea25abe9b6d1e5b))
+* **mise:** add pnpm globally ([598b6d8](https://github.com/dkarter/dotfiles/commit/598b6d8d8ee5c7ca7c6f92915c971d30f94543cb))
+* **nvim:** add ethersync plugin ([568ea3e](https://github.com/dkarter/dotfiles/commit/568ea3eff91f708f15e3cd5af18b6d9ec5cbe17c))
+* **nvim:** add neovim plugin projections ([a963ba4](https://github.com/dkarter/dotfiles/commit/a963ba4fe97b90138920d3ed11e3f8e76e3a291c))
+* **nvim:** add opencode context plugin ([a66e51f](https://github.com/dkarter/dotfiles/commit/a66e51f572081bbf1d9531306e1a8587439b0b28))
+* **nvim:** add vim-switch for on/off ([31d3f81](https://github.com/dkarter/dotfiles/commit/31d3f81f6fb438a048004b138eb7d0901a10a5d1))
+* **nvim:** include source in diagnostic popovers ([6b52b82](https://github.com/dkarter/dotfiles/commit/6b52b8267633f76f7bc8f1d6941bc717c0bfd69c))
+* **nvim:** support inlay hints for lua + add mapping ([499fcf0](https://github.com/dkarter/dotfiles/commit/499fcf01dde716c16ca754a5232284ad15404652))
+* **opencode:** add config ([f43c4c7](https://github.com/dkarter/dotfiles/commit/f43c4c7caefbe050e8a0157979922d65fface995))
+* **opencode:** add gpt-oss ([9bdc55d](https://github.com/dkarter/dotfiles/commit/9bdc55d49b1bbdb4d6e9cb8e202b93290dcd5ba5))
+* **opencode:** add session_completed notif sound ([739ecc4](https://github.com/dkarter/dotfiles/commit/739ecc4ebd39adabb24700f2e202c6f8523fc591))
+* **task:** add historical check for leaks ([600d344](https://github.com/dkarter/dotfiles/commit/600d344a584654510fcbcc9cee86c66832450e8b))
+* **zed:** add basic config ([bd079d3](https://github.com/dkarter/dotfiles/commit/bd079d31db69235121667aba4aa6e044a7a999d8))
+* **zsh:** add aliases for ai tooling ([e95f92c](https://github.com/dkarter/dotfiles/commit/e95f92cb368ec81185ec7fc23d546d545d51ca17))
+* **zsh:** add aliases for mise ([8942579](https://github.com/dkarter/dotfiles/commit/89425798958af954dd8142ef954f659ae47d575b))
+* **zsh:** add completions for usage-cli ([5e2c17e](https://github.com/dkarter/dotfiles/commit/5e2c17e1bb838a4bc3e2ee5379a7de6a3944dc74))
+* **zsh:** add figlet preview script: figprev ([b11c3ee](https://github.com/dkarter/dotfiles/commit/b11c3ee658b3763473047d33a2a1972c158d6120))
+
+
+### Bug Fixes
+
+* **dprint:** disable trailing commas ([ecb7d00](https://github.com/dkarter/dotfiles/commit/ecb7d001b6d02f654cb882d3a2272acdfeefa9d3))
+* **dprint:** prevent formatting for claude cache files ([f76f486](https://github.com/dkarter/dotfiles/commit/f76f4869601b7ece65f162be05235915ec41ef1f))
+* **git:** allow committing claude settings ([90f4c3e](https://github.com/dkarter/dotfiles/commit/90f4c3ebc4adc41601f17bab97375ec82a51cf78))
+* **git:** don't store ethersync files in git ([f419263](https://github.com/dkarter/dotfiles/commit/f419263522e6017eb00dffdbcf7c21cd2c107399))
+* **git:** ignore local configs for claude ([8de8e5c](https://github.com/dkarter/dotfiles/commit/8de8e5cefb0f9c3a58125dbc1c461dd45c0ecf91))
+* **git:** incorrect file name ([6159c71](https://github.com/dkarter/dotfiles/commit/6159c7104bda47fe2f388691f10b0a9882b5de7b))
+* **git:** remove claude ignores ([6c01058](https://github.com/dkarter/dotfiles/commit/6c0105877bb8eb6c57c0820fdf00486de7c3e723))
+* **lefthook:** use better command for gitleaks ([4fad28c](https://github.com/dkarter/dotfiles/commit/4fad28c34e6bdae16cc350efbabe68414a3e4b25))
+* **mise:** install taplo from ubi ([d2dab9e](https://github.com/dkarter/dotfiles/commit/d2dab9e0eb2bbc756484031f6bff3ca8d3f5768b))
+* **nvim:** add tab/shift-tab for cycling completions with blink ([06ebfe1](https://github.com/dkarter/dotfiles/commit/06ebfe1c58c759e693477871579fb08959f768b7))
+* **nvim:** address some lua diagnostic warnings ([8bdb068](https://github.com/dkarter/dotfiles/commit/8bdb06806c2570703222a814c25bcdb25ab1da8d))
+* **nvim:** allow seamless navigation in visual mode ([df83898](https://github.com/dkarter/dotfiles/commit/df83898d4ddf881d1b0e2d5bcabe193c7e54b288))
+* **nvim:** attempt to disable folds in diffview ([c5b2b15](https://github.com/dkarter/dotfiles/commit/c5b2b15b63717a96a7881226cbf7f1493cd47d4a))
+* **nvim:** conventional commit picker was adding prefix twice ([d15d996](https://github.com/dkarter/dotfiles/commit/d15d996a253d16d1c5fd472456b2fbdaa1c729f3))
+* **nvim:** elixir lsp incorrect require path ([7136d07](https://github.com/dkarter/dotfiles/commit/7136d073cfd88fd7c924247a6409abb278d5375b))
+* **nvim:** improve behavior for blink ([0aa81e4](https://github.com/dkarter/dotfiles/commit/0aa81e43ed5f2b20e6ade7c31598922040f090a5))
+* **nvim:** improve dprint with prettier fallback config ([ce69711](https://github.com/dkarter/dotfiles/commit/ce6971180de5dbce05aa1266308bf3575201dbb9))
+* **nvim:** load claudecode on VeryLazy ([c509443](https://github.com/dkarter/dotfiles/commit/c5094435d16a2a2aaeac8dd024bdbdef28393e1f))
+* **nvim:** pin plugins to avoid breaking changes ([1bfb4d1](https://github.com/dkarter/dotfiles/commit/1bfb4d1286e362781cd910518279a1e38b87acb1))
+* **nvim:** remove commit pinning for gx ([add5a03](https://github.com/dkarter/dotfiles/commit/add5a0380a6e5dfb386f20403c8e8ce2aa0cf331))
+* **nvim:** remove outdated settings that broke lazy loading ([4e65f37](https://github.com/dkarter/dotfiles/commit/4e65f37a753f9560e57b495bfd1c7a6d1419af27)), closes [#222](https://github.com/dkarter/dotfiles/issues/222)
+* **nvim:** set capabilities correctly with LspAttach event ([46cdb24](https://github.com/dkarter/dotfiles/commit/46cdb2410dfa064336740dee9c8ce66d40b622dc))
+* **nvim:** use a more sensible tmp dir ([a3a293c](https://github.com/dkarter/dotfiles/commit/a3a293c28ddbd761527addfaf5a590d34857f952))
+* **opencode:** remove gpt-oss, add permissions, rename to jsonc ([22dfdfc](https://github.com/dkarter/dotfiles/commit/22dfdfc11ec3cbcfa8f2a3fcc98020474f9f7698))
+* **starship:** disable bun integration ([892023e](https://github.com/dkarter/dotfiles/commit/892023e82795bafcc1f9dfddabd1b527b705f50d))
+* **task:** use mise exec for lefthook install ([d5b4e69](https://github.com/dkarter/dotfiles/commit/d5b4e695a6bb7af847d854a6fd5c7dd957c47c52))
+* **tmux:** disable unnecessary terminal setting ([9eb539d](https://github.com/dkarter/dotfiles/commit/9eb539dd0738bcbf6995b2231cdd349e2088f8c1))
+* **tmux:** enable extended-keys ([3b05082](https://github.com/dkarter/dotfiles/commit/3b0508236d80be5788df3c91b1102c13b16f8e20))
+* **tmux:** enforce extended-keys off ([f68c9cf](https://github.com/dkarter/dotfiles/commit/f68c9cf7904d5429486dfdc79a651b0ebdc85863))
+* **tmux:** remove extended-keys setting ([8948838](https://github.com/dkarter/dotfiles/commit/8948838cf363f0b2701637b1bf30dd1fa7522224))
+* **typos:** allow ignore comments in lua ([932bbad](https://github.com/dkarter/dotfiles/commit/932bbad0f6c1fc095496178c3c50ea6dfd3d56c3))
+* **uv:** tell uv not to use its own python ([4efb829](https://github.com/dkarter/dotfiles/commit/4efb829c1d5c4e9506ee67250450aac63b1a7a31))
+* **zsh:** add bun global install path to PATH env ([538e895](https://github.com/dkarter/dotfiles/commit/538e895dc48b7125f54664d8f723013a25dd9f93))
+* **zsh:** elixir editors need to be opened in another window ([9f10951](https://github.com/dkarter/dotfiles/commit/9f10951e524f60e82e673ea8b8442a96a479716b))
+* **zsh:** unalias zi for zinit to use zi for zoxide ([6e1f9de](https://github.com/dkarter/dotfiles/commit/6e1f9debcac1278e136bfc042002224640e88ac8))
+* **zsh:** use s alias for session, instead of t, t = task ([0b88bf0](https://github.com/dkarter/dotfiles/commit/0b88bf0f95011daf9f4dc2fbd3094a573987d912))
+
+
+### Code Refactoring
+
+* **nvim:** switch to blink.cmp + fix for ElixirLS ([45b32a7](https://github.com/dkarter/dotfiles/commit/45b32a7577000cef30036517453e34285d21c2cb))
+* **nvim:** upgrade to mason v2 + simplify lsp setup ([7843566](https://github.com/dkarter/dotfiles/commit/78435664b8cf8a9766c4fe9703c1ecf47f136476))
+* **nvim:** use Elixir from Mason, instead of elixir-tools.nvim ([4a1021e](https://github.com/dkarter/dotfiles/commit/4a1021e8e5bb4f88d8c146e2ddba9112c832fbc0))
+
 ## [24.7.0](https://github.com/dkarter/dotfiles/compare/v24.6.0...v24.7.0) (2025-07-02)
 
 
