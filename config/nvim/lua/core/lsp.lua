@@ -16,26 +16,6 @@ end
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  local client_name = client.config.name
-  local ft = vim.bo.filetype
-
-  -- /BEGIN: Helm file support
-  if client_name == 'yamlls' and ft == 'helm' then
-    vim.lsp.stop_client(client.id)
-    vim.lsp.buf_detach_client(bufnr, client.id)
-  end
-
-  if vim.bo[bufnr].buftype ~= '' or ft == 'helm' then
-    vim.diagnostic.enable(false, { bufnr = bufnr })
-    -- remove existing diagnostic messages that appear about a second after load
-    -- (in the status bar). They do end up coming back though after awhile, not
-    -- sure why
-    vim.defer_fn(function()
-      vim.diagnostic.reset(nil, bufnr)
-    end, 2000)
-  end
-  -- /END: Helm file support
-
   -- support for lsp based breadcrumbs
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)

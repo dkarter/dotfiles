@@ -40,11 +40,21 @@ vim.lsp.config('yamlls', {
         },
       },
 
-      on_attach = function(_client, bufnr)
+      on_attach = function(client, bufnr)
         -- disable and reset diagnostics for helm files (because the LS can't
         -- read them properly)
+        local client_name = client.config.name
+        local ft = vim.bo[bufnr].filetype
+        if client_name == 'yamlls' and ft == 'helm' then
+          vim.lsp.stop_client(client.id)
+          vim.lsp.buf_detach_client(bufnr, client.id)
+        end
+
         if vim.bo[bufnr].buftype ~= '' or vim.bo[bufnr].filetype == 'helm' then
-          vim.diagnostic.disable(bufnr)
+          vim.diagnostic.enable(false, { bufnr = bufnr })
+          -- remove existing diagnostic messages that appear about a second after load
+          -- (in the status bar). They do end up coming back though after awhile, not
+          -- sure why
           vim.defer_fn(function()
             vim.diagnostic.reset(nil, bufnr)
           end, 1000)
