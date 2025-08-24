@@ -36,8 +36,9 @@ M.setup = function()
     callback = function(args)
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
+      local existing_capabilities = client.config.capabilities or vim.lsp.protocol.make_client_capabilities()
       -- merge blink cmp capabilities
-      client.config.capabilities = require('blink.cmp').get_lsp_capabilities(client.config.capabilities)
+      client.config.capabilities = require('blink.cmp').get_lsp_capabilities(existing_capabilities)
 
       M.on_attach(client, args.buf)
     end,

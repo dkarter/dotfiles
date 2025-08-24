@@ -29,7 +29,8 @@ function M.to_pipe(client)
   end
 end
 
-vim.lsp.config('elixirls', {
+---@type vim.lsp.Config
+return {
   settings = {
     elixirLS = {
       dialyzerEnabled = true,
@@ -53,4 +54,4 @@ vim.lsp.config('elixirls', {
     })
     vim.lsp.codelens.refresh { bufnr = bufnr }
   end,
-})
+}

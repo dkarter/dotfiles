@@ -1,16 +1,14 @@
-local lspconfig = require 'lspconfig'
-local root_pattern = lspconfig.util.root_pattern
-
-vim.lsp.config('tailwindcss', {
-  root_dir = root_pattern(
+---@type vim.lsp.Config
+return {
+  root_markers = {
     'assets/tailwind.config.js',
     'tailwind.config.js',
     'tailwind.config.ts',
     'postcss.config.js',
     'postcss.config.ts',
     'package.json',
-    'node_modules'
-  ),
+    'node_modules',
+  },
   init_options = {
     userLanguages = {
       elixir = 'phoenix-heex',
@@ -70,4 +68,4 @@ vim.lsp.config('tailwindcss', {
     'typescriptreact',
     'svelte',
   },
-})
+}

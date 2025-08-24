@@ -17,7 +17,8 @@ local ownSchemas = {
 
 local schemas = vim.list_extend(ownSchemas, schemaStoreSchemas)
 
-vim.lsp.config('yamlls', {
+---@type vim.lsp.Config
+return {
   setup = function()
     return {
       settings = {
@@ -62,4 +63,4 @@ vim.lsp.config('yamlls', {
       end,
     }
   end,
-})
+}
