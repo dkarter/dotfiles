@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [25.1.0](https://github.com/dkarter/dotfiles/compare/v25.0.0...v25.1.0) (2025-08-24)
+
+
+### Features
+
+* **nvim:** enable exit save confirmation on modified buffers ([b41cd5c](https://github.com/dkarter/dotfiles/commit/b41cd5c5f1a199b9d449050f95e663c49f2298f0))
+* **zsh:** add mise registry search alias (mrs) ([75f1a5e](https://github.com/dkarter/dotfiles/commit/75f1a5e1d359c305f39a60c2148c5acbc78a961a))
+
+
+### Bug Fixes
+
+* **mise:** disable asdf backend, remove pnpm as default ([e1e2812](https://github.com/dkarter/dotfiles/commit/e1e281290ef09a555e0a90f285d7372872db2b6d))
+
 ## [25.0.0](https://github.com/dkarter/dotfiles/compare/v24.7.0...v25.0.0) (2025-08-23)
 
 
