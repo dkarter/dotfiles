@@ -4,6 +4,7 @@ local opt = vim.opt
 opt.hidden = true --  enable hidden unsaved buffers
 opt.termguicolors = true --  enable true colors
 opt.cursorline = true -- highlight the current line
+opt.confirm = true -- confirm to save changes before exiting modified buffer
 
 -- search
 opt.smartcase = true -- use case sensitive if capital letter present or \C
