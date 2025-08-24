@@ -10,6 +10,7 @@ tasks:
       Generates completions for some CLI tools
     vars:
       COMPLETIONS:
+        - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
         - 'delta|delta --generate-completion zsh'
         - 'erd|erd --completions zsh'
         - 'fx|fx --comp zsh'
