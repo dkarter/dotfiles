@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [25.2.0](https://github.com/dkarter/dotfiles/compare/v25.1.0...v25.2.0) (2025-08-25)
+
+
+### Features
+
+* **zsh:** add completions for bun ([0ce43c9](https://github.com/dkarter/dotfiles/commit/0ce43c9cee6b3674dc8b4b4e05b91370990be4f0))
+
+
+### Bug Fixes
+
+* **nvim:** correctly setup LSPs with after + fix ts_ls ([1048615](https://github.com/dkarter/dotfiles/commit/10486155c7a14d8a9af63dd04f9157baa0930967))
+* **nvim:** make file finder always show hidden files ([26ceea7](https://github.com/dkarter/dotfiles/commit/26ceea7886b6368e36eb56ee1680f6d6487714fa))
+* **nvim:** prevent deno lsp from loading incorrectly ([132e6dc](https://github.com/dkarter/dotfiles/commit/132e6dc7db2d789925624e361ff2bfdebeb4db9c))
+
 ## [25.1.0](https://github.com/dkarter/dotfiles/compare/v25.0.0...v25.1.0) (2025-08-24)
 
 
