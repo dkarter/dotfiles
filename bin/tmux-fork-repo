@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# Clone a GitHub repo to ~/dev/forks/ and create/switch to
+tmux session
+
+# Get GitHub URL from user input
+github_url=$(gum input --placeholder="GitHub repo URL (https:// or git@github.com:)...")
+
+# Exit if no input provided (user pressed escape)
+if [[ -z $github_url ]]; then
+  exit 0
+fi
+
+# Validate it looks like a GitHub URL (HTTPS or SSH)
+if [[ ! $github_url =~ ^https://github\.com/[^/]+/[^/]+/?$ ]] && [[ ! $github_url =~ ^git@github\.com:[^/]+/[^/]+\.git$ ]]; then
+  gum style --foreground="red" "Error: Please provide a valid GitHub URL"
+  gum style --foreground="red" "  HTTPS: https://github.com/user/repo"
+  gum style --foreground="red" "  SSH: git@github.com:user/repo.git"
+  sleep 3
+  exit 1
+fi
+
+# Extract repo name from URL (handle both HTTPS and SSH formats)
+if [[ $github_url =~ ^https://github\.com/[^/]+/([^/]+)/?$ ]]; then
+  # HTTPS format
+  repo_name="${BASH_REMATCH[1]}"
+elif [[ $github_url =~ ^git@github\.com:[^/]+/([^/]+)\.git$ ]]; then
+  # SSH format
+  repo_name="${BASH_REMATCH[1]}"
+fi
+
+forks_dir="$HOME/dev/forks"
+repo_path="$forks_dir/$repo_name"
+
+# Create forks directory if it doesn't exist
+mkdir -p "$forks_dir"
+
+# Check if repo already exists
+if [[ -d $repo_path ]]; then
+  gum style --foreground="yellow" "Repository already exists at $repo_path"
+
+  # Ask if user wants to pull latest changes
+  if gum confirm "Pull latest changes?"; then
+    cd "$repo_path" || exit 1
+    git pull
+  fi
+else
+  # Clone the repository
+  gum style --foreground="blue" "Cloning $github_url to $repo_path..."
+
+  if ! git clone "$github_url" "$repo_path"; then
+    gum style --foreground="red" "Error: Failed to clone repository"
+    sleep 2
+    exit 1
+  fi
+
+  gum style --foreground="green" "Successfully cloned repository!"
+fi
+
+# Check if tmux session with repo name already exists
+if tmux has-session -t "$repo_name" 2>/dev/null; then
+  # Session exists, switch to it
+  tmux switch-client -t "$repo_name"
+else
+  # Create new session in the repo directory and switch to it
+  tmux new-session -d -s "$repo_name" -c "$repo_path"
+  tmux switch-client -t "$repo_name"
+fi
