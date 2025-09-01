@@ -74,6 +74,7 @@ return {
       -- at PDQ is slow AF - can disable it momentarily and see if this improves
       elixir = { 'mix', timeout_ms = 2000 },
       sh = { 'shfmt' },
+      zsh = { 'shfmt' },
       terraform = { 'terraform_fmt' },
       toml = { 'dprint', 'taplo', stop_after_first = true },
     },
