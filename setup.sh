@@ -47,7 +47,7 @@ echo
 echo 'Installing shared steps...'
 ./installer/shared.sh
 
-if [[ $OS = 'mac' ]]; then
+if [[ $OS == 'mac' ]]; then
   echo 'macOS detected'
   ./installer/mac-setup.sh
 fi

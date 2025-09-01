@@ -66,11 +66,11 @@ if ! command -v unicornleap &>/dev/null; then
 
   # Install
   # shellcheck disable=2164
-  pushd ~/dev/forks/unicornleap &&
-    make &&
-    make images &&
-    cp build/unicornleap ~/.bin/ &&
-    popd || exit
+  pushd ~/dev/forks/unicornleap \
+    && make \
+    && make images \
+    && cp build/unicornleap ~/.bin/ \
+    && popd || exit
 fi
 
 # Install TerminalVim
