@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Clone a GitHub repo to ~/dev/forks/ and create/switch to
-tmux session
+# Clone a GitHub repo to ~/dev/forks/ and create/switch to tmux session
 
 # Get GitHub URL from user input
 github_url=$(gum input --placeholder="GitHub repo URL (https:// or git@github.com:)...")
