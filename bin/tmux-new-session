@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Create a new tmux session with user input via gum in a popup
+
+session_name=$(gum input --placeholder="New session name...")
+
+# Exit if no input provided (user pressed escape)
+if [[ -z "$session_name" ]]; then
+    exit 0
+fi
+
+# Check if session already exists
+if tmux has-session -t "$session_name" 2>/dev/null; then
+    # Session exists, attach to it
+    tmux switch-client -t "$session_name"
+else
+    # Create new session and switch to it
+    tmux new-session -d -s "$session_name"
+    tmux switch-client -t "$session_name"
+fi
