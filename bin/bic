@@ -17,9 +17,9 @@ packages=$(brew search "$@" | grep -v '^$' | tr '\n' ' ' | xargs brew info --jso
 casks_json=$(echo "$packages" | jq '.casks | map({name: .token, desc})')
 longest_cask=$(echo "$casks_json" | jq -r 'max_by(.name | length) | .name | length')
 table=$(
-  echo "$casks_json" |
-    jq -r '.[] | [.name, .desc] | @tsv' |
-    awk -F '\t' "{ printf \"%-$((longest_cask + 4))s\033[1;34m%s\033[0m\n\", \$1, \$2 }"
+  echo "$casks_json" \
+    | jq -r '.[] | [.name, .desc] | @tsv' \
+    | awk -F '\t' "{ printf \"%-$((longest_cask + 4))s\033[1;34m%s\033[0m\n\", \$1, \$2 }"
 )
 inst=$(echo "$table" | fzf -m --no-hscroll | awk '{ print $1 }')
 

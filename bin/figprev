@@ -18,27 +18,27 @@ SPECIFIC_FONT=""
 # Parse arguments
 while [[ $# -gt 0 ]]; do
   case $1 in
-  -f | --font)
-    SPECIFIC_FONT="$2"
-    shift 2
-    ;;
-  -n | --no-interactive)
-    INTERACTIVE=false
-    shift
-    ;;
-  -h | --help)
-    echo "Usage: figprev [options] [text]"
-    echo "Options:"
-    echo "  -f, --font FONT        Preview specific font only"
-    echo "  -n, --no-interactive   Disable interactive mode (no pauses)"
-    echo "  -h, --help            Show this help message"
-    echo "Default text: '$DEFAULT_TEXT'"
-    exit 0
-    ;;
-  *)
-    TEXT="$1"
-    shift
-    ;;
+    -f | --font)
+      SPECIFIC_FONT="$2"
+      shift 2
+      ;;
+    -n | --no-interactive)
+      INTERACTIVE=false
+      shift
+      ;;
+    -h | --help)
+      echo "Usage: figprev [options] [text]"
+      echo "Options:"
+      echo "  -f, --font FONT        Preview specific font only"
+      echo "  -n, --no-interactive   Disable interactive mode (no pauses)"
+      echo "  -h, --help            Show this help message"
+      echo "Default text: '$DEFAULT_TEXT'"
+      exit 0
+      ;;
+    *)
+      TEXT="$1"
+      shift
+      ;;
   esac
 done
 
@@ -63,7 +63,7 @@ if ! command -v figlet &>/dev/null; then
 fi
 
 # Check if bat is available (for non-interactive mode)
-if [[ "$INTERACTIVE" == false ]] && ! command -v bat &>/dev/null; then
+if [[ $INTERACTIVE == false ]] && ! command -v bat &>/dev/null; then
   echo "Error: bat is not installed. Please install it first."
   echo "You can install it with: brew install bat"
   exit 1
@@ -83,7 +83,7 @@ preview_font() {
     echo "----------------------------------------"
 
     # Wait for user input to continue (only in interactive mode)
-    if [[ "$INTERACTIVE" == true ]]; then
+    if [[ $INTERACTIVE == true ]]; then
       read -r -p "Press Enter for next font (or Ctrl+C to exit)..."
     fi
   else
@@ -95,7 +95,7 @@ preview_font() {
 # Function to run the preview logic
 run_preview() {
   # Check if specific font was requested
-  if [[ -n "$SPECIFIC_FONT" ]]; then
+  if [[ -n $SPECIFIC_FONT ]]; then
     echo "Previewing font '$SPECIFIC_FONT' with text: '$TEXT'"
     echo "=========================================="
 
@@ -113,7 +113,7 @@ run_preview() {
     fi
   else
     echo "Previewing figlet fonts with text: '$TEXT'"
-    if [[ "$INTERACTIVE" == true ]]; then
+    if [[ $INTERACTIVE == true ]]; then
       echo "Press Enter to continue to next font, or Ctrl+C to exit"
     fi
     echo "=========================================="
@@ -131,7 +131,7 @@ run_preview() {
 }
 
 # Run preview with or without bat pager
-if [[ "$INTERACTIVE" == false ]]; then
+if [[ $INTERACTIVE == false ]]; then
   run_preview | bat -p
 else
   run_preview

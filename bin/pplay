@@ -33,11 +33,11 @@ fi
 file="$1"
 
 # Check if the file doesn't have a path (just a filename)
-if [[ "$file" != */* ]]; then
+if [[ $file != */* ]]; then
   # Prefix with sounds directory
   file="$HOME/dotfiles/sounds/$file"
 # If not an absolute path, convert relative path to absolute
-elif [[ ! "$file" = /* ]]; then
+elif [[ $file != /* ]]; then
   file="$(pwd)/$file"
 fi
 

@@ -17,9 +17,9 @@ packages=$(brew search "$@" | grep -v '^$' | tr '\n' ' ' | xargs brew info --jso
 formulas_json=$(echo "$packages" | jq '.formulae | map({name, desc})')
 longest_formula_name=$(echo "$formulas_json" | jq -r 'max_by(.name | length) | .name | length')
 table=$(
-  echo "$formulas_json" |
-    jq -r '.[] | [.name, .desc] | @tsv' |
-    awk -F '\t' "{ printf \"%-$((longest_formula_name + 4))s\033[1;34m%s\033[0m\n\", \$1, \$2 }"
+  echo "$formulas_json" \
+    | jq -r '.[] | [.name, .desc] | @tsv' \
+    | awk -F '\t' "{ printf \"%-$((longest_formula_name + 4))s\033[1;34m%s\033[0m\n\", \$1, \$2 }"
 )
 inst=$(echo "$table" | fzf -m --no-hscroll | awk '{ print $1 }')
 

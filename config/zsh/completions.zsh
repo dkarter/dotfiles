@@ -6,7 +6,8 @@ zstyle ':completion:*:git-checkout:*' sort false
 # set descriptions format to enable group support
 zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# Use eval to work around shfmt parameter expansion limitation
+eval "zstyle ':completion:*' list-colors \${(s.:.)LS_COLORS}"
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
 # preview directory's content with eza when completing cd
@@ -21,7 +22,7 @@ fpath=($HOME/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
 
 # === Optional: Homebrew completions ===
 homebrew_comps="/opt/homebrew/share/zsh/site-functions"
-[[ -d "$homebrew_comps" ]] && fpath=($homebrew_comps $fpath)
+[[ -d $homebrew_comps ]] && fpath=($homebrew_comps $fpath)
 
 # === Load completion system ===
 autoload -Uz compinit bashcompinit

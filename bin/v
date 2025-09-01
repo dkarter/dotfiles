@@ -10,7 +10,7 @@
 
 preview="bat --style changes --color=always {}"
 
-if [[ -n "$TMUX" ]]; then
+if [[ -n $TMUX ]]; then
   file=$(
     fzf-tmux \
       --info=inline-right \

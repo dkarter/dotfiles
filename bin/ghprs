@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-gh pr list |
-  fzf \
+gh pr list \
+  | fzf \
     --delimiter "\t" \
     --reverse \
     --header="[ENTER] Open in GitHub [CTRL-E] Checkout PR locally [CTRL-V] Preview PR [CTRL-Y] Preview checks [CTRL-T] Reload with open+closed PRs" \

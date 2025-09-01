@@ -1,4 +1,5 @@
 {
+  "$schema": "https://dprint.dev/schemas/v0.json",
   "lineWidth": 120,
   "biome": {
     "indentStyle": "space",
@@ -24,6 +25,28 @@
       {
         "command": "taplo format -",
         "exts": [".toml"]
+      },
+      {
+        "command": "shfmt -i 2 -ci -bn -s -",
+        "exts": [".sh", ".bash", ".zsh"]
+      },
+      {
+        "command": "shfmt -i 2 -ci -bn -s -",
+        "fileNames": [
+          "bic",
+          "bip",
+          "command-history-preview",
+          "figprev",
+          "ghprs",
+          "git_better_branch",
+          "nvims",
+          "pingf",
+          "pplay",
+          "tmux-fork-repo",
+          "tmux-new-session",
+          "v",
+          "wait_for_port"
+        ]
       }
     ]
   },

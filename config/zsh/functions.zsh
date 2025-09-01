@@ -2,7 +2,7 @@
 ghpre() {
   existing_description="$(gh pr view --json body -q '.body')"
   temp_file="$(mktemp)"
-  echo "$existing_description" > "$temp_file"
+  echo "$existing_description" >"$temp_file"
   nvim "$temp_file" +'set ft=markdown'
   gh pr edit --body "$(cat $temp_file)"
   rm "$temp_file"
@@ -45,16 +45,16 @@ fgco() {
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
   ) || return
   branches=$(
-    git branch --all | grep -v HEAD |
-      sed "s/.* //" | sed "s#remotes/[^/]*/##" |
-      sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+    git branch --all | grep -v HEAD \
+      | sed "s/.* //" | sed "s#remotes/[^/]*/##" \
+      | sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
   ) || return
   target=$(
     (
       echo "$branches"
       echo "$tags"
-    ) |
-      fzf-tmux -p --reverse -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
+    ) \
+      | fzf-tmux -p --reverse -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
   ) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
@@ -62,16 +62,16 @@ fgco() {
 # fgcoc - checkout git commit
 fgcoc() {
   local commits commit
-  commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
-    commit=$(echo "$commits" | fzf --tac +s +m -e) &&
-    git checkout $(echo "$commit" | sed "s/ .*//")
+  commits=$(git log --pretty=oneline --abbrev-commit --reverse) \
+    && commit=$(echo "$commits" | fzf --tac +s +m -e) \
+    && git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
 # fgshow - git commit browser
 fgshow() {
   git log --graph --color=always \
-    --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+    --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
+    | fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
@@ -83,21 +83,21 @@ FZF-EOF"
 # example usage: git rebase -i `fcs`
 fgcs() {
   local commits commit
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-    commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-    echo -n $(echo "$commit" | sed "s/ .*//")
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) \
+    && commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) \
+    && echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
 fman() {
-  man -k . | fzf -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
+  man -k . | fzf -q "$1" --prompt='man> ' --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
 
 # fdr - cd to selected parent directory
 fdr() {
   local declare dirs=()
   get_parent_dirs() {
-    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
-    if [[ "${1}" == '/' ]]; then
+    if [[ -d ${1} ]]; then dirs+=("$1"); else return; fi
+    if [[ ${1} == '/' ]]; then
       for _dir in "${dirs[@]}"; do echo $_dir; done
     else
       get_parent_dirs $(dirname "$1")
@@ -109,14 +109,14 @@ fdr() {
 
 # cdf - cd into the directory of the selected file
 cdf() {
-   local file
-   local dir
-   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+  local file
+  local dir
+  file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
 # fgst - pick files from `git status -s`
 is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
+  git rev-parse HEAD >/dev/null 2>&1
 }
 
 fgst() {
@@ -160,8 +160,8 @@ in() {
 # split strings
 # Usage: split "string" "delimiter"
 split() {
-   IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
-   printf '%s\n' "${arr[@]}"
+  IFS=$'\n' read -d "" -ra arr <<<"${1//$2/$'\n'}"
+  printf '%s\n' "${arr[@]}"
 }
 
 # Easily jump to man page for a built-in command e.g. bashman fg
@@ -172,9 +172,8 @@ bashman() {
 # ask for confirmation in scripts
 confirm() {
   read -p "Are you sure? " -n 1 -r
-  echo    # move to a new line
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
+  echo # move to a new line
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
   fi
 }
