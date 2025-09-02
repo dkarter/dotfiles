@@ -24,7 +24,7 @@ return {
       'yamllint',
 
       -- LSPs
-      'elixir-ls',
+
       'ansible-language-server',
       'arduino-language-server',
       'bash-language-server',
@@ -37,7 +37,10 @@ return {
       -- super fast formatter for multiple languages
       'dprint',
       'elm-language-server',
+      -- temporarily disabled in favor of ExpertLSP
+      -- 'elixir-ls',
       'eslint-lsp',
+      'expert',
       'gopls',
       'go-debug-adapter',
       'goimports',
