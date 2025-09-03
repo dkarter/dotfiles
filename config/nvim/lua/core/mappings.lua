@@ -648,8 +648,8 @@ M.snack_mappings = {
   -- bufdelete
   { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
   { '<leader>bD', function() Snacks.bufdelete({ force = true }) end, desc = 'Delete Buffer (Force)' },
-  { '<leader>bo', function() Snacks.bufdelete.other() end, desc = 'Delete Other Buffers' },
-  { '<leader>bO', function() Snacks.bufdelete.other({ force = true }) end, desc = 'Delete Other Buffers (Force)' },
+  { '<leader>bo', function() Snacks.bufdelete.other(); vim.notify('Deleted all other buffers') end, desc = 'Delete Other Buffers' },
+  { '<leader>bO', function() Snacks.bufdelete.other({ force = true }); vim.notify('Deleted all other buffers') end, desc = 'Delete Other Buffers (Force)' },
 
   -- git
   { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
