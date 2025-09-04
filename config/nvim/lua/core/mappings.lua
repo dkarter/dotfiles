@@ -473,7 +473,7 @@ M.vim_test_mappings = {
 
 ---@type LazyKeysSpec[]
 M.vimux_mappings = {
-  { '<leader>rr', '<CMD>VimuxPromptCommand<CR>', desc = 'run a command (prompt)' },
+  { '<leader>rp', '<CMD>VimuxPromptCommand<CR>', desc = 'run a command (prompt)' },
   { '<leader>r.', '<CMD>VimuxRunLastCommand<CR>', desc = 'run the last run command' },
   { '<leader>rc', '<CMD>VimuxClearTerminalScreen<CR>', desc = 'clear the current run terminal' },
   { '<leader>rq', '<CMD>VimuxCloseRunner<CR>', desc = 'close the runner' },
@@ -491,12 +491,84 @@ M.vimux_mappings = {
       end
 
       -- construct command with v register as command to send
-      -- vim.cmd(string.format('call VimuxRunCommand("%s")', vim.trim(vim.fn.getreg('v'))))
       vim.cmd 'call VimuxRunCommand(@v)'
     end,
     desc = 'run command under cursor',
   },
+  {
+    '<leader>rr',
+    function()
+      -- yank text into v register
+      if vim.api.nvim_get_mode()['mode'] == 'n' then
+        vim.cmd 'normal V"vy'
+      else
+        vim.cmd 'normal "vy'
+      end
+
+      -- construct command with v register as command to send
+      vim.cmd 'call VimuxRunCommand(@v)'
+    end,
+    desc = 'run command under cursor',
+  },
+  {
+    '<leader>!',
+    function()
+      vim.o.operatorfunc = "v:lua.require'core.mappings'.vimux_operator"
+      return 'g@'
+    end,
+    expr = true,
+    desc = 'run motion selection with vimux',
+  },
+  {
+    '<leader>!!',
+    function()
+      vim.o.operatorfunc = "v:lua.require'core.mappings'.vimux_operator"
+      return 'g@ip'
+    end,
+    expr = true,
+    desc = 'run current paragraph with vimux',
+  },
 }
+
+-- Function to handle vimux operator motions
+function M.vimux_operator(motion_type)
+  local saved_reg = vim.fn.getreg 'v'
+  local saved_regtype = vim.fn.getregtype 'v'
+
+  if motion_type == 'char' then
+    vim.cmd 'normal! `[v`]"vy'
+  elseif motion_type == 'line' then
+    vim.cmd 'normal! `[V`]"vy'
+  elseif motion_type == 'block' then
+    vim.cmd 'normal! `[<C-v>`]"vy'
+  end
+
+  local content = vim.fn.getreg 'v'
+
+  -- Check if content is a markdown codeblock
+  local lines = vim.split(content, '\n')
+
+  -- Find the closing backticks (could be last line or second-to-last if there's trailing newline)
+  local closing_line_idx = #lines
+  if lines[#lines] == '' and #lines > 1 then
+    closing_line_idx = #lines - 1
+  end
+
+  if #lines > 2 and lines[1]:match '^```.*$' and lines[closing_line_idx]:match '^```%s*$' then
+    -- Extract code content (remove first and closing backtick lines)
+    local code_lines = {}
+    for i = 2, closing_line_idx - 1 do
+      table.insert(code_lines, lines[i])
+    end
+    content = table.concat(code_lines, '\n')
+  end
+
+  -- Set the processed content to the v register and run
+  vim.fn.setreg('v', content)
+  vim.cmd 'call VimuxRunCommand(@v)'
+
+  vim.fn.setreg('v', saved_reg, saved_regtype)
+end
 
 ---@type LazyKeysSpec[]
 M.undotree_mappings = {
