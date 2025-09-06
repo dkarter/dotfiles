@@ -32,7 +32,11 @@ opt.smartindent = false
 opt.formatoptions:append 'r'
 
 -- text appearance
-opt.textwidth = 80 -- set row width size in characters (will be overwritten by vim-sleuth)
+-- set row width size in characters (will be overwritten by vim-sleuth)
+-- this setting will automatically break lines when they exceed 'textwidth' during
+-- insert mode. It does not affect existing lines, for that you can use gq.
+-- To disable this feature: :set textwidth=0
+opt.textwidth = 80
 opt.wrap = false
 opt.list = true -- show invisible characters
 opt.listchars = 'tab:»·,trail:·,nbsp:·' --  Display extra whitespace
