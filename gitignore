@@ -47,3 +47,6 @@ config/zed/*_backup.*
 
 # always ignore EtherSync dir - it may contain sensitive data
 .ethersync/
+
+# ignore elixir official LSP files
+.expert/
