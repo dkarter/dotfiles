@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [26.0.0](https://github.com/dkarter/dotfiles/compare/v25.1.0...v26.0.0) (2025-09-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** add <leader>!! for running markdown code blocks
+* **nvim:** correct mapping conflict for treesitter text-objects
+
+### Features
+
+* **nvim:** add &lt;leader&gt;!! for running markdown code blocks ([530ad63](https://github.com/dkarter/dotfiles/commit/530ad636791cc3078e8dda3c180b5c7b29a541d7))
+* **nvim:** add notif for &lt;leader&gt;bo ([4bc25df](https://github.com/dkarter/dotfiles/commit/4bc25df732bcf0dc6347d77660116e45eb02ceeb))
+* **nvim:** format zsh files with shfmt ([356f554](https://github.com/dkarter/dotfiles/commit/356f5549fd8c9a31be1e1d3d36ee3bf6eb59b2a1))
+* **tmux,ghostty:** add mapping for forking repos in new session ([63809eb](https://github.com/dkarter/dotfiles/commit/63809eb533ee22e127cf6c13195f40be15a761ae))
+* **tmux,ghostty:** add new session keybind (super+shift+N) ([82f56c5](https://github.com/dkarter/dotfiles/commit/82f56c5c03e309343f1bda45eb314f5dc99702bb))
+* **zsh:** add completions for bun ([0ce43c9](https://github.com/dkarter/dotfiles/commit/0ce43c9cee6b3674dc8b4b4e05b91370990be4f0))
+
+
+### Bug Fixes
+
+* **git:** ignore .expert folder ([bbd27fa](https://github.com/dkarter/dotfiles/commit/bbd27fad2db53c486d765ce383446b14a4de4b1f))
+* **git:** ignore all .local.json files in .claude ([5dfdbd9](https://github.com/dkarter/dotfiles/commit/5dfdbd9df78c04d9aeb452605f3962cc7a8748dd))
+* **nvim:** correct mapping conflict for treesitter text-objects ([401608b](https://github.com/dkarter/dotfiles/commit/401608beb5464cb65a87013643cc67ba9129cb41))
+* **nvim:** correctly setup LSPs with after + fix ts_ls ([1048615](https://github.com/dkarter/dotfiles/commit/10486155c7a14d8a9af63dd04f9157baa0930967))
+* **nvim:** enable hidden files by default on dashboard mappings ([74b11c8](https://github.com/dkarter/dotfiles/commit/74b11c81b440079dfb399c1e343076db2aa54ce4))
+* **nvim:** make file finder always show hidden files ([26ceea7](https://github.com/dkarter/dotfiles/commit/26ceea7886b6368e36eb56ee1680f6d6487714fa))
+* **nvim:** prevent deno lsp from loading incorrectly ([132e6dc](https://github.com/dkarter/dotfiles/commit/132e6dc7db2d789925624e361ff2bfdebeb4db9c))
+* **tmux:** correct typo in tmux-fork-repo script ([0dcc0a9](https://github.com/dkarter/dotfiles/commit/0dcc0a9e206783a70500709bdeedc482c47f8916))
+
 ## [25.1.0](https://github.com/dkarter/dotfiles/compare/v25.0.0...v25.1.0) (2025-08-24)
 
 
