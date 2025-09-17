@@ -18,7 +18,7 @@ float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
     return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
 }
 // Based on Inigo Quilez's 2D distance functions article: https://iquilezles.org/articles/distfunctions2d/
-// Potencially optimized by eliminating conditionals and loops to enhance performance and reduce branching
+// Potentially optimized by eliminating conditionals and loops to enhance performance and reduce branching
 float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
     vec2 e = b - a;
     vec2 w = p - a;
@@ -58,7 +58,7 @@ float blend(float t)
     return sqr / (2.0 * (sqr - t) + 1.0);
 }
 
-float antialising(float distance) {
+float antialiasing(float distance) {
     return 1. - smoothstep(0., normalize(vec2(2., 2.), 0.).x, distance);
 }
 
@@ -93,12 +93,12 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     vec2 offsetFactor = vec2(-.5, 0.5);
 
     //Normalization for cursor position and size;
-    //cursor xy has the postion in a space of -1 to 1;
+    //cursor xy has the position in a space of -1 to 1;
     //zw has the width and height
     vec4 currentCursor = vec4(normalize(iCurrentCursor.xy, 1.), normalize(iCurrentCursor.zw, 0.));
     vec4 previousCursor = vec4(normalize(iPreviousCursor.xy, 1.), normalize(iPreviousCursor.zw, 0.));
 
-    //When drawing a parellelogram between cursors for the trail i need to determine where to start at the top-left or top-right vertex of the cursor
+    //When drawing a parallelogram between cursors for the trail i need to determine where to start at the top-left or top-right vertex of the cursor
     float vertexFactor = determineStartVertexFactor(currentCursor.xy, previousCursor.xy);
     float invertedVertexFactor = 1.0 - vertexFactor;
 
@@ -128,7 +128,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float sdfTrail = getSdfParallelogram(vu, v0, v1, v2, v3);
 
     newColor = mix(newColor, TRAIL_COLOR_ACCENT, 1.0 - smoothstep(sdfTrail, -0.01, 0.001));
-    newColor = mix(newColor, TRAIL_COLOR, antialising(sdfTrail));
+    newColor = mix(newColor, TRAIL_COLOR, antialiasing(sdfTrail));
 
     newColor = mix(fragColor, newColor, 1.0 - alphaModifier);
     fragColor = mix(newColor, fragColor, step(sdfCursor, 0));
