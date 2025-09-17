@@ -23,6 +23,10 @@ font-size = 18
 macos-titlebar-proxy-icon = hidden
 title = "Ghostty"
 
+# enable cursor animation
+custom-shader = "~/.config/ghostty/shaders/cursor.glsl"
+custom-shader-animation = true
+
 #### KEYBINDS
 # open new tab
 keybind = super+shift+t=text:\x1ac
