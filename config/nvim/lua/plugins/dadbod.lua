@@ -14,23 +14,10 @@ return {
         'kristijanhusak/vim-dadbod-completion',
         ft = { 'sql', 'mysql', 'plsql' },
         lazy = true,
-        dependencies = {
-          'hrsh7th/nvim-cmp',
-        },
         init = function()
           vim.g.vim_dadbod_completion_lowercase_keywords = true
         end,
-        config = function(_self, _opts)
-          -- enable completion in cmp
-          local cmp = require 'cmp'
-          cmp.setup.filetype({ 'sql' }, {
-            sources = {
-              { name = 'vim-dadbod-completion' },
-              { name = 'buffer' },
-            },
-          })
-        end,
-      }, -- Optional
+      },
     },
     cmd = {
       'DBUI',
