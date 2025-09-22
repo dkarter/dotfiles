@@ -4,5 +4,16 @@
 return {
   'danymat/neogen',
   keys = require('core.mappings').neogen_mappings,
+  dependencies = {
+    {
+      'L3MON4D3/LuaSnip',
+      dependencies = {
+        -- snippets!
+        'rafamadriz/friendly-snippets',
+      },
+
+      build = 'make install_jsregexp',
+    },
+  },
   opts = { snippet_engine = 'luasnip' },
 }
