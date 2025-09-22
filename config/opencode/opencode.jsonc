@@ -26,7 +26,6 @@
   },
   "permission": {
     "webfetch": "allow",
-    "edit": "ask",
     "bash": {
       "git status": "allow",
       "git diff": "allow",
@@ -36,8 +35,30 @@
       "kubectl get secrets": "deny",
       "kubectl get secret": "deny",
       "kubectl get *": "allow",
-      "rg *": "allow",
-      "*": "ask"
+      "rg *": "allow"
+    }
+  },
+  "agent": {
+    "pair": {
+      "description": "AI pair programmer that keeps you in the loop by asking for your confirmation before executing any commands and edits",
+      "permission": {
+        "webfetch": "allow",
+        "edit": "ask",
+        "bash": {
+          "git status": "allow",
+          "git diff": "allow",
+          "npm run *": "allow",
+          "pnpm run *": "allow",
+          "bun run *": "allow",
+          "ls": "allow",
+          "pwd": "allow",
+          "kubectl get secrets": "deny",
+          "kubectl get secret": "deny",
+          "kubectl get *": "allow",
+          "rg *": "allow",
+          "*": "ask"
+        }
+      }
     }
   },
   "experimental": {
