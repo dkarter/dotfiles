@@ -12,5 +12,14 @@ return {
     global_keymaps = true,
     global_keymaps_prefix = '<leader>r',
     kulala_keymaps_prefix = '',
+    contenttypes = {
+      ['application/vnd.api+json'] = {
+        ft = 'json',
+        formatter = vim.fn.executable 'jq' == 1 and { 'jq', '.' },
+        pathresolver = function(...)
+          return require('kulala.parser.jsonpath').parse(...)
+        end,
+      },
+    },
   },
 }
