@@ -58,11 +58,13 @@ tasks:
   install:
     desc: An alias to dot:install
     cmds:
+      - task: banner
       - task: dot:install
 
   sync:
     desc: An alias to dot:sync
     cmds:
+      - task: banner
       - task: dot:sync
 
   install:sudo-touch-id:
@@ -82,3 +84,13 @@ tasks:
     aliases: [format]
     cmds:
       - task: dot:fmt
+
+  banner:
+    internal: true
+    desc: shows an animated banner
+    silent: true
+    cmds:
+      - cmd: clear
+      - cmd: ./scripts/banner.sh
+      # new line
+      - cmd: echo ''
