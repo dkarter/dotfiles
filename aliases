@@ -47,6 +47,8 @@ alias lg="lazygit"
 #
 # [m]ise [r]egistry [s]earch # spellchecker:disable-line
 alias mrs='mise registry | fzf'
+# [m]ise [r]egistry [f]ind # spellchecker:disable-line
+alias mrf='mise registry | fzf'
 
 # mu - mise use
 #
@@ -147,14 +149,12 @@ jt() {
 alias tree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name --human --no-ignore"
 alias gtree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name --human"
 # tree paged
-treep ()
-{
+treep() {
   tree --color=force "$@" | bat -p
 }
 
 # gtree paged
-gtreep ()
-{
+gtreep() {
   gtree --color=force "$@" | bat -p
 }
 
@@ -276,7 +276,7 @@ alias dcu='docker compose up'
 alias dcd='docker compose up'
 alias dps="docker ps"
 alias dimg="docker image ls"
-alias dprune="docker system prune -af"  # Remove unused data
+alias dprune="docker system prune -af" # Remove unused data
 
 # usb
 alias usbtree='ioreg -p IOUSB -l -w 0'
@@ -351,7 +351,7 @@ command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
 # You can also use the alias h
 # example: h git commit
 help() {
-    "$@" --help 2>&1 | bat --plain --language=help
+  "$@" --help 2>&1 | bat --plain --language=help
 }
 alias h='help'
 
