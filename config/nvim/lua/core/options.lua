@@ -150,6 +150,9 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = icons.Hint,
     },
   },
+  jump = {
+    float = true,
+  },
   underline = true,
   update_in_insert = false,
   virtual_lines = { current_line = true },

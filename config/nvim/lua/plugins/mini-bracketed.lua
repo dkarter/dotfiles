@@ -4,5 +4,9 @@ return {
   'echasnovski/mini.bracketed',
   event = 'VeryLazy',
   version = '*',
-  opts = {},
+  opts = {
+    diagnostic = {
+      float = true,
+    },
+  },
 }
