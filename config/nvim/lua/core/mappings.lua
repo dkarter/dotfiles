@@ -654,6 +654,7 @@ M.snack_mappings = {
   { '<leader>lg', picker('grep', {need_search = false}), desc = '[L]ive [G]rep' },
   { '<leader>fw', picker('grep_word'), mode = {'n', 'v'}, desc = '[F]ind [W]ord' },
   { '<leader>fd', picker('files', {cwd = '~/dotfiles'}), desc = '[F]ind [D]otfiles' },
+  {'<leader>fgd', picker('git_diff'), desc = '[F]ind [G]it [D]iff' },
   { '<leader>f:', picker('commands'), desc = 'Command search' },
   { '<leader>f;', picker('command_history'), desc = 'Command History' },
   { '<leader>f?', picker('search_history'), desc = 'Search History' },
@@ -678,6 +679,8 @@ M.snack_mappings = {
   { '<leader>nf', picker('explorer', {follow_file = true}), { desc = '[N]erdTree (not really) [F]ile (toggle)' } },
   { '<leader>tt', picker('explorer'), { desc = '[T]ree [T]oggle' } },
   {'<leader>f<CR>', picker('resume'), desc = 'Finder Resume'},
+
+  {'<leader>ls', picker('lsp_config'), desc = '[L]SP [S]ettings'},
 
   -- muscle memory
   { '<C-p>', picker('files'), desc = 'Find Files' },
