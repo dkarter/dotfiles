@@ -73,6 +73,7 @@ return {
         'rust',
         'scss',
         'sql',
+        'ssh_config',
         'surface',
         'terraform',
         'toml',
