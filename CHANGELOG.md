@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [26.0.0](https://github.com/dkarter/dotfiles/compare/v25.1.0...v26.0.0) (2025-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** remove ethersync
+* **nvim:** add <leader>!! for running markdown code blocks
+* **nvim:** correct mapping conflict for treesitter text-objects
+
+### Features
+
+* **ghostty:** add shader animation for v1.2.0 ([48280b5](https://github.com/dkarter/dotfiles/commit/48280b581eabc2dd6512a12d780d8992a038b645))
+* **ghostty:** allow desktop notifications ([076caa6](https://github.com/dkarter/dotfiles/commit/076caa645f52db9b8fba89c0d712d5fc55832b67))
+* **mise:** add opencode ([9534c2d](https://github.com/dkarter/dotfiles/commit/9534c2d64d03faa055b96fd75a6993c1d14659a6))
+* **nvim:** add &lt;leader&gt;!! for running markdown code blocks ([530ad63](https://github.com/dkarter/dotfiles/commit/530ad636791cc3078e8dda3c180b5c7b29a541d7))
+* **nvim:** add new picker mappings ([9445358](https://github.com/dkarter/dotfiles/commit/944535846e7fb4a208db7bac317e5fd371499541))
+* **nvim:** add notif for &lt;leader&gt;bo ([4bc25df](https://github.com/dkarter/dotfiles/commit/4bc25df732bcf0dc6347d77660116e45eb02ceeb))
+* **nvim:** add rest client (Kulala) ([9127760](https://github.com/dkarter/dotfiles/commit/9127760836a0d4d5a7ab69bd41b1a33706807be4))
+* **nvim:** add ssh_config treesitter ([811c33b](https://github.com/dkarter/dotfiles/commit/811c33b98d2d38c84bc340d55ac8c988c58c18c8))
+* **nvim:** format zsh files with shfmt ([356f554](https://github.com/dkarter/dotfiles/commit/356f5549fd8c9a31be1e1d3d36ee3bf6eb59b2a1))
+* **opencode:** add pair programming agent ([6c8d485](https://github.com/dkarter/dotfiles/commit/6c8d485952e1a28edf30c99e9b485157ab479a34))
+* **task:** add banner to install and sync ([0ff4e36](https://github.com/dkarter/dotfiles/commit/0ff4e36f24f9731227d1afac9cd5f955a6a864d9))
+* **tmux,ghostty:** add mapping for forking repos in new session ([63809eb](https://github.com/dkarter/dotfiles/commit/63809eb533ee22e127cf6c13195f40be15a761ae))
+* **tmux,ghostty:** add new session keybind (super+shift+N) ([82f56c5](https://github.com/dkarter/dotfiles/commit/82f56c5c03e309343f1bda45eb314f5dc99702bb))
+* **zsh:** add another alias for mise registry + fzf ([9317373](https://github.com/dkarter/dotfiles/commit/931737367fd6d4caba889eedcd0e50237d27f9ae))
+* **zsh:** add completions for bun ([0ce43c9](https://github.com/dkarter/dotfiles/commit/0ce43c9cee6b3674dc8b4b4e05b91370990be4f0))
+* **zsh:** add gwip alias ([2b6ddec](https://github.com/dkarter/dotfiles/commit/2b6ddec0432319e39370ebf499a37873225dd0c7))
+* **zsh:** add helm completions ([7de141b](https://github.com/dkarter/dotfiles/commit/7de141bbea0507e9b2bad5d45b161024fe9787fa))
+* **zsh:** set nvim as default MANPAGER program ([#370](https://github.com/dkarter/dotfiles/issues/370)) ([3ff7258](https://github.com/dkarter/dotfiles/commit/3ff725811c44e8c19e0da033bc50f23620634f5a))
+
+
+### Bug Fixes
+
+* **ci:** remove package name from release please ([3c6ff68](https://github.com/dkarter/dotfiles/commit/3c6ff68f21034ccc817d34cd2a2b40c5554f570a))
+* **ci:** update location of release please action ([19bd15b](https://github.com/dkarter/dotfiles/commit/19bd15b2afa069311de10b036f7a19b5cdf1a117))
+* **ghostty:** add padding to account for macOS Tahoe ([745aa35](https://github.com/dkarter/dotfiles/commit/745aa35a3578e5603ea2b8f2069db3fb9dfa5828))
+* **ghostty:** correct casing for theme name ([fd48caf](https://github.com/dkarter/dotfiles/commit/fd48caffaa87276ff72151cebcc5906334815c35))
+* **ghostty:** numeric shortcuts stopped working ([7c0aff0](https://github.com/dkarter/dotfiles/commit/7c0aff0f351eea61bcdce5057eda13c1509c7a69))
+* **ghostty:** theme name was incompatible ([bf8fd62](https://github.com/dkarter/dotfiles/commit/bf8fd62514b5d501eb56d4e8c7b7ab0462ba03ad))
+* **git:** ignore .expert folder ([bbd27fa](https://github.com/dkarter/dotfiles/commit/bbd27fad2db53c486d765ce383446b14a4de4b1f))
+* **git:** ignore all .local.json files in .claude ([5dfdbd9](https://github.com/dkarter/dotfiles/commit/5dfdbd9df78c04d9aeb452605f3962cc7a8748dd))
+* **mise:** remove ethersync ([b72ed7f](https://github.com/dkarter/dotfiles/commit/b72ed7ff4654f6c6f0e7e28f8f706dfcceb724dc))
+* **nvim:** correct mapping conflict for treesitter text-objects ([401608b](https://github.com/dkarter/dotfiles/commit/401608beb5464cb65a87013643cc67ba9129cb41))
+* **nvim:** correctly setup LSPs with after + fix ts_ls ([1048615](https://github.com/dkarter/dotfiles/commit/10486155c7a14d8a9af63dd04f9157baa0930967))
+* **nvim:** enable float for diagnostics ([478d6bf](https://github.com/dkarter/dotfiles/commit/478d6bf76a9f79debd5633a74d99911829dfa03e))
+* **nvim:** enable hidden files by default on dashboard mappings ([74b11c8](https://github.com/dkarter/dotfiles/commit/74b11c81b440079dfb399c1e343076db2aa54ce4))
+* **nvim:** make file finder always show hidden files ([26ceea7](https://github.com/dkarter/dotfiles/commit/26ceea7886b6368e36eb56ee1680f6d6487714fa))
+* **nvim:** map json api content type to json in kulala ([291e231](https://github.com/dkarter/dotfiles/commit/291e23154a41378b7b74f8603b85357bbf830e80))
+* **nvim:** neogen stopped working ([24562d5](https://github.com/dkarter/dotfiles/commit/24562d5e34ff449ca1399f72ac66a746ec7980bb))
+* **nvim:** prevent deno lsp from loading incorrectly ([132e6dc](https://github.com/dkarter/dotfiles/commit/132e6dc7db2d789925624e361ff2bfdebeb4db9c))
+* **nvim:** remove ethersync ([7693e4d](https://github.com/dkarter/dotfiles/commit/7693e4db4d81d79ba7c92488d247a4a51c9d4e2f))
+* **nvim:** replace cmp for dadbod with blink ([5338f2e](https://github.com/dkarter/dotfiles/commit/5338f2e2511bada6397a10f6892ed9631cdbbd26))
+* **tmux:** correct typo in tmux-fork-repo script ([0dcc0a9](https://github.com/dkarter/dotfiles/commit/0dcc0a9e206783a70500709bdeedc482c47f8916))
+* **zsh,mise,gh:** add github token from gh to env vars ([7988be0](https://github.com/dkarter/dotfiles/commit/7988be0967a46750f2e63524f76abdfd160c1f67))
+
 ## [25.1.0](https://github.com/dkarter/dotfiles/compare/v25.0.0...v25.1.0) (2025-08-24)
 
 
