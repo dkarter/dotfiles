@@ -82,3 +82,5 @@ zoxide = "latest"                                                            # a
 # needed to enable ruby gems install
 experimental = true
 disable_backends = ["asdf"]
+# use bun instead of npm when using npm:<package>
+npm.bun = true
