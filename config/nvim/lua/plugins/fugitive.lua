@@ -3,6 +3,9 @@
 return {
   'tpope/vim-fugitive',
   event = 'VeryLazy',
+  dependencies = {
+    'tpope/vim-rhubarb', -- GitHub extension for fugitive (enables :GBrowse)
+  },
   config = function()
     require('core.mappings').fugitive_mappings()
 
