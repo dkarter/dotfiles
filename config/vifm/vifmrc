@@ -286,7 +286,7 @@ fileviewer *.doc antiword -
 fileviewer *.docx docx2txt.pl %f -
 
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-    \ tput cup %py %px > /dev/tty && /Users/dorian/.iterm2/imgcat %c:p > /dev/tty
+    \ tput cup %py %px > /dev/tty && ~/.iterm2/imgcat %c:p > /dev/tty
 
 fileviewer * env -uCOLORTERM bat --color always --wrap never --pager never %c -p
 
