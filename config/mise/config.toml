@@ -65,7 +65,7 @@ neovim = "latest"                                                            # t
 node = "22"                                                                  # Node.js programming language
 opentofu = "latest"                                                          # terraform drop-in alternative, with more permissive license
 python = "3.12"                                                              # Python programming language
-rebar = "3.24.0"                                                             # build tool for Erlang (equivalent to mix in Elixir)
+rebar = "latest"                                                             # build tool for Erlang (equivalent to mix in Elixir)
 ripgrep = "latest"                                                           # modern `grep`
 ruby = "3"                                                                   # Ruby programming language
 rust = "1"                                                                   # Rust programming language
@@ -79,6 +79,10 @@ usage = "latest"                                                             # g
 uv = "latest"                                                                # install python packages
 vivid = "latest"                                                             # generate color schemes for different tools
 zoxide = "latest"                                                            # a modern version of autojump
+
+[plugins]
+rebar = "https://github.com/Stratus3D/asdf-rebar.git"
+lua = "https://github.com/Stratus3D/asdf-lua.git"
 
 [settings]
 # needed to enable ruby gems install
