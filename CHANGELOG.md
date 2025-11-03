@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [26.1.0](https://github.com/dkarter/dotfiles/compare/v26.0.0...v26.1.0) (2025-11-03)
+
+
+### Features
+
+* **nvim:** add mappings for new Snacks gh (github) feature ([0409d10](https://github.com/dkarter/dotfiles/commit/0409d10dfe41702c9d8d190b2460c51e9058cd04))
+
+
+### Bug Fixes
+
+* **ci:** add build deps ([42a132d](https://github.com/dkarter/dotfiles/commit/42a132d6950884286050ac77ad6172a2448cc855))
+* hard-coded paths should ~ / $HOME when possible ([#373](https://github.com/dkarter/dotfiles/issues/373)) ([aff43b6](https://github.com/dkarter/dotfiles/commit/aff43b694d8758e95268b57786ef25388a8d0c66))
+* **mise:** add missing plugins (lua + rebar) ([2a41354](https://github.com/dkarter/dotfiles/commit/2a41354bfff43ab9115f9e57315c0eaef96c046f))
+* **mise:** use mise forks for lua + rebar asdf plugins ([4153a97](https://github.com/dkarter/dotfiles/commit/4153a972e2faf0d7c495b8eba44cd783fcedd582)), closes [#375](https://github.com/dkarter/dotfiles/issues/375)
+
 ## [26.0.0](https://github.com/dkarter/dotfiles/compare/v25.1.0...v26.0.0) (2025-11-01)
 
 
