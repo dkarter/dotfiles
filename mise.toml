@@ -18,9 +18,5 @@ yamllint = "1.35"
 shfmt = "latest"
 lua = "5.1"
 
-[plugins]
-lua = "https://github.com/Stratus3D/asdf-lua.git"
-
 [settings]
 experimental = true
-disable_backends = ["asdf"]
