@@ -24,6 +24,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libreadline-dev
+
       - name: Install Runtimes w/ MISE (and cache)
         uses: jdx/mise-action@d28f84b563119c210aad0b09275bd66c07732847
 
