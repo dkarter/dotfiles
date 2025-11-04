@@ -17,7 +17,7 @@ local M = {}
 
 M.on_attach = function(client, bufnr)
   -- support for lsp based breadcrumbs
-  if client.server_capabilities.documentSymbolProvider then
+  if client.server_capabilities.documentSymbolProvider and not vim.startswith(client.name, 'otter-ls') then
     navic.attach(client, bufnr)
   end
 
