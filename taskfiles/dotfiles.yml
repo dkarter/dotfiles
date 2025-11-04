@@ -81,11 +81,12 @@ tasks:
           glow docs/post_install.md
 
   sync:
-    desc: Synchronize dotfiles (synchronous and slow)
+    desc: Synchronize dotfiles
     summary: |
       Synchronize dotfiles
 
       Use this task to get the latest tool versions and configuration changes
+      after pulling the repo
     cmds:
       - task: debian:sync
       - task: create:dirs
