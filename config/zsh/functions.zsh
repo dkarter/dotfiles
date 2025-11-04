@@ -186,3 +186,12 @@ confirm() {
 hq() {
   htmlq "$1" | bat -l html -p
 }
+
+# curls webpage and converts to markdown
+#
+# Dependencies: html2markdown, neovim
+#
+# Usage: mdcurl https://example.com
+mdcurl() {
+  curl "$1" | html2markdown | nvim +'set ft=markdown' +'setlocal buftype=nofile bufhidden=hide noswapfile' -
+}
