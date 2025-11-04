@@ -77,6 +77,8 @@ tasks:
       # completions needs the tools to be installed
       - task: completions:sync
       - task: print:done
+      - cmd: |
+          glow docs/post_install.md
 
   sync:
     desc: Synchronize dotfiles (synchronous and slow)
