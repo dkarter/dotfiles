@@ -162,10 +162,6 @@ tmap {
   silent,
 }
 
--- zoom a vim pane, <C-w> = to re-balance
-nmap { '<leader>-', ':wincmd _<cr>:wincmd \\|<cr>', { desc = 'Zoom window' } }
-nmap { '<leader>=', ':wincmd =<cr>', { desc = 'Rebalance window sizes' } }
-
 -- close all other windows with <leader>o
 nmap { '<leader>wo', '<c-w>o', { desc = 'Close other windows' } }
 
@@ -250,13 +246,6 @@ M.elixir_mappings = function()
 end
 
 -- stylua: ignore
--- ---@type LazyKeysSpec[]
-M.codecompanion_mappings = {
-  {'<leader>ac', '<cmd>CodeCompanionChat<CR>', desc = '[A]I [C]hat' },
-  {'<leader>aa', '<cmd>CodeCompanionActions<CR>', desc = '[A]I [A]ctions' },
-}
-
--- stylua: ignore
 ---@type LazyKeysSpec[]
 M.splitjoin_mappings = {
   {'gJ', function() require('treesj').join() end, desc = 'Join Code Block' },
@@ -280,11 +269,6 @@ M.trouble_mappings = {
   { '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Document Diagnostics' },
   { '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Open Loclist' },
   { '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Open Quickfix' },
-  {
-    '<leader>ss',
-    '<cmd>Trouble symbols toggle focus=true<cr>',
-    desc = 'Symbols (Trouble)',
-  },
   {
     '<leader>sx',
     '<cmd>Trouble lsp toggle focus=true win.position=right<cr>',
@@ -611,7 +595,7 @@ M.attempt_mappings = {
   -- rename attempt from current buffer
   { '<leader>sc', attempt 'rename_buf', desc = '[S]cratch Rename (current buffer)' },
   -- open one of the existing scratch buffers
-  { '<leader>sl', function() require('attempt.snacks').picker() end, desc = '[S]cratch [L]oad' },
+  { '<leader>sf', function() require('attempt.snacks').picker() end, desc = '[S]cratch [F]ind' },
 }
 
 local git_copy_file_url = function()
@@ -648,7 +632,6 @@ M.snack_mappings = {
   { "<leader>,", picker('buffers'), desc = "Buffers" },
   { "<leader>/", picker('lines'), desc = "Fuzzy Buffer Lines" },
   { "<leader>:", picker('command_history'), desc = "Command History" },
-  { '<leader>pp', picker('registers'), desc = "Registers" },
   { '<leader>fi', picker('icons'), desc = '[F]ind [I]cons' },
   { '<leader>fu', picker('undo'), desc = '[F]ind [U]ndo' },
   { '<leader>lg', picker('grep', {need_search = false}), desc = '[L]ive [G]rep' },
@@ -728,7 +711,7 @@ M.snack_mappings = {
 
   -- git
   { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-  { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+  { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
   { "<leader>gY", git_copy_file_url, mode = { "n", "x" }, desc = "Git Copy File URL"},
   { "<leader>gy", git_copy_line_url, mode = { "n", "x" }, desc = "Git Copy Line(s) URL"},
   -- open github page for file
@@ -750,6 +733,46 @@ M.snack_mappings = {
   { "<leader>rf", function() Snacks.rename.rename_file() end, desc = "Rename File" },
   { "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
   { "[r",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
+  { "gai", picker('lsp_incoming_calls'), desc = "C[a]lls Incoming" },
+  { "gao", picker('lsp_outgoing_calls'), desc = "C[a]lls Outgoing" },
+  { "<leader>ss", picker('lsp_symbols'), desc = "LSP Symbols" },
+  { "<leader>sS", picker('lsp_workspace_symbols'), desc = "LSP Workspace Symbols" },
+
+
+  -- Grep
+  { "<leader>sg", picker('grep'), desc = "Grep" },
+  { "<leader>sw", picker('grep_word'), desc = "Visual selection or word", mode = { "n", "x" } },
+  -- search
+  { '<leader>s"', picker('registers'), desc = "Registers" },
+  { '<leader>s/', picker('search_history'), desc = "Search History" },
+  { "<leader>sA", picker('autocmds'), desc = "Autocmds" },
+  { "<leader>sb", picker('lines'), desc = "Buffer Lines" },
+  { "<leader>sB", picker('grep_buffers'), desc = "Grep Open Buffers" },
+  { "<leader>sc", picker('command_history'), desc = "Command History" },
+  { "<leader>sC", picker('commands'), desc = "Commands" },
+  { "<leader>sd", picker('diagnostics'), desc = "Diagnostics" },
+  { "<leader>sD", picker('diagnostics_buffer'), desc = "Buffer Diagnostics" },
+  { "<leader>sh", picker('help'), desc = "Help Pages" },
+  { "<leader>sH", picker('highlights'), desc = "Highlights" },
+  { "<leader>si", picker('icons'), desc = "Icons" },
+  { "<leader>sj", picker('jumps'), desc = "Jumps" },
+  { "<leader>sk", picker('keymaps'), desc = "Keymaps" },
+  { "<leader>sl", picker('loclist'), desc = "Location List" },
+  { "<leader>sm", picker('marks'), desc = "Marks" },
+  { "<leader>sM", picker('man'), desc = "Man Pages" },
+  { "<leader>sp", picker('lazy'), desc = "Search for Plugin Spec" },
+  { "<leader>sq", picker('qflist'), desc = "Quickfix List" },
+  { "<leader>sR", picker('resume'), desc = "Resume" },
+  { "<leader>su", picker('undo'), desc = "Undo History" },
+  { "<leader>uC", picker('colorschemes'), desc = "Colorschemes" },
+  -- Other
+  { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
+  { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+  { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+  { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+  { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
+  { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+  { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
 }
 
 ---@type LazyKeysSpec[]
