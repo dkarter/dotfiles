@@ -7,9 +7,24 @@ tasks:
     status:
       # check if already set
       - test "$(basename "$SHELL")" = 'zsh'
+      # macOS: check Directory Services
       - |
-          test "$(grep "^$USER:" /etc/passwd | cut -d: -f7 | xargs basename)" = 'zsh'
+          if [ "$(uname)" = "Darwin" ]; then
+            test "$(dscl . -read /Users/$USER UserShell | awk '{print $2}' | xargs basename)" = 'zsh'
+          else
+            test "$(grep "^$USER:" /etc/passwd | cut -d: -f7 | xargs basename)" = 'zsh'
+          fi
     # will require password
     interactive: true
     cmds:
+      - task: zsh:add-to-shells
       - cmd: chsh -s "$(which zsh)"
+
+  zsh:add-to-shells:
+    desc: Add zsh to /etc/shells if not already present
+    status:
+      - grep -qxF "$(which zsh)" /etc/shells
+    platforms: [darwin]
+    cmds:
+      - cmd: echo "$(which zsh)" | sudo tee -a /etc/shells
+        silent: true
