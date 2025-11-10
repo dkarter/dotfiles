@@ -8,7 +8,7 @@ tasks:
       # check if already set
       - test "$(basename "$SHELL")" = 'zsh'
       - |
-        test "$(grep "^$USER:" /etc/passwd | cut -d: -f7 | xargs basename)" = 'zsh'
+          test "$(grep "^$USER:" /etc/passwd | cut -d: -f7 | xargs basename)" = 'zsh'
     # will require password
     interactive: true
     cmds:
