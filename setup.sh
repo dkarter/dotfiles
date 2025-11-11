@@ -20,6 +20,9 @@ else
     if [ -f /etc/debian_version ]; then
       DISTRO_BASE='debian'
       DIST=$(grep '^DISTRIB_ID' </etc/lsb-release | awk -F= '{ print $2 }')
+    elif [[ $(uname -r) =~ arch1 ]]; then
+      DISTRO_BASE='arch'
+      DIST=$(grep '^DISTRIB_ID' </etc/lsb-release | awk -F= '{ print $2 }')
     fi
     if [ -f /etc/UnitedLinux-release ]; then
       DIST="${DIST}[$(tr "\n" ' ' </etc/UnitedLinux-release | sed s/VERSION.*//)]"

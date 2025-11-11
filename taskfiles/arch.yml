@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  PACMAN_PKGS:
+    - base-devel
+    - bat
+    - curl
+    - figlet
+    - ghostty
+    - httpie
+    - keyd
+    - postgresql-client
+    - tmux
+    - tree
+    - wget
+    - zsh
+
+  YAY_PKGS:
+    - pspg
+
+tasks:
+  sync:
+    desc: Installs and updates tools
+    platforms: [linux]
+    silent: true
+    cmds:
+      - cmd: |
+          if [[ ! "$(uname -r)" =~ "arch1" ]]; then
+            exit 0
+          fi
+          task arch:tools:install
+
+  tools:install:
+    desc: Installs all apt packages
+    platforms: [linux]
+    silent: true
+    cmds:
+      - cmd: |
+          if command -v pacman &>/dev/null; then
+            sudo pacman --noconfirm --needed -S {{.PACMAN_PKGS | join " "}}
+          fi
+      - cmd: |
+          if command -v yay &>/dev/null; then
+            yay --noconfirm --needed -S {{.YAY_PKGS | join " "}}
+          fi
+      - task: keyd:config
+
+  keyd:config:
+    generates:
+      - /etc/keyd/default.conf
+    silent: true
+    cmds:
+      - cmd: echo 'Setting up keyd remaps...'
+      - cmd: |
+          sudo tee /etc/keyd/default.conf >/dev/null <<'EOF'
+          [ids]
+          *
+
+          [main]
+          # CapsLock acts as Escape on tap, Control on hold
+          capslock = overload(control, esc)
+
+          # (Optional) Map physical Esc to `pause` key so we can later remap it to the XCompose key in `~/.config/hypr/input.conf`
+          esc = pause
+          EOF
+      - cmd: sudo systemctl enable --now keyd
+      - cmd: echo 'done'

@@ -75,8 +75,13 @@ tasks:
   sync:
     desc: Installs and updates tools
     platforms: [linux]
+    silent: true
     cmds:
-      - task: tools:install
+      - cmd: |
+          if [ ! -f /etc/debian_version ]; then
+            exit 0
+          fi
+          task debian:tools:install
 
   tools:install:
     desc: Installs all apt packages

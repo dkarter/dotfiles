@@ -2,6 +2,9 @@
 version: 3
 
 includes:
+  arch:
+    taskfile: ./taskfiles/arch.yml
+
   bat:
     taskfile: ./taskfiles/bat.yml
 
