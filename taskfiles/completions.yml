@@ -8,6 +8,7 @@ tasks:
     desc: Generates completions for some CLI tools
     summary: |
       Generates completions for some CLI tools
+    silent: true
     vars:
       COMPLETIONS:
         - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
@@ -15,7 +16,7 @@ tasks:
         - 'erd|erd --completions zsh'
         - 'fx|fx --comp zsh'
         - 'kubectl|kubectl completion zsh'
-        - 'sg|sg completions zsh'
+        - 'ast-grep|ast-grep completions zsh'
         - 'starship|starship completions zsh'
         - 'uv|uv generate-shell-completion zsh'
         - 'op|op completion zsh'
@@ -31,24 +32,25 @@ tasks:
         - 'gitleaks|gitleaks completion zsh'
         - 'usage|usage --completions zsh'
         - 'helm|helm completion zsh'
+      CACHE_PATH:
+        sh: echo "$HOME/.cache/zsh/completions"
 
     cmds:
+      - cmd: mkdir -p '{{.CACHE_PATH}}'
       - for:
           var: COMPLETIONS
           as: COMP
         cmd: |
           app='{{splitList "|" .COMP | first}}'
           cmd='{{splitList "|" .COMP | last}}'
-          cache_path="$(echo ~/.cache/zsh/completions/_$app)"
+          comp_path="{{.CACHE_PATH}}/_$app"
           echo -n "Generating completions for $app..."
-          if command -v $app >/dev/null 2>&1; then
-            eval "$cmd" > $cache_path
+          if command -v "$app" >/dev/null 2>&1; then
+            eval "$cmd" > "$comp_path"
             echo "DONE"
           else
             echo "SKIPPED (executable not found)"
           fi
-        silent: true
-
       - task: cache:reload
 
   cache:reload:
