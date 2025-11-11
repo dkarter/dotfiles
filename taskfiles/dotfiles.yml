@@ -94,6 +94,7 @@ tasks:
       after pulling the repo
     cmds:
       - task: debian:sync
+      - task: arch:sync
       - task: create:dirs
       - task: symlink
       - task: mise:sync
