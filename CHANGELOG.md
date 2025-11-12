@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [27.0.0](https://github.com/dkarter/dotfiles/compare/v26.1.0...v27.0.0) (2025-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** add more snacks.nvim mappings
+
+### Features
+
+* **mise:** add html2markdown cli ([507e361](https://github.com/dkarter/dotfiles/commit/507e361543c629386f533de5d30bd5de1beda32d))
+* **nvim:** add embedded language lsp support ([de6a5d4](https://github.com/dkarter/dotfiles/commit/de6a5d4227e5a02ee4aaea9375c12b01fc45304b))
+* **nvim:** add injections for mise tasks ([38f132d](https://github.com/dkarter/dotfiles/commit/38f132da67d713d354e749310ba3f9f2c1796345))
+* **nvim:** add more snacks.nvim mappings ([371465a](https://github.com/dkarter/dotfiles/commit/371465ae952130f7f601b7f7df7ce091c0ca0c8a))
+* **task:** add basic arch linux support (Omarchy) ([622f325](https://github.com/dkarter/dotfiles/commit/622f325a1fb5a9df47075d900adeb773d169736c))
+* **zsh:** add mdcurl command - curl webpages as markdown ([4f3bcd4](https://github.com/dkarter/dotfiles/commit/4f3bcd4019ddfadcd1946a9357dbd3efd6e92576))
+
+
+### Bug Fixes
+
+* **nvim:** only load mise injections in mise files ([fad0f25](https://github.com/dkarter/dotfiles/commit/fad0f25cc146a977da3223c11944e7a666d02bcd))
+* **nvim:** use dprint to format zsh when configured ([9e4e447](https://github.com/dkarter/dotfiles/commit/9e4e44790b5c174026204b742fefb84b7074c393))
+* **task:** add arch:sync to task sync ([b8113e6](https://github.com/dkarter/dotfiles/commit/b8113e69b7e4cca9f9f21c9525753a25c9ee4504))
+* **task:** default shell support for arch linux ([c1c9508](https://github.com/dkarter/dotfiles/commit/c1c95086acba9e850300137e513b13928c27fd8c))
+* **task:** make comp:generate more robust ([12c7de0](https://github.com/dkarter/dotfiles/commit/12c7de0a2278455ab36cce8bac007cbff5a0715e))
+* **task:** zsh default shell fix for macos ([b5aae6a](https://github.com/dkarter/dotfiles/commit/b5aae6a9edd5766f0cc9100235b0955a9d53aa85))
+
 ## [26.1.0](https://github.com/dkarter/dotfiles/compare/v26.0.0...v26.1.0) (2025-11-03)
 
 
