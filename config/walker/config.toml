@@ -1,0 +1,67 @@
+force_keyboard_focus = true
+selection_wrap = true                                                       # wrap list if at bottom or top
+theme = "omarchy-default"                                                   # theme to use
+additional_theme_location = "~/.local/share/omarchy/default/walker/themes/"
+
+[placeholders]
+"default" = { input = " Search...", list = "No Results" } # placeholders for input and empty list, key is the providers name, so f.e. "desktopapplications" or "menus:other"
+
+[keybinds]
+quick_activate = []
+close = ["Escape", "ctrl g"]
+next = ["Down", "ctrl n"]
+previous = ["Up", "ctrl p"]
+
+[builtins.websearch]
+name = "websearch"
+icon = "applications-internet"
+placeholder = "Websearch"
+keep_selection = true
+
+[[builtins.websearch.entries]]
+name = "Kagi"
+url = "https://kagi.com/search?q=%TERM%"
+
+[[builtins.websearch.entries]]
+name = "DuckDuckGo"
+url = "https://duckduckgo.com/?q=%TERM%"
+switcher_only = true
+
+[providers]
+default = [
+  "desktopapplications",
+  "menus",
+  "websearch",
+] # providers to be queried by default
+
+[providers.actions]
+desktopapplications = [
+  { action = "pin", bind = "ctrl b", after = "AsyncReload" },
+  { action = "unpin", bind = "ctrl u", after = "AsyncReload" },
+  { action = "pinup", bind = "ctrl Up", after = "AsyncReload" },
+  { action = "pindown", bind = "ctrl Down", after = "AsyncReload" },
+]
+
+[[providers.prefixes]]
+prefix = "/"
+provider = "providerlist"
+
+[[providers.prefixes]]
+prefix = "."
+provider = "files"
+
+[[providers.prefixes]]
+prefix = ":"
+provider = "symbols"
+
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"
+
+[[providers.prefixes]]
+prefix = "@"
+provider = "websearch"
+
+[[providers.prefixes]]
+prefix = "$"
+provider = "clipboard"
