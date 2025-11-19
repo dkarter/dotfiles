@@ -6,6 +6,9 @@ opt.termguicolors = true --  enable true colors
 opt.cursorline = true -- highlight the current line
 opt.confirm = true -- confirm to save changes before exiting modified buffer
 
+-- automatrically reload files changed outside of vim
+opt.autoread = true
+
 -- search
 opt.smartcase = true -- use case sensitive if capital letter present or \C
 opt.ignorecase = true -- ignore case in searches

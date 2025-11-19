@@ -1,11 +1,17 @@
---- share context with opencode
+--- integrate with opencode
 ---@type LazySpec
 return {
-  'cousine/opencode-context.nvim',
+  'NickvanDyke/opencode.nvim',
+  ---@module 'opencode'
+  ---@type opencode.Opts
   opts = {
-    tmux_target = nil, -- Manual override: "session:window.pane"
-    auto_detect_pane = true, -- Auto-detect opencode pane in current window
+    provider = {
+      enabled = 'tmux',
+    },
   },
+  config = function(_self, opts)
+    -- idk why they do it this way - very weird
+    vim.g.opencode_opts = opts
+  end,
   keys = require('core.mappings').opencode_mappings,
-  cmd = { 'OpencodeSend', 'OpencodeSwitchMode' },
 }

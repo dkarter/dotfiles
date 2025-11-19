@@ -382,14 +382,13 @@ M.neogen_mappings = {
   { '<leader>ng', ":lua require('neogen').generate()<CR>", desc = 'Generate Annotation (NeoGen)' },
 }
 
+-- stylua: ignore
 ---@type LazyKeysSpec[]
 M.opencode_mappings = {
-  { '<leader>oc', '<cmd>OpencodeSend<cr>', desc = 'Send prompt to opencode' },
-  { '<leader>oc', '<cmd>OpencodeSend<cr>', mode = 'v', desc = 'Send prompt to opencode' },
-  -- spellchecker:off
-  { '<leader>ot', '<cmd>OpencodeSwitchMode<cr>', desc = 'Toggle opencode mode' },
-  -- spellchecker:on
-  { '<leader>op', '<cmd>OpencodePrompt<cr>', desc = 'Open opencode persistent prompt' },
+  { "<leader>ot", function() require("opencode").ask("@this: ", { submit = true }) end, mode = { "n", "x" }, desc = "Ask opencode"},
+  { "<leader>oa", function() require("opencode").prompt("@this") end, mode = { "n", "x" }, desc = "Add to opencode"},
+  { "<leader>os", function() require("opencode").select() end, mode = { "n", "x" }, desc = "Select opencode action"},
+  { "<leader>oc", function() require("opencode").toggle() end, desc = "Toggle opencode"},
 }
 
 ---@type LazyKeysSpec[]
