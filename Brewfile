@@ -95,6 +95,12 @@ brew 'tmux'
 tap 'morantron/tmux-fingers'
 brew 'morantron/tmux-fingers/tmux-fingers'
 
+# sudo with touch id
+tap 'artginzburg/tap'
+brew 'artginzburg/tap/sudo-touchid'
+# sudo touch id support for tmux
+brew 'pam-reattach'
+
 # download files from the terminal, used by some scripts
 brew 'wget'
 

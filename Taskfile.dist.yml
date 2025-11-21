@@ -79,7 +79,7 @@ tasks:
       Requires sudo.
     platforms: [darwin]
     cmds:
-      - sed 's/^#auth/auth/' /etc/pam.d/sudo_local.template > /etc/pam.d/sudo_local
+      - sudo-touchid --with-reattach
 
   fmt:
     desc: Formats all formattable files
