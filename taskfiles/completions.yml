@@ -32,6 +32,7 @@ tasks:
         - 'gitleaks|gitleaks completion zsh'
         - 'usage|usage --completions zsh'
         - 'helm|helm completion zsh'
+        - 'rg|rg --generate=complete-zsh'
       CACHE_PATH:
         sh: echo "$HOME/.cache/zsh/completions"
 
