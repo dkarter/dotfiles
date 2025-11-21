@@ -207,7 +207,7 @@ help() {
 }
 alias h='help'
 
-# parse + highlight help for cli tools
+# parse + highlight help for cli tools (in neovim)
 # usage: vimhelp <command>
 # example: vimhelp git
 #
