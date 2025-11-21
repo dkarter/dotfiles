@@ -195,3 +195,25 @@ hq() {
 mdcurl() {
   curl "$1" | html2markdown | nvim +'set ft=markdown' +'setlocal buftype=nofile bufhidden=hide noswapfile' -
 }
+
+# parse + highlight help for cli tools
+# usage: help <command>
+# example: help git commit
+#
+# You can also use the alias h
+# example: h git
+help() {
+  "$@" --help 2>&1 | bat --plain --language=help
+}
+alias h='help'
+
+# parse + highlight help for cli tools
+# usage: vimhelp <command>
+# example: vimhelp git
+#
+# You can also use the alias h
+# example: vh git
+vimhelp() {
+  "$@" --help 2>&1 | nvim +'set ft=man' +'setlocal buftype=nofile bufhidden=hide noswapfile' -
+}
+alias vh='vimhelp'

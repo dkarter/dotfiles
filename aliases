@@ -346,17 +346,6 @@ alias ss='imgur-screenshot.sh'
 # creates a pbcopy command using xclip
 command -v xclip >/dev/null && alias pbcopy='xclip -sel c'
 
-# parse + highlight help for cli tools
-# usage: help <command>
-# example: help git commit
-#
-# You can also use the alias h
-# example: h git commit
-help() {
-  "$@" --help 2>&1 | bat --plain --language=help
-}
-alias h='help'
-
 alias gwork='gh dash --config ~/.config/gh-dash/work.yml'
 
 alias lolcat='lolcrab'
