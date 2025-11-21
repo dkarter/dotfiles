@@ -33,6 +33,7 @@ tasks:
         - 'usage|usage --completions zsh'
         - 'helm|helm completion zsh'
         - 'rg|rg --generate=complete-zsh'
+        - 'bat|bat --completion=zsh'
       CACHE_PATH:
         sh: echo "$HOME/.cache/zsh/completions"
 
