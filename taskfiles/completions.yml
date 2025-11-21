@@ -11,29 +11,28 @@ tasks:
     silent: true
     vars:
       COMPLETIONS:
+        - 'argocd|argocd completion zsh'
+        - 'ast-grep|ast-grep completions zsh'
+        - 'bat|bat --completion=zsh'
         - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
         - 'delta|delta --generate-completion zsh'
         - 'erd|erd --completions zsh'
         - 'fx|fx --comp zsh'
+        - 'gitleaks|gitleaks completion zsh'
+        - 'gt|gt completion' # Graphite CLI
+        - 'helm|helm completion zsh'
         - 'kubectl|kubectl completion zsh'
-        - 'ast-grep|ast-grep completions zsh'
-        - 'starship|starship completions zsh'
-        - 'uv|uv generate-shell-completion zsh'
-        - 'op|op completion zsh'
+        - 'lefthook|lefthook completion zsh'
+        - 'linear|linear completions zsh'
         - 'mise|mise completion zsh'
+        - 'op|op completion zsh'
+        - 'pgroll|pgroll completion zsh'
+        - 'rg|rg --generate=complete-zsh'
+        - 'starship|starship completions zsh'
         - 'talosctl|talosctl completion zsh'
         - 'task|task --completion zsh'
-        - 'pgroll|pgroll completion zsh'
-        - 'lefthook|lefthook completion zsh'
-        # Graphite CLI
-        - 'gt|gt completion'
-        - 'linear|linear completions zsh'
-        - 'argocd|argocd completion zsh'
-        - 'gitleaks|gitleaks completion zsh'
         - 'usage|usage --completions zsh'
-        - 'helm|helm completion zsh'
-        - 'rg|rg --generate=complete-zsh'
-        - 'bat|bat --completion=zsh'
+        - 'uv|uv generate-shell-completion zsh'
       CACHE_PATH:
         sh: echo "$HOME/.cache/zsh/completions"
 
