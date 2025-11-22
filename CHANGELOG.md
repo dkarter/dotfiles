@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [27.0.0](https://github.com/dkarter/dotfiles/compare/v26.1.0...v27.0.0) (2025-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** add more snacks.nvim mappings
+
+### Features
+
+* **arch:** add hyprland + walker configs ([5c21430](https://github.com/dkarter/dotfiles/commit/5c214302eae89091753c89256f4304881ac5256e))
+* **homebrew:** add updated sudo-touchid package with tmux support ([7a617a2](https://github.com/dkarter/dotfiles/commit/7a617a29a77d5225b049f48245ddb02bded71208))
+* **mise:** add html2markdown cli ([507e361](https://github.com/dkarter/dotfiles/commit/507e361543c629386f533de5d30bd5de1beda32d))
+* **mise:** add nushell ([725b946](https://github.com/dkarter/dotfiles/commit/725b9460b6b08ee630a0c9fd9f29750aa2e16563))
+* **mise:** add redis alias ([a91986e](https://github.com/dkarter/dotfiles/commit/a91986e6794d9170c61a50b32a2f860ae7e51ec4))
+* **nushell:** add basic config ([e4d1035](https://github.com/dkarter/dotfiles/commit/e4d1035d8bac8a63e7d7644ab38246b57511cb16))
+* **nvim:** add embedded language lsp support ([de6a5d4](https://github.com/dkarter/dotfiles/commit/de6a5d4227e5a02ee4aaea9375c12b01fc45304b))
+* **nvim:** add injections for mise tasks ([38f132d](https://github.com/dkarter/dotfiles/commit/38f132da67d713d354e749310ba3f9f2c1796345))
+* **nvim:** add more snacks.nvim mappings ([371465a](https://github.com/dkarter/dotfiles/commit/371465ae952130f7f601b7f7df7ce091c0ca0c8a))
+* **nvim:** improve opencode integration ([72612e5](https://github.com/dkarter/dotfiles/commit/72612e50d66531c79162e2c8c4f53708409fc96e))
+* **task:** add basic arch linux support (Omarchy) ([622f325](https://github.com/dkarter/dotfiles/commit/622f325a1fb5a9df47075d900adeb773d169736c))
+* **zsh:** add bat completions ([e2ad27d](https://github.com/dkarter/dotfiles/commit/e2ad27d1ba2d6509533b955e9feb8f802503e48d))
+* **zsh:** add completions for ripgrep ([e494f5c](https://github.com/dkarter/dotfiles/commit/e494f5c22520a373732acbb1e0de47fd0bed49ed))
+* **zsh:** add mdcurl command - curl webpages as markdown ([4f3bcd4](https://github.com/dkarter/dotfiles/commit/4f3bcd4019ddfadcd1946a9357dbd3efd6e92576))
+* **zsh:** add vimhelp command ([f22739d](https://github.com/dkarter/dotfiles/commit/f22739d8a5c6b4e778c81a900c7f910bf3b2741f))
+
+
+### Bug Fixes
+
+* **arch:** add missing packages for erlang ([9e2e50f](https://github.com/dkarter/dotfiles/commit/9e2e50f9db88095ae29ad79a44bce3c1b70db30d))
+* **arch:** update settings for latest omarchy ([f72ac93](https://github.com/dkarter/dotfiles/commit/f72ac93b1edca9ddaffe434cc774a4c36e6e2c63))
+* **hypr:** add missing/incorrect unbinds ([a460f88](https://github.com/dkarter/dotfiles/commit/a460f883333ef3ed4b019e9bb5d1a89db4a09083))
+* **hypr:** keybindings typo and move unbind to top ([b329d23](https://github.com/dkarter/dotfiles/commit/b329d232556c719beb18a52285d8e0fcaaf401ce))
+* **hypr:** more sensible keybinds for moving windows ([41bf35e](https://github.com/dkarter/dotfiles/commit/41bf35ead9361ac0d64427eb91a1147c6ef3bc94))
+* **nvim:** only load mise injections in mise files ([fad0f25](https://github.com/dkarter/dotfiles/commit/fad0f25cc146a977da3223c11944e7a666d02bcd))
+* **nvim:** use dprint to format zsh when configured ([9e4e447](https://github.com/dkarter/dotfiles/commit/9e4e44790b5c174026204b742fefb84b7074c393))
+* **ripgrep:** update fe type and rename to web ([f3390c8](https://github.com/dkarter/dotfiles/commit/f3390c881bd0a2fff6a7a0cf5b42b3c734598c67))
+* **task:** add arch:sync to task sync ([b8113e6](https://github.com/dkarter/dotfiles/commit/b8113e69b7e4cca9f9f21c9525753a25c9ee4504))
+* **task:** default shell support for arch linux ([c1c9508](https://github.com/dkarter/dotfiles/commit/c1c95086acba9e850300137e513b13928c27fd8c))
+* **task:** make comp:generate more robust ([12c7de0](https://github.com/dkarter/dotfiles/commit/12c7de0a2278455ab36cce8bac007cbff5a0715e))
+* **task:** zsh default shell fix for macos ([b5aae6a](https://github.com/dkarter/dotfiles/commit/b5aae6a9edd5766f0cc9100235b0955a9d53aa85))
+
 ## [26.1.0](https://github.com/dkarter/dotfiles/compare/v26.0.0...v26.1.0) (2025-11-03)
 
 
