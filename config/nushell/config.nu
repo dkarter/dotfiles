@@ -30,4 +30,6 @@ $env.config.show_banner = false
 # enable vi mode
 $env.config.edit_mode = 'vi'
 
-
+# ============= aliases =============
+alias nu-open = open
+alias open = ^open
