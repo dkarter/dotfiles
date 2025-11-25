@@ -75,12 +75,12 @@ alias tree="erd -I --hidden --no-git --dir-order last --layout inverted --sort n
 alias gtree="erd -I --hidden --no-git --dir-order last --layout inverted --sort name --human"
 # tree paged
 treep() {
-  tree --color=force "$@" | bat -p
+  tree --color=force "$@" | less
 }
 
 # gtree paged
 gtreep() {
-  gtree --color=force "$@" | bat -p
+  gtree --color=force "$@" | less
 }
 
 # Bundler
