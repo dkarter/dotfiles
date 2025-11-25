@@ -21,15 +21,39 @@
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
-# opens neovim when running 'config nu'
-$env.config.buffer_editor = "nvim"
 
-# hides the welcome message
-$env.config.show_banner = false
+$env.config = {
+  # opens neovim when running 'config nu'
+  buffer_editor: "nvim"
 
-# enable vi mode
-$env.config.edit_mode = 'vi'
+  # hides the welcome message
+  show_banner: false
 
-# ============= aliases =============
-alias nu-open = open
-alias open = ^open
+  # enable vi mode
+  edit_mode: 'vi'
+
+  ls: {
+      use_ls_colors: true # use the LS_COLORS environment variable to colorize output
+      clickable_links: true # enable or disable clickable links. Your terminal has to support links.
+  }
+
+  rm: {
+      always_trash: true # always act as if -t was given. Can be overridden with -p
+  }
+
+  history: {
+    max_size: 100_000 # Session has to be reloaded for this to take effect
+    sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
+    file_format: "sqlite" # "sqlite" or "plaintext"
+    isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
+  }
+
+ # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (line is the default)
+  cursor_shape: {
+    emacs: line
+    vi_insert: blink_line
+    vi_normal: blink_block
+  }
+}
+
+source ($nu.config-path | path dirname | path join "aliases.nu")
