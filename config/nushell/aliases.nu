@@ -3,6 +3,7 @@ alias gst = git status
 alias gl = git pull
 alias gp = git push
 alias ga = git add
+alias gaa = git add -A
 alias gap = git add -p
 alias gc = git commit -v
 alias gd = git diff
