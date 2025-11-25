@@ -35,6 +35,7 @@ return {
       padding = 8,
       max_width = 120,
       max_height = 120,
+      border = 'rounded',
     },
   },
   -- Optional dependencies
