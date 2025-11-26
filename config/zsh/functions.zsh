@@ -292,3 +292,12 @@ muug() {
     mise unuse -g "$@"
   fi
 }
+
+# [l]inear [c]reate [i]ssue form in tmux popup (when in tmux)
+lci() {
+  if [[ -n $TMUX ]]; then
+    tmux popup -w 80% -h 80% lnr
+  else
+    lnr
+  fi
+}
