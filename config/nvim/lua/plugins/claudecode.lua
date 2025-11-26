@@ -6,6 +6,11 @@ return {
   -- (/ide)
   event = 'VeryLazy',
   dependencies = { 'folke/snacks.nvim' },
-  opts = {},
+  opts = {
+    diff_opts = {
+      open_in_current_tab = false, -- Open diffs in a new tab
+      auto_close_on_accept = true, -- Automatically close diff after accepting
+    },
+  },
   keys = require('core.mappings').claudecode_mappings,
 }
