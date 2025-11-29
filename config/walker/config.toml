@@ -13,20 +13,8 @@ close = ["Escape", "ctrl g"]
 next = ["Down", "ctrl n"]
 previous = ["Up", "ctrl p"]
 
-[builtins.websearch]
-name = "websearch"
-icon = "applications-internet"
-placeholder = "Websearch"
-keep_selection = true
-
-[[builtins.websearch.entries]]
-name = "Kagi"
-url = "https://kagi.com/search?q=%TERM%"
-
-[[builtins.websearch.entries]]
-name = "DuckDuckGo"
-url = "https://duckduckgo.com/?q=%TERM%"
-switcher_only = true
+[columns]
+symbols = 1 # providers to be queried by default
 
 [providers]
 max_results = 256 # 256 should be enough for everyone
@@ -43,6 +31,21 @@ desktopapplications = [
   { action = "pinup", bind = "ctrl Up", after = "AsyncReload" },
   { action = "pindown", bind = "ctrl Down", after = "AsyncReload" },
 ]
+
+[builtins.websearch]
+name = "websearch"
+icon = "applications-internet"
+placeholder = "Websearch"
+keep_selection = true
+
+[[builtins.websearch.entries]]
+name = "Kagi"
+url = "https://kagi.com/search?q=%TERM%"
+
+[[builtins.websearch.entries]]
+name = "DuckDuckGo"
+url = "https://duckduckgo.com/?q=%TERM%"
+switcher_only = true
 
 [[providers.prefixes]]
 prefix = "/"
