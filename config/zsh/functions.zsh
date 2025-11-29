@@ -293,7 +293,7 @@ muug() {
   fi
 }
 
-# [l]inear [c]reate [i]ssue form in tmux popup (when in tmux)
+# linear create issue form in tmux popup (when in tmux)
 lci() {
   if [[ -n $TMUX ]]; then
     tmux popup -w 80% -h 80% lnr
