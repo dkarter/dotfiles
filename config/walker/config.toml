@@ -32,21 +32,6 @@ desktopapplications = [
   { action = "pindown", bind = "ctrl Down", after = "AsyncReload" },
 ]
 
-[builtins.websearch]
-name = "websearch"
-icon = "applications-internet"
-placeholder = "Websearch"
-keep_selection = true
-
-[[builtins.websearch.entries]]
-name = "Kagi"
-url = "https://kagi.com/search?q=%TERM%"
-
-[[builtins.websearch.entries]]
-name = "DuckDuckGo"
-url = "https://duckduckgo.com/?q=%TERM%"
-switcher_only = true
-
 [[providers.prefixes]]
 prefix = "/"
 provider = "providerlist"
