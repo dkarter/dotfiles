@@ -96,8 +96,8 @@ tap 'morantron/tmux-fingers'
 brew 'morantron/tmux-fingers/tmux-fingers'
 
 # sudo with touch id
-tap 'artginzburg/tap'
-brew 'artginzburg/tap/sudo-touchid'
+tap 'dkarter/tap'
+brew 'dkarter/tap/sudo-touchid'
 # sudo touch id support for tmux
 brew 'pam-reattach'
 
