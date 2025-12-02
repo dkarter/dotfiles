@@ -12,3 +12,5 @@ config/tmuxinator/*.yml
 
 # do not commit history - may contain sensitive data
 config/nushell/history.*
+# ignore local nushell environment settings
+config/nushell/env.local.nu
