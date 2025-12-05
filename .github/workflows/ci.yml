@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y libreadline-dev
@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@70d7607baefba9eee49fd86c2783b8a414ffb43a
@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@70d7607baefba9eee49fd86c2783b8a414ffb43a
@@ -73,7 +73,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@70d7607baefba9eee49fd86c2783b8a414ffb43a
@@ -92,7 +92,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@70d7607baefba9eee49fd86c2783b8a414ffb43a
@@ -109,7 +109,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@70d7607baefba9eee49fd86c2783b8a414ffb43a
