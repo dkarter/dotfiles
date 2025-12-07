@@ -1,9 +1,34 @@
+# '##::::'##:'####::'######::'########:
+#  ###::'###:. ##::'##... ##: ##.....::
+#  ####'####:: ##:: ##:::..:: ##:::::::
+#  ## ### ##:: ##::. ######:: ######:::
+#  ##. #: ##:: ##:::..... ##: ##...::::
+#  ##:.:: ##:: ##::'##::: ##: ##:::::::
+#  ##:::: ##:'####:. ######:: ########:
+# ..:::::..::....:::......:::........::
+
+# NOTE: cargo backends are slower because they compile from source. I usually
+# prefer not to use those, but in some cases there is no ARM64 binary available
+# via Aqua / UBI - so we have to use cargo, in other cases, there are no
+# pre-compiled binaries at all - in such cases we should check periodically if
+# binaries were published or contribute a fix to pre-compile binaries for arm64.
+#
+# Tools with no ARM bins:
+# - vivid
+# - du-dust
+
+# For the same reason - sometimes ubi backend is selected when aqua is
+# available, if the aqua backend gets the architecture wrong:
+# - hyperfine
+
 [tools]
 
 "aqua:ahmetb/kubectx/kubens" = "latest"                                                 # switch between k8s namespaces
+"cargo:du-dust" = "latest"                                                              # A more intuitive version of du in rust
 "cargo:erdtree" = "latest"                                                              # file system tree visualizer with icons and git support
 "cargo:fastmod" = "latest"                                                              # fast regex code modifications
 "cargo:htmlq" = "latest"                                                                # Like jq, but for HTML
+"cargo:vivid" = "latest"                                                                # generate color schemes for different tools
 "cargo:wireman" = "latest"                                                              # GRPC TUI client
 "gem:tmuxinator" = "latest"                                                             # tmux session manager
 "npm:@anthropic-ai/claude-code" = "latest"                                              # AI agent
@@ -30,6 +55,7 @@
 "ubi:mr-karan/doggo" = "latest"                                                         # DNS client (like dig but better)
 "ubi:nushell/nushell" = { version = "latest", exe = "nu" }                              # modern shell and scripting language
 "ubi:orf/gping" = "latest"                                                              # graph ping
+"ubi:sharkdp/hyperfine" = "latest"                                                      # benchmarking tool
 "ubi:sibprogrammer/xq" = "latest"                                                       # XML and HTML beautifier and content extractor
 "ubi:tidewave-ai/mcp_proxy_rust" = { version = "latest", exe = "mcp-proxy" }            # Elixir MCP proxy
 argocd = "latest"
@@ -40,7 +66,6 @@ delta = "latest"                                                                
 deno = "2"                                                                              # Deno programming language
 direnv = "latest"                                                                       # load env vars on cd
 dive = "latest"                                                                         # A tool for exploring each layer in a docker image
-dust = "latest"                                                                         # A more intuitive version of du in rust
 elixir = "1.18.2-otp-27"                                                                # Elixir programming language
 erlang = "27"                                                                           # Erlang programming language
 fd = "latest"                                                                           # modern `find`
@@ -52,7 +77,6 @@ glow = "latest"                                                                 
 go = "1"                                                                                # Go programming language
 gum = "latest"                                                                          # CLI / scripting UI tools
 helm = "latest"                                                                         # install k8s packages
-hyperfine = "latest"                                                                    # benchmarking tool
 jless = "latest"                                                                        # json explorer
 jq = "latest"                                                                           # pretty print and query json
 kubectl = "latest"                                                                      # k8s cli
@@ -79,7 +103,6 @@ terraform = "latest"                                                            
 typos = "latest"                                                                        # type checker alternative to codespell
 usage = "latest"                                                                        # generates completion scripts for various tools (including mise)
 uv = "latest"                                                                           # install python packages
-vivid = "latest"                                                                        # generate color schemes for different tools
 zoxide = "latest"                                                                       # a modern version of autojump
 
 # allow specific asdf plugins when there's no other option
