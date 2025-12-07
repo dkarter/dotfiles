@@ -30,6 +30,9 @@ cask 'hammerspoon'
 # run open source LLM models locally
 cask 'ollama-app'
 
+# primary terminal app
+cask 'ghostty'
+
 # for Erlang
 brew 'wxwidgets'
 brew 'autoconf'
