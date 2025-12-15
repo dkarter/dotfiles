@@ -1,0 +1,17 @@
+[metadata]
+name = "k8s-resources"
+description = '''List all available Kubernetes resource types.
+
+This channel shows all API resources that kubectl can get.
+Select a resource type to insert it into your kubectl get command.
+'''
+requirements = ["kubectl"]
+
+[source]
+command = ['''
+  kubectl api-resources --verbs=list --no-headers | awk '{print $1}' | sort -u
+  ''']
+output = "{0}"
+
+[ui.preview_panel]
+hidden = true

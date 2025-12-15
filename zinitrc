@@ -48,9 +48,9 @@ zinit ice as"command" \
     atpull"%atclone"
 zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/bin/fzf-tmux
 
-# Load key bindings and completion
+# setup completion
 zinit for \
-    https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh
+    https://github.com/junegunn/fzf/raw/master/shell/completion.zsh
 
 
 # cht.sh
