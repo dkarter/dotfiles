@@ -8,6 +8,9 @@ pre-commit:
     - name: Check formatting
       run: task ci:format:check
 
+    - name: Check for typos
+      run: task ci:spelling:lint
+
 commit-msg:
   jobs:
     - name: conventional commits
