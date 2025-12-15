@@ -296,13 +296,9 @@ function tn() {
   tmux new -s "$(basename $PWD)"
 }
 
-# session manager using sesh + fzf
+# session manager using sesh + tv
 # https://github.com/joshmedeski/sesh
-# the awk seen part filters out duplicates without affecting the sorting - this
-# was needed since starting to use smug
-function s() {
-  sesh connect $(sesh list --icons | awk '!seen[$0]++' | fzf-tmux -p)
-}
+alias s='tv sesh'
 
 # tmux attach
 alias ta='tmux attach -t'
