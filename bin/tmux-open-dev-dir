@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Open any dir in ~/dev in a tmux session, if one exists, it will switch to it
+
+# Get dev dir
+dir=$(tv dev-dirs)
+
+# Exit if no input provided (user pressed escape)
+if [[ -z "$dir" ]]; then
+  exit 0
+fi
+
+dir_basename=$(basename "$dir")
+
+# Check if tmux session with repo name already exists
+if tmux has-session -t "$dir" 2>/dev/null; then
+  # Session exists, switch to it
+  tmux switch-client -t "$dir"
+else
+  # Create new session in the directory and switch to it
+  tmux new-session -d -s "$dir_basename" -c "$dir"
+  tmux switch-client -t "$dir_basename"
+fi
