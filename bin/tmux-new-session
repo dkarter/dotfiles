@@ -5,16 +5,30 @@
 session_name=$(gum input --placeholder="New session name...")
 
 # Exit if no input provided (user pressed escape)
-if [[ -z $session_name ]]; then
+[[ -z $session_name ]] && exit 0
+
+# If session already exists, switch to it
+if tmux has-session -t "$session_name" 2>/dev/null; then
+  tmux switch-client -t "$session_name"
   exit 0
 fi
 
-# Check if session already exists
-if tmux has-session -t "$session_name" 2>/dev/null; then
-  # Session exists, attach to it
-  tmux switch-client -t "$session_name"
-else
-  # Create new session and switch to it
-  tmux new-session -d -s "$session_name"
-  tmux switch-client -t "$session_name"
+# Determine working directory for new session
+dev_dir="$HOME/dev/$session_name"
+working_dir=""
+
+if [[ -d $dev_dir ]]; then
+  working_dir="$dev_dir"
+elif gum confirm "Directory ~/dev/$session_name doesn't exist. Create it?"; then
+  mkdir -p "$dev_dir"
+  working_dir="$dev_dir"
 fi
+
+# Create new session and switch to it
+if [[ -n $working_dir ]]; then
+  tmux new-session -d -s "$session_name" -c "$working_dir"
+else
+  tmux new-session -d -s "$session_name"
+fi
+
+tmux switch-client -t "$session_name"
