@@ -1,7 +1,7 @@
 -- bracket shortcuts like unimpaired
 ---@type LazySpec
 return {
-  'echasnovski/mini.bracketed',
+  'nvim-mini/mini.bracketed',
   event = 'VeryLazy',
   version = '*',
   opts = {
