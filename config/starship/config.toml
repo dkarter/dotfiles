@@ -1,6 +1,31 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+
+format = """
+$username\
+$hostname\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$memory_usage\
+$sudo\
+$cmd_duration\
+$fill\
+[$time]($style) \
+$line_break\
+$jobs\
+$battery\
+$status\
+$character"""
+
+add_newline = true
+
 # language plugins
 deno.disabled = true
 docker_context.disabled = true
@@ -27,3 +52,16 @@ format = "[$duration]($style) "
 min_time = 0
 style = "dimmed"
 show_milliseconds = true
+
+[time]
+disabled = false
+format = "[  $time]($style)"
+time_format = "%r"
+utc_time_offset = "local"
+style = "italic dimmed white"
+
+[memory_usage]
+disabled = false
+# percent threshold to start showing memory usage
+threshold = 75
+symbol = "󰘚 "
