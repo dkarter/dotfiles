@@ -2,6 +2,83 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [27.0.0](https://github.com/dkarter/dotfiles/compare/v26.1.0...v27.0.0) (2025-12-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** add more snacks.nvim mappings
+
+### Features
+
+* **arch:** add hyprland + walker configs ([5c21430](https://github.com/dkarter/dotfiles/commit/5c214302eae89091753c89256f4304881ac5256e))
+* **brew:** add Ghostty ([2adacc9](https://github.com/dkarter/dotfiles/commit/2adacc9808aac61a1ed02b3a2f359959508627cb))
+* **elephant:** add config ([a407b5d](https://github.com/dkarter/dotfiles/commit/a407b5d7f634c7b49a7aafade854619088e942d8))
+* **ghostty,tmux:** add cmd-shift-o -&gt; tmux-open-dev-dir ([33878ee](https://github.com/dkarter/dotfiles/commit/33878eead47b6ad6eba40dc1bf2ea8a1448e1407))
+* **homebrew:** add updated sudo-touchid package with tmux support ([7a617a2](https://github.com/dkarter/dotfiles/commit/7a617a29a77d5225b049f48245ddb02bded71208))
+* **mise:** add html2markdown cli ([507e361](https://github.com/dkarter/dotfiles/commit/507e361543c629386f533de5d30bd5de1beda32d))
+* **mise:** add nushell ([725b946](https://github.com/dkarter/dotfiles/commit/725b9460b6b08ee630a0c9fd9f29750aa2e16563))
+* **mise:** add redis alias ([a91986e](https://github.com/dkarter/dotfiles/commit/a91986e6794d9170c61a50b32a2f860ae7e51ec4))
+* **nushell:** add basic config ([e4d1035](https://github.com/dkarter/dotfiles/commit/e4d1035d8bac8a63e7d7644ab38246b57511cb16))
+* **nushell:** add gaa alias ([eefde97](https://github.com/dkarter/dotfiles/commit/eefde973f899f6cb83fbdc14e0b37b3d0764f9ac))
+* **nushell:** add local env loading ([aaf3cb3](https://github.com/dkarter/dotfiles/commit/aaf3cb3bc6ccc76c71a09f261c1c805fa69c3947))
+* **nushell:** improve nushell config ([d4ab2de](https://github.com/dkarter/dotfiles/commit/d4ab2de0e7e3ed9d7b2bc5675fc9dd095ada0d24))
+* **nvim:** add embedded language lsp support ([de6a5d4](https://github.com/dkarter/dotfiles/commit/de6a5d4227e5a02ee4aaea9375c12b01fc45304b))
+* **nvim:** add injections for mise tasks ([38f132d](https://github.com/dkarter/dotfiles/commit/38f132da67d713d354e749310ba3f9f2c1796345))
+* **nvim:** add more snacks.nvim mappings ([371465a](https://github.com/dkarter/dotfiles/commit/371465ae952130f7f601b7f7df7ce091c0ca0c8a))
+* **nvim:** improve opencode integration ([72612e5](https://github.com/dkarter/dotfiles/commit/72612e50d66531c79162e2c8c4f53708409fc96e))
+* **opencode:** add vim compatible keybindings for scrolling ([bba5115](https://github.com/dkarter/dotfiles/commit/bba5115f4e622893b78263edf9ede20286ae35ec))
+* **opencode:** support transparent background ([835cbff](https://github.com/dkarter/dotfiles/commit/835cbfffd6dba0201bad326a257aca6d29346f98))
+* **starship:** improve prompt ([568d734](https://github.com/dkarter/dotfiles/commit/568d734e8b21fc94baaf86e81a5fc24d8d25d769))
+* **task:** add basic arch linux support (Omarchy) ([622f325](https://github.com/dkarter/dotfiles/commit/622f325a1fb5a9df47075d900adeb773d169736c))
+* **task:** add task to install rosetta 2 ([0a5b9ee](https://github.com/dkarter/dotfiles/commit/0a5b9ee2a57ef70543f3978f6e812f75c66a1e3b))
+* **tmux:** improve tmux-new-session, create a dir if not exists ([9d6ccae](https://github.com/dkarter/dotfiles/commit/9d6ccaef986d924676f5d770179e764257263488))
+* **tv:** add dev-dirs ([69e407f](https://github.com/dkarter/dotfiles/commit/69e407f816625f4d66fa170c12e4eae6839439e8))
+* **tv:** add tv fuzzy finder and replace zsh fzf integration ([0c7b689](https://github.com/dkarter/dotfiles/commit/0c7b689660b8c840c4a798aef766ab25231e609f))
+* **zsh,tmux,ghostty:** add linear issue creation support ([d7d8eda](https://github.com/dkarter/dotfiles/commit/d7d8eda8d399d6db5cfe2fb9f31917bde83921ce))
+* **zsh:** add bat completions ([e2ad27d](https://github.com/dkarter/dotfiles/commit/e2ad27d1ba2d6509533b955e9feb8f802503e48d))
+* **zsh:** add completions for ripgrep ([e494f5c](https://github.com/dkarter/dotfiles/commit/e494f5c22520a373732acbb1e0de47fd0bed49ed))
+* **zsh:** add completions for sesh ([4000ef4](https://github.com/dkarter/dotfiles/commit/4000ef4015430d14be13175de6123c20f2b7bc9c))
+* **zsh:** add mdcurl command - curl webpages as markdown ([4f3bcd4](https://github.com/dkarter/dotfiles/commit/4f3bcd4019ddfadcd1946a9357dbd3efd6e92576))
+* **zsh:** add tmux-open-dev-dir script ([f944ab1](https://github.com/dkarter/dotfiles/commit/f944ab12b164d5a4d7afb8f41346d3aa687e7d25))
+* **zsh:** add vimhelp command ([f22739d](https://github.com/dkarter/dotfiles/commit/f22739d8a5c6b4e778c81a900c7f910bf3b2741f))
+
+
+### Bug Fixes
+
+* **arch:** add lsof ([a186b20](https://github.com/dkarter/dotfiles/commit/a186b20f4713ebc0a913420258ee3b5f1e7ed2f0))
+* **arch:** add missing packages for erlang ([9e2e50f](https://github.com/dkarter/dotfiles/commit/9e2e50f9db88095ae29ad79a44bce3c1b70db30d))
+* **arch:** update settings for latest omarchy ([f72ac93](https://github.com/dkarter/dotfiles/commit/f72ac93b1edca9ddaffe434cc774a4c36e6e2c63))
+* **claude:** improve formatting of neovim-lua-expert description ([11e8e3f](https://github.com/dkarter/dotfiles/commit/11e8e3fde9742a43402fc8b82322377ddfd3d6aa))
+* **hypr:** add missing/incorrect unbinds ([a460f88](https://github.com/dkarter/dotfiles/commit/a460f883333ef3ed4b019e9bb5d1a89db4a09083))
+* **hypr:** keybindings typo and move unbind to top ([b329d23](https://github.com/dkarter/dotfiles/commit/b329d232556c719beb18a52285d8e0fcaaf401ce))
+* **hypr:** more sensible keybinds for moving windows ([41bf35e](https://github.com/dkarter/dotfiles/commit/41bf35ead9361ac0d64427eb91a1147c6ef3bc94))
+* **hypr:** properly unbind existing bindings ([0c33ee8](https://github.com/dkarter/dotfiles/commit/0c33ee8569b2d846b7bec79ec487208a4c8d4611))
+* **lazygit:** auto-migrate config ([2890b20](https://github.com/dkarter/dotfiles/commit/2890b2075344a33942d02a17509a707a9673035a))
+* **mise:** improve Apple Silicon support ([b27c7af](https://github.com/dkarter/dotfiles/commit/b27c7af362a737b45b78dbb035fe0d5c136e6690))
+* **mise:** use committed from ubi ([1f20c19](https://github.com/dkarter/dotfiles/commit/1f20c1972c88122d2cf0ffeb413ac7d3b0a39121))
+* **nushell:** local loading ([c1f563d](https://github.com/dkarter/dotfiles/commit/c1f563d090067951db3a869ec6ee0da8d2edf0b5))
+* **nushell:** restore macos builtin open ([03a9965](https://github.com/dkarter/dotfiles/commit/03a99658a61e8056289471e7bd46d18a07454e72))
+* **nvim:** add border to oil popup ([f35aca7](https://github.com/dkarter/dotfiles/commit/f35aca7a3eaf51fd55a2a0a8ed27e9105149fc6c))
+* **nvim:** only load mise injections in mise files ([fad0f25](https://github.com/dkarter/dotfiles/commit/fad0f25cc146a977da3223c11944e7a666d02bcd))
+* **nvim:** open claude code diffs in new tab ([025e226](https://github.com/dkarter/dotfiles/commit/025e226e92973c8ea9a3d3b2a1b41c66802a6862))
+* **nvim:** update repo for mini.bracketed ([a5d37b2](https://github.com/dkarter/dotfiles/commit/a5d37b2eeaf7c29e86322439a689837262166abb))
+* **nvim:** use dprint to format zsh when configured ([9e4e447](https://github.com/dkarter/dotfiles/commit/9e4e44790b5c174026204b742fefb84b7074c393))
+* **opencode:** add editor_open mapping + remove new line mapping ([8704a1e](https://github.com/dkarter/dotfiles/commit/8704a1e3db17ffa6bec5e7147d68c52f5949dcd8))
+* **opencode:** use opencode-transparent as the theme ([5e7fc23](https://github.com/dkarter/dotfiles/commit/5e7fc2350c2f5a50a6978084384560815627340a))
+* **ripgrep:** fix web type wildcard + remove rails config ([24df70e](https://github.com/dkarter/dotfiles/commit/24df70ee7bfe8c720b9175aea30f47f3418c8314))
+* **ripgrep:** make ripgrep always show hidden files ([6e6c246](https://github.com/dkarter/dotfiles/commit/6e6c24607da4737625e89e69225bb2973a484899))
+* **ripgrep:** update fe type and rename to web ([f3390c8](https://github.com/dkarter/dotfiles/commit/f3390c881bd0a2fff6a7a0cf5b42b3c734598c67))
+* **task:** add arch:sync to task sync ([b8113e6](https://github.com/dkarter/dotfiles/commit/b8113e69b7e4cca9f9f21c9525753a25c9ee4504))
+* **task:** default shell support for arch linux ([c1c9508](https://github.com/dkarter/dotfiles/commit/c1c95086acba9e850300137e513b13928c27fd8c))
+* **task:** make comp:generate more robust ([12c7de0](https://github.com/dkarter/dotfiles/commit/12c7de0a2278455ab36cce8bac007cbff5a0715e))
+* **task:** zsh default shell fix for macos ([b5aae6a](https://github.com/dkarter/dotfiles/commit/b5aae6a9edd5766f0cc9100235b0955a9d53aa85))
+* **typos:** ignore commands in toml files for tv ([d264649](https://github.com/dkarter/dotfiles/commit/d264649fbdda3f3c6b189e00d3578d75b08b6800))
+* **walker:** auto update ([931c27a](https://github.com/dkarter/dotfiles/commit/931c27ab85a50b6a521ae62e6f2d703477aebc54))
+* **walker:** remove unused options ([64d17ad](https://github.com/dkarter/dotfiles/commit/64d17ad39b95a1ee3936f8466d2aa9d6aadd0566))
+* **zinit:** remove unused configs ([87340a3](https://github.com/dkarter/dotfiles/commit/87340a30f5536114fb40f9f062d2cc420fac0da7))
+* **zsh:** use less instead of bat for paginating treep ([c3ca7ec](https://github.com/dkarter/dotfiles/commit/c3ca7ec7c7fd9db8d3a342a314363dd7f7b6606a))
+
 ## [26.1.0](https://github.com/dkarter/dotfiles/compare/v26.0.0...v26.1.0) (2025-11-03)
 
 
