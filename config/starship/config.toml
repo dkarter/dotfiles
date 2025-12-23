@@ -1,14 +1,13 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-cmd_duration.format = "[$duration]($style) "
-
 # language plugins
 deno.disabled = true
 docker_context.disabled = true
 elixir.disabled = true
 erlang.disabled = true
 gcloud.disabled = true
+golang.disabled = true
 lua.disabled = true
 nodejs.disabled = true
 package.disabled = true
@@ -22,3 +21,9 @@ bun.disabled = true
 [kubernetes]
 disabled = false
 style = "bright-blue"
+
+[cmd_duration]
+format = "[$duration]($style) "
+min_time = 0
+style = "dimmed"
+show_milliseconds = true
