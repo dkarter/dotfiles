@@ -1,6 +1,12 @@
 -- Elixir Map Key Toggle Plugin
 -- This plugin toggles Elixir map keys between atom and string syntax.
 -- Mostly borrowed from https://github.com/mxgrn/dotfiles/blob/master/.config/nvim/lua/elixir_map_key_toggle.lua
+--
+-- Changes from original:
+-- - renamed the user command to ElixirToggleMapKeys to match my other Elixir specific commands
+-- - exported as a module, so it can be required (which I do in ../../after/local/lsp/elixirls.lua)
+-- - added deep toggle functionality (with bang)
+-- - preserves formatting and spacing
 
 -- Helper to get text from a node
 local function get_node_text(node, bufnr)
