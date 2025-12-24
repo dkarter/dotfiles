@@ -396,10 +396,9 @@ M.opencode_mappings = {
 
 ---@type LazyKeysSpec[]
 M.claudecode_mappings = {
-  { '<leader>ac', '<cmd>ClaudeCode<cr>', desc = 'Toggle Claude' },
   { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
-  { '<leader>as', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
-  { '<leader>as', 'V<cmd>ClaudeCodeSend<cr>', mode = 'n', desc = 'Send line to Claude' },
+  { '<leader>aa', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
+  { '<leader>aa', 'V<cmd>ClaudeCodeSend<cr>', mode = 'n', desc = 'Send line to Claude' },
   {
     '<leader>as',
     '<cmd>ClaudeCodeTreeAdd<cr>',
@@ -407,8 +406,8 @@ M.claudecode_mappings = {
     ft = { 'oil' },
   },
   -- Diff management
-  { '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff' },
-  { '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff' },
+  { '<leader>ay', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff (y)' },
+  { '<leader>an', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff (n)' },
 }
 
 M.fugitive_mappings = function()
