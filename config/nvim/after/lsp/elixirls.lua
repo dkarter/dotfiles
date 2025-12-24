@@ -1,34 +1,3 @@
-local M = {}
-
-local get_cursor_position = function()
-  local rowcol = vim.api.nvim_win_get_cursor(0)
-  local row = rowcol[1] - 1
-  local col = rowcol[2]
-
-  return row, col
-end
-
-local manipulate_pipes = function(direction, client)
-  local row, col = get_cursor_position()
-
-  client.request_sync('workspace/executeCommand', {
-    command = 'manipulatePipes:serverid',
-    arguments = { direction, 'file://' .. vim.api.nvim_buf_get_name(0), row, col },
-  }, nil, 0)
-end
-
-function M.from_pipe(client)
-  return function()
-    manipulate_pipes('fromPipe', client)
-  end
-end
-
-function M.to_pipe(client)
-  return function()
-    manipulate_pipes('toPipe', client)
-  end
-end
-
 ---@type vim.lsp.Config
 return {
   settings = {
@@ -41,8 +10,12 @@ return {
   },
   on_attach = function(client, bufnr)
     local add_user_cmd = vim.api.nvim_buf_create_user_command
-    add_user_cmd(bufnr, 'ElixirFromPipe', M.from_pipe(client), {})
-    add_user_cmd(bufnr, 'ElixirToPipe', M.to_pipe(client), {})
+    local pipes = require 'elixir.manipulate_pipes'
+    local map_keys = require 'elixir.map_key_toggle'
+    add_user_cmd(bufnr, 'ElixirFromPipe', pipes.from_pipe(client), {})
+    add_user_cmd(bufnr, 'ElixirToPipe', pipes.to_pipe(client), {})
+    add_user_cmd(bufnr, 'ElixirToggleMapKeys', map_keys.toggle_elixir_map_keys, {})
+
     require('core.mappings').elixir_mappings()
 
     -- setup codelens
