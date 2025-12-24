@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [27.1.0](https://github.com/dkarter/dotfiles/compare/v27.0.0...v27.1.0) (2025-12-24)
+
+
+### Features
+
+* **nvim:** add ability to toggle elixir map keys ([11c9ffe](https://github.com/dkarter/dotfiles/commit/11c9ffe1ab150ba239310bd7ed7c1d2c25d52beb)), closes [#65](https://github.com/dkarter/dotfiles/issues/65)
+* **nvim:** add Elixir deep map key toggle + mapping ([b99717a](https://github.com/dkarter/dotfiles/commit/b99717a0a77008e12163149d48cecfeadbf11d05))
+
+
+### Bug Fixes
+
+* **nvim:** disable built in UI for claudecode nvim ([031895a](https://github.com/dkarter/dotfiles/commit/031895ac57f4ca109d131e2de527408f428607e5))
+* **task:** gh:release task stopped working ([cb57a97](https://github.com/dkarter/dotfiles/commit/cb57a979ae072ddd3ed613449c8fb0bd646ca5f6))
+
 ## [27.0.0](https://github.com/dkarter/dotfiles/compare/v26.1.0...v27.0.0) (2025-12-23)
 
 
