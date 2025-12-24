@@ -89,10 +89,127 @@ local function toggle_string_atom(bufnr, node)
   return false
 end
 
+-- Find all map nodes within a given node (for deep processing)
+local function find_all_maps(node)
+  local maps = {}
+
+  local function traverse(n)
+    if n:type() == 'map' then
+      table.insert(maps, n)
+    end
+    for child in n:iter_children() do
+      traverse(child)
+    end
+  end
+
+  traverse(node)
+  return maps
+end
+
+-- Toggle a single map's keys while preserving formatting
+local function toggle_single_map(bufnr, map_node)
+  local map_content = nil
+  for child in map_node:iter_children() do
+    if child:type() == 'map_content' then
+      map_content = child
+      break
+    end
+  end
+
+  if not map_content then
+    return false
+  end
+
+  local pairs = {}
+  local is_keyword_syntax = false
+
+  for child in map_content:iter_children() do
+    if child:type() == 'binary_operator' then
+      local op_text = get_node_text(child, bufnr)
+      if op_text:match '^.-=>' then
+        table.insert(pairs, child)
+      end
+    elseif child:type() == 'keywords' then
+      is_keyword_syntax = true
+      for pair_node in child:iter_children() do
+        if pair_node:type() == 'pair' then
+          table.insert(pairs, pair_node)
+        end
+      end
+    end
+  end
+
+  if #pairs == 0 then
+    return false
+  end
+
+  -- Process pairs in reverse order to maintain correct offsets
+  for i = #pairs, 1, -1 do
+    local pair = pairs[i]
+
+    if is_keyword_syntax then
+      -- keyword syntax: key: value → "key" => value
+      local children = get_direct_children(pair)
+      local key_node
+      for _, c in ipairs(children) do
+        if c:type() == 'keyword' then
+          key_node = c
+          break
+        end
+      end
+
+      if key_node then
+        local key_text = get_node_text(key_node, bufnr)
+        local atom_key = key_text:gsub(':%s*$', '')
+        replace_node(bufnr, key_node, '"' .. atom_key .. '" =>')
+      end
+    else
+      -- arrow syntax: "key" => value → key: value
+      local op_children = get_direct_children(pair)
+      local key_node = op_children[1]
+
+      if key_node and key_node:type() == 'string' then
+        local quoted_content
+        for c in key_node:iter_children() do
+          if c:type() == 'quoted_content' then
+            quoted_content = c
+            break
+          end
+        end
+
+        if quoted_content then
+          local key_text = get_node_text(quoted_content, bufnr)
+          -- Find and replace the key and arrow operator together
+          local start_row, start_col = key_node:range()
+          local _, _, end_row, end_col = pair:range()
+
+          -- Get the value node (last child that's not a comma)
+          local value_node = op_children[#op_children]
+          local _, _, value_end_row, value_end_col = value_node:range()
+
+          -- Replace from key start to just before value
+          local lines = vim.api.nvim_buf_get_lines(bufnr, start_row, value_end_row + 1, false)
+          if #lines > 0 then
+            local full_text = get_node_text(pair, bufnr)
+            local value_text = get_node_text(value_node, bufnr)
+            local new_text = full_text:gsub('^%s*"[^"]*"%s*=>%s*', key_text .. ': ')
+            replace_node(bufnr, pair, new_text)
+          end
+        end
+      end
+    end
+  end
+
+  return true
+end
+
 local M = {}
 
 -- Main toggle function
-function M.toggle_elixir_map_keys()
+function M.toggle_elixir_map_keys(opts)
+  opts = opts or {}
+  local deep = opts.deep or false
+
   local ts = vim.treesitter
   local node = ts.get_node()
   if not node then
@@ -117,102 +234,48 @@ function M.toggle_elixir_map_keys()
     return
   end
 
-  -- otherwise continue with your map key toggle logic (unchanged)
-  local map_content = nil
-  for child in map_node:iter_children() do
-    if child:type() == 'map_content' then
-      map_content = child
-      break
-    end
-  end
+  -- Determine which maps to process
+  local maps_to_process = {}
+  if deep then
+    -- Find all nested maps within the enclosing map
+    maps_to_process = find_all_maps(map_node)
+    -- Sort by depth (deepest first) to avoid offset issues
+    table.sort(maps_to_process, function(a, b)
+      local depth_a = 0
+      local node_a = a
+      while node_a do
+        depth_a = depth_a + 1
+        node_a = node_a:parent()
+      end
 
-  if not map_content then
-    vim.notify('Map has no content', vim.log.levels.WARN)
-    return
-  end
+      local depth_b = 0
+      local node_b = b
+      while node_b do
+        depth_b = depth_b + 1
+        node_b = node_b:parent()
+      end
 
-  local pairs = {}
-  local is_keyword_syntax = false
-  for child in map_content:iter_children() do
-    if child:type() == 'binary_operator' then
-      local op_text = get_node_text(child, bufnr)
-      if op_text:match '^.-=>' then
-        table.insert(pairs, child)
-      end
-    elseif child:type() == 'keywords' then
-      is_keyword_syntax = true
-      for pair_node in child:iter_children() do
-        if pair_node:type() == 'pair' then
-          table.insert(pairs, pair_node)
-        end
-      end
-    end
-  end
-
-  if #pairs == 0 then
-    vim.notify('No key-value pairs found', vim.log.levels.WARN)
-    return
-  end
-
-  if is_keyword_syntax then
-    local new_pairs = {}
-    for _, pair in ipairs(pairs) do
-      local children = get_direct_children(pair)
-      local key_node, value_node
-      for _, c in ipairs(children) do
-        if c:type() == 'keyword' then
-          key_node = c
-        elseif key_node and c:type() ~= ',' then
-          value_node = c
-          break
-        end
-      end
-      if key_node and value_node then
-        local key_text = get_node_text(key_node, bufnr):gsub(':%s*$', '')
-        local value_text = get_node_text(value_node, bufnr)
-        table.insert(new_pairs, '"' .. key_text .. '" => ' .. value_text)
-      end
-    end
-
-    if #new_pairs > 0 then
-      local keywords_node
-      for child in map_content:iter_children() do
-        if child:type() == 'keywords' then
-          keywords_node = child
-          break
-        end
-      end
-      if keywords_node then
-        replace_node(bufnr, keywords_node, table.concat(new_pairs, ', '))
-      end
-    end
-    vim.notify('Toggled to string-key map', vim.log.levels.INFO)
+      return depth_a > depth_b
+    end)
+    vim.notify('Toggling ' .. #maps_to_process .. ' map(s) (deep mode)', vim.log.levels.INFO)
   else
-    local new_pairs = {}
-    for _, binary_op in ipairs(pairs) do
-      local op_children = get_direct_children(binary_op)
-      local key_node = op_children[1]
-      local value_node = op_children[#op_children]
-      if key_node and key_node:type() == 'string' and value_node then
-        local quoted_content
-        for c in key_node:iter_children() do
-          if c:type() == 'quoted_content' then
-            quoted_content = c
-            break
-          end
-        end
-        if quoted_content then
-          local key_text = get_node_text(quoted_content, bufnr)
-          local value_text = get_node_text(value_node, bufnr)
-          table.insert(new_pairs, key_text .. ': ' .. value_text)
-        end
-      end
-    end
+    -- Only process the current map
+    table.insert(maps_to_process, map_node)
+  end
 
-    if #new_pairs > 0 then
-      replace_node(bufnr, map_content, table.concat(new_pairs, ', '))
+  -- Process each map
+  local success_count = 0
+  for _, map in ipairs(maps_to_process) do
+    if toggle_single_map(bufnr, map) then
+      success_count = success_count + 1
     end
-    vim.notify('Toggled to atom-key map', vim.log.levels.INFO)
+  end
+
+  if success_count == 0 then
+    vim.notify('No maps were toggled', vim.log.levels.WARN)
+  else
+    local mode_str = deep and ' (deep)' or ''
+    vim.notify('Toggled ' .. success_count .. ' map(s)' .. mode_str, vim.log.levels.INFO)
   end
 
   pcall(vim.fn['repeat#set'], ':ElixirToggleMapKeys\r')

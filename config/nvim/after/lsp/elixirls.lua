@@ -14,7 +14,9 @@ return {
     local map_keys = require 'elixir.map_key_toggle'
     add_user_cmd(bufnr, 'ElixirFromPipe', pipes.from_pipe(client), {})
     add_user_cmd(bufnr, 'ElixirToPipe', pipes.to_pipe(client), {})
-    add_user_cmd(bufnr, 'ElixirToggleMapKeys', map_keys.toggle_elixir_map_keys, {})
+    add_user_cmd(bufnr, 'ElixirToggleMapKeys', function(opts)
+      map_keys.toggle_elixir_map_keys { deep = opts.bang }
+    end, { bang = true, desc = 'Toggle Elixir map keys (use ! for deep mode)' })
 
     require('core.mappings').elixir_mappings()
 

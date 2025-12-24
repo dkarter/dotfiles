@@ -239,10 +239,12 @@ M.lsp_diagnostic_mappings = function()
   nmap { '<leader>qd', '<cmd>lua vim.diagnostic.setloclist()<CR>', { desc = 'Set loclist to LSP diagnostics' } }
 end
 
+-- stylua: ignore
 M.elixir_mappings = function()
   nmap { '<space>fp', ':ElixirFromPipe<cr>', { desc = '[F]rom [P]ipe', buffer = true, noremap = true } }
   nmap { '<space>tp', ':ElixirToPipe<cr>', { desc = '[T]o [P]ipe', buffer = true, noremap = true } }
   nmap { '<space>tm', ':ElixirToggleMapKeys<cr>', { desc = '[T]oggle [M]ap Keys', buffer = true, noremap = true } }
+  nmap { '<space>tM', ':ElixirToggleMapKeys!<cr>', { desc = '[T]oggle [M]ap Keys (deep)', buffer = true, noremap = true } }
   vmap { '<space>em', ':ElixirExpandMacro<cr>', { desc = '[E]xpand [M]acro', buffer = true, noremap = true } }
 end
 
