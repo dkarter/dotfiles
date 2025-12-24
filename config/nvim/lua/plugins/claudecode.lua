@@ -7,6 +7,11 @@ return {
   event = 'VeryLazy',
   dependencies = { 'folke/snacks.nvim' },
   opts = {
+    terminal = {
+      -- for working with tmux only - disables internal terminal buffer
+      -- no UI actions; server + tools remain available
+      provider = 'none',
+    },
     diff_opts = {
       open_in_current_tab = false, -- Open diffs in a new tab
       auto_close_on_accept = true, -- Automatically close diff after accepting
