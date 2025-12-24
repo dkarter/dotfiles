@@ -47,7 +47,14 @@ tasks:
       - creates a github release
     silent: true
     cmd: |
-      gh pr list --author "@me" --state open --search 'chore(master): release' | awk '{ print $1 }' | xargs -I{} gh pr merge {} --auto --squash --delete-branch
+      PR_NUMBER=$(gh pr list --state open --label "autorelease: pending" --author "@me" --json number --jq '.[0].number')
+      if [ -n "$PR_NUMBER" ]; then
+        echo "Merging release PR #$PR_NUMBER"
+        gh pr merge "$PR_NUMBER" --auto --squash --delete-branch
+      else
+        echo "No release PR found"
+        exit 1
+      fi
 
   sync:
     desc: Synchronize gh plugins
