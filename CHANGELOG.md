@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.0.0](https://github.com/dkarter/dotfiles/compare/v27.1.0...v28.0.0) (2025-12-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **nvim:** change ClaudeCode mappings to match open code
+
+### Features
+
+* **hyprland,walkr:** automatic migration update from Omarchy ([b9f896c](https://github.com/dkarter/dotfiles/commit/b9f896c9b8b16f757f561d3ffc7a22490cb8f445))
+
+
+### Bug Fixes
+
+* **git:** ignore local claude files in nested dirs ([d6ad76d](https://github.com/dkarter/dotfiles/commit/d6ad76d4964513c6efb0b1db4481905c61772254))
+* **hypr:** conflicts with tmux + ghostty workflow ([170f3c9](https://github.com/dkarter/dotfiles/commit/170f3c97d5c095a35179273d06e842c403ef0bdf))
+* **nvim:** add &lt;leader&gt;as for sending to claude code in normal mode ([3ccb16a](https://github.com/dkarter/dotfiles/commit/3ccb16ace1c845b721ae61d08fb0efd828a922a7))
+* **nvim:** remove unused mappings for claude code ([fc01ef5](https://github.com/dkarter/dotfiles/commit/fc01ef5135855125a96311e50d681d230cef19b8))
+
+
+### Code Refactoring
+
+* **nvim:** change ClaudeCode mappings to match open code ([f3e2d06](https://github.com/dkarter/dotfiles/commit/f3e2d067b09a1576cc1b1572159ecc41d73ad4da))
+
 ## [27.1.0](https://github.com/dkarter/dotfiles/compare/v27.0.0...v27.1.0) (2025-12-24)
 
 
