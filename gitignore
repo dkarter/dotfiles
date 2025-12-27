@@ -33,8 +33,8 @@ node_modules
 .task/
 
 # ignore local settings files
-.claude/settings.local.json
 .claude/*.local.json
+**/*/.claude/*.local.json
 CLAUDE.local.md
 
 .linear.toml
