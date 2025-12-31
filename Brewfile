@@ -94,6 +94,10 @@ brew 'make'
 # terminal multiplexer
 brew 'tmux'
 
+# process video files (used by yazi, but also ffmpeg is very useful in general)
+brew 'ffmpeg'
+brew 'ffmpegthumbnailer'
+
 # vimium like jumps in tmux
 tap 'morantron/tmux-fingers'
 brew 'morantron/tmux-fingers/tmux-fingers'
