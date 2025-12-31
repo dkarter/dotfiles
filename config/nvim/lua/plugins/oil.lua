@@ -4,7 +4,8 @@ return {
   'stevearc/oil.nvim',
   -- we need this to work when running nvim .
   -- it's ok though because this only adds ~1.5ms to load time
-  event = { 'VimEnter' },
+  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+  lazy = false,
   keys = require('core.mappings').oil_nvim_mappings,
   ---@module "oil"
   ---@class oil.Config

@@ -355,11 +355,31 @@ M.oil_nvim_mappings = {
   { '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' } },
   {
     '<leader>-',
+    mode = { 'n', 'v' },
     function()
       require('oil').toggle_float()
     end,
-    { desc = 'Open parent directory (float)' },
+    desc = 'Open parent directory (float)',
   },
+}
+
+---Private function to handle Yazi toggle from Oil buffers
+---@private
+local yazi_toggle = function()
+  -- Check if we're in an Oil buffer
+  if vim.bo.filetype == 'oil' and require('oil').get_current_dir() then
+    -- Call Yazi with the actual directory path from Oil
+    require('yazi').yazi({}, require('oil').get_current_dir())
+  else
+    -- Normal Yazi call for non-Oil buffers
+    vim.cmd 'Yazi'
+  end
+end
+
+---@type LazyKeysSpec[]
+M.yazi_nvim_mappings = {
+  { '<leader>\\', yazi_toggle, { desc = 'Open parent directory' } },
+  { '<leader>|', '<cmd>Yazi cwd<CR>', { desc = 'Open CWD' } },
 }
 
 ---@type LazyKeysSpec[]
