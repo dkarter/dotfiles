@@ -241,13 +241,19 @@ fallback_channel = "files"
 "git-diff" = ["git add", "git restore"]
 "git-branch" = [
   "git checkout",
+  "gco",
   "git branch",
+  "gb",
   "git merge",
+  "gm",
   "git rebase",
+  "grb",
   "git pull",
+  "gl",
   "git push",
+  "gp",
 ]
-"git-log" = ["git log", "git show"]
+"git-log" = ["git log", "git show", "gsh", "gsps"]
 "docker-images" = ["docker run"]
 "git-repos" = ["nvim", "code", "hx", "git clone"]
 "k8s-resources" = [
