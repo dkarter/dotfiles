@@ -44,13 +44,24 @@ if [[ -d $repo_path ]]; then
     git pull
   fi
 else
+  # Ask if user wants shallow or full clone
+  clone_type=$(gum choose --header="Select clone type:" "Shallow clone (--depth 1)" "Full clone")
+
   # Clone the repository
   gum style --foreground="blue" "Cloning $github_url to $repo_path..."
 
-  if ! git clone "$github_url" "$repo_path"; then
-    gum style --foreground="red" "Error: Failed to clone repository"
-    sleep 2
-    exit 1
+  if [[ $clone_type == "Shallow clone (--depth 1)" ]]; then
+    if ! git clone --depth 1 "$github_url" "$repo_path"; then
+      gum style --foreground="red" "Error: Failed to clone repository"
+      sleep 2
+      exit 1
+    fi
+  else
+    if ! git clone "$github_url" "$repo_path"; then
+      gum style --foreground="red" "Error: Failed to clone repository"
+      sleep 2
+      exit 1
+    fi
   fi
 
   gum style --foreground="green" "Successfully cloned repository!"
