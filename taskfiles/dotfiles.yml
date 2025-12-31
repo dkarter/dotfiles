@@ -49,6 +49,10 @@ includes:
     dir: ../
     internal: true
 
+  yazi:
+    taskfile: ./yazi.yml
+    internal: true
+
   zinit:
     taskfile: ./zinit.yml
     dir: ../
@@ -79,6 +83,7 @@ tasks:
       - task: bat:sync
       - task: tmux:plugins:install
       - task: gh:plugins:install
+      - task: yazi:install
       # completions needs the tools to be installed
       - task: completions:sync
       - task: print:done
@@ -106,6 +111,7 @@ tasks:
       - task: gh:sync
       - task: fonts:sync
       - task: mac:sync
+      - task: yazi:sync
       # completions needs the tools to be installed
       - task: completions:sync
       - task: print:done

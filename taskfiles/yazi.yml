@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  install:
+    desc: Installs all plugins
+    silent: true
+    cmd: ya pkg install
+
+  update:
+    desc: Updates all plugins
+    silent: true
+    cmd: ya pkg upgrade
+
+  sync:
+    desc: Installs and updates all plugins
+    silent: true
+    cmds:
+      - task: install
+      - task: update
