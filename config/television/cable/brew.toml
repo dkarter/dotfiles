@@ -1,0 +1,47 @@
+[metadata]
+name = "brew"
+description = "Search and preview Homebrew packages"
+requirements = ["brew", "jq"]
+
+[source]
+# List all available Homebrew formulae and casks
+command = "(brew formulae; brew casks) | sort"
+
+[preview]
+# Show formatted brew info with ANSI colors
+command = """
+brew info --json=v2 '{0}' | jq -r '
+  if (.casks | length) > 0 then
+    .casks[0] |
+    "\\u001b[1;36m# \\(.token): \\(.version)\\(.auto_updates | if . then \" (auto_updates)\" else \"\" end)\\u001b[0m\\n",
+    (if .desc then "\\u001b[33m\\(.desc)\\u001b[0m\\n" else "" end),
+    "\\u001b[1mHomepage:\\u001b[0m \\u001b[34m\\(.homepage)\\u001b[0m",
+    "\\u001b[1mStatus:\\u001b[0m \\u001b[32m\\(if .installed then \"Installed\" else \"Not installed\" end)\\u001b[0m",
+    "\\u001b[1mSource:\\u001b[0m \\u001b[90mhttps://github.com/Homebrew/\\(.tap)/blob/HEAD/\\(.ruby_source_path)\\u001b[0m",
+    (if .name | length > 0 then "\\n\\u001b[1;36mName:\\u001b[0m \\(.name | join(\", \"))" else "" end),
+    (if .caveats then "\\n\\n\\u001b[1;31mCaveats:\\u001b[0m\\n\\u001b[33m\\(.caveats)\\u001b[0m" else "" end)
+  else
+    .formulae[0] |
+    "\\u001b[1;36m# \\(.name): \\(.versions.stable)\\(if .versions.head then \", HEAD\" else \"\" end)\\(if .versions.bottle then \" (bottled)\" else \"\" end)\\u001b[0m\\n",
+    (if .desc then "\\u001b[33m\\(.desc)\\u001b[0m\\n" else "" end),
+    "\\u001b[1mHomepage:\\u001b[0m \\u001b[34m\\(.homepage)\\u001b[0m",
+    "\\u001b[1mStatus:\\u001b[0m \\u001b[32m\\(if (.installed | length) > 0 then \"Installed\" else \"Not installed\" end)\\u001b[0m",
+    "\\u001b[1mSource:\\u001b[0m \\u001b[90mhttps://github.com/Homebrew/\\(.tap)/blob/HEAD/\\(.ruby_source_path)\\u001b[0m",
+    (if .license then "\\u001b[1mLicense:\\u001b[0m \\u001b[35m\\(.license)\\u001b[0m\\n" else "" end),
+    (if (.dependencies | length) > 0 then "\\n\\u001b[1;36mDependencies:\\u001b[0m\\n\\(.dependencies | map(\"  • \\u001b[33m\" + . + \"\\u001b[0m\") | join(\"\\n\"))" else "" end),
+    (if .caveats then "\\n\\n\\u001b[1;31mCaveats:\\u001b[0m\\n\\u001b[33m\\(.caveats)\\u001b[0m" else "" end)
+  end
+'
+"""
+ansi = true
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+description = "Open the selected package's homepage"
+command = "brew home '{0}'"
+mode = "execute"
+
+[ui.preview_panel]
+header = "{0}"
