@@ -1,0 +1,10 @@
+[metadata]
+name = "zoxide"
+description = "Jump to a directory using zoxide"
+requirements = ["zoxide"]
+
+[source]
+command = ["zoxide query -l"]
+
+[preview]
+command = "lsd -la --git --date=relative --blocks name,date --color=always '{}'"
