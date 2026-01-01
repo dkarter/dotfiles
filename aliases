@@ -11,14 +11,14 @@ alias l="ls"
 # just like l but a single column
 alias l1="l -1"
 # full long list with permissions, size, ownership etc
-alias ll="l -l"
+alias ll="l -l --date=relative --blocks name,size,date,user"
 # just like ll but with git status
 alias llg="ll --git"
 # sorts the list by created date asc, so that the latest file is closer to the
 # prompt
 alias llc="ll --sort=created"
 # use lsd instead of system ls
-alias ls="lsd -gahF --group-directories-first"
+alias ls="lsd -ahF --group-directories-first"
 alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias rm='trash'
