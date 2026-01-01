@@ -59,7 +59,7 @@ alias mrf='mise registry | fzf'
 # --------
 #
 # Temporary Postgres Instance
-alias pgtmp='docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust -v$(pwd)/tmp/pgdata:/var/lib/postgresql/data postgres:alpine'
+alias pgtmp='docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust -v$(pwd)/tmp/pgdata:/var/lib/postgresql/data postgres:18-alpine'
 
 # remove .orig files created after `git mergetool` is run
 alias rmorig='rm $(fd --hidden "\.orig")'
