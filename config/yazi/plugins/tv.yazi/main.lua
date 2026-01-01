@@ -8,7 +8,7 @@ local state = ya.sync(function()
   return cx.active.current.cwd, selected
 end)
 
-function M:entry()
+function M:entry(job)
   ya.emit('escape', { visual = true })
 
   local cwd, selected = state()
@@ -21,8 +21,11 @@ function M:entry()
     }
   end
 
+  -- Get channel from arguments, default to "files"
+  local channel = job and job.args and job.args[1] or 'files'
+
   local _permit = ui.hide()
-  local output, err = M.run_with(cwd, selected)
+  local output, err = M.run_with(cwd, selected, channel)
   if not output then
     return ya.notify {
       title = 'TV',
@@ -32,17 +35,34 @@ function M:entry()
     }
   end
 
-  local urls = M.split_urls(cwd, output)
-  if #urls == 1 then
-    local cha = #selected == 0 and fs.cha(urls[1])
-    ya.emit(cha and cha.is_dir and 'cd' or 'reveal', { urls[1], raw = true })
-  elseif #urls > 1 then
-    urls.state = #selected > 0 and 'off' or 'on'
-    ya.emit('toggle_all', urls)
+  -- Channels like "zoxide", "dirs", and "dev-dirs" only output directories
+  local dir_only_channels = { zoxide = true, dirs = true, ['dev-dirs'] = true }
+
+  if dir_only_channels[channel] then
+    -- For directory-only channels, always cd to the first result
+    local dir = output:match '^[^\r\n]+'
+    if dir and dir ~= '' then
+      local url = Url(dir)
+      if url.is_absolute then
+        ya.emit('cd', { url, raw = true })
+      else
+        ya.emit('cd', { cwd:join(url), raw = true })
+      end
+    end
+  else
+    -- For file/mixed channels, use the original behavior
+    local urls = M.split_urls(cwd, output)
+    if #urls == 1 then
+      local cha = #selected == 0 and fs.cha(urls[1])
+      ya.emit(cha and cha.is_dir and 'cd' or 'reveal', { urls[1], raw = true })
+    elseif #urls > 1 then
+      urls.state = #selected > 0 and 'off' or 'on'
+      ya.emit('toggle_all', urls)
+    end
   end
 end
 
-function M.run_with(cwd, selected)
+function M.run_with(cwd, selected, channel)
   local child, err
 
   if #selected > 0 then
@@ -68,9 +88,9 @@ function M.run_with(cwd, selected)
       :stderr(Command.INHERIT)
       :spawn()
   else
-    -- No selection, use files channel
+    -- No selection, use specified channel
     child, err = Command('tv')
-      :arg('files')
+      :arg(channel)
       :cwd(tostring(cwd))
       :stdin(Command.INHERIT)
       :stdout(Command.PIPED)

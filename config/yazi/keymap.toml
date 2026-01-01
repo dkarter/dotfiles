@@ -88,8 +88,18 @@ keymap = [
   { on = "s", run = "search --via=fd", desc = "Search files by name via fd" },
   { on = "S", run = "search --via=rg", desc = "Search files by content via ripgrep" },
   { on = "<C-s>", run = "escape --search", desc = "Cancel the ongoing search" },
-  { on = "z", run = "plugin tv", desc = "Jump to a file/directory via tv" },
-  { on = "Z", run = "plugin tv-zoxide", desc = "Jump to a directory via tv+zoxide" },
+  { on = [
+    "z",
+    "f",
+  ], run = "plugin tv", desc = "Jump to a file via tv" },
+  { on = [
+    "z",
+    "d",
+  ], run = "plugin tv -- dirs", desc = "Jump to a directory via tv" },
+  { on = [
+    "z",
+    "z",
+  ], run = "plugin tv -- zoxide", desc = "Jump to a directory via tv+zoxide" },
 
   # Linemode
   { on = [
