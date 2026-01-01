@@ -32,6 +32,11 @@ alias tf='terraform'
 alias tfa='terraform apply'
 alias tfd='terraform destroy'
 
+# select a tv channel and return the result
+# can be composed like `cd $(tt)` and then select git-repos, then after
+# selecting a repo it will cd into it's directory
+alias tt='tv channels'
+
 # AI tooling
 alias oc='opencode'
 alias cld='claude'
