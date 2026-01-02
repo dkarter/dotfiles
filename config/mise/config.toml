@@ -112,7 +112,7 @@ zoxide = "latest"                                                               
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
 # list of asdf plugins that would normally be supported https://mise.jdx.dev/registry.html#tools
-[alias]
+[tool_alias]
 lua = 'asdf:mise-plugins/mise-lua'
 rebar = 'asdf:mise-plugins/mise-rebar'
 redis = 'asdf:mise-plugins/mise-redis'
