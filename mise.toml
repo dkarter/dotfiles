@@ -18,5 +18,8 @@ yamllint = "1.35"
 shfmt = "latest"
 lua = "5.1"
 
+[hooks]
+postinstall = "lefthook install"
+
 [settings]
 experimental = true
