@@ -45,6 +45,6 @@ fi
 
 # Check that the fzf command didn't exit with an error or non-zero code (as it
 # does when the user cancels the dialog)
-if [ "x$file" != "x" ]; then
+if [ "$file" != "" ]; then
   nvim "$file"
 fi
