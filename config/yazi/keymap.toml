@@ -275,6 +275,11 @@ keymap = [
   { on = "<F1>", run = "help", desc = "Open help" },
 ]
 
+[[mgr.prepend_keymap]]
+on = "<Enter>"
+run = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
 [tasks]
 
 keymap = [
