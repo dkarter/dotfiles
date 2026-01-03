@@ -1,10 +1,10 @@
 [tools]
 
 "ubi:evilmartians/lefthook" = "latest"
-"ubi:mazznoer/lolcrab" = "latest"
+"github:mazznoer/lolcrab" = "latest"
 "ubi:tamasfe/taplo" = "latest"
 bun = "latest"
-"ubi:crate-ci/committed" = "latest"
+"github:crate-ci/committed" = "latest"
 dprint = "latest"
 gitleaks = "latest"
 lua-language-server = "2"
@@ -16,7 +16,6 @@ task = "latest"
 typos = "latest"
 yamllint = "1.35"
 shfmt = "latest"
-lua = "5.1"
 
 [hooks]
 postinstall = "lefthook install"
