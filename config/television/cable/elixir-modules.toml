@@ -1,0 +1,18 @@
+[metadata]
+name = "elixir-modules"
+description = "A channel to select from Elixir modules in the current project"
+requirements = ["rg", "bat"]
+
+[source]
+command = "rg 'defmodule (.*) do' -t elixir -r='$1' --no-filename --no-line-number --trim | grep ."
+
+[preview]
+command = "file=$(rg -l 'defmodule {} do' -t elixir | head -n1) && bat -n --color=always \"$file\""
+
+[keybindings]
+ctrl-e = "actions:edit"
+
+[actions.edit]
+description = "Opens the selected module file with the default editor"
+command = "file=$(rg -l 'defmodule {} do' -t elixir | head -n1) && ${EDITOR:-vim} \"$file\""
+mode = "execute"
