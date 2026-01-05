@@ -3,7 +3,8 @@
 version: 3
 
 vars:
-  TPM_DIR: ~/.local/share/tmux/plugins/tpm
+  TPM_DIR:
+    sh: echo ~/.local/share/tmux/plugins/tpm
 
 tasks:
   reload:
