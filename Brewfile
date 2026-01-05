@@ -24,9 +24,6 @@ cask 'iterm2'
 # allow accessing passwords from a CLI
 cask '1password-cli'
 
-# macOS automation using Lua
-cask 'hammerspoon'
-
 # run open source LLM models locally
 cask 'ollama-app'
 
