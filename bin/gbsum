@@ -1,0 +1,63 @@
+#!/usr/bin/env bun
+
+function getRelativeTime(timestamp: number): string {
+  const now = Date.now();
+  const diff = now - timestamp;
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`;
+  if (months > 0) return `${months} month${months > 1 ? 's' : ''} ago`;
+  if (weeks > 0) return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+  if (days > 0) return days === 1 ? 'yesterday' : `${days} days ago`;
+  if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+  if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+  return 'just now';
+}
+
+const branches = await Bun.$`git for-each-ref --sort=-committerdate --format='%(refname:short)|%(committerdate:unix)' refs/heads/ | grep -v '^main|' | grep -v '^master|' | head -10`.text();
+const branchList = branches.trim().split('\n').filter(b => b);
+
+const results = await Promise.all(
+  branchList.map(async (branchLine) => {
+    const [branch, timestamp] = branchLine.split('|');
+    const relativeDate = getRelativeTime(parseInt(timestamp) * 1000);
+
+    // Check if there's a PR first using gh
+    const prResult = await Bun.$`gh pr list --head ${branch} --json title --jq '.[0].title'`.nothrow().quiet();
+
+    if (prResult.exitCode === 0 && prResult.stdout.toString().trim()) {
+      return `\x1b[36m${branch}\x1b[0m \x1b[90m(${relativeDate})\x1b[0m: ${prResult.stdout.toString().trim()}`;
+    }
+
+    // No PR found, get all commits different from parent
+    // Try to find parent branch (usually main, but could be others)
+    const mergeBase = await Bun.$`git merge-base ${branch} main`.nothrow().quiet();
+
+    if (mergeBase.exitCode !== 0) {
+      // Fallback to just the latest commit if we can't find merge base
+      const latestCommit = await Bun.$`git log ${branch} -1 --format='%s'`.nothrow().quiet();
+      return `\x1b[36m${branch}\x1b[0m \x1b[90m(${relativeDate})\x1b[0m: ${latestCommit.stdout.toString().trim()}`;
+    }
+
+    // Get all commit messages since divergence from main
+    const commits = await Bun.$`git log ${mergeBase.stdout.toString().trim()}..${branch} --format='%s'`.text();
+    const commitList = commits.trim().split('\n').filter(c => c);
+
+    if (commitList.length === 0) {
+      return `\x1b[36m${branch}\x1b[0m \x1b[90m(${relativeDate})\x1b[0m: No commits ahead of main`;
+    } else if (commitList.length === 1) {
+      return `\x1b[36m${branch}\x1b[0m \x1b[90m(${relativeDate})\x1b[0m: ${commitList[0]}`;
+    } else {
+      // Summarize multiple commits
+      return `\x1b[36m${branch}\x1b[0m \x1b[90m(${relativeDate})\x1b[0m: ${commitList.length} commits - ${commitList[0]} (and ${commitList.length - 1} more)`;
+    }
+  })
+);
+
+results.forEach((result) => console.log(result));
