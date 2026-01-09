@@ -32,6 +32,7 @@
 "gem:tmuxinator" = "latest"                                                                # tmux session manager
 "github:JohannesKaufmann/html-to-markdown" = { version = "latest", exe = "html2markdown" } # convert HTML to Markdown
 "github:ast-grep/ast-grep" = "latest"                                                      # a cli tool for searching and rewriting code using AST
+"github:babs/multiping" = "latest"
 "github:chmln/sd" = "latest"                                                               # a modern alternative for sed with sensible defaults
 "github:dkarter/lnr" = "latest"                                                            # linear cli
 "github:dlvhdr/diffnav" = "latest"                                                         # A git diff pager based on delta but with a file tree, à la GitHub.
@@ -108,12 +109,6 @@ uv = "latest"                                                                   
 yazi = "latest"                                                                            # terminal file manager
 zoxide = "latest"                                                                          # a modern version of autojump
 
-# ping multiple hosts in parallel - still on ubi because the github backend
-# can't figure out the asset patterns properly
-[tools."ubi:babs/multiping"]
-version = "latest"
-# linux-x64 = { asset_pattern = "multiping-linux-amd64.xz" }
-# macos-arm64 = { asset_pattern = "multiping-darwin-arm64.xz" }
 
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
