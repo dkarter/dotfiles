@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.0.1](https://github.com/dkarter/dotfiles/compare/v28.0.0...v28.0.1) (2026-01-10)
+
+
+### Bug Fixes
+
+* **tv:** show hidden files by default ([f3af660](https://github.com/dkarter/dotfiles/commit/f3af6604ea314deccfed33c17c6976e359f7e503))
+
 ## [28.0.0](https://github.com/dkarter/dotfiles/compare/v27.1.0...v28.0.0) (2026-01-06)
 
 
