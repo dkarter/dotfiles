@@ -1,0 +1,29 @@
+[metadata]
+name = "kctx"
+description = '''List and switch between Kubernetes contexts (like kubectx).
+
+Keybindings
+
+Press `enter` to switch to the selected context.
+'''
+requirements = ["kubectl"]
+
+[source]
+command = ['''
+  kubectl config get-contexts -o name
+  ''']
+output = "{0}"
+
+[preview]
+command = "kubectl config get-contexts {0}"
+
+[ui.preview_panel]
+size = 60
+
+[keybindings]
+enter = "actions:switch"
+
+[actions.switch]
+description = "Switch to the selected context"
+command = "kubectl config use-context {0}"
+mode = "execute"

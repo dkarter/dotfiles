@@ -22,8 +22,6 @@
 # - hyperfine
 
 [tools]
-
-"aqua:ahmetb/kubectx/kubens" = "latest"                                                    # switch between k8s namespaces
 "cargo:du-dust" = "latest"                                                                 # A more intuitive version of du in rust
 "cargo:erdtree" = "latest"                                                                 # file system tree visualizer with icons and git support
 "cargo:fastmod" = "latest"                                                                 # fast regex code modifications
@@ -82,7 +80,6 @@ helm = "latest"                                                                 
 jless = "latest"                                                                           # json explorer
 jq = "latest"                                                                              # pretty print and query json
 kubectl = "latest"                                                                         # k8s cli
-kubectx = "latest"                                                                         # switch between k8s clusters and namespaces quickly
 lazydocker = "latest"                                                                      # docker TUI
 lazygit = "latest"                                                                         # Git TUI
 lsd = "latest"                                                                             # ls with icons and colors, like `exa` but with more features

@@ -1,0 +1,31 @@
+[metadata]
+name = "kns"
+description = '''List and switch between Kubernetes namespaces (like kubens).
+
+Keybindings
+
+Press `enter` to switch to the selected namespace.
+'''
+requirements = ["kubectl"]
+
+[source]
+command = [
+  '''
+  kubectl get namespaces -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'
+  ''',
+]
+output = "{0}"
+
+[preview]
+command = "kubectl describe namespace {0}"
+
+[ui.preview_panel]
+size = 60
+
+[keybindings]
+enter = "actions:switch"
+
+[actions.switch]
+description = "Switch to the selected namespace"
+command = "kubectl config set-context --current --namespace={0}"
+mode = "execute"
