@@ -151,6 +151,8 @@ alias gfc='git rev-list --max-parents=0 HEAD'
 alias gsu='git stash -u'
 alias gsp='git stash pop'
 alias gsa='git stash --all'
+# resume commit with previous message
+alias gcr='git commit --verbose --edit --file=.git/COMMIT_EDITMSG'
 
 fork() {
   repo_name=$(echo "$1" | xargs basename | cut -d. -f1)
