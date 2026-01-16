@@ -16,6 +16,7 @@
 # Tools with no ARM bins:
 # - vivid
 # - du-dust
+# - rnr
 
 # For the same reason - sometimes github backend is selected when aqua is
 # available, if the aqua backend gets the architecture wrong:
@@ -26,6 +27,7 @@
 "cargo:erdtree" = "latest"                                                                 # file system tree visualizer with icons and git support
 "cargo:fastmod" = "latest"                                                                 # fast regex code modifications
 "cargo:htmlq" = "latest"                                                                   # Like jq, but for HTML
+"cargo:rnr" = "latest"                                                                     # batch rename files and directories                                                          # generate color schemes for different tools
 "cargo:vivid" = "latest"                                                                   # generate color schemes for different tools
 "gem:tmuxinator" = "latest"                                                                # tmux session manager
 "github:JohannesKaufmann/html-to-markdown" = { version = "latest", exe = "html2markdown" } # convert HTML to Markdown
@@ -35,7 +37,6 @@
 "github:dkarter/lnr" = "latest"                                                            # linear cli
 "github:dlvhdr/diffnav" = "latest"                                                         # A git diff pager based on delta but with a file tree, à la GitHub.
 "github:ip7z/7zip" = { version = "latest", exe = "7zz" }                                   # 7zip cli
-"github:ismaelgv/rnr" = "latest"                                                           # batch rename files and directories
 "github:joshmedeski/sesh" = "latest"                                                       # tmux session manager
 "github:kdash-rs/kdash" = "latest"                                                         # kubernetes dashboard in the terminal
 "github:mazznoer/lolcrab" = "latest"                                                       # like lolcat, but written in Rust and with more features
@@ -105,7 +106,6 @@ usage = "latest"                                                                
 uv = "latest"                                                                              # install python packages
 yazi = "latest"                                                                            # terminal file manager
 zoxide = "latest"                                                                          # a modern version of autojump
-
 
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
