@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.1.0](https://github.com/dkarter/dotfiles/compare/v28.0.0...v28.1.0) (2026-01-17)
+
+
+### Features
+
+* **zsh:** add gcr - resume commit with prev message ([80f42a2](https://github.com/dkarter/dotfiles/commit/80f42a27a1f311103ca0baab73f9be23ed3078c3))
+* **zsh:** add support for kctx -u + use --inline ([73ed774](https://github.com/dkarter/dotfiles/commit/73ed77415782e30fde3a029f3891d0de64e2ffe1))
+
+
+### Bug Fixes
+
+* **mise:** compile rnr from source for arm64 compat ([0698496](https://github.com/dkarter/dotfiles/commit/0698496b119918d1740cf353198912815b954dee))
+* **nvim:** start opencode with --port by default ([3ca087c](https://github.com/dkarter/dotfiles/commit/3ca087cf3fc1bab4cdf17f7ea37fc2bf4eade28f))
+* **opencode:** restrict deletions by requiring approval ([5030a3f](https://github.com/dkarter/dotfiles/commit/5030a3feaf3aa87f31025a64b5d06189406d7063))
+* **tmux:** use mise x for external mise installed tools ([4950efe](https://github.com/dkarter/dotfiles/commit/4950efef11e23b36601e420ba7964f4538f1a9e5))
+* **tv:** show hidden files by default ([f3af660](https://github.com/dkarter/dotfiles/commit/f3af6604ea314deccfed33c17c6976e359f7e503))
+* **zsh,tv:** add kns and kctx via tv ([8fac5a7](https://github.com/dkarter/dotfiles/commit/8fac5a7ae7b87c59be79a2000c2c5f586b9ce096))
+
 ## [28.0.0](https://github.com/dkarter/dotfiles/compare/v27.1.0...v28.0.0) (2026-01-06)
 
 
