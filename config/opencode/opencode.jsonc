@@ -40,7 +40,9 @@
       "kubectl get secrets": "deny",
       "kubectl get secret": "deny",
       "kubectl get *": "allow",
-      "rg *": "allow"
+      "rg *": "allow",
+      "rm -rf *": "ask",
+      "rm *": "ask"
     }
   },
   "agent": {
