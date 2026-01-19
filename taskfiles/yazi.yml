@@ -2,6 +2,14 @@
 version: '3'
 
 tasks:
+  commit:
+    desc: Commits the lazy-lock.json file if changed
+    silent: true
+    cmd: |
+      ./scripts/commit_changed_file.sh \
+          './config/yazi/package.toml' \
+          'chore(yazi): update plugins'
+
   install:
     desc: Installs all plugins
     silent: true
@@ -18,3 +26,4 @@ tasks:
     cmds:
       - task: install
       - task: update
+      - task: commit
