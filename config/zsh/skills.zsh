@@ -6,6 +6,8 @@ export SKILLS_NO_TELEMETRY=1
 # Wraps `bunx skills add` to automatically remove the embedded git repository
 # so the skill can be committed to your dotfiles without submodule issues.
 #
+# You can find skills in https://skills.sh
+#
 # Usage:
 #   add-skill <owner/repo> [--skill <name>]
 #
