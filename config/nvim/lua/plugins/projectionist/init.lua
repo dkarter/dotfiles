@@ -3,6 +3,20 @@
 return {
   'tpope/vim-projectionist',
   config = function()
+    if not vim.g.projectionist_transformations then
+      vim.g.projectionist_transformations = vim.empty_dict()
+    end
+
+    ElixirToolsProjectionistElixirModule = function(input)
+      return input:gsub('(%.%l)', string.upper)
+    end
+
+    vim.cmd [[
+      function! g:projectionist_transformations.elixir_module(input, o) abort
+        return v:lua.ElixirToolsProjectionistElixirModule(a:input, a:o)
+      endfunction
+    ]]
+
     local config = {
       -- neovim
       ['config/nvim/init.lua'] = {
