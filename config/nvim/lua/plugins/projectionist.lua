@@ -42,6 +42,17 @@ return {
       --
       -- BEGIN mod for PDQ codebase
       ['mix.exs'] = {
+        ['test/*_test.exs'] = {
+          type = 'test',
+          alternate = 'lib/{}.ex',
+          template = {
+            'defmodule {camelcase|capitalize|dot|elixir_module}Test do',
+            '  use ExUnit.Case, async: true',
+            '',
+            '  alias {camelcase|capitalize|dot|elixir_module}',
+            'end',
+          },
+        },
         ['lib/*_test.exs'] = {
           type = 'test',
           alternate = 'lib/{}.ex',
