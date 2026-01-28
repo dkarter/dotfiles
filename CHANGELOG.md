@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.2.0](https://github.com/dkarter/dotfiles/compare/v28.1.0...v28.2.0) (2026-01-28)
+
+
+### Features
+
+* **opencode:** add skill-creator skill ([cf1dae5](https://github.com/dkarter/dotfiles/commit/cf1dae51b70fed40a025628fef373e7886cb189a))
+* **opencode:** add tools for managing skills ([553baea](https://github.com/dkarter/dotfiles/commit/553baea196e1c8dc2b709f0c900eff6238ea3391))
+
+
+### Bug Fixes
+
+* **nvim:** add back elixir projections ([31c84c1](https://github.com/dkarter/dotfiles/commit/31c84c1417ca6d1e9edb8d7bf743a439b4656693))
+* **nvim:** add projectionist_transformations for elixir ([c7e79c7](https://github.com/dkarter/dotfiles/commit/c7e79c74d7b86d09141232bf068e1bd003d17a44))
+* **nvim:** projectionist for Elixir was missing config ([4299931](https://github.com/dkarter/dotfiles/commit/42999314902b530c68cd68095bf40a400613584b))
+* **task:** use correct dir for yazi task import ([ab9187a](https://github.com/dkarter/dotfiles/commit/ab9187a22ef89b4f16cac17322cac74687f2cb7a))
+
 ## [28.1.0](https://github.com/dkarter/dotfiles/compare/v28.0.0...v28.1.0) (2026-01-20)
 
 
