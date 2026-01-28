@@ -88,9 +88,6 @@ cask 'docker-desktop'
 # build tool
 brew 'make'
 
-# terminal multiplexer
-brew 'tmux'
-
 # process video files (used by yazi, but also ffmpeg is very useful in general)
 brew 'ffmpeg'
 brew 'ffmpegthumbnailer'
