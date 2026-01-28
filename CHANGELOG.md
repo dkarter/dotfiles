@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.3.0](https://github.com/dkarter/dotfiles/compare/v28.2.0...v28.3.0) (2026-01-28)
+
+
+### Features
+
+* **tv,zsh:** add gctv alias and git-branch-checkout tv channel ([b91768f](https://github.com/dkarter/dotfiles/commit/b91768fb5ab2eafc54c89fe745c5b8e33309d4d4))
+
+
+### Bug Fixes
+
+* **mise:** lock go to minor version ([b786d16](https://github.com/dkarter/dotfiles/commit/b786d169ab35f24ec6bb8f5ca0bebeabaf0d7ffd))
+
 ## [28.2.0](https://github.com/dkarter/dotfiles/compare/v28.1.0...v28.2.0) (2026-01-28)
 
 
