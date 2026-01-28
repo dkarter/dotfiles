@@ -155,6 +155,9 @@ alias gsa='git stash --all'
 # resume commit with previous message
 alias gcr='git commit --verbose --edit --file=.git/COMMIT_EDITMSG'
 
+# combines gbsum and tv
+alias gctv='tv git-branch-checkout'
+
 fork() {
   repo_name=$(echo "$1" | xargs basename | cut -d. -f1)
   clone_path="$HOME/dev/forks/$repo_name"

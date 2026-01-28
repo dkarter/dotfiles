@@ -1,0 +1,23 @@
+# Television channel for checking out git branches with summaries
+# Uses gbsum to show branch summaries (PR titles or commit info)
+
+[metadata]
+name = "git-branch-checkout"
+description = "Checkout git branches with PR/commit summaries (sorted by last update)"
+requirements = ["git", "bun", "gh"]
+
+[source]
+command = "gbsum"
+ansi = true
+output = "{strip_ansi|split: :0}"
+
+[preview]
+command = "git show -p --stat --pretty=fuller --color=always '{strip_ansi|split: :0}'"
+
+[keybindings]
+enter = "actions:checkout"
+
+[actions.checkout]
+description = "Checkout selected branch"
+command = "git checkout '{strip_ansi|split: :0}'"
+mode = "execute"
