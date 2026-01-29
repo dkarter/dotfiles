@@ -17,6 +17,7 @@ tasks:
         - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
         - 'delta|delta --generate-completion zsh'
         - 'erd|erd --completions zsh'
+        - 'fnox|fnox completion zsh'
         - 'fx|fx --comp zsh'
         - 'gitleaks|gitleaks completion zsh'
         - 'gt|gt completion' # Graphite CLI
@@ -25,8 +26,8 @@ tasks:
         - 'lefthook|lefthook completion zsh'
         - 'linear|linear completions zsh'
         - 'mise|mise completion zsh'
-        - 'opencode|opencode completion'
         - 'op|op completion zsh'
+        - 'opencode|opencode completion'
         - 'pgroll|pgroll completion zsh'
         - 'rg|rg --generate=complete-zsh'
         - 'sesh|sesh completion zsh'
