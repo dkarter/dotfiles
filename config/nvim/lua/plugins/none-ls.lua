@@ -27,7 +27,26 @@ return {
         ----------------------
         b.diagnostics.actionlint,
         b.diagnostics.ansiblelint,
-        b.diagnostics.credo,
+        b.diagnostics.credo.with {
+          condition = function(utils)
+            -- Fast path: check for .credo.exs config file
+            if utils.root_has_file { '.credo.exs' } then
+              return true
+            end
+
+            -- Fallback: check if mix.exs contains credo dependency
+            if utils.root_has_file { 'mix.exs' } then
+              local file = io.open('mix.exs', 'r')
+              if file then
+                local content = file:read '*all'
+                file:close()
+                return content:match '{:credo,' ~= nil
+              end
+            end
+
+            return false
+          end,
+        },
         b.diagnostics.yamllint,
         b.diagnostics.zsh,
         b.diagnostics.commitlint.with {
