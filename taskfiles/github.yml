@@ -26,7 +26,7 @@ tasks:
       - for:
           var: GH_PLUGINS
           as: PLUGIN
-        cmd: gh extension install {{.PLUGIN}}
+        cmd: mise exec -- gh extension install '{{.PLUGIN}}'
         silent: true
 
   plugins:update:
@@ -35,7 +35,7 @@ tasks:
       - for:
           var: GH_PLUGINS
           as: PLUGIN
-        cmd: gh extension upgrade {{.PLUGIN}}
+        cmd: mise exec -- gh extension upgrade '{{.PLUGIN}}'
         silent: true
 
   release:
