@@ -10,6 +10,7 @@ description: Review pull requests and leave line comments using the GitHub CLI (
 1. Gather context
 
 - Identify PR number or current branch; use `gh pr view --json number,title,url,baseRefName,headRefName`.
+- For stacked PRs or unknown base, infer it via `gh pr view --json baseRefName` on the target PR or by checking the branch's upstream/fork-point.
 - Get base comparison: `git diff --name-only <base>...HEAD` and `git diff <base>...HEAD`.
 - Read plan/spec files mentioned by the user before judging alignment.
 - Check repo guidance (`AGENTS.md`, `CLAUDE.md`, `rules/*`) for conventions.
