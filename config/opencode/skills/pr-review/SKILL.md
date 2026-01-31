@@ -34,7 +34,10 @@ description: Review pull requests and leave line comments using the GitHub CLI (
 4. Leave PR line comments (if requested). The user may want to review these before you post them, so don't publish those yet, keep them as part of a pending review
 
 - Use `gh api` to create a pending review with line comments (omit `event` to keep it pending):
-  - `gh api repos/{owner}/{repo}/pulls/{number}/reviews -f body='...' -F comments[][path]=<file> -F comments[][line]=<line> -F comments[][side]=RIGHT -f comments[][body]='...'`
+  - `gh api repos/{owner}/{repo}/pulls/{number}/reviews -f body='...' -F 'comments[][path]=<file>' -F 'comments[][line]=<line>' -F 'comments[][side]=RIGHT' -f 'comments[][body]=...'`
+- You can also create a pending review with only `-f body=...` (no line comments).
+- GitHub allows only one pending review per user; batch comments in the initial create call or delete/recreate.
+- Avoid `gh pr review --comment` for drafts since it publishes immediately.
 - Prefer commenting on the exact line in the diff for each issue that needs a change.
 - Keep comments specific, actionable, and reference the plan/spec/documentation if relevant.
 
