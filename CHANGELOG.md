@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.4.0](https://github.com/dkarter/dotfiles/compare/v28.3.0...v28.4.0) (2026-01-31)
+
+
+### Features
+
+* **opencode:** add pr-review skill using gh cli ([#389](https://github.com/dkarter/dotfiles/issues/389)) ([86fcf12](https://github.com/dkarter/dotfiles/commit/86fcf128eea41c35f62a29431ea3b04332bac29d))
+* **violentmonkey:** add graphite user script ([ba0c0f0](https://github.com/dkarter/dotfiles/commit/ba0c0f0ddfe1fa6518f069e92170ff4c6f8a04f5))
+
+
+### Bug Fixes
+
+* **task:** improve reliability of gh:sync ([0caf5a2](https://github.com/dkarter/dotfiles/commit/0caf5a20352dba684d21f79b0afa90c870726777))
+
 ## [28.3.0](https://github.com/dkarter/dotfiles/compare/v28.2.0...v28.3.0) (2026-01-28)
 
 
