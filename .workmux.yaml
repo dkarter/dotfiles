@@ -41,18 +41,14 @@
 
 # Custom tmux pane layout.
 # Default: Two-pane layout with shell and clear command.
-panes:
-  # opencode - focused
-  - command: <agent>
-    focus: true
-
-  # nvim
-  - command: nvim
-    split: vertical
-
-  # just a terminal
-  - command: clear
-    split: horizontal
+# panes:
+#   # opencode - focused
+#   - command: <agent>
+#     focus: true
+#
+#   # just a terminal
+#   - command: clear
+#     split: vertical
 
 # Auto-apply agent status icons to tmux window format.
 # Default: true
