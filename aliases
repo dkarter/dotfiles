@@ -367,6 +367,31 @@ function mix_cmd_app() {
 #  execute commands on umbrella apps
 alias ma='mix_cmd_app'
 
+# --------------------------------------------
+# Workmux Aliases
+# --------------------------------------------
+
+# Core commands
+alias wm='workmux'
+alias wma='workmux add'
+alias wmo='workmux open'
+alias wmc='workmux close'
+alias wmm='workmux merge'
+alias wmrm='workmux remove'
+alias wmls='workmux list'
+alias wmp='workmux path'
+alias wmd='workmux dashboard'
+
+# Documentation
+alias wmdocs='workmux docs'
+alias wmcl='workmux changelog'
+
+# Setup
+alias wminit='workmux init'
+
+# Claude integration
+alias wmclaude='workmux claude'
+
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
 # Include machine specific aliases
 
