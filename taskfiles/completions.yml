@@ -36,6 +36,7 @@ tasks:
         - 'task|task --completion zsh'
         - 'usage|usage --completions zsh'
         - 'uv|uv generate-shell-completion zsh'
+        - 'workmux|workmux completions zsh'
       CACHE_PATH:
         sh: echo "$HOME/.cache/zsh/completions"
 
