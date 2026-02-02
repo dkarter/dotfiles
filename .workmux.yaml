@@ -41,23 +41,28 @@
 
 # Custom tmux pane layout.
 # Default: Two-pane layout with shell and clear command.
-# panes:
-#   - command: pnpm install
-#     focus: true
-#   - split: horizontal
-#   - command: clear
-#     split: vertical
-#     size: 5
+panes:
+  # opencode - focused
+  - command: <agent>
+    focus: true
+
+  # nvim
+  - command: nvim
+    split: vertical
+
+  # just a terminal
+  - command: clear
+    split: horizontal
 
 # Auto-apply agent status icons to tmux window format.
 # Default: true
 # status_format: true
 
 # Custom icons for agent status display.
-# status_icons:
-#   working: "🤖"
-#   waiting: "💬"
-#   done: "✅"
+status_icons:
+  working: ''
+  waiting: '󱜸'
+  done: ''
 
 # -------------------------------------------------------------------------------
 # Agent & AI
