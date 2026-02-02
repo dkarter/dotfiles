@@ -1,0 +1,50 @@
+# workmux project configuration
+nerdfont: true
+
+# -------------------------------------------------------------------------------
+# Git
+# -------------------------------------------------------------------------------
+
+# The primary branch to merge into.
+# Default: Auto-detected from remote HEAD, falls back to main/master.
+# main_branch: main
+
+merge_strategy: rebase
+
+# -------------------------------------------------------------------------------
+# Tmux
+# -------------------------------------------------------------------------------
+
+# Custom icons for agent status display.
+status_icons:
+  working: ''
+  waiting: '󱜸'
+  done: ''
+
+# -------------------------------------------------------------------------------
+# Agent & AI
+# -------------------------------------------------------------------------------
+
+# Agent command for '<agent>' placeholder in pane commands.
+# Default: "claude"
+agent: 'opencode --port'
+
+# -------------------------------------------------------------------------------
+# Hooks
+# -------------------------------------------------------------------------------
+
+# Commands to run in new worktree before tmux window opens.
+# These block window creation - use for short tasks only.
+post_create:
+  - '[ -f mise.toml ] && mise trust && mise install'
+
+pre_merge:
+  - '[ -f mix.exs ] && mix test'
+
+# -------------------------------------------------------------------------------
+# Dashboard
+# -------------------------------------------------------------------------------
+
+# Actions for dashboard keybindings (c = commit, m = merge).
+dashboard:
+  commit: 'Commit staged changes with a descriptive message using conventional commits'
