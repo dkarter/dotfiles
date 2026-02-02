@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [28.4.0](https://github.com/dkarter/dotfiles/compare/v28.3.0...v28.4.0) (2026-02-02)
+
+
+### Features
+
+* **mise:** add workmux ([92aabd4](https://github.com/dkarter/dotfiles/commit/92aabd4bcd63dee3b6ba5b6641086c51d294a747))
+* **opencode:** add pr-review skill using gh cli ([#389](https://github.com/dkarter/dotfiles/issues/389)) ([86fcf12](https://github.com/dkarter/dotfiles/commit/86fcf128eea41c35f62a29431ea3b04332bac29d))
+* **violentmonkey:** add graphite user script ([ba0c0f0](https://github.com/dkarter/dotfiles/commit/ba0c0f0ddfe1fa6518f069e92170ff4c6f8a04f5))
+
+
+### Bug Fixes
+
+* **nvim:** don't warn about credo when not installed ([3b5ab96](https://github.com/dkarter/dotfiles/commit/3b5ab960ddc222d12f8bb9bfc34ad88044cdd361))
+* **task:** improve reliability of gh:sync ([0caf5a2](https://github.com/dkarter/dotfiles/commit/0caf5a20352dba684d21f79b0afa90c870726777))
+
 ## [28.3.0](https://github.com/dkarter/dotfiles/compare/v28.2.0...v28.3.0) (2026-01-28)
 
 
