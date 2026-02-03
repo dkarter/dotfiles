@@ -4,38 +4,14 @@ description = "Tmux command palette"
 requirements = ["tv", "tmux"]
 
 [source]
-command = """
-cat <<'EOF'
-Open sesh (super+j)	tmux-popup-sesh &
-Open tmux windows (super+k)	tmux-popup-windows &
-Open tmux panes (super+shift+k)	tmux-popup-panes &
-Toggle last session (super+l)	mise x -- sesh last
-Create new session (super+shift+n)	tmux-popup-new-session &
-Open dev dir (super+shift+o)	tmux-popup-open-dev-dir &
-Fork GitHub repo (super+shift+f)	tmux-popup-fork-repo &
-Create Linear issue (super+shift+i)	tmux-popup-linear &
-Insert file path at cursor (super+shift+.)	tmux-popup-insert-file-path &
-Reload config (ctrl-z r)	tmux source-file ~/.config/tmux/tmux.conf && tmux display-message 'tmux.conf reloaded'
-Install plugins (ctrl-z I)	~/.local/share/tmux/plugins/tpm/bin/install_plugins
-Update plugins (ctrl-z U)	 ~/.local/share/tmux/plugins/tpm/bin/update_plugins all
-Clean plugins (ctrl-z alt-u)	~/.local/share/tmux/plugins/tpm/bin/clean_plugins
-GitHub Dashboard	 tmux-popup-gh-dash &
-Lazygit	 tmux-popup-lazygit &
-Lazydocker	 tmux-popup-lazydocker &
-Workmux Add	 tmux-popup-workmux-add &
-Workmux Dashboard	 tmux-popup-workmux-dashboard &
-Workmux Open	 tmux-popup-workmux-open &
-Workmux Merge	 tmux-popup-workmux-merge &
-Workmux Remove	 tmux-popup-workmux-remove &
-EOF
-"""
-output = "{split:\t:0}"
-display = "{split:\t:0}"
+command = "$HOME/dotfiles/bin/tmux-commands list"
+ansi = true
+output = "{strip_ansi}"
 
 [keybindings]
 enter = "actions:run"
 
 [actions.run]
 description = "Execute selected Ghostty command"
-command = "{split:\t:1}"
+command = "zsh -lc 'echo \"$1\" >> /tmp/tmux.log; tmux-commands exec \"$1\"' _ '{strip_ansi}'"
 mode = "execute"

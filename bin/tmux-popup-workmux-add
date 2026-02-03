@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-script_dir=$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+script_dir=$(cd -- "$(dirname "$0")" && pwd)
 command="${script_dir}/tmux-workmux-add"
 
 tmux display-popup -C >/dev/null 2>&1 || true

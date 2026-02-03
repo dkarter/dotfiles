@@ -1,0 +1,120 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+setopt extendedglob
+
+typeset -A COMMANDS
+typeset -A SHORTCUTS
+typeset -A BACKGROUND
+typeset -a LABELS
+
+add_command() {
+  local label="$1"
+  local command="$2"
+  local shortcut="${3:-}"
+  local background="${4:-}"
+
+  COMMANDS[$label]="$command"
+  SHORTCUTS[$label]="$shortcut"
+  BACKGROUND[$label]="$background"
+  LABELS+=("$label")
+}
+
+add_command "Open sesh" "tmux-popup-sesh" "super+j" "true"
+add_command "Open tmux windows" "tmux-popup-windows" "super+k" "true"
+add_command "Open tmux panes" "tmux-popup-panes" "super+shift+k" "true"
+add_command "Toggle last session" "mise x -- sesh last" "super+l"
+add_command "Create new session" "tmux-popup-new-session" "super+shift+n" "true"
+add_command "Open dev dir" "tmux-popup-open-dev-dir" "super+shift+o" "true"
+add_command "Fork GitHub repo" "tmux-popup-fork-repo" "super+shift+f" "true"
+add_command "Create Linear issue" "tmux-popup-linear" "super+shift+i" "true"
+add_command "Insert file path at cursor" "tmux-popup-insert-file-path" "super+shift+." "true"
+add_command "Reload config" "tmux source-file ~/.config/tmux/tmux.conf && tmux display-message 'tmux.conf reloaded'" "ctrl-z r"
+add_command "Install plugins" "~/.local/share/tmux/plugins/tpm/bin/install_plugins" "ctrl-z I"
+add_command "Update plugins" "~/.local/share/tmux/plugins/tpm/bin/update_plugins all" "ctrl-z U"
+add_command "Clean plugins" "~/.local/share/tmux/plugins/tpm/bin/clean_plugins" "ctrl-z alt-u"
+add_command "GitHub Dashboard" "tmux-popup-gh-dash" "" "true"
+add_command "Lazygit" "tmux-popup-lazygit" "" "true"
+add_command "Lazydocker" "tmux-popup-lazydocker" "" "true"
+add_command "Workmux Add" "tmux-popup-workmux-add" "" "true"
+add_command "Workmux Dashboard" "tmux-popup-workmux-dashboard" "" "true"
+add_command "Workmux Open" "tmux-popup-workmux-open" "" "true"
+add_command "Workmux Merge" "tmux-popup-workmux-merge" "" "true"
+add_command "Workmux Remove" "tmux-popup-workmux-remove" "" "true"
+
+color_dim=$'\e[90m'
+color_reset=$'\e[0m'
+
+list_commands() {
+  for label in "${LABELS[@]}"; do
+    local shortcut="${SHORTCUTS[$label]}"
+    if [[ -n "$shortcut" ]]; then
+      print -r -- "$label ${color_dim}(${shortcut})${color_reset}"
+    else
+      print -r -- "$label"
+    fi
+  done
+}
+
+strip_ansi() {
+  local input="$1"
+  print -r -- "${input//\e\[[0-9;]*[[:alpha:]]/}"
+}
+
+strip_shortcut() {
+  local input="$1"
+  input="${input%%\(*}"
+  print -r -- "${input%%[[:space:]]#}"
+}
+
+strip_cr() {
+  local input="$1"
+  print -r -- "${input%$'\r'}"
+}
+
+normalize_label() {
+  local input="$1"
+  input="$(strip_ansi "$input")"
+  input="$(strip_shortcut "$input")"
+  input="$(strip_cr "$input")"
+  input="${input//[[:space:]]/ }"
+  input="${input##[[:space:]]#}"
+  input="${input%%[[:space:]]#}"
+  print -r -- "$input"
+}
+
+run_command() {
+  local label="$1"
+  local command="${COMMANDS[$label]}"
+  local background="${BACKGROUND[$label]}"
+
+  if [[ -z "$command" ]]; then
+    print -r -- "Unknown command label: $label" >&2
+    return 1
+  fi
+
+  if [[ "$background" == "true" ]]; then
+    local wrapped_command="export PATH=\"$HOME/dotfiles/bin:$PATH\"; $command"
+    zsh -c "$wrapped_command" &
+    return 0
+  fi
+
+  eval "$command"
+}
+
+action="${1:-list}"
+shift || true
+
+case "$action" in
+  list)
+    list_commands
+    ;;
+  exec)
+    label_raw="$*"
+    label="$(normalize_label "$label_raw")"
+    run_command "$label"
+    ;;
+  *)
+    print -r -- "Usage: tmux-commands [list|exec <label>]" >&2
+    exit 1
+    ;;
+esac
