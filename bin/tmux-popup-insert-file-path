@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+pane_id=$(tmux display-message -p "#{pane_id}")
+
+tmux display-popup -E -w 80% -h 80% "mise x -- tv files | xargs -I {} tmux send-keys -t ${pane_id} @{}"

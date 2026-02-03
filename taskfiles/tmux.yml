@@ -38,7 +38,6 @@ tasks:
       - task: reload
       - cmd: '{{.TPM_DIR}}/bin/install_plugins'
         silent: true
-      - task: reload
 
   plugins:update:
     desc: Update Tmux Plugins
@@ -46,7 +45,7 @@ tasks:
       - '[ -z "$TMUX" ]'
     cmds:
       - task: reload
-      - cmd: '{{.TPM_DIR}}/bin/update_plugins app'
+      - cmd: '{{.TPM_DIR}}/bin/update_plugins all'
         silent: true
 
   plugins:clean:

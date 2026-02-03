@@ -1,0 +1,23 @@
+[metadata]
+name = "tmux-windows"
+description = "Select and switch tmux windows"
+requirements = ["tmux"]
+
+[source]
+command = "tmux list-windows -a -F '#{session_name}:#{window_index}\t#{session_name}:#{window_index} #{window_name} (#{window_panes} panes)'"
+display = "{split:\t:1}"
+output = "{split:\t:0}"
+
+[preview]
+command = "tmux capture-pane -p -e -t '{split:\t:0}' -S -200"
+
+[ui.preview_panel]
+size = 60
+
+[keybindings]
+enter = "actions:switch"
+
+[actions.switch]
+description = "Switch to selected tmux window"
+command = "tmux select-window -t '{split:\t:0}'"
+mode = "execute"
