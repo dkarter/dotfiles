@@ -1,0 +1,16 @@
+[metadata]
+name = "workmux-remove"
+description = "Select a workmux worktree to remove"
+requirements = ["workmux"]
+
+[source]
+command = "workmux list | tail -n +2"
+output = "{split: :0}"
+
+[keybindings]
+enter = "actions:remove"
+
+[actions.remove]
+description = "Remove selected workmux worktree"
+command = "workmux remove '{split: :0}'"
+mode = "execute"

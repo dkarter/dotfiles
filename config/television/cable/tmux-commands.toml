@@ -17,8 +17,16 @@ Create Linear issue (super+shift+i)	tmux-popup-linear &
 Insert file path at cursor (super+shift+.)	tmux-popup-insert-file-path &
 Reload config (ctrl-z r)	tmux source-file ~/.config/tmux/tmux.conf && tmux display-message 'tmux.conf reloaded'
 Install plugins (ctrl-z I)	~/.local/share/tmux/plugins/tpm/bin/install_plugins
-Update plugins (ctrl-z U)	~/.local/share/tmux/plugins/tpm/bin/update_plugins all
+Update plugins (ctrl-z U)	 ~/.local/share/tmux/plugins/tpm/bin/update_plugins all
 Clean plugins (ctrl-z alt-u)	~/.local/share/tmux/plugins/tpm/bin/clean_plugins
+GitHub Dashboard	 tmux-popup-gh-dash &
+Lazygit	 tmux-popup-lazygit &
+Lazydocker	 tmux-popup-lazydocker &
+Workmux Add	 tmux-popup-workmux-add &
+Workmux Dashboard	 tmux-popup-workmux-dashboard &
+Workmux Open	 tmux-popup-workmux-open &
+Workmux Merge	 tmux-popup-workmux-merge &
+Workmux Remove	 tmux-popup-workmux-remove &
 EOF
 """
 output = "{split:\t:0}"

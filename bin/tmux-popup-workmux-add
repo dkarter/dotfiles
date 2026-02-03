@@ -2,7 +2,7 @@
 set -euo pipefail
 
 script_dir=$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-command="${script_dir}/tmux-fork-repo"
+command="${script_dir}/tmux-workmux-add"
 
 tmux display-popup -C >/dev/null 2>&1 || true
-exec tmux display-popup -E -w 50% -h 30% "$command"
+exec tmux display-popup -E -w 40% -h 20% "$command"

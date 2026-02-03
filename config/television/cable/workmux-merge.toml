@@ -1,0 +1,16 @@
+[metadata]
+name = "workmux-merge"
+description = "Select a workmux worktree to merge"
+requirements = ["workmux"]
+
+[source]
+command = "workmux list | tail -n +2"
+output = "{split: :0}"
+
+[keybindings]
+enter = "actions:merge"
+
+[actions.merge]
+description = "Merge selected workmux worktree"
+command = "workmux merge '{split: :0}'"
+mode = "execute"

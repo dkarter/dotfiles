@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Create a new workmux worktree with user input via gum
+
+worktree_name=$(gum input --placeholder="Worktree name...")
+
+# Exit if no input provided (user pressed escape)
+[[ -z $worktree_name ]] && exit 0
+
+workmux add "$worktree_name"
