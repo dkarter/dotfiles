@@ -55,7 +55,7 @@ alias oc='opencode'
 alias cld='claude'
 
 # opencode in docker
-alias ocd='docker run -it --rm -v "$(pwd):/workspace" -w /workspace ghcr.io/anomalyco/opencode'
+alias ocd='docker run -it --rm -v "$(pwd):/workspace" -v "$HOME/.config/opencode:/root/.config/opencode" -v "$HOME/.local/share/opencode:/root/.local/share/opencode" -w /workspace ghcr.io/anomalyco/opencode'
 
 # check internet connection
 alias chkint='pingf kagi.com'
