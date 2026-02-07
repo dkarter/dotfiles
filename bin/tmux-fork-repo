@@ -3,7 +3,7 @@
 # Clone a GitHub repo to ~/dev/forks/ and create/switch to tmux session
 
 # Get GitHub URL from user input
-github_url=$(gum input --placeholder="GitHub repo URL (https:// or git@github.com:)...")
+github_url=$(mise x -- gum input --placeholder="GitHub repo URL (https:// or git@github.com:)...")
 
 # Exit if no input provided (user pressed escape)
 if [[ -z $github_url ]]; then
@@ -12,9 +12,9 @@ fi
 
 # Validate it looks like a GitHub URL (HTTPS or SSH)
 if [[ ! $github_url =~ ^https://github\.com/[^/]+/[^/]+/?$ ]] && [[ ! $github_url =~ ^git@github\.com:[^/]+/[^/]+\.git$ ]]; then
-  gum style --foreground="red" "Error: Please provide a valid GitHub URL"
-  gum style --foreground="red" "  HTTPS: https://github.com/user/repo"
-  gum style --foreground="red" "  SSH: git@github.com:user/repo.git"
+  mise x -- gum style --foreground="red" "Error: Please provide a valid GitHub URL"
+  mise x -- gum style --foreground="red" "  HTTPS: https://github.com/user/repo"
+  mise x -- gum style --foreground="red" "  SSH: git@github.com:user/repo.git"
   sleep 3
   exit 1
 fi
@@ -36,35 +36,35 @@ mkdir -p "$forks_dir"
 
 # Check if repo already exists
 if [[ -d $repo_path ]]; then
-  gum style --foreground="yellow" "Repository already exists at $repo_path"
+  mise x -- gum style --foreground="yellow" "Repository already exists at $repo_path"
 
   # Ask if user wants to pull latest changes
-  if gum confirm "Pull latest changes?"; then
+  if mise x -- gum confirm "Pull latest changes?"; then
     cd "$repo_path" || exit 1
     git pull
   fi
 else
   # Ask if user wants shallow or full clone
-  clone_type=$(gum choose --header="Select clone type:" "Shallow clone (--depth 1)" "Full clone")
+  clone_type=$(mise x -- gum choose --header="Select clone type:" "Shallow clone (--depth 1)" "Full clone")
 
   # Clone the repository
-  gum style --foreground="blue" "Cloning $github_url to $repo_path..."
+  mise x -- gum style --foreground="blue" "Cloning $github_url to $repo_path..."
 
   if [[ $clone_type == "Shallow clone (--depth 1)" ]]; then
     if ! git clone --depth 1 "$github_url" "$repo_path"; then
-      gum style --foreground="red" "Error: Failed to clone repository"
+      mise x -- gum style --foreground="red" "Error: Failed to clone repository"
       sleep 2
       exit 1
     fi
   else
     if ! git clone "$github_url" "$repo_path"; then
-      gum style --foreground="red" "Error: Failed to clone repository"
+      mise x -- gum style --foreground="red" "Error: Failed to clone repository"
       sleep 2
       exit 1
     fi
   fi
 
-  gum style --foreground="green" "Successfully cloned repository!"
+  mise x -- gum style --foreground="green" "Successfully cloned repository!"
 fi
 
 # Check if tmux session with repo name already exists

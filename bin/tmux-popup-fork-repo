@@ -4,5 +4,4 @@ set -euo pipefail
 script_dir=$(cd -- "$(dirname "$0")" && pwd)
 command="${script_dir}/tmux-fork-repo"
 
-tmux display-popup -C >/dev/null 2>&1 || true
 exec tmux display-popup -E -w 50% -h 30% "$command"
