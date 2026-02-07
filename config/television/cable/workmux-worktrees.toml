@@ -1,0 +1,8 @@
+[metadata]
+name = "workmux-worktrees"
+description = "Select a workmux worktree"
+requirements = ["workmux"]
+
+[source]
+command = "workmux list | tail -n +2"
+output = "{split: :0}"
