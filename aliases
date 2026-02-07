@@ -340,6 +340,10 @@ alias postjson='curl -i -H "Accept: application/json" -H "Content-Type: applicat
 # usage postjson http://example.com/record/1
 alias getjson='curl -i -H "Accept: application/json" -H "Content-Type: application/json"'
 
+# convert any url to markdown - uses playwright to support dynamic sites
+# usage: http2md https://diff.hex.pm/diff/tesla/1.15.3..1.16.0
+alias http2md='docker run --rm ghcr.io/dkarter/http2md'
+
 # rails
 alias twiki='be rails db:migrate && be rails db:rollback && be rails db:migrate && be rails db:test:prepare'
 alias dtp='be rails db:test:prepare'
