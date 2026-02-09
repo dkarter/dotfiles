@@ -27,6 +27,7 @@ tasks:
         - 'lefthook|lefthook completion zsh'
         - 'linear|linear completions zsh'
         - 'mise|mise completion zsh'
+        - 'mix|cat "$HOME/dotfiles/scripts/mix-dynamic-completion.zsh"'
         - 'op|op completion zsh'
         - 'opencode|opencode completion'
         - 'pdf-redact|pdf-redact completion zsh'
@@ -67,6 +68,14 @@ tasks:
       rm -f ~/.zcompdump*
       zsh -c 'builtin autoload -Uz +X compinit'
       zsh -c 'autoload -Uz compinit && compinit'
+      echo "DONE"
+    silent: true
+
+  cache:clear:
+    desc: Clears mix completion candidates cache
+    cmd: |
+      echo -n Clearing mix completion cache...
+      rm -f ~/.cache/zsh/mix-candidates-cache.json
       echo "DONE"
     silent: true
 

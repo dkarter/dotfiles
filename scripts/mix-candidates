@@ -1,0 +1,275 @@
+#!/usr/bin/env python3
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+
+CACHE_VERSION = 2
+GLOBAL_FLAGS = {
+    "--help",
+    "--version",
+    "--verbose",
+    "--quiet",
+    "--force",
+    "--no-compile",
+    "--no-deps-check",
+    "--no-elixir-version-check",
+    "--no-archives-check",
+    "--no-halt",
+    "--erl",
+    "--erl-config",
+    "--eval",
+    "--require",
+    "--parallel",
+    "--profile-time",
+    "--profile-fprof",
+    "--profile-cprof",
+    "--profile-eprof",
+}
+
+
+DEBUG = os.environ.get("MIX_CANDIDATES_DEBUG") == "1"
+
+
+def debug(msg: str) -> None:
+    if DEBUG:
+        print(msg, file=sys.stderr)
+
+
+def cache_path() -> Path:
+    root = Path(os.environ.get("XDG_CACHE_HOME", str(Path.home() / ".cache")))
+    return root / "zsh" / "mix-candidates-cache.json"
+
+
+def load_cache() -> dict:
+    path = cache_path()
+    try:
+        data = json.loads(path.read_text())
+        if data.get("version") == CACHE_VERSION:
+            return data
+    except Exception:
+        pass
+    return {"version": CACHE_VERSION, "entries": {}}
+
+
+def save_cache(cache: dict) -> None:
+    path = cache_path()
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(cache))
+    except Exception:
+        pass
+
+
+def project_fingerprint(cwd: Path) -> str:
+    parts = []
+
+    for rel in ["mix.lock"]:
+        path = cwd / rel
+        if path.exists():
+            try:
+                parts.append(f"{rel}:{path.stat().st_mtime_ns}")
+            except OSError:
+                pass
+
+    elixir_bin = shutil.which("elixir")
+    if elixir_bin:
+        real = os.path.realpath(elixir_bin)
+        try:
+            parts.append(f"elixir:{real}:{Path(real).stat().st_mtime_ns}")
+        except OSError:
+            parts.append(f"elixir:{real}")
+
+    mix_home = Path(os.environ.get("MIX_HOME", str(Path.home() / ".mix")))
+    archives_dir = mix_home / "archives"
+    if archives_dir.exists():
+        try:
+            parts.append(f"archives_dir:{archives_dir.stat().st_mtime_ns}")
+        except OSError:
+            pass
+
+        try:
+            archive_entries = []
+            for entry in sorted(archives_dir.iterdir()):
+                try:
+                    archive_entries.append(f"{entry.name}:{entry.stat().st_mtime_ns}")
+                except OSError:
+                    archive_entries.append(entry.name)
+            parts.append("archives:" + ",".join(archive_entries))
+        except OSError:
+            pass
+
+    return "|".join(parts)
+
+
+def run_mix(args: list[str]) -> str:
+    try:
+        proc = subprocess.run(["mix", *args], capture_output=True, text=True, check=False)
+    except OSError:
+        return ""
+    return f"{proc.stdout}\n{proc.stderr}"
+
+
+def cached_mix(cache: dict, cwd: Path, args: list[str]) -> str:
+    entries = cache["entries"]
+    key = f"{cwd}|{project_fingerprint(cwd)}|{'\\0'.join(args)}"
+    hit = entries.get(key)
+    if hit:
+        debug(f"cache hit: {' '.join(args)} | key={key!r}")
+        return hit.get("value", "")
+
+    debug(f"cache miss: {' '.join(args)} | key={key!r}")
+    value = run_mix(args)
+    entries[key] = {"value": value}
+    return value
+
+
+def detect_task(words: list[str]) -> str:
+    for word in words[1:]:
+        if word and not word.startswith("-"):
+            return word
+    return ""
+
+
+def task_names(text: str) -> set[str]:
+    return {line.strip() for line in text.splitlines() if re.match(r"^[a-z0-9][a-z0-9._-]*$", line.strip())}
+
+
+def extract_flags(text: str) -> set[str]:
+    return set(re.findall(r"--[a-z0-9][a-z0-9-]*", text))
+
+
+def extract_subcommands(task: str, docs: str) -> set[str]:
+    pattern = re.compile(rf"^##\s+mix\s+{re.escape(task)}\s+([a-z][a-z0-9_-]*)\b")
+    out = set()
+    for line in docs.splitlines():
+        match = pattern.match(line)
+        if match:
+            out.add(match.group(1))
+    return out
+
+
+def extract_commands_from_runtime_help(runtime_help: str) -> set[str]:
+    commands = set()
+    in_commands = False
+    for line in runtime_help.splitlines():
+        if re.match(r"^\s*Commands:\s*$", line):
+            in_commands = True
+            continue
+        if not in_commands:
+            continue
+        if re.match(r"^\s*Use\s+`", line):
+            break
+        match = re.match(r"^\s{2,}([a-z][a-z0-9_-]*)\b", line)
+        if match:
+            commands.add(match.group(1))
+    return commands
+
+
+def extract_default_command(runtime_help: str) -> str:
+    for line in runtime_help.splitlines():
+        match = re.match(r"^\s{2,}([a-z][a-z0-9_-]*)\b.*\(default\)", line)
+        if match:
+            return match.group(1)
+    return ""
+
+
+def selected_subcommand(words: list[str], task: str, known_subcommands: set[str]) -> str:
+    try:
+        pos = words.index(task)
+    except ValueError:
+        return ""
+
+    for word in words[pos + 1 :]:
+        if not word or word.startswith("-"):
+            continue
+        if word in known_subcommands:
+            return word
+    return ""
+
+
+def extract_choices_for_flag(flag: str, text: str) -> set[str]:
+    values = set()
+    lines = text.splitlines()
+    for idx, line in enumerate(lines):
+        if flag not in line:
+            continue
+        window = "\n".join(lines[idx : min(idx + 8, len(lines))])
+        values.update(re.findall(r'"([a-z0-9][a-z0-9_-]*)"', window))
+        values.update(re.findall(r"`([a-z0-9][a-z0-9_-]*)`", window))
+    return values
+
+
+def main() -> int:
+    started = time.perf_counter()
+    try:
+        current_index = int(sys.argv[1])
+    except (IndexError, ValueError):
+        current_index = 1
+
+    words = sys.argv[2:]
+    if not words:
+        words = ["mix"]
+
+    cwd = Path.cwd()
+    current = words[current_index - 1] if 0 < current_index <= len(words) else ""
+    prev = words[current_index - 2] if current_index >= 2 and current_index - 2 < len(words) else ""
+
+    cache = load_cache()
+    candidates = set()
+
+    if current_index <= 2:
+        candidates.update(task_names(cached_mix(cache, cwd, ["help", "--names"])))
+        save_cache(cache)
+        for item in sorted(candidates):
+            print(item)
+        debug(f"duration_ms={int((time.perf_counter() - started) * 1000)}")
+        return 0
+
+    candidates.update(GLOBAL_FLAGS)
+    task = detect_task(words)
+
+    if task:
+        runtime_help = cached_mix(cache, cwd, [task, "--help"])
+        docs_help = cached_mix(cache, cwd, ["help", task])
+        subcommands = extract_subcommands(task, docs_help) | extract_commands_from_runtime_help(runtime_help)
+        chosen_subcommand = selected_subcommand(words, task, subcommands)
+        default_subcommand = extract_default_command(runtime_help)
+
+        help_sources = [runtime_help, docs_help]
+        if chosen_subcommand:
+            help_sources.append(cached_mix(cache, cwd, [task, chosen_subcommand, "--help"]))
+        elif default_subcommand:
+            help_sources.append(cached_mix(cache, cwd, [task, default_subcommand, "--help"]))
+
+        for source in help_sources:
+            candidates.update(extract_flags(source))
+
+        candidates.update(subcommands)
+        if chosen_subcommand:
+            candidates.discard(chosen_subcommand)
+
+        if prev.startswith("--"):
+            for source in help_sources:
+                candidates.update(extract_choices_for_flag(prev, source))
+
+        if task == "test" and not current.startswith("-") and Path("test").is_dir():
+            for file in Path("test").rglob("*.exs"):
+                candidates.add(file.as_posix())
+
+    save_cache(cache)
+    for item in sorted(candidates):
+        print(item)
+
+    debug(f"duration_ms={int((time.perf_counter() - started) * 1000)}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
