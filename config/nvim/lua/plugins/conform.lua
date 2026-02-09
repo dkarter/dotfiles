@@ -49,7 +49,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'isort', 'black' },
+      python = get_with_fallback({ 'dprint.json' }, { 'dprint' }, { 'black' }),
       javascript = js_formatters,
       javascriptreact = js_formatters,
       typescript = js_formatters,
