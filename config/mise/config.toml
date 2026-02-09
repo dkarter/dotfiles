@@ -32,9 +32,10 @@
 "cargo:vivid" = "latest"                                                                   # generate color schemes for different tools
 "github:JohannesKaufmann/html-to-markdown" = { version = "latest", exe = "html2markdown" } # convert HTML to Markdown
 "github:ast-grep/ast-grep" = "latest"                                                      # a cli tool for searching and rewriting code using AST
-"github:babs/multiping" = "latest"
+"github:babs/multiping" = "latest"                                                         # pings multiple hosts at once
 "github:chmln/sd" = "latest"                                                               # a modern alternative for sed with sensible defaults
 "github:dkarter/lnr" = "latest"                                                            # linear cli
+"github:dkarter/pdf-redact" = "latest"                                                     # pdf mass redaction tool
 "github:dlvhdr/diffnav" = "latest"                                                         # A git diff pager based on delta but with a file tree, à la GitHub.
 "github:ip7z/7zip" = { version = "latest", exe = "7zz" }                                   # 7zip cli
 "github:joshmedeski/sesh" = "latest"                                                       # tmux session manager
@@ -52,7 +53,7 @@
 "npm:@commitlint/cli" = "latest"                                                           # linter for checking that commits are following conventional commits
 "npm:neovim" = "latest"                                                                    # support for javascript plugins in neovim
 "npm:npkill" = "latest"                                                                    # easily find and delete heavy node modules
-"npm:opencode-ai" = "latest"
+"npm:opencode-ai" = "latest"                                                               # the best AI agent wrapper
 "npm:prettier" = "latest"                                                                  # code formatter (js, ts, json, yaml and more)
 "npm:tldr" = "latest"                                                                      # useful usage instructions for CLI apps
 "npm:trash-cli" = "latest"                                                                 # rm -> system trash (cross platform)
@@ -60,7 +61,7 @@
 "pipx:neovim-remote" = "latest"                                                            # allow controlling neovim remotely
 "pipx:posting" = "latest"                                                                  # like postman but a TUI
 "pipx:yq" = "latest"                                                                       # like jq but for yaml files
-argocd = "latest"
+argocd = "latest"                                                                          # Argo CD CLI (GitOps tool for Kubernetes)
 bat = "latest"                                                                             # modern `cat` with syntax highlighting
 bun = "latest"                                                                             # faster JS runtime
 choose = "latest"                                                                          # A human-friendly and fast alternative to cut and (sometimes) awk
