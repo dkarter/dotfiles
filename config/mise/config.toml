@@ -123,3 +123,6 @@ experimental = true
 disable_backends = ["asdf"]
 # use bun instead of npm when using npm:<package>
 npm.bun = true
+
+# use pre-compiled binaries (since compiling ruby is slow as hell)
+ruby.compile = false
