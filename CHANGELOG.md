@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [29.0.1](https://github.com/dkarter/dotfiles/compare/v29.0.0...v29.0.1) (2026-02-14)
+
+
+### Bug Fixes
+
+* **mise:** use pre-compiled binaries for ruby ([f82b0ef](https://github.com/dkarter/dotfiles/commit/f82b0efcc92511f04d986a44be5b05a77bb1fd5c))
+
 ## [29.0.0](https://github.com/dkarter/dotfiles/compare/v28.4.0...v29.0.0) (2026-02-12)
 
 
