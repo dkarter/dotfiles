@@ -47,19 +47,25 @@ bun.disabled = true
 disabled = false
 style = "bright-blue"
 
-# Map long context names to shorter aliases using the new 'contexts' format
+# PDQ context aliases
 [[kubernetes.contexts]]
 context_pattern = "gke_.*_us-central1_staging"
-context_alias = "staging"
+context_alias = "!! staging"
+style = "bold black bg:#ff69b4"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_.*-central1_qa"
+context_alias = "!! qa"
+style = "bold black bg:#ff69b4"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_prod-.*-central1_main"
+context_alias = " prod  "
+style = "bold black bg:red"
 
 [[kubernetes.contexts]]
 context_pattern = "docker-desktop"
 context_alias = "desktop"
-
-# Using capture groups to extract parts of the context name:
-# [[kubernetes.contexts]]
-# context_pattern = "arn:aws:eks:.*:.*:cluster/([\\w-]+)"
-# context_alias = "$1"
 
 [cmd_duration]
 format = "[$duration]($style) "
