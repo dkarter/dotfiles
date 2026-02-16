@@ -33,6 +33,8 @@ add_command "Install plugins" "~/.local/share/tmux/plugins/tpm/bin/install_plugi
 add_command "Update plugins" "~/.local/share/tmux/plugins/tpm/bin/update_plugins all" "ctrl-z U"
 add_command "Clean plugins" "~/.local/share/tmux/plugins/tpm/bin/clean_plugins" "ctrl-z alt-u"
 add_command "GitHub Dashboard" "tmux-popup-gh-dash" "" "true"
+add_command "GitHub Repo Checkout" "tmux-popup-gh-repo-checkout" "" "true"
+add_command "GitHub PR Checkout" "tmux-popup-gh-pr-checkout" "" "true"
 add_command "Lazygit" "tmux-popup-lazygit" "" "true"
 add_command "Lazydocker" "tmux-popup-lazydocker" "" "true"
 add_command "Workmux Add" "tmux-popup-workmux-add" "" "true"
