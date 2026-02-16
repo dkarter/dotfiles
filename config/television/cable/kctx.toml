@@ -14,12 +14,6 @@ command = ['''
   ''']
 output = "{0}"
 
-[preview]
-command = "kubectl config get-contexts {0}"
-
-[ui.preview_panel]
-size = 60
-
 [keybindings]
 enter = "actions:switch"
 
