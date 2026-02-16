@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/evilmartians/lefthook/master/schema.json
+
+commit-msg:
+  parallel: true
+  jobs:
+    - name: conventional commits
+      run: committed --commit-file {1}
+
+pre-push:
+  parallel: true
+  jobs:
+    - name: Check formatting
+      run: task ci:fmt:check
