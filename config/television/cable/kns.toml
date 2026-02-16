@@ -11,16 +11,10 @@ requirements = ["kubectl"]
 [source]
 command = [
   '''
-  kubectl get namespaces -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'
+  $(mise where kubectl)/kubectl get namespaces -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'
   ''',
 ]
 output = "{0}"
-
-[preview]
-command = "kubectl describe namespace {0}"
-
-[ui.preview_panel]
-size = 60
 
 [keybindings]
 enter = "actions:switch"
