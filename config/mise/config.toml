@@ -32,6 +32,7 @@
 "cargo:vivid" = "latest"                                                                   # generate color schemes for different tools
 "github:JohannesKaufmann/html-to-markdown" = { version = "latest", exe = "html2markdown" } # convert HTML to Markdown
 "github:ast-grep/ast-grep" = "latest"                                                      # a cli tool for searching and rewriting code using AST
+"github:bgreenwell/lstr" = "latest"                                                        # fast, minimalist directory tree viewer
 "github:babs/multiping" = "latest"                                                         # pings multiple hosts at once
 "github:chmln/sd" = "latest"                                                               # a modern alternative for sed with sensible defaults
 "github:dkarter/lnr" = "latest"                                                            # linear cli
@@ -109,7 +110,6 @@ usage = "latest"                                                                
 uv = "latest"                                                                              # install python packages
 yazi = "latest"                                                                            # terminal file manager
 zoxide = "latest"                                                                          # a modern version of autojump
-
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
 # list of asdf plugins that would normally be supported https://mise.jdx.dev/registry.html#tools
