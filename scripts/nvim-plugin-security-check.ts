@@ -31,6 +31,7 @@ const ENABLE_CHANGE_SUMMARY =
   process.env.WITH_CHANGE_SUMMARY === '1' ||
   Bun.argv.includes('--with-change-summary') ||
   Bun.argv.includes('--changes');
+const SHOW_HELP = Bun.argv.includes('--help') || Bun.argv.includes('-h');
 const SPINNER_FRAMES = ['|', '/', '-', '\\'];
 
 const COLOR = {
@@ -546,7 +547,33 @@ function printResult(pluginName: string, result: AiAssessment, changeSummary?: s
   }
 }
 
+function printHelp(): void {
+  console.log('nvim-plugin-security-check');
+  console.log('');
+  console.log(
+    'Checks changed Neovim plugins reported by lazy.nvim and uses AI to review update diffs for security risk.',
+  );
+  console.log('');
+  console.log('Usage:');
+  console.log('  bun scripts/nvim-plugin-security-check.ts [options]');
+  console.log('');
+  console.log('Options:');
+  console.log('  -h, --help                 Show this help message and exit');
+  console.log('  --changes, --with-change-summary');
+  console.log('                             Include a high-level non-security change summary');
+  console.log('');
+  console.log('Environment:');
+  console.log('  MAX_PLUGINS=<n>            Limit how many changed plugins are scanned (default: 0 = no limit)');
+  console.log(`  OPENCODE_MODEL=<model>     AI model used for analysis (default: ${OPENCODE_MODEL})`);
+  console.log('  WITH_CHANGE_SUMMARY=1      Enable change summaries (same as --changes)');
+}
+
 async function main(): Promise<void> {
+  if (SHOW_HELP) {
+    printHelp();
+    return;
+  }
+
   await Bun.$`mkdir -p ${DIFF_DIR}`.quiet();
   const lockContent = await readText(LOCK_PATH);
 

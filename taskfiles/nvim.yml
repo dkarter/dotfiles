@@ -2,6 +2,18 @@
 version: 3
 
 tasks:
+  plugin:security:check:
+    summary: |
+      Checks security risks in neovim plugin updates
+
+      To use a different model set the env var:
+
+      ```
+      OPENCODE_MODEL=$(tv opencode-models) task nvim:plugin:security:check
+      ```
+    desc: Checks pending Neovim plugin updates for security risks
+    cmd: bun ./scripts/nvim-plugin-security-check.ts {{.CLI_ARGS}}
+
   commit:
     desc: Commits the lazy-lock.json file if changed
     silent: true
