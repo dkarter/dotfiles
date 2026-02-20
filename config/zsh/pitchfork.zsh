@@ -1,0 +1,1 @@
+eval "$(pitchfork activate zsh)"
