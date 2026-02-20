@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [29.1.0](https://github.com/dkarter/dotfiles/compare/v29.0.0...v29.1.0) (2026-02-20)
+
+
+### Features
+
+* **mise:** add lstr (nice tree replacement) ([5339ba7](https://github.com/dkarter/dotfiles/commit/5339ba76553af1e6f529871142dd3f6cb688b711))
+* **mise:** add pitchfork ([40c02e5](https://github.com/dkarter/dotfiles/commit/40c02e567d201c0fdeced4fa86cfa7a900da25f6))
+* **nvim:** add task for nvim security check + `--help` flag ([a259180](https://github.com/dkarter/dotfiles/commit/a2591806277997c8ffdc287b31da388895d9dff0))
+* **opencode:** add skill for bootstrapping projects ([8546f65](https://github.com/dkarter/dotfiles/commit/8546f65ffd45abdadf2c37391d255534471bbd5c))
+* **starship:** add k8s alias and colors for prod/staging/qa ([1fd4690](https://github.com/dkarter/dotfiles/commit/1fd469034df55534216d240f06279512ce7c7083))
+* **starship:** add k8s context alias ([ca6e815](https://github.com/dkarter/dotfiles/commit/ca6e815232b95dea6f1f2b75370078a1e2fafde5))
+* **tv:** add gh-repo-checkout and gh-pr-checkout ([e19ae9b](https://github.com/dkarter/dotfiles/commit/e19ae9be0ec2089d3add4adc7e9b583d35808a41))
+* **tv:** add opencode-models channel ([1020d21](https://github.com/dkarter/dotfiles/commit/1020d21c17d9916ba06b9ab9576d8f2909a70f10))
+
+
+### Bug Fixes
+
+* **mise:** use neovim stable ([1723030](https://github.com/dkarter/dotfiles/commit/1723030db10467b9c2cb4654f59ad886045feab0))
+* **mise:** use pre-compiled binaries for ruby ([f82b0ef](https://github.com/dkarter/dotfiles/commit/f82b0efcc92511f04d986a44be5b05a77bb1fd5c))
+* **task:** use default-jdk for debian based systems ([3098bc4](https://github.com/dkarter/dotfiles/commit/3098bc44a1c7aee1bb210a18537225da1d76bf84))
+* **tv:** remove preview from kctx - was slowing things down ([41a0171](https://github.com/dkarter/dotfiles/commit/41a01712d6664e71edf3345292181429e0a82a1e))
+
+
+### Performance Improvements
+
+* **tv:** improve performance of kctx and kns in gcloud envs ([236851b](https://github.com/dkarter/dotfiles/commit/236851b62f0316697bdeff2476a65cb64276cfa5))
+
 ## [29.0.0](https://github.com/dkarter/dotfiles/compare/v28.4.0...v29.0.0) (2026-02-12)
 
 
