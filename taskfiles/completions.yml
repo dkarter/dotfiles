@@ -16,6 +16,7 @@ tasks:
         - 'bat|bat --completion=zsh'
         - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
         - 'delta|delta --generate-completion zsh'
+        - 'devpod|devpod completion zsh'
         - 'erd|erd --completions zsh'
         - 'fnox|fnox completion zsh'
         - 'fx|fx --comp zsh'
