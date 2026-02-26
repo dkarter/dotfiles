@@ -94,6 +94,12 @@ return {
     end,
     -- Customize formatters
     formatters = {
+      dprint = {
+        -- dprint sometimes needs to install plugins or has cold cache - this
+        -- helps prevent and error. Subsequent runs should be incremental and
+        -- really fast.
+        timeout_ms = 5000,
+      },
       shfmt = {
         prepend_args = { '-i', '2' },
       },
