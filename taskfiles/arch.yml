@@ -31,11 +31,8 @@ tasks:
     platforms: [linux]
     silent: true
     cmds:
-      - cmd: |
-          if [[ ! "$(uname -r)" =~ "arch1" ]]; then
-            exit 0
-          fi
-          task arch:tools:install
+      - task: tools:install
+        if: 'uname -r | grep -q arch1'
 
   tools:install:
     desc: Installs all apt packages
@@ -43,13 +40,13 @@ tasks:
     silent: true
     cmds:
       - cmd: |
-          if command -v pacman &>/dev/null; then
-            sudo pacman --noconfirm --needed -S {{.PACMAN_PKGS | join " "}}
-          fi
+          # shellcheck disable=SC1083
+          sudo pacman --noconfirm --needed -S {{.PACMAN_PKGS | join " "}}
+        if: 'command -v pacman &>/dev/null'
       - cmd: |
-          if command -v yay &>/dev/null; then
-            yay --noconfirm --needed -S {{.YAY_PKGS | join " "}}
-          fi
+          # shellcheck disable=SC1083
+          yay --noconfirm --needed -S {{.YAY_PKGS | join " "}}
+        if: 'command -v yay &>/dev/null'
       - task: keyd:config
 
   keyd:config:
@@ -59,16 +56,17 @@ tasks:
     cmds:
       - cmd: echo 'Setting up keyd remaps...'
       - cmd: |
-          sudo tee /etc/keyd/default.conf >/dev/null <<'EOF'
-          [ids]
-          *
+          # shellcheck disable=SC1039,SC1073,SC1072,SC1009,SC1040
+          sudo tee /etc/keyd/default.conf >/dev/null <<-EOF
+          	[ids]
+          	*
 
-          [main]
-          # CapsLock acts as Escape on tap, Control on hold
-          capslock = overload(control, esc)
+          	[main]
+          	# CapsLock acts as Escape on tap, Control on hold
+          	capslock = overload(control, esc)
 
-          # (Optional) Map physical Esc to `pause` key so we can later remap it to the XCompose key in `~/.config/hypr/input.conf`
-          esc = pause
-          EOF
+          	# (Optional) Map physical Esc to `pause` key so we can later remap it to the XCompose key in `~/.config/hypr/input.conf`
+          	esc = pause
+          	EOF
       - cmd: sudo systemctl enable --now keyd
       - cmd: echo 'done'
