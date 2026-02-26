@@ -78,7 +78,6 @@ tasks:
       - task: zinit:plugins:update
       - task: mise:install
       - task: mise:tools:install
-      - task: git:hooks:sync
       - task: fonts:sync
       - task: brew:sync
       - task: bat:sync
@@ -104,7 +103,6 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: mise:sync
-      - task: git:hooks:sync
       - task: brew:sync
       - task: bat:sync
       - task: tmux:sync
@@ -174,11 +172,6 @@ tasks:
     desc: Format all formattable files
     aliases: [format]
     cmd: dprint fmt
-
-  git:hooks:sync:
-    desc: Installs git hooks via lefthook
-    internal: true
-    cmd: mise exec -- lefthook install
 
   print:done:
     desc: Prints done with a cool font and some nice gradients (animated)
