@@ -36,8 +36,9 @@
 "github:babs/multiping" = "latest"                                                         # pings multiple hosts at once
 "github:bgreenwell/lstr" = "latest"                                                        # fast, minimalist directory tree viewer
 "github:chmln/sd" = "latest"                                                               # a modern alternative for sed with sensible defaults
+"github:cli/cli" = "latest"                                                                # GitHub CLI
 "github:dkarter/lnr" = "latest"                                                            # linear cli
-"github:dkarter/pdf-redact" = "latest"                                                     # pdf mass redaction tool
+"github:dkarter/pdf-redact" = { version = "latest", bin_path = "." }                       # pdf mass redaction tool
 "github:dlvhdr/diffnav" = "latest"                                                         # A git diff pager based on delta but with a file tree, à la GitHub.
 "github:ip7z/7zip" = { version = "latest", exe = "7zz" }                                   # 7zip cli
 "github:joshmedeski/sesh" = "latest"                                                       # tmux session manager
@@ -66,6 +67,7 @@ argocd = "latest"                                                               
 bat = "latest"                                                                             # modern `cat` with syntax highlighting
 bun = "latest"                                                                             # faster JS runtime
 choose = "latest"                                                                          # A human-friendly and fast alternative to cut and (sometimes) awk
+claude-code = "latest"
 delta = "latest"                                                                           # nicer git diffs
 deno = "2"                                                                                 # Deno programming language
 dive = "latest"                                                                            # A tool for exploring each layer in a docker image
@@ -75,7 +77,6 @@ fd = "latest"                                                                   
 fnox = "latest"                                                                            # secrets manager
 fx = "latest"                                                                              # like jq, but allows interactive exploration and copying paths
 fzf = "latest"                                                                             # fuzzy finder
-"github:cli/cli" = "latest"                                                                # GitHub CLI
 gitleaks = "latest"                                                                        # git leaks is a tool for detecting and preventing hardcoded secrets like passwords, API keys, and tokens in git repositories
 glow = "latest"                                                                            # Render markdown on the CLI
 go = "1.25"                                                                                # Go programming language
@@ -111,7 +112,6 @@ usage = "latest"                                                                
 uv = "latest"                                                                              # install python packages
 yazi = "latest"                                                                            # terminal file manager
 zoxide = "latest"                                                                          # a modern version of autojump
-claude-code = "latest"
 
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
