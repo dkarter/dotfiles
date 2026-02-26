@@ -9,11 +9,11 @@ tasks:
       - test "$(basename "$SHELL")" = 'zsh'
       # macOS: check Directory Services
       - |
-          if [ "$(uname)" = "Darwin" ]; then
-            test "$(dscl . -read /Users/$USER UserShell | awk '{print $2}' | xargs basename)" = 'zsh'
-          else
-            test "$(grep "^$USER:" /etc/passwd | cut -d: -f7 | xargs basename)" = 'zsh'
-          fi
+        if [ "$(uname)" = "Darwin" ]; then
+          test "$(dscl . -read /Users/$USER UserShell | awk '{print $2}' | xargs basename)" = 'zsh'
+        else
+          test "$(grep "^$USER:" /etc/passwd | cut -d: -f7 | xargs basename)" = 'zsh'
+        fi
     # will require password
     interactive: true
     cmds:
