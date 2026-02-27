@@ -1,7 +1,7 @@
 [metadata]
 name = "tmux-commands"
 description = "Tmux command palette"
-requirements = ["tv", "tmux"]
+requirements = ["tv", "tmux", "git"]
 
 [source]
 command = "$HOME/dotfiles/bin/tmux-commands list"
@@ -12,6 +12,6 @@ output = "{strip_ansi}"
 enter = "actions:run"
 
 [actions.run]
-description = "Execute selected Ghostty command"
+description = "Execute selected tmux command"
 command = "zsh -lc 'echo \"$1\" >> /tmp/tmux.log; tmux-commands exec \"$1\"' _ '{strip_ansi}'"
 mode = "execute"

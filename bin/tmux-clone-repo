@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Clone a git repo to ~/dev/forks/ and create/switch to tmux session
+# Clone a git repo to ~/dev/ and create/switch to tmux session
 
 # Get git URL from user input
 repo_url=$(mise x -- gum input --placeholder="Git repo URL...")
@@ -21,11 +21,11 @@ if [[ -z $repo_name ]]; then
   exit 1
 fi
 
-forks_dir="$HOME/dev/forks"
-repo_path="$forks_dir/$repo_name"
+dev_dir="$HOME/dev"
+repo_path="$dev_dir/$repo_name"
 
-# Create forks directory if it doesn't exist
-mkdir -p "$forks_dir"
+# Create dev directory if it doesn't exist
+mkdir -p "$dev_dir"
 
 # Check if repo already exists
 if [[ -d $repo_path ]]; then
