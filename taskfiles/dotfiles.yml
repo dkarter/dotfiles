@@ -2,6 +2,11 @@
 version: '3'
 
 includes:
+  1password:
+    taskfile: ./1password.yaml
+    aliases: [op]
+    internal: true
+
   bat:
     taskfile: ./bat.yml
     internal: true
@@ -73,6 +78,7 @@ tasks:
       - task: shell:zsh:default
       - task: create:dirs
       - task: symlink
+      - task: op:install:ssh:agent
       - task: mac:set:defaults
       - task: zinit:install
       - task: zinit:plugins:update
