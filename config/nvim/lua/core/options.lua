@@ -165,3 +165,10 @@ vim.diagnostic.config {
     source = true,
   },
 }
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'gitcommit',
+  callback = function(args)
+    vim.diagnostic.config({ update_in_insert = true }, args.buf)
+  end,
+})
