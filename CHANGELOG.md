@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [30.0.0](https://github.com/dkarter/dotfiles/compare/v29.0.0...v30.0.0) (2026-02-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **mise:** remove jless
+
+### Features
+
+* **mise:** add devpod ([369dea9](https://github.com/dkarter/dotfiles/commit/369dea9bc51eb5556132d6bde40f42430427451d))
+* **mise:** add lstr (nice tree replacement) ([5339ba7](https://github.com/dkarter/dotfiles/commit/5339ba76553af1e6f529871142dd3f6cb688b711))
+* **mise:** add pitchfork ([40c02e5](https://github.com/dkarter/dotfiles/commit/40c02e567d201c0fdeced4fa86cfa7a900da25f6))
+* **nvim:** add task for nvim security check + `--help` flag ([a259180](https://github.com/dkarter/dotfiles/commit/a2591806277997c8ffdc287b31da388895d9dff0))
+* **opencode:** add skill for bootstrapping projects ([8546f65](https://github.com/dkarter/dotfiles/commit/8546f65ffd45abdadf2c37391d255534471bbd5c))
+* **starship:** add k8s alias and colors for prod/staging/qa ([1fd4690](https://github.com/dkarter/dotfiles/commit/1fd469034df55534216d240f06279512ce7c7083))
+* **starship:** add k8s context alias ([ca6e815](https://github.com/dkarter/dotfiles/commit/ca6e815232b95dea6f1f2b75370078a1e2fafde5))
+* **tmux:** add clone repo command ([54a6ee8](https://github.com/dkarter/dotfiles/commit/54a6ee88d34f765ead500bcabd5fb553dd4b7535))
+* **tv:** add elixir tests cable channel ([715e421](https://github.com/dkarter/dotfiles/commit/715e4215c7ffd02d230ee3371693b0801c439986))
+* **tv:** add gh-repo-checkout and gh-pr-checkout ([e19ae9b](https://github.com/dkarter/dotfiles/commit/e19ae9be0ec2089d3add4adc7e9b583d35808a41))
+* **tv:** add opencode-models channel ([1020d21](https://github.com/dkarter/dotfiles/commit/1020d21c17d9916ba06b9ab9576d8f2909a70f10))
+* **zsh:** add completions for dprint ([f26b5ca](https://github.com/dkarter/dotfiles/commit/f26b5ca3c977f8683971c9b4a1f70b0ef9defbfe))
+* **zsh:** add devpod completions ([73f4f14](https://github.com/dkarter/dotfiles/commit/73f4f14ba6644bd0432831d3561b0652614a5cbc))
+
+
+### Bug Fixes
+
+* **dprint:** use incremental true ([3856c74](https://github.com/dkarter/dotfiles/commit/3856c749d937ff0ea9e92dc30c8d852eeaea6a66))
+* **mise:** pdf-redact was broken on Arch linux ([7523a9f](https://github.com/dkarter/dotfiles/commit/7523a9f4666937c789831402708776dec49f9926))
+* **mise:** switch tldr to rust client ([bc32d32](https://github.com/dkarter/dotfiles/commit/bc32d32d4b87399167c2c33d37616f25a037c2a2))
+* **mise:** use claude code from official package ([0fcd0e2](https://github.com/dkarter/dotfiles/commit/0fcd0e2c61a9b6a8e840b112fdd988de12866410))
+* **mise:** use neovim stable ([1723030](https://github.com/dkarter/dotfiles/commit/1723030db10467b9c2cb4654f59ad886045feab0))
+* **mise:** use pre-compiled binaries for ruby ([f82b0ef](https://github.com/dkarter/dotfiles/commit/f82b0efcc92511f04d986a44be5b05a77bb1fd5c))
+* **nvim:** increase dprint timeout ([c50b4c4](https://github.com/dkarter/dotfiles/commit/c50b4c42155b81ac2abdfc3aec77a95d12bf001c))
+* **opencode:** migrate some config to tui.jsonc ([ccce6fc](https://github.com/dkarter/dotfiles/commit/ccce6fcd5c6ba601f69b5c0099002aba40dc47df))
+* **task:** add 1password ssh agent install ([75b2882](https://github.com/dkarter/dotfiles/commit/75b2882e76d3ddd4ae62b03b41f9afac20586fb3))
+* **task:** remove git:hooks:sync ([66793ac](https://github.com/dkarter/dotfiles/commit/66793ac364b728f6dee2fc7a48d61ebc7c1a3355))
+* **task:** use default-jdk for debian based systems ([3098bc4](https://github.com/dkarter/dotfiles/commit/3098bc44a1c7aee1bb210a18537225da1d76bf84))
+* **tv:** remove preview from kctx - was slowing things down ([41a0171](https://github.com/dkarter/dotfiles/commit/41a01712d6664e71edf3345292181429e0a82a1e))
+* use gh cli from the github backend ([44c52bb](https://github.com/dkarter/dotfiles/commit/44c52bb6223b7efa0efcf73ebb46abdc5e129cf1))
+* **zed:** set code suggestions to copilot ([fee609a](https://github.com/dkarter/dotfiles/commit/fee609aa91b3213c1ea4eee9e2a58e86735f2699))
+* **zed:** update config ([e704a59](https://github.com/dkarter/dotfiles/commit/e704a5939cbf12139ec640e9b299d5adfc46bae9))
+* **zed:** update config ([b0b3ce9](https://github.com/dkarter/dotfiles/commit/b0b3ce97cbb65b3c30d802cd860b4056b68e42ba))
+* **zsh:** move github token setup to correct dir ([46fb2bb](https://github.com/dkarter/dotfiles/commit/46fb2bb197fbfb6049373d5d3aa3a8aa44234bd6))
+
+
+### Performance Improvements
+
+* **mise:** add cargo-binstall for faster cargo installs ([560bdf8](https://github.com/dkarter/dotfiles/commit/560bdf867ff43956273f005e5c39075ee85ef6e6))
+* **tv:** improve performance of kctx and kns in gcloud envs ([236851b](https://github.com/dkarter/dotfiles/commit/236851b62f0316697bdeff2476a65cb64276cfa5))
+
+
+### Miscellaneous Chores
+
+* **mise:** remove jless ([cb189ac](https://github.com/dkarter/dotfiles/commit/cb189ac460460c4958697e923b9f8e55125a0b9a))
+
 ## [29.0.0](https://github.com/dkarter/dotfiles/compare/v28.4.0...v29.0.0) (2026-02-12)
 
 
