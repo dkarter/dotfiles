@@ -67,6 +67,7 @@
 argocd = "latest"                                                                          # Argo CD CLI (GitOps tool for Kubernetes)
 bat = "latest"                                                                             # modern `cat` with syntax highlighting
 bun = "latest"                                                                             # faster JS runtime
+cargo-binstall = "latest"
 choose = "latest"                                                                          # A human-friendly and fast alternative to cut and (sometimes) awk
 claude-code = "latest"
 delta = "latest"                                                                           # nicer git diffs
@@ -129,3 +130,6 @@ npm.bun = true
 
 # use pre-compiled binaries (since compiling ruby is slow as hell)
 ruby.compile = false
+
+# get pre-compiled binaries for rust tools via cargo-binstall (instead of compiling from source)
+cargo.binstall = true
