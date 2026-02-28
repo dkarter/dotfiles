@@ -216,6 +216,7 @@ fallback_channel = "files"
 "alias" = ["alias", "unalias"]
 "env" = ["export", "unset"]
 "dirs" = ["cd", "ls", "ll", "l", "rmdir", "z", "rmrf"]
+"elixir-tests" = ["mt", "mix test"]
 "files" = [
   "cat",
   "less",
@@ -256,6 +257,15 @@ fallback_channel = "files"
 "git-log" = ["git log", "git show", "gsh", "gsps"]
 "docker-images" = ["docker run"]
 "git-repos" = ["nvim", "code", "hx", "git clone"]
+"workmux-worktrees" = [
+  "workmux open",
+  "wmo",
+  "workmux merge",
+  "wmm",
+  "workmux remove",
+  "workmux rm",
+  "wmrm",
+]
 "k8s-resources" = [
   "kubectl get",
   "kg",
@@ -268,6 +278,12 @@ fallback_channel = "files"
   "kdsp",
 ]
 "channels-completion" = ["tv"]
+"opencode-models" = [
+  "opencode --model",
+  "opencode -m",
+  "opencode run --model",
+  "opencode run -m",
+]
 
 
 [shell_integration.keybindings]

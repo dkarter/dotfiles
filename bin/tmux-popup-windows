@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+tmux display-popup -E -w 90% -h 90% "mise x -- tv tmux-windows --hide-status-bar"

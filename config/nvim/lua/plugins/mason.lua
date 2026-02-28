@@ -16,7 +16,7 @@ return {
       'ansible-lint',
       -- js/json/yaml/ts/etc formatter
       'biome',
-      -- python formatter
+      -- python linting/formatting
       'black',
       'prettierd',
       'shfmt',
@@ -56,6 +56,8 @@ return {
       'rubocop',
       'ruby-lsp',
       'rubyfmt',
+      -- python linting/formatting
+      'ruff',
       'shellcheck',
       'sqlls',
       'tailwindcss-language-server',

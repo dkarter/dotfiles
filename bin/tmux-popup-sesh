@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+tmux display-popup -E -w 80% -h 80% "mise x -- tv sesh --layout portrait --hide-status-bar"

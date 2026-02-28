@@ -2,6 +2,10 @@
 version: 3
 
 includes:
+  1password:
+    aliases: [op]
+    taskfile: ./taskfiles/1password.yaml
+
   arch:
     taskfile: ./taskfiles/arch.yml
 

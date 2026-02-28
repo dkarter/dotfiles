@@ -1,0 +1,21 @@
+[metadata]
+name = "gh-repo-checkout"
+description = "Clone one of your GitHub repos into ~/dev"
+requirements = ["gh", "git", "glow", "tmux"]
+
+[source]
+command = "$HOME/dotfiles/bin/tv-gh-repo-list"
+display = "{split:\t:0}"
+output = "{split:\t:0}"
+ansi = true
+
+[preview]
+command = "zsh -lc 'repo=\"{split:\t:0}\"; tmp=\"$(mktemp)\"; if gh api -H \"Accept: application/vnd.github.v3.raw\" \"repos/$repo/readme\" >\"$tmp\" 2>/dev/null && [ -s \"$tmp\" ]; then cat \"$tmp\" | glow -s dark -; else gh repo view \"$repo\" --json description --template \"No README found.\\n\\nDescription: {{.description}}\\n\"; fi; rm -f \"$tmp\"'"
+
+[keybindings]
+enter = "actions:checkout"
+
+[actions.checkout]
+description = "Clone selected repo to ~/dev"
+command = "zsh -lc 'mkdir -p \"$HOME/dev\"; repo=\"{split:\t:0}\"; name=\"${repo##*/}\"; target=\"$HOME/dev/$name\"; if [ -d \"$target/.git\" ]; then cd \"$target\" && git pull --ff-only; else gh repo clone \"$repo\" \"$target\"; fi; if tmux has-session -t \"$name\" 2>/dev/null; then tmux switch-client -t \"$name\"; else tmux new-session -d -s \"$name\" -c \"$target\" && tmux switch-client -t \"$name\"; fi'"
+mode = "execute"

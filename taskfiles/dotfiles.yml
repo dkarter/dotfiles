@@ -2,6 +2,11 @@
 version: '3'
 
 includes:
+  1password:
+    taskfile: ./1password.yaml
+    aliases: [op]
+    internal: true
+
   bat:
     taskfile: ./bat.yml
     internal: true
@@ -73,12 +78,12 @@ tasks:
       - task: shell:zsh:default
       - task: create:dirs
       - task: symlink
+      - task: op:install:ssh:agent
       - task: mac:set:defaults
       - task: zinit:install
       - task: zinit:plugins:update
       - task: mise:install
       - task: mise:tools:install
-      - task: git:hooks:sync
       - task: fonts:sync
       - task: brew:sync
       - task: bat:sync
@@ -104,7 +109,6 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: mise:sync
-      - task: git:hooks:sync
       - task: brew:sync
       - task: bat:sync
       - task: tmux:sync
@@ -174,11 +178,6 @@ tasks:
     desc: Format all formattable files
     aliases: [format]
     cmd: dprint fmt
-
-  git:hooks:sync:
-    desc: Installs git hooks via lefthook
-    internal: true
-    cmd: mise exec -- lefthook install
 
   print:done:
     desc: Prints done with a cool font and some nice gradients (animated)

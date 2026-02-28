@@ -1,0 +1,21 @@
+[metadata]
+name = "gh-pr-checkout"
+description = "Checkout a pull request from the current repository"
+requirements = ["gh", "git", "glow"]
+
+[source]
+command = "gh pr list --limit 300 --json number,title,headRefName,isDraft,author --template '{{range .}}{{.number}}{{\"\\t\"}}#{{.number}} {{.title}} [{{.headRefName}}] by @{{.author.login}}{{if .isDraft}} (draft){{end}}{{\"\\n\"}}{{end}}'"
+display = "{split:\t:1}"
+output = "{split:\t:0}"
+ansi = true
+
+[preview]
+command = "zsh -lc 'pr=\"{split:\t:0}\"; GH_PAGER=cat gh pr view \"$pr\" --json number,title,body,author,headRefName,baseRefName,url --template \"{{printf \\\"# PR #%v %s\\n\\n- Author: @%s\\n- Branch: %s -> %s\\n- URL: %s\\n\\n## Description\\n\\n%s\\n\\\" .number .title .author.login .headRefName .baseRefName .url .body}}\" | glow -s dark -; printf \"\\n\\n--- Diff ---\\n\\n\"; GH_PAGER=cat gh pr diff --color=always \"$pr\"'"
+
+[keybindings]
+enter = "actions:checkout"
+
+[actions.checkout]
+description = "Checkout selected pull request"
+command = "gh pr checkout '{split:\t:0}'"
+mode = "execute"

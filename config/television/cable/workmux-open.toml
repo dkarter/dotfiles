@@ -1,0 +1,16 @@
+[metadata]
+name = "workmux-open"
+description = "Select a workmux worktree to open"
+requirements = ["workmux"]
+
+[source]
+command = "workmux list | tail -n +2"
+output = "{split: :0}"
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+description = "Open selected workmux worktree"
+command = "workmux open '{split: :0}'"
+mode = "execute"

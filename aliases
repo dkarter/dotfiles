@@ -54,6 +54,9 @@ alias opencode='opencode --port'
 alias oc='opencode'
 alias cld='claude'
 
+# opencode in docker
+alias ocd='docker run -it --rm -v "$(pwd):/workspace" -v "$HOME/.config/opencode:/root/.config/opencode" -v "$HOME/.local/share/opencode:/root/.local/share/opencode" -w /workspace ghcr.io/anomalyco/opencode'
+
 # check internet connection
 alias chkint='pingf kagi.com'
 
@@ -340,6 +343,10 @@ alias postjson='curl -i -H "Accept: application/json" -H "Content-Type: applicat
 # usage postjson http://example.com/record/1
 alias getjson='curl -i -H "Accept: application/json" -H "Content-Type: application/json"'
 
+# convert any url to markdown - uses playwright to support dynamic sites
+# usage: http2md https://diff.hex.pm/diff/tesla/1.15.3..1.16.0
+alias http2md='docker run --rm ghcr.io/dkarter/http2md'
+
 # rails
 alias twiki='be rails db:migrate && be rails db:rollback && be rails db:migrate && be rails db:test:prepare'
 alias dtp='be rails db:test:prepare'
@@ -368,6 +375,10 @@ function mix_cmd_app() {
 alias ma='mix_cmd_app'
 
 # --------------------------------------------
+# Pitchfork
+# --------------------------------------------
+alias pf='pitchfork'
+
 # Workmux Aliases
 # --------------------------------------------
 

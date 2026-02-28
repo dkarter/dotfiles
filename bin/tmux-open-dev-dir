@@ -3,7 +3,7 @@
 # Open any dir in ~/dev in a tmux session, if one exists, it will switch to it
 
 # Get dev dir
-dir=$(tv dev-dirs)
+dir=$(mise x -- tv dev-dirs)
 
 # Exit if no input provided (user pressed escape)
 if [[ -z "$dir" ]]; then

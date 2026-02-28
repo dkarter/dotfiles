@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  fmt:check:
+    desc: Checks formatting, returns an error if files are not formatted
+    silent: true
+    cmd: dprint check

@@ -3,20 +3,20 @@ pre-commit:
   parallel: true
   jobs:
     - name: Check Secret Leaks
-      run: gitleaks git --pre-commit --redact --staged --verbose --no-banner
+      run: mise x -- gitleaks git --pre-commit --redact --staged --verbose --no-banner
 
     - name: Check formatting
-      run: task ci:format:check
+      run: mise x -- task ci:format:check
 
     - name: Check for typos
-      run: task ci:spelling:lint
+      run: mise x -- task ci:spelling:lint
 
 commit-msg:
   jobs:
     - name: conventional commits
-      run: committed --commit-file {1}
+      run: mise x -- committed --commit-file {1}
 
 pre-push:
   commands:
     ci:
-      run: task ci:run
+      run: mise x -- task ci:run

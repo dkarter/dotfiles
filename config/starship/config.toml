@@ -47,6 +47,26 @@ bun.disabled = true
 disabled = false
 style = "bright-blue"
 
+# PDQ context aliases
+[[kubernetes.contexts]]
+context_pattern = "gke_.*_us-central1_staging"
+context_alias = "!! staging"
+style = "bold black bg:#ff69b4"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_.*-central1_qa"
+context_alias = "!! qa"
+style = "bold black bg:#ff69b4"
+
+[[kubernetes.contexts]]
+context_pattern = "gke_prod-.*-central1_main"
+context_alias = " prod  "
+style = "bold black bg:red"
+
+[[kubernetes.contexts]]
+context_pattern = "docker-desktop"
+context_alias = "desktop"
+
 [cmd_duration]
 format = "[$duration]($style) "
 min_time = 0

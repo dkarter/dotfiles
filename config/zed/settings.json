@@ -7,39 +7,37 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "context_servers": {
     "playwright": {
-      "source": "custom",
       "enabled": true,
       "command": "npx",
       "args": ["@playwright/mcp", "--browser", "webkit"],
       "env": {}
     },
     "mcp-server-context7": {
-      "source": "extension",
       "settings": {
         "default_minimum_tokens": "10000"
       }
     },
     "tidewave": {
-      "source": "custom",
       "command": "mcp-proxy",
       "args": ["http://localhost:4000/tidewave/mcp"],
       "env": null
     },
     "postgres-context-server": {
-      "source": "extension",
       "settings": {
-        "database_url": "postgresql://postgres:postgres@localhost:5432/mydatabase"
+        "database_url": "postgresql://postgres:postgres@localhost:5432"
       }
     }
   },
   "agent": {
     "default_profile": "write",
-    "always_allow_tool_actions": false,
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "copilot_chat",
+      "model": "claude-haiku-4.5"
     }
   },
   "theme": "Catppuccin Macchiato",
@@ -47,7 +45,7 @@
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "terminal": {
-    "font_family": "CaskaydiaCove Nerd Font Mono"
+    "font_family": "JetBrainsMono Nerd Font Mono"
   },
   "telemetry": {
     "diagnostics": false,

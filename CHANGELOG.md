@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [29.0.0](https://github.com/dkarter/dotfiles/compare/v28.4.0...v29.0.0) (2026-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tmuxinator:** remove tmuxinator
+
+### Features
+
+* **mise:** add pdf-redact ([e209d15](https://github.com/dkarter/dotfiles/commit/e209d15ccea43985262055e071b22353b2961e77))
+* **nvim:** add script to check nvim plugin security ([d5ede2f](https://github.com/dkarter/dotfiles/commit/d5ede2f3be4f8ef268df3c30f950b79737117bb9))
+* **tmux:** add command palette ([aee8a45](https://github.com/dkarter/dotfiles/commit/aee8a45174473160bd7cec8d9aae1c2e5a98624a))
+* **tmux:** add more commands to command palette ([4c79bf7](https://github.com/dkarter/dotfiles/commit/4c79bf7da8bb8ce65faf4111e7dd40641c71e55e))
+* **workmux:** add global config ([1b90849](https://github.com/dkarter/dotfiles/commit/1b9084932e86ccb55b372554d55a6baf3b6c7d9c))
+* **zsh:** add `ocd` alias for opencode in docker ([083c29e](https://github.com/dkarter/dotfiles/commit/083c29e7aa6b87dc1171b397a7c97a95cbd1824d))
+* **zsh:** add http2md ([b5dd417](https://github.com/dkarter/dotfiles/commit/b5dd417066893ba08c69d3d3ed1acdba7b0c0776))
+* **zsh:** add mix autocompletion with caching ([1c0d74d](https://github.com/dkarter/dotfiles/commit/1c0d74dc9c8e964e94840d6c2be8bb6f51b751c4))
+* **zsh:** add workmux aliases ([aa76f8b](https://github.com/dkarter/dotfiles/commit/aa76f8bf50eb1caf52daf5313b1597abfd796e3e))
+
+
+### Bug Fixes
+
+* **lefthook:** use mise x for reliability ([d152cdc](https://github.com/dkarter/dotfiles/commit/d152cdcef42a76cfc7ebb6d8543c60e2b5a6fe80))
+* **nvim:** improve python support ([92e50b3](https://github.com/dkarter/dotfiles/commit/92e50b3c55f4cffdc31d974f4f0c585407340f16))
+* **nvim:** improve python support ([9516337](https://github.com/dkarter/dotfiles/commit/9516337fa198c454018eefe2a65b6539bf1eef19))
+* **tmux,ghostty:** bindings conflict ([8115ec6](https://github.com/dkarter/dotfiles/commit/8115ec6a84f3b54e1e3dfff1b673df085fecd7a2))
+* **tmux:** improve command palette ([2d29bdb](https://github.com/dkarter/dotfiles/commit/2d29bdbc2b50ef09cbf47898cb40b7aac4bb9577))
+* **tmuxinator:** remove tmuxinator ([04ddded](https://github.com/dkarter/dotfiles/commit/04dddedd3d42b0de3ca720bf3066b4bf759ad10a))
+* **tmux:** update tmux command scripts ([68656fe](https://github.com/dkarter/dotfiles/commit/68656fe3fb62fa60e4a43a846d844d75ac2764cb))
+* **tmux:** workmux add script stopped working ([b180698](https://github.com/dkarter/dotfiles/commit/b18069870eb104586cae7ed7a5e80912d7775c9e))
+* **tv:** improve shell integration ([c33a947](https://github.com/dkarter/dotfiles/commit/c33a947e9583e7492d81c4d8418be810cdc81896))
+* **workmux:** go back to original layout ([7c5ae04](https://github.com/dkarter/dotfiles/commit/7c5ae04137d42e65ce389870b56a550f008e1789))
+* **workmux:** update config for better UX ([6846e5c](https://github.com/dkarter/dotfiles/commit/6846e5c0fd2739da92fc7e319240adea695b6eb1))
+* **zsh:** add gh completions ([53cf519](https://github.com/dkarter/dotfiles/commit/53cf519ec9573f1ac2f3d1f616f82e79fd11b1c2))
+* **zsh:** give ocd access to opencode config + credentials ([2c67259](https://github.com/dkarter/dotfiles/commit/2c6725981a5e0a3bc27a8b4b75a9d91e25f520e6))
+
 ## [28.4.0](https://github.com/dkarter/dotfiles/compare/v28.3.0...v28.4.0) (2026-02-02)
 
 

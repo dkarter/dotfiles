@@ -49,7 +49,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'isort', 'black' },
+      python = get_with_fallback({ 'dprint.json' }, { 'dprint' }, { 'black' }),
       javascript = js_formatters,
       javascriptreact = js_formatters,
       typescript = js_formatters,
@@ -94,6 +94,12 @@ return {
     end,
     -- Customize formatters
     formatters = {
+      dprint = {
+        -- dprint sometimes needs to install plugins or has cold cache - this
+        -- helps prevent and error. Subsequent runs should be incremental and
+        -- really fast.
+        timeout_ms = 5000,
+      },
       shfmt = {
         prepend_args = { '-i', '2' },
       },

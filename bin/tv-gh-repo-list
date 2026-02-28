@@ -1,0 +1,36 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/television"
+cache_file="$cache_dir/gh-repo-list.txt"
+ttl_seconds=300
+
+mkdir -p "$cache_dir"
+
+if [[ -f "$cache_file" ]]; then
+  now=$(date +%s)
+  mtime=$(stat -f %m "$cache_file" 2>/dev/null || print 0)
+  age=$((now - mtime))
+
+  if (( age < ttl_seconds )); then
+    cat "$cache_file"
+    exit 0
+  fi
+fi
+
+tmp_file="$cache_file.tmp.$$"
+
+if gh repo list --limit 500 --json nameWithOwner,description,isPrivate,updatedAt --jq '.[] | "\(.nameWithOwner)\t\(if .isPrivate then "private" else "public" end)\t\(.updatedAt)\t\(.description // "")"' >"$tmp_file"; then
+  mv "$tmp_file" "$cache_file"
+  cat "$cache_file"
+  exit 0
+fi
+
+rm -f "$tmp_file"
+
+if [[ -f "$cache_file" ]]; then
+  cat "$cache_file"
+  exit 0
+fi
+
+exit 1

@@ -2,7 +2,7 @@
 
 # Create a new tmux session with user input via gum in a popup
 
-session_name=$(gum input --placeholder="New session name...")
+session_name=$(mise x -- gum input --placeholder="New session name...")
 
 # Exit if no input provided (user pressed escape)
 [[ -z $session_name ]] && exit 0
@@ -19,7 +19,7 @@ working_dir=""
 
 if [[ -d $dev_dir ]]; then
   working_dir="$dev_dir"
-elif gum confirm "Directory ~/dev/$session_name doesn't exist. Create it?"; then
+elif mise x -- gum confirm "Directory ~/dev/$session_name doesn't exist. Create it?"; then
   mkdir -p "$dev_dir"
   working_dir="$dev_dir"
 fi

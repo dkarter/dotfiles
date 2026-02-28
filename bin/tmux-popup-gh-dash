@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+tmux display-popup -E -w 95% -h 95% "gh dash"

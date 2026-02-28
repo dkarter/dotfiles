@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+tmux display-popup -E -w 80% -h 80% -d '#{pane_current_path}' "mise x -- tv gh-pr-checkout --layout landscape --hide-status-bar"

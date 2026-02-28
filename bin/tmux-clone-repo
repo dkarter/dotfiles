@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Clone a git repo to ~/dev/ and create/switch to tmux session
+
+# Get git URL from user input
+repo_url=$(mise x -- gum input --placeholder="Git repo URL...")
+
+# Exit if no input provided (user pressed escape)
+if [[ -z $repo_url ]]; then
+  exit 0
+fi
+
+# Extract repo name from URL/path
+repo_name="${repo_url%/}"
+repo_name="${repo_name##*/}"
+repo_name="${repo_name%.git}"
+
+if [[ -z $repo_name ]]; then
+  mise x -- gum style --foreground="red" "Error: Could not determine repository name from URL"
+  sleep 2
+  exit 1
+fi
+
+dev_dir="$HOME/dev"
+repo_path="$dev_dir/$repo_name"
+
+# Create dev directory if it doesn't exist
+mkdir -p "$dev_dir"
+
+# Check if repo already exists
+if [[ -d $repo_path ]]; then
+  mise x -- gum style --foreground="yellow" "Repository already exists at $repo_path"
+
+  # Ask if user wants to pull latest changes
+  if mise x -- gum confirm "Pull latest changes?"; then
+    cd "$repo_path" || exit 1
+    git pull
+  fi
+else
+  # Ask if user wants shallow or full clone
+  clone_type=$(mise x -- gum choose --header="Select clone type:" "Shallow clone (--depth 1)" "Full clone")
+
+  # Clone the repository
+  mise x -- gum style --foreground="blue" "Cloning $repo_url to $repo_path..."
+
+  if [[ $clone_type == "Shallow clone (--depth 1)" ]]; then
+    if ! git clone --depth 1 "$repo_url" "$repo_path"; then
+      mise x -- gum style --foreground="red" "Error: Failed to clone repository"
+      sleep 2
+      exit 1
+    fi
+  else
+    if ! git clone "$repo_url" "$repo_path"; then
+      mise x -- gum style --foreground="red" "Error: Failed to clone repository"
+      sleep 2
+      exit 1
+    fi
+  fi
+
+  mise x -- gum style --foreground="green" "Successfully cloned repository!"
+fi
+
+# Check if tmux session with repo name already exists
+if tmux has-session -t "$repo_name" 2>/dev/null; then
+  # Session exists, switch to it
+  tmux switch-client -t "$repo_name"
+else
+  # Create new session in the repo directory and switch to it
+  tmux new-session -d -s "$repo_name" -c "$repo_path"
+  tmux switch-client -t "$repo_name"
+fi

@@ -16,9 +16,12 @@ tasks:
         - 'bat|bat --completion=zsh'
         - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
         - 'delta|delta --generate-completion zsh'
+        - 'devpod|devpod completion zsh'
+        - 'dprint|dprint completions zsh'
         - 'erd|erd --completions zsh'
         - 'fnox|fnox completion zsh'
         - 'fx|fx --comp zsh'
+        - 'gh|gh completion -s zsh'
         - 'gitleaks|gitleaks completion zsh'
         - 'gt|gt completion' # Graphite CLI
         - 'helm|helm completion zsh'
@@ -26,9 +29,12 @@ tasks:
         - 'lefthook|lefthook completion zsh'
         - 'linear|linear completions zsh'
         - 'mise|mise completion zsh'
+        - 'mix|cat "$HOME/dotfiles/scripts/mix-dynamic-completion.zsh"'
         - 'op|op completion zsh'
         - 'opencode|opencode completion'
+        - 'pdf-redact|pdf-redact completion zsh'
         - 'pgroll|pgroll completion zsh'
+        - 'pitchfork|pitchfork completion zsh'
         - 'rg|rg --generate=complete-zsh'
         - 'sesh|sesh completion zsh'
         - 'starship|starship completions zsh'
@@ -65,6 +71,14 @@ tasks:
       rm -f ~/.zcompdump*
       zsh -c 'builtin autoload -Uz +X compinit'
       zsh -c 'autoload -Uz compinit && compinit'
+      echo "DONE"
+    silent: true
+
+  cache:clear:
+    desc: Clears mix completion candidates cache
+    cmd: |
+      echo -n Clearing mix completion cache...
+      rm -f ~/.cache/zsh/mix-candidates-cache.json
       echo "DONE"
     silent: true
 

@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+script_dir=$(cd -- "$(dirname "$0")" && pwd)
+command="${script_dir}/tmux-fork-repo"
+
+exec tmux display-popup -E -w 50% -h 30% "$command"
