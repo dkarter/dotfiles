@@ -58,6 +58,7 @@ return {
           }
         end,
       },
+      factory = helpers.generator_factory,
       condition = function(utils)
         return utils.root_has_file { 'committed.toml' }
       end,
