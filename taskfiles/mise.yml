@@ -34,6 +34,21 @@ tasks:
     cmds:
       - cmd: mise install
 
+  tools:install:with-github-auth:
+    desc: Installs gh first, authenticates it, then installs all mise tools
+    cmds:
+      - cmd: |
+          mise install gh
+
+          if ! mise exec -- gh auth status &>/dev/null; then
+            echo "GitHub CLI is not authenticated. Starting gh auth login..."
+            mise exec -- gh auth login
+          fi
+
+          export GITHUB_TOKEN="$(mise exec -- gh auth token)"
+          export MISE_GITHUB_TOKEN="$GITHUB_TOKEN"
+          mise install
+
   tools:update:
     desc: Updates all mise based tools
     cmds:
