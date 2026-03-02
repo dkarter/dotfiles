@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   'NickvanDyke/opencode.nvim',
+  version = 'v0.4.0',
   ---@module 'opencode'
   ---@type opencode.Opts
   opts = {
