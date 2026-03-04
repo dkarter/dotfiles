@@ -31,6 +31,7 @@ return {
       'clangd',
       'clang-format',
       'cmake-language-server',
+      'commitlint',
       'css-lsp',
       'dockerfile-language-server',
       -- super fast formatter for multiple languages
