@@ -44,7 +44,9 @@ tasks:
             exit 0
           fi
 
-          mise install gum
+          if ! mise which gum &>/dev/null; then
+            mise install gum
+          fi
 
           if mise exec -- gum confirm "Install optional extra mise tools?"; then
             zshrc_local="$HOME/.zshrc.local"
