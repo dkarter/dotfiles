@@ -48,12 +48,13 @@ tasks:
             mise install gum
           fi
 
+          zshrc_local="$HOME/.zshrc.local"
+
           if mise exec -- gum confirm "Install optional extra mise tools?"; then
-            zshrc_local="$HOME/.zshrc.local"
             touch "$zshrc_local"
 
-            if grep -qE '^\s*export\s+MISE_ENV=' "$zshrc_local"; then
-              sed -i.bak -E 's|^\s*export\s+MISE_ENV=.*$|export MISE_ENV=extra|' "$zshrc_local"
+            if grep -qE '^[[:space:]]*export[[:space:]]+MISE_ENV=' "$zshrc_local"; then
+              sed -i.bak -E 's|^[[:space:]]*export[[:space:]]+MISE_ENV=.*$|export MISE_ENV=extra|' "$zshrc_local"
             else
               printf '\nexport MISE_ENV=extra\n' >> "$zshrc_local"
             fi
@@ -61,6 +62,10 @@ tasks:
             rm -f "$zshrc_local.bak"
             echo "Enabled extras profile via MISE_ENV=extra in $zshrc_local"
           else
+            if [[ -f "$zshrc_local" ]]; then
+              sed -i.bak -E '/^[[:space:]]*export[[:space:]]+MISE_ENV=extra[[:space:]]*$/d' "$zshrc_local"
+              rm -f "$zshrc_local.bak"
+            fi
             echo "Keeping base mise toolset only."
           fi
 
