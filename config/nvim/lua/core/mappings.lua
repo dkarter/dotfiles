@@ -408,10 +408,11 @@ M.neogen_mappings = {
 -- stylua: ignore
 ---@type LazyKeysSpec[]
 M.opencode_mappings = {
-  { "<leader>ot", function() require("opencode").ask("@this: ", { submit = true }) end, mode = { "n", "x" }, desc = "Ask opencode"},
-  { "<leader>oa", function() require("opencode").prompt("@this") end, mode = { "n", "x" }, desc = "Add to opencode"},
-  { "<leader>os", function() require("opencode").select() end, mode = { "n", "x" }, desc = "Select opencode action"},
-  { "<leader>oc", function() require("opencode").toggle() end, desc = "Toggle opencode"},
+  { "<leader>oo", function() require("opencode").ask("", { submit = true }) end, mode = { "n", "x" }, desc = "OpenCode Ask"},
+  { "<leader>ot", function() require("opencode").ask("@this: ", { submit = true }) end, mode = { "n", "x" }, desc = "OpenCode @this"},
+  { "<leader>oa", function() require("opencode").prompt("@this") end, mode = { "n", "x" }, desc = "OpenCode Add @this (no submit)"},
+  { "<leader>os", function() require("opencode").select() end, mode = { "n", "x" }, desc = "OpenCode select action"},
+  { "<leader>oc", function() require("opencode").toggle() end, desc = "OpenCode (Toggle)"},
 }
 
 ---@type LazyKeysSpec[]
