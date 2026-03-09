@@ -440,12 +440,6 @@ M.fugitive_mappings = function()
 end
 
 ---@type LazyKeysSpec[]
-M.blame_mappings = {
-  -- Git blame
-  { '<leader>gb', '<cmd>BlameToggle<CR>', silent = true, desc = '[G]it [B]lame' },
-}
-
----@type LazyKeysSpec[]
 M.diffview_mappings = {
   { '<leader>gv', '<cmd>DiffviewFileHistory %<CR>', desc = '[G]it [V]iew (:gitv! alt)' },
   { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = '[G]it [D]iff' },
@@ -887,6 +881,7 @@ M.gitsigns_mappings = {
     desc = 'Preview Hunk Inline',
     mode = 'n',
   },
+  -- BLAME --
   {
     '<leader>bL',
     function()
@@ -902,6 +897,14 @@ M.gitsigns_mappings = {
     end,
     desc = 'Blame Line',
     mode = 'n',
+  },
+  {
+    '<leader>gb',
+    function()
+      require('gitsigns').blame()
+    end,
+    desc = 'Git Blame',
+    mode = { 'n', 'v' },
   },
   {
     '<leader>hd',
