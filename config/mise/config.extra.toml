@@ -1,0 +1,24 @@
+[tools]
+
+"aqua:loft-sh/devpod" = "latest"                                                # devpod is a tool for managing development environments in the cloud
+"cargo:du-dust" = "latest"                                                      # A more intuitive version of du in rust
+"cargo:htmlq" = "latest"                                                        # Like jq, but for HTML
+"github:babs/multiping" = "latest"                                              # pings multiple hosts at once
+"github:bgreenwell/lstr" = "latest"                                             # fast, minimalist directory tree viewer
+"github:dkarter/pdf-redact" = { version = "latest", bin_path = "." }            # pdf mass redaction tool
+"github:ip7z/7zip" = { version = "latest", exe = "7zz" }                        # 7zip cli
+"github:kdash-rs/kdash" = "latest"                                              # kubernetes dashboard in the terminal
+"github:mr-karan/doggo" = "latest"                                              # DNS client (like dig but better)
+"github:nushell/nushell" = { version = "latest", exe = "nu" }                   # modern shell and scripting language
+"github:orf/gping" = "latest"                                                   # graph ping
+"github:preiter93/wireman" = "latest"                                           # GRPC CLI
+"github:sharkdp/hyperfine" = "latest"                                           # benchmarking tool
+"github:sibprogrammer/xq" = "latest"                                            # XML and HTML beautifier and content extractor
+"github:tidewave-ai/mcp_proxy_rust" = { version = "latest", exe = "mcp-proxy" } # Elixir MCP proxy
+argocd = "latest"                                                               # Argo CD CLI (GitOps tool for Kubernetes)
+dive = "latest"                                                                 # A tool for exploring each layer in a docker image
+helm = "latest"                                                                 # install k8s packages
+kubectl = "latest"                                                              # k8s cli
+lazydocker = "latest"                                                           # docker TUI
+opentofu = "latest"                                                             # terraform drop-in alternative, with more permissive license
+terraform = "latest"                                                            # infrastructure as code

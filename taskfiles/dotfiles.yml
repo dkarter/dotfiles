@@ -83,6 +83,7 @@ tasks:
       - task: zinit:install
       - task: zinit:plugins:update
       - task: mise:install
+      - task: mise:tools:extras:prompt
       - task: mise:tools:install:with-github-auth
       - task: fonts:sync
       - task: brew:sync
