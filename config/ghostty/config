@@ -66,7 +66,7 @@ keybind = super+l=text:\x1aL
 # create new session
 keybind = super+shift+n=text:\x1aN
 # open a dev dir in new/existing session
-keybind = super+shift+o=text:\x1aO
+keybind = super+o=text:\x1aO
 # fork github repo
 keybind = super+shift+f=text:\x1av
 # create a new linear issue
@@ -82,3 +82,10 @@ keybind = shift+enter=text:\n
 
 # Slowdown mouse scrolling
 mouse-scroll-multiplier = 0.95
+
+# notify on command finished (requires OSC 133 support)
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 30s
+
+keybind = super+shift+o=toggle_background_opacity
