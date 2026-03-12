@@ -882,29 +882,13 @@ M.gitsigns_mappings = {
     desc = 'Preview Hunk Inline',
     mode = 'n',
   },
-  -- BLAME --
   {
-    '<leader>bL',
+    'q',
     function()
-      require('gitsigns').blame_line { full = true }
+      vim.cmd 'quit'
     end,
-    desc = 'Blame Line (full)',
-    mode = 'n',
-  },
-  {
-    '<leader>bl',
-    function()
-      require('gitsigns').blame_line()
-    end,
-    desc = 'Blame Line',
-    mode = 'n',
-  },
-  {
-    '<leader>gb',
-    function()
-      require('gitsigns').blame()
-    end,
-    desc = 'Git Blame',
+    ft = 'gitsigns-blame',
+    desc = 'Quit Blame Window',
     mode = { 'n', 'v' },
   },
   {
@@ -938,6 +922,31 @@ M.gitsigns_mappings = {
     end,
     desc = 'Git Hunks to QF List (Buffer)',
     mode = 'n',
+  },
+  -- BLAME --
+  {
+    '<leader>bL',
+    function()
+      require('gitsigns').blame_line { full = true }
+    end,
+    desc = 'Blame Line (full)',
+    mode = 'n',
+  },
+  {
+    '<leader>bl',
+    function()
+      require('gitsigns').blame_line()
+    end,
+    desc = 'Blame Line',
+    mode = 'n',
+  },
+  {
+    '<leader>gb',
+    function()
+      require('gitsigns').blame()
+    end,
+    desc = 'Git Blame',
+    mode = { 'n', 'v' },
   },
   -- Toggles
   {
