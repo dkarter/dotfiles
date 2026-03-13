@@ -1,6 +1,6 @@
 ---
 name: project-tooling-bootstrap
-description: 'Bootstrap a repository with the Toolkit baseline developer tooling: mise, Task, dprint, lefthook, committed, and gitleaks. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, or commit-message linting in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks.'
+description: 'Bootstrap a repository with the Toolkit baseline developer tooling: mise, Task, dprint, lefthook, committed, gitleaks, pitchfork, and fnox. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, commit-message linting, command orchestration, or secrets handling in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks.'
 ---
 
 # Project Tooling Bootstrap
@@ -75,6 +75,8 @@ task ci:fmt:check
 ```
 
 If commits should be conventionally linted, verify `committed` runs via a test commit message or existing commit hook flow.
+
+For local command orchestration and secrets handling, verify `pitchfork` and `fnox` are available after `mise install`.
 
 ## Idempotence Checks
 
