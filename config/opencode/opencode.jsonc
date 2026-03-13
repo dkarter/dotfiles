@@ -43,18 +43,24 @@
         "webfetch": "allow",
         "edit": "ask",
         "bash": {
+          "*": "ask",
+          "bun run *": "allow",
+          "git diff *": "allow",
+          "git log *": "allow",
+          "git show *": "allow",
           "git status": "allow",
-          "git diff": "allow",
+          "kubectl get *": "allow",
+          "kubectl get secret": "deny",
+          "kubectl get secrets": "deny",
+          "ls": "allow",
+          "mix *": "allow",
           "npm run *": "allow",
           "pnpm run *": "allow",
-          "bun run *": "allow",
-          "ls": "allow",
           "pwd": "allow",
-          "kubectl get secrets": "deny",
-          "kubectl get secret": "deny",
-          "kubectl get *": "allow",
           "rg *": "allow",
-          "*": "ask"
+          "head *": "allow",
+          "tail *": "allow",
+          "task *": "allow"
         }
       }
     }
