@@ -248,4 +248,4 @@ other projects by path and let the agent explore on its own.
 - **`/worktree`**: delegate tasks to parallel worktree agents
 - **`/coordinator`**: orchestrate multiple agents (spawn, monitor, merge)
 - **`/open-pr`**: write PR description and open in browser
-- **`/graphite`**: stacked PR workflow with `gt` in Graphite-enabled repos
+- **`/graphite`**: stacked PR workflow with `gt` in Graphite-enabled repos; check first with `test -f .git/.graphite_repo_config` and only load this skill when it exists
