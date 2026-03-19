@@ -19,17 +19,33 @@ local function get_with_fallback(root_files, formatters, fallback)
   end
 end
 
+local function find_root_config(filename, config_file)
+  if not filename or filename == '' then
+    return nil
+  end
+
+  local config_path = vim.fs.find(config_file, {
+    path = vim.fs.dirname(filename),
+    upward = true,
+    type = 'file',
+  })[1]
+
+  if config_path then
+    return vim.fs.dirname(config_path)
+  end
+
+  return nil
+end
+
 -- Use biome if config exists, otherwise use the provided fallback formatter
 local function get_biome_or_fallback(fallback)
   return get_with_fallback({ 'biome.json', 'biome.jsonc' }, { 'biome', 'biome-check' }, fallback)
 end
 
 -- try dprint first, then fallback to prettier
-local dprint_or_prettier = get_with_fallback(
-  { 'dprint.json' },
-  { 'dprint' },
-  { 'prettierd', 'prettier', stop_after_first = true }
-)
+-- dprint is configured with require_cwd below, so it'll only run for buffers
+-- that actually have a dprint.json in their project tree.
+local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
 
 -- Compute formatters at setup time
 local js_formatters = get_biome_or_fallback(dprint_or_prettier)
@@ -95,10 +111,14 @@ return {
     -- Customize formatters
     formatters = {
       dprint = {
-        -- dprint sometimes needs to install plugins or has cold cache - this
-        -- helps prevent and error. Subsequent runs should be incremental and
-        -- really fast.
-        timeout_ms = 5000,
+        -- only run dprint in projects that have dprint.json, based on the
+        -- current buffer path (not Neovim's current working directory)
+        cwd = function(_self, ctx)
+          return find_root_config(ctx.filename, 'dprint.json')
+        end,
+        condition = function(_self, ctx)
+          return find_root_config(ctx.filename, 'dprint.json') ~= nil
+        end,
       },
       shfmt = {
         prepend_args = { '-i', '2' },
