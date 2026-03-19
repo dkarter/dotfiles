@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.0.0](https://github.com/dkarter/dotfiles/compare/v30.0.0...v31.0.0) (2026-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **mise:** split some tools to extras
+* **mise:** remove some unused tools
+
+### Features
+
+* **ghostty:** add mapping for toggling opacity ([0bef94a](https://github.com/dkarter/dotfiles/commit/0bef94acbb37bdedbc01328d9741d4705b5df16e))
+* **mise:** split some tools to extras ([432ae4b](https://github.com/dkarter/dotfiles/commit/432ae4bbd58b6f35aec02b09bf713ddd8df9464d))
+* **nvim:** add mapping to exit blame ([7149c4e](https://github.com/dkarter/dotfiles/commit/7149c4e6ab6629e776ffdbf517726e289f25d23b))
+* **nvim:** add more opencode mappings / improve existing ([760a459](https://github.com/dkarter/dotfiles/commit/760a4598317bca705cb6f6fab317101f0797d870))
+* **opencode:** add graphite skill ([f5e08d5](https://github.com/dkarter/dotfiles/commit/f5e08d5ad79d95f46b96b789451da2be2c8c034f))
+* **opencode:** add simplify skill ([d380a6d](https://github.com/dkarter/dotfiles/commit/d380a6de7d001edd7f03fe591aba313b33fa8346))
+* **opencode:** add workmux skills ([3f1293a](https://github.com/dkarter/dotfiles/commit/3f1293a688bde24518e82c5768824faab8b5d939))
+* **tmux:** add workmux add prompt command ([7648932](https://github.com/dkarter/dotfiles/commit/7648932e32233a107f70036274484d97f2dae786))
+* **zsh:** add fancy banner ([50d033f](https://github.com/dkarter/dotfiles/commit/50d033facfc17528d7eb1fc3c31acf6e452a356f))
+
+
+### Bug Fixes
+
+* **debian:** remove unnecessary packages ([16a9d9c](https://github.com/dkarter/dotfiles/commit/16a9d9c3bcc097b11f7503d81fcdcc317cf0208e))
+* make gprune compatible with worktrees ([51ae8a2](https://github.com/dkarter/dotfiles/commit/51ae8a22199762f327161436c2ad0bd38538e42f))
+* **mise:** move fj cli to extra tools ([5a7a7e0](https://github.com/dkarter/dotfiles/commit/5a7a7e0babd5bc57951f58601e3c073d600bf536))
+* **mise:** remove some unused tools ([13ce7d0](https://github.com/dkarter/dotfiles/commit/13ce7d036fda8bf956bdcccc6f21e5f02cc3cd46))
+* **nvim:** add missing none-ls config for committed plugin ([6b361cf](https://github.com/dkarter/dotfiles/commit/6b361cf80a258ff7f6ede5ad6f6e108b3446865a))
+* **nvim:** add opencode-tmux.nvim and update opencode.nvim ([9eef7e7](https://github.com/dkarter/dotfiles/commit/9eef7e76c5318d61dea0a4a9815d94aa73d8a762))
+* **nvim:** bring back commitlint for linting commit messages ([811177f](https://github.com/dkarter/dotfiles/commit/811177f6e620bc8889a020eaacd4efe3026b8ecb))
+* **nvim:** pin opencode.nvim to stable version ([53b4568](https://github.com/dkarter/dotfiles/commit/53b4568e9af5d02976d4e18e819bafa01655d059))
+* **nvim:** run dprint only when buffer has dprint config ([#396](https://github.com/dkarter/dotfiles/issues/396)) ([c44c07e](https://github.com/dkarter/dotfiles/commit/c44c07e70aa6471f5ae968ac6ab476f7b57efd94))
+* **opencode:** improve opencode mappings ([d2e3b6a](https://github.com/dkarter/dotfiles/commit/d2e3b6afdc6b8b633324f4874a6b474179296956))
+* **opencode:** report permission prompts in workmux status plugin ([#397](https://github.com/dkarter/dotfiles/issues/397)) ([2362e18](https://github.com/dkarter/dotfiles/commit/2362e187c855b6487810f24842ded257c1d5f63d))
+* **task:** allow disabling extra tools ([facbbb3](https://github.com/dkarter/dotfiles/commit/facbbb3c204f7ebe3cdb53f367322a83ad9af692))
+* **task:** don't create 1password agent file if already exists ([996a013](https://github.com/dkarter/dotfiles/commit/996a013e95331a16eaf1670f8ff581ec8e52165f))
+* **task:** only install gum if not installed already ([d02eac2](https://github.com/dkarter/dotfiles/commit/d02eac25df56ed8100dceece064b940b6717a396))
+* **task:** set up github token before installing mise tools ([63dd5dc](https://github.com/dkarter/dotfiles/commit/63dd5dca6d4d128a53c3dea87db07c1a5c90c79d))
+* **task:** skip banner if not interactive ([6217756](https://github.com/dkarter/dotfiles/commit/6217756b0282b0cdb43442bea1301e364befeea6))
+* **zed:** update agent_servers config ([7bfe090](https://github.com/dkarter/dotfiles/commit/7bfe0903b1e15f85a155ac77a88b584de806c15f))
+* **zsh:** default opencode alias should not have port ([a696bae](https://github.com/dkarter/dotfiles/commit/a696bae7c4bbc37af8287dc59b4a6ec4f424e907))
+* **zsh:** enable forward agent for remote ssh sessions ([05c4c7e](https://github.com/dkarter/dotfiles/commit/05c4c7e10837bea71dc6ebe0d76689bba3dc7706))
+* **zsh:** move github.zsh back ([41f8473](https://github.com/dkarter/dotfiles/commit/41f8473fd53dabe5d9d1e8b025631fe0ea4762d5))
+
+
+### Performance Improvements
+
+* **mise:** use pre-compiled binaries for python ([86f29f2](https://github.com/dkarter/dotfiles/commit/86f29f2ab0e1801556b0c63bd77cd9c9240a189c))
+
 ## [30.0.0](https://github.com/dkarter/dotfiles/compare/v29.0.0...v30.0.0) (2026-02-28)
 
 
