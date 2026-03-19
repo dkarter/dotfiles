@@ -1,48 +1,37 @@
 import type { Plugin } from '@opencode-ai/plugin';
 
-const debugLogPath =
-  process.env.WORKMUX_STATUS_PLUGIN_LOG_PATH || `${process.env.HOME}/.local/state/workmux/workmux-status-plugin.log`;
-
-const writeDebugLog = async (line: string) => {
-  if (process.env.WORKMUX_STATUS_PLUGIN_DEBUG !== '1') {
-    return;
-  }
-
-  await Bun.write(Bun.file(debugLogPath), `${line}\n`);
-};
-
 export const WorkmuxStatusPlugin: Plugin = async ({ $ }) => {
-  const setStatus = async (status: 'working' | 'waiting' | 'done', eventType: string) => {
+  const setStatus = async (status: 'working' | 'waiting' | 'done') => {
     await $`workmux set-window-status ${status}`.quiet();
-    await writeDebugLog(
-      JSON.stringify({
-        ts: new Date().toISOString(),
-        event: eventType,
-        status,
-      }),
-    );
   };
 
   return {
     event: async ({ event }) => {
-      switch (event.type) {
-        case 'session.status':
-          if (event.properties.status.type === 'busy') {
-            await setStatus('working', event.type);
-          } else if (event.properties.status.type === 'waiting') {
-            await setStatus('waiting', event.type);
-          }
-          break;
-        case 'permission.asked':
-        case 'permission.updated':
-          await setStatus('waiting', event.type);
-          break;
-        case 'permission.replied':
-          await setStatus('working', event.type);
-          break;
-        case 'session.idle':
-          await setStatus('done', event.type);
-          break;
+      const eventType = event.type as string;
+
+      if (eventType === 'session.status') {
+        const statusType = (event as { properties?: { status?: { type?: string } } }).properties?.status?.type;
+
+        if (statusType === 'busy') {
+          await setStatus('working');
+        } else if (statusType === 'waiting') {
+          await setStatus('waiting');
+        }
+        return;
+      }
+
+      if (eventType === 'permission.asked' || eventType === 'permission.updated') {
+        await setStatus('waiting');
+        return;
+      }
+
+      if (eventType === 'permission.replied') {
+        await setStatus('working');
+        return;
+      }
+
+      if (eventType === 'session.idle') {
+        await setStatus('done');
       }
     },
   };
