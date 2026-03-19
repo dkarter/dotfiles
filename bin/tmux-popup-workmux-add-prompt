@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+script_dir=$(cd -- "$(dirname "$0")" && pwd)
+command="${script_dir}/tmux-workmux-add-prompt"
+
+exec tmux display-popup -E -w 60% -h 70% "$command"

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+state_file="${OPENCODE_STATE_FILE:-$HOME/.local/state/opencode/model.json}"
+fallback_model="${OPENCODE_FALLBACK_MODEL:-openai/gpt-5.3-codex}"
+
+if [[ ! -f "$state_file" ]]; then
+  printf '%s\n' "$fallback_model"
+  exit 0
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+  printf '%s\n' "$fallback_model"
+  exit 0
+fi
+
+model="$(jq -r '
+  if (.recent | type) == "array"
+    and (.recent | length) > 0
+    and (.recent[0].providerID? != null)
+    and (.recent[0].modelID? != null)
+  then
+    .recent[0].providerID + "/" + .recent[0].modelID
+  else
+    empty
+  end
+' "$state_file" 2>/dev/null || true)"
+
+if [[ -z "$model" || "$model" == "null" ]]; then
+  printf '%s\n' "$fallback_model"
+  exit 0
+fi
+
+printf '%s\n' "$model"
