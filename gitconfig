@@ -140,6 +140,11 @@
 [pull]
   rebase = true
 
+# coderabbit doesn't like that I moved this to .gitconfig.local, so I'm putting
+# it back here - I'm hoping it just gets overridden by the one in .gitconfig.local
+[coderabbit]
+	machineId = cli/760dec181acb4baaa9fb488eafed06a5
+
 ; Load local configs.
 ; https://git-scm.com/docs/git-config#_includes
 [include]
