@@ -24,14 +24,6 @@ fpath=($HOME/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
 homebrew_comps="/opt/homebrew/share/zsh/site-functions"
 [[ -d $homebrew_comps ]] && fpath=($homebrew_comps $fpath)
 
-# Remove stale zinit completion symlinks that can break compinit.
-zinit_completions_dir="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/completions"
-if [[ -d $zinit_completions_dir ]]; then
-  for completion_file in "$zinit_completions_dir"/_*(N@); do
-    [[ -e $completion_file ]] || rm -f -- "$completion_file"
-  done
-fi
-
 # === Load completion system ===
 autoload -Uz compinit bashcompinit
 compinit

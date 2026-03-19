@@ -25,6 +25,13 @@ tasks:
     cmds:
       - cmd: |
           zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all --parallel'
+      - task: plugins:cleanup-stale-completions
+
+  plugins:cleanup-stale-completions:
+    desc: Removes stale zinit completion symlinks
+    cmds:
+      - cmd: |
+          zsh -c 'comps_dir="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/completions"; [[ -d "$comps_dir" ]] || exit 0; for completion_file in "$comps_dir"/_*(N@); do [[ -e "$completion_file" ]] || rm -f -- "$completion_file"; done'
 
   # this task has some extra caching mechanisms to prevent it from running too often
   # to force it to run pass the `-f` flag
