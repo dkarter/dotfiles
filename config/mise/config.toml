@@ -108,3 +108,6 @@ ruby.compile = false
 
 # get pre-compiled binaries for rust tools via cargo-binstall (instead of compiling from source)
 cargo.binstall = true
+
+# use pre-compiled binaries for python when available
+python.compile = false
