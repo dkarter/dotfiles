@@ -8,9 +8,14 @@ if [[ -z "$worktree_name" ]]; then
   exit 0
 fi
 
-prompt_text=$(mise x -- gum write --placeholder="Prompt for this worktree...")
+prompt_file=$(mktemp -t workmux-add-prompt)
+trap 'rm -f "$prompt_file"' EXIT
 
-if [[ -z "$prompt_text" ]]; then
+nvim "+startinsert" "$prompt_file"
+
+prompt_text=$(<"$prompt_file")
+
+if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
   exit 0
 fi
 
