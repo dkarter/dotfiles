@@ -1,10 +1,21 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -euo pipefail
 
 worktree_name=$(mise x -- gum input --placeholder="Worktree name...")
 
 if [[ -z "$worktree_name" ]]; then
+  exit 0
+fi
+
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+  mise x -- gum style --foreground="red" "Not in a git repository"
+  exit 1
+fi
+
+base_branch=$(mise x -- tv workmux-base-branch --hide-status-bar || true)
+
+if [[ -z "$base_branch" ]]; then
   exit 0
 fi
 
@@ -19,4 +30,4 @@ if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
   exit 0
 fi
 
-mise x -- workmux add "$worktree_name" --prompt "$prompt_text" --background
+mise x -- workmux add "$worktree_name" --base "$base_branch" --prompt "$prompt_text" --background

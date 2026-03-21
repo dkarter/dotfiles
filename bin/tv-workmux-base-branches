@@ -1,0 +1,41 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+pick_main_branch() {
+  local detected_main
+
+  detected_main=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null || true)
+  detected_main=${detected_main#origin/}
+
+  if [[ -n "$detected_main" ]] && git show-ref --verify --quiet "refs/heads/$detected_main"; then
+    print -r -- "$detected_main"
+    return
+  fi
+
+  local candidate
+  for candidate in main master trunk develop; do
+    if git show-ref --verify --quiet "refs/heads/$candidate"; then
+      print -r -- "$candidate"
+      return
+    fi
+  done
+
+  git branch --show-current 2>/dev/null || true
+}
+
+main_branch=$(pick_main_branch)
+current_branch=$(git branch --show-current 2>/dev/null || true)
+
+if [[ -n "$main_branch" ]] && git show-ref --verify --quiet "refs/heads/$main_branch"; then
+  print -r -- "$main_branch"
+fi
+
+if [[ -n "$current_branch" && "$current_branch" != "$main_branch" ]] && git show-ref --verify --quiet "refs/heads/$current_branch"; then
+  print -r -- "$current_branch"
+fi
+
+git for-each-ref --format='%(refname:short)' refs/heads | while IFS= read -r branch; do
+  [[ "$branch" == "$main_branch" ]] && continue
+  [[ "$branch" == "$current_branch" ]] && continue
+  print -r -- "$branch"
+done
