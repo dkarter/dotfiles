@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -euo pipefail
 
@@ -8,10 +8,26 @@ if [[ -z "$worktree_name" ]]; then
   exit 0
 fi
 
-prompt_text=$(mise x -- gum write --placeholder="Prompt for this worktree...")
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+  mise x -- gum style --foreground="red" "Not in a git repository"
+  exit 1
+fi
 
-if [[ -z "$prompt_text" ]]; then
+base_branch=$(mise x -- tv workmux-base-branch --hide-status-bar || true)
+
+if [[ -z "$base_branch" ]]; then
   exit 0
 fi
 
-mise x -- workmux add "$worktree_name" --prompt "$prompt_text" --background
+prompt_file=$(mktemp -t workmux-add-prompt)
+trap 'rm -f "$prompt_file"' EXIT
+
+nvim "+startinsert" "$prompt_file"
+
+prompt_text=$(<"$prompt_file")
+
+if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
+  exit 0
+fi
+
+mise x -- workmux add "$worktree_name" --base "$base_branch" --prompt "$prompt_text" --background

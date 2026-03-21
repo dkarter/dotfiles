@@ -1,0 +1,8 @@
+[metadata]
+name = "workmux-base-branch"
+description = "Select a base branch for new workmux worktrees"
+requirements = ["git"]
+
+[source]
+command = "tv-workmux-base-branches"
+output = "{split: :0}"
