@@ -82,8 +82,8 @@ brew 'grep'
 # show active process and their telemetry
 brew 'btop'
 
-# docker desktop for containers
-cask 'docker-desktop'
+# docker desktop alternative for mac - fast and battery efficient
+cask 'orbstack'
 
 # build tool
 brew 'make'
