@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.2.0](https://github.com/dkarter/dotfiles/compare/v31.1.0...v31.2.0) (2026-03-21)
+
+
+### Features
+
+* **mise:** add colima ([43ea204](https://github.com/dkarter/dotfiles/commit/43ea2042e2d587db03c99c4e4efcfa2372ca7a83))
+* **mise:** add docker cli ([a2bb71a](https://github.com/dkarter/dotfiles/commit/a2bb71a209508f5124cd5ec38719da266e797936))
+
+
+### Bug Fixes
+
+* **nvim:** make vim-test vimux strategy smarter ([#403](https://github.com/dkarter/dotfiles/issues/403)) ([710ffe0](https://github.com/dkarter/dotfiles/commit/710ffe06dcdd56eaefbaecd7631022c89913d56c))
+* **opencode:** update graphite check ([0600b08](https://github.com/dkarter/dotfiles/commit/0600b088a844ec75604eea321f6d73164272f330))
+
 ## [31.1.0](https://github.com/dkarter/dotfiles/compare/v31.0.0...v31.1.0) (2026-03-21)
 
 
