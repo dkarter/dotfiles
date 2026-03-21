@@ -13,10 +13,11 @@ Use this skill for stacked PR workflows with `gt`.
 
 This skill applies only when the current repository is Graphite-enabled.
 
-1. Verify Graphite is enabled:
+1. Verify Graphite is enabled (works for normal repos and git worktrees):
 
 ```bash
-test -f .git/.graphite_repo_config
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 && \
+test -f "$(git rev-parse --git-common-dir)/.graphite_repo_config"
 ```
 
 2. If the file does not exist:

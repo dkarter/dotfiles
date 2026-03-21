@@ -233,4 +233,4 @@ workmux send docs-update "/merge"
    gracefully.
 7. **Prompt files should use relative paths** (each worktree has its own root).
 8. You are a coordinator, not an implementer. Never edit source files directly.
-9. For Graphite stacked-PR repositories, delegate Graphite-specific workflows to `/graphite`; check Graphite enablement first with `test -f .git/.graphite_repo_config`, and only load `/graphite` when that check passes.
+9. For Graphite stacked-PR repositories, delegate Graphite-specific workflows to `/graphite`; check Graphite enablement first with `git rev-parse --is-inside-work-tree >/dev/null 2>&1 && test -f "$(git rev-parse --git-common-dir)/.graphite_repo_config"`, and only load `/graphite` when that check passes.
