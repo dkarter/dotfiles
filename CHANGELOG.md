@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.1.0](https://github.com/dkarter/dotfiles/compare/v31.0.0...v31.1.0) (2026-03-21)
+
+
+### Features
+
+* **workmux:** edit add prompt in nvim ([#401](https://github.com/dkarter/dotfiles/issues/401)) ([1cba0a6](https://github.com/dkarter/dotfiles/commit/1cba0a61051e10040283775b22ffc9b5ebc75ccc))
+* **workmux:** pick base branch with television selector ([#402](https://github.com/dkarter/dotfiles/issues/402)) ([f11b7d5](https://github.com/dkarter/dotfiles/commit/f11b7d53ea879d053c97c61e57de89ced96c909e))
+
+
+### Bug Fixes
+
+* **opencode:** only load graphite skill when relevant ([f6943b5](https://github.com/dkarter/dotfiles/commit/f6943b53455bcd8586caf76145a23d9da0d55ffa))
+* **zsh:** avoid intermittent compinit _drush warning ([#398](https://github.com/dkarter/dotfiles/issues/398)) ([4284b17](https://github.com/dkarter/dotfiles/commit/4284b1737a992bf24a7b9d906ca87c5e8353d684))
+
 ## [31.0.0](https://github.com/dkarter/dotfiles/compare/v30.0.0...v31.0.0) (2026-03-19)
 
 
