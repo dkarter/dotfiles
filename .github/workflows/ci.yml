@@ -28,7 +28,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libreadline-dev
 
       - name: Install Runtimes w/ MISE (and cache)
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@b106a2f3b6c5fe71d9bc58fef0e8284fcd2b9f70
 
   yaml-lint:
     name: 'Lint: Yaml'
@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@b106a2f3b6c5fe71d9bc58fef0e8284fcd2b9f70
 
       - name: Run yamllint
         run: task ci:yaml:lint
@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@b106a2f3b6c5fe71d9bc58fef0e8284fcd2b9f70
 
       - name: Format check
         run: task ci:format:check
@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@b106a2f3b6c5fe71d9bc58fef0e8284fcd2b9f70
         with:
           reshim: true
 
@@ -95,7 +95,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@b106a2f3b6c5fe71d9bc58fef0e8284fcd2b9f70
 
       - name: Run Diagnostics Check
         run: task ci:shell:lint
@@ -112,7 +112,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@b106a2f3b6c5fe71d9bc58fef0e8284fcd2b9f70
 
       - name: Run Diagnostics Check
         run: task ci:spelling:lint
