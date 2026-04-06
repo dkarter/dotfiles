@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.2.0](https://github.com/dkarter/dotfiles/compare/v31.1.0...v31.2.0) (2026-04-06)
+
+
+### Features
+
+* **mise:** add colima ([43ea204](https://github.com/dkarter/dotfiles/commit/43ea2042e2d587db03c99c4e4efcfa2372ca7a83))
+* **mise:** add docker cli ([a2bb71a](https://github.com/dkarter/dotfiles/commit/a2bb71a209508f5124cd5ec38719da266e797936))
+* **mise:** bump neovim to latest (0.12) ([3428b15](https://github.com/dkarter/dotfiles/commit/3428b15fb03b9353c693347c27fe382ac2aa520e))
+* **nvim:** add mermaid plugin ([fd7337d](https://github.com/dkarter/dotfiles/commit/fd7337d4188ef1699833079fbfd319a614afc922))
+* **opencode:** add babysit-pdq-pr skill ([d178fa7](https://github.com/dkarter/dotfiles/commit/d178fa7132830ddd34f23b5d4ee7fdd4273ac657))
+* **opencode:** add fix-flaky-pr-pdq skill ([0f57451](https://github.com/dkarter/dotfiles/commit/0f57451002f8404225bdfeb32667261c7788f283))
+* **opencode:** update humanizer to replace mdashes ([5df4ad1](https://github.com/dkarter/dotfiles/commit/5df4ad166e0e6ac6f8c84f5e38d6066d0f293ef0))
+* **postgres:** make psql connections in local dev without pass ([501e936](https://github.com/dkarter/dotfiles/commit/501e93674431716d1f2e903c2954deee76adb5fb))
+* **skills:** add pdq-add-ticket-to-pr skill ([97f426c](https://github.com/dkarter/dotfiles/commit/97f426c19a883253f90f65446a5ed1514b119af0))
+* **skills:** add plan-local-storage ([717efb2](https://github.com/dkarter/dotfiles/commit/717efb22ade0801bb9657473d4ead819660df9e8))
+* **tv:** add git diff picker integration to git reset ([8ab74f0](https://github.com/dkarter/dotfiles/commit/8ab74f0433701b57d80b6b759fea4a63ff018922))
+* **zsh:** add mr alias for mise run ([eb6fe20](https://github.com/dkarter/dotfiles/commit/eb6fe20cde3c2b3af500c607411577236b4fa63d))
+
+
+### Bug Fixes
+
+* **lefthook:** remove noisy output ([dac7d10](https://github.com/dkarter/dotfiles/commit/dac7d10be61e29bc1dafc5be5da070a4ebdb6944))
+* **nvim:** improve injections for mise tasks ([79b8ba4](https://github.com/dkarter/dotfiles/commit/79b8ba4536b4af5a84b96dbd0c01d9d9f581af50))
+* **nvim:** make vim-test vimux strategy smarter ([#403](https://github.com/dkarter/dotfiles/issues/403)) ([710ffe0](https://github.com/dkarter/dotfiles/commit/710ffe06dcdd56eaefbaecd7631022c89913d56c))
+* **nvim:** upgrade to latest treesitter ([9ab1782](https://github.com/dkarter/dotfiles/commit/9ab17825b9f3a6f4424505b7ebeae4bc849c76b2))
+* **opencode:** imrove open-pr skill ([43cee8c](https://github.com/dkarter/dotfiles/commit/43cee8c7e7ff243a49b06559baaade3ebd29debe))
+* **opencode:** tweak babysit-pdq-pr skill ([3b998f5](https://github.com/dkarter/dotfiles/commit/3b998f56f6deb9582aec118286c7ce56cb5d872b))
+* **opencode:** update graphite check ([0600b08](https://github.com/dkarter/dotfiles/commit/0600b088a844ec75604eea321f6d73164272f330))
+* **opencode:** use committed from github in tooling bootstrap skill ([1ab0190](https://github.com/dkarter/dotfiles/commit/1ab01904878d8cc34c9a622ea63585874f9e1075))
+* **skills:** add secret checking to lefthook in project-tooling-bootstrap ([1278a32](https://github.com/dkarter/dotfiles/commit/1278a325778a44b925fae8f80301cb67ff394700))
+* **skills:** update open-pr to use draft mode ([fa6fdd6](https://github.com/dkarter/dotfiles/commit/fa6fdd64988febd9fc1cabca6cac5a441f0224ff))
+* **skills:** update plan storage path ([10ded71](https://github.com/dkarter/dotfiles/commit/10ded717ddfcaa398919b043e4f00a408ef48282))
+* **skills:** update project-tooling-bootstrap ([3868a6c](https://github.com/dkarter/dotfiles/commit/3868a6c3f62fd5efcfb6be8436193c0d90ed7b6b))
+
 ## [31.1.0](https://github.com/dkarter/dotfiles/compare/v31.0.0...v31.1.0) (2026-03-21)
 
 
