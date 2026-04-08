@@ -1,3 +1,10 @@
+---
+name: pdq-add-ticket-to-pr
+description: Add a Platform Linear ticket to a PDQ PR title, wait for linkback, and rerun the ticketing check.
+disable-model-invocation: true
+allowed-tools: Bash
+---
+
 # Skill: pdq-add-ticket-to-pr
 
 ## Overview
