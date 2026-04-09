@@ -24,7 +24,7 @@ return {
       'yamllint',
 
       -- LSPs
-      'elixir-ls',
+      'expert',
       'ansible-language-server',
       'arduino-language-server',
       'bash-language-server',

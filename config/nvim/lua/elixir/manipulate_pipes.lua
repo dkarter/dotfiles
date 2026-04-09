@@ -8,13 +8,59 @@ local get_cursor_position = function()
   return row, col
 end
 
-local manipulate_pipes = function(direction, client)
-  local row, col = get_cursor_position()
+local function apply_refactor_action(client, title_patterns)
+  local found = false
 
-  client.request_sync('workspace/executeCommand', {
-    command = 'manipulatePipes:serverid',
-    arguments = { direction, 'file://' .. vim.api.nvim_buf_get_name(0), row, col },
-  }, nil, 0)
+  vim.lsp.buf.code_action {
+    apply = true,
+    context = {
+      diagnostics = vim.diagnostic.get(0),
+      only = { 'refactor', 'refactor.rewrite' },
+    },
+    filter = function(action, action_client_id)
+      if action_client_id ~= client.id then
+        return false
+      end
+
+      local title = (action.title or ''):lower()
+
+      for _, pattern in ipairs(title_patterns) do
+        if title:find(pattern, 1, true) then
+          found = true
+          return true
+        end
+      end
+
+      return false
+    end,
+  }
+
+  return found
+end
+
+local manipulate_pipes = function(direction, client)
+  if client and client.name == 'elixirls' then
+    local row, col = get_cursor_position()
+
+    client.request_sync('workspace/executeCommand', {
+      command = 'manipulatePipes:serverid',
+      arguments = { direction, 'file://' .. vim.api.nvim_buf_get_name(0), row, col },
+    }, nil, 0)
+
+    return
+  end
+
+  local ok
+
+  if direction == 'toPipe' then
+    ok = apply_refactor_action(client, { 'introduce pipe', 'to pipe' })
+  else
+    ok = apply_refactor_action(client, { 'remove pipe', 'from pipe' })
+  end
+
+  if not ok then
+    vim.notify('No matching pipe refactor action available at cursor', vim.log.levels.WARN)
+  end
 end
 
 function M.from_pipe(client)

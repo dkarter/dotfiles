@@ -4,7 +4,7 @@
 --
 -- Changes from original:
 -- - renamed the user command to ElixirToggleMapKeys to match my other Elixir specific commands
--- - exported as a module, so it can be required (which I do in ../../after/local/lsp/elixirls.lua)
+-- - exported as a module, so it can be required from the Elixir LSP on_attach config
 -- - added deep toggle functionality (with bang)
 -- - preserves formatting and spacing
 
