@@ -31,6 +31,15 @@ return {
     },
 
     routes = {
+      -- suppress vim.tbl_flatten deprecation warnings from nvim-colorizer
+      {
+        filter = {
+          event = 'msg_show',
+          find = 'tbl_flatten is deprecated',
+        },
+        opts = { skip = true },
+      },
+
       -- suppress no information available from LSP on K
       -- when there are multiple LSPs this can be annoying
       {
