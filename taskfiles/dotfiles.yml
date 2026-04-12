@@ -162,20 +162,20 @@ tasks:
           var: FILES
           as: FILE
         cmd: |
-          ln -s -f "$(realpath ./{{.FILE}})" ~/.{{.FILE}}
+          ln -s -fn "$(realpath ./{{.FILE}})" ~/.{{.FILE}}
 
       - for:
           var: FOLDERS
           as: FOLDER
         cmd: |
-          ln -s -f "$(realpath ./{{.FOLDER}})" ~/.{{.FOLDER}}
+          ln -s -fn "$(realpath ./{{.FOLDER}})" ~/.{{.FOLDER}}
 
       - cmd: |
           for folder in ./config/*; do
             echo "Symlinking $(basename $folder)..."
             source_path=$(realpath $folder)
             pushd ~/.config > /dev/null 2>&1
-            ln -s -f "$source_path" . > /dev/null 2>&1
+            ln -s -fn "$source_path" "$(basename $folder)" > /dev/null 2>&1
             popd > /dev/null 2>&1
           done
         silent: true
