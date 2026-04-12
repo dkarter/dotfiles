@@ -15,5 +15,8 @@ config/nushell/history.*
 # ignore local nushell environment settings
 config/nushell/env.local.nu
 
+# local machine overrides
+config/ghostty/config.local
+
 # themes for yazi - can be synced via `ya pkg install`
 config/yazi/flavors

@@ -92,3 +92,7 @@ keybind = super+shift+o=toggle_background_opacity
 
 # Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
 async-backend = epoll
+
+# optionally load local config
+config-file = ?config.local
+
