@@ -1,0 +1,1 @@
+/home/vicrattlehead/.local/share/omarchy/default/elephant/omarchy_background_selector.lua
