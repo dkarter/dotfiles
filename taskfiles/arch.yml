@@ -65,8 +65,7 @@ tasks:
           	# CapsLock acts as Escape on tap, Control on hold
           	capslock = overload(control, esc)
 
-          	# (Optional) Map physical Esc to `pause` key so we can later remap it to the XCompose key in `~/.config/hypr/input.conf`
-          	esc = pause
+          	# esc = pause  # disabled - broken in keyd v2.6.0
           	EOF
       - cmd: sudo systemctl enable --now keyd
       - cmd: echo 'done'
