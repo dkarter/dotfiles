@@ -239,10 +239,18 @@ fallback_channel = "files"
   "gunzip",
   "xz",
 ]
-"git-diff" = ["git add", "ga", "gap", "git restore", "git reset"]
-"git-branch" = [
+"git-diff" = [
   "git checkout",
   "gco",
+  "git add",
+  "ga",
+  "gap",
+  "git restore",
+  "git reset",
+]
+"git-branch" = [
+  "git switch",
+  "gsw",
   "git branch",
   "gb",
   "git merge",
