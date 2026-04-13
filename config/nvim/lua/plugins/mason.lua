@@ -24,7 +24,7 @@ return {
       'yamllint',
 
       -- LSPs
-      'expert',
+      -- 'expert',
       'ansible-language-server',
       'arduino-language-server',
       'bash-language-server',

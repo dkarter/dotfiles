@@ -43,6 +43,10 @@ M.setup = function()
       M.on_attach(client, args.buf)
     end,
   })
+
+  -- enable additional LSP servers that are not installed via mason here
+  -- their configs should be in lsp/<server_name>.lua
+  vim.lsp.enable 'dexter'
 end
 
 return M
