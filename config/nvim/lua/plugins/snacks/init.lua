@@ -1,4 +1,10 @@
 -- A collection of small QoL plugins for Neovim
+
+local exclude_commit_editmsg = function(item)
+  local path = Snacks.picker.util.path(item)
+  return not path or not path:match '/%.git/COMMIT_EDITMSG$'
+end
+
 ---@type LazySpec
 return {
   'folke/snacks.nvim',
@@ -58,6 +64,22 @@ return {
         },
       },
       sources = {
+        files = {
+          filter = {
+            filter = exclude_commit_editmsg,
+          },
+        },
+        recent = {
+          filter = {
+            cwd = true,
+            filter = exclude_commit_editmsg,
+          },
+        },
+        smart = {
+          filter = {
+            filter = exclude_commit_editmsg,
+          },
+        },
         pr_files = {
           title = 'PR Files',
           format = 'text',
@@ -86,7 +108,7 @@ return {
             icon = ' ',
             key = 'f',
             desc = 'Find File',
-            action = ":lua Snacks.dashboard.pick('files', {hidden = true})",
+            action = ":lua Snacks.dashboard.pick('smart', {hidden = true})",
           },
           { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
           {

@@ -655,7 +655,7 @@ M.snack_mappings = {
   { '<leader>f:', picker('commands'), desc = 'Command search' },
   { '<leader>f;', picker('command_history'), desc = 'Command History' },
   { '<leader>f?', picker('search_history'), desc = 'Search History' },
-  { '<leader>ff', picker('files', {hidden = true}), desc = '[F]ind [F]iles' },
+  { '<leader>ff', picker('smart', {hidden = true}), desc = '[F]ind [F]iles' },
   { '<leader>fe', picker('files', {args = {'-e=ex', '-e=exs', '-e=heex'}}), desc = '[F]ind [E]lixir' },
   { '<leader>ft', picker('files', {args = {'-e=ts', '-e=tsx', '-e=js', '-e=jsx', '-e=json'}}), desc = '[F]ind [T]ypeScript' },
   { '<leader>fl', picker('files', {args = {'-e=lua'}}), desc = '[F]ind [L]ua' },
@@ -667,7 +667,7 @@ M.snack_mappings = {
   { '<leader>fc', picker('git_status', {pattern = "UU"}), desc = '[F]ind (Git) [C]onflict' },
   { '<leader>bb', picker('buffers'), desc = 'Find Buffers' },
   { '<leader>fb', picker('explorer'), desc = '[F]ile [B]rowser' },
-  { '<leader>fo', picker('recent', {filter = {cwd = true, paths = {['.git/COMMIT_EDITMSG'] = false}}}), desc = '[F]ile [O]ld files' },
+  { '<leader>fo', picker('recent'), desc = '[F]ile [O]ld files' },
   -- bc = buffer commits (like gitv!)
   { '<leader>bc', picker('git_log_file'), desc = '[B]uffer [C]ommits' },
   { '<leader>bh', picker('git_log_file'), desc = '[B]uffer [H]istory' },
@@ -680,7 +680,7 @@ M.snack_mappings = {
   {'<leader>ls', picker('lsp_config'), desc = '[L]SP [S]ettings'},
 
   -- muscle memory
-  { '<C-p>', picker('files'), desc = 'Find Files' },
+  { '<C-p>', picker('smart'), desc = 'Find Files' },
   { '<C-b>', picker('buffers'), desc = 'Find Buffers' },
 
   -- insert mode pickers
