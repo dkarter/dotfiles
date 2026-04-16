@@ -8,6 +8,7 @@ return {
   config = function(_self, opts)
     -- idk why they do it this way - very weird
     vim.g.opencode_opts = opts
+    require('opencode_tmux_compat').apply()
   end,
 
   dependencies = {
