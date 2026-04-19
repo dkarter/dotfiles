@@ -12,11 +12,11 @@
       "command": ["bunx", "@upstash/context7-mcp"]
     },
     "github": {
-      "enabled": false,
+      "enabled": true,
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
-        "Authorization": "Bearer <TOKEN>"
+        "Authorization": "Bearer {env:GITHUB_TOKEN}"
       }
     }
   },
