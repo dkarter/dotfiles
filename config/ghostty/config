@@ -71,6 +71,8 @@ keybind = super+o=text:\x1aO
 keybind = super+shift+f=text:\x1av
 # create a new linear issue
 keybind = super+shift+i=text:\x1ai
+# open workmux dashboard
+keybind = super+shift+e=text:\x1aE
 # insert file path at cursor (for AI agents)
 keybind = super+shift+period=text:\x1aA
 
@@ -95,4 +97,3 @@ async-backend = epoll
 
 # optionally load local config
 config-file = ?config.local
-
