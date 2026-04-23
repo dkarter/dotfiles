@@ -28,7 +28,7 @@ ctrl-d = ["actions:kill_session", "reload_source"]
 
 [actions.connect]
 description = "Connect to selected session"
-command = "sesh connect '{strip_ansi|split: :1}'"
+command = "tv-sesh-connect '{strip_ansi|split: :1}'"
 mode = "execute"
 
 [actions.kill_session]
