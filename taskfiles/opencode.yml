@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  commit:
+    desc: Commits the package-lock.json file if changed
+    silent: true
+    cmd: |
+      ./scripts/commit_changed_file.sh \
+          './config/opencode/package-lock.json' \
+          'chore(opencode): update package lockfile'

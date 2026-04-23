@@ -46,6 +46,9 @@ includes:
   nvim:
     taskfile: ./taskfiles/nvim.yml
 
+  opencode:
+    taskfile: ./taskfiles/opencode.yml
+
   shell:
     aliases: [sh]
     taskfile: ./taskfiles/shell.yml
