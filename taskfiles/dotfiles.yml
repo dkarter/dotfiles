@@ -172,7 +172,8 @@ tasks:
           ln -s -fn "$(realpath ./{{.FOLDER}})" ~/.{{.FOLDER}}
 
       - cmd: |
-          ln -s -fn "$(realpath ./agents/skills)" ~/.config/claude/skills
+          mkdir -p ~/.claude
+          ln -s -fn "$(realpath ./agents/skills)" ~/.claude/skills
 
       - cmd: |
           for folder in ./config/*; do
