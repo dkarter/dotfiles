@@ -17,11 +17,9 @@
 # Check if displayplacer is installed
 if ! command -v displayplacer &>/dev/null; then
   echo "displayplacer is not installed. Installing now..."
-  brew install displayplacer
-
-  if [ $? -ne 0 ]; then
+  if ! brew install displayplacer; then
     echo "Failed to install displayplacer. Please install Homebrew and try again."
-    echo 'To install Homebrew: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+    echo 'To install Homebrew: /bin/bash -c "$''(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
     exit 1
   fi
 fi
@@ -74,7 +72,6 @@ fi
 if [ "$display1_x" -lt "$display2_x" ]; then
   # Display 1 is on the left, Display 2 is on the right
   left_display="${display_ids[0]}"
-  right_display="${display_ids[1]}"
   left_res="${display1_width}x${display1_height}"
   right_res="${display2_width}x${display2_height}"
   left_y="$display1_y"
@@ -82,7 +79,6 @@ if [ "$display1_x" -lt "$display2_x" ]; then
 else
   # Display 2 is on the left, Display 1 is on the right
   left_display="${display_ids[1]}"
-  right_display="${display_ids[0]}"
   left_res="${display2_width}x${display2_height}"
   right_res="${display1_width}x${display1_height}"
   left_y="$display2_y"
