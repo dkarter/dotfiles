@@ -1,6 +1,6 @@
 ---
 name: open-pr
-description: Write a PR description using conversation context and open PR creation in browser.
+description: Always use this skill for PR creation. Use whenever the user asks to open, create, draft, prepare, or submit a pull request, unless they explicitly ask for raw CLI/API commands instead.
 disable-model-invocation: true
 allowed-tools: Read, Bash, Glob, Grep
 ---
