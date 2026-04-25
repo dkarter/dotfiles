@@ -261,6 +261,8 @@ Skip this step only if the skill being developed already exists, and iteration o
 
 When creating a new skill from scratch, always run the `init_skill.ts` script. The script conveniently generates a new template skill directory that automatically includes everything a skill requires, making the skill creation process much more efficient and reliable.
 
+For global user skills, default the output directory to `~/dotfiles/agents/skills` unless the user asks for a project-local skill, in which case prefer `./.agents/skills`.
+
 Usage:
 
 ```bash
