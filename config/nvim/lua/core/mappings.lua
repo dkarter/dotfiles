@@ -405,6 +405,61 @@ M.neogen_mappings = {
   { '<leader>ng', ":lua require('neogen').generate()<CR>", desc = 'Generate Annotation (NeoGen)' },
 }
 
+local function sidekick_highlight_tokens(text)
+  local highlights = {}
+  local i = 1
+  while i <= #text do
+    local s, e = text:find('{[%w_|]+}', i)
+    if not s then
+      break
+    end
+    table.insert(highlights, { s - 1, e, 'Special' })
+    i = e + 1
+  end
+  return highlights
+end
+
+local function sidekick_prompt(default)
+  local context = require('sidekick.cli.context').get()
+
+  Snacks.input({
+    prompt = 'Sidekick',
+    default = default,
+    highlight = sidekick_highlight_tokens,
+    win = {
+      relative = 'cursor',
+      row = -3,
+      col = 0,
+    },
+  }, function(input)
+    if input and input ~= '' then
+      local _, text = context:render { msg = input }
+
+      if text then
+        require('sidekick.cli').send { text = text, submit = true }
+      end
+    end
+  end)
+end
+
+-- stylua: ignore
+---@type LazyKeysSpec[]
+M.sidekick_mappings = {
+  { '<M-CR>', function() require('sidekick').nes_jump_or_apply() end, desc = 'Goto/Apply Next Edit Suggestion' },
+  { '<M-,>', function() require('sidekick.cli').focus({}) end, desc = 'Sidekick Focus', mode = { 'n', 't', 'i', 'x' } },
+  { '<leader>aa', function() require('sidekick.cli').toggle() end, desc = 'Sidekick Toggle CLI' },
+  { '<leader>as', function() require('sidekick.cli').select() end, desc = 'Select CLI' },
+  { '<leader>ad', function() require('sidekick.cli').close() end, desc = 'Detach a CLI Session' },
+  { '<leader>at', function() sidekick_prompt('{this} ') end, mode = { 'n' }, desc = 'Send This with Prompt' },
+  { '<leader>at', function() sidekick_prompt('{selection} ') end, mode = { 'x' }, desc = 'Send This with Prompt' },
+  { '<leader>af', function() sidekick_prompt('{file} ') end, desc = 'Send File with Prompt' },
+  { '<leader>av', function() sidekick_prompt('{selection} ') end, mode = { 'x' }, desc = 'Send Visual Selection with Prompt' },
+  -- pick a prompt from pre-built prompts
+  { '<leader>ap', function() require('sidekick.cli').prompt() end, mode = { 'n', 'x' }, desc = 'Sidekick Prompt' },
+  { '<leader>ac', function() require('sidekick.cli').toggle { name = 'claude', focus = true } end, desc = 'Sidekick Toggle Claude' },
+  { '<leader>ao', function() require('sidekick.cli').toggle { name = 'opencode', focus = true } end, desc = 'Sidekick Toggle OpenCode' },
+}
+
 -- stylua: ignore
 ---@type LazyKeysSpec[]
 M.opencode_mappings = {
@@ -417,15 +472,6 @@ M.opencode_mappings = {
 
 ---@type LazyKeysSpec[]
 M.claudecode_mappings = {
-  { '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', desc = 'Add current buffer' },
-  { '<leader>aa', '<cmd>ClaudeCodeSend<cr>', mode = 'v', desc = 'Send to Claude' },
-  { '<leader>aa', 'V<cmd>ClaudeCodeSend<cr>', mode = 'n', desc = 'Send line to Claude' },
-  {
-    '<leader>as',
-    '<cmd>ClaudeCodeTreeAdd<cr>',
-    desc = 'Add file',
-    ft = { 'oil' },
-  },
   -- Diff management
   { '<leader>ay', '<cmd>ClaudeCodeDiffAccept<cr>', desc = 'Accept diff (y)' },
   { '<leader>an', '<cmd>ClaudeCodeDiffDeny<cr>', desc = 'Deny diff (n)' },
