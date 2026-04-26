@@ -1,6 +1,6 @@
 ---
 name: fix-flaky-pr-pdq
-description: Fix a flaky test and complete the connected delivery workflow in PDQ repos: reproduce/fix, verify with repeat-until-failure, open a draft PR with low-risk labeling, wait for Elixir CI to pass, create a Linear Platform ticket labeled engineering task, update the PR title with the ticket key (for example [PLT-123]), and rerun ticket requirement checks.
+description: 'Fix a flaky test and complete the connected delivery workflow in PDQ repos: reproduce/fix, verify with repeat-until-failure, open a draft PR with low-risk labeling, wait for Elixir CI to pass, create a Linear Platform ticket labeled engineering task, update the PR title with the ticket key (for example [PLT-123]), and rerun ticket requirement checks.'
 ---
 
 # Fix Flaky Pr Pdq
