@@ -23,3 +23,7 @@ config/yazi/flavors
 
 # ignore this file because i don't care to keep it up to date in my repo
 config/opencode/package-lock.json
+
+# pi sessions/auth are machine-local and may contain sensitive data
+config/pi/agent/sessions/
+config/pi/agent/auth.json
