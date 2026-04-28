@@ -22,7 +22,7 @@ fi
 prompt_file=$(mktemp -t workmux-add-prompt)
 trap 'rm -f "$prompt_file"' EXIT
 
-nvim "+startinsert" "+set ft=markdown" "$prompt_file"
+mise x -- nvim "+startinsert" "+set ft=markdown" "$prompt_file"
 
 prompt_text=$(<"$prompt_file")
 
