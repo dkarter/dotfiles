@@ -17,7 +17,9 @@ return {
       endfunction
     ]]
 
-    local config = {
+    local elixir = require 'plugins.projectionist.elixir'
+
+    local config = vim.tbl_deep_extend('force', elixir, {
       -- neovim
       ['config/nvim/init.lua'] = {
         -- neovim plugins
@@ -152,7 +154,7 @@ return {
         },
         ['package.json'] = { type = 'package' },
       },
-    }
+    })
 
     local new_heuristics
     if vim.g.projectionist_heuristics then
