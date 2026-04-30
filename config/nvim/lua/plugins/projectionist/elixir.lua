@@ -1,3 +1,25 @@
+local mix_task_projection = {
+  type = 'task',
+  alternate = 'test/mix/tasks/{}_test.exs',
+  template = {
+    'defmodule Mix.Tasks.{camelcase|capitalize|dot|elixir_module} do',
+    [[  use Mix.Task]],
+    '',
+    [[  @shortdoc "{}"]],
+    '',
+    [[  @moduledoc """]],
+    [[  {}]],
+    [[  """]],
+    '',
+    [[  @impl true]],
+    [[  @doc false]],
+    [[  def run(argv) do]],
+    '',
+    [[  end]],
+    'end',
+  },
+}
+
 return {
   ['mix.exs'] = {
     ['lib/**/views/*_view.ex'] = {
@@ -183,26 +205,7 @@ return {
         'end',
       },
     },
-    ['lib/mix/tasks/*.ex'] = {
-      type = 'task',
-      alternate = 'test/mix/tasks/{}_test.exs',
-      template = {
-        'defmodule Mix.Tasks.{camelcase|capitalize|dot|elixir_module} do',
-        [[  use Mix.Task]],
-        '',
-        [[  @shortdoc "{}"]],
-        '',
-        [[  @moduledoc """]],
-        [[  {}]],
-        [[  """]],
-        '',
-        [[  @impl true]],
-        [[  @doc false]],
-        [[  def run(argv) do]],
-        '',
-        [[  end]],
-        'end',
-      },
-    },
+    ['lib/mix/tasks/*.exs'] = mix_task_projection,
+    ['lib/mix/tasks/*.ex'] = mix_task_projection,
   },
 }
