@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.3.0](https://github.com/dkarter/dotfiles/compare/v31.2.0...v31.3.0) (2026-05-04)
+
+
+### Features
+
+* add pi agent ([814ab8a](https://github.com/dkarter/dotfiles/commit/814ab8a8d7546c30fe3a7e2a44a306ee9ba4ce22))
+* **cmux:** add config ([b57e778](https://github.com/dkarter/dotfiles/commit/b57e778e36367d70b3d3ebaf2edf2a33e7ad84f8))
+* **ghostty:** add local config override ([d2f169a](https://github.com/dkarter/dotfiles/commit/d2f169a72e930174217b6875cf47904feb6ff184))
+* **hypr:** use scrolling behavior ([db34b5a](https://github.com/dkarter/dotfiles/commit/db34b5adcf63e8982952e61d4b786bed2c642480))
+* **mise:** add pi coding agent ([e64f823](https://github.com/dkarter/dotfiles/commit/e64f8239ec4adda7a8d44504906b703ce288079f))
+* **mise:** add tuicr ([5d50837](https://github.com/dkarter/dotfiles/commit/5d508377fcba2455a63629b9132600b616251086))
+* **nvim:** add sidekick.nvim ([59b8622](https://github.com/dkarter/dotfiles/commit/59b8622b10bf66e929848174ad2d714b2cf057e9))
+* **raycast:** store script commands ([cddbca1](https://github.com/dkarter/dotfiles/commit/cddbca12245dae6961759d9805c1f8e92dcdacec))
+* **skill:** add github actions version pinning skill ([7df0121](https://github.com/dkarter/dotfiles/commit/7df01217529049665b63e99d25c5464495d6c897))
+* **task:** add opencode:commit task ([5002c07](https://github.com/dkarter/dotfiles/commit/5002c07a8ce3b3dc691b8d6af6643cd5c5778e7a))
+* **tmux,ghostty:** add super+shift+e for workmux dashboard ([6521258](https://github.com/dkarter/dotfiles/commit/652125859f1bf70a2912b3fc5918530fe1513f75))
+* **zsh:** add ocr alias for opencode run ([08ea40c](https://github.com/dkarter/dotfiles/commit/08ea40c123265346ef5ed7027c484d253f933b33))
+* **zsh:** add up command ([68aa8ea](https://github.com/dkarter/dotfiles/commit/68aa8ea3e219d1a5ed4ceca633dbef65a2c7a69f))
+* **zsh:** support session name argument for `tn` function ([73407a1](https://github.com/dkarter/dotfiles/commit/73407a17ba7073e88e44750a111ba0ad103686a0))
+
+
+### Bug Fixes
+
+* **arch:** keyd config broken in latest ([ca18ccd](https://github.com/dkarter/dotfiles/commit/ca18ccd73baf40adf2c3927257e1359525232d4d))
+* **claude:** force it to use xdg config dir ([cceaf1f](https://github.com/dkarter/dotfiles/commit/cceaf1fcd3c67dd6f0d7b80d370ebb0b05f1e58a))
+* **claude:** startup fix + sync for skills ([a5a45bc](https://github.com/dkarter/dotfiles/commit/a5a45bcb4a96d83598a097113290c35b317d554e))
+* **claude:** sync skills to claude ([349d651](https://github.com/dkarter/dotfiles/commit/349d651892e681114386ba1f3e8cc063d7e20f48))
+* **gh:** opt out of telemetry ([b80917d](https://github.com/dkarter/dotfiles/commit/b80917d5c709a4c5d933c071638e1a08e82c3db2))
+* **git:** ignore dexter lsp files ([12e15d7](https://github.com/dkarter/dotfiles/commit/12e15d7e1f1d1bb7f75b8c74572a3e4a0b039258))
+* **nvim:** improve session selection ([e746883](https://github.com/dkarter/dotfiles/commit/e7468832c64a2a7b370a32a4034e1909838366fb))
+* **nvim:** inject elixir projections ([1248fb8](https://github.com/dkarter/dotfiles/commit/1248fb87d21e2de2f6040824e724a5a6efe87d60))
+* **nvim:** projections - support mix tasks compiled and not compiled ([5e4bc2c](https://github.com/dkarter/dotfiles/commit/5e4bc2c446139e881e3d5fa83597fd7c8cb38c35))
+* **nvim:** temporarily disable opencode-tmux compat ([a3b4727](https://github.com/dkarter/dotfiles/commit/a3b4727adf4b486051fa6c7da13a47d0567e0773))
+* **opencode:** enable github mcp ([b9bd2b7](https://github.com/dkarter/dotfiles/commit/b9bd2b7ab6e4025312808d225df77b45d966962f))
+* **opencode:** remove package-lock file ([2bd4870](https://github.com/dkarter/dotfiles/commit/2bd4870e637f45faeec9b8af64f7f664359c51c3))
+* **raycast:** satisfy shell lint for swap displays ([fd090e5](https://github.com/dkarter/dotfiles/commit/fd090e58bca4e71fd30697794e027f2177708088))
+* **sesh:** add temporary fix for connect function ([75bf631](https://github.com/dkarter/dotfiles/commit/75bf631de801118ce9650440c17ef1f5afa9353b))
+* **sesh:** put second connect command in else ([2bdd93f](https://github.com/dkarter/dotfiles/commit/2bdd93fbad31f9344309d1ba32ab1aeb0b52d68d))
+* **skill:** add frontmatter to pdq-add-ticket-to-pr ([da78f1b](https://github.com/dkarter/dotfiles/commit/da78f1bd4305b2e3c541e70ce98d18e68e4916f3))
+* **skills:** fix frontmatter syntax ([81e9fca](https://github.com/dkarter/dotfiles/commit/81e9fcab51cd4b8d31269db4420abec13c1ba3bd))
+* **skills:** improve description for open-pr ([15f0999](https://github.com/dkarter/dotfiles/commit/15f099911e23fb79ef2acddfec530d874483f079))
+* **skills:** make lefthook template have less output ([aad1ece](https://github.com/dkarter/dotfiles/commit/aad1eceb7379af150fe0e38fa468515b3a7af64a))
+* **skills:** specify path for skills created by skill-creator ([d9ab3d8](https://github.com/dkarter/dotfiles/commit/d9ab3d8bd62a7affd96a03d145fbf9ce941082f1))
+* **task:** symlinking was broken when folder already exists ([b4c0c3c](https://github.com/dkarter/dotfiles/commit/b4c0c3c4dc9d84d3426918c4a2359aca7de1ca00))
+* **tmux:** add new line support for coding agents ([3746e1b](https://github.com/dkarter/dotfiles/commit/3746e1b3d80f23f464eb28b8dfd492fc8b04c0b0))
+* **tmux:** disable allow-passthrough ([74e1a40](https://github.com/dkarter/dotfiles/commit/74e1a400c8c9a2a0c0cc6b78d2a1b6a2740b0233))
+* **tmux:** make tmux-popup-workmux-add popup larger ([e937c36](https://github.com/dkarter/dotfiles/commit/e937c3653d15e0cca39ba188c0d89647db3c22e8))
+* **tmux:** make workmux-add-prompt work after nvim update ([9214a5a](https://github.com/dkarter/dotfiles/commit/9214a5aa6f0999ace1ec7c65493e266899c48a37))
+* **tmux:** use markdown syntax for temp prompt files ([d4f577b](https://github.com/dkarter/dotfiles/commit/d4f577b0a83c604f2d13d028fd92d1ad1f505302))
+* **tv:** update shell integration for git checkout/switch ([1df1aee](https://github.com/dkarter/dotfiles/commit/1df1aeeaf8eba4f841b930c52ecdf902a49557f2))
+
 ## [31.2.0](https://github.com/dkarter/dotfiles/compare/v31.1.0...v31.2.0) (2026-04-06)
 
 
