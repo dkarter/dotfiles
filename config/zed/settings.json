@@ -7,6 +7,19 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "cli_default_open_behavior": "existing_window",
+  "project_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "agent_servers": {
     "opencode": {
       "type": "registry"
@@ -42,6 +55,7 @@
     }
   },
   "agent": {
+    "dock": "left",
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
