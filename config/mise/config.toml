@@ -117,3 +117,7 @@ cargo.binstall = true
 
 # use pre-compiled binaries for python when available
 python.compile = false
+
+# using a lockfile helps avoid the need for a GitHub token on first time install
+# activate with `mise lock`
+lockfile = true
