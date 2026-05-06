@@ -1,0 +1,77 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Mise OCI
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/mise-oci.yml
+      - mise.lock
+      - mise.toml
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    name: Build and Push
+
+    runs-on: ubuntu-latest
+
+    env:
+      MISE_EXPERIMENTAL: 1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libreadline-dev skopeo
+
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+
+      - name: Prepare image tags
+        id: meta
+        shell: bash
+        run: |
+          image="ghcr.io/${GITHUB_REPOSITORY,,}"
+          branch_tag="${GITHUB_REF_NAME//\//-}"
+          short_sha="${GITHUB_SHA::12}"
+
+          {
+            echo "image=${image}"
+            echo "branch=${image}:${branch_tag}"
+            echo "latest=${image}:latest"
+            echo "sha=${image}:${short_sha}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR
+        run: mise exec -- skopeo login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin <<< "${GITHUB_TOKEN}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build OCI image
+        shell: bash
+        run: |
+          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" mise oci build \
+            --output ./mise-oci \
+            --tag "${{ steps.meta.outputs.sha }}"
+
+      - name: Push OCI image
+        shell: bash
+        run: |
+          mise oci push --image-dir ./mise-oci "${{ steps.meta.outputs.sha }}"
+          mise oci push --image-dir ./mise-oci "${{ steps.meta.outputs.branch }}"
+
+          if [[ "${GITHUB_REF_NAME}" == "${GITHUB_DEFAULT_BRANCH}" ]]; then
+            mise oci push --image-dir ./mise-oci "${{ steps.meta.outputs.latest }}"
+          fi
