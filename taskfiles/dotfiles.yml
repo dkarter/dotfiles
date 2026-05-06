@@ -97,6 +97,26 @@ tasks:
       - cmd: |
           glow docs/post_install.md
 
+  install:devpod:
+    desc: Install dotfiles in a Devpod container
+    summary: |
+      Install dotfiles in a Devpod container.
+
+      Devpod setup runs non-interactively and may use linux/arm64 images where
+      some personal mise tools are unavailable. Keep this path to shell setup,
+      symlinks, and container-safe dependencies.
+    silent: true
+    cmds:
+      - task: debian:sync
+      - task: shell:zsh:default
+      - task: create:dirs
+      - task: symlink
+      - task: op:install:ssh:agent
+      - task: zinit:install
+      - task: zinit:plugins:update
+      - task: mise:install
+      - task: print:done
+
   sync:
     desc: Synchronize dotfiles
     summary: |
@@ -197,5 +217,10 @@ tasks:
   print:done:
     desc: Prints done with a cool font and some nice gradients (animated)
     internal: true
-    cmd: echo DONE | figlet | lolcrab -a --speed 1 --duration 1 --gradient warm
+    cmd: |
+      if command -v figlet >/dev/null 2>&1 && command -v lolcrab >/dev/null 2>&1; then
+        echo DONE | figlet | lolcrab -a --speed 1 --duration 1 --gradient warm
+      else
+        echo DONE
+      fi
     silent: true

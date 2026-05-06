@@ -64,4 +64,8 @@ fi
 export PATH="$PATH:$HOME/.local/bin"
 
 # Run task
-task install "$@"
+if [[ ${DEVPOD:-} == 'true' ]]; then
+  task dot:install:devpod "$@"
+else
+  task install "$@"
+fi

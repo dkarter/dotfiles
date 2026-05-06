@@ -40,7 +40,9 @@ tasks:
   tools:install:
     desc: Installs/updates all mise based tools
     cmds:
-      - cmd: mise install
+      - cmd: |
+          mise trust --yes
+          mise install
 
   tools:extras:prompt:
     desc: Prompt to enable optional mise extras profile
@@ -82,15 +84,22 @@ tasks:
     silent: true
     cmds:
       - cmd: |
+          mise trust --yes
           mise install gh
 
           if ! mise exec -- gh auth status &>/dev/null; then
-            echo "GitHub CLI is not authenticated. Starting gh auth login..."
-            mise exec -- gh auth login
+            if [[ ! -t 0 ]] || [[ ! -t 1 ]]; then
+              echo "GitHub CLI is not authenticated; skipping gh auth login in non-interactive shell."
+            else
+              echo "GitHub CLI is not authenticated. Starting gh auth login..."
+              mise exec -- gh auth login
+            fi
           fi
 
-          export GITHUB_TOKEN="$(mise exec -- gh auth token)"
-          export MISE_GITHUB_TOKEN="$GITHUB_TOKEN"
+          if mise exec -- gh auth status &>/dev/null; then
+            export GITHUB_TOKEN="$(mise exec -- gh auth token)"
+            export MISE_GITHUB_TOKEN="$GITHUB_TOKEN"
+          fi
 
           if [[ -f "$HOME/.zshrc.local" ]] && grep -qE '^\s*export\s+MISE_ENV=extra\s*$' "$HOME/.zshrc.local"; then
             export MISE_ENV=extra

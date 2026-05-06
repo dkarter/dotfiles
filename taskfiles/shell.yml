@@ -18,13 +18,18 @@ tasks:
     interactive: true
     cmds:
       - task: zsh:add-to-shells
-      - cmd: chsh -s "$(which zsh)"
+      - cmd: |
+          if [ "$(uname)" = "Darwin" ]; then
+            chsh -s "$(command -v zsh)"
+          else
+            sudo chsh -s "$(command -v zsh)" "$USER"
+          fi
 
   zsh:add-to-shells:
     desc: Add zsh to /etc/shells if not already present
     status:
-      - grep -qxF "$(which zsh)" /etc/shells
+      - grep -qxF "$(command -v zsh)" /etc/shells
     platforms: [darwin]
     cmds:
-      - cmd: echo "$(which zsh)" | sudo tee -a /etc/shells
+      - cmd: echo "$(command -v zsh)" | sudo tee -a /etc/shells
         silent: true
