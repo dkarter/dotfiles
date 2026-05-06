@@ -42,7 +42,7 @@ tasks:
     cmds:
       - cmd: |
           mise trust --yes
-          mise install
+          mise install --locked
 
   tools:extras:prompt:
     desc: Prompt to enable optional mise extras profile
@@ -106,7 +106,7 @@ tasks:
             echo "Detected MISE_ENV=extra in ~/.zshrc.local, installing extras too."
           fi
 
-          mise install
+          mise install --locked
 
   tools:update:
     desc: Updates all mise based tools
