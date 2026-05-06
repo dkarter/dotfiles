@@ -2,6 +2,14 @@
 version: 3
 
 tasks:
+  commit:
+    desc: Commits the mise.lock file if changed
+    silent: true
+    cmd: |
+      ./scripts/commit_changed_file.sh \
+          './mise.lock' \
+          'chore(mise): update lockfile'
+
   install:
     desc: Installs mise itself
     silent: true
