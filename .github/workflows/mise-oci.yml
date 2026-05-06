@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y libreadline-dev skopeo
@@ -72,6 +74,8 @@ jobs:
           mise oci push --image-dir ./mise-oci "${{ steps.meta.outputs.sha }}"
           mise oci push --image-dir ./mise-oci "${{ steps.meta.outputs.branch }}"
 
-          if [[ "${GITHUB_REF_NAME}" == "${GITHUB_DEFAULT_BRANCH}" ]]; then
+          if [[ "${GITHUB_REF_NAME}" == "${DEFAULT_BRANCH}" ]]; then
             mise oci push --image-dir ./mise-oci "${{ steps.meta.outputs.latest }}"
           fi
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
