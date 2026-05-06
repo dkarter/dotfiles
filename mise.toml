@@ -22,3 +22,6 @@ postinstall = "lefthook install"
 
 [settings]
 experimental = true
+# using a lockfile helps avoid the need for a GitHub token on first time install
+# activate with `mise lock`
+lockfile = true
