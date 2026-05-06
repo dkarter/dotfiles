@@ -41,7 +41,7 @@ tasks:
     desc: Installs/updates all mise based tools
     cmds:
       - cmd: |
-          mise trust --yes
+          mise trust --yes --silent
           mise install --locked
 
   tools:extras:prompt:
@@ -84,7 +84,7 @@ tasks:
     silent: true
     cmds:
       - cmd: |
-          mise trust --yes
+          mise trust --yes --silent
           mise install gh
 
           if ! mise exec -- gh auth status &>/dev/null; then

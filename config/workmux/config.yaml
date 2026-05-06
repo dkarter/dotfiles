@@ -36,7 +36,7 @@ agent: 'opencode --port'
 # Commands to run in new worktree before tmux window opens.
 # These block window creation - use for short tasks only.
 post_create:
-  - '[ -f mise.toml ] && mise trust && mise install'
+  - '[ -f mise.toml ] && mise trust --yes --silent && mise install'
 
 pre_merge:
   - '[ -f mix.exs ] && mix test'
