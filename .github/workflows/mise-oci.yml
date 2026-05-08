@@ -35,8 +35,9 @@ jobs:
         run: |
           git init .
           git remote add origin "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+          basic_auth="$(printf 'x-access-token:%s' "${GITHUB_TOKEN}" | base64 --wrap=0)"
           git \
-            -c "http.${GITHUB_SERVER_URL}/.extraheader=AUTHORIZATION: bearer ${GITHUB_TOKEN}" \
+            -c "http.${GITHUB_SERVER_URL}/.extraheader=AUTHORIZATION: basic ${basic_auth}" \
             fetch \
             --depth=1 \
             --no-tags \
