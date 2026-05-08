@@ -219,8 +219,10 @@ tasks:
     internal: true
     cmd: |
       if command -v figlet >/dev/null 2>&1 && command -v lolcrab >/dev/null 2>&1; then
-        echo DONE | figlet | lolcrab -a --speed 1 --duration 1 --gradient warm
-      else
-        echo DONE
+        if echo DONE | figlet | lolcrab -a --speed 1 --duration 1 --gradient warm; then
+          exit 0
+        fi
       fi
+
+      echo DONE
     silent: true
