@@ -135,6 +135,19 @@ jobs:
             --output "${PWD}/mise-oci" \
             --tag "${{ steps.meta.outputs.sha_arch }}"
 
+      - name: Export OCI image for scanning
+        run: skopeo copy "oci:${PWD}/mise-oci" "docker-archive:${RUNNER_TEMP}/mise-oci.tar:${{ steps.meta.outputs.sha_arch }}"
+
+      - name: Scan OCI image for secrets
+        run: |
+          mise x aqua:aquasecurity/trivy@latest -- trivy image \
+            --input "${RUNNER_TEMP}/mise-oci.tar" \
+            --scanners secret \
+            --image-config-scanners secret \
+            --skip-db-update \
+            --no-progress \
+            --exit-code 1
+
       - name: Push OCI image
         shell: bash
         run: |
