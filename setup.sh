@@ -55,6 +55,11 @@ if [[ $OS == 'mac' ]]; then
   ./installer/mac-setup.sh
 fi
 
+if [[ $DISTRO_BASE == 'debian' ]]; then
+  echo 'Debian-based Linux detected'
+  ./installer/debian-setup.sh
+fi
+
 if [[ ! -f ~/.local/bin/task ]]; then
   # Install task
   mkdir -p ~/.local/bin
