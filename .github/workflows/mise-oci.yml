@@ -201,6 +201,16 @@ jobs:
             --no-progress \
             --exit-code 1
 
+      - name: Report OCI image critical vulnerabilities
+        run: |
+          # Advisory for now: bundled upstream tools can carry CVEs before fixed
+          # releases are available, but the report keeps those visible in CI logs.
+          mise x aqua:aquasecurity/trivy@latest -- trivy image \
+            --input "${RUNNER_TEMP}/mise-oci.tar" \
+            --scanners vuln \
+            --severity CRITICAL \
+            --no-progress
+
       - name: Push OCI image
         shell: bash
         run: |
