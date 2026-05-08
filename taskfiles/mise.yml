@@ -3,12 +3,21 @@ version: 3
 
 tasks:
   commit:
-    desc: Commits the mise.lock file if changed
+    desc: Commits mise lockfiles if changed
     silent: true
     cmd: |
-      ./scripts/commit_changed_file.sh \
-          './mise.lock' \
-          'chore(mise): update lockfile'
+      set -- \
+        './mise.lock' \
+        './config/mise/mise.lock' \
+        './config/mise/mise.extra.lock'
+
+      if [[ -z "$(git status --porcelain -- "$@")" ]]; then
+        echo "No changes in mise lockfiles"
+        exit 0
+      fi
+
+      git add -- "$@"
+      git commit -m 'chore(mise): update lockfiles'
 
   install:
     desc: Installs mise itself
