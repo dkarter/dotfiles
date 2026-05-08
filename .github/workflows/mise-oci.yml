@@ -9,6 +9,8 @@ on:
     branches: [master]
     paths:
       - .github/workflows/mise-oci.yml
+      - config/mise/config.toml
+      - config/mise/mise.lock
       - mise.lock
       - mise.toml
 
@@ -69,11 +71,35 @@ jobs:
         run: |
           config_dir="${RUNNER_TEMP}/mise-oci-config"
           mkdir -p "${config_dir}"
+          declare -A seen_tools=()
 
-          {
-            echo '[tools]'
+          trim() {
+            local value="$1"
+            value="${value#"${value%%[![:space:]]*}"}"
+            value="${value%"${value##*[![:space:]]}"}"
+            printf '%s' "${value}"
+          }
 
-            in_tools=0
+          should_skip_tool() {
+            local key="$1"
+
+            # VM/runtime host tools do not make sense inside the container image.
+            if [[ "${key}" == 'colima' || "${key}" == 'lima' ]]; then
+              return 0
+            fi
+
+            # lolcrab does not publish a Linux arm64 artifact.
+            if [[ "${ARCH}" == 'arm64' && "${key}" == '"github:mazznoer/lolcrab"' ]]; then
+              return 0
+            fi
+
+            return 1
+          }
+
+          append_tools_from() {
+            local source_file="$1"
+            local in_tools=0
+
             while IFS= read -r line; do
               if [[ "${line}" == '[tools]' ]]; then
                 in_tools=1
@@ -84,22 +110,43 @@ jobs:
                 in_tools=0
               fi
 
-              if [[ "${in_tools}" == 1 && -n "${line}" ]]; then
-                if [[ "${ARCH}" == 'arm64' && "${line}" == *'github:mazznoer/lolcrab'* ]]; then
-                  continue
-                fi
-
-                echo "${line}"
+              if [[ "${in_tools}" != 1 || -z "${line}" || "${line}" == '#'* || "${line}" != *'='* ]]; then
+                continue
               fi
-            done < mise.toml
+
+              key="$(trim "${line%%=*}")"
+
+              if should_skip_tool "${key}" || [[ -n "${seen_tools[${key}]+x}" ]]; then
+                continue
+              fi
+
+              seen_tools["${key}"]=1
+              echo "${line}"
+            done < "${source_file}"
+          }
+
+          {
+            echo '[tools]'
+            append_tools_from mise.toml
+            append_tools_from config/mise/config.toml
 
             echo
             echo '[settings]'
             echo 'experimental = true'
+            echo 'disable_backends = ["asdf"]'
+            echo 'npm.bun = true'
+            echo 'ruby.compile = false'
+            echo 'cargo.binstall = true'
+            echo 'python.compile = false'
             echo 'lockfile = true'
           } > "${config_dir}/mise.toml"
 
-          cp mise.lock "${config_dir}/mise.lock"
+          {
+            echo '# @generated - combined project/global lockfile for the OCI build'
+            echo
+            sed '1,2d' mise.lock
+            sed '1,2d' config/mise/mise.lock
+          } > "${config_dir}/mise.lock"
         env:
           ARCH: ${{ matrix.arch }}
 
