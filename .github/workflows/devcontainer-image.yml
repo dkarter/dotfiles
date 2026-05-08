@@ -28,6 +28,7 @@ jobs:
 
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         include:
           - arch: amd64
@@ -129,8 +130,6 @@ jobs:
             echo "branch_amd64=${image}:${branch_tag}-amd64"
             echo "branch_arm64=${image}:${branch_tag}-arm64"
             echo "latest=${image}:latest"
-            echo "latest_amd64=${image}:latest-amd64"
-            echo "latest_arm64=${image}:latest-arm64"
             echo "sha=${image}:${short_sha}"
             echo "sha_amd64=${image}:${short_sha}-amd64"
             echo "sha_arm64=${image}:${short_sha}-arm64"
@@ -157,8 +156,8 @@ jobs:
           if [[ "${GITHUB_REF_NAME}" == "${DEFAULT_BRANCH}" ]]; then
             docker buildx imagetools create \
               --tag "${{ steps.meta.outputs.latest }}" \
-              "${{ steps.meta.outputs.latest_amd64 }}" \
-              "${{ steps.meta.outputs.latest_arm64 }}"
+              "${{ steps.meta.outputs.sha_amd64 }}" \
+              "${{ steps.meta.outputs.sha_arm64 }}"
           fi
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
