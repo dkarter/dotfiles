@@ -93,6 +93,11 @@ jobs:
               return 0
             fi
 
+            # The current resvg backend does not support Linux arm64.
+            if [[ "${ARCH}" == 'arm64' && "${key}" == 'resvg' ]]; then
+              return 0
+            fi
+
             return 1
           }
 
@@ -191,6 +196,7 @@ jobs:
             --input "${RUNNER_TEMP}/mise-oci.tar" \
             --scanners secret \
             --image-config-scanners secret \
+            --skip-files '/mise/installs/go/*/src/crypto/x509/platform_root_key.pem' \
             --skip-db-update \
             --no-progress \
             --exit-code 1
