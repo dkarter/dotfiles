@@ -129,36 +129,52 @@ checksum = "sha256:c68c7903c1190101590cc1b2129835f47211b3b37ae87759f2b97d6534aa3
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-windows-x64-baseline.zip"
 
 [[tools.cargo-binstall]]
-version = "1.19.0"
+version = "1.19.1"
 backend = "aqua:cargo-bins/cargo-binstall"
 
 [tools.cargo-binstall."platforms.linux-arm64"]
-checksum = "sha256:57148539e6160789715745e6f50e0aac9193636df42bd9b4554cd9012195866c"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.linux-arm64-musl"]
-checksum = "sha256:57148539e6160789715745e6f50e0aac9193636df42bd9b4554cd9012195866c"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:a7a4271099ce891368bc544d3f89315f12547df653ba16de2030461e8867edd6"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+
+[tools.cargo-binstall."platforms.linux-x64-baseline"]
+checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.linux-x64-musl"]
-checksum = "sha256:a7a4271099ce891368bc544d3f89315f12547df653ba16de2030461e8867edd6"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+
+[tools.cargo-binstall."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
-checksum = "sha256:1208282e0719ae33fc1db20fe533a50827673d017fb85ed5dec0cb9b0c7ca569"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-aarch64-apple-darwin.zip"
+checksum = "sha256:bf9da6a27e432784f361cfbc70a6d04e548abc548470ae9a7587c3cffb8fb0a7"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-apple-darwin.zip"
 
 [tools.cargo-binstall."platforms.macos-x64"]
-checksum = "sha256:289007dce39f181188b620c19783d3a0e8f37fb9e5d7c3ff1da9cfb9a2d8ecc3"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-x86_64-apple-darwin.zip"
+checksum = "sha256:39257851fe4fd8cc9dd81fb318f15d589b7178b74165879eddeda8062bd9fcf2"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-apple-darwin.zip"
+
+[tools.cargo-binstall."platforms.macos-x64-baseline"]
+checksum = "sha256:39257851fe4fd8cc9dd81fb318f15d589b7178b74165879eddeda8062bd9fcf2"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-apple-darwin.zip"
 
 [tools.cargo-binstall."platforms.windows-x64"]
-checksum = "sha256:1113c92eb53160c4e0c12dc803f582a266d26b26ca529520e104806cce8d0204"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:dd1f425c177aa1a57c9b17883ff76257f913a5f0afb35424f0767c6984164b7f"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
+
+[tools.cargo-binstall."platforms.windows-x64-baseline"]
+checksum = "sha256:dd1f425c177aa1a57c9b17883ff76257f913a5f0afb35424f0767c6984164b7f"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
 
 [[tools."cargo:erdtree"]]
 version = "3.1.2"
@@ -209,26 +225,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.129"
+version = "2.1.132"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.129/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.129/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.129/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/linux-x64/claude"
+
+[tools.claude-code."platforms.linux-x64-baseline"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.129/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/linux-x64/claude"
+
+[tools.claude-code."platforms.linux-x64-musl-baseline"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/linux-x64/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.129/darwin-arm64/claude"
+checksum = "blake3:84ebbc3472eeb2acb8664a723cd86d5a169a63d2fcc7f1e8c460fb779ede9115"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.129/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/darwin-x64/claude"
+
+[tools.claude-code."platforms.macos-x64-baseline"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.132/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.1"
@@ -319,29 +345,41 @@ version = "0.86.1"
 backend = "npm:@devcontainers/cli"
 
 [[tools.docker-cli]]
-version = "29.4.2"
+version = "29.4.3"
 backend = "aqua:docker/cli"
 
 [tools.docker-cli."platforms.linux-arm64"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.4.2.tgz"
+url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.4.3.tgz"
 
 [tools.docker-cli."platforms.linux-arm64-musl"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.4.2.tgz"
+url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.4.3.tgz"
 
 [tools.docker-cli."platforms.linux-x64"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.2.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
+
+[tools.docker-cli."platforms.linux-x64-baseline"]
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
 
 [tools.docker-cli."platforms.linux-x64-musl"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.2.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
+
+[tools.docker-cli."platforms.linux-x64-musl-baseline"]
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
 
 [tools.docker-cli."platforms.macos-arm64"]
-url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.4.2.tgz"
+url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.4.3.tgz"
 
 [tools.docker-cli."platforms.macos-x64"]
-url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.4.2.tgz"
+url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.4.3.tgz"
+
+[tools.docker-cli."platforms.macos-x64-baseline"]
+url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.4.3.tgz"
 
 [tools.docker-cli."platforms.windows-x64"]
-url = "https://download.docker.com/win/static/stable/x86_64/docker-29.4.2.zip"
+url = "https://download.docker.com/win/static/stable/x86_64/docker-29.4.3.zip"
+
+[tools.docker-cli."platforms.windows-x64-baseline"]
+url = "https://download.docker.com/win/static/stable/x86_64/docker-29.4.3.zip"
 
 [[tools.elixir]]
 version = "1.19.5-otp-28"
@@ -380,43 +418,64 @@ checksum = "sha256:b2816e506390a89941c63c9187d58a3cc10e9a55f2ef0685f9ea0eccaf7c9
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.fnox]]
-version = "1.23.1"
+version = "1.24.0"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:de4c06fc8851ad4be8109d077d0362ee8603ae0aac0cbffb715ac89e2238f2c4"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690612"
+checksum = "sha256:a07a192c4aeb015db3a83b8ea3cfef95df776c2d5a9dddb992f99c6c1c182082"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778320"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:c7a9c2e80346e7ebb175a033856549c3bbefe7fafda3d34fca3f5cd33dc2a9f3"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690611"
+checksum = "sha256:7d448e03ed12c38ed5c353420939e1062e02a6d537cae1d1d80878039fec3c08"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778322"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:021c4fe683e109b616a4b936117c60e63f351b4000bd0999f0110f3088fc7f58"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690622"
+checksum = "sha256:5d15ce680a673c7ae54db706aa5d59f847b78ad70178a8d4c24e7e70d94f5774"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778338"
+
+[tools.fnox."platforms.linux-x64-baseline"]
+checksum = "sha256:5d15ce680a673c7ae54db706aa5d59f847b78ad70178a8d4c24e7e70d94f5774"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778338"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:8c78f965d5e655c3ea025551baf8d19c2e588ed9911b706deb6a7211bfbc7b9a"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690624"
+checksum = "sha256:bb5a51ea8123b46a872c803ce36e7719376a9b8b9556d71ca5244cc45f9f35f6"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778341"
+
+[tools.fnox."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:bb5a51ea8123b46a872c803ce36e7719376a9b8b9556d71ca5244cc45f9f35f6"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778341"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:f92d60ee4bb669b97a500f000fe053f92f7cbf0817ed4678e5b0f506d1357dd6"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690610"
+checksum = "sha256:5ac3f14fb7dd34d1d30c148dabfcaceddd9780bba720d226b34381eb71313155"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778318"
+provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:0b09405d648387a163d3f21be3e88972332d3fa04e5db55955726890a3f22877"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690609"
+checksum = "sha256:e17c4eeb885c7d740a8e14b0f1c12051f1ecaba97c1981a7800d87d4b936f0b4"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778321"
+
+[tools.fnox."platforms.macos-x64-baseline"]
+checksum = "sha256:e17c4eeb885c7d740a8e14b0f1c12051f1ecaba97c1981a7800d87d4b936f0b4"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778321"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:ea8b2569d8667c7644a25efd22546aff9dc1ac4eeb62c9c1dd4469e5f2bb34ff"
-url = "https://github.com/jdx/fnox/releases/download/v1.23.1/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/410690623"
+checksum = "sha256:b5c47933cdf03615507e58916174413a15692820e5616ab8e05a8a204f0faa2a"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778333"
+
+[tools.fnox."platforms.windows-x64-baseline"]
+checksum = "sha256:b5c47933cdf03615507e58916174413a15692820e5616ab8e05a8a204f0faa2a"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778333"
 
 [[tools.fx]]
 version = "39.2.0"
@@ -871,36 +930,52 @@ checksum = "sha256:9bc12fce6061b0dd45325401b0d11ec2e45981b76eef2b7fa3c0f941ba5c0
 url = "https://github.com/charmbracelet/glow/releases/download/v2.1.2/glow_2.1.2_Windows_x86_64.zip"
 
 [[tools.go]]
-version = "1.25.9"
+version = "1.25.10"
 backend = "core:go"
 
 [tools.go."platforms.linux-arm64"]
-checksum = "sha256:ec342e7389b7f489564ed5463c63b16cf8040023dabc7861256677165a8c0e2b"
-url = "https://dl.google.com/go/go1.25.9.linux-arm64.tar.gz"
+checksum = "sha256:654da1f9b50a5d1c2a85ccf8ed405aa89c06e94d18384628bf186f7712677b08"
+url = "https://dl.google.com/go/go1.25.10.linux-arm64.tar.gz"
 
 [tools.go."platforms.linux-arm64-musl"]
-checksum = "sha256:ec342e7389b7f489564ed5463c63b16cf8040023dabc7861256677165a8c0e2b"
-url = "https://dl.google.com/go/go1.25.9.linux-arm64.tar.gz"
+checksum = "sha256:654da1f9b50a5d1c2a85ccf8ed405aa89c06e94d18384628bf186f7712677b08"
+url = "https://dl.google.com/go/go1.25.10.linux-arm64.tar.gz"
 
 [tools.go."platforms.linux-x64"]
-checksum = "sha256:00859d7bd6defe8bf84d9db9e57b9a4467b2887c18cd93ae7460e713db774bc1"
-url = "https://dl.google.com/go/go1.25.9.linux-amd64.tar.gz"
+checksum = "sha256:42d4f7a32316aa66591eca7e89867256057a4264451aca10570a715b3637ba70"
+url = "https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz"
+
+[tools.go."platforms.linux-x64-baseline"]
+checksum = "sha256:42d4f7a32316aa66591eca7e89867256057a4264451aca10570a715b3637ba70"
+url = "https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz"
 
 [tools.go."platforms.linux-x64-musl"]
-checksum = "sha256:00859d7bd6defe8bf84d9db9e57b9a4467b2887c18cd93ae7460e713db774bc1"
-url = "https://dl.google.com/go/go1.25.9.linux-amd64.tar.gz"
+checksum = "sha256:42d4f7a32316aa66591eca7e89867256057a4264451aca10570a715b3637ba70"
+url = "https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz"
+
+[tools.go."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:42d4f7a32316aa66591eca7e89867256057a4264451aca10570a715b3637ba70"
+url = "https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz"
 
 [tools.go."platforms.macos-arm64"]
-checksum = "sha256:9528be7329b9770631a6bd09ca2f3a73ed7332bec01d87435e75e92d8f130363"
-url = "https://dl.google.com/go/go1.25.9.darwin-arm64.tar.gz"
+checksum = "sha256:795691a425de7e7cdba3544f354dcd2cebcf52e87dc6898193878f34eb6d634f"
+url = "https://dl.google.com/go/go1.25.10.darwin-arm64.tar.gz"
 
 [tools.go."platforms.macos-x64"]
-checksum = "sha256:92cb78fba4796e218c1accb0ea0a214ef2094c382049a244ad6505505d015fbe"
-url = "https://dl.google.com/go/go1.25.9.darwin-amd64.tar.gz"
+checksum = "sha256:52321165a3146cd91865ef98371506a846ed4dc4f9f1c9323e5ad90d2a411e06"
+url = "https://dl.google.com/go/go1.25.10.darwin-amd64.tar.gz"
+
+[tools.go."platforms.macos-x64-baseline"]
+checksum = "sha256:52321165a3146cd91865ef98371506a846ed4dc4f9f1c9323e5ad90d2a411e06"
+url = "https://dl.google.com/go/go1.25.10.darwin-amd64.tar.gz"
 
 [tools.go."platforms.windows-x64"]
-checksum = "sha256:a7a710e225467b34e9e09fb432b829c86c9b2da5821ee5418f7eb2e8ae1a22cc"
-url = "https://dl.google.com/go/go1.25.9.windows-amd64.zip"
+checksum = "sha256:ca37af2dadd8544464f1a9ca7c3886499d1cdfcb263855d0a1d71f194b2bd222"
+url = "https://dl.google.com/go/go1.25.10.windows-amd64.zip"
+
+[tools.go."platforms.windows-x64-baseline"]
+checksum = "sha256:ca37af2dadd8544464f1a9ca7c3886499d1cdfcb263855d0a1d71f194b2bd222"
+url = "https://dl.google.com/go/go1.25.10.windows-amd64.zip"
 
 [[tools.gum]]
 version = "0.17.0"
@@ -1165,7 +1240,7 @@ version = "20.5.3"
 backend = "npm:@commitlint/cli"
 
 [[tools."npm:@mariozechner/pi-coding-agent"]]
-version = "0.73.0"
+version = "0.73.1"
 backend = "npm:@mariozechner/pi-coding-agent"
 
 [[tools."npm:neovim"]]
@@ -1173,7 +1248,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.14.39"
+version = "1.14.41"
 backend = "npm:opencode-ai"
 
 [[tools."npm:prettier"]]
@@ -1633,42 +1708,62 @@ checksum = "sha256:628b8743d552f2cff2dee2b783a4827ef555409def3fb9ec536117d96cda2
 url = "https://github.com/jdx/usage/releases/download/v3.3.0/usage-x86_64-pc-windows-msvc.zip"
 
 [[tools.uv]]
-version = "0.11.10"
+version = "0.11.11"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:14c21bef6b54d268c6583d851095a543e6cb03a8e4bdca9a44ab91532b14cbc2"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:0fc9a49b3900f77ffaccf3ff69a70ddbc1d479e70ac5d8fd6416a7577b03c5a1"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:14c21bef6b54d268c6583d851095a543e6cb03a8e4bdca9a44ab91532b14cbc2"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:0fc9a49b3900f77ffaccf3ff69a70ddbc1d479e70ac5d8fd6416a7577b03c5a1"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:e3e78e7698d72c133c5ce851a6d60ee83afdc4c0edced382af9fd1f8e11d0105"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:80521f18ba83109acd17e0730bd8ff898c3426aa62252c627d63418b353e788a"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
+
+[tools.uv."platforms.linux-x64-baseline"]
+checksum = "sha256:80521f18ba83109acd17e0730bd8ff898c3426aa62252c627d63418b353e788a"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:e3e78e7698d72c133c5ce851a6d60ee83afdc4c0edced382af9fd1f8e11d0105"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:80521f18ba83109acd17e0730bd8ff898c3426aa62252c627d63418b353e788a"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-unknown-linux-musl.tar.gz"
+provenance = "github-attestations"
+
+[tools.uv."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:80521f18ba83109acd17e0730bd8ff898c3426aa62252c627d63418b353e788a"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:e93d6af7dfff7071edd16342ba9eeccfc28d8a7deaa5707efeecf63a63a74453"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:3a185bf8f46a7b7c8b910d111825907b1638d0ae503cb3c333ae205772354046"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-aarch64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:8fd091211089973f528e147166e3af683ab4ecebd4312a55d0d17d87adbde67a"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:57a1a8085b4088fbcbd5080c0c30723ba6d0692c89cd071c08a4209e8da602d1"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-apple-darwin.tar.gz"
+provenance = "github-attestations"
+
+[tools.uv."platforms.macos-x64-baseline"]
+checksum = "sha256:57a1a8085b4088fbcbd5080c0c30723ba6d0692c89cd071c08a4209e8da602d1"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:7a0c424c7bc55a74751f13592235953ebbe182fa00355f7ae3fb7ab734a51638"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.10/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:2f75a0db2c3530b6b3c24434dc38137f61ff1f4e5f2d7b4ddc5bcd142cf58b65"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-pc-windows-msvc.zip"
+provenance = "github-attestations"
+
+[tools.uv."platforms.windows-x64-baseline"]
+checksum = "sha256:2f75a0db2c3530b6b3c24434dc38137f61ff1f4e5f2d7b4ddc5bcd142cf58b65"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.11/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [[tools.yazi]]
