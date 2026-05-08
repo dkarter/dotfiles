@@ -1,0 +1,25 @@
+ARG BASE_IMAGE=ghcr.io/dkarter/dotfiles:latest
+FROM ${BASE_IMAGE}
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+ENV DEBIAN_FRONTEND=noninteractive \
+  DEVCONTAINER=true
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    git \
+    less \
+    openssh-client \
+    sudo \
+    zsh \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt/dotfiles
+COPY . /opt/dotfiles
+
+RUN bash ./setup.sh \
+  && rm -rf /var/lib/apt/lists/* /tmp/terminfo
+
+WORKDIR /workspaces

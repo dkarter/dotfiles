@@ -1,0 +1,26 @@
+.git
+.task
+.ruff_cache
+.DS_Store
+node_modules
+tmp
+gitleaks-report.json
+
+# Local-only working notes should not be baked into images.
+.plans
+
+# Local machine state and potentially sensitive generated files.
+.claude/worktrees
+bundle/cache
+config/ghostty/config.local
+config/nushell/env.local.nu
+config/nushell/history.*
+config/opencode/package-lock.json
+config/pi/agent/auth.json
+config/pi/agent/sessions
+config/tmuxinator/*.yml
+config/vifm/vifminfo
+config/vifm/vifminfo.json
+config/vifm/vifmimgpdffile
+config/vifm/vifmimgpdfpage
+config/yazi/flavors

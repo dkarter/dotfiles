@@ -98,11 +98,11 @@ tasks:
           glow docs/post_install.md
 
   install:devpod:
-    desc: Install dotfiles in a Devpod container
+    desc: Install dotfiles in a Devpod/devcontainer container
     summary: |
-      Install dotfiles in a Devpod container.
+      Install dotfiles in a Devpod/devcontainer container.
 
-      Devpod setup runs non-interactively and may use linux/arm64 images where
+      Container setup runs non-interactively and may use linux/arm64 images where
       some personal mise tools are unavailable. Keep this path to shell setup,
       symlinks, and container-safe dependencies.
     silent: true
