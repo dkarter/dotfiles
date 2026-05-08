@@ -161,7 +161,7 @@ version = "1.13.0"
 backend = "cargo:tlrc"
 
 [[tools."cargo:tuicr"]]
-version = "0.11.0"
+version = "0.12.0"
 backend = "cargo:tuicr"
 
 [[tools."cargo:vivid"]]
@@ -193,26 +193,35 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.133"
+version = "2.1.136"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.133/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.133/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.133/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/linux-x64/claude"
+
+[tools.claude-code."platforms.linux-x64-baseline"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.133/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/linux-x64-musl/claude"
+
+[tools.claude-code."platforms.linux-x64-musl-baseline"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.133/darwin-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.133/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/darwin-x64/claude"
+
+[tools.claude-code."platforms.macos-x64-baseline"]
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.136/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.1"
@@ -728,38 +737,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.202"
+version = "0.1.203"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:e41809b25071799325dad07c1851cc2b690556d01aaac681f1da2849337a95e7"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912140"
+checksum = "sha256:99153b6a9db4162e888fe1b5a7cf06900b7d9e05bdffd4981ce382bf23b58358"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528833"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:e41809b25071799325dad07c1851cc2b690556d01aaac681f1da2849337a95e7"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912140"
+checksum = "sha256:99153b6a9db4162e888fe1b5a7cf06900b7d9e05bdffd4981ce382bf23b58358"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528833"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:5df28033a307d353999cf87a4dee27a58d3257c684862a29b1121dc7a15c3a98"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912138"
+checksum = "sha256:bb626627d46d828cb1c858bf703f3181498b37577a99db0e564102d0a740b4fd"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528841"
+
+[tools."github:raine/workmux"."platforms.linux-x64-baseline"]
+checksum = "sha256:bb626627d46d828cb1c858bf703f3181498b37577a99db0e564102d0a740b4fd"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528841"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:5df28033a307d353999cf87a4dee27a58d3257c684862a29b1121dc7a15c3a98"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912138"
+checksum = "sha256:bb626627d46d828cb1c858bf703f3181498b37577a99db0e564102d0a740b4fd"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528841"
+
+[tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:bb626627d46d828cb1c858bf703f3181498b37577a99db0e564102d0a740b4fd"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528841"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:602b69dfc9749e65dc72b7d308c2eed0211a118878376fcdddd5dccd10d6c36a"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912143"
+checksum = "sha256:e454225a1e969d9216e028fac44fa04ebbf9c03cc556f3ae82829b1150411906"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528842"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:e151550b25fbc25b010e74a092021357e336d5db4b5b2fabd2ff7249d13c61cd"
-url = "https://github.com/raine/workmux/releases/download/v0.1.202/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/412912139"
+checksum = "sha256:7ce02063a9914435aa5048c0996a8d820e68e089e65dc133fc44867e20f8ab5f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528840"
+
+[tools."github:raine/workmux"."platforms.macos-x64-baseline"]
+checksum = "sha256:7ce02063a9914435aa5048c0996a8d820e68e089e65dc133fc44867e20f8ab5f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.203/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/415528840"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.6.0"
@@ -1071,7 +1095,15 @@ url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua
 checksum = "sha256:ca71415dd19f19e30aaa35a4915aefca9fdb5fec31b98331cc3d77f778d539c5"
 url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-linux-x64.tar.gz"
 
+[tools.lua-language-server."platforms.linux-x64-baseline"]
+checksum = "sha256:ca71415dd19f19e30aaa35a4915aefca9fdb5fec31b98331cc3d77f778d539c5"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-linux-x64.tar.gz"
+
 [tools.lua-language-server."platforms.linux-x64-musl"]
+checksum = "sha256:ca71415dd19f19e30aaa35a4915aefca9fdb5fec31b98331cc3d77f778d539c5"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-linux-x64.tar.gz"
+
+[tools.lua-language-server."platforms.linux-x64-musl-baseline"]
 checksum = "sha256:ca71415dd19f19e30aaa35a4915aefca9fdb5fec31b98331cc3d77f778d539c5"
 url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-linux-x64.tar.gz"
 
@@ -1083,7 +1115,15 @@ url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua
 checksum = "sha256:e26cfefe423dd7326fc7c649539e4d4aaa4f35f34d2fefd8af2ed7090b72c556"
 url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-darwin-x64.tar.gz"
 
+[tools.lua-language-server."platforms.macos-x64-baseline"]
+checksum = "sha256:e26cfefe423dd7326fc7c649539e4d4aaa4f35f34d2fefd8af2ed7090b72c556"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-darwin-x64.tar.gz"
+
 [tools.lua-language-server."platforms.windows-x64"]
+checksum = "sha256:a4439a8f5e8e9e6505c11f045a7bf45db602124a1e246371c1dbe34924f3cf71"
+url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-win32-x64.zip"
+
+[tools.lua-language-server."platforms.windows-x64-baseline"]
 checksum = "sha256:a4439a8f5e8e9e6505c11f045a7bf45db602124a1e246371c1dbe34924f3cf71"
 url = "https://github.com/LuaLS/lua-language-server/releases/download/3.18.2/lua-language-server-3.18.2-win32-x64.zip"
 
@@ -1120,7 +1160,7 @@ checksum = "sha256:cc5149eabd53779ce1e7bdc5401643622d0c7e6800ade18928a767e940bb0
 url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-win-x64.zip"
 
 [[tools."npm:@commitlint/cli"]]
-version = "20.5.3"
+version = "21.0.0"
 backend = "npm:@commitlint/cli"
 
 [[tools."npm:@mariozechner/pi-coding-agent"]]
@@ -1539,7 +1579,15 @@ url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0
 checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
 url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
 
+[tools.typos."platforms.linux-x64-baseline"]
+checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
+
 [tools.typos."platforms.linux-x64-musl"]
+checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.typos."platforms.linux-x64-musl-baseline"]
 checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
 url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
 
@@ -1551,7 +1599,15 @@ url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0
 checksum = "sha256:ca0bba6c8a80b4981951dbc3519987d51ef3a60e0b0a462db005ad99de47b40d"
 url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-apple-darwin.tar.gz"
 
+[tools.typos."platforms.macos-x64-baseline"]
+checksum = "sha256:ca0bba6c8a80b4981951dbc3519987d51ef3a60e0b0a462db005ad99de47b40d"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-apple-darwin.tar.gz"
+
 [tools.typos."platforms.windows-x64"]
+checksum = "sha256:a95e17043bdc0b890936e0213f7a533f4ccdf5430bb7c4a26984de8c77238536"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-pc-windows-msvc.zip"
+
+[tools.typos."platforms.windows-x64-baseline"]
 checksum = "sha256:a95e17043bdc0b890936e0213f7a533f4ccdf5430bb7c4a26984de8c77238536"
 url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-pc-windows-msvc.zip"
 

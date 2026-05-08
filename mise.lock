@@ -642,52 +642,52 @@ checksum = "sha256:82c20fbd19ac62073b8ecf89e026fbd209f702a2922106e4ff2ed6934d193
 url = "https://github.com/go-task/task/releases/download/v3.50.0/task_windows_amd64.zip"
 
 [[tools.typos]]
-version = "1.46.0"
+version = "1.46.1"
 backend = "aqua:crate-ci/typos"
 
 [tools.typos."platforms.linux-arm64"]
-checksum = "sha256:1f8324d5b17c7354c4a83865007efb55c8278ef4cc22bed748df6b92ca439384"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:70a8e5a2c6272e25438ed8a9f10c40c9becf79f2800183fd34603a0840162eac"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-arm64-musl"]
-checksum = "sha256:1f8324d5b17c7354c4a83865007efb55c8278ef4cc22bed748df6b92ca439384"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:70a8e5a2c6272e25438ed8a9f10c40c9becf79f2800183fd34603a0840162eac"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64"]
-checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64-baseline"]
-checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64-musl"]
-checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:c62a626df385c96574743fd4974aeb271a41a67d080a0398e36e1a42782f614a"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.macos-arm64"]
-checksum = "sha256:322f90609f951bc27e204cf8d0370702510ae99e87285b217916fb2c09d76111"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:bb5e07df5c938f41b95903ca8943d9230eb5a4cfbc8a2ff1f3a029d5370926a8"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-aarch64-apple-darwin.tar.gz"
 
 [tools.typos."platforms.macos-x64"]
-checksum = "sha256:ca0bba6c8a80b4981951dbc3519987d51ef3a60e0b0a462db005ad99de47b40d"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:bc585c22f2c4f5963ad782df1d4764a91476d3079477a08833ff87dfa416bb72"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-apple-darwin.tar.gz"
 
 [tools.typos."platforms.macos-x64-baseline"]
-checksum = "sha256:ca0bba6c8a80b4981951dbc3519987d51ef3a60e0b0a462db005ad99de47b40d"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:bc585c22f2c4f5963ad782df1d4764a91476d3079477a08833ff87dfa416bb72"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-apple-darwin.tar.gz"
 
 [tools.typos."platforms.windows-x64"]
-checksum = "sha256:a95e17043bdc0b890936e0213f7a533f4ccdf5430bb7c4a26984de8c77238536"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:a7b042fc79bf7b73b00ece054ec3109858e001136c2642f28004544b571d37a2"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-pc-windows-msvc.zip"
 
 [tools.typos."platforms.windows-x64-baseline"]
-checksum = "sha256:a95e17043bdc0b890936e0213f7a533f4ccdf5430bb7c4a26984de8c77238536"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.0/typos-v1.46.0-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:a7b042fc79bf7b73b00ece054ec3109858e001136c2642f28004544b571d37a2"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-pc-windows-msvc.zip"
 
 [[tools.yamllint]]
 version = "1.35.1"
