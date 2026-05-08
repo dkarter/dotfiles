@@ -12,4 +12,4 @@ RUN apt-get update \
     zsh \
   && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /workspace
+WORKDIR /workspaces/dotfiles

@@ -314,6 +314,10 @@ url = "https://dl.deno.land/release/v2.7.14/deno-x86_64-apple-darwin.zip"
 checksum = "sha256:Algorithm"
 url = "https://dl.deno.land/release/v2.7.14/deno-x86_64-pc-windows-msvc.zip"
 
+[[tools.devcontainer-cli]]
+version = "0.86.1"
+backend = "npm:@devcontainers/cli"
+
 [[tools.docker-cli]]
 version = "29.4.2"
 backend = "aqua:docker/cli"
