@@ -61,6 +61,49 @@ jobs:
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        with:
+          install: false
+
+      - name: Prepare OCI mise config
+        shell: bash
+        run: |
+          mkdir -p .mise-oci-config
+
+          {
+            echo '[tools]'
+
+            in_tools=0
+            while IFS= read -r line; do
+              if [[ "${line}" == '[tools]' ]]; then
+                in_tools=1
+                continue
+              fi
+
+              if [[ "${line}" == \[* ]]; then
+                in_tools=0
+              fi
+
+              if [[ "${in_tools}" == 1 && -n "${line}" ]]; then
+                if [[ "${ARCH}" == 'arm64' && "${line}" == *'github:mazznoer/lolcrab'* ]]; then
+                  continue
+                fi
+
+                echo "${line}"
+              fi
+            done < mise.toml
+
+            echo
+            echo '[settings]'
+            echo 'experimental = true'
+            echo 'lockfile = true'
+          } > .mise-oci-config/mise.toml
+
+          cp mise.lock .mise-oci-config/mise.lock
+        env:
+          ARCH: ${{ matrix.arch }}
+
+      - name: Install OCI tools
+        run: mise -C .mise-oci-config install
 
       - name: Prepare image tags
         id: meta
@@ -80,15 +123,15 @@ jobs:
           ARCH: ${{ matrix.arch }}
 
       - name: Log in to GHCR
-        run: mise exec -- skopeo login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin <<< "${GITHUB_TOKEN}"
+        run: skopeo login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin <<< "${GITHUB_TOKEN}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build OCI image
         shell: bash
         run: |
-          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" mise oci build \
-            --output ./mise-oci \
+          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" mise -C .mise-oci-config oci build \
+            --output "${PWD}/mise-oci" \
             --tag "${{ steps.meta.outputs.sha_arch }}"
 
       - name: Push OCI image
