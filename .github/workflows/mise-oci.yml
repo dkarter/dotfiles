@@ -67,7 +67,8 @@ jobs:
       - name: Prepare OCI mise config
         shell: bash
         run: |
-          mkdir -p .mise-oci-config
+          config_dir="${RUNNER_TEMP}/mise-oci-config"
+          mkdir -p "${config_dir}"
 
           {
             echo '[tools]'
@@ -96,14 +97,14 @@ jobs:
             echo '[settings]'
             echo 'experimental = true'
             echo 'lockfile = true'
-          } > .mise-oci-config/mise.toml
+          } > "${config_dir}/mise.toml"
 
-          cp mise.lock .mise-oci-config/mise.lock
+          cp mise.lock "${config_dir}/mise.lock"
         env:
           ARCH: ${{ matrix.arch }}
 
       - name: Install OCI tools
-        run: mise -C .mise-oci-config install
+        run: mise -C "${RUNNER_TEMP}/mise-oci-config" install
 
       - name: Prepare image tags
         id: meta
@@ -130,7 +131,7 @@ jobs:
       - name: Build OCI image
         shell: bash
         run: |
-          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" mise -C .mise-oci-config oci build \
+          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" mise -C "${RUNNER_TEMP}/mise-oci-config" oci build \
             --output "${PWD}/mise-oci" \
             --tag "${{ steps.meta.outputs.sha_arch }}"
 
