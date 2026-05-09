@@ -74,7 +74,7 @@ jobs:
         id: setup-cache
         shell: bash
         run: |
-          setup_layer_hash="$(git ls-files \
+          setup_layer_hash="$(git ls-files -s -- \
             .devcontainer/Dockerfile.prebuilt \
             .dockerignore \
             Taskfile.dist.yml \
@@ -85,8 +85,6 @@ jobs:
             scripts \
             setup.sh \
             taskfiles \
-            | sort -u \
-            | xargs sha256sum \
             | sha256sum \
             | cut -d ' ' -f 1)"
 
