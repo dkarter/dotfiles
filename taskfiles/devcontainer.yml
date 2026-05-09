@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+tasks:
+  refresh:
+    silent: true
+    cmds:
+      - docker pull ghcr.io/dkarter/dotfiles-devcontainer:latest
+      - devcontainer up --workspace-folder . --remove-existing-container
+
+  run:
+    silent: true
+    cmds:
+      - devcontainer exec --workspace-folder . zsh

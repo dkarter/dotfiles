@@ -26,6 +26,10 @@ includes:
   debian:
     taskfile: ./taskfiles/debian.yml
 
+  dc:
+    aliases: [devcontainer]
+    taskfile: ./taskfiles/devcontainer.yml
+
   dot:
     aliases: [dots]
     taskfile: ./taskfiles/dotfiles.yml
