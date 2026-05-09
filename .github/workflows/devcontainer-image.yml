@@ -26,6 +26,9 @@ jobs:
 
     runs-on: ${{ matrix.runner }}
 
+    env:
+      DOCKER_CONFIG: ${{ runner.temp }}/docker-config
+
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -38,21 +41,9 @@ jobs:
 
     steps:
       - name: Checkout
-        shell: bash
-        run: |
-          git init .
-          git remote add origin "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
-          basic_auth="$(printf 'x-access-token:%s' "${GITHUB_TOKEN}" | base64 --wrap=0)"
-          git \
-            -c "http.${GITHUB_SERVER_URL}/.extraheader=AUTHORIZATION: basic ${basic_auth}" \
-            fetch \
-            --depth=1 \
-            --no-tags \
-            origin \
-            "${GITHUB_SHA}"
-          git checkout --detach FETCH_HEAD
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+        uses: actions/checkout@v6.0.2
+        with:
+          persist-credentials: false
 
       - name: Prepare image tags
         id: meta
@@ -91,7 +82,11 @@ jobs:
           echo "hash=${setup_layer_hash}" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
-        run: docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin <<< "${GITHUB_TOKEN}"
+        shell: bash
+        run: |
+          mkdir -p "${DOCKER_CONFIG}"
+          chmod 700 "${DOCKER_CONFIG}"
+          printf '%s' "${GITHUB_TOKEN}" | docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -158,11 +153,21 @@ jobs:
           docker push "${{ steps.meta.outputs.sha_arch }}"
           docker push "${{ steps.meta.outputs.branch_arch }}"
 
+      - name: Remove GHCR credentials
+        if: always()
+        shell: bash
+        run: |
+          docker logout ghcr.io || true
+          rm -rf "${DOCKER_CONFIG}"
+
   publish-manifests:
     name: Publish Multi-Arch Manifests
 
     runs-on: ubuntu-latest
     needs: build-and-push
+
+    env:
+      DOCKER_CONFIG: ${{ runner.temp }}/docker-config
 
     steps:
       - name: Prepare image tags
@@ -184,7 +189,11 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
-        run: docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin <<< "${GITHUB_TOKEN}"
+        shell: bash
+        run: |
+          mkdir -p "${DOCKER_CONFIG}"
+          chmod 700 "${DOCKER_CONFIG}"
+          printf '%s' "${GITHUB_TOKEN}" | docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -212,3 +221,10 @@ jobs:
 
       - name: Inspect manifest
         run: docker buildx imagetools inspect "${{ steps.meta.outputs.sha }}"
+
+      - name: Remove GHCR credentials
+        if: always()
+        shell: bash
+        run: |
+          docker logout ghcr.io || true
+          rm -rf "${DOCKER_CONFIG}"
