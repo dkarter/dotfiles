@@ -28,6 +28,10 @@ tasks:
         platforms: [darwin]
 
       - cmd: |
+          if command -v mise &>/dev/null; then
+            exit 0
+          fi
+
           if [[ -f /etc/debian_version ]] || command -v apt &>/dev/null; then
             sudo apt update -y && sudo apt install -y gpg sudo wget curl
             sudo install -dm 755 /etc/apt/keyrings
@@ -58,6 +62,12 @@ tasks:
     cmds:
       - cmd: |
           mise trust --yes --silent
+
+          if [[ -d /mise/installs ]]; then
+            echo 'Using preinstalled mise tools from /mise.'
+            exit 0
+          fi
+
           case "$(uname -m)" in
             aarch64|arm64)
               export MISE_DISABLE_TOOLS='resvg,github:mazznoer/lolcrab'

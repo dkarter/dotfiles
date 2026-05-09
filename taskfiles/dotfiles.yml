@@ -112,7 +112,7 @@ tasks:
       symlinks, and container-safe dependencies.
     silent: true
     cmds:
-      - task: debian:sync
+      - task: debian:tools:install:devcontainer
       - task: shell:zsh:default
       - task: create:dirs
       - task: symlink

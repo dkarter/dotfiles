@@ -64,6 +64,7 @@ jobs:
 
           {
             echo "branch_arch=${image}:${branch_tag}-${ARCH}"
+            echo "cache=${image}:buildcache-${ARCH}"
             echo "sha_arch=${image}:${short_sha}-${ARCH}"
           } >> "$GITHUB_OUTPUT"
         env:
@@ -74,6 +75,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up Buildx builder
+        shell: bash
+        run: |
+          docker buildx create --use --driver docker-container --name dotfiles-builder
+          docker buildx inspect --bootstrap
+
       - name: Build image
         shell: bash
         run: |
@@ -81,6 +88,8 @@ jobs:
             --file .devcontainer/Dockerfile.prebuilt \
             --platform "linux/${ARCH}" \
             --secret id=github_token,env=GITHUB_TOKEN \
+            --cache-from "type=registry,ref=${{ steps.meta.outputs.cache }}" \
+            --cache-to "type=registry,ref=${{ steps.meta.outputs.cache }},mode=max" \
             --tag "${{ steps.meta.outputs.sha_arch }}" \
             --tag "${{ steps.meta.outputs.branch_arch }}" \
             --load \
@@ -100,6 +109,21 @@ jobs:
             image \
             --scanners secret \
             --image-config-scanners secret \
+            --skip-dirs /mise \
+            --skip-dirs /opt/dotfiles/config/opencode/node_modules \
+            --skip-dirs /root/.bun \
+            --skip-dirs /root/.cache \
+            --skip-dirs /root/.cargo \
+            --skip-dirs /root/.local/share/mise \
+            --skip-dirs /root/.local/share/nvim/lazy \
+            --skip-dirs /root/.local/share/nvim/mason \
+            --skip-dirs /root/.local/share/pnpm \
+            --skip-dirs /root/.local/share/uv \
+            --skip-dirs /root/.local/share/zinit \
+            --skip-dirs /root/.local/state/nvim \
+            --skip-dirs /root/.npm \
+            --skip-dirs /root/.rustup \
+            --skip-dirs /root/go \
             --skip-files '/root/.local/share/mise/installs/go/*/src/crypto/x509/platform_root_key.pem' \
             --skip-files '/root/.local/share/nvim/lazy/kulala.nvim/doc/kulala.dynamically-setting-environment-variables-based-on-response-json.txt' \
             --skip-db-update \

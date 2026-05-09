@@ -2,6 +2,16 @@
 version: 3
 
 vars:
+  APT_DEVCONTAINER_PKGS:
+    - ca-certificates
+    - curl
+    - git
+    - less
+    - openssh-client
+    - sudo
+    - unzip
+    - zsh
+
   APT_PKGS:
     - 1password-cli
     - autoconf
@@ -84,6 +94,17 @@ tasks:
         silent: true
       - task: tools:wxgtk:install
       - task: tools:wslu:install
+
+  tools:install:devcontainer:
+    desc: Installs minimal apt packages for devcontainer images
+    platforms: [linux]
+    cmds:
+      - cmd: |
+          if command -v apt &>/dev/null; then
+            sudo apt update
+            sudo apt -y install {{.APT_DEVCONTAINER_PKGS | join " "}}
+          fi
+        silent: true
 
   tools:wxgtk:install:
     internal: true

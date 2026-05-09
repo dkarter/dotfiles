@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=mcr.microsoft.com/devcontainers/base:debian-13
+ARG BASE_IMAGE=ghcr.io/dkarter/dotfiles:latest
 FROM ${BASE_IMAGE}
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -8,14 +8,17 @@ ARG TARGETARCH
 ENV DEBIAN_FRONTEND=noninteractive \
   DEVCONTAINER=true
 
-RUN apt-get update \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+  apt-get update \
   && apt-get install -y --no-install-recommends \
     ca-certificates \
+    curl \
     git \
     less \
     locales \
     openssh-client \
     sudo \
+    unzip \
     zsh \
   && sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
   && locale-gen \
@@ -29,6 +32,12 @@ WORKDIR /opt/dotfiles
 COPY . /opt/dotfiles
 
 RUN --mount=type=secret,id=github_token \
+  --mount=type=cache,target=/root/.bun/install/cache \
+  --mount=type=cache,target=/root/.cache \
+  --mount=type=cache,target=/root/.cargo/git \
+  --mount=type=cache,target=/root/.cargo/registry \
+  --mount=type=cache,target=/root/.local/share/mise/downloads \
+  --mount=type=cache,target=/root/go/pkg/mod \
   if [[ -f /run/secrets/github_token ]]; then \
     export GITHUB_TOKEN="$(< /run/secrets/github_token)"; \
     export MISE_GITHUB_TOKEN="$GITHUB_TOKEN"; \
