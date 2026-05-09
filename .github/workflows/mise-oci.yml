@@ -39,7 +39,6 @@ jobs:
 
     env:
       MISE_EXPERIMENTAL: 1
-      REGISTRY_AUTH_FILE: ${{ runner.temp }}/containers-auth.json
 
     steps:
       - name: Checkout
@@ -164,6 +163,10 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}
 
+      - name: Use temporary registry auth file
+        shell: bash
+        run: echo "REGISTRY_AUTH_FILE=${RUNNER_TEMP}/containers-auth.json" >> "$GITHUB_ENV"
+
       - name: Log in to GHCR
         shell: bash
         run: |
@@ -229,9 +232,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-and-push
 
-    env:
-      DOCKER_CONFIG: ${{ runner.temp }}/docker-config
-
     steps:
       - name: Prepare image tags
         id: meta
@@ -252,6 +252,10 @@ jobs:
             echo "sha_amd64=${image}:${short_sha}-amd64"
             echo "sha_arm64=${image}:${short_sha}-arm64"
           } >> "$GITHUB_OUTPUT"
+
+      - name: Use temporary Docker config
+        shell: bash
+        run: echo "DOCKER_CONFIG=${RUNNER_TEMP}/docker-config" >> "$GITHUB_ENV"
 
       - name: Log in to GHCR
         shell: bash
