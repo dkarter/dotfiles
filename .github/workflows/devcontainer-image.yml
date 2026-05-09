@@ -28,7 +28,7 @@ jobs:
 
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 2
       matrix:
         include:
           - arch: amd64
@@ -70,6 +70,28 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}
 
+      - name: Prepare setup cache key
+        id: setup-cache
+        shell: bash
+        run: |
+          setup_layer_hash="$(git ls-files \
+            .devcontainer/Dockerfile.prebuilt \
+            .dockerignore \
+            Taskfile.dist.yml \
+            aliases ctags gemrc gitconfig gitignore gitmessage ignore pgpass prettierrc pryrc psqlrc stylelintrc zinitrc zshenv zshrc \
+            config \
+            installer \
+            mise.lock mise.toml \
+            scripts \
+            setup.sh \
+            taskfiles \
+            | sort -u \
+            | xargs sha256sum \
+            | sha256sum \
+            | cut -d ' ' -f 1)"
+
+          echo "hash=${setup_layer_hash}" >> "$GITHUB_OUTPUT"
+
       - name: Log in to GHCR
         run: docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin <<< "${GITHUB_TOKEN}"
         env:
@@ -87,6 +109,7 @@ jobs:
           docker buildx build \
             --file .devcontainer/Dockerfile.prebuilt \
             --platform "linux/${ARCH}" \
+            --build-arg "SETUP_LAYER_HASH=${{ steps.setup-cache.outputs.hash }}" \
             --secret id=github_token,env=GITHUB_TOKEN \
             --cache-from "type=registry,ref=${{ steps.meta.outputs.cache }}" \
             --cache-to "type=registry,ref=${{ steps.meta.outputs.cache }},mode=max" \
