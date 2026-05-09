@@ -42,9 +42,21 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.2
-        with:
-          persist-credentials: false
+        shell: bash
+        run: |
+          git init .
+          git remote add origin "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+          basic_auth="$(printf 'x-access-token:%s' "${GITHUB_TOKEN}" | base64 --wrap=0)"
+          git \
+            -c "http.${GITHUB_SERVER_URL}/.extraheader=AUTHORIZATION: basic ${basic_auth}" \
+            fetch \
+            --depth=1 \
+            --no-tags \
+            origin \
+            "${GITHUB_SHA}"
+          git checkout --detach FETCH_HEAD
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y libreadline-dev skopeo
