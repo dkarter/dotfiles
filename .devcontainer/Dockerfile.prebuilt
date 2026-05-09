@@ -1,7 +1,9 @@
-ARG BASE_IMAGE=ghcr.io/dkarter/dotfiles:latest
+ARG BASE_IMAGE=mcr.microsoft.com/devcontainers/base:debian-13
 FROM ${BASE_IMAGE}
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+ARG TARGETARCH
 
 ENV DEBIAN_FRONTEND=noninteractive \
   DEVCONTAINER=true
@@ -11,15 +13,31 @@ RUN apt-get update \
     ca-certificates \
     git \
     less \
+    locales \
     openssh-client \
     sudo \
     zsh \
+  && sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
+  && locale-gen \
   && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=en_US.UTF-8 \
+  LANGUAGE=en_US:en \
+  LC_ALL=en_US.UTF-8
 
 WORKDIR /opt/dotfiles
 COPY . /opt/dotfiles
 
-RUN bash ./setup.sh \
+RUN --mount=type=secret,id=github_token \
+  if [[ -f /run/secrets/github_token ]]; then \
+    export GITHUB_TOKEN="$(< /run/secrets/github_token)"; \
+    export MISE_GITHUB_TOKEN="$GITHUB_TOKEN"; \
+  fi \
+  && bash ./setup.sh \
+  && if [[ "${TARGETARCH:-$(uname -m)}" == "arm64" || "${TARGETARCH:-$(uname -m)}" == "aarch64" ]]; then \
+    mise settings add disable_tools resvg; \
+    mise settings add disable_tools github:mazznoer/lolcrab; \
+  fi \
   && rm -rf /var/lib/apt/lists/* /tmp/terminfo
 
 WORKDIR /workspaces

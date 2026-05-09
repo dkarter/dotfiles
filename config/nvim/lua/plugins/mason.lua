@@ -10,78 +10,14 @@ return {
   config = function()
     local mason = require 'mason'
 
-    local package_list = {
-      -- Null LS
-      'actionlint',
-      'ansible-lint',
-      -- js/json/yaml/ts/etc formatter
-      'biome',
-      -- python linting/formatting
-      'black',
-      'prettierd',
-      'shfmt',
-      'stylua',
-      'yamllint',
-
-      -- LSPs
-      -- 'expert',
-      'ansible-language-server',
-      'arduino-language-server',
-      'bash-language-server',
-      'clangd',
-      'clang-format',
-      'cmake-language-server',
-      'commitlint',
-      'css-lsp',
-      'dockerfile-language-server',
-      -- super fast formatter for multiple languages
-      'dprint',
-      'elm-language-server',
-      'eslint-lsp',
-      'gopls',
-      'go-debug-adapter',
-      'goimports',
-      'golangci-lint',
-      'golangci-lint-langserver',
-      'gomodifytags',
-      'helm-ls',
-      'html-lsp',
-      'json-lsp',
-      -- XML
-      'lemminx',
-      'lua-language-server',
-      'powershell-editor-services',
-      'python-lsp-server',
-      'rust-analyzer',
-      -- Ruby
-      'rubocop',
-      'ruby-lsp',
-      'rubyfmt',
-      -- python linting/formatting
-      'ruff',
-      'shellcheck',
-      'sqlls',
-      'tailwindcss-language-server',
-      'taplo',
-      'terraform-ls',
-      'typescript-language-server',
-      'typos',
-      'typos-lsp',
-      'vim-language-server',
-      'yaml-language-server',
-      'zls',
-
-      -- DAP
-      'bash-debug-adapter',
-      'delve',
-      'js-debug-adapter',
-
-      -- Other utils
-      'tree-sitter-cli',
-    }
+    local package_list = require 'core.mason_packages'
 
     ---@type MasonSettings
     mason.setup {}
+
+    if vim.env.DOTFILES_SKIP_MASON_AUTOINSTALL == '1' then
+      return
+    end
 
     -- Auto install all packages in the package_list
     local mr = require 'mason-registry'

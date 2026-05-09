@@ -80,12 +80,14 @@ jobs:
           docker buildx build \
             --file .devcontainer/Dockerfile.prebuilt \
             --platform "linux/${ARCH}" \
+            --secret id=github_token,env=GITHUB_TOKEN \
             --tag "${{ steps.meta.outputs.sha_arch }}" \
             --tag "${{ steps.meta.outputs.branch_arch }}" \
             --load \
             .
         env:
           ARCH: ${{ matrix.arch }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Scan image for secrets
         shell: bash
@@ -98,7 +100,8 @@ jobs:
             image \
             --scanners secret \
             --image-config-scanners secret \
-            --skip-files '/mise/installs/go/*/src/crypto/x509/platform_root_key.pem' \
+            --skip-files '/root/.local/share/mise/installs/go/*/src/crypto/x509/platform_root_key.pem' \
+            --skip-files '/root/.local/share/nvim/lazy/kulala.nvim/doc/kulala.dynamically-setting-environment-variables-based-on-response-json.txt' \
             --skip-db-update \
             --no-progress \
             --exit-code 1 \

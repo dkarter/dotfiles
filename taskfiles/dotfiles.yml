@@ -45,6 +45,11 @@ includes:
     dir: ../
     internal: true
 
+  nvim:
+    taskfile: ./nvim.yml
+    dir: ../
+    internal: true
+
   shell:
     taskfile: ./shell.yml
     internal: true
@@ -113,8 +118,10 @@ tasks:
       - task: symlink
       - task: op:install:ssh:agent
       - task: zinit:install
-      - task: zinit:plugins:update
       - task: mise:install
+      - task: mise:tools:install:devcontainer
+      - task: zinit:plugins:warm
+      - task: nvim:install
       - task: print:done
 
   sync:

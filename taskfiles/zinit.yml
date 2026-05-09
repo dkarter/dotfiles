@@ -27,6 +27,13 @@ tasks:
           zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all --parallel'
       - task: plugins:cleanup-stale-completions
 
+  plugins:warm:
+    desc: Installs zinit plugins by loading the interactive shell once
+    cmds:
+      - cmd: |
+          TERM="${TERM:-xterm-256color}" zsh -lic 'zinit update --all --parallel && starship --version >/dev/null'
+      - task: plugins:cleanup-stale-completions
+
   plugins:cleanup-stale-completions:
     desc: Removes stale zinit completion symlinks
     silent: true

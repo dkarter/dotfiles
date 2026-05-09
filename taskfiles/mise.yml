@@ -53,6 +53,19 @@ tasks:
           mise trust --yes --silent
           mise install --locked
 
+  tools:install:devcontainer:
+    desc: Installs mise tools for prebuilt devcontainer images
+    cmds:
+      - cmd: |
+          mise trust --yes --silent
+          case "$(uname -m)" in
+            aarch64|arm64)
+              export MISE_DISABLE_TOOLS='resvg,github:mazznoer/lolcrab'
+              ;;
+          esac
+          mise install --yes --cd "$HOME"
+          mise install --yes
+
   tools:extras:prompt:
     desc: Prompt to enable optional mise extras profile
     silent: true
