@@ -3,7 +3,7 @@
 # vim: ft=zsh
 
 # remove zinit alias - so I can use zoxide's zi (z interactive)
-unalias zi
+unalias zi 2>/dev/null
 
 # Unix
 # short for ls
@@ -328,7 +328,19 @@ function tn() {
 
 # session manager using sesh + tv
 # https://github.com/joshmedeski/sesh
-alias s='tv sesh'
+unalias s 2>/dev/null
+function s() {
+  local session_name
+
+  session_name=$(tv sesh "$@") || return
+  [[ -n $session_name ]] || return
+
+  if [[ -n ${TMUX:-} ]]; then
+    sesh connect --switch "$session_name"
+  else
+    sesh connect "$session_name"
+  fi
+}
 alias tgd='tv git-diff'
 
 # tailscale cli - for when installed from the app store

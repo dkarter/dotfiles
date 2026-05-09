@@ -17,21 +17,16 @@ command = [
   "fd -H -d 2 -t d -E .Trash . ~",          # find directories
 ]
 ansi = true
-output = "{strip_ansi|split: :1}"
+output = "{strip_ansi|split: :1..|join: }"
 
 [preview]
-command = "sesh preview '{strip_ansi|split: :1}'"
+command = "sesh preview '{strip_ansi|split: :1..|join: }'"
 
 [keybindings]
-enter = "actions:connect"
+enter = "confirm_selection"
 ctrl-d = ["actions:kill_session", "reload_source"]
-
-[actions.connect]
-description = "Connect to selected session"
-command = "tv-sesh-connect '{strip_ansi|split: :1}'"
-mode = "execute"
 
 [actions.kill_session]
 description = "Kill selected tmux session (press Ctrl+r to reload)"
-command = "tmux kill-session -t '{strip_ansi|split: :1}'"
+command = "tmux kill-session -t '{strip_ansi|split: :1..|join: }'"
 mode = "fork"

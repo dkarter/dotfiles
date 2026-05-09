@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-tmux display-popup -E -w 80% -h 80% "mise x -- tv sesh --layout portrait --hide-status-bar"
+tmux display-popup -E -w 80% -h 80% '
+session_name=$(mise x -- tv sesh --layout portrait --hide-status-bar) || exit
+[ -n "$session_name" ] || exit
+exec mise x -- sesh connect --switch "$session_name"
+'
