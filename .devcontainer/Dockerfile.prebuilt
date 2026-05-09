@@ -45,8 +45,6 @@ RUN --mount=type=secret,id=github_token \
   fi \
   && bash ./setup.sh \
   && mise reshim \
-  && ln -sf /usr/local/bin/mise /mise/shims/nvim \
-  && printf '%s\n' 'if [ -d /mise/shims ]; then' '  export PATH="/mise/shims:$PATH"' 'fi' > /etc/profile.d/mise-shims.sh \
   && if [[ "${TARGETARCH:-$(uname -m)}" == "arm64" || "${TARGETARCH:-$(uname -m)}" == "aarch64" ]]; then \
     mise settings add disable_tools resvg; \
     mise settings add disable_tools github:mazznoer/lolcrab; \
