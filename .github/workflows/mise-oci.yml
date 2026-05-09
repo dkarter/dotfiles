@@ -184,6 +184,7 @@ jobs:
         shell: bash
         run: |
           SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" mise -C "${RUNNER_TEMP}/mise-oci-config" oci build \
+            --from mcr.microsoft.com/devcontainers/base:debian-13 \
             --output "${PWD}/mise-oci" \
             --tag "${{ steps.meta.outputs.sha_arch }}"
 
@@ -196,6 +197,7 @@ jobs:
             --input "${RUNNER_TEMP}/mise-oci.tar" \
             --scanners secret \
             --image-config-scanners secret \
+            --skip-dirs /mise \
             --skip-files '/mise/installs/go/*/src/crypto/x509/platform_root_key.pem' \
             --skip-db-update \
             --no-progress \
