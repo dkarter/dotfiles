@@ -267,16 +267,18 @@ jobs:
 
       - name: Use temporary Docker config
         shell: bash
-        run: echo "DOCKER_CONFIG=${RUNNER_TEMP}/docker-config" >> "$GITHUB_ENV"
+        run: |
+          docker_config="${RUNNER_TEMP}/docker-config"
+          mkdir -p "${docker_config}"
+          chmod 700 "${docker_config}"
+          echo "DOCKER_CONFIG=${docker_config}" >> "$GITHUB_ENV"
 
       - name: Log in to GHCR
-        shell: bash
-        run: |
-          mkdir -p "${DOCKER_CONFIG}"
-          chmod 700 "${DOCKER_CONFIG}"
-          printf '%s' "${GITHUB_TOKEN}" | docker login ghcr.io --username "${GITHUB_ACTOR}" --password-stdin
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: docker/login-action@v4.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish manifest tags
         shell: bash
@@ -302,10 +304,3 @@ jobs:
 
       - name: Inspect manifest
         run: docker buildx imagetools inspect "${{ steps.meta.outputs.sha }}"
-
-      - name: Remove GHCR credentials
-        if: always()
-        shell: bash
-        run: |
-          docker logout ghcr.io || true
-          rm -rf "${DOCKER_CONFIG}"
