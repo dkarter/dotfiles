@@ -209,7 +209,7 @@ version = "1.13.0"
 backend = "cargo:tlrc"
 
 [[tools."cargo:tuicr"]]
-version = "0.12.0"
+version = "0.13.0"
 backend = "cargo:tuicr"
 
 [[tools."cargo:vivid"]]
@@ -253,36 +253,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.138"
+version = "2.1.141"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:224ab2dd6ed44d70c9a05fa257f9108a302ce2a830ee4f478ffb75c1471ebc9b"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/darwin-arm64/claude"
+checksum = "blake3:1e3836b2e20b2f83f0e52d00c1caecef70296ffb42e8b81a075e3eaca1018df9"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.138/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.1"
@@ -409,7 +409,7 @@ checksum = "sha256:Algorithm"
 url = "https://dl.deno.land/release/v2.7.14/deno-x86_64-pc-windows-msvc.zip"
 
 [[tools.devcontainer-cli]]
-version = "0.86.1"
+version = "0.87.0"
 backend = "npm:@devcontainers/cli"
 
 [[tools.docker-cli]]
@@ -498,63 +498,64 @@ checksum = "sha256:b2816e506390a89941c63c9187d58a3cc10e9a55f2ef0685f9ea0eccaf7c9
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.fnox]]
-version = "1.24.0"
+version = "1.24.1"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:a07a192c4aeb015db3a83b8ea3cfef95df776c2d5a9dddb992f99c6c1c182082"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778320"
+checksum = "sha256:0397055dab81f89cd4eb2ed49ca928427860c3dfad1cabb7af7074161abb3ef3"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864781"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:7d448e03ed12c38ed5c353420939e1062e02a6d537cae1d1d80878039fec3c08"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778322"
+checksum = "sha256:cdade96db9d5b0a447fd815fda40adad0188dd33983160f59c19e7ff19adba54"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864786"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:5d15ce680a673c7ae54db706aa5d59f847b78ad70178a8d4c24e7e70d94f5774"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778338"
+checksum = "sha256:96f8089170e4d3eb0f70d128edd2613142e58a4730351c0415a6452b594304ec"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864802"
 
 [tools.fnox."platforms.linux-x64-baseline"]
-checksum = "sha256:5d15ce680a673c7ae54db706aa5d59f847b78ad70178a8d4c24e7e70d94f5774"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778338"
+checksum = "sha256:96f8089170e4d3eb0f70d128edd2613142e58a4730351c0415a6452b594304ec"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864802"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:bb5a51ea8123b46a872c803ce36e7719376a9b8b9556d71ca5244cc45f9f35f6"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778341"
+checksum = "sha256:982f56078ba9f7cc01323731b107a5bb99050993df73e2d54a2d6ad53edd0304"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864803"
 
 [tools.fnox."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:bb5a51ea8123b46a872c803ce36e7719376a9b8b9556d71ca5244cc45f9f35f6"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778341"
+checksum = "sha256:982f56078ba9f7cc01323731b107a5bb99050993df73e2d54a2d6ad53edd0304"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864803"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:5ac3f14fb7dd34d1d30c148dabfcaceddd9780bba720d226b34381eb71313155"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778318"
+checksum = "sha256:a9d4928b4f41abce433f9a6254d1f15061ae6bbc6be9c9ddbfd473d8dc2efbff"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864782"
+provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:e17c4eeb885c7d740a8e14b0f1c12051f1ecaba97c1981a7800d87d4b936f0b4"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778321"
+checksum = "sha256:70d9dcfbe8627d91966191fdcedb7cc87bd89cee6a7fd242aef0a8d78312a962"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864783"
 
 [tools.fnox."platforms.macos-x64-baseline"]
-checksum = "sha256:e17c4eeb885c7d740a8e14b0f1c12051f1ecaba97c1981a7800d87d4b936f0b4"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778321"
+checksum = "sha256:70d9dcfbe8627d91966191fdcedb7cc87bd89cee6a7fd242aef0a8d78312a962"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864783"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:b5c47933cdf03615507e58916174413a15692820e5616ab8e05a8a204f0faa2a"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778333"
+checksum = "sha256:5479d52a03e3fcac6636d1801da1a13f220fa36d320fc8e180ecfb9183ee0458"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864798"
 
 [tools.fnox."platforms.windows-x64-baseline"]
-checksum = "sha256:b5c47933cdf03615507e58916174413a15692820e5616ab8e05a8a204f0faa2a"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.0/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/413778333"
+checksum = "sha256:5479d52a03e3fcac6636d1801da1a13f220fa36d320fc8e180ecfb9183ee0458"
+url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864798"
 
 [[tools.fx]]
 version = "39.2.0"
@@ -653,63 +654,63 @@ checksum = "sha256:cce66ae7e442030334927bfbfd917690713e63d215aba93027f99807828fe
 url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-windows_amd64.zip"
 
 [[tools."github:ast-grep/ast-grep"]]
-version = "0.42.1"
+version = "0.42.2"
 backend = "github:ast-grep/ast-grep"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-arm64"]
-checksum = "sha256:3ba383839044cf9817929435f5ce0027f91d06931e8efb32d942e58d73d92be5"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-aarch64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388772218"
+checksum = "sha256:a68d7645d49dbd97b423cc8a64f7839fe5541eedf0b4bb4ab79f4ba5d53f0376"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-aarch64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416916369"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-arm64-musl"]
-checksum = "sha256:3ba383839044cf9817929435f5ce0027f91d06931e8efb32d942e58d73d92be5"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-aarch64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388772218"
+checksum = "sha256:a68d7645d49dbd97b423cc8a64f7839fe5541eedf0b4bb4ab79f4ba5d53f0376"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-aarch64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416916369"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64"]
-checksum = "sha256:5de8b87cba67fc8dc3e239d54b6484802ad745a7ae3de76be4fe89661dc52657"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388771275"
+checksum = "sha256:52aef3ed330a5fb1d9f399b83285bfcf47d92401249803f62711573e83cb47ae"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915454"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64-baseline"]
-checksum = "sha256:5de8b87cba67fc8dc3e239d54b6484802ad745a7ae3de76be4fe89661dc52657"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388771275"
+checksum = "sha256:52aef3ed330a5fb1d9f399b83285bfcf47d92401249803f62711573e83cb47ae"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915454"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64-musl"]
-checksum = "sha256:5de8b87cba67fc8dc3e239d54b6484802ad745a7ae3de76be4fe89661dc52657"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388771275"
+checksum = "sha256:52aef3ed330a5fb1d9f399b83285bfcf47d92401249803f62711573e83cb47ae"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915454"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:5de8b87cba67fc8dc3e239d54b6484802ad745a7ae3de76be4fe89661dc52657"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388771275"
+checksum = "sha256:52aef3ed330a5fb1d9f399b83285bfcf47d92401249803f62711573e83cb47ae"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915454"
 
 [tools."github:ast-grep/ast-grep"."platforms.macos-arm64"]
-checksum = "sha256:c3961d8e8a4ee0ce2d0d98c7beeb168bb331cdc766b53630118a7b6c4fd39015"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-aarch64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388770234"
+checksum = "sha256:9f1522db1f7174ab0cba5a6d1df1861f9b92803fac407988177c28f744bd0f94"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-aarch64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915852"
 
 [tools."github:ast-grep/ast-grep"."platforms.macos-x64"]
-checksum = "sha256:a038965bfd7fe44257c771cdf8918dc3467dd8ec0eef673b8b14f639b144cdbd"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388770498"
+checksum = "sha256:6652401a9b98f7c8c528f969d34e2a42d2cb60f29fc4dc569209d16c29702d9c"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915354"
 
 [tools."github:ast-grep/ast-grep"."platforms.macos-x64-baseline"]
-checksum = "sha256:a038965bfd7fe44257c771cdf8918dc3467dd8ec0eef673b8b14f639b144cdbd"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388770498"
+checksum = "sha256:6652401a9b98f7c8c528f969d34e2a42d2cb60f29fc4dc569209d16c29702d9c"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416915354"
 
 [tools."github:ast-grep/ast-grep"."platforms.windows-x64"]
-checksum = "sha256:fe34f631bb24c08ad146f92ca2a92971a53d179461b509fd8d32dc863bff9f83"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388771363"
+checksum = "sha256:b9b87a283f45de1d604db1b747549b30110227fe905dd9f0362d0cf3022e381f"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416916313"
 
 [tools."github:ast-grep/ast-grep"."platforms.windows-x64-baseline"]
-checksum = "sha256:fe34f631bb24c08ad146f92ca2a92971a53d179461b509fd8d32dc863bff9f83"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.1/app-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/388771363"
+checksum = "sha256:b9b87a283f45de1d604db1b747549b30110227fe905dd9f0362d0cf3022e381f"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.42.2/app-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/416916313"
 
 [[tools."github:chmln/sd"]]
 version = "1.1.0"
@@ -1050,53 +1051,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.204"
+version = "0.1.207"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:992e8d6462f8a9d585d1b64286ab249d50f8c25fbb05fb090fb433c9a5b4bf71"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175972"
+checksum = "sha256:996def3f5596ea1504fa4ca0f93cef9c7b72d671841fca971b3c0388bc6f9e95"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053615"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:992e8d6462f8a9d585d1b64286ab249d50f8c25fbb05fb090fb433c9a5b4bf71"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175972"
+checksum = "sha256:996def3f5596ea1504fa4ca0f93cef9c7b72d671841fca971b3c0388bc6f9e95"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053615"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:7c5e570d3ec075287d101bf89aa51a4dd22ee5030edfb9c3915535194ad982ad"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175967"
+checksum = "sha256:050f55bb35ffbd0c759a78f7cd5f03a4cd5de4713570b1c36e88e4d5ece4b181"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053614"
 
 [tools."github:raine/workmux"."platforms.linux-x64-baseline"]
-checksum = "sha256:7c5e570d3ec075287d101bf89aa51a4dd22ee5030edfb9c3915535194ad982ad"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175967"
+checksum = "sha256:050f55bb35ffbd0c759a78f7cd5f03a4cd5de4713570b1c36e88e4d5ece4b181"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053614"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:7c5e570d3ec075287d101bf89aa51a4dd22ee5030edfb9c3915535194ad982ad"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175967"
+checksum = "sha256:050f55bb35ffbd0c759a78f7cd5f03a4cd5de4713570b1c36e88e4d5ece4b181"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053614"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:7c5e570d3ec075287d101bf89aa51a4dd22ee5030edfb9c3915535194ad982ad"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175967"
+checksum = "sha256:050f55bb35ffbd0c759a78f7cd5f03a4cd5de4713570b1c36e88e4d5ece4b181"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053614"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:b2c51a91c942305c1eef699f6b0f142069f2a83944067b984021bf230644f8c5"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175974"
+checksum = "sha256:db621299b66f640f6be5e5ba53d75ffbcbb6ebdf87013d2f811935bde6d5e499"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053620"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:bdf7be5f321266c69625563809761d0c33db62092a95672ada5ffc84221ebf44"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175970"
+checksum = "sha256:e22cfcf71420edde600cf594ebecf9b7899890fd3d3d0977673055994f656b2b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053618"
 
 [tools."github:raine/workmux"."platforms.macos-x64-baseline"]
-checksum = "sha256:bdf7be5f321266c69625563809761d0c33db62092a95672ada5ffc84221ebf44"
-url = "https://github.com/raine/workmux/releases/download/v0.1.204/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/416175970"
+checksum = "sha256:e22cfcf71420edde600cf594ebecf9b7899890fd3d3d0977673055994f656b2b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.207/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/419053618"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.6.0"
@@ -1630,7 +1631,7 @@ checksum = "sha256:cc5149eabd53779ce1e7bdc5401643622d0c7e6800ade18928a767e940bb0
 url = "https://nodejs.org/dist/v24.15.0/node-v24.15.0-win-x64.zip"
 
 [[tools."npm:@commitlint/cli"]]
-version = "21.0.0"
+version = "21.0.1"
 backend = "npm:@commitlint/cli"
 
 [[tools."npm:@mariozechner/pi-coding-agent"]]
@@ -1642,7 +1643,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.14.46"
+version = "1.14.49"
 backend = "npm:opencode-ai"
 
 [[tools."npm:prettier"]]
@@ -2121,48 +2122,48 @@ checksum = "sha256:82c20fbd19ac62073b8ecf89e026fbd209f702a2922106e4ff2ed6934d193
 url = "https://github.com/go-task/task/releases/download/v3.50.0/task_windows_amd64.zip"
 
 [[tools.television]]
-version = "0.15.6"
+version = "0.15.7"
 backend = "aqua:alexpasmantier/television"
 
 [tools.television."platforms.linux-arm64"]
-checksum = "sha256:134392b39c62a981d0ac6e7a0fa2b37fe5985d088545cb1dbbd02f3625d6d51f"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:6f99d93662bb5e741dee9050637b345d612498d4ce13cbee707b4464cf79ad55"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.television."platforms.linux-x64"]
-checksum = "sha256:fdf8aa4a2f10da1acd608cffdedda380d15640020c504df73fde43db879ad141"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:da70438c6bcaf1f465115575678953138dde897609ff8db23b4a19ebab965e1c"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.television."platforms.linux-x64-baseline"]
-checksum = "sha256:fdf8aa4a2f10da1acd608cffdedda380d15640020c504df73fde43db879ad141"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:da70438c6bcaf1f465115575678953138dde897609ff8db23b4a19ebab965e1c"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.television."platforms.linux-x64-musl"]
-checksum = "sha256:fdf8aa4a2f10da1acd608cffdedda380d15640020c504df73fde43db879ad141"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:da70438c6bcaf1f465115575678953138dde897609ff8db23b4a19ebab965e1c"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.television."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:fdf8aa4a2f10da1acd608cffdedda380d15640020c504df73fde43db879ad141"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:da70438c6bcaf1f465115575678953138dde897609ff8db23b4a19ebab965e1c"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.television."platforms.macos-arm64"]
-checksum = "sha256:b05e057292f67ecf222662ac7843b505c5c338025b9fcb3c1bfb219e385dc4bd"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:e2ec72a231c8cd21b37fb91fa390b5fb12a742103374bac884463f62754fb19d"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-aarch64-apple-darwin.tar.gz"
 
 [tools.television."platforms.macos-x64"]
-checksum = "sha256:1365f0b789f1e279d396153b1f788eb892af6c11426aa938b258f1c216927438"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:f2f0df2325baf575e097adc6c7730c7b33cc7ffc05c6c553afee0cc75444882b"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-apple-darwin.tar.gz"
 
 [tools.television."platforms.macos-x64-baseline"]
-checksum = "sha256:1365f0b789f1e279d396153b1f788eb892af6c11426aa938b258f1c216927438"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:f2f0df2325baf575e097adc6c7730c7b33cc7ffc05c6c553afee0cc75444882b"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-apple-darwin.tar.gz"
 
 [tools.television."platforms.windows-x64"]
-checksum = "sha256:4b9d4117d4ac078cd4996ee4d19bcb554dea6cc8f4db5723dbfc678e9bcf8ba6"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-pc-windows-msvc.tar.gz"
+checksum = "sha256:1394deec62a37848c5fa6fb156988b8e0576befec2679b002cb92b4371558524"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-pc-windows-msvc.tar.gz"
 
 [tools.television."platforms.windows-x64-baseline"]
-checksum = "sha256:4b9d4117d4ac078cd4996ee4d19bcb554dea6cc8f4db5723dbfc678e9bcf8ba6"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.6/tv-0.15.6-x86_64-pc-windows-msvc.tar.gz"
+checksum = "sha256:1394deec62a37848c5fa6fb156988b8e0576befec2679b002cb92b4371558524"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-pc-windows-msvc.tar.gz"
 
 [[tools.tmux]]
 version = "3.6a"
@@ -2320,62 +2321,62 @@ checksum = "sha256:628b8743d552f2cff2dee2b783a4827ef555409def3fb9ec536117d96cda2
 url = "https://github.com/jdx/usage/releases/download/v3.3.0/usage-x86_64-pc-windows-msvc.zip"
 
 [[tools.uv]]
-version = "0.11.12"
+version = "0.11.14"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:b70e87f15f12d750d218042c4ed36e41de0757eab249d332ee2e242e4174b5d5"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d7d3966e46915c5f6932692aaf152a2473eecb1d2517ca4f8e88a07484b380b6"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:b70e87f15f12d750d218042c4ed36e41de0757eab249d332ee2e242e4174b5d5"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d7d3966e46915c5f6932692aaf152a2473eecb1d2517ca4f8e88a07484b380b6"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:591a7557f5ba7e51565f338dd4c50cebc12820ec2ebb8403a4304685f8d53ab9"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-baseline"]
-checksum = "sha256:591a7557f5ba7e51565f338dd4c50cebc12820ec2ebb8403a4304685f8d53ab9"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:591a7557f5ba7e51565f338dd4c50cebc12820ec2ebb8403a4304685f8d53ab9"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:591a7557f5ba7e51565f338dd4c50cebc12820ec2ebb8403a4304685f8d53ab9"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:bb7c6ef869ec00cd1452f4884acf23d00b153c356ba9197ae99a1bc1ceadb7f3"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:4333af5c0730d94323a7819bbdf87ce92dd07fc857d67fff0059e0fca31b5c02"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:32fb217e6181384bf6534b31adcc66cd552eff98643c4bb35832be8552486912"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:9836c1440b0bd6aa5f81793648a339bd01d593b7b8f575de3b855dae4ab64654"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64-baseline"]
-checksum = "sha256:32fb217e6181384bf6534b31adcc66cd552eff98643c4bb35832be8552486912"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:9836c1440b0bd6aa5f81793648a339bd01d593b7b8f575de3b855dae4ab64654"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:e46956a6b088a0382101c797eef945c1b03826e629e968d434cf838d42d85b6b"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:52ba5d19409aaa688a8a1a6ec8dfb6a4817230d20186e75f4006105c3e39a846"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64-baseline"]
-checksum = "sha256:e46956a6b088a0382101c797eef945c1b03826e629e968d434cf838d42d85b6b"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:52ba5d19409aaa688a8a1a6ec8dfb6a4817230d20186e75f4006105c3e39a846"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [[tools.yazi]]
