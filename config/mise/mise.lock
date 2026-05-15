@@ -253,36 +253,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.141"
+version = "2.1.142"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/linux-x64/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:1e3836b2e20b2f83f0e52d00c1caecef70296ffb42e8b81a075e3eaca1018df9"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/darwin-arm64/claude"
+checksum = "blake3:d9d373ca69e5fbcb4b9cb245183112335e7ed71c9c7c281d60281b6e7a43605e"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.141/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.142/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.1"
@@ -413,41 +413,42 @@ version = "0.87.0"
 backend = "npm:@devcontainers/cli"
 
 [[tools.docker-cli]]
-version = "29.4.3"
+version = "29.5.0"
 backend = "aqua:docker/cli"
 
 [tools.docker-cli."platforms.linux-arm64"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.4.3.tgz"
+url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.linux-arm64-musl"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.4.3.tgz"
+url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.linux-x64"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.linux-x64-baseline"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.linux-x64-musl"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.linux-x64-musl-baseline"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.4.3.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.macos-arm64"]
-url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.4.3.tgz"
+checksum = "blake3:cc51fecf1c8537e59371172830f139bc6f5b1e13736767b7e33226a0cec352dd"
+url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.macos-x64"]
-url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.4.3.tgz"
+url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.macos-x64-baseline"]
-url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.4.3.tgz"
+url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.5.0.tgz"
 
 [tools.docker-cli."platforms.windows-x64"]
-url = "https://download.docker.com/win/static/stable/x86_64/docker-29.4.3.zip"
+url = "https://download.docker.com/win/static/stable/x86_64/docker-29.5.0.zip"
 
 [tools.docker-cli."platforms.windows-x64-baseline"]
-url = "https://download.docker.com/win/static/stable/x86_64/docker-29.4.3.zip"
+url = "https://download.docker.com/win/static/stable/x86_64/docker-29.5.0.zip"
 
 [[tools.elixir]]
 version = "1.19.5-otp-28"
@@ -498,64 +499,64 @@ checksum = "sha256:b2816e506390a89941c63c9187d58a3cc10e9a55f2ef0685f9ea0eccaf7c9
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.fnox]]
-version = "1.24.1"
+version = "1.25.0"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:0397055dab81f89cd4eb2ed49ca928427860c3dfad1cabb7af7074161abb3ef3"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864781"
+checksum = "sha256:797f5f84f544c7ac783fc059c45b4e04a03a8b9cf760ca4a7701e1dd9e530f3f"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514968"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:cdade96db9d5b0a447fd815fda40adad0188dd33983160f59c19e7ff19adba54"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864786"
+checksum = "sha256:df8ca8f3b375e517c5ec3b0f02fd4f1267c5fda57a4dfb226e29cf052da95593"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514969"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:96f8089170e4d3eb0f70d128edd2613142e58a4730351c0415a6452b594304ec"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864802"
+checksum = "sha256:d51fbc0bff0e93b848cfd8cadd8cf7ab95dfe0f5e139d3f12e75250f5113982b"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514981"
 
 [tools.fnox."platforms.linux-x64-baseline"]
-checksum = "sha256:96f8089170e4d3eb0f70d128edd2613142e58a4730351c0415a6452b594304ec"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864802"
+checksum = "sha256:d51fbc0bff0e93b848cfd8cadd8cf7ab95dfe0f5e139d3f12e75250f5113982b"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514981"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:982f56078ba9f7cc01323731b107a5bb99050993df73e2d54a2d6ad53edd0304"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864803"
+checksum = "sha256:68ea42eea0dcbd55fe31232e020eac9f14376986b58c5a24519d96ae5fa70514"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514983"
 
 [tools.fnox."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:982f56078ba9f7cc01323731b107a5bb99050993df73e2d54a2d6ad53edd0304"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864803"
+checksum = "sha256:68ea42eea0dcbd55fe31232e020eac9f14376986b58c5a24519d96ae5fa70514"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514983"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:a9d4928b4f41abce433f9a6254d1f15061ae6bbc6be9c9ddbfd473d8dc2efbff"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864782"
+checksum = "sha256:a2ccd96b6f396c06e3f0544f339c0506b387b097b4622f1ea38a78e30b61f46f"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514967"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:70d9dcfbe8627d91966191fdcedb7cc87bd89cee6a7fd242aef0a8d78312a962"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864783"
+checksum = "sha256:0ca4c856e5959098c8e36375e96b69ef8c91bbfd7d70773d6ea462c2d60bf249"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514965"
 
 [tools.fnox."platforms.macos-x64-baseline"]
-checksum = "sha256:70d9dcfbe8627d91966191fdcedb7cc87bd89cee6a7fd242aef0a8d78312a962"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864783"
+checksum = "sha256:0ca4c856e5959098c8e36375e96b69ef8c91bbfd7d70773d6ea462c2d60bf249"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514965"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:5479d52a03e3fcac6636d1801da1a13f220fa36d320fc8e180ecfb9183ee0458"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864798"
+checksum = "sha256:c8ea04b5ecae4513b2224f055c46bf6bdf862df6c3224d64406e041edc9a219f"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514980"
 
 [tools.fnox."platforms.windows-x64-baseline"]
-checksum = "sha256:5479d52a03e3fcac6636d1801da1a13f220fa36d320fc8e180ecfb9183ee0458"
-url = "https://github.com/jdx/fnox/releases/download/v1.24.1/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/418864798"
+checksum = "sha256:c8ea04b5ecae4513b2224f055c46bf6bdf862df6c3224d64406e041edc9a219f"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514980"
 
 [[tools.fx]]
 version = "39.2.0"
@@ -1643,7 +1644,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.14.49"
+version = "1.14.51"
 backend = "npm:opencode-ai"
 
 [[tools."npm:prettier"]]

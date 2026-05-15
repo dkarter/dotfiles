@@ -507,36 +507,36 @@ url = "https://github.com/sibprogrammer/xq/releases/download/v1.4.0/xq_1.4.0_win
 url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/363566302"
 
 [[tools.helm]]
-version = "4.1.4"
+version = "4.2.0"
 backend = "aqua:helm/helm"
 
 [tools.helm."platforms.linux-arm64"]
-checksum = "sha256:13d03672be289045d2ff00e4e345d61de1c6f21c1257a45955a30e8ae036d8f1"
-url = "https://get.helm.sh/helm-v4.1.4-linux-arm64.tar.gz"
+checksum = "sha256:1f8de130dfbd04de64978e7b852a7a547be1404956a366608276d2520b678670"
+url = "https://get.helm.sh/helm-v4.2.0-linux-arm64.tar.gz"
 
 [tools.helm."platforms.linux-arm64-musl"]
-checksum = "sha256:13d03672be289045d2ff00e4e345d61de1c6f21c1257a45955a30e8ae036d8f1"
-url = "https://get.helm.sh/helm-v4.1.4-linux-arm64.tar.gz"
+checksum = "sha256:1f8de130dfbd04de64978e7b852a7a547be1404956a366608276d2520b678670"
+url = "https://get.helm.sh/helm-v4.2.0-linux-arm64.tar.gz"
 
 [tools.helm."platforms.linux-x64"]
-checksum = "sha256:70b2c30a19da4db264dfd68c8a3664e05093a361cefd89572ffb36f8abfa3d09"
-url = "https://get.helm.sh/helm-v4.1.4-linux-amd64.tar.gz"
+checksum = "sha256:97dbeb971be4ac4b27e3839976d9564c0fb35c6f3b1da89dd1e292d236af4096"
+url = "https://get.helm.sh/helm-v4.2.0-linux-amd64.tar.gz"
 
 [tools.helm."platforms.linux-x64-musl"]
-checksum = "sha256:70b2c30a19da4db264dfd68c8a3664e05093a361cefd89572ffb36f8abfa3d09"
-url = "https://get.helm.sh/helm-v4.1.4-linux-amd64.tar.gz"
+checksum = "sha256:97dbeb971be4ac4b27e3839976d9564c0fb35c6f3b1da89dd1e292d236af4096"
+url = "https://get.helm.sh/helm-v4.2.0-linux-amd64.tar.gz"
 
 [tools.helm."platforms.macos-arm64"]
-checksum = "sha256:7c2eca678e8001fa863cdf8cbf6ac1b3799f9404a89eb55c08260ef5732e658d"
-url = "https://get.helm.sh/helm-v4.1.4-darwin-arm64.tar.gz"
+checksum = "sha256:f13f959015447b6bc309f9fd506509926543988a39035c088b52522ec95e2acb"
+url = "https://get.helm.sh/helm-v4.2.0-darwin-arm64.tar.gz"
 
 [tools.helm."platforms.macos-x64"]
-checksum = "sha256:abf09c8503ad1d8ef76d3737a058c3456a998aae5f5966fce4bb3031aeb1654e"
-url = "https://get.helm.sh/helm-v4.1.4-darwin-amd64.tar.gz"
+checksum = "sha256:1376ea697140e4db316736e760d5a47d12afc1524dce704476ef06fd7fdeddc6"
+url = "https://get.helm.sh/helm-v4.2.0-darwin-amd64.tar.gz"
 
 [tools.helm."platforms.windows-x64"]
-checksum = "sha256:f6a7bca730093d5b859a33141d34361f1cc7bc358657b48c75ce36e1e8bdf8b6"
-url = "https://get.helm.sh/helm-v4.1.4-windows-amd64.tar.gz"
+checksum = "sha256:34bf9659f8f04f3841a60131183b8e2acc44e260db4c93b889ff09718cacca6f"
+url = "https://get.helm.sh/helm-v4.2.0-windows-amd64.tar.gz"
 
 [[tools.kubectl]]
 version = "1.36.1"
@@ -603,36 +603,36 @@ checksum = "sha256:facae8869c1bf144468191c563002162273a2c2761f052659170530cae3fa
 url = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/lazydocker_0.25.2_Windows_x86_64.zip"
 
 [[tools.opentofu]]
-version = "1.11.7"
+version = "1.12.0"
 backend = "aqua:opentofu/opentofu"
 
 [tools.opentofu."platforms.linux-arm64"]
-checksum = "sha256:ba60522d74e2d31b01f2d4bc663b328c4894b1d0d94c6074ec06dd4dd87e8d4e"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_linux_arm64.tar.gz"
+checksum = "sha256:2c7f48f95678cf75bbe34b66eeee35de75e6ee46e2ec4b55f80a0d93445f47d8"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_linux_arm64.tar.gz"
 
 [tools.opentofu."platforms.linux-arm64-musl"]
-checksum = "sha256:ba60522d74e2d31b01f2d4bc663b328c4894b1d0d94c6074ec06dd4dd87e8d4e"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_linux_arm64.tar.gz"
+checksum = "sha256:2c7f48f95678cf75bbe34b66eeee35de75e6ee46e2ec4b55f80a0d93445f47d8"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_linux_arm64.tar.gz"
 
 [tools.opentofu."platforms.linux-x64"]
-checksum = "sha256:ed10a0aa2624c87138464f22eda3de13ba0f118fc8677b977fec4318949fddd0"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_linux_amd64.tar.gz"
+checksum = "sha256:5fe1da79e7779538a13713809e83abe1238b95a7abd43ecffc6161af10b0ddf7"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_linux_amd64.tar.gz"
 
 [tools.opentofu."platforms.linux-x64-musl"]
-checksum = "sha256:ed10a0aa2624c87138464f22eda3de13ba0f118fc8677b977fec4318949fddd0"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_linux_amd64.tar.gz"
+checksum = "sha256:5fe1da79e7779538a13713809e83abe1238b95a7abd43ecffc6161af10b0ddf7"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_linux_amd64.tar.gz"
 
 [tools.opentofu."platforms.macos-arm64"]
-checksum = "sha256:c4eae8c8eaa3ccc3e85245736159cc96e35d5f4c3dd609393673eefd932cb198"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_darwin_arm64.tar.gz"
+checksum = "sha256:9ad35307131102371d770cfc1a9806225fd5040acf1a3d3d8c3b5ad5418cd454"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_darwin_arm64.tar.gz"
 
 [tools.opentofu."platforms.macos-x64"]
-checksum = "sha256:056277fed5548159044905b396aca18b19702270e3fb2bfcde9d2f6e118c583d"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_darwin_amd64.tar.gz"
+checksum = "sha256:472a9b14bd9fc617b58dd00cf39411f64bd6fff6474d968a7ce041f33e991e72"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_darwin_amd64.tar.gz"
 
 [tools.opentofu."platforms.windows-x64"]
-checksum = "sha256:191bdc651ff6b2bd2c3e88ff432976bfce07a8d61c52fbd86e57633aad611256"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.11.7/tofu_1.11.7_windows_amd64.tar.gz"
+checksum = "sha256:5900eb95e934c4cebb22a487cfa372710dd1f0234400c1c16c0db63b8485e6ce"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_windows_amd64.tar.gz"
 
 [[tools.terraform]]
 version = "1.15.3"
