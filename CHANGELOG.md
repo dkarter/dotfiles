@@ -2,6 +2,69 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.4.0](https://github.com/dkarter/dotfiles/compare/v31.3.0...v31.4.0) (2026-05-17)
+
+
+### Features
+
+* add cmux config ([588d63c](https://github.com/dkarter/dotfiles/commit/588d63c0acb6908ed4b2cee3bbb3de9f55fd59db))
+* add devpod support ([af26f34](https://github.com/dkarter/dotfiles/commit/af26f345634ceef73fa68b5a8d174141cc2c7afb))
+* **ci:** include global mise tools in oci image ([8e41b23](https://github.com/dkarter/dotfiles/commit/8e41b2377f95280c01a450dbeade9f8387704bd5))
+* **ci:** publish mise oci image ([7c7a988](https://github.com/dkarter/dotfiles/commit/7c7a988964cd4ad04189053362ee060d5b30b138))
+* **ci:** publish multi-arch mise oci image ([b08769f](https://github.com/dkarter/dotfiles/commit/b08769f1882854de1346ac20fba2e5fedf983658))
+* **ci:** report critical oci vulnerabilities ([063083a](https://github.com/dkarter/dotfiles/commit/063083a81cf52206288320e9fdbbf638344e9d0c))
+* **devcontainer:** add prebuilt dotfiles image ([9caea86](https://github.com/dkarter/dotfiles/commit/9caea8678d8fde76824b5103edda9be6ecc6ea6c))
+* **opencode:** enable lsp ([28a8ee6](https://github.com/dkarter/dotfiles/commit/28a8ee6a899e91692fea43333d9518005cecbc4b))
+* **skills:** add Elixir AST refactor skill ([e4338a2](https://github.com/dkarter/dotfiles/commit/e4338a2357f24c1bdbbbb03ab2f794e3f62a6019))
+* **task:** add devcontainer tasks ([866b351](https://github.com/dkarter/dotfiles/commit/866b351019603511af553463dc4df2cf7e362517))
+* **task:** add mise:commit ([1893307](https://github.com/dkarter/dotfiles/commit/1893307e938679fc215c7a97d9f7273e443d0840))
+* **tuicr:** set side-by-side as the default layout ([ad2588f](https://github.com/dkarter/dotfiles/commit/ad2588f6141b279fcea39f5da16893d98774901c))
+
+
+### Bug Fixes
+
+* **aube:** keep install advisory setting as string ([8267386](https://github.com/dkarter/dotfiles/commit/826738627d8f6cc65daff05a846a826381f20446))
+* **aube:** switch lockfile to aube and tighten security ([201e5d9](https://github.com/dkarter/dotfiles/commit/201e5d953cf42267152d81071fbd412ea2fe4e53))
+* **ci:** authenticate mise oci checkout ([f4d81a7](https://github.com/dkarter/dotfiles/commit/f4d81a7057e0981fdf3dec611f1d99e05058db2e))
+* **ci:** avoid checkout submodule cleanup ([74e226a](https://github.com/dkarter/dotfiles/commit/74e226a090ffb5c08acea97e7f1ea4abc6cd00e4))
+* **ci:** isolate generated oci config ([aff6d2a](https://github.com/dkarter/dotfiles/commit/aff6d2af006436027cbde5b50232df665736f835))
+* **ci:** keep manual checkout for image workflows ([7cd196b](https://github.com/dkarter/dotfiles/commit/7cd196b850635ddade0bbc4a3d5af91c394ca670))
+* **ci:** publish latest mise oci tag ([af04c38](https://github.com/dkarter/dotfiles/commit/af04c38d4e2e55596018cc9d6f010a9fa17eb921))
+* **ci:** scan mise oci images for secrets ([457135d](https://github.com/dkarter/dotfiles/commit/457135d2105dd8a33b2a5ebf145bb8b10719f78a))
+* **ci:** scope registry credentials ([098bc5c](https://github.com/dkarter/dotfiles/commit/098bc5c16c080dff840bd30261ff830920ae262f))
+* **ci:** set registry auth paths at runtime ([c489490](https://github.com/dkarter/dotfiles/commit/c4894907ddb01e93b3081ed15f10bb0de63b04fc))
+* **ci:** skip unsupported arm64 oci tool ([08d0e91](https://github.com/dkarter/dotfiles/commit/08d0e91938d63fcd47c0f9b561e8542d1d1c2148))
+* **ci:** skip unsupported oci tool artifacts ([1a71261](https://github.com/dkarter/dotfiles/commit/1a712615031ccb9369eac586e0c47634f7d3b37c))
+* **ci:** use Docker login action for GHCR ([02bc576](https://github.com/dkarter/dotfiles/commit/02bc5762354b6bc4aa4c686c50cb7111d5c4366b))
+* **debian:** improve debian setup in devcontainer ([71644bb](https://github.com/dkarter/dotfiles/commit/71644bb8caee1539809991043e42037c195b4765))
+* **deps:** patch vulnerability in fast-uri ([80a8ff2](https://github.com/dkarter/dotfiles/commit/80a8ff2db200004825ec2d77b58666e729fca56b))
+* **devcontainer:** add it to mise and fix workspace ([fac8129](https://github.com/dkarter/dotfiles/commit/fac8129db905dd01043e754bfe41dd0839957118))
+* **devcontainer:** cache setup layer by inputs ([85e85e4](https://github.com/dkarter/dotfiles/commit/85e85e49872250c54d3641df75b67d895c770c98))
+* **devcontainer:** expose mise tools on path ([4ea3c02](https://github.com/dkarter/dotfiles/commit/4ea3c0293f72c9a6f3edecc99a7ccf09d2ac3bfe))
+* **devcontainer:** hash setup inputs from git index ([2eeda7a](https://github.com/dkarter/dotfiles/commit/2eeda7a049e8fa7615fb6065449e01ab5f2bcb46))
+* **devcontainer:** prewarm development tools ([886f9f8](https://github.com/dkarter/dotfiles/commit/886f9f8e7d780e0fd3005fff74df59ce3d0dcc4a))
+* **devcontainer:** publish image tags reliably ([a9deb05](https://github.com/dkarter/dotfiles/commit/a9deb0573d34550b70230bec251bb42b5c82b70a))
+* **devcontainer:** rely on mise activation for tools ([61fdba4](https://github.com/dkarter/dotfiles/commit/61fdba4a0ae25a5addabdbee2984706a0cff7e48))
+* **devcontainer:** speed up image builds ([0c0934b](https://github.com/dkarter/dotfiles/commit/0c0934b77e45ec69e5dba645b2a0c3a71064a633))
+* **devcontainer:** tolerate broken done styling ([9af929d](https://github.com/dkarter/dotfiles/commit/9af929dfff9c69582907a0b6497ca538b0bd6187))
+* **git:** add alias for mergetool + disable backups for mergetool ([d7361bf](https://github.com/dkarter/dotfiles/commit/d7361bfb32a3aca34c1cbca0ad55b22323e5f9e8))
+* **git:** ignore .codex dir ([7e385f3](https://github.com/dkarter/dotfiles/commit/7e385f3d976e2d278fe9d223843835558284a278))
+* ignore claude worktrees ([7995531](https://github.com/dkarter/dotfiles/commit/79955318968dcb78adefa269643960a9ba704ba0))
+* **mise:** build OCI image on Debian 13 ([9ac0574](https://github.com/dkarter/dotfiles/commit/9ac0574fd1c7a14099f52c45a434474c184ff025))
+* **mise:** lock global tools ([bbaead6](https://github.com/dkarter/dotfiles/commit/bbaead690ac036c270c8e7da62196215a420d3eb))
+* **mise:** remove unused tools ([9af59ef](https://github.com/dkarter/dotfiles/commit/9af59ef247f2d9ab35a5aabed4f565f92a656652))
+* **mise:** silence trust warnings ([27d8984](https://github.com/dkarter/dotfiles/commit/27d89846e28e63ddf249b48cddcb96eb1f007dda))
+* **mise:** switch npm package manager to aube ([0c2fca6](https://github.com/dkarter/dotfiles/commit/0c2fca688f5cbc0abdfb7a2d4c1493822d9a0e5f))
+* **mise:** use lock file to avoid github token ([b0695c5](https://github.com/dkarter/dotfiles/commit/b0695c530bb2ebf52eda72eeea0e3792db0f87b9))
+* **mise:** use oci safe versions ([f05dc4f](https://github.com/dkarter/dotfiles/commit/f05dc4ffd85ea1bcd34f4d4cc63d80b2b2d08640))
+* **nvim:** remove render-markdown plugin ([e7c1e70](https://github.com/dkarter/dotfiles/commit/e7c1e70afe139f2ab79a1f7fca0ca7f78d1fabe7))
+* **sesh:** remove fix that was breaking resizing ([16177e8](https://github.com/dkarter/dotfiles/commit/16177e86683162b4b50c8e244ba7bab625417fa7))
+* **sesh:** resize issue + launch session with `s` from outside tmux ([2887b6a](https://github.com/dkarter/dotfiles/commit/2887b6ad3cc6c01b6a2cec4f5f26fa86dc32faec))
+* **task:** add all mise lock files to mise:commit ([e9cc6ae](https://github.com/dkarter/dotfiles/commit/e9cc6aeec8f194e851cc91aa47b42d793e8847c4))
+* **task:** use mise install --locked for setup ([54bdf0e](https://github.com/dkarter/dotfiles/commit/54bdf0e2ffe38553a0ced246930e34c551340bde))
+* **tmux:** display message when no session found ([73f1558](https://github.com/dkarter/dotfiles/commit/73f15581134706da51f1e6808faf55e1ac3f66a2))
+* **tuicr:** disable review footer ([aca61ba](https://github.com/dkarter/dotfiles/commit/aca61ba3438937efeca64cba3da8f89b8cda0f32))
+
 ## [31.3.0](https://github.com/dkarter/dotfiles/compare/v31.2.0...v31.3.0) (2026-05-04)
 
 
