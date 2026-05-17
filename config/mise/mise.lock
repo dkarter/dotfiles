@@ -49,61 +49,61 @@ checksum = "sha256:23fe150edbcc976eabe55092e1e9d2e5e237afde69553d170e936f776b405
 url = "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-win64.zip"
 
 [[tools.aube]]
-version = "1.14.1"
+version = "1.15.0"
 backend = "github:endevco/aube"
 
 [tools.aube."platforms.linux-arm64"]
-checksum = "sha256:02355dacc9c4f68e746b2063c7688b20a1bdc7dffd3c05036bb4f1b8c32816d4"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420711572"
+checksum = "sha256:0166373a171232f53feeb7826b6846249baf2f3cc9fcf3b1630f78db431b716d"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422679901"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-arm64-musl"]
-checksum = "sha256:2e58f7e1866fa21faca256069d41db1ee7fe1f46040b5f19c87222eeeaaee58f"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420691692"
+checksum = "sha256:f984b831b177d00f0ed895f556b27ff0b0f82d331c6056e7795779075e6164c4"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422666757"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64"]
-checksum = "sha256:f51bb0cce79df01357af6fc7f9bd79b6dba27f1f889691e776040d53bc888ce9"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420696179"
+checksum = "sha256:0eacdf1abf58fbbeb63d0ee48db8fe30b3bce59b8c0cd0440aa2ee80be3d1fe1"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422669745"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64-baseline"]
-checksum = "sha256:f51bb0cce79df01357af6fc7f9bd79b6dba27f1f889691e776040d53bc888ce9"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420696179"
+checksum = "sha256:0eacdf1abf58fbbeb63d0ee48db8fe30b3bce59b8c0cd0440aa2ee80be3d1fe1"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422669745"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64-musl"]
-checksum = "sha256:ddc469bf8b48c756f6e8059fef839c1c0f48c58a65ab1c5d9314c6d51275bbce"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420695394"
+checksum = "sha256:e8202e59f78c195bd2407839ba7ffd5c44e2d50a1517041c51796f1fe2f904a9"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422669098"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:ddc469bf8b48c756f6e8059fef839c1c0f48c58a65ab1c5d9314c6d51275bbce"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420695394"
+checksum = "sha256:e8202e59f78c195bd2407839ba7ffd5c44e2d50a1517041c51796f1fe2f904a9"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422669098"
 provenance = "github-attestations"
 
 [tools.aube."platforms.macos-arm64"]
-checksum = "sha256:0176c63ba10508ce3defed0194ee98af15e4a8d45400aa7bf7811df8778a9b95"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420744187"
+checksum = "sha256:a21faec246f66647413376d928aa68e9789f6b9bc78703b57dc871189060745f"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422702201"
 provenance = "github-attestations"
 
 [tools.aube."platforms.windows-x64"]
-checksum = "sha256:f6a029ee9701eed16539eb55e931d57f123d53ac901aba68d2228bd645815bd3"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420701420"
+checksum = "sha256:a94c4ced400f0c032fadc071a0f01d9faae78f08e338e43eaf7089a56ffd8ca6"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422674079"
 provenance = "github-attestations"
 
 [tools.aube."platforms.windows-x64-baseline"]
-checksum = "sha256:f6a029ee9701eed16539eb55e931d57f123d53ac901aba68d2228bd645815bd3"
-url = "https://github.com/endevco/aube/releases/download/v1.14.1/aube-v1.14.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/420701420"
+checksum = "sha256:a94c4ced400f0c032fadc071a0f01d9faae78f08e338e43eaf7089a56ffd8ca6"
+url = "https://github.com/endevco/aube/releases/download/v1.15.0/aube-v1.15.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/422674079"
 provenance = "github-attestations"
 
 [[tools.bat]]
@@ -557,64 +557,64 @@ checksum = "sha256:b2816e506390a89941c63c9187d58a3cc10e9a55f2ef0685f9ea0eccaf7c9
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.fnox]]
-version = "1.25.0"
+version = "1.25.1"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:797f5f84f544c7ac783fc059c45b4e04a03a8b9cf760ca4a7701e1dd9e530f3f"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514968"
+checksum = "sha256:fc37354b449e93cf6a15a18c15b58b27f4304ac532559b447e88b7f4e03eea83"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647955"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:df8ca8f3b375e517c5ec3b0f02fd4f1267c5fda57a4dfb226e29cf052da95593"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514969"
+checksum = "sha256:1e5e902a941d3a7eea262699d0f7169da5e5d06155c2f82def0baff086f9d3a4"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647954"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:d51fbc0bff0e93b848cfd8cadd8cf7ab95dfe0f5e139d3f12e75250f5113982b"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514981"
+checksum = "sha256:157a3ade234eec5b8a57dfc2ae5e3ac40f1871a5fd8affac94131d91ca60023b"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647964"
 
 [tools.fnox."platforms.linux-x64-baseline"]
-checksum = "sha256:d51fbc0bff0e93b848cfd8cadd8cf7ab95dfe0f5e139d3f12e75250f5113982b"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514981"
+checksum = "sha256:157a3ade234eec5b8a57dfc2ae5e3ac40f1871a5fd8affac94131d91ca60023b"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647964"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:68ea42eea0dcbd55fe31232e020eac9f14376986b58c5a24519d96ae5fa70514"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514983"
+checksum = "sha256:9bb4f563a65ba89e5a6759e95658eafbd1e32d8bd8cb1bf72fc5ff652566eaf5"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647965"
 
 [tools.fnox."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:68ea42eea0dcbd55fe31232e020eac9f14376986b58c5a24519d96ae5fa70514"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514983"
+checksum = "sha256:9bb4f563a65ba89e5a6759e95658eafbd1e32d8bd8cb1bf72fc5ff652566eaf5"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647965"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:a2ccd96b6f396c06e3f0544f339c0506b387b097b4622f1ea38a78e30b61f46f"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514967"
+checksum = "sha256:39d1f8cc620d3784f1b4c0127a0cf404f97d35ac4233656d36891d80c77cd147"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647956"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:0ca4c856e5959098c8e36375e96b69ef8c91bbfd7d70773d6ea462c2d60bf249"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514965"
+checksum = "sha256:82ff6c5a8431a0f7d2d7c0d1c9c29c9ead860ef1bfbdd18e818b3c24bcde44cb"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647953"
 
 [tools.fnox."platforms.macos-x64-baseline"]
-checksum = "sha256:0ca4c856e5959098c8e36375e96b69ef8c91bbfd7d70773d6ea462c2d60bf249"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514965"
+checksum = "sha256:82ff6c5a8431a0f7d2d7c0d1c9c29c9ead860ef1bfbdd18e818b3c24bcde44cb"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647953"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:c8ea04b5ecae4513b2224f055c46bf6bdf862df6c3224d64406e041edc9a219f"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514980"
+checksum = "sha256:e2874ecb0bb39816d1e5af60a920875bba5831182a46dad629a206bfcc4cb5bb"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647962"
 
 [tools.fnox."platforms.windows-x64-baseline"]
-checksum = "sha256:c8ea04b5ecae4513b2224f055c46bf6bdf862df6c3224d64406e041edc9a219f"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.0/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/420514980"
+checksum = "sha256:e2874ecb0bb39816d1e5af60a920875bba5831182a46dad629a206bfcc4cb5bb"
+url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647962"
 
 [[tools.fx]]
 version = "39.2.0"
@@ -1709,7 +1709,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.15.3"
+version = "1.15.4"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
@@ -1736,32 +1736,32 @@ version = "3.4.3"
 backend = "pipx:yq"
 
 [[tools.pitchfork]]
-version = "2.10.0"
+version = "2.11.0"
 backend = "aqua:jdx/pitchfork"
 
 [tools.pitchfork."platforms.linux-arm64"]
-checksum = "sha256:77525ad496020671d8e2fc2f5e1c1b03a518bfb9f943c4375ca3f07882d58a7c"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.10.0/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:e8fdbd759c39302a266063f9b2a7a2f7905745fc87d89775f163b1219da92ef0"
+url = "https://github.com/endevco/pitchfork/releases/download/v2.11.0/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.pitchfork."platforms.linux-x64"]
-checksum = "sha256:a6a09cce0b08135cdb884b6c70c7413bd3991f03c084bdc11bf778bb274116c4"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.10.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:6d6ed643160dd6b6a71910128a0f195bea6e7ff28a74d4ed2646dd48423152db"
+url = "https://github.com/endevco/pitchfork/releases/download/v2.11.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.pitchfork."platforms.linux-x64-baseline"]
-checksum = "sha256:a6a09cce0b08135cdb884b6c70c7413bd3991f03c084bdc11bf778bb274116c4"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.10.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:6d6ed643160dd6b6a71910128a0f195bea6e7ff28a74d4ed2646dd48423152db"
+url = "https://github.com/endevco/pitchfork/releases/download/v2.11.0/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.pitchfork."platforms.macos-arm64"]
-checksum = "sha256:94427b1ce42709003f9db48d14b073bde807f41bfa034b54ccca7067b5234a4f"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.10.0/pitchfork-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:ae683351b0a492f8a62c86873faa484e3a68fd32b39ce4306730b2b25a7e96b3"
+url = "https://github.com/endevco/pitchfork/releases/download/v2.11.0/pitchfork-aarch64-apple-darwin.tar.gz"
 
 [tools.pitchfork."platforms.windows-x64"]
-checksum = "sha256:659b3c483ee0518de1f54bfb735aebbc696ff96a1c60549131cf49fb0521ba80"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.10.0/pitchfork-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:86dacad0e3516873a58278d48778457743541be6dc9063f4ce2c4b64ec05062c"
+url = "https://github.com/endevco/pitchfork/releases/download/v2.11.0/pitchfork-x86_64-pc-windows-msvc.zip"
 
 [tools.pitchfork."platforms.windows-x64-baseline"]
-checksum = "sha256:659b3c483ee0518de1f54bfb735aebbc696ff96a1c60549131cf49fb0521ba80"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.10.0/pitchfork-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:86dacad0e3516873a58278d48778457743541be6dc9063f4ce2c4b64ec05062c"
+url = "https://github.com/endevco/pitchfork/releases/download/v2.11.0/pitchfork-x86_64-pc-windows-msvc.zip"
 
 [[tools.python]]
 version = "3.12.13"
