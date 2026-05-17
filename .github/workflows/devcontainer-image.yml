@@ -5,12 +5,8 @@ name: Devcontainer Image
 on:
   workflow_dispatch:
 
-  push:
-    branches: [master]
-    paths-ignore:
-      - CHANGELOG.md
-      - README.md
-      - docs/**
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -221,14 +217,10 @@ jobs:
             "${{ steps.meta.outputs.branch_amd64 }}" \
             "${{ steps.meta.outputs.branch_arm64 }}"
 
-          if [[ "${GITHUB_REF_NAME}" == "${DEFAULT_BRANCH}" ]]; then
-            docker buildx imagetools create \
-              --tag "${{ steps.meta.outputs.latest }}" \
-              "${{ steps.meta.outputs.sha_amd64 }}" \
-              "${{ steps.meta.outputs.sha_arm64 }}"
-          fi
-        env:
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          docker buildx imagetools create \
+            --tag "${{ steps.meta.outputs.latest }}" \
+            "${{ steps.meta.outputs.sha_amd64 }}" \
+            "${{ steps.meta.outputs.sha_arm64 }}"
 
       - name: Inspect manifest
         run: docker buildx imagetools inspect "${{ steps.meta.outputs.sha }}"
