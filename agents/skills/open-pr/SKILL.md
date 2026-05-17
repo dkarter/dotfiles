@@ -27,7 +27,7 @@ First, check whether the repository has a PR template. Look in these common loca
 - `.github/PULL_REQUEST_TEMPLATE.md`
 - `.github/PULL_REQUEST_TEMPLATE/*.md`
 
-If a template exists, use it as the PR body format and fill it in using the conversation and git context.
+If a template exists, use it as the PR body format and fill it in using the conversation context and git context - but keep it concise!
 
 If no template exists, use this fallback template:
 
@@ -44,7 +44,7 @@ If no template exists, use this fallback template:
 
 # Testing
 
-[How you verified it works]
+[How would a human reviewer verify the change from a user perspective when possible - concise bullet point instructions]
 
 # Dependencies/Special Considerations
 
@@ -64,14 +64,14 @@ Guidelines:
 
 ## Create the PR
 
-1. Write a short PR title (max 72 characters)
+1. Write a short PR title (max 52 characters) - it should always be a in conventional commit style
 
 2. Ensure the branch is pushed:
    ```bash
    git push -u origin HEAD
    ```
 
-3. Open PR creation in browser (do NOT create directly):
+3. Create the PR via the CLI (or better yet if you have the MCP installed - use that)
    ```bash
    gh pr create --draft --title "<title>" --body "<body>"
    ```
