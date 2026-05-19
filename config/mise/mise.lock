@@ -155,52 +155,52 @@ checksum = "sha256:0f729b4b6f5f28d395c641eacc2e9ff68d0096b85aa0eec344aa62425144b
 url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-pc-windows-msvc.zip"
 
 [[tools.bun]]
-version = "1.3.13"
+version = "1.3.14"
 backend = "core:bun"
 
 [tools.bun."platforms.linux-arm64"]
-checksum = "sha256:70bae41b3908b0a120e1e58c5c8af30e74afae3b8d11b0d3fdd8e787ddfb4b22"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-aarch64.zip"
+checksum = "sha256:a27ffb63a8310375836e0d6f668ae17fa8d8d18b88c37c821c65331973a19a3b"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-aarch64.zip"
 
 [tools.bun."platforms.linux-arm64-musl"]
-checksum = "sha256:5385e978107ce4934298d8d6afe9bfbb898683f6cc23e6753a0da60bc60c5b81"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-aarch64-musl.zip"
+checksum = "sha256:b98e0ad3625c5c00d1d5b5ff55605c7adddbfae151861e68ade57b2d3b8703bb"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-aarch64-musl.zip"
 
 [tools.bun."platforms.linux-x64"]
-checksum = "sha256:79c0771fa8b92c33aae41e15a0e0d307ea99d0e2f00317c71c6c53237a78e25a"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64.zip"
+checksum = "sha256:951ee2aee855f08595aeec6225226a298d3fea83a3dcd6465c09cbccdf7e848f"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64.zip"
 
 [tools.bun."platforms.linux-x64-baseline"]
-checksum = "sha256:9d8a24292a7068090205daac0a5a223f5f69736f5287e37bf88d3b4031edc750"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-baseline.zip"
+checksum = "sha256:a063908ae08b7852ca10939bbdc6ceed3ddabce8fb9402dce83d65d73b36e6c7"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-baseline.zip"
 
 [tools.bun."platforms.linux-x64-musl"]
-checksum = "sha256:5b91a48f0b00df9fd2da8bff1a795d2659d842da966432969203f25da19d1c74"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-musl.zip"
+checksum = "sha256:14bd9aedeebf1dba67e8def9531c89bc989ecfdf1de42e5bfcaf1b8cd9294719"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-musl.zip"
 
 [tools.bun."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:88ca7c7ad235b498f549eea2f770f434e9f0f5e9ba95168a2d3a1f235184c394"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-musl-baseline.zip"
+checksum = "sha256:56a7d6806cf155536c0178f0ea5fbd098e684fa509ebdb4fc0a7e19fb65382dc"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-musl-baseline.zip"
 
 [tools.bun."platforms.macos-arm64"]
-checksum = "sha256:5467e3f65dba526b9fea98f0cce04efafc0c63e169733ec27b876a3ad32da190"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
+checksum = "sha256:d8b96221828ad6f97ac7ac0ab7e95872341af763001e8803e8267652c2652620"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-aarch64.zip"
 
 [tools.bun."platforms.macos-x64"]
-checksum = "sha256:e5a6c8b64f419925232d111ecb13e25f0abf55e54f792341f987623fd0778009"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-x64.zip"
+checksum = "sha256:4183df3374623e5bab315c547cfa0974533cd457d86b73b639f7a87974cd6633"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-x64.zip"
 
 [tools.bun."platforms.macos-x64-baseline"]
-checksum = "sha256:a98ba6a480f22fda9b343626b906a4e26aa53618bf85d2bc5928ecf2ba45f0ed"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-x64-baseline.zip"
+checksum = "sha256:3e35ad6f53971a9834bf9e6786e2adf72b5f1921cc9a9c5fde073d2972944076"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-darwin-x64-baseline.zip"
 
 [tools.bun."platforms.windows-x64"]
-checksum = "sha256:85b14f3e0584218e9b63407b3aa6b90c4835ec5c32435c1f12cb6fc13667c7c9"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-windows-x64.zip"
+checksum = "sha256:0a0620930b6675d7ba440e81f4e0e00d3cfbe096c4b140d3fff02205e9e18922"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-windows-x64.zip"
 
 [tools.bun."platforms.windows-x64-baseline"]
-checksum = "sha256:c68c7903c1190101590cc1b2129835f47211b3b37ae87759f2b97d6534aa3ad1"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-windows-x64-baseline.zip"
+checksum = "sha256:538f9c846355d9e847b2671bc00c47da4229a0befb24df3282b739770f3b475f"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-windows-x64-baseline.zip"
 
 [[tools.cargo-binstall]]
 version = "1.19.1"
@@ -267,7 +267,7 @@ version = "1.13.0"
 backend = "cargo:tlrc"
 
 [[tools."cargo:tuicr"]]
-version = "0.14.1"
+version = "0.15.0"
 backend = "cargo:tuicr"
 
 [[tools."cargo:vivid"]]
@@ -311,36 +311,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.143"
+version = "2.1.144"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/linux-x64/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:78a6ff1fc84aeac1f217103034b23319ed5a6a210a9147cc3bbd90e73f9c0b88"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/darwin-arm64/claude"
+checksum = "blake3:1b55ae4478a8569da4891cf52d32236f2004c588c10ae26172ee49fa51e40b88"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.143/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.144/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.1"
@@ -1709,7 +1709,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.15.4"
+version = "1.15.5"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
@@ -2095,52 +2095,52 @@ checksum = "sha256:a07cf3e428afab09324e510fb786041ebcc491a68b1ca6fba044c5a461f9b
 url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-pc-windows-msvc.zip"
 
 [[tools.stylua]]
-version = "2.4.1"
+version = "2.5.2"
 backend = "aqua:JohnnyMorganz/StyLua"
 
 [tools.stylua."platforms.linux-arm64"]
-checksum = "sha256:ce8363cf77fb88f31e5cd8fe4cd8a61ff63ac0483bc5e38a1e24c5a894f04035"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-linux-aarch64.zip"
+checksum = "sha256:0ef2ebf0b7e5a652b65c4cb96c6d9ffb3981a98547de3c764465bbf54a8d761a"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-aarch64.zip"
 
 [tools.stylua."platforms.linux-arm64-musl"]
-checksum = "sha256:f007809cb4d2b3c23abfecc061a276a19e4f74484239d1ed297be8eb6a11a86f"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-linux-aarch64-musl.zip"
+checksum = "sha256:b948df6b4bae41af9a70948174372f96a3c14d44e3e017288701539f3db8fb75"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-aarch64-musl.zip"
 
 [tools.stylua."platforms.linux-x64"]
-checksum = "sha256:cb9280d967a3f83e443b354a6497b562de4acc1daccf4456df0f7232653d3843"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-linux-x86_64-musl.zip"
+checksum = "sha256:ca6f1cf52eaf69e6632b81acef9c197aa24b85eb30d2455a35e7dbe28ae77c72"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-x86_64-musl.zip"
 
 [tools.stylua."platforms.linux-x64-baseline"]
-checksum = "sha256:cb9280d967a3f83e443b354a6497b562de4acc1daccf4456df0f7232653d3843"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-linux-x86_64-musl.zip"
+checksum = "sha256:ca6f1cf52eaf69e6632b81acef9c197aa24b85eb30d2455a35e7dbe28ae77c72"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-x86_64-musl.zip"
 
 [tools.stylua."platforms.linux-x64-musl"]
-checksum = "sha256:cb9280d967a3f83e443b354a6497b562de4acc1daccf4456df0f7232653d3843"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-linux-x86_64-musl.zip"
+checksum = "sha256:ca6f1cf52eaf69e6632b81acef9c197aa24b85eb30d2455a35e7dbe28ae77c72"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-x86_64-musl.zip"
 
 [tools.stylua."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:cb9280d967a3f83e443b354a6497b562de4acc1daccf4456df0f7232653d3843"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-linux-x86_64-musl.zip"
+checksum = "sha256:ca6f1cf52eaf69e6632b81acef9c197aa24b85eb30d2455a35e7dbe28ae77c72"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-linux-x86_64-musl.zip"
 
 [tools.stylua."platforms.macos-arm64"]
-checksum = "sha256:c1680c337c8d799b4226a10e8ac6744606fd00b01eb3046120b5226e31306809"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-macos-aarch64.zip"
+checksum = "sha256:92ff0889e16324801bc072692974bb67f8161e62010fc90f96c62a17f81f32c7"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-macos-aarch64.zip"
 
 [tools.stylua."platforms.macos-x64"]
-checksum = "sha256:985dc2c791ef5f0bfbaea99f18b01322613f5c6985979a8346c346a341043331"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-macos-x86_64.zip"
+checksum = "sha256:53c50a1605d0a6345d160a1a5a21db40bcf2bf9cd23c17f7c277a63a1bff3a7f"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-macos-x86_64.zip"
 
 [tools.stylua."platforms.macos-x64-baseline"]
-checksum = "sha256:985dc2c791ef5f0bfbaea99f18b01322613f5c6985979a8346c346a341043331"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-macos-x86_64.zip"
+checksum = "sha256:53c50a1605d0a6345d160a1a5a21db40bcf2bf9cd23c17f7c277a63a1bff3a7f"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-macos-x86_64.zip"
 
 [tools.stylua."platforms.windows-x64"]
-checksum = "sha256:9b1627b6034aa7ea0ce80485d2a07e777447548839a40acda6e30824a2bba07a"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-windows-x86_64.zip"
+checksum = "sha256:e77d0ea1226b8b389b43f702240091249a96eea25857281f90ea24d0eb9eb969"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-windows-x86_64.zip"
 
 [tools.stylua."platforms.windows-x64-baseline"]
-checksum = "sha256:9b1627b6034aa7ea0ce80485d2a07e777447548839a40acda6e30824a2bba07a"
-url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.4.1/stylua-windows-x86_64.zip"
+checksum = "sha256:e77d0ea1226b8b389b43f702240091249a96eea25857281f90ea24d0eb9eb969"
+url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-windows-x86_64.zip"
 
 [[tools.task]]
 version = "3.50.0"
@@ -2294,52 +2294,52 @@ url = "https://github.com/tmux/tmux-builds/releases/download/v3.6a/LICENSES.tar.
 url_api = "https://api.github.com/repos/tmux/tmux-builds/releases/assets/331787047"
 
 [[tools.typos]]
-version = "1.46.1"
+version = "1.46.2"
 backend = "aqua:crate-ci/typos"
 
 [tools.typos."platforms.linux-arm64"]
-checksum = "sha256:70a8e5a2c6272e25438ed8a9f10c40c9becf79f2800183fd34603a0840162eac"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:311f2a15e8433c895cd9ee3198530bbff552f59609eba739f5bd9ceb2a2c0887"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-arm64-musl"]
-checksum = "sha256:70a8e5a2c6272e25438ed8a9f10c40c9becf79f2800183fd34603a0840162eac"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:311f2a15e8433c895cd9ee3198530bbff552f59609eba739f5bd9ceb2a2c0887"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64"]
-checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d68c1a9c5abd8de11f7749edfa414087c8bc828e89064714487d23c89f36b06e"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64-baseline"]
-checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d68c1a9c5abd8de11f7749edfa414087c8bc828e89064714487d23c89f36b06e"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64-musl"]
-checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d68c1a9c5abd8de11f7749edfa414087c8bc828e89064714487d23c89f36b06e"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:c574fa505596922ba2e7b1027a0a5b2df528f399b86b6915d85748186a65ca44"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d68c1a9c5abd8de11f7749edfa414087c8bc828e89064714487d23c89f36b06e"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.typos."platforms.macos-arm64"]
-checksum = "sha256:bb5e07df5c938f41b95903ca8943d9230eb5a4cfbc8a2ff1f3a029d5370926a8"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:4b15ee9548cd68cf22d6e67af8a12ceb608ea4dbc34e0346792d09994222d694"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-aarch64-apple-darwin.tar.gz"
 
 [tools.typos."platforms.macos-x64"]
-checksum = "sha256:bc585c22f2c4f5963ad782df1d4764a91476d3079477a08833ff87dfa416bb72"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:3652f90d82d38f64e40c1791d2d82209979048ef3abd715b0eb1488cf483ce1d"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-apple-darwin.tar.gz"
 
 [tools.typos."platforms.macos-x64-baseline"]
-checksum = "sha256:bc585c22f2c4f5963ad782df1d4764a91476d3079477a08833ff87dfa416bb72"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:3652f90d82d38f64e40c1791d2d82209979048ef3abd715b0eb1488cf483ce1d"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-apple-darwin.tar.gz"
 
 [tools.typos."platforms.windows-x64"]
-checksum = "sha256:a7b042fc79bf7b73b00ece054ec3109858e001136c2642f28004544b571d37a2"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:ddc4ae26822e806ce84bc410643d02a3dac53aac9ab2a5f389624418c5654a17"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-pc-windows-msvc.zip"
 
 [tools.typos."platforms.windows-x64-baseline"]
-checksum = "sha256:a7b042fc79bf7b73b00ece054ec3109858e001136c2642f28004544b571d37a2"
-url = "https://github.com/crate-ci/typos/releases/download/v1.46.1/typos-v1.46.1-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:ddc4ae26822e806ce84bc410643d02a3dac53aac9ab2a5f389624418c5654a17"
+url = "https://github.com/crate-ci/typos/releases/download/v1.46.2/typos-v1.46.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.usage]]
 version = "3.3.0"
@@ -2390,62 +2390,62 @@ checksum = "sha256:628b8743d552f2cff2dee2b783a4827ef555409def3fb9ec536117d96cda2
 url = "https://github.com/jdx/usage/releases/download/v3.3.0/usage-x86_64-pc-windows-msvc.zip"
 
 [[tools.uv]]
-version = "0.11.14"
+version = "0.11.15"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:d7d3966e46915c5f6932692aaf152a2473eecb1d2517ca4f8e88a07484b380b6"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:6505075cec3f551fad4fe9026922967ff9c895c9f513c97682b24e7a1c9becd3"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:d7d3966e46915c5f6932692aaf152a2473eecb1d2517ca4f8e88a07484b380b6"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:6505075cec3f551fad4fe9026922967ff9c895c9f513c97682b24e7a1c9becd3"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:200ccf2f351849c5d6698714e7e7eb9ead1e8c097dbdbb43730e1a4e059ceb87"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-baseline"]
-checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:200ccf2f351849c5d6698714e7e7eb9ead1e8c097dbdbb43730e1a4e059ceb87"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:200ccf2f351849c5d6698714e7e7eb9ead1e8c097dbdbb43730e1a4e059ceb87"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:077d36f45a0cc6d440b653b2d5c53e7731121e99e54b0221267eec5d1cae76ce"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:200ccf2f351849c5d6698714e7e7eb9ead1e8c097dbdbb43730e1a4e059ceb87"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:4333af5c0730d94323a7819bbdf87ce92dd07fc857d67fff0059e0fca31b5c02"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:7e5b336108f8576eda1939920ca0a805b4a9a3c3d3eb2f6140e38b7092fbe4f3"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-aarch64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:9836c1440b0bd6aa5f81793648a339bd01d593b7b8f575de3b855dae4ab64654"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:42bca7cc879d117ed7139a0e26de8cab0b6f033ad439a32144f324d1f8580d8c"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64-baseline"]
-checksum = "sha256:9836c1440b0bd6aa5f81793648a339bd01d593b7b8f575de3b855dae4ab64654"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:42bca7cc879d117ed7139a0e26de8cab0b6f033ad439a32144f324d1f8580d8c"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:52ba5d19409aaa688a8a1a6ec8dfb6a4817230d20186e75f4006105c3e39a846"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:04b98d414a9000e25e5e0e7c9f53749e66b790cdaffc582829e6f58c544ee11c"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64-baseline"]
-checksum = "sha256:52ba5d19409aaa688a8a1a6ec8dfb6a4817230d20186e75f4006105c3e39a846"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.14/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:04b98d414a9000e25e5e0e7c9f53749e66b790cdaffc582829e6f58c544ee11c"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.15/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [[tools.yazi]]
