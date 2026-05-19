@@ -41,10 +41,6 @@ local packages = {
   'powershell-editor-services',
   'python-lsp-server',
   'rust-analyzer',
-  -- Ruby
-  'rubocop',
-  'ruby-lsp',
-  'rubyfmt',
   -- python linting/formatting
   'ruff',
   'shellcheck',
