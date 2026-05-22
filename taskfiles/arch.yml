@@ -31,8 +31,11 @@ tasks:
     platforms: [linux]
     silent: true
     cmds:
-      - task: tools:install
-        if: 'uname -r | grep -q arch1'
+      - cmd: |
+          if [ ! -f /etc/arch-release ]; then
+            exit 0
+          fi
+          task arch:tools:install
 
   tools:install:
     desc: Installs all apt packages
