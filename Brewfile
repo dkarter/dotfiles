@@ -142,5 +142,8 @@ brew 'parallel'
 # pretty text display utils
 brew 'figlet'
 
+# cat with syntax highlighting
+brew 'bat'
+
 # Mac App Store CLI
 brew 'mas'
