@@ -33,7 +33,7 @@ tasks:
         - 'lefthook|lefthook completion zsh'
         - 'linear|linear completions zsh'
         - 'mise|mise completion zsh'
-        - 'mix|cat "$HOME/dotfiles/scripts/mix-dynamic-completion.zsh"'
+        - 'mix|cat "{{.ROOT_DIR}}/scripts/mix-dynamic-completion.zsh"'
         - 'op|op completion zsh'
         - 'opencode|opencode completion'
         - 'pdf-redact|pdf-redact completion zsh'
