@@ -238,107 +238,117 @@ version = "1.1.2"
 backend = "github:kdash-rs/kdash"
 
 [tools."github:kdash-rs/kdash"."platforms.linux-arm64"]
-checksum = "sha256:611a61aff58577aabcf364918154c8e34c99eae9619d70e4689c5b74ff5e418e"
+checksum = "sha256:5bd3acb7f560ee52b8badfd8dce1db7299e9eb396685065b5149f0678691715b"
 url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-linux.tar.gz"
-url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/422029061"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423144999"
 
 [tools."github:kdash-rs/kdash"."platforms.linux-arm64-musl"]
-checksum = "sha256:74f5fa5b6f8ed5366ee7d2748d467266c541f07bb8aedda0ea8330437f8d09f0"
+checksum = "sha256:7c3130a47f68f1d30ba858635e5ede33bb360972d0213bd90116156e0c9e2082"
 url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/422029246"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423145255"
 
 [tools."github:kdash-rs/kdash"."platforms.linux-x64"]
-checksum = "sha256:611a61aff58577aabcf364918154c8e34c99eae9619d70e4689c5b74ff5e418e"
+checksum = "sha256:5bd3acb7f560ee52b8badfd8dce1db7299e9eb396685065b5149f0678691715b"
 url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-linux.tar.gz"
-url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/422029061"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423144999"
 
 [tools."github:kdash-rs/kdash"."platforms.linux-x64-musl"]
-checksum = "sha256:74f5fa5b6f8ed5366ee7d2748d467266c541f07bb8aedda0ea8330437f8d09f0"
+checksum = "sha256:7c3130a47f68f1d30ba858635e5ede33bb360972d0213bd90116156e0c9e2082"
 url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/422029246"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423145255"
 
 [tools."github:kdash-rs/kdash"."platforms.macos-arm64"]
-checksum = "sha256:22922f471489030932ebc402fc4ab19f434b3874622be5cd749fc9902e16b425"
+checksum = "sha256:9624193f4b89b7fea38661eece2f8bae26938bcc507bce3961f11f4a74ad33f6"
 url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-macos-arm64.tar.gz"
-url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/422028338"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423142984"
+
+[tools."github:kdash-rs/kdash"."platforms.macos-x64"]
+checksum = "sha256:b1ac98d8407e5bfe01fc0de30bf4837640d7921463736c0a24ddf100c7599400"
+url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-macos.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423145841"
+
+[tools."github:kdash-rs/kdash"."platforms.windows-x64"]
+checksum = "sha256:38736b94292fa5339b78eb0657da7a48a44769504ad0b5454b05b0f41c60e555"
+url = "https://github.com/kdash-rs/kdash/releases/download/v1.1.2/kdash-windows.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/423149668"
 
 [[tools."github:mr-karan/doggo"]]
-version = "1.1.5"
+version = "1.1.6"
 backend = "github:mr-karan/doggo"
 
 [tools."github:mr-karan/doggo"."platforms.linux-arm64"]
-checksum = "sha256:7a74420a4c84c4134ec81909ae37c31ade7a423ac096bd7afb1d56d8ecd679f1"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355145"
+checksum = "sha256:c810e5ce257619bd00da699b204e58722c2e73c81cc150e356338ab661bc6c30"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979917"
 
 [tools."github:mr-karan/doggo"."platforms.linux-arm64-musl"]
-checksum = "sha256:7a74420a4c84c4134ec81909ae37c31ade7a423ac096bd7afb1d56d8ecd679f1"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355145"
+checksum = "sha256:c810e5ce257619bd00da699b204e58722c2e73c81cc150e356338ab661bc6c30"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979917"
 
 [tools."github:mr-karan/doggo"."platforms.linux-x64"]
-checksum = "sha256:fe29a6c856ee9ba4eda5a551eb9aab7cd81db92773a58200c9734b672ad38146"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355153"
+checksum = "sha256:fae374273fb3f801f8dcf4d1fd9dabfebd7f968ab153ba782d4452b0a45b2266"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979920"
 
 [tools."github:mr-karan/doggo"."platforms.linux-x64-musl"]
-checksum = "sha256:fe29a6c856ee9ba4eda5a551eb9aab7cd81db92773a58200c9734b672ad38146"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355153"
+checksum = "sha256:fae374273fb3f801f8dcf4d1fd9dabfebd7f968ab153ba782d4452b0a45b2266"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979920"
 
 [tools."github:mr-karan/doggo"."platforms.macos-arm64"]
-checksum = "sha256:60d8455cc146544cae0a35e36f58c8920b239d5f095a2af224c6970f25554caf"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355132"
+checksum = "sha256:8101bf4ee15b0b57b93667720af019afcf07049a01f82cee6882a3f8b08aa9b7"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979953"
 
 [tools."github:mr-karan/doggo"."platforms.macos-x64"]
-checksum = "sha256:1ad77ccfec4987afba205c89922494559d8a355716d59ec00f07ff1cd2af72cd"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355156"
+checksum = "sha256:5eaf4335e80882897cc5cd4def91f3b9d65b45a04ee31cf6a16a6189c70689a6"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979951"
 
 [tools."github:mr-karan/doggo"."platforms.windows-x64"]
-checksum = "sha256:f184025607cd0121939cb5c8e7042141a93d7a9a601fed7d43307a0841162720"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.1.5/doggo_1.1.5_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/361355127"
+checksum = "sha256:4ce4da178332d3f637dba7e6d44ced23752afaa2f9748e9be2104216785f0456"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.1.6/doggo_1.1.6_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/424979918"
 
 [[tools."github:nushell/nushell"]]
-version = "0.112.2"
+version = "0.113.0"
 backend = "github:nushell/nushell"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64"]
-checksum = "sha256:c25a713f4c10bd886162c62c278db6cf8a657754be53d33379af70fbadab07b8"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397302709"
+checksum = "sha256:c914bfcf42d08512d7aa3a7942e5b8cda943428e8e0827a0d6a16b61e621475f"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428250725"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64-musl"]
-checksum = "sha256:ab32bb605cd11a7d9cfd45c3cb19f6141a724e204b20531802bacd9eb659879b"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397302053"
+checksum = "sha256:7152537c097f26039fe1919406bbe357565fcf1c9c87196e36418c6de4ef79ab"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428251155"
 
 [tools."github:nushell/nushell"."platforms.linux-x64"]
-checksum = "sha256:4038c171dd2618f2413a2aa615b8dab7e9d04852be8200f1755df3e422328395"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397301166"
+checksum = "sha256:68c0f84254b23ed86d1582797d32f73db0969fa39297b3cc339656e634663468"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428249929"
 
 [tools."github:nushell/nushell"."platforms.linux-x64-musl"]
-checksum = "sha256:d9c0ba0938beed6148c8a354c45612c0979d7a787794b8dd13e866ca3b571375"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397300923"
+checksum = "sha256:6e94ee0035367c471b34dada57a735e55f5613d97ac3fa58c0ef241f22a12ede"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428249851"
 
 [tools."github:nushell/nushell"."platforms.macos-arm64"]
-checksum = "sha256:a61806761db7bc2eddfc313d5ec496c92776a37124bc64a3036374bd55e8c881"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397301778"
+checksum = "sha256:704cf28881fa6f18a555a12bb1955ee8d509011570a9d03b190ecf849538a3ec"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428248833"
 
 [tools."github:nushell/nushell"."platforms.macos-x64"]
-checksum = "sha256:8de1dc4a918a1af29fce75d263a8f673f16d35c04ebaa5e3c3ac4ce1eb154f3f"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397302363"
+checksum = "sha256:12424e50fb612c3e2b341a6104fb562f32b031135c4200927a74ea5fa90b6429"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428250560"
 
 [tools."github:nushell/nushell"."platforms.windows-x64"]
-checksum = "sha256:db57750ec878365135e7baebee9f5ec74b84c80158ed0168f1ccbe15d6ec251d"
-url = "https://github.com/nushell/nushell/releases/download/0.112.2/nu-0.112.2-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/397309746"
+checksum = "sha256:40101c6399b7987526ed8b9ee57b2f8d3627b3aab079f2b9c4d983d77435e2e0"
+url = "https://github.com/nushell/nushell/releases/download/0.113.0/nu-0.113.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/428258119"
 
 [[tools."github:orf/gping"]]
 version = "gping-v1.20.1"
@@ -625,33 +635,33 @@ checksum = "sha256:5900eb95e934c4cebb22a487cfa372710dd1f0234400c1c16c0db63b8485e
 url = "https://github.com/opentofu/opentofu/releases/download/v1.12.0/tofu_1.12.0_windows_amd64.tar.gz"
 
 [[tools.terraform]]
-version = "1.15.3"
+version = "1.15.4"
 backend = "aqua:hashicorp/terraform"
 
 [tools.terraform."platforms.linux-arm64"]
-checksum = "sha256:9824eb010b835b2c872440a337a69acfa1782d36c24d3c09fe5defe75defc511"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_linux_arm64.zip"
+checksum = "sha256:87da14c6700fee1bdaffedc943c4aca7bb078aad1f3eeccbdaae0484f90e1bec"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_linux_arm64.zip"
 
 [tools.terraform."platforms.linux-arm64-musl"]
-checksum = "sha256:9824eb010b835b2c872440a337a69acfa1782d36c24d3c09fe5defe75defc511"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_linux_arm64.zip"
+checksum = "sha256:87da14c6700fee1bdaffedc943c4aca7bb078aad1f3eeccbdaae0484f90e1bec"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_linux_arm64.zip"
 
 [tools.terraform."platforms.linux-x64"]
-checksum = "sha256:c3d4b579064745a5f7e918125db23b12ba52a8a7287adb9f32c49d637e02e3bf"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_linux_amd64.zip"
+checksum = "sha256:a71695fa6db9344db02ff1adb69cce891c1b2b4dc31c08df0dd4a12101a33b26"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_linux_amd64.zip"
 
 [tools.terraform."platforms.linux-x64-musl"]
-checksum = "sha256:c3d4b579064745a5f7e918125db23b12ba52a8a7287adb9f32c49d637e02e3bf"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_linux_amd64.zip"
+checksum = "sha256:a71695fa6db9344db02ff1adb69cce891c1b2b4dc31c08df0dd4a12101a33b26"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_linux_amd64.zip"
 
 [tools.terraform."platforms.macos-arm64"]
-checksum = "sha256:b97101c62c11eebd176e83cd42a313336200d54fdd18ce7770f65a5bfb0ab098"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_darwin_arm64.zip"
+checksum = "sha256:d6b99521a436bfc0e44b18ca47e2c8fec37a74039bf3b529ecc3c71d3e5a9fbf"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_darwin_arm64.zip"
 
 [tools.terraform."platforms.macos-x64"]
-checksum = "sha256:448e89a455e854941bd7e1396ba6ca46e92dd7e0ed1cc11d4da4cab637606d8a"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_darwin_amd64.zip"
+checksum = "sha256:5d9d58855d08934fb79e8db04332ff89d5e2218a6a3559f6e596b47ec2f74ecd"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_darwin_amd64.zip"
 
 [tools.terraform."platforms.windows-x64"]
-checksum = "sha256:b9da8df3d92402551c86b8956be30fb87f600245321d2b31751afcf37218018c"
-url = "https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_windows_amd64.zip"
+checksum = "sha256:159169a73fcbdfb1b0ff3e2b7abf4ec94f9ebbb314ae3a0e19e494b357ef1488"
+url = "https://releases.hashicorp.com/terraform/1.15.4/terraform_1.15.4_windows_amd64.zip"
