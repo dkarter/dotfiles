@@ -10,6 +10,11 @@ if [[ -z $repo_url ]]; then
   exit 0
 fi
 
+# Allow shorthand GitHub repo references like "username/repo".
+if [[ $repo_url =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+(\.git)?$ ]]; then
+  repo_url="git@github.com:${repo_url%.git}.git"
+fi
+
 # Extract repo name from URL/path
 repo_name="${repo_url%/}"
 repo_name="${repo_name##*/}"
