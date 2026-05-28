@@ -2,3 +2,7 @@ advisoryBloomCheck: required
 advisoryCheck: required
 advisoryCheckOnInstall: on # yamllint disable-line rule:truthy
 lockfile: true
+# tinyexec@1.2.2 moved from trusted-publisher metadata to maintainer publish
+# with registry signature and SLSA provenance; keep this scoped to the exact version.
+trustPolicyExclude:
+  - tinyexec@1.2.2
