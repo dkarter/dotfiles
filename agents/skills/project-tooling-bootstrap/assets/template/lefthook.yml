@@ -10,7 +10,7 @@ commit-msg:
       run: committed --commit-file {1}
 
     - name: check secrets
-      run: mise exec -- gitleaks git --no-banner --redact
+      run: mise exec -- gitleaks git --pre-commit  --staged --verbose --no-banner --redact
 
 pre-push:
   parallel: true
