@@ -24,7 +24,8 @@ Ensure workflow actions use current, intentional pins. Prefer exact patch tags o
    - Respect repository policy first. Some repositories consider official GitHub actions safe with tag pins; others require SHA pins for every external action.
    - Default security preference: pin external actions to the latest exact patch tag, for example `actions/checkout@v6.0.2` or `jdx/mise-action@v4.0.1`.
    - If the user or repo policy asks for major-version pins, pin to the latest major tag, for example `actions/checkout@v6`.
-   - For high-risk or untrusted third-party actions, prefer a full commit SHA and include a comment or documentation of the corresponding release tag when useful.
+   - If GitHub's API shows a tag version is immutable, treat that tag as equivalent to a SHA. Prefer immutable tag pins over raw SHAs because they stay readable, but add a workflow comment noting that the tag was verified immutable.
+   - For high-risk or untrusted third-party actions without immutable tags, prefer a full commit SHA and include a comment or documentation of the corresponding release tag when useful.
    - Avoid adding new third-party actions without explicit user consent. If an external action would be convenient, ask first and explain the supply-chain risk.
 5. Validate workflow schemas after edits if a local task exists, for example `task validate:file -- .github/workflows/ci.yml`.
 
@@ -33,7 +34,7 @@ Ensure workflow actions use current, intentional pins. Prefer exact patch tags o
 - Do not assume `@vN` is latest. Verify upstream first.
 - Do not use floating branch refs like `@main` or `@master` for external actions unless explicitly requested.
 - Do not downgrade from an exact patch/SHA pin to a major tag unless explicitly requested.
-- Do not replace an existing SHA pin with a tag unless explicitly requested.
+- Do not replace an existing SHA pin with a tag unless GitHub's API verifies the tag is immutable or the user explicitly requests it. If using an immutable tag, add a comment documenting that verification.
 - Do not introduce a new third-party action silently. Prefer built-in shell commands or official GitHub actions when possible, and ask before adding third-party actions.
 - Mention verified upstream latest versions in the final response when version changes were made.
 - If an action has no releases, use a specific tag if available; otherwise consider a commit SHA.
