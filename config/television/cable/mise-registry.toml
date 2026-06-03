@@ -5,7 +5,7 @@ requirements = ["mise", "jq"]
 
 [source]
 command = "mise registry --json | jq -r '.[] | [.short, (.description // \"\"), ((.backends // []) | join(\", \"))] | @tsv'"
-display = "{split:\t:0}  {split:\t:1}"
+display = "{split:\t:0}"
 output = "{split:\t:0}"
 
 [preview]
