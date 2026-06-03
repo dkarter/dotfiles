@@ -1,0 +1,38 @@
+[metadata]
+name = "mise-registry"
+description = "Search and install mise registry tools"
+requirements = ["mise", "jq"]
+
+[source]
+command = "mise registry --json | jq -r '.[] | [.short, (.description // \"\"), ((.backends // []) | join(\", \"))] | @tsv'"
+display = "{split:\t:0}  {split:\t:1}"
+output = "{split:\t:0}"
+
+[preview]
+command = """
+mise registry --json | jq -r --arg tool '{split:\t:0}' '
+  .[] | select(.short == $tool) |
+  "\u001b[1;36m# \\(.short)\u001b[0m\n",
+  (if .description then "\u001b[33m\\(.description)\u001b[0m\n" else "" end),
+  (if (.backends | length) > 0 then "\u001b[1mBackends:\u001b[0m\n\\(.backends | map("  " + .) | join("\n"))" else "" end),
+  (if ((.aliases // []) | length) > 0 then "\n\n\u001b[1mAliases:\u001b[0m \\(.aliases | join(", "))" else "" end)
+'
+"""
+ansi = true
+
+[keybindings]
+enter = "actions:install-local"
+ctrl-g = "actions:install-global"
+
+[actions.install-local]
+description = "Install the selected tool locally"
+command = "mise use '{split:\t:0}'"
+mode = "execute"
+
+[actions.install-global]
+description = "Install the selected tool globally"
+command = "mise use -g '{split:\t:0}'"
+mode = "execute"
+
+[ui.preview_panel]
+header = "{split:\t:0}"
