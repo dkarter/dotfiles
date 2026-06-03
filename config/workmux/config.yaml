@@ -39,7 +39,7 @@ post_create:
   - '[ -f mise.toml ] && mise trust --yes --silent && mise install'
 
 pre_merge:
-  - '[ -f mix.exs ] && mix test'
+  - '[ ! -f mix.exs ] || mix test'
 
 # -------------------------------------------------------------------------------
 # Dashboard
