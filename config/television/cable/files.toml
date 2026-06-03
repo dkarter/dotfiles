@@ -4,7 +4,11 @@ description = "A channel to select files and directories"
 requirements = ["fd", "bat"]
 
 [source]
-command = ["fd -t f -H", "fd -t d -H -I"]
+command = [
+  { name = "Default", run = "fd -t f" },
+  { name = "Hidden", run = "fd -t f -H" },
+  { name = "All", run = "fd -t f -H -I" },
+]
 
 [preview]
 command = "bat -n --color=always '{}'"
@@ -18,6 +22,7 @@ ctrl-up = "actions:goto_parent_dir"
 [actions.edit]
 description = "Opens the selected entries with the default editor (falls back to vim)"
 command = "${EDITOR:-vim} '{}'"
+shell = "zsh"
 # use `mode = "fork"` if you want to return to tv afterwards
 mode = "execute"
 

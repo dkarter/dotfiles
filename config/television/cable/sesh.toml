@@ -10,21 +10,28 @@ requirements = ["sesh", "fd"]
 # Multiple source commands for cycling through different modes
 # Press Ctrl+S to cycle between sources
 command = [
-  "sesh list --icons --hide-duplicates",    # all sessions (default)
-  "sesh list -t --icons --hide-duplicates", # tmux sessions only
-  "sesh list -c --icons --hide-duplicates", # config directories
-  "sesh list -z --icons --hide-duplicates", # zoxide directories
-  "fd -H -d 2 -t d -E .Trash . ~",          # find directories
+  { name = "All", run = "sesh list --icons" },
+  { name = "Tmux", run = "sesh list -t --icons" },
+  { name = "Configs", run = "sesh list -c --icons" },
+  { name = "Zoxide", run = "sesh list -z --icons" },
+  { name = "Directories", run = "fd -H -d 2 -t d -E .Trash . ~" },
 ]
 ansi = true
+frecency = false # handled by sesh
+no_sort = true # handled by sesh
 output = "{strip_ansi|split: :1..|join: }"
 
 [preview]
 command = "sesh preview '{strip_ansi|split: :1..|join: }'"
 
 [keybindings]
-enter = "confirm_selection"
+enter = "actions:connect"
 ctrl-d = ["actions:kill_session", "reload_source"]
+
+[actions.connect]
+description = "Connect to selected session"
+command = "sesh connect '{strip_ansi|split: :1..|join: }'"
+mode = "execute"
 
 [actions.kill_session]
 description = "Kill selected tmux session (press Ctrl+r to reload)"
