@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   'dkarter/bullets.vim',
-  event = { 'VeryLazy' },
+  ft = { 'markdown', 'text', 'gitcommit', 'scratch', '' },
   init = function()
     vim.g.bullets_enabled_file_types = {
       'markdown',
