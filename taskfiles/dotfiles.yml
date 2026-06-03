@@ -183,24 +183,12 @@ tasks:
         - zinitrc
         - zshenv
         - zshrc
-      FOLDERS:
-        - agents
     cmds:
       - for:
           var: FILES
           as: FILE
         cmd: |
           ln -s -fn "$(realpath ./{{.FILE}})" ~/.{{.FILE}}
-
-      - for:
-          var: FOLDERS
-          as: FOLDER
-        cmd: |
-          ln -s -fn "$(realpath ./{{.FOLDER}})" ~/.{{.FOLDER}}
-
-      - cmd: |
-          mkdir -p ~/.claude
-          ln -s -fn "$(realpath ./agents/skills)" ~/.claude/skills
 
       - cmd: |
           for folder in ./config/*; do
@@ -210,6 +198,161 @@ tasks:
             ln -s -fn "$source_path" "$(basename $folder)" > /dev/null 2>&1
             popd > /dev/null 2>&1
           done
+        silent: true
+
+      - task: skills:sync
+
+  skills:sync:
+    desc: Synchronizes repo and local skills into global skill directories
+    cmds:
+      - cmd: |
+          set -eu
+
+          repo_agents="$(realpath ./agents)"
+          repo_skills="$(realpath ./agents/skills)"
+          local_skills="$HOME/.local/share/dotfiles/skills"
+          skill_dests="$HOME/.agents/skills $HOME/.claude/skills"
+
+          mkdir -p "$local_skills" "$HOME/.claude"
+
+          symlink_target() {
+            realpath "$1" 2>/dev/null || readlink "$1" 2>/dev/null || true
+          }
+
+          ensure_skill_dir() {
+            path="$1"
+            old_target="$2"
+
+            if [ -L "$path" ]; then
+              target="$(symlink_target "$path")"
+              if [ "$target" = "$old_target" ]; then
+                rm "$path"
+              else
+                echo "$path is a symlink to $target; refusing to replace it" >&2
+                exit 1
+              fi
+            elif [ -e "$path" ] && [ ! -d "$path" ]; then
+              echo "$path exists and is not a directory" >&2
+              exit 1
+            fi
+
+            mkdir -p "$path"
+          }
+
+          is_managed_skill_target() {
+            target="$1"
+
+            case "$target" in
+              "$repo_skills"/*|"$local_skills"/*)
+                return 0
+                ;;
+              *)
+                return 1
+                ;;
+            esac
+          }
+
+          ensure_skill_dir "$HOME/.agents" "$repo_agents"
+          ensure_skill_dir "$HOME/.agents/skills" ""
+          ensure_skill_dir "$HOME/.claude/skills" "$repo_skills"
+
+          cleanup_stale_skill_links() {
+            dest="$1"
+
+            for entry in "$dest"/*; do
+              [ -L "$entry" ] || continue
+
+              target="$(symlink_target "$entry")"
+              is_managed_skill_target "$target" || continue
+
+              skill_name="$(basename "$entry")"
+              if [ ! -d "$repo_skills/$skill_name" ] && [ ! -d "$local_skills/$skill_name" ]; then
+                rm "$entry"
+              fi
+            done
+          }
+
+          validate_skill_dest() {
+            dest="$1"
+            skill="$2"
+
+            skill_name="$(basename "$skill")"
+            skill_target="$(realpath "$skill")"
+            dest_path="$dest/$skill_name"
+
+            if [ -L "$dest_path" ]; then
+              target="$(symlink_target "$dest_path")"
+              if [ "$target" = "$skill_target" ]; then
+                return 0
+              fi
+
+              if ! is_managed_skill_target "$target"; then
+                echo "$dest_path is a symlink to $target; refusing to replace it" >&2
+                exit 1
+              fi
+            elif [ -e "$dest_path" ]; then
+              echo "$dest_path exists and is not a managed symlink" >&2
+              exit 1
+            fi
+          }
+
+          for_effective_skills() {
+            action="$1"
+            source="$2"
+
+            [ -d "$source" ] || return 0
+
+            for skill in "$source"/*; do
+              [ -d "$skill" ] || continue
+
+              skill_name="$(basename "$skill")"
+              if [ "$source" = "$repo_skills" ] && [ -d "$local_skills/$skill_name" ]; then
+                continue
+              fi
+
+              "$action" "$skill"
+            done
+          }
+
+          validate_skill() {
+            skill="$1"
+
+            for dest in $skill_dests; do
+              validate_skill_dest "$dest" "$skill"
+            done
+          }
+
+          install_skill() {
+            skill="$1"
+
+            skill_name="$(basename "$skill")"
+            skill_target="$(realpath "$skill")"
+            if [ "$(dirname "$skill")" = "$local_skills" ]; then
+              echo "Installing skill $skill_name (local)"
+            else
+              echo "Installing skill $skill_name"
+            fi
+
+            for dest in $skill_dests; do
+              dest_path="$dest/$skill_name"
+              if [ -L "$dest_path" ] && [ "$(symlink_target "$dest_path")" = "$skill_target" ]; then
+                continue
+              fi
+
+              ln -sfn "$skill_target" "$dest_path"
+            done
+          }
+
+          for_effective_skills validate_skill "$repo_skills"
+          # Local skills intentionally override repo skills with the same name.
+          for_effective_skills validate_skill "$local_skills"
+
+          for dest in $skill_dests; do
+            cleanup_stale_skill_links "$dest"
+          done
+
+          for_effective_skills install_skill "$repo_skills"
+          for_effective_skills install_skill "$local_skills"
         silent: true
 
   leaks:
