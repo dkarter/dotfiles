@@ -80,7 +80,6 @@ return {
       markdown = dprint_or_prettier,
       html = dprint_or_prettier,
       go = { 'gofmt', 'goimports' },
-      ruby = { 'rubyfmt' },
       sql = { 'pg_format' },
       yaml = dprint_or_prettier,
       -- mix format is taking long to format, so I bumped the timeout, I'm not
