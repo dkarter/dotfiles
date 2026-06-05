@@ -80,7 +80,6 @@ pitchfork = "latest"                  # run multiple commands in parallel, with 
 python = "3.12"                       # Python programming language
 resvg = "latest"                      # svg rendering library and CLI tool (used by yazi)
 ripgrep = "latest"                    # modern `grep`
-ruby = "3"                            # Ruby programming language
 rust = "1"                            # Rust programming language
 slsa-verifier = "latest"              # security: verify SLSA provenance
 starship = "latest"                   # command prompt styling
@@ -110,9 +109,6 @@ redis = 'asdf:mise-plugins/mise-redis'
 experimental = true
 # use aube instead of npm when using npm:<package>
 npm.package_manager = "aube"
-
-# use pre-compiled binaries (since compiling ruby is slow as hell)
-ruby.compile = false
 
 # get pre-compiled binaries for rust tools via cargo-binstall (instead of compiling from source)
 cargo.binstall = true
