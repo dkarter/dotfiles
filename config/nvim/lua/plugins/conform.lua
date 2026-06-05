@@ -19,32 +19,12 @@ local function get_with_fallback(root_files, formatters, fallback)
   end
 end
 
-local function find_root_config(filename, config_file)
-  if not filename or filename == '' then
-    return nil
-  end
-
-  local config_path = vim.fs.find(config_file, {
-    path = vim.fs.dirname(filename),
-    upward = true,
-    type = 'file',
-  })[1]
-
-  if config_path then
-    return vim.fs.dirname(config_path)
-  end
-
-  return nil
-end
-
 -- Use biome if config exists, otherwise use the provided fallback formatter
 local function get_biome_or_fallback(fallback)
   return get_with_fallback({ 'biome.json', 'biome.jsonc' }, { 'biome', 'biome-check' }, fallback)
 end
 
 -- try dprint first, then fallback to prettier
--- dprint is configured with require_cwd below, so it'll only run for buffers
--- that actually have a dprint.json in their project tree.
 local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
 
 -- Compute formatters at setup time
@@ -65,7 +45,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = get_with_fallback({ 'dprint.json' }, { 'dprint' }, { 'black' }),
+      python = { 'isort', 'black' },
       javascript = js_formatters,
       javascriptreact = js_formatters,
       typescript = js_formatters,
@@ -97,7 +77,6 @@ return {
       -- at PDQ is slow AF - can disable it momentarily and see if this improves
       elixir = { 'mix', timeout_ms = 2000 },
       sh = { 'shfmt' },
-      zsh = { 'dprint', 'shfmt', stop_after_first = true },
       terraform = { 'terraform_fmt' },
       toml = { 'dprint', 'taplo', stop_after_first = true },
     },
@@ -117,16 +96,6 @@ return {
     end,
     -- Customize formatters
     formatters = {
-      dprint = {
-        -- only run dprint in projects that have dprint.json, based on the
-        -- current buffer path (not Neovim's current working directory)
-        cwd = function(_self, ctx)
-          return find_root_config(ctx.filename, 'dprint.json')
-        end,
-        condition = function(_self, ctx)
-          return find_root_config(ctx.filename, 'dprint.json') ~= nil
-        end,
-      },
       shfmt = {
         prepend_args = { '-i', '2' },
       },
