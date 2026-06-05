@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.5.0](https://github.com/dkarter/dotfiles/compare/v31.4.0...v31.5.0) (2026-06-05)
+
+
+### Features
+
+* **skills:** add aube due diligence skill ([85b7fc0](https://github.com/dkarter/dotfiles/commit/85b7fc0b9d501f15a8d3b3ee0b437d464031ddc4))
+* **skills:** add grill-me 🥩 🔥 ([939a0c5](https://github.com/dkarter/dotfiles/commit/939a0c552ae0d4ff9ca6956cb50d295512f233d0))
+* **skills:** support local machine wide skills ([435a381](https://github.com/dkarter/dotfiles/commit/435a3814f27f876937fe015b5c98532ea37517be))
+* **tmux:** support repo shorthand in tmux-clone-repo ([2a03338](https://github.com/dkarter/dotfiles/commit/2a033383469278a5b09f3dbc62306ad7d8353aef))
+* **zsh:** add mise alias (m) ([c949c3f](https://github.com/dkarter/dotfiles/commit/c949c3f515bd98b60d3f2712511503556501e26a))
+
+
+### Bug Fixes
+
+* **aube:** exclude tinyexec ([5b64aa9](https://github.com/dkarter/dotfiles/commit/5b64aa93db065f9cf1e096203338e2e8a6cf9f50))
+* **mise:** remove disable_backends setting ([442095d](https://github.com/dkarter/dotfiles/commit/442095de2ecb3ab27fcb5b1787f5c4864a2fb088))
+* **neovim,tmux:** prevent snacks.nvim issue with markdown ([c523026](https://github.com/dkarter/dotfiles/commit/c5230269625a864e7783954fc4aeb8a72b8d578e))
+* **nvim:** bullets-vim lazy loading ([51c5d71](https://github.com/dkarter/dotfiles/commit/51c5d717c5a0b1075d58a9b50f5f11794049ab87))
+* **nvim:** revert remove render-markdown plugin ([23f1d8e](https://github.com/dkarter/dotfiles/commit/23f1d8ecfab0652e228b7a81ec771c954991ed3b))
+* **skills:** improve open-pr skill ([9e41bdc](https://github.com/dkarter/dotfiles/commit/9e41bdcdadff47f7d3c2108853acc13bcb6ed201))
+* **skill:** update tooling bootstrap gitleaks command ([ccb1487](https://github.com/dkarter/dotfiles/commit/ccb1487e163ffeb5fde074263adef419012d1ead))
+* **task:** use ROOT_DIR instead of hardcoded path for mix completion ([#414](https://github.com/dkarter/dotfiles/issues/414)) ([068f38a](https://github.com/dkarter/dotfiles/commit/068f38a075cdd4d5e4b9677ddddbd7c6e7b9f35d))
+* **tmux:** disable docker compose warning in tmux ([30d85a2](https://github.com/dkarter/dotfiles/commit/30d85a2720b6a1d88223aa14ed2d9dd06bfc5263))
+* **tv:** wrap mise registry preview ([0ad6733](https://github.com/dkarter/dotfiles/commit/0ad6733b800c45dffb124b893aea8448bf66272f))
+* **workmux:** skip mix tests outside elixir repos ([21014a9](https://github.com/dkarter/dotfiles/commit/21014a91997be8b3474493f634667d2a273804c7))
+
 ## [31.4.0](https://github.com/dkarter/dotfiles/compare/v31.3.0...v31.4.0) (2026-05-17)
 
 
