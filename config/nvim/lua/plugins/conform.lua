@@ -1,9 +1,9 @@
 -- Available formatters: https://github.com/stevearc/conform.nvim#formatters
 
--- Check if biome config exists in the current working directory or any parent directory
+-- Check if config files exists in the current working directory or any parent directory
 -- Uses vim.fs.find for cross-platform compatibility and reasonable search limits
-local function has_biome_config()
-  local config_files = vim.fs.find({ 'biome.json', 'biome.jsonc' }, {
+local function has_config(files)
+  local config_files = vim.fs.find(files, {
     upward = true,
     type = 'file',
     stop = vim.fs.dirname(vim.fs.find({ '.git', 'package.json' }, { upward = true })[1]),
@@ -11,16 +11,40 @@ local function has_biome_config()
   return #config_files > 0
 end
 
--- Use biome if config exists, otherwise use the provided fallback formatter
-local function get_biome_or_fallback(fallback)
-  if has_biome_config() then
-    return { 'biome', 'biome-check' }
+local function get_with_fallback(root_files, formatters, fallback)
+  if has_config(root_files) then
+    return formatters
   else
     return fallback or {}
   end
 end
 
+local function find_root_config(filename, config_file)
+  if not filename or filename == '' then
+    return nil
+  end
+
+  local config_path = vim.fs.find(config_file, {
+    path = vim.fs.dirname(filename),
+    upward = true,
+    type = 'file',
+  })[1]
+
+  if config_path then
+    return vim.fs.dirname(config_path)
+  end
+
+  return nil
+end
+
+-- Use biome if config exists, otherwise use the provided fallback formatter
+local function get_biome_or_fallback(fallback)
+  return get_with_fallback({ 'biome.json', 'biome.jsonc' }, { 'biome', 'biome-check' }, fallback)
+end
+
 -- try dprint first, then fallback to prettier
+-- dprint is configured with require_cwd below, so it'll only run for buffers
+-- that actually have a dprint.json in their project tree.
 local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
 
 -- Compute formatters at setup time
@@ -41,7 +65,7 @@ return {
     -- Define your formatters
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'isort', 'black' },
+      python = get_with_fallback({ 'dprint.json' }, { 'dprint' }, { 'black' }),
       javascript = js_formatters,
       javascriptreact = js_formatters,
       typescript = js_formatters,
@@ -56,7 +80,14 @@ return {
       markdown = dprint_or_prettier,
       html = dprint_or_prettier,
       go = { 'gofmt', 'goimports' },
-      ruby = { 'rubyfmt' },
+      -- For Standard projects (.standard.yml), return no formatters so
+      -- lsp_format = 'fallback' kicks in and standardrb LSP handles formatting.
+      -- For plain RuboCop projects, use rubocop. Otherwise fall back to rubyfmt.
+      ruby = get_with_fallback(
+        { '.standard.yml' },
+        {},
+        get_with_fallback({ '.rubocop.yml' }, { 'rubocop' }, { 'rubyfmt' })
+      ),
       sql = { 'pg_format' },
       yaml = dprint_or_prettier,
       -- mix format is taking long to format, so I bumped the timeout, I'm not
@@ -66,6 +97,7 @@ return {
       -- at PDQ is slow AF - can disable it momentarily and see if this improves
       elixir = { 'mix', timeout_ms = 2000 },
       sh = { 'shfmt' },
+      zsh = { 'dprint', 'shfmt', stop_after_first = true },
       terraform = { 'terraform_fmt' },
       toml = { 'dprint', 'taplo', stop_after_first = true },
     },
@@ -85,6 +117,16 @@ return {
     end,
     -- Customize formatters
     formatters = {
+      dprint = {
+        -- only run dprint in projects that have dprint.json, based on the
+        -- current buffer path (not Neovim's current working directory)
+        cwd = function(_self, ctx)
+          return find_root_config(ctx.filename, 'dprint.json')
+        end,
+        condition = function(_self, ctx)
+          return find_root_config(ctx.filename, 'dprint.json') ~= nil
+        end,
+      },
       shfmt = {
         prepend_args = { '-i', '2' },
       },
