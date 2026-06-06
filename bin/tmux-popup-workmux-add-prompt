@@ -4,4 +4,15 @@ set -euo pipefail
 script_dir=$(cd -- "$(dirname "$0")" && pwd)
 command="${script_dir}/tmux-workmux-add-prompt"
 
-exec tmux display-popup -E -w 60% -h 70% "$command"
+extended_keys=$(tmux show-options -gqv extended-keys)
+
+restore_extended_keys() {
+  tmux set-option -gq extended-keys "$extended_keys"
+}
+
+trap restore_extended_keys EXIT
+trap 'exit 130' INT TERM
+
+# tmux popups can leak CSI-u newlines into Nvim paste when extended keys are on.
+tmux set-option -gq extended-keys off
+tmux display-popup -E -w 60% -h 70% "$command"
