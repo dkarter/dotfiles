@@ -258,36 +258,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.165"
+version = "2.1.167"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:cb7aeaf81776f1cad289d27aaf52294f85d990e62e31df2c94a486d89f377c49"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/darwin-arm64/claude"
+checksum = "blake3:a76224c205f5b6f54bc2f698f3be5c31a2cc13f72d242fe8d8a5fdcae2d9e0c7"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.165/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.167/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -406,29 +406,41 @@ version = "0.87.0"
 backend = "npm:@devcontainers/cli"
 
 [[tools.docker-cli]]
-version = "29.5.2"
+version = "29.5.3"
 backend = "aqua:docker/cli"
 
 [tools.docker-cli."platforms.linux-arm64"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.2.tgz"
+url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.3.tgz"
 
 [tools.docker-cli."platforms.linux-arm64-musl"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.2.tgz"
+url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.3.tgz"
 
 [tools.docker-cli."platforms.linux-x64"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.2.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.3.tgz"
+
+[tools.docker-cli."platforms.linux-x64-baseline"]
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.3.tgz"
 
 [tools.docker-cli."platforms.linux-x64-musl"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.2.tgz"
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.3.tgz"
+
+[tools.docker-cli."platforms.linux-x64-musl-baseline"]
+url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.3.tgz"
 
 [tools.docker-cli."platforms.macos-arm64"]
-url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.5.2.tgz"
+url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.5.3.tgz"
 
 [tools.docker-cli."platforms.macos-x64"]
-url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.5.2.tgz"
+url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.5.3.tgz"
+
+[tools.docker-cli."platforms.macos-x64-baseline"]
+url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.5.3.tgz"
 
 [tools.docker-cli."platforms.windows-x64"]
-url = "https://download.docker.com/win/static/stable/x86_64/docker-29.5.2.zip"
+url = "https://download.docker.com/win/static/stable/x86_64/docker-29.5.3.zip"
+
+[tools.docker-cli."platforms.windows-x64-baseline"]
+url = "https://download.docker.com/win/static/stable/x86_64/docker-29.5.3.zip"
 
 [[tools.elixir]]
 version = "1.19.5-otp-28"
@@ -838,38 +850,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.211"
+version = "0.1.212"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:a8e9e3ee93251fb573a370409361f8e006f06835b57d27118e0faf4eb90f8469"
-url = "https://github.com/raine/workmux/releases/download/v0.1.211/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/427384492"
+checksum = "sha256:bd701d92d3ed8de0b28bcd9204b4beab8bb66a8d8cb07eacf27c6bef6200e9a3"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038348"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:a8e9e3ee93251fb573a370409361f8e006f06835b57d27118e0faf4eb90f8469"
-url = "https://github.com/raine/workmux/releases/download/v0.1.211/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/427384492"
+checksum = "sha256:bd701d92d3ed8de0b28bcd9204b4beab8bb66a8d8cb07eacf27c6bef6200e9a3"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038348"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:aabd2e1d63ea88e74090adbe90052767a3cbcb30b240d41ff7a3ba7a3f1afaab"
-url = "https://github.com/raine/workmux/releases/download/v0.1.211/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/427384489"
+checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
+
+[tools."github:raine/workmux"."platforms.linux-x64-baseline"]
+checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:aabd2e1d63ea88e74090adbe90052767a3cbcb30b240d41ff7a3ba7a3f1afaab"
-url = "https://github.com/raine/workmux/releases/download/v0.1.211/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/427384489"
+checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
+
+[tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:76c97c737382d8eb6f431ce4cc2c52d300dd1bb43e0bd099461d268ed91cd95a"
-url = "https://github.com/raine/workmux/releases/download/v0.1.211/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/427384490"
+checksum = "sha256:7b4f198d74744cdb8b530b68d1f3e1291aea0f41103ec4b004fff2d112b481cf"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038347"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:e84e33099dc607fd11b2e20df2b7be45e0d1b001817ef077b5fd33e712e83e6b"
-url = "https://github.com/raine/workmux/releases/download/v0.1.211/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/427384484"
+checksum = "sha256:f7558974b1469f84c99ff4523bb5c06087c343ee6f75de389a4c67ee46037a78"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038342"
+
+[tools."github:raine/workmux"."platforms.macos-x64-baseline"]
+checksum = "sha256:f7558974b1469f84c99ff4523bb5c06087c343ee6f75de389a4c67ee46037a78"
+url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038342"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.7.0"
