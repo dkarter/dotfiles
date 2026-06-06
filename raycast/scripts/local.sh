@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
 # Required parameters:
 # @raycast.schemaVersion 1
@@ -15,4 +15,4 @@
 # @raycast.author dorian
 # @raycast.authorURL https://raycast.com/dorian
 
-system "open 'http://localhost:#{ARGV[0]}'"
+open "http://localhost:${1}"
