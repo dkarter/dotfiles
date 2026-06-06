@@ -2,7 +2,7 @@
 set -euo pipefail
 
 tmux display-popup -E -w 80% -h 80% '
-session_name=$(mise x -- tv sesh --layout portrait --hide-status-bar) || exit
-[ -n "$session_name" ] || exit
+session_name=$(mise x -- tv sesh --layout portrait --hide-status-bar) || exit 0
+[ -n "$session_name" ] || exit 0
 exec mise x -- sesh connect --switch "$session_name"
-'
+' || true
