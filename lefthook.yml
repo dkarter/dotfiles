@@ -6,7 +6,7 @@ pre-commit:
       run: mise x -- gitleaks git --pre-commit --redact --staged --verbose --no-banner
 
     - name: Check formatting
-      run: mise x -- task ci:format:check
+      run: mise x -- task fmt:check:precommit
 
     - name: Check for typos
       run: mise x -- task ci:spelling:lint

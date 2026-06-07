@@ -364,6 +364,22 @@ tasks:
     aliases: [format]
     cmd: dprint fmt
 
+  fmt:check:precommit:
+    desc: Checks formatting for precommit hooks (just staged)
+    aliases: [format:check:precommit]
+    cmd: |
+      staged_files="$(mktemp)"
+      trap 'rm -f "$staged_files"' EXIT
+
+      git diff --cached --name-only --diff-filter=d -z > "$staged_files"
+
+      if [ ! -s "$staged_files" ]; then
+        echo "No staged files to format-check."
+        exit 0
+      fi
+
+      xargs -0 dprint check --allow-no-files < "$staged_files"
+
   print:done:
     desc: Prints done with a cool font and some nice gradients (animated)
     internal: true

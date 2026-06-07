@@ -100,6 +100,13 @@ tasks:
     cmds:
       - task: dot:fmt
 
+  fmt:check:precommit:
+    desc: Formats all formattable files
+    summary: An alias to dot:fmt:check:precommit
+    aliases: [format:check:precommit]
+    cmds:
+      - task: dot:fmt:check:precommit
+
   banner:
     internal: true
     desc: shows an animated banner
