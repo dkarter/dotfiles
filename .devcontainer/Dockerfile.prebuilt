@@ -12,15 +12,15 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   apt-get update \
   && apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    git \
-    less \
-    locales \
-    openssh-client \
-    sudo \
-    unzip \
-    zsh \
+  ca-certificates \
+  curl \
+  git \
+  less \
+  locales \
+  openssh-client \
+  sudo \
+  unzip \
+  zsh \
   && sed -i 's/^# *\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
   && locale-gen \
   && rm -rf /var/lib/apt/lists/*
@@ -31,18 +31,13 @@ ENV LANG=en_US.UTF-8 \
 
 WORKDIR /
 
-RUN --mount=type=secret,id=github_token \
-  --mount=type=bind,source=.,target=/src,readonly \
+RUN --mount=type=bind,source=.,target=/src,readonly \
   --mount=type=cache,target=/root/.bun/install/cache \
   --mount=type=cache,target=/root/.cache \
   --mount=type=cache,target=/root/.cargo/git \
   --mount=type=cache,target=/root/.cargo/registry \
   --mount=type=cache,target=/root/.local/share/mise/downloads \
   --mount=type=cache,target=/root/go/pkg/mod \
-  if [[ -f /run/secrets/github_token ]]; then \
-    export GITHUB_TOKEN="$(< /run/secrets/github_token)"; \
-    export MISE_GITHUB_TOKEN="$GITHUB_TOKEN"; \
-  fi \
   && echo "Using setup layer hash: ${SETUP_LAYER_HASH}" \
   && rm -rf /opt/dotfiles \
   && mkdir -p /opt/dotfiles \
@@ -51,8 +46,8 @@ RUN --mount=type=secret,id=github_token \
   && bash ./setup.sh \
   && mise reshim \
   && if [[ "${TARGETARCH:-$(uname -m)}" == "arm64" || "${TARGETARCH:-$(uname -m)}" == "aarch64" ]]; then \
-    mise settings add disable_tools resvg; \
-    mise settings add disable_tools github:mazznoer/lolcrab; \
+  mise settings add disable_tools resvg; \
+  mise settings add disable_tools github:mazznoer/lolcrab; \
   fi \
   && rm -rf /var/lib/apt/lists/* /tmp/terminfo
 
