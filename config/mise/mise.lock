@@ -33,61 +33,61 @@ checksum = "sha256:23fe150edbcc976eabe55092e1e9d2e5e237afde69553d170e936f776b405
 url = "https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-win64.zip"
 
 [[tools.aube]]
-version = "1.18.0"
+version = "1.18.1"
 backend = "github:endevco/aube"
 
 [tools.aube."platforms.linux-arm64"]
-checksum = "sha256:e7881daae7b5704a68bef2c1d25740f5b808f982a9013e99625910fa72c7e04c"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438543417"
+checksum = "sha256:976dc58cfc3c6fddcded6f00596e066f22bfeabbdf0526c2adf381dd9e89c16e"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441082184"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-arm64-musl"]
-checksum = "sha256:ed39261b679c9b96cedc0e64744e66c5080247a1d34a6cf2669c40cce8956309"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438516230"
+checksum = "sha256:e4c32ff77505daae3ba6945a9b109350e1c846ecd37ee6f7aece43ddfc898978"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441064265"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64"]
-checksum = "sha256:20b158c2439087267c95451dcc5feba13cfd1045b7a108e41a85c779bebbe1da"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438526121"
+checksum = "sha256:ac5dafafa8dcda43825a96d89ac85471c6452aa5cf313f610c320f79b5a8b4cd"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441067823"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64-baseline"]
-checksum = "sha256:20b158c2439087267c95451dcc5feba13cfd1045b7a108e41a85c779bebbe1da"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438526121"
+checksum = "sha256:ac5dafafa8dcda43825a96d89ac85471c6452aa5cf313f610c320f79b5a8b4cd"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441067823"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64-musl"]
-checksum = "sha256:d4ef67a858817fd0e158aa4022787b079f4af566eebce7914bdd7eaf0cc803c1"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438522827"
+checksum = "sha256:8a6af26deebaab73a2520d3436f6586b096cbadc6381c15cbd6d97348fd0ceda"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441067068"
 provenance = "github-attestations"
 
 [tools.aube."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:d4ef67a858817fd0e158aa4022787b079f4af566eebce7914bdd7eaf0cc803c1"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438522827"
+checksum = "sha256:8a6af26deebaab73a2520d3436f6586b096cbadc6381c15cbd6d97348fd0ceda"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441067068"
 provenance = "github-attestations"
 
 [tools.aube."platforms.macos-arm64"]
-checksum = "sha256:0d050f30ff4f80c2fe4bbba106a7c439b7d79702c923ee95502695d8a910a600"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438568960"
+checksum = "sha256:224190686f194ff46660a2119a75a46eb85452e67abffe611408932f1578a657"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441094938"
 provenance = "github-attestations"
 
 [tools.aube."platforms.windows-x64"]
-checksum = "sha256:ddc94d1cf21c14d675271761a7837193a23869f719a9cf57149807525e6b8620"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438529280"
+checksum = "sha256:426d5633aaf0ba23f189cd6f7db91182506a0b9dacaf23465c3288e1b358cb6a"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441073944"
 provenance = "github-attestations"
 
 [tools.aube."platforms.windows-x64-baseline"]
-checksum = "sha256:ddc94d1cf21c14d675271761a7837193a23869f719a9cf57149807525e6b8620"
-url = "https://github.com/endevco/aube/releases/download/v1.18.0/aube-v1.18.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/438529280"
+checksum = "sha256:426d5633aaf0ba23f189cd6f7db91182506a0b9dacaf23465c3288e1b358cb6a"
+url = "https://github.com/endevco/aube/releases/download/v1.18.1/aube-v1.18.1-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/endevco/aube/releases/assets/441073944"
 provenance = "github-attestations"
 
 [[tools.bat]]
@@ -171,42 +171,62 @@ checksum = "sha256:538f9c846355d9e847b2671bc00c47da4229a0befb24df3282b739770f3b4
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-windows-x64-baseline.zip"
 
 [[tools.cargo-binstall]]
-version = "1.19.1"
+version = "1.20.0"
 backend = "aqua:cargo-bins/cargo-binstall"
 
 [tools.cargo-binstall."platforms.linux-arm64"]
-checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+checksum = "sha256:3e85b6bbdf971806562ea4070bb4bdae8591fb7bcc2e0f4ea693f40c4ab92159"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-aarch64-unknown-linux-musl.tgz"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-arm64-musl"]
-checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+checksum = "sha256:3e85b6bbdf971806562ea4070bb4bdae8591fb7bcc2e0f4ea693f40c4ab92159"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-aarch64-unknown-linux-musl.tgz"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:4d7875788d0505547c220d2b02d3619aac0dd19b7033eba7005a8d09ff1dc433"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
+
+[tools.cargo-binstall."platforms.linux-x64-baseline"]
+checksum = "sha256:4d7875788d0505547c220d2b02d3619aac0dd19b7033eba7005a8d09ff1dc433"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64-musl"]
-checksum = "sha256:4a50fcf01418862e2fa8e4076cb6cb80ff4061b0c0b1464e71a63ce01ee29bde"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+checksum = "sha256:4d7875788d0505547c220d2b02d3619aac0dd19b7033eba7005a8d09ff1dc433"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+provenance = "github-attestations"
+
+[tools.cargo-binstall."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:4d7875788d0505547c220d2b02d3619aac0dd19b7033eba7005a8d09ff1dc433"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
-checksum = "sha256:bf9da6a27e432784f361cfbc70a6d04e548abc548470ae9a7587c3cffb8fb0a7"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-aarch64-apple-darwin.zip"
+checksum = "sha256:24a9cbf1e4c238881f408d7cca11f4aafba1fdeb0e518887638af5dd40e6ac3d"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-aarch64-apple-darwin.zip"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-x64"]
-checksum = "sha256:39257851fe4fd8cc9dd81fb318f15d589b7178b74165879eddeda8062bd9fcf2"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-apple-darwin.zip"
+checksum = "sha256:2ef14fc607859ba238bce73512eba68941e3addc61cb40282171287fbdee5ff4"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-apple-darwin.zip"
+provenance = "github-attestations"
+
+[tools.cargo-binstall."platforms.macos-x64-baseline"]
+checksum = "sha256:2ef14fc607859ba238bce73512eba68941e3addc61cb40282171287fbdee5ff4"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-apple-darwin.zip"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.windows-x64"]
-checksum = "sha256:dd1f425c177aa1a57c9b17883ff76257f913a5f0afb35424f0767c6984164b7f"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.19.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:185c115ef1977e044e009336c77bf41cc61f144944fdb43e2d84f291b96648dc"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
+provenance = "github-attestations"
+
+[tools.cargo-binstall."platforms.windows-x64-baseline"]
+checksum = "sha256:185c115ef1977e044e009336c77bf41cc61f144944fdb43e2d84f291b96648dc"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.20.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"
 
 [[tools."cargo:erdtree"]]
@@ -449,6 +469,9 @@ backend = "core:elixir"
 [[tools.erlang]]
 version = "29.0.1"
 backend = "core:erlang"
+
+[tools.erlang."platforms.macos-arm64"]
+checksum = "blake3:b96e51d337daff03cabd78ed3f91cfc68e622bd453826d8874796fa99006389c"
 
 [[tools.fd]]
 version = "10.4.2"
