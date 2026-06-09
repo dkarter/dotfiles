@@ -278,36 +278,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.168"
+version = "2.1.169"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:cc6aaad8e37b388c47bc62dd03e5ce11d43a529ee16a6c9fd60d32218dcf777f"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/darwin-arm64/claude"
+checksum = "blake3:752ffd32fb4d1a191ad29c953c5aeab50cfbdbe37778c8f630c7dbba6de9d6ce"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.168/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.169/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -1362,24 +1362,32 @@ version = "3.4.3"
 backend = "pipx:yq"
 
 [[tools.pitchfork]]
-version = "2.12.1"
+version = "2.13.1"
 backend = "aqua:jdx/pitchfork"
 
 [tools.pitchfork."platforms.linux-arm64"]
-checksum = "sha256:2495e7423530fbd3ebc7370ed1d4aa1874e318624ec3c3684f89006e2fe1fd41"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.12.1/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:cf57cea6aad2a462224070874a81f8a756758dea403b146636fc3a9fb591b1cc"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.13.1/pitchfork-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.pitchfork."platforms.linux-x64"]
-checksum = "sha256:c9c844249a4439d5541eaca83cc8a4de180dc2166edf306165fcdd18588a50b7"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.12.1/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:c7860dc90c0211391c1479e837359649ceb5c2512c064b0d3304f94b351768be"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.13.1/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
+
+[tools.pitchfork."platforms.linux-x64-baseline"]
+checksum = "sha256:c7860dc90c0211391c1479e837359649ceb5c2512c064b0d3304f94b351768be"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.13.1/pitchfork-x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.pitchfork."platforms.macos-arm64"]
-checksum = "sha256:b19d93a4cfd588bc86ebdffe5cf89c724cbe51d916a6db21e6f4ee3eaeeadf6a"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.12.1/pitchfork-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:1357c6ffe9b04dee040d1d2bce642ca5d4dd416ebaadfc3813d672e5b3f0298e"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.13.1/pitchfork-aarch64-apple-darwin.tar.gz"
 
 [tools.pitchfork."platforms.windows-x64"]
-checksum = "sha256:c20639def59a3803605ce94f7babc74a39f7343606ef03c0b24cbceb81c8b2f0"
-url = "https://github.com/endevco/pitchfork/releases/download/v2.12.1/pitchfork-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:905dea42443c9045bdc282118f696f26c1fd047a46b830a6ee66e6721823340e"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.13.1/pitchfork-x86_64-pc-windows-msvc.zip"
+
+[tools.pitchfork."platforms.windows-x64-baseline"]
+checksum = "sha256:905dea42443c9045bdc282118f696f26c1fd047a46b830a6ee66e6721823340e"
+url = "https://github.com/jdx/pitchfork/releases/download/v2.13.1/pitchfork-x86_64-pc-windows-msvc.zip"
 
 [[tools.python]]
 version = "3.12.13"
@@ -1663,32 +1671,48 @@ checksum = "sha256:422d79dff5afd5a55fb46ae1cfacc7350ec96d4ef27a63a3ec77a5c30a7b0
 url = "https://github.com/go-task/task/releases/download/v3.51.1/task_windows_amd64.zip"
 
 [[tools.television]]
-version = "0.15.7"
+version = "0.15.8"
 backend = "aqua:alexpasmantier/television"
 
 [tools.television."platforms.linux-arm64"]
-checksum = "sha256:6f99d93662bb5e741dee9050637b345d612498d4ce13cbee707b4464cf79ad55"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:c178173f1e0585e73f5a270ce597525e845c323ae1fa48edcdb9fb92825118e7"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.television."platforms.linux-x64"]
-checksum = "sha256:da70438c6bcaf1f465115575678953138dde897609ff8db23b4a19ebab965e1c"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:dfc0cd19d50e5b3de91eb3e6e9c95c027e1df43d6e9b446e10eb6ea4ca456a83"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.television."platforms.linux-x64-baseline"]
+checksum = "sha256:dfc0cd19d50e5b3de91eb3e6e9c95c027e1df43d6e9b446e10eb6ea4ca456a83"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.television."platforms.linux-x64-musl"]
-checksum = "sha256:da70438c6bcaf1f465115575678953138dde897609ff8db23b4a19ebab965e1c"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:dfc0cd19d50e5b3de91eb3e6e9c95c027e1df43d6e9b446e10eb6ea4ca456a83"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-unknown-linux-musl.tar.gz"
+
+[tools.television."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:dfc0cd19d50e5b3de91eb3e6e9c95c027e1df43d6e9b446e10eb6ea4ca456a83"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.television."platforms.macos-arm64"]
-checksum = "sha256:e2ec72a231c8cd21b37fb91fa390b5fb12a742103374bac884463f62754fb19d"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:e5a28d8d5cdc32529b7e53794d9ef7acb578de2ac09f5404febf9a3139a481ae"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-aarch64-apple-darwin.tar.gz"
 
 [tools.television."platforms.macos-x64"]
-checksum = "sha256:f2f0df2325baf575e097adc6c7730c7b33cc7ffc05c6c553afee0cc75444882b"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:718917e1137bc37b83488b3eb5dcaa61bca32a76fa78046de3117fda66c4a981"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-apple-darwin.tar.gz"
+
+[tools.television."platforms.macos-x64-baseline"]
+checksum = "sha256:718917e1137bc37b83488b3eb5dcaa61bca32a76fa78046de3117fda66c4a981"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-apple-darwin.tar.gz"
 
 [tools.television."platforms.windows-x64"]
-checksum = "sha256:1394deec62a37848c5fa6fb156988b8e0576befec2679b002cb92b4371558524"
-url = "https://github.com/alexpasmantier/television/releases/download/0.15.7/tv-0.15.7-x86_64-pc-windows-msvc.tar.gz"
+checksum = "sha256:acb0c6919c63d58e64b5c6a62046c38315d9bd05827a92e0614099d162c2174e"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-pc-windows-msvc.tar.gz"
+
+[tools.television."platforms.windows-x64-baseline"]
+checksum = "sha256:acb0c6919c63d58e64b5c6a62046c38315d9bd05827a92e0614099d162c2174e"
+url = "https://github.com/alexpasmantier/television/releases/download/0.15.8/tv-0.15.8-x86_64-pc-windows-msvc.tar.gz"
 
 [[tools.tmux]]
 version = "3.6a"
