@@ -119,3 +119,14 @@ python.compile = false
 # using a lockfile helps avoid the need for a GitHub token on first time install
 # activate with `mise lock`
 lockfile = true
+
+# supply chain security: only allow installing new versions of tools that have
+# been released for at least 24 hours, to avoid 0-day supply chain attacks.
+# Exclude some tools that are frequently updated and have a low risk profile.
+minimum_release_age = "24h"
+minimum_release_age_excludes = [
+  "npm:opencode-ai",
+  "claude-code",
+  "erlang",
+  "elixir",
+]
