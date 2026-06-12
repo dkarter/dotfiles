@@ -25,7 +25,15 @@
       "oauth": {}
     }
   },
-  "lsp": true,
+  "lsp": {
+    "elixir-ls": {
+      "disabled": true
+    },
+    "expert": {
+      "command": ["expert", "--stdio"],
+      "extensions": [".ex", ".exs", ".heex", ".eex"]
+    }
+  },
   "permission": {
     "webfetch": "allow",
     "bash": {
