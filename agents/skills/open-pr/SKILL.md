@@ -2,10 +2,15 @@
 name: open-pr
 description: Always use this skill for PR creation. Use whenever the user asks to open, create, draft, prepare, or submit a pull request, unless they explicitly ask for raw CLI/API commands instead.
 disable-model-invocation: true
-allowed-tools: Read, Bash, Glob, Grep
 ---
 
 <!-- This is a starting point. Customize the template and guidelines to match your team's PR conventions. -->
+
+## Tool preference
+
+- Prefer GitHub MCP for GitHub operations when available
+- Use `gh` CLI as the fallback for GitHub operations
+- Use Bash for local `git` commands such as status, diff, log, commit, and push
 
 ## Gather context
 
@@ -71,7 +76,9 @@ Guidelines:
    git push -u origin HEAD
    ```
 
-3. Create the PR via the CLI (or better yet if you have the MCP installed - use that)
+3. Create the PR as a draft, preferring GitHub MCP when available and `gh` CLI otherwise
    ```bash
    gh pr create --draft --title "<title>" --body "<body>"
    ```
+
+4. After creating the PR, open it in the browser with `open <pr-url>`
