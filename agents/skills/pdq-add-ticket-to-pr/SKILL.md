@@ -25,6 +25,12 @@ Run this skill only in PDQ repositories.
 - Short ticket title
 - Ticket body/context (PR URL, commit SHA, flaky/failure context)
 
+## Linear IDs
+
+- Platform team ID: `c1bc5af0-4726-4381-b85b-49e0fabd3b31`
+- Dorian user ID: `e243e478-d3b3-4be0-84cc-cbb301e47ab6`
+- `📋 Engineering Task` label ID: `9e12be59-5086-4064-afb3-b4dbf005effa`
+
 ## Efficient Workflow
 
 1. Fetch minimal PR context once.
@@ -33,8 +39,13 @@ Run this skill only in PDQ repositories.
 
 2. Create the Linear issue in Platform with the correct label.
    - Team: `Platform` (always use this)
-   - Linear Issue Label: `engineering task` (always required)
+   - Linear Issue Label: `📋 Engineering Task` (always required)
    - Capture the returned issue ID (for example `PLT-2976`)
+
+   If the current branch has no PR and no upstream yet, fetch the created issue with the Linear MCP and rename the local branch before first push:
+   - Use the issue's `gitBranchName` field exactly; this is Linear's Copy git branch value, for example `plt-3282-finish-oban-migration`
+   - `git branch -m <linear-git-branch-name>`
+   - Do not rename if a PR exists or the branch is already pushed
 
 3. Update PR title by appending the issue id suffix.
    - Target format: `<existing title> [PLT-xxxx]`
