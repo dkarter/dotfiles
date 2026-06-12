@@ -12,7 +12,7 @@ cask 'cleanshot'
 # setup a hyper key modifier
 cask 'hyperkey'
 
-# note taking app and Zettlekasten
+# NOTE: taking app and Zettlekasten
 cask 'obsidian'
 
 # spotlight alternative
@@ -93,11 +93,11 @@ brew 'ffmpeg'
 brew 'ffmpegthumbnailer'
 
 # vimium like jumps in tmux
-tap 'morantron/tmux-fingers'
+tap 'morantron/tmux-fingers', trusted: true
 brew 'morantron/tmux-fingers/tmux-fingers'
 
 # sudo with touch id
-tap 'dkarter/tap'
+tap 'dkarter/tap', trusted: true
 brew 'dkarter/tap/sudo-touchid'
 # sudo touch id support for tmux
 brew 'pam-reattach'
