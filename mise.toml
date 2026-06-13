@@ -25,3 +25,11 @@ experimental = true
 # using a lockfile helps avoid the need for a GitHub token on first time install
 # activate with `mise lock`
 lockfile = true
+
+[tasks."release:signing-key"]
+description = "Generate/export the release-please GPG signing key"
+file = "scripts/release-please-gpg-key.sh"
+
+[tasks."release:signing-key:print"]
+description = "Print release-please GPG signing values to stdout"
+run = "bash scripts/release-please-gpg-key.sh --print"

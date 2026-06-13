@@ -13,7 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Release Please
-        uses: googleapis/release-please-action@v5
+        uses: dkarter/release-please-action@5931f1e9ef68429590dc13ea0655d0a2708cbd2f
         with:
-          token: '${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN }}'
+          token: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
           release-type: simple
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          signing-gpg-private-key: ${{ secrets.RELEASE_PLEASE_GPG_PRIVATE_KEY }}
+          signing-gpg-passphrase: ${{ secrets.RELEASE_PLEASE_GPG_PASSPHRASE }}
+          signing-gpg-key-id: ${{ secrets.RELEASE_PLEASE_GPG_KEY_ID }}
+          signing-commit-author-name: release-please-signer
+          signing-commit-author-email: 293262735+release-please-signer@users.noreply.github.com
+          signing-commit-committer-name: release-please-signer
+          signing-commit-committer-email: 293262735+release-please-signer@users.noreply.github.com
