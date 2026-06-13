@@ -47,6 +47,23 @@ jobs:
       - name: Run yamllint
         run: task ci:yaml:lint
 
+  audit-deps:
+    name: 'Audit: Deps'
+
+    runs-on: ubuntu-latest
+    needs: mise
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+
+      - name: Run aube audit
+        run: aube audit
+
   formatting:
     name: 'Check Formatting'
 
