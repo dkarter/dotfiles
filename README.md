@@ -43,7 +43,7 @@ the setup script. More details can be found by reading the following files:
 
 Gotchas for NeoVim setup:
 
-- requires [fd](https://github.com/sharkdp/fd) >= 8.4 (install from brew)
+- All runtime dependencies, including neovim itself are installed via [Mise](https://mise.en.dev)
 - Tools such as formatters, LSPs, linters are automatically installed via
   `:Mason`, if one of the deps is not installing make sure to open `:Mason` to
   see the full error message.
@@ -73,8 +73,6 @@ In order to keep the dotfiles up to date, I recommend running the following:
 git pull # get latest
 task sync # installs/updates tools and symlinks new configs
 ```
-
-Alternatively open `./taskfiles/dotfiles.yml` and move all the tasks in `deps` to the `cmds` section, so you can find out which one is failing.
 
 # Note about forking/versioning
 
