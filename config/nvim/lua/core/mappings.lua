@@ -463,11 +463,11 @@ M.sidekick_mappings = {
 -- stylua: ignore
 ---@type LazyKeysSpec[]
 M.opencode_mappings = {
-  { "<leader>oo", function() require("opencode").ask("", { submit = true }) end, mode = { "n", "x" }, desc = "OpenCode Ask"},
-  { "<leader>ot", function() require("opencode").ask("@this: ", { submit = true }) end, mode = { "n", "x" }, desc = "OpenCode @this"},
-  { "<leader>oa", function() require("opencode").prompt("@this") end, mode = { "n", "x" }, desc = "OpenCode Add @this (no submit)"},
+  { "<leader>oo", function() require("opencode").ask("") end, mode = { "n", "x" }, desc = "OpenCode Ask"},
+  { "<leader>ot", function() require("opencode").ask("@this:") end, mode = { "n", "x" }, desc = "OpenCode @this"},
+  { "<leader>oa", function() require("opencode").prompt("@this ") end, mode = { "n", "x" }, desc = "OpenCode Add @this (no submit)"},
   { "<leader>os", function() require("opencode").select() end, mode = { "n", "x" }, desc = "OpenCode select action"},
-  { "<leader>oc", function() require("opencode").toggle() end, desc = "OpenCode (Toggle)"},
+  { "<leader>oc", function() require("opencode.config").opts.server.toggle() end, desc = "OpenCode (Toggle)"},
 }
 
 ---@type LazyKeysSpec[]
