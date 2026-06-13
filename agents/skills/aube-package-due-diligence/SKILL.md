@@ -41,6 +41,8 @@ mise install --locked npm:<package>@<version> --verbose
 
 Look for the underlying aube command in verbose output, for example `aube add --global <package>@<version>`. Identify whether the package is a direct mise tool, a root dependency, or a transitive dependency.
 
+For `mise use -g npm:<package>` low-download failures, use the fast path in `references/mise-global-low-downloads.md` before the full workflow.
+
 ## Metadata Checks
 
 Use aube first:
@@ -127,9 +129,15 @@ Reject or pause when any of these are true:
 Prefer config in this order:
 
 1. Pin to a safe version that satisfies the tool if one exists.
-2. Add exact-version package exclusions, for example `trustPolicyExclude: ["name@1.2.3"]`.
-3. Add exact package build approval only after reviewing lifecycle scripts.
-4. Ask the user before broader package-name exclusions or policy disablement.
+2. For low-download package exceptions, add the exact package name to `allowedUnpopularPackages`; avoid `lowDownloadThreshold = 0`.
+3. Add exact-version package exclusions, for example `trustPolicyExclude: ["name@1.2.3"]`.
+4. Add exact package build approval only after reviewing lifecycle scripts.
+5. Ask the user before broader package-name exclusions or policy disablement.
+
+Choose config scope by install path:
+
+- `aube add --global` or `mise use -g npm:<package>`: write user config with `aube config set --location user`, which updates `~/.config/aube/config.toml`.
+- Project-local `aube install` or `aube add`: prefer `aube-workspace.yaml` or project config in the repo.
 
 When editing config, add a short comment explaining the evidence and scope. Example:
 
