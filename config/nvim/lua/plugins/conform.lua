@@ -46,6 +46,7 @@ end
 -- dprint is configured with require_cwd below, so it'll only run for buffers
 -- that actually have a dprint.json in their project tree.
 local dprint_or_prettier = { 'dprint', 'prettierd', 'prettier', stop_after_first = true }
+local dprint_or_stylua = { 'dprint', 'stylua', stop_after_first = true }
 
 -- Compute formatters at setup time
 local js_formatters = get_biome_or_fallback(dprint_or_prettier)
@@ -64,7 +65,7 @@ return {
   opts = {
     -- Define your formatters
     formatters_by_ft = {
-      lua = { 'stylua' },
+      lua = dprint_or_stylua,
       python = get_with_fallback({ 'dprint.json' }, { 'dprint' }, { 'black' }),
       javascript = js_formatters,
       javascriptreact = js_formatters,
