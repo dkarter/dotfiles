@@ -87,6 +87,10 @@ Wrapper paths are relative to this skill directory:
 
 The tmux wrapper selects and zooms the new tuicr pane after opening it.
 
+Do not treat a `tuicr` process in another pane, window, session, or repo as
+satisfying a request to open a review. Open a new review for the requested repo;
+separate tuicr panes do not conflict for local review sessions.
+
 If your tool supports command timeouts, use a long timeout, such as 10 minutes,
 because the wrappers wait for the TUI to exit. Once the TUI creates its active
 session, use `tuicr review list --repo /path/to/repo` to capture the slug. If
@@ -209,7 +213,8 @@ comments are unavailable.
 | Situation                          | Action                                                            |
 | ---------------------------------- | ----------------------------------------------------------------- |
 | Multiple plausible active sessions | Ask which session slug to use                                     |
-| No active session, tmux available  | Start a new tuicr pane with the wrapper                           |
+| No active session, tmux available  | Start a new tuicr pane for the target repo with the wrapper       |
+| tuicr already running elsewhere    | Ignore it; start a new review for the requested repo              |
 | No active session, no tmux         | Tell the user you are waiting for them to start `tuicr`           |
 | `tuicr` not installed              | Tell the user to install tuicr                                    |
 | Not a repository                   | Ask for the correct repo directory                                |
