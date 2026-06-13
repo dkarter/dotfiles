@@ -1,0 +1,12 @@
+allowedUnpopularPackages = ["@kitlangton/stack"]
+trustPolicyExclude = [
+  "@effect/platform-node@4.0.0-beta.64",
+  "@effect/platform-node-shared@4.0.0-beta.79",
+  "effect@4.0.0-beta.64",
+  "effect@4.0.0-beta.79",
+]
+
+[allowBuilds]
+# @fission-ai/openspec postinstall only checks CI/OPENSPEC_NO_COMPLETIONS,
+# verifies dist/, then prints a shell completion install tip. Keep skipped.
+"@fission-ai/openspec" = false
