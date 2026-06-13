@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.6.1](https://github.com/dkarter/dotfiles/compare/v31.6.0...v31.6.1) (2026-06-13)
+
+
+### Bug Fixes
+
+* mise aube tools ([5650bc1](https://github.com/dkarter/dotfiles/commit/5650bc1cf95a67f148b5e30771177f42376940ec))
+
 ## [31.6.0](https://github.com/dkarter/dotfiles/compare/v31.5.0...v31.6.0) (2026-06-13)
 
 
