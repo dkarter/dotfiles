@@ -2,7 +2,17 @@ advisoryBloomCheck: required
 advisoryCheck: required
 advisoryCheckOnInstall: on # yamllint disable-line rule:truthy
 lockfile: true
+# @kitlangton/stack@0.2.0 is intentionally low-traffic; npm metadata matches
+# the upstream repo/tag and includes registry signature plus SLSA provenance.
+allowedUnpopularPackages:
+  - '@kitlangton/stack'
 # tinyexec@1.2.2 moved from trusted-publisher metadata to maintainer publish
 # with registry signature and SLSA provenance; keep this scoped to the exact version.
+# @kitlangton/stack pulls Effect 4 beta packages that moved from trusted
+# publisher metadata to maintainer publish with registry signatures and provenance.
 trustPolicyExclude:
+  - '@effect/platform-node@4.0.0-beta.64'
+  - '@effect/platform-node-shared@4.0.0-beta.79'
+  - effect@4.0.0-beta.64
+  - effect@4.0.0-beta.79
   - tinyexec@1.2.2
