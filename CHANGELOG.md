@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.6.0](https://github.com/dkarter/dotfiles/compare/v31.5.0...v31.6.0) (2026-06-13)
+
+
+### Features
+
+* **ci:** sign release commits ([dce3f17](https://github.com/dkarter/dotfiles/commit/dce3f178de6057d71db0d3827ab1b97b82de0d49))
+* **mise:** add stack and openspec ([a8dee07](https://github.com/dkarter/dotfiles/commit/a8dee07a8594ff9e706fb1320c009461a7460f4e))
+* **mise:** add stack cli ([bf7b1a6](https://github.com/dkarter/dotfiles/commit/bf7b1a685e19b2894f556bb5d43ed3989acead44))
+* **nvim:** replace bullets.vim with bullets.nvim ([4fecc5d](https://github.com/dkarter/dotfiles/commit/4fecc5de752a2324aec9d9996ddb37dcf11add2b))
+* **opencode:** add linear mcp globally ([ba681fd](https://github.com/dkarter/dotfiles/commit/ba681fd22791708d74c856c26a1d5fb6bb32a8ed))
+* **opencode:** use Expert instead of ElixirLS for Elixir ([bcdd7b1](https://github.com/dkarter/dotfiles/commit/bcdd7b1c493d311427c2b1c124278807a0c8b738))
+* **pi:** add workmux plugin ([a72b2af](https://github.com/dkarter/dotfiles/commit/a72b2afb243538650c97afbe83bb0a145f745637))
+* **skills:** add /teach ([4136648](https://github.com/dkarter/dotfiles/commit/41366484496d277fa792940b1ce677142bddfb06))
+* **skills:** add caveman ([aad6bea](https://github.com/dkarter/dotfiles/commit/aad6bea24b02854463fb2b6f309d5e74e7c512e4))
+* **skills:** add handoff skill ([b8e05bc](https://github.com/dkarter/dotfiles/commit/b8e05bcc545a26993323b0932af4924db98e4a25))
+
+
+### Bug Fixes
+
+* add uv to local mise ([0dc4e58](https://github.com/dkarter/dotfiles/commit/0dc4e58d0a65fc24f43fdff09a6c39dba0bcec61))
+* **lefthook:** only format check staged files ([2c06926](https://github.com/dkarter/dotfiles/commit/2c06926e1ecdc8d0000c06b100e320f95d0ccb09))
+* **mise:** ignore some tools for minimum_release_age ([8797719](https://github.com/dkarter/dotfiles/commit/8797719df98b3931b4f57a37f7603e39cf1d2bbd))
+* **nvim:** address breaking changes with opencode.nvim ([fc14c09](https://github.com/dkarter/dotfiles/commit/fc14c0904b8b11d70fd7fbc3c4f5b7cb46f7d102))
+* **nvim:** support dprint for lua formatting ([98f9f70](https://github.com/dkarter/dotfiles/commit/98f9f706ad8ab355f976d78c2dec48d38aa2f6f5))
+* **opencode:** ask for fnox commands ([8f2a669](https://github.com/dkarter/dotfiles/commit/8f2a669be121c0dd92f208a303e41b57391d53c7))
+* **opencode:** resolve subagent background keybinding conflict ([437aea2](https://github.com/dkarter/dotfiles/commit/437aea28e6c4a308645dc99c9cf9925e0fe082ac))
+* **skills:** update grill me ([ac372ee](https://github.com/dkarter/dotfiles/commit/ac372ee869e2de5e51dc1cbeca42846a13f3e74f))
+* **tmux:** don't write the sesh return code after switch ([55fc860](https://github.com/dkarter/dotfiles/commit/55fc860d35ade791902a40d8dd3697e4aedb2ea1))
+* **tmux:** pasting in neovim prompt popup ([178ac06](https://github.com/dkarter/dotfiles/commit/178ac06497178663ee3620a9cda7ecf9571370e6))
+* **tuicr:** improve config ([97f35f9](https://github.com/dkarter/dotfiles/commit/97f35f99804faee3e34292f6195703d8e9631bf3))
+* **tuicr:** open requested repo review ([81fc265](https://github.com/dkarter/dotfiles/commit/81fc2651c8ddf27a4925b8de8e835463b1e01cbb))
+
 ## [31.5.0](https://github.com/dkarter/dotfiles/compare/v31.4.0...v31.5.0) (2026-06-05)
 
 
