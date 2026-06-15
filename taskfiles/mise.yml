@@ -55,7 +55,7 @@ tasks:
     cmds:
       - cmd: |
           mise trust --yes --silent
-          mise install --locked
+          mise install
 
   tools:install:devcontainer:
     desc: Installs mise tools for prebuilt devcontainer images
@@ -138,7 +138,7 @@ tasks:
             echo "Detected MISE_ENV=extra in ~/.zshrc.local, installing extras too."
           fi
 
-          mise install --locked
+          mise install
 
   tools:update:
     desc: Updates all mise based tools
