@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.6.2](https://github.com/dkarter/dotfiles/compare/v31.6.1...v31.6.2) (2026-06-15)
+
+
+### Bug Fixes
+
+* **mise:** remove `--locked` from mise install ([91ffd4c](https://github.com/dkarter/dotfiles/commit/91ffd4c2fb8e57b6550a4e5580614a0181165df5))
+* **skills:** improve handoff ([0adc22a](https://github.com/dkarter/dotfiles/commit/0adc22aa1a68824ae3d05882c0b5c2d204a8b452))
+* **task:** completions syntax was incorrect ([da54f41](https://github.com/dkarter/dotfiles/commit/da54f41a801e893c6dd9d43e81e2e6f009aa9f93))
+* **task:** remove mise:tools:install:with-github-auth ([c766b81](https://github.com/dkarter/dotfiles/commit/c766b81893e0629e9956dec3258e189625a40547))
+
 ## [31.6.1](https://github.com/dkarter/dotfiles/compare/v31.6.0...v31.6.1) (2026-06-13)
 
 
