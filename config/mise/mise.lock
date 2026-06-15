@@ -294,36 +294,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu"
 
 [[tools.claude-code]]
-version = "2.1.175"
+version = "2.1.177"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:925690278efaeda7d86df4485db86586837b36f1358cfbc7ca823407a4e87ad6"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-arm64/claude"
+checksum = "blake3:3f31dacf4a88698d19b6bfa35f43d547b12f75dcafaa66736b6d5b5140cb2ca6"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.175/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.177/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -566,49 +566,73 @@ checksum = "sha256:b2816e506390a89941c63c9187d58a3cc10e9a55f2ef0685f9ea0eccaf7c9
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.fnox]]
-version = "1.25.1"
+version = "1.26.0"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:fc37354b449e93cf6a15a18c15b58b27f4304ac532559b447e88b7f4e03eea83"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647955"
+checksum = "sha256:25f2628f54113685338322fc6c485d3f899ce0e1a926046c641a323a81806879"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847393"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:1e5e902a941d3a7eea262699d0f7169da5e5d06155c2f82def0baff086f9d3a4"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647954"
+checksum = "sha256:dca289095fcd009094a745e2e6c664e3691087d0e02e0c305abef59c3903ef61"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847389"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:157a3ade234eec5b8a57dfc2ae5e3ac40f1871a5fd8affac94131d91ca60023b"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647964"
+checksum = "sha256:6e2a359357223d83f235523eb21e7402c5a84b5471aeff6d4d0ea6cb4bc6abc2"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847488"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.linux-x64-baseline"]
+checksum = "sha256:6e2a359357223d83f235523eb21e7402c5a84b5471aeff6d4d0ea6cb4bc6abc2"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847488"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:9bb4f563a65ba89e5a6759e95658eafbd1e32d8bd8cb1bf72fc5ff652566eaf5"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647965"
+checksum = "sha256:c6d3d8efeb942b6d3ee4383c6c68c53bd7e625bd1a6f632def203bfaac98089c"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847496"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:c6d3d8efeb942b6d3ee4383c6c68c53bd7e625bd1a6f632def203bfaac98089c"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847496"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:39d1f8cc620d3784f1b4c0127a0cf404f97d35ac4233656d36891d80c77cd147"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647956"
+checksum = "sha256:65295b6cf9a345240967f3fd73db4645d7e4ec3ef4f20f735bd41802c92896f7"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847391"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:82ff6c5a8431a0f7d2d7c0d1c9c29c9ead860ef1bfbdd18e818b3c24bcde44cb"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647953"
+checksum = "sha256:6a621920c16ee27dd32a7063664082f321cb9362369e96c40098eba5769532df"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847388"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.macos-x64-baseline"]
+checksum = "sha256:6a621920c16ee27dd32a7063664082f321cb9362369e96c40098eba5769532df"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847388"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:e2874ecb0bb39816d1e5af60a920875bba5831182a46dad629a206bfcc4cb5bb"
-url = "https://github.com/jdx/fnox/releases/download/v1.25.1/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/422647962"
+checksum = "sha256:ba7ac2eb4ce18178f711d40428431ff20da334c8d61302bca1edae5980e151c8"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847435"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.windows-x64-baseline"]
+checksum = "sha256:ba7ac2eb4ce18178f711d40428431ff20da334c8d61302bca1edae5980e151c8"
+url = "https://github.com/jdx/fnox/releases/download/v1.26.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/445847435"
 provenance = "github-attestations"
 
 [[tools.fx]]
@@ -961,82 +985,92 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.212"
+version = "0.1.213"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:bd701d92d3ed8de0b28bcd9204b4beab8bb66a8d8cb07eacf27c6bef6200e9a3"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038348"
+checksum = "sha256:e99ecd7d6899282ae1dbd5e4c4ef8f270d98e8aa16f218e0c4d800fea479a898"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012335"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:bd701d92d3ed8de0b28bcd9204b4beab8bb66a8d8cb07eacf27c6bef6200e9a3"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038348"
+checksum = "sha256:e99ecd7d6899282ae1dbd5e4c4ef8f270d98e8aa16f218e0c4d800fea479a898"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012335"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
+checksum = "sha256:a0046dc6438eda7c9851fd5c6cfeba1b426aa85a23f79440a9ba65ab2e43ee1c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012336"
 
 [tools."github:raine/workmux"."platforms.linux-x64-baseline"]
-checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
+checksum = "sha256:a0046dc6438eda7c9851fd5c6cfeba1b426aa85a23f79440a9ba65ab2e43ee1c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012336"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
+checksum = "sha256:a0046dc6438eda7c9851fd5c6cfeba1b426aa85a23f79440a9ba65ab2e43ee1c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012336"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:79a3523826ad24bd4c3c350f83a62da0288d01fca38f4b97f095cf2c988376b4"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038343"
+checksum = "sha256:a0046dc6438eda7c9851fd5c6cfeba1b426aa85a23f79440a9ba65ab2e43ee1c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012336"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:7b4f198d74744cdb8b530b68d1f3e1291aea0f41103ec4b004fff2d112b481cf"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038347"
+checksum = "sha256:a8cf8c7b28e62e83a7eca9d512f989c8e9615d7c06e6f4b15f587e69fcde8651"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012337"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:f7558974b1469f84c99ff4523bb5c06087c343ee6f75de389a4c67ee46037a78"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038342"
+checksum = "sha256:284343370a3890714e73650885f0e46302de543e27598ca84d807c86175b5d2f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012334"
 
 [tools."github:raine/workmux"."platforms.macos-x64-baseline"]
-checksum = "sha256:f7558974b1469f84c99ff4523bb5c06087c343ee6f75de389a4c67ee46037a78"
-url = "https://github.com/raine/workmux/releases/download/v0.1.212/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/440038342"
+checksum = "sha256:284343370a3890714e73650885f0e46302de543e27598ca84d807c86175b5d2f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.213/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/446012334"
 
 [[tools."github:remoteoss/dexter"]]
-version = "0.7.0"
+version = "0.7.1"
 backend = "github:remoteoss/dexter"
 
 [tools."github:remoteoss/dexter"."platforms.linux-arm64"]
-checksum = "sha256:56d7fc367a5ba33b13993ff6adf6aefe60b4eaad4c4928404378c522bee39678"
-url = "https://github.com/remoteoss/dexter/releases/download/v0.7.0/dexter_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/432582545"
+checksum = "sha256:1474a29a70eb70d8a86760483bd2829ea670511de529a81b8c916a3a10655ecc"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845389"
 
 [tools."github:remoteoss/dexter"."platforms.linux-arm64-musl"]
-checksum = "sha256:56d7fc367a5ba33b13993ff6adf6aefe60b4eaad4c4928404378c522bee39678"
-url = "https://github.com/remoteoss/dexter/releases/download/v0.7.0/dexter_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/432582545"
+checksum = "sha256:1474a29a70eb70d8a86760483bd2829ea670511de529a81b8c916a3a10655ecc"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845389"
 
 [tools."github:remoteoss/dexter"."platforms.linux-x64"]
-checksum = "sha256:60e9f87e66994d8c789d41c4b46c047257250245668468276584b89e3b4affc9"
-url = "https://github.com/remoteoss/dexter/releases/download/v0.7.0/dexter_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/432582543"
+checksum = "sha256:e50a3881389365286add6ca19b2e35c6145a83ec5006da3d8969500d577e8b68"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845387"
+
+[tools."github:remoteoss/dexter"."platforms.linux-x64-baseline"]
+checksum = "sha256:e50a3881389365286add6ca19b2e35c6145a83ec5006da3d8969500d577e8b68"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845387"
 
 [tools."github:remoteoss/dexter"."platforms.linux-x64-musl"]
-checksum = "sha256:60e9f87e66994d8c789d41c4b46c047257250245668468276584b89e3b4affc9"
-url = "https://github.com/remoteoss/dexter/releases/download/v0.7.0/dexter_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/432582543"
+checksum = "sha256:e50a3881389365286add6ca19b2e35c6145a83ec5006da3d8969500d577e8b68"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845387"
+
+[tools."github:remoteoss/dexter"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:e50a3881389365286add6ca19b2e35c6145a83ec5006da3d8969500d577e8b68"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845387"
 
 [tools."github:remoteoss/dexter"."platforms.macos-arm64"]
-checksum = "sha256:103d8887cbf7fcffe6d03265a1d7d9c70dca0be7b1391058b337063f91d31018"
-url = "https://github.com/remoteoss/dexter/releases/download/v0.7.0/dexter_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/432582544"
+checksum = "sha256:9c57c24f515a8efb31df6ed4dfcdcbdcb91fadf40eef98a96c37999620257372"
+url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845388"
 
 [[tools.gitleaks]]
 version = "8.30.1"
@@ -1422,16 +1456,22 @@ backend = "npm:@commitlint/cli"
 version = "1.4.1"
 backend = "npm:@fission-ai/openspec"
 
+[tools."npm:@fission-ai/openspec".options]
+aube_args = "--deny-build=@fission-ai/openspec"
+
 [[tools."npm:@kitlangton/stack"]]
 version = "0.2.0"
 backend = "npm:@kitlangton/stack"
+
+[tools."npm:@kitlangton/stack".options]
+aube_args = "--allow-low-downloads"
 
 [[tools."npm:neovim"]]
 version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.17.4"
+version = "1.17.7"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
