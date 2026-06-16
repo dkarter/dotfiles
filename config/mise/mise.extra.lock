@@ -351,43 +351,43 @@ url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-x
 url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433389998"
 
 [[tools."github:orf/gping"]]
-version = "gping-v1.20.1"
+version = "gping-v1.20.2"
 backend = "github:orf/gping"
 
 [tools."github:orf/gping"."platforms.linux-arm64"]
-checksum = "sha256:d8a46c8e4d66367f1d56c731698784d0fe812bac3e1ec5cef9555ab15e1497d5"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-Linux-gnu-arm64.tar.gz"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832429"
+checksum = "sha256:95fa83a26a6f5617b90610201df7ba99b2f1fe785919ed259317b5daee9b9739"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-Linux-gnu-arm64.tar.gz"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485462"
 
 [tools."github:orf/gping"."platforms.linux-arm64-musl"]
-checksum = "sha256:930988ae8d7089e31f58c5bd6484af2117f25493bbc0bee95b47f6ed7f2e7289"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-Linux-musl-arm64.tar.gz"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832424"
+checksum = "sha256:24530da128b92ce7c2ed973aef456d86272112cbc1aafc7a8c5b94aef3b9550e"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-Linux-musl-arm64.tar.gz"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485460"
 
 [tools."github:orf/gping"."platforms.linux-x64"]
-checksum = "sha256:793a27f578e86d5358ec67fb82a1251741cd3a8ce576ccc9589891380e6c72b0"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-Linux-gnu-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832422"
+checksum = "sha256:49ab921aa82d304e78b03ab10329cdbda3a9393731aa56ce53a1e2283b96f912"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-Linux-gnu-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485469"
 
 [tools."github:orf/gping"."platforms.linux-x64-musl"]
-checksum = "sha256:d39ce326e7b66765a9a60c85188e14f21b2809470fa3148e6eaac6c9b36600b3"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-Linux-musl-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832428"
+checksum = "sha256:a77768df4d658314648fd0ecc9a02925a6c1f0e5b2c58b6c510a5d4eba20565f"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-Linux-musl-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485461"
 
 [tools."github:orf/gping"."platforms.macos-arm64"]
-checksum = "sha256:3cbfdd3653853cb4770542af7a9f259ddf93c08c507883320e4a00dfaaabca2b"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-macOS-arm64.tar.gz"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832421"
+checksum = "sha256:4f63da3376abdc9e8bf4e8a562f57de911330fc416488eeaade39f8100018d2e"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-macOS-arm64.tar.gz"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485464"
 
 [tools."github:orf/gping"."platforms.macos-x64"]
-checksum = "sha256:5c1a7273788f5c9e47650ade9181cd5fc3bcf1978269e0826132af3b9bc69fd0"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-macOS-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832430"
+checksum = "sha256:7865f7fbca3ea63e411fd9e3059a79e061e9862c9cab10950391e60d7a853fac"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-macOS-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485466"
 
 [tools."github:orf/gping"."platforms.windows-x64"]
-checksum = "sha256:f08559444bcd7af8d629cbad6a972dea4033a116ff9aaf0b1b2bef2a3cabb0af"
-url = "https://github.com/orf/gping/releases/download/gping-v1.20.1/gping-Windows-msvc-x86_64.zip"
-url_api = "https://api.github.com/repos/orf/gping/releases/assets/282832427"
+checksum = "sha256:00ef381775a6449f0510a1e8649e145d7d03634461b269cf8f27f34a22f28af8"
+url = "https://github.com/orf/gping/releases/download/gping-v1.20.2/gping-Windows-msvc-x86_64.zip"
+url_api = "https://api.github.com/repos/orf/gping/releases/assets/447485463"
 
 [[tools."github:preiter93/wireman"]]
 version = "0.3.5"
