@@ -66,3 +66,7 @@ fnox.local.toml
 .plans/
 
 .dexter.db*
+
+# ignore playwright's logs dir that gets created each time the mcp
+# is used
+.playwright-mcp
