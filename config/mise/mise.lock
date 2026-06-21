@@ -240,26 +240,12 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu.exe"
 
 [[tools.claude-code]]
-version = "2.1.183"
+version = "2.1.185"
 backend = "aqua:anthropics/claude-code"
 
-[tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.183/linux-arm64/claude"
-
-[tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.183/linux-arm64-musl/claude"
-
-[tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.183/linux-x64/claude"
-
-[tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.183/linux-x64-musl/claude"
-
 [tools.claude-code."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.183/darwin-arm64/claude"
-
-[tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.183/darwin-x64/claude"
+checksum = "blake3:129c66a7c560227b95e18ab068054621d0aba8248206b6b03817e60dd7daaa15"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.185/darwin-arm64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -350,29 +336,12 @@ version = "0.87.0"
 backend = "npm:@devcontainers/cli"
 
 [[tools.docker-cli]]
-version = "29.5.3"
+version = "29.6.0"
 backend = "aqua:docker/cli"
 
-[tools.docker-cli."platforms.linux-arm64"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.3.tgz"
-
-[tools.docker-cli."platforms.linux-arm64-musl"]
-url = "https://download.docker.com/linux/static/stable/aarch64/docker-29.5.3.tgz"
-
-[tools.docker-cli."platforms.linux-x64"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.3.tgz"
-
-[tools.docker-cli."platforms.linux-x64-musl"]
-url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.5.3.tgz"
-
 [tools.docker-cli."platforms.macos-arm64"]
-url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.5.3.tgz"
-
-[tools.docker-cli."platforms.macos-x64"]
-url = "https://download.docker.com/mac/static/stable/x86_64/docker-29.5.3.tgz"
-
-[tools.docker-cli."platforms.windows-x64"]
-url = "https://download.docker.com/win/static/stable/x86_64/docker-29.5.3.zip"
+checksum = "blake3:9c5207d327f28e2075cbcd93807419b50fc3b6558df448add7c55e926bd88552"
+url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.6.0.tgz"
 
 [[tools.elixir]]
 version = "1.20.0-otp-29"
@@ -427,20 +396,6 @@ url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/4435577
 checksum = "sha256:dffd5fca2e841267bfb4e961c38bb18436a4b55548deae727d5691a984f7b80f"
 url = "https://github.com/erlang/otp/releases/download/OTP-29.0.2/otp_win64_29.0.2.zip"
 url_api = "https://api.github.com/repos/erlang/otp/releases/assets/443733928"
-
-[[tools.erlang]]
-version = "29.0.2"
-backend = "core:erlang"
-
-[tools.erlang.options]
-precompiled = "if_available"
-precompiled_os = "ubuntu-24.04"
-
-[tools.erlang."platforms.linux-arm64"]
-url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.0.2.tar.gz"
-
-[tools.erlang."platforms.linux-x64"]
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.2.tar.gz"
 
 [[tools.expert]]
 version = "0.1.5"
@@ -1136,37 +1091,12 @@ checksum = "sha256:805bfcb2445273b77a32b7758dfb5d2d8dbd7b80b7336ab868935584a2fad
 url = "https://github.com/jesseduffield/lazygit/releases/download/v0.62.2/lazygit_0.62.2_windows_x86_64.zip"
 
 [[tools.lima]]
-version = "2.1.2"
+version = "2.1.3"
 backend = "aqua:lima-vm/lima"
 
-[tools.lima."platforms.linux-arm64"]
-checksum = "sha256:c2deb0aad9ba375b0d1cc37bf3e01402f2d9ef6cf63db924171d2627823626b0"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.2/lima-2.1.2-Linux-aarch64.tar.gz"
-provenance = "github-attestations"
-
-[tools.lima."platforms.linux-arm64-musl"]
-checksum = "sha256:c2deb0aad9ba375b0d1cc37bf3e01402f2d9ef6cf63db924171d2627823626b0"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.2/lima-2.1.2-Linux-aarch64.tar.gz"
-provenance = "github-attestations"
-
-[tools.lima."platforms.linux-x64"]
-checksum = "sha256:648ed5f599012a0864bd0c4809063b18116bca57f2593d30547dfedbef3c2ce0"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.2/lima-2.1.2-Linux-x86_64.tar.gz"
-provenance = "github-attestations"
-
-[tools.lima."platforms.linux-x64-musl"]
-checksum = "sha256:648ed5f599012a0864bd0c4809063b18116bca57f2593d30547dfedbef3c2ce0"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.2/lima-2.1.2-Linux-x86_64.tar.gz"
-provenance = "github-attestations"
-
 [tools.lima."platforms.macos-arm64"]
-checksum = "sha256:7081d03d01511f20c4a3b38d8120428ef1c66e4b21ec9b54017bc65da60b031f"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.2/lima-2.1.2-Darwin-arm64.tar.gz"
-provenance = "github-attestations"
-
-[tools.lima."platforms.macos-x64"]
-checksum = "sha256:3dc5218c7b0cc14126fb6e3ae6f174f026660e4e2cdffcb34b16e5a2f415eb45"
-url = "https://github.com/lima-vm/lima/releases/download/v2.1.2/lima-2.1.2-Darwin-x86_64.tar.gz"
+checksum = "sha256:52bcf0780fcb28128ac9f6924d4410a6bc7c92fa80c9a858d89ae34ec3ce4f35"
+url = "https://github.com/lima-vm/lima/releases/download/v2.1.3/lima-2.1.3-Darwin-arm64.tar.gz"
 provenance = "github-attestations"
 
 [[tools.lsd]]
@@ -1288,7 +1218,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.17.8"
+version = "1.17.9"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
