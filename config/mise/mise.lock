@@ -1019,6 +1019,55 @@ url = "https://github.com/charmbracelet/gum/releases/download/v0.17.0/gum_0.17.0
 checksum = "sha256:b2be80531c6babc8d4e0e6ca95773d58118a2e1582ae006aace08dbc55503072"
 url = "https://github.com/charmbracelet/gum/releases/download/v0.17.0/gum_0.17.0_Windows_x86_64.zip"
 
+[[tools.herdr]]
+version = "0.7.0"
+backend = "github:ogulcancelik/herdr"
+
+[tools.herdr."platforms.linux-arm64"]
+checksum = "sha256:77407959c514c25c870bbcc6d2a2c86fef5b5701ed0c7c37745d7412e8563d72"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-linux-aarch64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342842"
+
+[tools.herdr."platforms.linux-arm64-musl"]
+checksum = "sha256:77407959c514c25c870bbcc6d2a2c86fef5b5701ed0c7c37745d7412e8563d72"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-linux-aarch64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342842"
+
+[tools.herdr."platforms.linux-x64"]
+checksum = "sha256:ad2a5d480a4e04609a9dd30a19ec07854578df6b5f0ea9299246963baf40363b"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342843"
+
+[tools.herdr."platforms.linux-x64-baseline"]
+checksum = "sha256:ad2a5d480a4e04609a9dd30a19ec07854578df6b5f0ea9299246963baf40363b"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342843"
+
+[tools.herdr."platforms.linux-x64-musl"]
+checksum = "sha256:ad2a5d480a4e04609a9dd30a19ec07854578df6b5f0ea9299246963baf40363b"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342843"
+
+[tools.herdr."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:ad2a5d480a4e04609a9dd30a19ec07854578df6b5f0ea9299246963baf40363b"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342843"
+
+[tools.herdr."platforms.macos-arm64"]
+checksum = "sha256:0946c1c5de396d1404906c81c84a0cef47af5e15c9aac3c058c3936b833fe311"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-macos-aarch64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342844"
+
+[tools.herdr."platforms.macos-x64"]
+checksum = "sha256:6c61cdb67c79b8d0626e109b9d8d8635c66a80bfed21ac9fe6efdf1dd8d27c0f"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-macos-x86_64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342841"
+
+[tools.herdr."platforms.macos-x64-baseline"]
+checksum = "sha256:6c61cdb67c79b8d0626e109b9d8d8635c66a80bfed21ac9fe6efdf1dd8d27c0f"
+url = "https://github.com/ogulcancelik/herdr/releases/download/v0.7.0/herdr-macos-x86_64"
+url_api = "https://api.github.com/repos/ogulcancelik/herdr/releases/assets/448342841"
+
 [[tools.jq]]
 version = "1.8.2"
 backend = "aqua:jqlang/jq"
