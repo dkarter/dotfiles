@@ -390,7 +390,7 @@ url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-win32-x64.zip"
 
 [[tools.node]]
-version = "24.17.0"
+version = "24.18.0"
 backend = "core:node"
 
 [[tools.ripgrep]]
@@ -705,13 +705,8 @@ checksum = "sha256:f4a12400c48cc08e7f5435b64d0ecb08c54091b97c3ccabf6cea178d0969c
 url = "https://github.com/crate-ci/typos/releases/download/v1.47.2/typos-v1.47.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.uv]]
-version = "0.11.23"
+version = "0.11.24"
 backend = "aqua:astral-sh/uv"
-
-[tools.uv."platforms.macos-arm64"]
-checksum = "sha256:71ef9de85db820749b3b12b7585624ee279e9c5afcbc6f8236bc3d628c4305b0"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.23/uv-aarch64-apple-darwin.tar.gz"
-provenance = "github-attestations"
 
 [[tools.yamllint]]
 version = "1.38.0"
