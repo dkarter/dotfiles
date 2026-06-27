@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.7.0](https://github.com/dkarter/dotfiles/compare/v31.6.2...v31.7.0) (2026-06-27)
+
+
+### Features
+
+* add herdr ([85a7cfc](https://github.com/dkarter/dotfiles/commit/85a7cfc89ebebbe70a336597fb62960896b2061a))
+* **herdr:** add command palette ([f734396](https://github.com/dkarter/dotfiles/commit/f734396b260eb9ae0625434001292dab39517a36))
+
+
+### Bug Fixes
+
+* **aube:** update lockfile ([636052f](https://github.com/dkarter/dotfiles/commit/636052f0c0313d3843d67cb276e14dd522c52be6))
+* **nvim:** deno lsp project detection ([8174a82](https://github.com/dkarter/dotfiles/commit/8174a824f7a4a55e0cfed97ceeab996bae9a8dae))
+* **opencode:** add plugin to fix issues with Linear MCP ([53f7e35](https://github.com/dkarter/dotfiles/commit/53f7e350e0549692af162667233435c1cd2e54c0))
+
 ## [31.6.2](https://github.com/dkarter/dotfiles/compare/v31.6.1...v31.6.2) (2026-06-15)
 
 
