@@ -38,7 +38,7 @@ RUN --mount=type=bind,source=.,target=/src,readonly \
   --mount=type=cache,target=/root/.cargo/registry \
   --mount=type=cache,target=/root/.local/share/mise/downloads \
   --mount=type=cache,target=/root/go/pkg/mod \
-  && echo "Using setup layer hash: ${SETUP_LAYER_HASH}" \
+  echo "Using setup layer hash: ${SETUP_LAYER_HASH}" \
   && rm -rf /opt/dotfiles \
   && mkdir -p /opt/dotfiles \
   && cp -a /src/. /opt/dotfiles/ \
