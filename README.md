@@ -97,13 +97,6 @@ Releases and versioning is done using [Release Please](https://github.com/google
 
 ---
 
-# Development
-
-- This repo now uses conventional commits. To install the git hooks simply run `yarn` in the project directory
-- To start development use [airmux](https://github.com/dermoumi/airmux) (alias `mux`) inside the project directory
-
----
-
 ## FAQ
 
 <details>
@@ -129,7 +122,7 @@ Mise has multiple backends, and you should read a little about these to get
 the most benefit out of using Mise. Specifically learn about:
 
 - [Aqua](https://mise.jdx.dev/dev-tools/backends/aqua.html)
-- [UBI](https://mise.jdx.dev/dev-tools/backends/ubi.html)
+- [Github](https://mise.jdx.dev/dev-tools/backends/github.html)
 - [Cargo](https://mise.jdx.dev/dev-tools/backends/cargo.html)
   There are others too - but these are the ones I use the most. UBI is
   especially cool!
