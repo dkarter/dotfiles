@@ -1,0 +1,18 @@
+id = "dotfiles.command-palette"
+name = "Command Palette"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Dotfiles Herdr command palette"
+platforms = ["macos", "linux"]
+
+[[actions]]
+id = "open"
+title = "Open command palette"
+contexts = ["workspace"]
+command = ["./open"]
+
+[[panes]]
+id = "palette"
+title = "Command Palette"
+placement = "overlay"
+command = ["./palette"]

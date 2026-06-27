@@ -1,0 +1,17 @@
+[metadata]
+name = "herdr-commands"
+description = "Herdr command palette"
+requirements = ["tv", "herdr", "git"]
+
+[source]
+command = "$HOME/dotfiles/bin/herdr-commands list"
+ansi = true
+output = "{strip_ansi}"
+
+[keybindings]
+enter = "actions:run"
+
+[actions.run]
+description = "Execute selected Herdr command"
+command = "zsh -lc 'herdr-commands exec \"$1\"' _ '{strip_ansi}'"
+mode = "execute"

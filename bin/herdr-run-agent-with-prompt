@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+prompt_file="${1:-}"
+
+if [[ -z "$prompt_file" || ! -f "$prompt_file" ]]; then
+  print -r -- "Usage: herdr-run-agent-with-prompt <prompt-file>" >&2
+  exit 1
+fi
+
+agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-opencode --port --model \"$(opencode-last-model)\"}"
+prompt_text="$(<"$prompt_file")"
+rm -f "$prompt_file"
+
+typeset -a argv
+eval "argv=($agent_command)"
+
+if (( ${#argv[@]} == 0 )); then
+  print -r -- "No agent command configured" >&2
+  exit 1
+fi
+
+case "${argv[1]}" in
+  opencode)
+    exec "${argv[@]}" --prompt "$prompt_text"
+    ;;
+  *)
+    exec "${argv[@]}"
+    ;;
+esac

@@ -13,6 +13,7 @@ delivery = "system"
 show_agent_labels_on_pane_borders = true
 agent_panel_scope = "current"
 
+agent_panel_sort = "priority"
 [keys]
 prefix = "ctrl+z"
 focus_pane_left = "ctrl+h"
@@ -20,3 +21,12 @@ focus_pane_down = "ctrl+j"
 focus_pane_up = "ctrl+k"
 focus_pane_right = "ctrl+l"
 split_vertical = "prefix+\\"
+rename_pane = ""
+rename_tab = ""
+goto = "prefix+shift+t"
+
+[[keys.command]]
+key = "prefix+shift+p"
+type = "plugin_action"
+command = "dotfiles.command-palette.open"
+description = "command palette"

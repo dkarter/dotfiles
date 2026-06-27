@@ -1,0 +1,32 @@
+[
+  {
+    "plugin_id": "dotfiles.command-palette",
+    "name": "Command Palette",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Dotfiles Herdr command palette",
+    "manifest_path": "/Users/dorian/dotfiles/config/herdr/plugins/command-palette/herdr-plugin.toml",
+    "plugin_root": "/Users/dorian/dotfiles/config/herdr/plugins/command-palette",
+    "enabled": true,
+    "platforms": ["macos", "linux"],
+    "actions": [
+      {
+        "id": "open",
+        "title": "Open command palette",
+        "contexts": ["workspace"],
+        "command": ["./open"]
+      }
+    ],
+    "panes": [
+      {
+        "id": "palette",
+        "title": "Command Palette",
+        "placement": "overlay",
+        "command": ["./palette"]
+      }
+    ],
+    "source": {
+      "kind": "local"
+    }
+  }
+]

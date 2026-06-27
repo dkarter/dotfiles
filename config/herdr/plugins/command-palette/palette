@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+export PATH="$HOME/dotfiles/bin:$PATH"
+
+exec mise x -- tv herdr-commands --layout portrait --hide-status-bar

@@ -1,0 +1,296 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+setopt extendedglob
+
+typeset -A ACTIONS
+typeset -A SHORTCUTS
+typeset -a LABELS
+
+add_command() {
+  local label="$1"
+  local action="$2"
+  local shortcut="${3:-}"
+
+  ACTIONS[$label]="$action"
+  SHORTCUTS[$label]="$shortcut"
+  LABELS+=("$label")
+}
+
+add_command "󰙅 New workspace" "new_workspace" "prefix+shift+n"
+add_command " New worktree" "new_worktree" "prefix+shift+g"
+add_command "󰚩 New agent with prompt" "new_agent_with_prompt"
+add_command "󰆴 Delete current worktree" "delete_current_worktree"
+
+color_dim=$'\e[90m'
+color_reset=$'\e[0m'
+
+list_commands() {
+  for label in "${LABELS[@]}"; do
+    local shortcut="${SHORTCUTS[$label]}"
+    if [[ -n "$shortcut" ]]; then
+      print -r -- "$label ${color_dim}(${shortcut})${color_reset}"
+    else
+      print -r -- "$label"
+    fi
+  done
+}
+
+strip_ansi() {
+  local input="$1"
+  print -r -- "${input//\e\[[0-9;]*[[:alpha:]]/}"
+}
+
+strip_shortcut() {
+  local input="$1"
+  input="${input%%\(*}"
+  print -r -- "${input%%[[:space:]]#}"
+}
+
+strip_cr() {
+  local input="$1"
+  print -r -- "${input%$'\r'}"
+}
+
+normalize_label() {
+  local input="$1"
+  input="$(strip_ansi "$input")"
+  input="$(strip_shortcut "$input")"
+  input="$(strip_cr "$input")"
+  input="${input//[[:space:]]/ }"
+  input="${input##[[:space:]]#}"
+  input="${input%%[[:space:]]#}"
+  print -r -- "$input"
+}
+
+context_value() {
+  local query="$1"
+
+  if [[ -n "${HERDR_PLUGIN_CONTEXT_JSON:-}" ]]; then
+    jq -er "$query // empty" <<<"$HERDR_PLUGIN_CONTEXT_JSON" 2>/dev/null || true
+  fi
+}
+
+current_workspace_id() {
+  local value
+  value="$(context_value '.workspace.workspace_id // .workspace.id // .workspace_id')"
+
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  value="${HERDR_WORKSPACE_ID:-}"
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  herdr pane current --current | jq -er '.result.pane.workspace_id'
+}
+
+current_pane_cwd() {
+  local value
+  value="$(context_value '.focused_pane.foreground_cwd // .focused_pane.cwd // .pane.foreground_cwd // .pane.cwd')"
+
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  value="${HERDR_ACTIVE_PANE_CWD:-}"
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  herdr pane current --current | jq -er '.result.pane.foreground_cwd // .result.pane.cwd'
+}
+
+repo_root_for_cwd() {
+  local cwd="$1"
+  git -C "$cwd" rev-parse --show-toplevel 2>/dev/null || true
+}
+
+workmux_config_for_repo() {
+  local repo_root="$1"
+  local config_file="$repo_root/.workmux.yaml"
+
+  [[ -f "$config_file" ]] && print -r -- "$config_file"
+}
+
+workmux_agent_command() {
+  local repo_root="$1"
+  local config_file
+  config_file="$(workmux_config_for_repo "$repo_root")"
+
+  if [[ -n "$config_file" ]]; then
+    ruby -ryaml -e 'cfg = YAML.load_file(ARGV[0]) || {}; puts(cfg["agent"] || "")' "$config_file" 2>/dev/null || true
+  fi
+}
+
+workmux_post_create_commands() {
+  local repo_root="$1"
+  local config_file
+  config_file="$(workmux_config_for_repo "$repo_root")"
+
+  if [[ -n "$config_file" ]]; then
+    ruby -ryaml -e 'cfg = YAML.load_file(ARGV[0]) || {}; Array(cfg["post_create"]).each { |cmd| puts cmd unless cmd == "<global>" }' "$config_file" 2>/dev/null || true
+  fi
+}
+
+select_base_branch() {
+  local cwd="$1"
+  local base_branch
+
+  base_branch="$(cd "$cwd" && mise x -- tv workmux-base-branch --hide-status-bar || true)"
+  print -r -- "$base_branch"
+}
+
+prompt_worktree_name() {
+  mise x -- gum input --placeholder="Worktree branch/name..."
+}
+
+new_workspace() {
+  local cwd name
+  cwd="$(current_pane_cwd)"
+  name="$(mise x -- gum input --placeholder="Workspace name...")"
+
+  [[ -z "$name" ]] && return 0
+
+  herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null
+}
+
+new_worktree() {
+  local workspace_id cwd branch base_branch
+  workspace_id="$(current_workspace_id)"
+  cwd="$(current_pane_cwd)"
+  branch="$(prompt_worktree_name)"
+
+  [[ -z "$branch" ]] && return 0
+
+  if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
+    mise x -- gum style --foreground="red" "Not in a git repository"
+    return 1
+  fi
+
+  base_branch="$(select_base_branch "$cwd")"
+  [[ -z "$base_branch" ]] && return 0
+
+  herdr worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json >/dev/null
+}
+
+run_post_create_hooks() {
+  local repo_root="$1"
+  local checkout_path="$2"
+  local hook
+
+  while IFS= read -r hook; do
+    [[ -z "$hook" ]] && continue
+    mise x -- gum style --foreground="240" "Running post-create: $hook"
+    (cd "$checkout_path" && zsh -lc "$hook")
+  done < <(workmux_post_create_commands "$repo_root")
+}
+
+new_agent_with_prompt() {
+  local workspace_id cwd repo_root branch base_branch temp_prompt_file prompt_file prompt_text create_json checkout_path root_pane_id new_workspace_id agent_command
+
+  workspace_id="$(current_workspace_id)"
+  cwd="$(current_pane_cwd)"
+
+  if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
+    mise x -- gum style --foreground="red" "Not in a git repository"
+    return 1
+  fi
+
+  repo_root="$(repo_root_for_cwd "$cwd")"
+  branch="$(prompt_worktree_name)"
+
+  [[ -z "$branch" ]] && return 0
+
+  base_branch="$(select_base_branch "$cwd")"
+  [[ -z "$base_branch" ]] && return 0
+
+  temp_prompt_file="$(mktemp -t herdr-command-prompt)"
+  trap 'rm -f "$temp_prompt_file"' RETURN
+
+  mise x -- nvim "+startinsert" "+set ft=markdown" "$temp_prompt_file"
+  prompt_text="$(<"$temp_prompt_file")"
+
+  if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
+    return 0
+  fi
+
+  create_json="$(herdr worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json)"
+  checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
+  root_pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$create_json")"
+  new_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$create_json")"
+
+  cp "$temp_prompt_file" "$checkout_path/.herdr-agent-prompt.md"
+  prompt_file="$checkout_path/.herdr-agent-prompt.md"
+
+  run_post_create_hooks "$repo_root" "$checkout_path"
+
+  agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-$(workmux_agent_command "$repo_root")}"
+  agent_command="${agent_command:-opencode --port --model \"$(opencode-last-model)\"}"
+
+  herdr pane run "$root_pane_id" "HERDR_COMMANDS_AGENT_COMMAND=${(q)agent_command} herdr-run-agent-with-prompt ${(q)prompt_file}"
+  herdr workspace focus "$new_workspace_id" >/dev/null
+}
+
+delete_current_worktree() {
+  local workspace_id workspace_json label path is_linked remove_output
+  workspace_id="$(current_workspace_id)"
+  workspace_json="$(herdr workspace get "$workspace_id")"
+  label="$(jq -er '.result.workspace.label // .result.workspace.workspace_id' <<<"$workspace_json")"
+  path="$(jq -er '.result.workspace.worktree.checkout_path // empty' <<<"$workspace_json" 2>/dev/null || true)"
+  is_linked="$(jq -er '.result.workspace.worktree.is_linked_worktree // false' <<<"$workspace_json" 2>/dev/null || true)"
+
+  if [[ -z "$path" || "$is_linked" != "true" ]]; then
+    mise x -- gum style --foreground="red" "Current workspace is not a Herdr worktree"
+    return 1
+  fi
+
+  if ! mise x -- gum confirm "Delete worktree '$label' at $path?"; then
+    return 0
+  fi
+
+  if remove_output="$(herdr worktree remove --workspace "$workspace_id" --json 2>&1)"; then
+    return 0
+  fi
+
+  mise x -- gum style --foreground="red" "$remove_output"
+
+  if mise x -- gum confirm "Git refused safe removal. Force delete dirty worktree?"; then
+    herdr worktree remove --workspace "$workspace_id" --force --json >/dev/null
+  fi
+}
+
+run_command() {
+  local label="$1"
+  local action="${ACTIONS[$label]}"
+
+  if [[ -z "$action" ]]; then
+    print -r -- "Unknown command label: $label" >&2
+    return 1
+  fi
+
+  "$action"
+}
+
+action="${1:-list}"
+shift || true
+
+case "$action" in
+  list)
+    list_commands
+    ;;
+  exec)
+    label_raw="$*"
+    label="$(normalize_label "$label_raw")"
+    run_command "$label"
+    ;;
+  *)
+    print -r -- "Usage: herdr-commands [list|exec <label>]" >&2
+    exit 1
+    ;;
+esac
