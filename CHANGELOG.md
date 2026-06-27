@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.7.1](https://github.com/dkarter/dotfiles/compare/v31.7.0...v31.7.1) (2026-06-27)
+
+
+### Bug Fixes
+
+* **docker:** fix build script ([bfccc5c](https://github.com/dkarter/dotfiles/commit/bfccc5cb8a22ed82eac2f9ca2b5a0b1b6d523467))
+
 ## [31.7.0](https://github.com/dkarter/dotfiles/compare/v31.6.2...v31.7.0) (2026-06-27)
 
 
