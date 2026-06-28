@@ -4,11 +4,53 @@
 version = "3.4.4"
 backend = "aqua:argoproj/argo-cd"
 
+[tools.argocd."platforms.linux-arm64"]
+checksum = "sha256:ade7e2eff37230b9d19ea864f3ad51af4596416426244be8cb350a05cd4a0182"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-linux-arm64"
+
+[tools.argocd."platforms.linux-arm64".provenance.slsa]
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
+
+[tools.argocd."platforms.linux-arm64-musl"]
+checksum = "sha256:ade7e2eff37230b9d19ea864f3ad51af4596416426244be8cb350a05cd4a0182"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-linux-arm64"
+
+[tools.argocd."platforms.linux-arm64-musl".provenance.slsa]
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
+
+[tools.argocd."platforms.linux-x64"]
+checksum = "sha256:b93c312956880c9597a246a7d1e705fbb7ee7f19c5229affdec99b26d5663e09"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-linux-amd64"
+
+[tools.argocd."platforms.linux-x64".provenance.slsa]
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
+
+[tools.argocd."platforms.linux-x64-musl"]
+checksum = "sha256:b93c312956880c9597a246a7d1e705fbb7ee7f19c5229affdec99b26d5663e09"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-linux-amd64"
+
+[tools.argocd."platforms.linux-x64-musl".provenance.slsa]
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
+
 [tools.argocd."platforms.macos-arm64"]
 checksum = "sha256:300470f888139217590c3e6a7f05ee9f1ca0ea27e8f9587e14d02952505b4845"
 url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-darwin-arm64"
 
 [tools.argocd."platforms.macos-arm64".provenance.slsa]
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
+
+[tools.argocd."platforms.macos-x64"]
+checksum = "sha256:53523b2a55a41b6749697b06efe036767693b87aa7fe9e8eb7d72dc73250f143"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-darwin-amd64"
+
+[tools.argocd."platforms.macos-x64".provenance.slsa]
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
+
+[tools.argocd."platforms.windows-x64"]
+checksum = "sha256:c25d18552ded8bd05df14334e542f03381ba84bab63b1528bf9125a62b5d40e7"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-windows-amd64.exe"
+
+[tools.argocd."platforms.windows-x64".provenance.slsa]
 url = "https://github.com/argoproj/argo-cd/releases/download/v3.4.4/argocd-cli.intoto.jsonl"
 
 [[tools."cargo:du-dust"]]
@@ -195,10 +237,40 @@ url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/406732487"
 version = "2.0.1"
 backend = "github:kdash-rs/kdash"
 
+[tools."github:kdash-rs/kdash"."platforms.linux-arm64"]
+checksum = "sha256:8a6f08fb71bfcb22adb398edd405c7598e12c8d15f49b626ff9995c6dcfdef7e"
+url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-linux.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451323167"
+
+[tools."github:kdash-rs/kdash"."platforms.linux-arm64-musl"]
+checksum = "sha256:faa0b64168e5cf241c531d35f1a99c7a08d6a52e0079704164fa369e0c67b416"
+url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451323170"
+
+[tools."github:kdash-rs/kdash"."platforms.linux-x64"]
+checksum = "sha256:8a6f08fb71bfcb22adb398edd405c7598e12c8d15f49b626ff9995c6dcfdef7e"
+url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-linux.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451323167"
+
+[tools."github:kdash-rs/kdash"."platforms.linux-x64-musl"]
+checksum = "sha256:faa0b64168e5cf241c531d35f1a99c7a08d6a52e0079704164fa369e0c67b416"
+url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451323170"
+
 [tools."github:kdash-rs/kdash"."platforms.macos-arm64"]
 checksum = "sha256:91e8a15f3bf87ca58744dd22c27939f2d98be22212dceeff4d7b9ac93f1c477c"
 url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-macos-arm64.tar.gz"
 url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451320806"
+
+[tools."github:kdash-rs/kdash"."platforms.macos-x64"]
+checksum = "sha256:4b973906c2ced7abac12a0470d24049fb9740e5895f10fc9112838e6faceb3e8"
+url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-macos.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451324718"
+
+[tools."github:kdash-rs/kdash"."platforms.windows-x64"]
+checksum = "sha256:df837f41d863404355ac285ce8d909d62575d867b41fcacae3f4a81ec0472583"
+url = "https://github.com/kdash-rs/kdash/releases/download/v2.0.1/kdash-windows.tar.gz"
+url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/451327971"
 
 [[tools."github:mr-karan/doggo"]]
 version = "1.2.0"
@@ -438,6 +510,34 @@ url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/3635663
 version = "4.2.2"
 backend = "aqua:helm/helm"
 
+[tools.helm."platforms.linux-arm64"]
+checksum = "sha256:78803142087a0069fa4b50d3f32a84d3ef25c14d1ee8a40fbccf86a6216d2f36"
+url = "https://get.helm.sh/helm-v4.2.2-linux-arm64.tar.gz"
+
+[tools.helm."platforms.linux-arm64-musl"]
+checksum = "sha256:78803142087a0069fa4b50d3f32a84d3ef25c14d1ee8a40fbccf86a6216d2f36"
+url = "https://get.helm.sh/helm-v4.2.2-linux-arm64.tar.gz"
+
+[tools.helm."platforms.linux-x64"]
+checksum = "sha256:9adafecab4d406853bba163a70e9f104f47dbbf65ce24b7653bae7e36150bcb6"
+url = "https://get.helm.sh/helm-v4.2.2-linux-amd64.tar.gz"
+
+[tools.helm."platforms.linux-x64-musl"]
+checksum = "sha256:9adafecab4d406853bba163a70e9f104f47dbbf65ce24b7653bae7e36150bcb6"
+url = "https://get.helm.sh/helm-v4.2.2-linux-amd64.tar.gz"
+
+[tools.helm."platforms.macos-arm64"]
+checksum = "sha256:5410a0dae3d5d91f45653b161260d9301aabc4ae80ae50a6605d66884b6df8ea"
+url = "https://get.helm.sh/helm-v4.2.2-darwin-arm64.tar.gz"
+
+[tools.helm."platforms.macos-x64"]
+checksum = "sha256:10c1e36ee8c5f2e2ee25a16599cb03ab74c0953cd889cacb980a49ba4b6574ba"
+url = "https://get.helm.sh/helm-v4.2.2-darwin-amd64.tar.gz"
+
+[tools.helm."platforms.windows-x64"]
+checksum = "sha256:29589dad546f8bcd3a6ad92261fcb4a6c9db4a32f9e4fc4f5212db189553dc60"
+url = "https://get.helm.sh/helm-v4.2.2-windows-amd64.tar.gz"
+
 [[tools.kubectl]]
 version = "1.36.2"
 backend = "aqua:kubernetes/kubernetes/kubectl"
@@ -506,9 +606,33 @@ url = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/laz
 version = "1.12.3"
 backend = "aqua:opentofu/opentofu"
 
+[tools.opentofu."platforms.linux-arm64"]
+checksum = "sha256:98861dad4ac08882dcf255fe5d48bed7deddc34e8d6544f8690c65212320ad64"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_linux_arm64.tar.gz"
+
+[tools.opentofu."platforms.linux-arm64-musl"]
+checksum = "sha256:98861dad4ac08882dcf255fe5d48bed7deddc34e8d6544f8690c65212320ad64"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_linux_arm64.tar.gz"
+
+[tools.opentofu."platforms.linux-x64"]
+checksum = "sha256:f87d45408dcbb963ddbe10b2f75e55b3495310556e05c35765dfd5913551f182"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_linux_amd64.tar.gz"
+
+[tools.opentofu."platforms.linux-x64-musl"]
+checksum = "sha256:f87d45408dcbb963ddbe10b2f75e55b3495310556e05c35765dfd5913551f182"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_linux_amd64.tar.gz"
+
 [tools.opentofu."platforms.macos-arm64"]
 checksum = "sha256:0c8ddee4294f7cea34d82b122fa805febce41d21905a54dc9ce9f79ee8145284"
 url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_darwin_arm64.tar.gz"
+
+[tools.opentofu."platforms.macos-x64"]
+checksum = "sha256:e4d5fa86cfbe7eb8b56ec19e4c7e0bc7885845ca4e4a955c49d184ae82c62ab2"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_darwin_amd64.tar.gz"
+
+[tools.opentofu."platforms.windows-x64"]
+checksum = "sha256:34ddbab9eb07a72ea5cf36d98d97ce1931242cb89693cbf5dce06d65ba37d8cc"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.12.3/tofu_1.12.3_windows_amd64.tar.gz"
 
 [[tools.terraform]]
 version = "1.15.7"
