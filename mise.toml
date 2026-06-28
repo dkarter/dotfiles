@@ -35,3 +35,11 @@ file = "scripts/release-please-gpg-key.sh"
 [tasks."release:signing-key:print"]
 description = "Print release-please GPG signing values to stdout"
 run = "bash scripts/release-please-gpg-key.sh --print"
+
+[tasks."tart:fresh-install"]
+description = "Run a fresh-install test in an ephemeral Tart macOS VM"
+file = "scripts/tart-fresh-install-test.sh"
+
+[tasks."tart:guest:install-core"]
+description = "Run a dotfiles install flow inside a Tart macOS guest"
+file = "scripts/tart-guest-install-core.sh"
