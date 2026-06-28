@@ -44,6 +44,13 @@ tasks:
           fi
         platforms: [linux]
 
+  lock:
+    desc: Updates all mise lockfiles (globally and locally)
+    silent: true
+    cmds:
+      - cmd: mise lock
+      - cmd: mise lock -g
+
   sync:
     desc: Updates mise tools (runtimes), mise itself and installs packages for this project
     cmds:
