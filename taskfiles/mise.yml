@@ -24,7 +24,7 @@ tasks:
     silent: true
     # https://mise.jdx.dev/getting-started.html
     cmds:
-      - cmd: brew install mise
+      - cmd: brew update && brew install mise
         platforms: [darwin]
 
       - cmd: |
