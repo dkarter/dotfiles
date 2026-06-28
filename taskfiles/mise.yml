@@ -55,7 +55,10 @@ tasks:
     cmds:
       - cmd: |
           mise trust --yes --silent
-          mise install
+          # locked is here because despite `mise-version.jdx.dev` largely
+          # eliminating the need for a github token for checking attestations,
+          # we still need it for resolving `latest` for github backend tools
+          mise install --locked
 
   tools:install:devcontainer:
     desc: Installs mise tools for prebuilt devcontainer images
