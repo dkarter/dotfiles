@@ -22,9 +22,11 @@ else
       if [ -f /etc/lsb-release ]; then
         DIST=$(grep '^DISTRIB_ID' </etc/lsb-release | awk -F= '{ print $2 }')
       fi
-    elif [[ $(uname -r) =~ arch1 ]]; then
+    elif [ -f /etc/arch-release ] || command -v pacman &>/dev/null; then
       DISTRO_BASE='arch'
-      DIST=$(grep '^DISTRIB_ID' </etc/lsb-release | awk -F= '{ print $2 }')
+      if [ -f /etc/os-release ]; then
+        DIST=$(grep '^ID=' </etc/os-release | awk -F= '{ gsub(/"/, "", $2); print $2 }')
+      fi
     fi
     if [ -f /etc/UnitedLinux-release ]; then
       DIST="${DIST}[$(tr "\n" ' ' </etc/UnitedLinux-release | sed s/VERSION.*//)]"

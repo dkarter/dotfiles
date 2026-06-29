@@ -32,7 +32,7 @@ tasks:
     silent: true
     cmds:
       - task: tools:install
-        if: 'uname -r | grep -q arch1'
+        if: 'command -v pacman &>/dev/null'
 
   tools:install:
     desc: Installs all apt packages
@@ -67,5 +67,10 @@ tasks:
 
           	# esc = pause  # disabled - broken in keyd v2.6.0
           	EOF
-      - cmd: sudo systemctl enable --now keyd
+      - cmd: |
+          if [ -d /run/systemd/system ]; then
+            sudo systemctl enable --now keyd
+          else
+            echo 'Skipping keyd service start (systemd is not running).'
+          fi
       - cmd: echo 'done'

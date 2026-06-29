@@ -100,7 +100,7 @@ tasks:
       - task: completions:sync
       - task: print:done
       - cmd: |
-          glow docs/post_install.md
+          mise exec -- glow docs/post_install.md
 
   install:devpod:
     desc: Install dotfiles in a Devpod/devcontainer container

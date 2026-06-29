@@ -43,3 +43,7 @@ file = "scripts/tart-fresh-install-test.sh"
 [tasks."tart:guest:install-core"]
 description = "Run a dotfiles install flow inside a Tart macOS guest"
 file = "scripts/tart-guest-install-core.sh"
+
+[tasks."linux:fresh-install"]
+description = "Run fresh-install tests in disposable Linux containers"
+file = "scripts/linux-fresh-install-test.sh"

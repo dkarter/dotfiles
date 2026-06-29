@@ -59,8 +59,8 @@ tasks:
           cmd='{{splitList "|" .COMP | last}}'
           comp_path="{{.CACHE_PATH}}/_$app"
           echo -n "Generating completions for $app..."
-          if command -v "$app" >/dev/null 2>&1; then
-            eval "$cmd" > "$comp_path"
+          if app="$app" mise exec -- bash -lc 'command -v "$app"' >/dev/null 2>&1; then
+            app="$app" cmd="$cmd" comp_path="$comp_path" mise exec -- bash -lc 'eval "$cmd" > "$comp_path"'
             echo "DONE"
           else
             echo "SKIPPED (executable not found)"

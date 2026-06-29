@@ -26,7 +26,13 @@ tasks:
       - for:
           var: GH_PLUGINS
           as: PLUGIN
-        cmd: mise exec -- gh extension install '{{.PLUGIN}}'
+        cmd: |
+          if ! mise exec -- bash -lc 'command -v gh' >/dev/null 2>&1; then
+            echo 'Skipping {{.PLUGIN}} (gh executable not found).'
+            exit 0
+          fi
+
+          mise exec -- gh extension install '{{.PLUGIN}}'
         silent: true
 
   plugins:update:
@@ -35,7 +41,13 @@ tasks:
       - for:
           var: GH_PLUGINS
           as: PLUGIN
-        cmd: mise exec -- gh extension upgrade '{{.PLUGIN}}'
+        cmd: |
+          if ! mise exec -- bash -lc 'command -v gh' >/dev/null 2>&1; then
+            echo 'Skipping {{.PLUGIN}} (gh executable not found).'
+            exit 0
+          fi
+
+          mise exec -- gh extension upgrade '{{.PLUGIN}}'
         silent: true
 
   release:

@@ -13,12 +13,12 @@ tasks:
   install:
     desc: Installs all plugins
     silent: true
-    cmd: ya pkg install
+    cmd: mise exec -- ya pkg install
 
   update:
     desc: Updates all plugins
     silent: true
-    cmd: ya pkg upgrade
+    cmd: mise exec -- ya pkg upgrade
 
   sync:
     desc: Installs and updates all plugins
