@@ -18,10 +18,14 @@ const CREATE_ONLY_OPTIONAL_FIELDS = new Set([
   'milestone',
   'parentId',
   'project',
+  'addReleases',
   'relatedTo',
   'removeBlockedBy',
   'removeBlocks',
   'removeRelatedTo',
+  'removeReleases',
+  'releases',
+  'state',
 ]);
 
 const isLinearSaveIssueTool = (tool: string) => {
