@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [31.8.0](https://github.com/dkarter/dotfiles/compare/v31.7.1...v31.8.0) (2026-06-30)
+
+
+### Features
+
+* **task:** add task mise:lock ([a1e8186](https://github.com/dkarter/dotfiles/commit/a1e8186dc2eb96468059e3501a0698152accced2))
+
+
+### Bug Fixes
+
+* **opencode:** add more fields to linear-mcp-sanitize plugin ([19c94e5](https://github.com/dkarter/dotfiles/commit/19c94e522b15d87d300eb380bbbb508b82530095))
+* **opencode:** allow access to /tmp/** ([6368184](https://github.com/dkarter/dotfiles/commit/6368184e8acd9db56c2955ac0e2269cd98e60fc4))
+* **setup:** improve check for terminfo install ([b5be898](https://github.com/dkarter/dotfiles/commit/b5be8989d8ab377a52a09f5b872a53becbac3a8e))
+* **task:** improve 1password agent install ([e594425](https://github.com/dkarter/dotfiles/commit/e594425906dc2d4c797223c08674595d18c9edc1))
+* **task:** restore `--locked` to mise:tools:install task ([28eac92](https://github.com/dkarter/dotfiles/commit/28eac922a2ed65f40b5b93e53516b36b3227750b))
+* **task:** when installing mise from brew, update first ([64d79df](https://github.com/dkarter/dotfiles/commit/64d79dfc11ab3ba3c543fbfc3029a3611f40472c))
+
 ## [31.7.1](https://github.com/dkarter/dotfiles/compare/v31.7.0...v31.7.1) (2026-06-27)
 
 
