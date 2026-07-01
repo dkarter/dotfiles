@@ -161,6 +161,28 @@ alias gsa='git stash --all'
 # resume commit with previous message
 alias gcr='git commit --verbose --edit --file=.git/COMMIT_EDITMSG'
 
+# create a branch from an issue title using lnr's quick branch naming
+gcbq() {
+  local title branch
+
+  if [[ $# -gt 0 ]]; then
+    title="$*"
+  else
+    title=$(gum input --placeholder="Issue title...") || return
+    [[ -n "${title//[[:space:]]/}" ]] || return
+  fi
+
+  branch=$(lnr quick "$title") || return
+  [[ -n "$branch" ]] || return
+
+  git checkout -b "$branch"
+}
+
+# create a branch from an issue selected through lnr's fuzzy finder
+gcbi() {
+  git checkout -b "$(lnr issue)"
+}
+
 # combines gbsum and tv
 alias gctv='tv git-branch-checkout'
 

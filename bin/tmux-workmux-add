@@ -2,9 +2,29 @@
 
 set -euo pipefail
 
-worktree_name=$(mise x -- gum input --placeholder="Worktree name...")
+use_lnr_quick=${TMUX_WORKMUX_LNR_QUICK:-}
+input_placeholder="Worktree name..."
 
-if [[ -z "$worktree_name" ]]; then
+while (($#)); do
+  case "$1" in
+    --no-ticket)
+      use_lnr_quick=""
+      ;;
+    *)
+      print -r -- "Unknown option: $1" >&2
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+if [[ -n "$use_lnr_quick" ]]; then
+  input_placeholder="Ticket title..."
+fi
+
+worktree_input=$(mise x -- gum input --placeholder="$input_placeholder")
+
+if [[ -z "$worktree_input" ]]; then
   exit 0
 fi
 
@@ -17,6 +37,18 @@ base_branch=$(mise x -- tv workmux-base-branch --hide-status-bar || true)
 
 if [[ -z "$base_branch" ]]; then
   exit 0
+fi
+
+worktree_name=$worktree_input
+
+if [[ -n "$use_lnr_quick" ]]; then
+  worktree_name=$(mise x -- lnr quick "$worktree_input")
+  worktree_name=${worktree_name//$'\r'/}
+
+  if [[ -z "$worktree_name" ]]; then
+    mise x -- gum style --foreground="red" "lnr quick did not return a branch name"
+    exit 1
+  fi
 fi
 
 mise x -- workmux add "$worktree_name" --base "$base_branch"

@@ -2,7 +2,14 @@
 set -euo pipefail
 
 script_dir=$(cd -- "$(dirname "$0")" && pwd)
-command="${script_dir}/tmux-workmux-add-prompt"
+command_parts=("${script_dir}/tmux-workmux-add-prompt" "$@")
+quoted_parts=()
+
+for part in "${command_parts[@]}"; do
+  quoted_parts+=("${(q)part}")
+done
+
+command="${(j: :)quoted_parts}"
 
 extended_keys=$(tmux show-options -gqv extended-keys)
 

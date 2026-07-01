@@ -2,6 +2,13 @@
 set -euo pipefail
 
 script_dir=$(cd -- "$(dirname "$0")" && pwd)
-command="${script_dir}/tmux-workmux-add"
+command_parts=("${script_dir}/tmux-workmux-add" "$@")
+quoted_parts=()
+
+for part in "${command_parts[@]}"; do
+  quoted_parts+=("${(q)part}")
+done
+
+command="${(j: :)quoted_parts}"
 
 exec tmux display-popup -E -w 60% -h 70% "$command"
