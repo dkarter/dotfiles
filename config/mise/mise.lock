@@ -322,36 +322,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu.exe"
 
 [[tools.claude-code]]
-version = "2.1.195"
+version = "2.1.196"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:daaca282da6d1f058334d0ffa3307e8e7b4484e83f36ca3e6c7393b5d9c3dc4a"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/darwin-arm64/claude"
+checksum = "blake3:85abfc8342d7089752e6eaf110af50b4b4f0f510fe64c3646e375ca0861ab6c4"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.195/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.196/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -597,23 +597,6 @@ url_api = "https://api.github.com/repos/erlang/otp/releases/assets/443733928"
 checksum = "sha256:dffd5fca2e841267bfb4e961c38bb18436a4b55548deae727d5691a984f7b80f"
 url = "https://github.com/erlang/otp/releases/download/OTP-29.0.2/otp_win64_29.0.2.zip"
 url_api = "https://api.github.com/repos/erlang/otp/releases/assets/443733928"
-
-[[tools.erlang]]
-version = "29.0.2"
-backend = "core:erlang"
-
-[tools.erlang.options]
-precompiled = "if_available"
-precompiled_os = "ubuntu-24.04"
-
-[tools.erlang."platforms.linux-arm64"]
-url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.0.2.tar.gz"
-
-[tools.erlang."platforms.linux-x64"]
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.2.tar.gz"
-
-[tools.erlang."platforms.linux-x64-baseline"]
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.2.tar.gz"
 
 [[tools.expert]]
 version = "0.1.5"
@@ -1267,53 +1250,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.215"
+version = "0.1.217"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:0b3d1e8a7c423754097965822367a487a1a7ae8e016b5d0cbf652fab83f5e262"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903457"
+checksum = "sha256:de25d30d38cd7891bb493cd3a8dca0d43207ed5c52b7dceb48e57ca4b02f8b44"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765339"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:0b3d1e8a7c423754097965822367a487a1a7ae8e016b5d0cbf652fab83f5e262"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903457"
+checksum = "sha256:de25d30d38cd7891bb493cd3a8dca0d43207ed5c52b7dceb48e57ca4b02f8b44"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765339"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:b79227cc46b22a44a414bcc6b3e53788ce306fc77c515f20cb55e020402c77d3"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903459"
+checksum = "sha256:cccafec3ecba4e93fd3e4050da8db084b0980500ce3974a8f293ce17575eb908"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765333"
 
 [tools."github:raine/workmux"."platforms.linux-x64-baseline"]
-checksum = "sha256:b79227cc46b22a44a414bcc6b3e53788ce306fc77c515f20cb55e020402c77d3"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903459"
+checksum = "sha256:cccafec3ecba4e93fd3e4050da8db084b0980500ce3974a8f293ce17575eb908"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765333"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:b79227cc46b22a44a414bcc6b3e53788ce306fc77c515f20cb55e020402c77d3"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903459"
+checksum = "sha256:cccafec3ecba4e93fd3e4050da8db084b0980500ce3974a8f293ce17575eb908"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765333"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:b79227cc46b22a44a414bcc6b3e53788ce306fc77c515f20cb55e020402c77d3"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903459"
+checksum = "sha256:cccafec3ecba4e93fd3e4050da8db084b0980500ce3974a8f293ce17575eb908"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765333"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:306a6e1ded4dbc6bb5c4e02f571ac682f0e84fd8ec354ac8d10e6a977e37891d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903462"
+checksum = "sha256:e5907ed57c821a338072737016701c6f3cd8ab65aac5e5c6b32bd15170e87483"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765337"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:8b415f0882c12c8aff21586ef606ebf67ec3abe61a08f7d16699495cc9228964"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903460"
+checksum = "sha256:3a18e47b20094ec3f0da235196a59cdb683d9b22c726942be9cad296b736720b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765335"
 
 [tools."github:raine/workmux"."platforms.macos-x64-baseline"]
-checksum = "sha256:8b415f0882c12c8aff21586ef606ebf67ec3abe61a08f7d16699495cc9228964"
-url = "https://github.com/raine/workmux/releases/download/v0.1.215/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/458903460"
+checksum = "sha256:3a18e47b20094ec3f0da235196a59cdb683d9b22c726942be9cad296b736720b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.217/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/460765335"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.7.1"
@@ -1925,7 +1908,7 @@ backend = "npm:opencode-ai"
 aube_args = "--allow-build=opencode-ai"
 
 [[tools."npm:prettier"]]
-version = "3.9.1"
+version = "3.9.3"
 backend = "npm:prettier"
 
 [[tools."npm:trash-cli"]]
@@ -2201,52 +2184,52 @@ url = "https://github.com/slsa-framework/slsa-verifier/releases/download/v2.7.1/
 url = "https://github.com/slsa-framework/slsa-verifier/releases/download/v2.7.1/slsa-verifier-windows-amd64.exe.intoto.jsonl"
 
 [[tools.starship]]
-version = "1.25.1"
+version = "1.26.0"
 backend = "aqua:starship/starship"
 
 [tools.starship."platforms.linux-arm64"]
-checksum = "sha256:01517aab398959ea9ea73bdb4f032ea4dbb51dff5c8e5eb05b4a1b9b7ab872b8"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:dc30189378d2f2e287384e8a692d3f95ad1df64cf0e8c36aa9201516028aed6b"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.linux-arm64-musl"]
-checksum = "sha256:01517aab398959ea9ea73bdb4f032ea4dbb51dff5c8e5eb05b4a1b9b7ab872b8"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:dc30189378d2f2e287384e8a692d3f95ad1df64cf0e8c36aa9201516028aed6b"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.linux-x64"]
-checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:b7c232b0e8249d8e55a40beb79c5c43a7d370f3f9408bd215deb0170daeaadf3"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.linux-x64-baseline"]
-checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:b7c232b0e8249d8e55a40beb79c5c43a7d370f3f9408bd215deb0170daeaadf3"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.linux-x64-musl"]
-checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:b7c232b0e8249d8e55a40beb79c5c43a7d370f3f9408bd215deb0170daeaadf3"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:c6ddd3ecb9c0071a2ad38d98cee748160066b7c4f197421268058f4a5d6f8504"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:b7c232b0e8249d8e55a40beb79c5c43a7d370f3f9408bd215deb0170daeaadf3"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.starship."platforms.macos-arm64"]
-checksum = "sha256:1062a2363489b9335529b83204472f02633c08fc3609f1b325be5eba36feb631"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:c40b27b11f580411e068f2fa6c1be7830a387c0bc47a94d1d37f32b054c5361d"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-aarch64-apple-darwin.tar.gz"
 
 [tools.starship."platforms.macos-x64"]
-checksum = "sha256:f86fbe7a3b9f262bcf34ca61e9e996243da511c5500dcd81a1e4daa542869276"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:5548f406a4b6f5695903bdea83f77ce47ec12c8c0e62dabd33122d8f133e4207"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-apple-darwin.tar.gz"
 
 [tools.starship."platforms.macos-x64-baseline"]
-checksum = "sha256:f86fbe7a3b9f262bcf34ca61e9e996243da511c5500dcd81a1e4daa542869276"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:5548f406a4b6f5695903bdea83f77ce47ec12c8c0e62dabd33122d8f133e4207"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-apple-darwin.tar.gz"
 
 [tools.starship."platforms.windows-x64"]
-checksum = "sha256:a07cf3e428afab09324e510fb786041ebcc491a68b1ca6fba044c5a461f9b017"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:690021e22f2bf2c57d5867dc0fababe5e55e714c26942bd909ffddb6c5df42f2"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-pc-windows-msvc.zip"
 
 [tools.starship."platforms.windows-x64-baseline"]
-checksum = "sha256:a07cf3e428afab09324e510fb786041ebcc491a68b1ca6fba044c5a461f9b017"
-url = "https://github.com/starship/starship/releases/download/v1.25.1/starship-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:690021e22f2bf2c57d5867dc0fababe5e55e714c26942bd909ffddb6c5df42f2"
+url = "https://github.com/starship/starship/releases/download/v1.26.0/starship-x86_64-pc-windows-msvc.zip"
 
 [[tools.stylua]]
 version = "2.5.2"
