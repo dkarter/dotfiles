@@ -1,13 +1,10 @@
 allowedUnpopularPackages = ["@kitlangton/stack"]
 trustPolicyExclude = [
-  "@effect/platform-node@4.0.0-beta.64",
-  "@effect/platform-node-shared@4.0.0-beta.79",
-  "@effect/platform-node-shared@4.0.0-beta.83",
-  "@effect/platform-node-shared@4.0.0-beta.90",
-  "effect@4.0.0-beta.64",
-  "effect@4.0.0-beta.79",
-  "effect@4.0.0-beta.83",
-  "effect@4.0.0-beta.90",
+  # Effect beta packages repeatedly move between trusted-publisher metadata
+  # and provenance-only publishes. Keep this scoped to Effect instead of
+  # disabling trustPolicy globally.
+  "@effect/*",
+  "effect",
 ]
 
 [allowBuilds]

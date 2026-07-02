@@ -6,17 +6,10 @@ lockfile: true
 # the upstream repo/tag and includes registry signature plus SLSA provenance.
 allowedUnpopularPackages:
   - '@kitlangton/stack'
-# tinyexec@1.2.2 moved from trusted-publisher metadata to maintainer publish
-# with registry signature and SLSA provenance; keep this scoped to the exact version.
-# @kitlangton/stack pulls Effect 4 beta packages that moved from trusted
-# publisher metadata to maintainer publish with registry signatures and provenance.
+# @kitlangton/stack pulls Effect beta packages that repeatedly move between
+# trusted-publisher metadata and provenance-only publishes. Keep this scoped to
+# Effect packages instead of disabling trustPolicy globally.
 trustPolicyExclude:
-  - '@effect/platform-node@4.0.0-beta.64'
-  - '@effect/platform-node-shared@4.0.0-beta.79'
-  - '@effect/platform-node-shared@4.0.0-beta.83'
-  - '@effect/platform-node-shared@4.0.0-beta.90'
-  - effect@4.0.0-beta.64
-  - effect@4.0.0-beta.79
-  - effect@4.0.0-beta.83
-  - effect@4.0.0-beta.90
+  - '@effect/*'
+  - effect
   - tinyexec@1.2.2

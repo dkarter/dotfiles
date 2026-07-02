@@ -322,36 +322,36 @@ checksum = "sha256:9233beade020c3e74854911a15aa973f7dc9f4253abe8856b8c273579a555
 url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x86_64-pc-windows-gnu.exe"
 
 [[tools.claude-code]]
-version = "2.1.197"
+version = "2.1.198"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:2ecb00e35ac65f42671a8db2cfca872a8fbf99b3504f64ec1c3a4ac0f78572d2"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/darwin-arm64/claude"
+checksum = "blake3:f75bb6887d1ad2373069daff4d7d103a15d8bb1d7b46aabca92fe160b5b76a12"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.197/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.198/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -1041,63 +1041,63 @@ url_api = "https://api.github.com/repos/cli/cli/releases/assets/450526025"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/lnr"]]
-version = "1.2.0"
+version = "1.3.0"
 backend = "github:dkarter/lnr"
 
 [tools."github:dkarter/lnr"."platforms.linux-arm64"]
-checksum = "sha256:7f7b8cf1720fbb40a8a8c027d78b855aee2ec8722cfcb7d71b09f1f0877bbc9f"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430093"
+checksum = "sha256:be29c067860ff793fd620df55329c2c0bbf0f2fd661206838f50e3d523552002"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537641"
 
 [tools."github:dkarter/lnr"."platforms.linux-arm64-musl"]
-checksum = "sha256:7f7b8cf1720fbb40a8a8c027d78b855aee2ec8722cfcb7d71b09f1f0877bbc9f"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430093"
+checksum = "sha256:be29c067860ff793fd620df55329c2c0bbf0f2fd661206838f50e3d523552002"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537641"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64"]
-checksum = "sha256:57e729eedcb3ba410545ba127634589d2b62c7aed79b247b799b713ec5fdc544"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430092"
+checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64-baseline"]
-checksum = "sha256:57e729eedcb3ba410545ba127634589d2b62c7aed79b247b799b713ec5fdc544"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430092"
+checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64-musl"]
-checksum = "sha256:57e729eedcb3ba410545ba127634589d2b62c7aed79b247b799b713ec5fdc544"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430092"
+checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:57e729eedcb3ba410545ba127634589d2b62c7aed79b247b799b713ec5fdc544"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430092"
+checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
 
 [tools."github:dkarter/lnr"."platforms.macos-arm64"]
-checksum = "sha256:7163184f80fff11fa59136169b5b0de2bcc81d861664302b521be177d68363e3"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430112"
+checksum = "sha256:ace852e1d269a1e0f59cc24f9c5da0a7c1fee0f897aa7690b66a2745cfda2b65"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537650"
 
 [tools."github:dkarter/lnr"."platforms.macos-x64"]
-checksum = "sha256:07525c712091810b3ba4b24d159a31e701a3356f9ed8ba97dbcd3fb0e3964be7"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430111"
+checksum = "sha256:0948ae3827deeea9aa9d3d5a18b42de2a2ff5b08ecc4d59dfc16da7bbf0884a5"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537643"
 
 [tools."github:dkarter/lnr"."platforms.macos-x64-baseline"]
-checksum = "sha256:07525c712091810b3ba4b24d159a31e701a3356f9ed8ba97dbcd3fb0e3964be7"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430111"
+checksum = "sha256:0948ae3827deeea9aa9d3d5a18b42de2a2ff5b08ecc4d59dfc16da7bbf0884a5"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537643"
 
 [tools."github:dkarter/lnr"."platforms.windows-x64"]
-checksum = "sha256:bea7ca7ee68702b54e310ea7cdc1a62b19cc866cc0a6aba56acccfc3f3c0914c"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430110"
+checksum = "sha256:e619eadbffffe6e787e29c72516f3dbbf1f49ab0dd99f2ce520274e90ce166a6"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537651"
 
 [tools."github:dkarter/lnr"."platforms.windows-x64-baseline"]
-checksum = "sha256:bea7ca7ee68702b54e310ea7cdc1a62b19cc866cc0a6aba56acccfc3f3c0914c"
-url = "https://github.com/dkarter/lnr/releases/download/v1.2.0/lnr_1.2.0_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/462430110"
+checksum = "sha256:e619eadbffffe6e787e29c72516f3dbbf1f49ab0dd99f2ce520274e90ce166a6"
+url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537651"
 
 [[tools."github:dlvhdr/diffnav"]]
 version = "0.11.0"
@@ -1879,7 +1879,7 @@ checksum = "sha256:0ae68406b42d7725661da979b1403ec9926da205c6770827f33aac9d8f26e
 url = "https://nodejs.org/dist/v24.18.0/node-v24.18.0-win-x64.zip"
 
 [[tools."npm:@commitlint/cli"]]
-version = "21.1.0"
+version = "21.2.0"
 backend = "npm:@commitlint/cli"
 
 [[tools."npm:@fission-ai/openspec"]]
@@ -1901,14 +1901,14 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.17.11"
+version = "1.17.13"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
 aube_args = "--allow-build=opencode-ai"
 
 [[tools."npm:prettier"]]
-version = "3.9.3"
+version = "3.9.4"
 backend = "npm:prettier"
 
 [[tools."npm:trash-cli"]]
