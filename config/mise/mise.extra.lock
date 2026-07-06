@@ -316,43 +316,43 @@ url = "https://github.com/mr-karan/doggo/releases/download/v1.2.0/doggo-windows-
 url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/455378190"
 
 [[tools."github:nushell/nushell"]]
-version = "0.113.1"
+version = "0.114.0"
 backend = "github:nushell/nushell"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64"]
-checksum = "sha256:08b94c6fd9c66881616df4c89adc03e8a42a57fdf6876cfd1b16cec7e82348b4"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433381741"
+checksum = "sha256:280163b9a2b3c54e45ded348b577a569cdf2a292e8fe9d77fe02405c3415c8c3"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466633603"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64-musl"]
-checksum = "sha256:7b973e826760d337e73ac6fb9c53bac15dbe66dba50ec439f02e8eaa1d1c2c77"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433382016"
+checksum = "sha256:2529a745339ed6a8d06dae94e2e874e9463f5ac0b28d3110d3d58f66338e8283"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466633728"
 
 [tools."github:nushell/nushell"."platforms.linux-x64"]
-checksum = "sha256:9008d309aaa35e29ed5d5985306a83e2bf5093e31677d4cd969914552d12b8fb"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433380313"
+checksum = "sha256:3896777ebf3678f6d41736a5e995ba8360b338eb73c713254fc024e08ec72289"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466632540"
 
 [tools."github:nushell/nushell"."platforms.linux-x64-musl"]
-checksum = "sha256:7faea21f8a49edf760c7bb9267f7702827937b19fc7dce412716b1cacbf38ae7"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433380727"
+checksum = "sha256:83e6ff74144b04cc0ca7861268e2b0f66657832a2dc9c075044aef15bf910df9"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466632135"
 
 [tools."github:nushell/nushell"."platforms.macos-arm64"]
-checksum = "sha256:458aa21674221b2e8adbd784f9ba8113288b78f3c352465cef37b114ff3dffd5"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433380531"
+checksum = "sha256:c98f7deedd41023fe6dc4567abb368c9442bda62989b91e179e095cbb457ce58"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466631748"
 
 [tools."github:nushell/nushell"."platforms.macos-x64"]
-checksum = "sha256:18ec6448cd8562b4f94ba24bace6164c5d8b8d634c8105751ec45e17d34549b2"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433383402"
+checksum = "sha256:dd1f92f524794fab8b4f20287d84038fb08865f9a7c5a5c71461d44ed1c5c7f8"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466634768"
 
 [tools."github:nushell/nushell"."platforms.windows-x64"]
-checksum = "sha256:fd3e56dac9f866d2d3fe2fabd6580c14371afdcec9ddda54624a50986d36b3d2"
-url = "https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/433389998"
+checksum = "sha256:f34858d797aa229079bc9c78dd30221bc75042f0308984d23b4b1679abd97758"
+url = "https://github.com/nushell/nushell/releases/download/0.114.0/nu-0.114.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/466643342"
 
 [[tools."github:orf/gping"]]
 version = "gping-v1.20.4"
