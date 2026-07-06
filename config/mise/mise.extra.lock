@@ -198,6 +198,42 @@ url_api = "https://api.github.com/repos/dkarter/pdf-redact/releases/assets/35294
 version = "0.2.2"
 backend = "github:dkarter/vstui"
 
+[tools."github:dkarter/vstui"."platforms.linux-arm64"]
+checksum = "sha256:2285382e013a1ddcff967a634bac74c6a618c31acbe345a52fd00b52a0c83638"
+url = "https://github.com/dkarter/vstui/releases/download/v0.2.2/vstui-v0.2.2-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vstui/releases/assets/467788404"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vstui"."platforms.linux-arm64-musl"]
+checksum = "sha256:2285382e013a1ddcff967a634bac74c6a618c31acbe345a52fd00b52a0c83638"
+url = "https://github.com/dkarter/vstui/releases/download/v0.2.2/vstui-v0.2.2-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vstui/releases/assets/467788404"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vstui"."platforms.linux-x64"]
+checksum = "sha256:2419244081d23b9c04d4bb421e8679b93fc95cd0b1640dd022aced658b655614"
+url = "https://github.com/dkarter/vstui/releases/download/v0.2.2/vstui-v0.2.2-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vstui/releases/assets/467788408"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vstui"."platforms.linux-x64-musl"]
+checksum = "sha256:2419244081d23b9c04d4bb421e8679b93fc95cd0b1640dd022aced658b655614"
+url = "https://github.com/dkarter/vstui/releases/download/v0.2.2/vstui-v0.2.2-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vstui/releases/assets/467788408"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vstui"."platforms.macos-arm64"]
+checksum = "sha256:70dfecf5d9398aeac7ba9615bc7a18bdc720d52a12d653f041cf5a0e409031c5"
+url = "https://github.com/dkarter/vstui/releases/download/v0.2.2/vstui-v0.2.2-macos-arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vstui/releases/assets/467788407"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vstui"."platforms.windows-x64"]
+checksum = "sha256:426e7cfbae3aceac22ae78c9d45df9dc9521884e032eefc3f051e5918fce8971"
+url = "https://github.com/dkarter/vstui/releases/download/v0.2.2/vstui-v0.2.2-windows-x64.zip"
+url_api = "https://api.github.com/repos/dkarter/vstui/releases/assets/467788406"
+provenance = "github-attestations"
+
 [[tools."github:ip7z/7zip"]]
 version = "26.02"
 backend = "github:ip7z/7zip"
