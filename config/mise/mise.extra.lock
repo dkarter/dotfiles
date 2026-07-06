@@ -194,6 +194,10 @@ checksum = "sha256:0f5c3db766ac9f170de9c9df1e57872bc718034b74a798ce60bbdedccafba
 url = "https://github.com/dkarter/pdf-redact/releases/download/v0.2.7/pdf-redact-v0.2.7-windows-x64.zip"
 url_api = "https://api.github.com/repos/dkarter/pdf-redact/releases/assets/352940373"
 
+[[tools."github:dkarter/vstui"]]
+version = "0.2.2"
+backend = "github:dkarter/vstui"
+
 [[tools."github:ip7z/7zip"]]
 version = "26.02"
 backend = "github:ip7z/7zip"
