@@ -617,36 +617,63 @@ checksum = "sha256:00fbddd7bd67f747a51aecc0a5bafcc695a21dfae7b912684510722c8e2d6
 url = "https://github.com/antonmedv/fx/releases/download/39.2.0/fx_windows_amd64.exe"
 
 [[tools.fzf]]
-version = "0.73.1"
+version = "0.74.0"
 backend = "aqua:junegunn/fzf"
 
 [tools.fzf."platforms.linux-arm64"]
-checksum = "sha256:a408b0b6c08d486307b8f1554f967b8b50ee1b3ea8b4035e3161bab31fdfc28d"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_arm64.tar.gz"
+checksum = "sha256:bd9e6165ebdb702215d42368cbb95b8dd70a4e77ee97925adac8c31660e30ef7"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106539"
 
 [tools.fzf."platforms.linux-arm64-musl"]
-checksum = "sha256:a408b0b6c08d486307b8f1554f967b8b50ee1b3ea8b4035e3161bab31fdfc28d"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_arm64.tar.gz"
+checksum = "sha256:bd9e6165ebdb702215d42368cbb95b8dd70a4e77ee97925adac8c31660e30ef7"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106539"
 
 [tools.fzf."platforms.linux-x64"]
-checksum = "sha256:f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_amd64.tar.gz"
+checksum = "sha256:cf919f05b7581b4c744d764eaa704665d61dd6d3ca785f0df2351281dff60cda"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106615"
+
+[tools.fzf."platforms.linux-x64-baseline"]
+checksum = "sha256:cf919f05b7581b4c744d764eaa704665d61dd6d3ca785f0df2351281dff60cda"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106615"
 
 [tools.fzf."platforms.linux-x64-musl"]
-checksum = "sha256:f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-linux_amd64.tar.gz"
+checksum = "sha256:cf919f05b7581b4c744d764eaa704665d61dd6d3ca785f0df2351281dff60cda"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106615"
+
+[tools.fzf."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:cf919f05b7581b4c744d764eaa704665d61dd6d3ca785f0df2351281dff60cda"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106615"
 
 [tools.fzf."platforms.macos-arm64"]
-checksum = "sha256:d27fd68c04fb9b42f7c73a3f7d38069a74d308e40174f64a072c747213e97286"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-darwin_arm64.tar.gz"
+checksum = "sha256:da60e8980e4239a0fc5f1fcfe873f243dfda93a6a13b696b00e1dc8584a77a87"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106617"
 
 [tools.fzf."platforms.macos-x64"]
-checksum = "sha256:75bbf15248d1cf0a13eafc75b8a55f5075c437e2ba6d76899afc53f4f3e1b38c"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-darwin_amd64.tar.gz"
+checksum = "sha256:e2c470f058ac18615f54c0bebe0fd2956f2aa8e306a11621783a00aaa386eedd"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106579"
+
+[tools.fzf."platforms.macos-x64-baseline"]
+checksum = "sha256:e2c470f058ac18615f54c0bebe0fd2956f2aa8e306a11621783a00aaa386eedd"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106579"
 
 [tools.fzf."platforms.windows-x64"]
-checksum = "sha256:521a974dc32e93404265e55bffaf71a59e05e80abdf8ca4afb21a6030dc76f5f"
-url = "https://github.com/junegunn/fzf/releases/download/v0.73.1/fzf-0.73.1-windows_amd64.zip"
+checksum = "sha256:614efa4ea923a3d6715856b5f6fb6ce815acdb0ce549e7499202808f7a7a78e7"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-windows_amd64.zip"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106560"
+
+[tools.fzf."platforms.windows-x64-baseline"]
+checksum = "sha256:614efa4ea923a3d6715856b5f6fb6ce815acdb0ce549e7499202808f7a7a78e7"
+url = "https://github.com/junegunn/fzf/releases/download/v0.74.0/fzf-0.74.0-windows_amd64.zip"
+url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/468106560"
 
 [[tools."github:ast-grep/ast-grep"]]
 version = "0.44.1"
@@ -1358,7 +1385,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.17.14"
+version = "1.17.15"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
