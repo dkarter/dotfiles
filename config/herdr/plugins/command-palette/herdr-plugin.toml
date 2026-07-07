@@ -11,8 +11,32 @@ title = "Open command palette"
 contexts = ["workspace"]
 command = ["./open"]
 
+[[actions]]
+id = "new-worktree"
+title = "New worktree"
+contexts = ["workspace"]
+command = ["./open-worktree"]
+
+[[actions]]
+id = "new-agent-with-prompt"
+title = "New agent with prompt"
+contexts = ["workspace"]
+command = ["./open-agent-prompt"]
+
 [[panes]]
 id = "palette"
 title = "Command Palette"
 placement = "overlay"
 command = ["./palette"]
+
+[[panes]]
+id = "worktree"
+title = "New Worktree"
+placement = "overlay"
+command = ["./worktree"]
+
+[[panes]]
+id = "agent-prompt"
+title = "New Agent With Prompt"
+placement = "overlay"
+command = ["./agent-prompt"]

@@ -18,7 +18,9 @@ add_command() {
 
 add_command "󰙅 New workspace" "new_workspace" "prefix+shift+n"
 add_command " New worktree" "new_worktree" "prefix+shift+g"
+add_command " New worktree without ticket" "new_worktree_without_ticket"
 add_command "󰚩 New agent with prompt" "new_agent_with_prompt"
+add_command "󰚩 New agent with prompt without ticket" "new_agent_with_prompt_without_ticket"
 add_command "󰆴 Delete current worktree" "delete_current_worktree"
 
 color_dim=$'\e[90m'
@@ -118,24 +120,128 @@ workmux_config_for_repo() {
   [[ -f "$config_file" ]] && print -r -- "$config_file"
 }
 
-workmux_agent_command() {
+repo_config_for_repo() {
   local repo_root="$1"
   local config_file
-  config_file="$(workmux_config_for_repo "$repo_root")"
+
+  for config_file in "$repo_root/.herdr-worktree.yaml" "$repo_root/.herdr.yaml" "$repo_root/.workmux.yaml"; do
+    if [[ -f "$config_file" ]]; then
+      print -r -- "$config_file"
+      return 0
+    fi
+  done
+}
+
+repo_config_value() {
+  local repo_root="$1"
+  local key="$2"
+  local config_file
+  config_file="$(repo_config_for_repo "$repo_root")"
 
   if [[ -n "$config_file" ]]; then
-    ruby -ryaml -e 'cfg = YAML.load_file(ARGV[0]) || {}; puts(cfg["agent"] || "")' "$config_file" 2>/dev/null || true
+    ruby -ryaml -e '
+      cfg = YAML.load_file(ARGV[0]) || {}
+      value = ARGV[1].split(".").reduce(cfg) { |memo, key| memo.respond_to?(:[]) ? memo[key] : nil }
+      puts(value) if value
+    ' "$config_file" "$key" 2>/dev/null || true
   fi
+}
+
+repo_config_array() {
+  local repo_root="$1"
+  local path="$2"
+  local config_file
+  config_file="$(repo_config_for_repo "$repo_root")"
+
+  if [[ -n "$config_file" ]]; then
+    ruby -ryaml -e '
+      cfg = YAML.load_file(ARGV[0]) || {}
+      value = ARGV[1].split(".").reduce(cfg) { |memo, key| memo.respond_to?(:[]) ? memo[key] : nil }
+      Array(value).each { |item| puts item unless item == "<global>" }
+    ' "$config_file" "$path" 2>/dev/null || true
+  fi
+}
+
+workmux_agent_command() {
+  local repo_root="$1"
+
+  repo_config_value "$repo_root" agent
 }
 
 workmux_post_create_commands() {
   local repo_root="$1"
-  local config_file
-  config_file="$(workmux_config_for_repo "$repo_root")"
 
-  if [[ -n "$config_file" ]]; then
-    ruby -ryaml -e 'cfg = YAML.load_file(ARGV[0]) || {}; Array(cfg["post_create"]).each { |cmd| puts cmd unless cmd == "<global>" }' "$config_file" 2>/dev/null || true
+  repo_config_array "$repo_root" post_create
+}
+
+configured_worktree_dir() {
+  local repo_root="$1"
+  local dir
+  dir="$(repo_config_value "$repo_root" worktree_dir)"
+
+  if [[ -z "$dir" ]]; then
+    dir="$(repo_config_value "$repo_root" worktrees.directory)"
   fi
+
+  print -r -- "$dir"
+}
+
+worktree_slug() {
+  local repo_root="$1"
+  local branch="$2"
+  local naming name
+  naming="$(repo_config_value "$repo_root" worktree_naming)"
+
+  if [[ "$naming" == "basename" ]]; then
+    name="${branch:t}"
+  else
+    name="$branch"
+  fi
+
+  name="${name//\//-}"
+  name="${name//[^[:alnum:]._-]/-}"
+  print -r -- "$name"
+}
+
+configured_worktree_path() {
+  local repo_root="$1"
+  local branch="$2"
+  local dir prefix slug
+  dir="$(configured_worktree_dir "$repo_root")"
+
+  [[ -z "$dir" ]] && return 0
+
+  prefix="$(repo_config_value "$repo_root" worktree_prefix)"
+  slug="$(worktree_slug "$repo_root" "$branch")"
+  dir="${dir/#\~/$HOME}"
+
+  if [[ "$dir" != /* ]]; then
+    dir="$repo_root/$dir"
+  fi
+
+  print -r -- "${dir:A}/${prefix}${slug}"
+}
+
+copy_configured_files() {
+  local repo_root="$1"
+  local checkout_path="$2"
+  local item source dest dest_parent
+
+  while IFS= read -r item; do
+    [[ -z "$item" ]] && continue
+
+    source="$repo_root/$item"
+    dest="$checkout_path/$item"
+    dest_parent="${dest:h}"
+
+    if [[ ! -e "$source" ]]; then
+      continue
+    fi
+
+    mise x -- gum style --foreground="240" "Copying $item" >&2
+    mkdir -p "$dest_parent"
+    cp -a "$source" "$dest"
+  done < <(repo_config_array "$repo_root" files.copy)
 }
 
 select_base_branch() {
@@ -147,7 +253,62 @@ select_base_branch() {
 }
 
 prompt_worktree_name() {
-  mise x -- gum input --placeholder="Worktree branch/name..."
+  local allow_ticket="${1:-true}"
+  local use_lnr_quick="${TMUX_WORKMUX_LNR_QUICK:-}"
+  local input_placeholder="Worktree branch/name..."
+  local worktree_input worktree_name
+
+  if [[ "$allow_ticket" != "true" ]]; then
+    use_lnr_quick=""
+  fi
+
+  if [[ -n "$use_lnr_quick" ]] && ! mise x -- gum confirm "Create a ticket for this worktree?"; then
+    use_lnr_quick=""
+  fi
+
+  if [[ -n "$use_lnr_quick" ]]; then
+    input_placeholder="Ticket title..."
+  fi
+
+  worktree_input="$(mise x -- gum input --placeholder="$input_placeholder")"
+  [[ -z "$worktree_input" ]] && return 0
+
+  worktree_name="$worktree_input"
+
+  if [[ -n "$use_lnr_quick" ]]; then
+    worktree_name="$(mise x -- lnr quick "$worktree_input")"
+    worktree_name="${worktree_name//$'\r'/}"
+
+    if [[ -z "$worktree_name" ]]; then
+      mise x -- gum style --foreground="red" "lnr quick did not return a branch name" >&2
+      return 1
+    fi
+  fi
+
+  print -r -- "$worktree_name"
+}
+
+create_worktree() {
+  local workspace_id="$1"
+  local repo_root="$2"
+  local branch="$3"
+  local base_branch="$4"
+  local configured_path create_args create_json checkout_path
+
+  configured_path="$(configured_worktree_path "$repo_root" "$branch")"
+  create_args=(worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json)
+
+  if [[ -n "$configured_path" ]]; then
+    create_args+=(--path "$configured_path")
+  fi
+
+  create_json="$(herdr "${create_args[@]}")"
+  checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
+
+  copy_configured_files "$repo_root" "$checkout_path"
+  run_post_create_hooks "$repo_root" "$checkout_path"
+
+  print -r -- "$create_json"
 }
 
 new_workspace() {
@@ -161,10 +322,11 @@ new_workspace() {
 }
 
 new_worktree() {
-  local workspace_id cwd branch base_branch
+  local allow_ticket="${1:-true}"
+  local workspace_id cwd repo_root branch base_branch
   workspace_id="$(current_workspace_id)"
   cwd="$(current_pane_cwd)"
-  branch="$(prompt_worktree_name)"
+  branch="$(prompt_worktree_name "$allow_ticket")"
 
   [[ -z "$branch" ]] && return 0
 
@@ -173,10 +335,15 @@ new_worktree() {
     return 1
   fi
 
+  repo_root="$(repo_root_for_cwd "$cwd")"
   base_branch="$(select_base_branch "$cwd")"
   [[ -z "$base_branch" ]] && return 0
 
-  herdr worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json >/dev/null
+  create_worktree "$workspace_id" "$repo_root" "$branch" "$base_branch" >/dev/null
+}
+
+new_worktree_without_ticket() {
+  new_worktree false
 }
 
 run_post_create_hooks() {
@@ -186,12 +353,13 @@ run_post_create_hooks() {
 
   while IFS= read -r hook; do
     [[ -z "$hook" ]] && continue
-    mise x -- gum style --foreground="240" "Running post-create: $hook"
-    (cd "$checkout_path" && zsh -lc "$hook")
+    mise x -- gum style --foreground="240" "Running post-create: $hook" >&2
+    (cd "$checkout_path" && zsh -lc "$hook") >&2
   done < <(workmux_post_create_commands "$repo_root")
 }
 
 new_agent_with_prompt() {
+  local allow_ticket="${1:-true}"
   local workspace_id cwd repo_root branch base_branch temp_prompt_file prompt_file prompt_text create_json checkout_path root_pane_id new_workspace_id agent_command
 
   workspace_id="$(current_workspace_id)"
@@ -203,7 +371,7 @@ new_agent_with_prompt() {
   fi
 
   repo_root="$(repo_root_for_cwd "$cwd")"
-  branch="$(prompt_worktree_name)"
+  branch="$(prompt_worktree_name "$allow_ticket")"
 
   [[ -z "$branch" ]] && return 0
 
@@ -220,7 +388,7 @@ new_agent_with_prompt() {
     return 0
   fi
 
-  create_json="$(herdr worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json)"
+  create_json="$(create_worktree "$workspace_id" "$repo_root" "$branch" "$base_branch")"
   checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
   root_pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$create_json")"
   new_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$create_json")"
@@ -228,13 +396,15 @@ new_agent_with_prompt() {
   cp "$temp_prompt_file" "$checkout_path/.herdr-agent-prompt.md"
   prompt_file="$checkout_path/.herdr-agent-prompt.md"
 
-  run_post_create_hooks "$repo_root" "$checkout_path"
-
   agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-$(workmux_agent_command "$repo_root")}"
   agent_command="${agent_command:-opencode --port --model \"$(opencode-last-model)\"}"
 
   herdr pane run "$root_pane_id" "HERDR_COMMANDS_AGENT_COMMAND=${(q)agent_command} herdr-run-agent-with-prompt ${(q)prompt_file}"
   herdr workspace focus "$new_workspace_id" >/dev/null
+}
+
+new_agent_with_prompt_without_ticket() {
+  new_agent_with_prompt false
 }
 
 delete_current_worktree() {
@@ -284,13 +454,23 @@ case "$action" in
   list)
     list_commands
     ;;
+  run)
+    action_name="$1"
+    shift || true
+
+    if typeset -f "$action_name" >/dev/null; then
+      "$action_name" "$@"
+    else
+      run_command "$action_name"
+    fi
+    ;;
   exec)
     label_raw="$*"
     label="$(normalize_label "$label_raw")"
     run_command "$label"
     ;;
   *)
-    print -r -- "Usage: herdr-commands [list|exec <label>]" >&2
+    print -r -- "Usage: herdr-commands [list|exec <label>|run <action>]" >&2
     exit 1
     ;;
 esac
