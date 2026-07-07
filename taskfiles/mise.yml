@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+silent: true
+
 tasks:
   commit:
     desc: Commits mise lockfiles if changed
