@@ -515,49 +515,73 @@ checksum = "sha256:b2816e506390a89941c63c9187d58a3cc10e9a55f2ef0685f9ea0eccaf7c9
 url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64-pc-windows-msvc.zip"
 
 [[tools.fnox]]
-version = "1.28.0"
+version = "1.29.0"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:8e465b3ec53cc244ec70e9d7f2a0de5495ed0410cef59c68ed9952e565b8f1ec"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021295"
+checksum = "sha256:af64a7680b10af0dc7d328c86fa54fea3919a3213581159313e45513825a2d87"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662177"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:f9eb4d3d7a5579bebe190d0bd885319f63b750af9b6e897607110045caa5b1a9"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021286"
+checksum = "sha256:c0900a7ec9d573aaa03574b567e5ed9ed75f63073a7b99c357fe3cf686b853d3"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662175"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:64c0c7dcdf3194137f8f621fb33c65de59c37d8ad473c970dc18273ca039e2b0"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021387"
+checksum = "sha256:ee16f23ff70c491f66dfa62246d404cb310c357ddd2d34e1eee5a118e4943377"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662196"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.linux-x64-baseline"]
+checksum = "sha256:ee16f23ff70c491f66dfa62246d404cb310c357ddd2d34e1eee5a118e4943377"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662196"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:9ace07de6703507a606d9bf7fffa5841cd3cf86933b15852e6e009a34ab7d5a0"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021392"
+checksum = "sha256:1303dc2b91bd9a6d8ceff0df601609f080485384b462511ef5c64bfec75d9f15"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662197"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:1303dc2b91bd9a6d8ceff0df601609f080485384b462511ef5c64bfec75d9f15"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662197"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:b6cd517147c6b89797dad9965776e203fc07f7fc279f5c7486f7a79b78feff61"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021285"
+checksum = "sha256:71dc67c54670d41c239669d2cdbea78b6ebbbc6c174beca7743b93330661e07a"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662176"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:efdf8b285e52f2834568189cdcfd3b4a0d94357d61b2d4e5caf8450a2bc46a67"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021287"
+checksum = "sha256:9cb2e04564469c0f01d8a591c3f2c4a3877c4769d29e50d10216090947e0e1ae"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662179"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.macos-x64-baseline"]
+checksum = "sha256:9cb2e04564469c0f01d8a591c3f2c4a3877c4769d29e50d10216090947e0e1ae"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662179"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:2eb1b02e6b7d32991bef5884cd1adacf6b52c4d5aeaa979f5c377df9391d4aae"
-url = "https://github.com/jdx/fnox/releases/download/v1.28.0/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/457021382"
+checksum = "sha256:5e8fdb35bff77ca841041e09eb596774d2cd1c2fe685be8d919e69fbcf5b7a87"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662193"
+provenance = "github-attestations"
+
+[tools.fnox."platforms.windows-x64-baseline"]
+checksum = "sha256:5e8fdb35bff77ca841041e09eb596774d2cd1c2fe685be8d919e69fbcf5b7a87"
+url = "https://github.com/jdx/fnox/releases/download/v1.29.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/463662193"
 provenance = "github-attestations"
 
 [[tools.fx]]
