@@ -18,6 +18,10 @@ while (($#)); do
   shift
 done
 
+if [[ -n "$use_lnr_quick" ]] && ! mise x -- gum confirm "Create a ticket for this worktree?"; then
+  use_lnr_quick=""
+fi
+
 if [[ -n "$use_lnr_quick" ]]; then
   input_placeholder="Ticket title..."
 fi
