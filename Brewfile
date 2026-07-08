@@ -123,6 +123,9 @@ brew 'watch'
 # set default application for opening files on mac
 brew 'duti'
 
+# manage macOS display arrangements
+brew 'displayplacer'
+
 # for Nerves
 brew 'xz'
 brew 'pkg-config'
