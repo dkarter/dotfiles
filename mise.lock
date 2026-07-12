@@ -358,36 +358,47 @@ backend = "aqua:LuaLS/lua-language-server"
 
 [tools.lua-language-server."platforms.linux-arm64"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992605"
 
 [tools.lua-language-server."platforms.linux-arm64-musl"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992605"
 
 [tools.lua-language-server."platforms.linux-x64"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992662"
 
 [tools.lua-language-server."platforms.linux-x64-baseline"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992662"
 
 [tools.lua-language-server."platforms.linux-x64-musl"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992662"
 
 [tools.lua-language-server."platforms.linux-x64-musl-baseline"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992662"
 
 [tools.lua-language-server."platforms.macos-arm64"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992832"
 
 [tools.lua-language-server."platforms.macos-x64"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992770"
 
 [tools.lua-language-server."platforms.macos-x64-baseline"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992770"
 
 [tools.lua-language-server."platforms.windows-x64"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-win32-x64.zip"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992833"
 
 [tools.lua-language-server."platforms.windows-x64-baseline"]
 url = "https://github.com/LuaLS/lua-language-server/releases/download/2.6.8/lua-language-server-2.6.8-win32-x64.zip"
+url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/61992833"
 
 [[tools.node]]
 version = "24.18.0"
@@ -487,36 +498,47 @@ backend = "aqua:koalaman/shellcheck"
 
 [tools.shellcheck."platforms.linux-arm64"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543216"
 
 [tools.shellcheck."platforms.linux-arm64-musl"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543216"
 
 [tools.shellcheck."platforms.linux-x64"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543215"
 
 [tools.shellcheck."platforms.linux-x64-baseline"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543215"
 
 [tools.shellcheck."platforms.linux-x64-musl"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543215"
 
 [tools.shellcheck."platforms.linux-x64-musl-baseline"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543215"
 
 [tools.shellcheck."platforms.macos-arm64"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.darwin.aarch64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543213"
 
 [tools.shellcheck."platforms.macos-x64"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.darwin.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543214"
 
 [tools.shellcheck."platforms.macos-x64-baseline"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.darwin.x86_64.tar.xz"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543214"
 
 [tools.shellcheck."platforms.windows-x64"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.zip"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543220"
 
 [tools.shellcheck."platforms.windows-x64-baseline"]
 url = "https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.zip"
+url_api = "https://api.github.com/repos/koalaman/shellcheck/releases/assets/155543220"
 
 [[tools.shfmt]]
 version = "3.13.1"
@@ -620,21 +642,27 @@ backend = "aqua:tamasfe/taplo"
 
 [tools.taplo."platforms.linux-arm64"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322597"
 
 [tools.taplo."platforms.linux-arm64-musl"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322597"
 
 [tools.taplo."platforms.linux-x64"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.linux-x64-baseline"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.linux-x64-musl"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.linux-x64-musl-baseline"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.macos-arm64"]
 checksum = "blake3:353ecb1ed7d279dec5e2fd388d292ef97db08a651405fa664ffec1b2896c05f0"
@@ -642,15 +670,19 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aa
 
 [tools.taplo."platforms.macos-x64"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x86_64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323116"
 
 [tools.taplo."platforms.macos-x64-baseline"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x86_64.gz"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323116"
 
 [tools.taplo."platforms.windows-x64"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323062"
 
 [tools.taplo."platforms.windows-x64-baseline"]
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
+url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323062"
 
 [[tools.task]]
 version = "3.52.0"
