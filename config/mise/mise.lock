@@ -1866,6 +1866,10 @@ backend = "npm:@kitlangton/stack"
 [tools."npm:@kitlangton/stack".options]
 aube_args = "--allow-low-downloads"
 
+[[tools."npm:@openai/codex"]]
+version = "0.144.1"
+backend = "npm:@openai/codex"
+
 [[tools."npm:neovim"]]
 version = "5.4.0"
 backend = "npm:neovim"

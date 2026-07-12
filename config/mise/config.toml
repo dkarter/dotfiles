@@ -43,6 +43,7 @@
 "github:raine/workmux" = "latest"     # git worktree manager in tmux
 "github:remoteoss/dexter" = "latest"  # fast af Elixir LSP
 "npm:@commitlint/cli" = "latest"      # linter for checking that commits are following conventional commits
+"npm:@openai/codex" = "latest"        # codex agent for AI assisted coding
 "npm:neovim" = "latest"               # support for javascript plugins in neovim
 "npm:prettier" = "latest"             # code formatter (js, ts, json, yaml and more)
 "npm:trash-cli" = "latest"            # rm -> system trash (cross platform)
@@ -138,6 +139,7 @@ lockfile = true
 minimum_release_age = "24h"
 minimum_release_age_excludes = [
   "npm:opencode-ai",
+  "npm:@openai/codex",
   "claude-code",
   "erlang",
   "elixir",
