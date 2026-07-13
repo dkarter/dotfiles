@@ -137,33 +137,43 @@ url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-wind
 url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469657"
 
 [[tools."github:bgreenwell/lstr"]]
-version = "0.2.1"
+version = "0.3.0"
 backend = "github:bgreenwell/lstr"
 
+[tools."github:bgreenwell/lstr"."platforms.linux-arm64"]
+checksum = "sha256:c047c5cf09a99d88bbb550749e71096dbb35f244b2c8a83cc4aa5c157376c27c"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-aarch64-unknown-linux-gnu.tar.xz"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053157"
+
+[tools."github:bgreenwell/lstr"."platforms.linux-arm64-musl"]
+checksum = "sha256:c047c5cf09a99d88bbb550749e71096dbb35f244b2c8a83cc4aa5c157376c27c"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-aarch64-unknown-linux-gnu.tar.xz"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053157"
+
 [tools."github:bgreenwell/lstr"."platforms.linux-x64"]
-checksum = "sha256:4408ed12f10fa596ae12a20108cfe5ead4a938a3a6a4b5ce5d1c7cdb696add3f"
-url = "https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/266658086"
+checksum = "sha256:c4dcd4d43ee2af773ab2d52d96e99b1ee5a4ca6ce403dc14d1c8c8adf09f6ae6"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-x86_64-unknown-linux-gnu.tar.xz"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053178"
 
 [tools."github:bgreenwell/lstr"."platforms.linux-x64-musl"]
-checksum = "sha256:4408ed12f10fa596ae12a20108cfe5ead4a938a3a6a4b5ce5d1c7cdb696add3f"
-url = "https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/266658086"
+checksum = "sha256:b5ca2641eb926101cb0218b4ed554a47dbe664db158caea877b96fe2c271dce2"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-x86_64-unknown-linux-musl.tar.xz"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053184"
 
 [tools."github:bgreenwell/lstr"."platforms.macos-arm64"]
-checksum = "sha256:6b7fae4229d3d317defc774b9de5d079fb439fa2c40bb1e01b4099e182a8680c"
-url = "https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-macos-arm64.tar.gz"
-url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/266658100"
+checksum = "sha256:2fa95b3670ab3346444025db0b9ed6d242513f7dc230452aa42be7b3565e7eb1"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-aarch64-apple-darwin.tar.xz"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053151"
 
 [tools."github:bgreenwell/lstr"."platforms.macos-x64"]
-checksum = "sha256:554108574d4de9cfe9207dd3937e9b9d3df2b4cadfb66a9d2c4376bbff6a25df"
-url = "https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-macos-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/266658049"
+checksum = "sha256:1389906b18644adebe9effd9c1fa76ab82a1919e55572afe4aec0581b49770ac"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-x86_64-apple-darwin.tar.xz"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053166"
 
 [tools."github:bgreenwell/lstr"."platforms.windows-x64"]
-checksum = "sha256:8296ee4593d4b9bfa77512e6f2b5a0c75f67703a7b4d3348b78ad75241e13f5e"
-url = "https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-windows-x86_64.zip"
-url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/266658595"
+checksum = "sha256:421f4020571b68517d41ce6073b6977289d8449f2c01271a9fd58b3a84857761"
+url = "https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/bgreenwell/lstr/releases/assets/474053172"
 
 [[tools."github:dkarter/pdf-redact"]]
 version = "0.2.7"
