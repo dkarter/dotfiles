@@ -3,7 +3,7 @@
     "plugin_id": "dotfiles.command-palette",
     "name": "Command Palette",
     "version": "0.1.0",
-    "min_herdr_version": "0.7.0",
+    "min_herdr_version": "0.7.4",
     "description": "Dotfiles Herdr command palette",
     "manifest_path": "/Users/Dorian.Karter/dotfiles/config/herdr/plugins/command-palette/herdr-plugin.toml",
     "plugin_root": "/Users/Dorian.Karter/dotfiles/config/herdr/plugins/command-palette",
@@ -39,7 +39,9 @@
       {
         "id": "palette",
         "title": "Command Palette",
-        "placement": "overlay",
+        "placement": "popup",
+        "width": "80%",
+        "height": "60%",
         "command": ["./palette"]
       },
       {
