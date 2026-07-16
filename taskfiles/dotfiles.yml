@@ -82,11 +82,11 @@ tasks:
       - task: arch:sync
       - task: shell:zsh:default
       - task: create:dirs
+      - task: mise:install
       - task: symlink
       - task: op:install:ssh:agent
       - task: zinit:install
       - task: zinit:plugins:update
-      - task: mise:install
       - task: mac:set:defaults
       - task: mise:tools:extras:prompt
       - task: mise:tools:install
@@ -115,10 +115,10 @@ tasks:
       - task: debian:tools:install:devcontainer
       - task: shell:zsh:default
       - task: create:dirs
+      - task: mise:install
       - task: symlink
       - task: op:install:ssh:agent
       - task: zinit:install
-      - task: mise:install
       - task: mise:tools:install:devcontainer
       - task: zinit:plugins:warm
       - task: nvim:install
@@ -164,42 +164,8 @@ tasks:
 
   symlink:
     desc: Symlinks dotfiles and folders
-    vars:
-      FILES:
-        # ideally this list should be as small as possible, use XDG_CONFIG
-        # folder instead
-        - aliases
-        - ctags
-        - gemrc
-        - gitconfig
-        - gitignore
-        - gitmessage
-        - ignore
-        - pgpass
-        - prettierrc
-        - pryrc
-        - psqlrc
-        - stylelintrc
-        - zinitrc
-        - zshenv
-        - zshrc
     cmds:
-      - for:
-          var: FILES
-          as: FILE
-        cmd: |
-          ln -s -fn "$(realpath ./{{.FILE}})" ~/.{{.FILE}}
-
-      - cmd: |
-          for folder in ./config/*; do
-            echo "Symlinking $(basename $folder)..."
-            source_path=$(realpath $folder)
-            pushd ~/.config > /dev/null 2>&1
-            ln -s -fn "$source_path" "$(basename $folder)" > /dev/null 2>&1
-            popd > /dev/null 2>&1
-          done
-        silent: true
-
+      - mise bootstrap dotfiles apply --yes
       - task: skills:sync
 
   skills:sync:

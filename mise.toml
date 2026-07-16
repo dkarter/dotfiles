@@ -41,6 +41,24 @@ press_and_hold = false
 "NSGlobalDomain" = { AppleShowAllExtensions = true }
 "com.apple.dock" = { showhidden = true }
 
+[dotfiles]
+"~/.aliases" = "aliases"
+"~/.ctags" = "ctags"
+"~/.gemrc" = "gemrc"
+"~/.gitconfig" = "gitconfig"
+"~/.gitignore" = "gitignore"
+"~/.gitmessage" = "gitmessage"
+"~/.ignore" = "ignore"
+"~/.pgpass" = "pgpass"
+"~/.prettierrc" = "prettierrc"
+"~/.pryrc" = "pryrc"
+"~/.psqlrc" = "psqlrc"
+"~/.stylelintrc" = "stylelintrc"
+"~/.zinitrc" = "zinitrc"
+"~/.zshenv" = "zshenv"
+"~/.zshrc" = "zshrc"
+"~/.config/*" = "config/*"
+
 [tasks."release:signing-key"]
 description = "Generate/export the release-please GPG signing key"
 file = "scripts/release-please-gpg-key.sh"
