@@ -84,10 +84,10 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: op:install:ssh:agent
-      - task: mac:set:defaults
       - task: zinit:install
       - task: zinit:plugins:update
       - task: mise:install
+      - task: mac:set:defaults
       - task: mise:tools:extras:prompt
       - task: mise:tools:install
       - task: fonts:sync

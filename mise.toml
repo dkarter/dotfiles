@@ -28,6 +28,19 @@ experimental = true
 # activate with `mise lock`
 lockfile = true
 
+[bootstrap.macos.dock]
+autohide = true
+mru_spaces = false
+
+[bootstrap.macos.keyboard]
+key_repeat = 2
+initial_key_repeat = 15
+press_and_hold = false
+
+[bootstrap.macos.defaults]
+"NSGlobalDomain" = { AppleShowAllExtensions = true }
+"com.apple.dock" = { showhidden = true }
+
 [tasks."release:signing-key"]
 description = "Generate/export the release-please GPG signing key"
 file = "scripts/release-please-gpg-key.sh"

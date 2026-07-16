@@ -6,33 +6,9 @@ tasks:
     desc: Sets macOS defaults and disables annoyances
     platforms: [darwin]
     cmds:
-      - echo 'Disabling annoying features...'
+      - mise bootstrap macos defaults apply --yes
 
-      # disables the hold key menu to allow key repeat
-      - defaults write -g ApplePressAndHoldEnabled -bool false
-
-      # The speed of repetition of characters
-      - defaults write -g KeyRepeat -int 2
-
-      # Delay until repeat
-      - defaults write -g InitialKeyRepeat -int 15
-
-      # Set dock to auto hide with no delay
-      - defaults write com.apple.dock autohide -int 1
-
-      # Finder: show all filename extensions
-      - defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-      # Don’t automatically rearrange Spaces based on most recent use
-      - defaults write com.apple.dock mru-spaces -bool false
-
-      # Automatically hide and show the Dock
-      - defaults write com.apple.dock autohide -bool true
-
-      # Make Dock icons of hidden applications translucent
-      - defaults write com.apple.dock showhidden -bool true
-
-      # Show battery percentage in menubar
+      # mise does not support host-scoped defaults.
       - defaults -currentHost write com.apple.controlcenter.plist BatteryShowPercentage -bool true
 
   op:setup:
