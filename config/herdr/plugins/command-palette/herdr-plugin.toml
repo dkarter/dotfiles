@@ -18,6 +18,12 @@ contexts = ["workspace"]
 command = ["./open-worktree"]
 
 [[actions]]
+id = "delete-current-worktree"
+title = "Delete current worktree"
+contexts = ["workspace"]
+command = ["./open-delete-worktree"]
+
+[[actions]]
 id = "new-agent-with-prompt"
 title = "New agent with prompt"
 contexts = ["workspace"]
@@ -34,8 +40,14 @@ command = ["./palette"]
 [[panes]]
 id = "worktree"
 title = "New Worktree"
-placement = "overlay"
+placement = "popup"
 command = ["./worktree"]
+
+[[panes]]
+id = "delete-worktree"
+title = "Delete Current Worktree"
+placement = "popup"
+command = ["./delete-worktree"]
 
 [[panes]]
 id = "agent-prompt"

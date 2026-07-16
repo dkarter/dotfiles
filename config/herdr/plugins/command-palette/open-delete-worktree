@@ -4,4 +4,4 @@ set -euo pipefail
 herdr_bin="${HERDR_BIN_PATH:-herdr}"
 plugin_id="${HERDR_PLUGIN_ID:-dotfiles.command-palette}"
 
-exec "$herdr_bin" plugin pane open --plugin "$plugin_id" --entrypoint worktree --placement popup --focus
+exec "$herdr_bin" plugin pane open --plugin "$plugin_id" --entrypoint delete-worktree --placement popup --focus

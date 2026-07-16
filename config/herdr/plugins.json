@@ -11,6 +11,12 @@
     "platforms": ["macos", "linux"],
     "actions": [
       {
+        "id": "delete-current-worktree",
+        "title": "Delete current worktree",
+        "contexts": ["workspace"],
+        "command": ["./open-delete-worktree"]
+      },
+      {
         "id": "new-agent-with-prompt",
         "title": "New agent with prompt",
         "contexts": ["workspace"],
@@ -37,6 +43,12 @@
         "command": ["./agent-prompt"]
       },
       {
+        "id": "delete-worktree",
+        "title": "Delete Current Worktree",
+        "placement": "popup",
+        "command": ["./delete-worktree"]
+      },
+      {
         "id": "palette",
         "title": "Command Palette",
         "placement": "popup",
@@ -47,7 +59,7 @@
       {
         "id": "worktree",
         "title": "New Worktree",
-        "placement": "overlay",
+        "placement": "popup",
         "command": ["./worktree"]
       }
     ],
