@@ -78,6 +78,9 @@ export CI=1
 export MISE_YES=1
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.local/share/mise/shims:$PATH"
 
+# The Tart base image ships an unmanaged gitconfig; model a clean dotfiles target.
+rm -f "$HOME/.gitconfig"
+
 ensure_homebrew() {
   if command -v brew >/dev/null 2>&1; then
     eval "$(brew shellenv)"
@@ -106,9 +109,15 @@ run_task() {
 
 assert_symlink() {
   local path="$1"
+  local expected_target="$2"
 
   if [[ ! -L $path ]]; then
     echo "error: expected symlink: $path" >&2
+    exit 1
+  fi
+
+  if [[ "$(realpath "$path")" != "$expected_target" ]]; then
+    echo "error: expected $path to resolve to $expected_target" >&2
     exit 1
   fi
 }
@@ -121,10 +130,10 @@ run_core_install() {
   ensure_task
 
   run_task dot:create:dirs
+  run_task mise:install
   run_task dot:symlink
   run_task op:install:ssh:agent
   run_task zinit:install
-  run_task mise:install
   run_task mac:set:defaults
 
   if [[ $SKIP_MISE_TOOLS != true ]]; then
@@ -169,13 +178,14 @@ case "$INSTALL_MODE" in
 esac
 
 echo "Validating dotfiles install..."
-assert_symlink "$HOME/.zshrc"
-assert_symlink "$HOME/.zshenv"
-assert_symlink "$HOME/.config/nvim"
-assert_symlink "$HOME/.config/mise"
+assert_symlink "$HOME/.zshrc" "$HOME/dotfiles/zshrc"
+assert_symlink "$HOME/.zshenv" "$HOME/dotfiles/zshenv"
+assert_symlink "$HOME/.config/nvim" "$HOME/dotfiles/config/nvim"
+assert_symlink "$HOME/.config/mise" "$HOME/dotfiles/config/mise"
 
 zsh -lic 'echo zsh-ok'
 mise --version
+mise bootstrap dotfiles status --missing
 mise bootstrap macos defaults status --missing
 
 if [[ "$(defaults -currentHost read com.apple.controlcenter.plist BatteryShowPercentage 2>/dev/null)" != 1 ]]; then
