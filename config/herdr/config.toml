@@ -12,8 +12,8 @@ delivery = "system"
 [ui]
 show_agent_labels_on_pane_borders = true
 agent_panel_scope = "current"
+sidebar_collapsed_mode = "hidden"
 
-agent_panel_sort = "priority"
 [keys]
 prefix = "ctrl+z"
 focus_pane_left = "ctrl+h"
@@ -24,6 +24,8 @@ split_vertical = "prefix+\\"
 rename_pane = ""
 rename_tab = ""
 goto = "prefix+shift+t"
+next_workspace = "prefix+shift+l"
+previous_workspace = "prefix+shift+h"
 
 [[keys.command]]
 key = "prefix+shift+p"
