@@ -123,9 +123,9 @@ run_core_install() {
   run_task dot:create:dirs
   run_task dot:symlink
   run_task op:install:ssh:agent
-  run_task mac:set:defaults
   run_task zinit:install
   run_task mise:install
+  run_task mac:set:defaults
 
   if [[ $SKIP_MISE_TOOLS != true ]]; then
     run_task mise:tools:install
@@ -176,6 +176,12 @@ assert_symlink "$HOME/.config/mise"
 
 zsh -lic 'echo zsh-ok'
 mise --version
+mise bootstrap macos defaults status --missing
+
+if [[ "$(defaults -currentHost read com.apple.controlcenter.plist BatteryShowPercentage 2>/dev/null)" != 1 ]]; then
+  echo "error: expected the menu bar battery percentage to be enabled" >&2
+  exit 1
+fi
 
 if [[ $SKIP_NVIM != true ]]; then
   mise exec -- nvim --headless '+qall'
