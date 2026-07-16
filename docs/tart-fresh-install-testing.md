@@ -7,8 +7,8 @@ Use the fresh-install tasks to test these dotfiles in disposable macOS and Linux
 You must have tart installed first:
 
 ```bash
-brew trust --formula cirruslabs/cli/softnet
-brew install cirruslabs/cli/softnet
+brew trust --formula cirruslabs/cli/tart
+brew install cirruslabs/cli/tart
 ```
 
 You must have Docker running for the Linux container tests.
