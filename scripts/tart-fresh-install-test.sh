@@ -9,7 +9,7 @@ set -euo pipefail
 #USAGE flag "--memory <megabytes>" help="Memory for the VM in MB" default="8192"
 #USAGE flag "--timeout <seconds>" help="Seconds to wait for VM boot and guest agent" default="300"
 #USAGE flag "--guest-script <path>" help="Guest script path inside this repo" default="scripts/tart-guest-install-core.sh"
-#USAGE flag "--install-mode <mode>" help="Guest install path to run: core, task, or setup" default="core"
+#USAGE flag "--install-mode <mode>" help="Guest install path to run: core, packages, task, or setup" default="core"
 #USAGE flag "--keep-vm" help="Do not stop/delete the VM after the run"
 #USAGE flag "--cleanup" help="Stop and delete VMs matching --prefix, then exit"
 #USAGE flag "--graphics" help="Open the Tart UI immediately instead of trying --no-graphics first"
@@ -173,8 +173,8 @@ case "$TIMEOUT" in
 esac
 
 case "$INSTALL_MODE" in
-  core | task | setup) ;;
-  *) usage_error "--install-mode must be one of: core, task, setup" ;;
+  core | packages | task | setup) ;;
+  *) usage_error "--install-mode must be one of: core, packages, task, setup" ;;
 esac
 
 require_command() {
