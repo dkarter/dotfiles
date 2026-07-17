@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.0.0](https://github.com/dkarter/dotfiles/compare/v31.8.0...v32.0.0) (2026-07-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **task,mise:** move dotfiles symlinking to mise bootstrap
+
+### Features
+
+* **herdr:** improve command palette ([619ab2a](https://github.com/dkarter/dotfiles/commit/619ab2a7c57deb283cf9946912d10462f994d8e4))
+* **lnr:** add support for latest lnr version ([bb86485](https://github.com/dkarter/dotfiles/commit/bb864856d98c798b0010f6fbcac7c8643993ee0b))
+* **mise:** add codex ([88ec7ab](https://github.com/dkarter/dotfiles/commit/88ec7abcf92129cca4ab6ebab826689ca5d1bae0))
+* **mise:** add vstui for managing vsts to extra ([eb24605](https://github.com/dkarter/dotfiles/commit/eb24605ef5a4dd17385d7e180b6cc867bd41863d))
+* **skills:** add herdr skill ([4856740](https://github.com/dkarter/dotfiles/commit/48567405e79bf4cc09033922d824c89d3baa4f99))
+* **tmux:** add workmux sidebar command to command palette ([ee85457](https://github.com/dkarter/dotfiles/commit/ee85457e016e8b7ec983bd4f494af30b72cf9bd2))
+* **zsh:** add completions for herdr ([7ce3827](https://github.com/dkarter/dotfiles/commit/7ce38277d98614c90fd06bc6ee6d63d42ec750e5))
+
+
+### Bug Fixes
+
+* **herdr:** change nav keys for workspace to j/k ([1531924](https://github.com/dkarter/dotfiles/commit/1531924d9ae13326163084475d43c5c467cad0ea))
+* **herdr:** improve nav ([a9ebcc5](https://github.com/dkarter/dotfiles/commit/a9ebcc50e160324df717817d47176c388ffc28ff))
+* **herdr:** update plugin to have mise shims ([59b3e90](https://github.com/dkarter/dotfiles/commit/59b3e90b69b88a9e5ec534a0e564fc2a353ae9a1))
+* **herdr:** use popup for command palette ([c0e9577](https://github.com/dkarter/dotfiles/commit/c0e95771c30c441922587def44521129f8212f6a))
+* **raycast:** fix script to swap display order ([53f1feb](https://github.com/dkarter/dotfiles/commit/53f1feb883b6defb6397e83316d22a5d97fbfa56))
+* remove opencode-last-model from workmux agent ([c6ecc6e](https://github.com/dkarter/dotfiles/commit/c6ecc6ecb38d5dceebabe2d7dde3eb4eefcbf7df))
+* **tmux:** ask if user wants a ticket when using lnr ([e0b8fcf](https://github.com/dkarter/dotfiles/commit/e0b8fcf7c7763163b03d47bafcc851728081c347))
+* **tmux:** hide title for inactive windows ([a322bfb](https://github.com/dkarter/dotfiles/commit/a322bfbefcb7a7645c2f0fb11f73b7fdb37c2271))
+* **tv:** sesh error when trying to connect when tmux is killed ([c321cd2](https://github.com/dkarter/dotfiles/commit/c321cd2adf36c67f0d3bc0ebb3c249e5dd5c70d2))
+
+
+### Code Refactoring
+
+* **task,mise:** move dotfiles symlinking to mise bootstrap ([5d7c6b5](https://github.com/dkarter/dotfiles/commit/5d7c6b5e68c178794fe17e0300ebc49913d3a91d))
+
 ## [31.8.0](https://github.com/dkarter/dotfiles/compare/v31.7.1...v31.8.0) (2026-06-30)
 
 
