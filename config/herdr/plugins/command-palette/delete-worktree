@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+if ! "$HOME/dotfiles/bin/herdr-commands" run delete_current_worktree; then
+  print -u2 -- "Worktree removal failed. Press Enter to close."
+  read -r || true
+fi

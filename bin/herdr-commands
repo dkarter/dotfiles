@@ -2,6 +2,9 @@
 set -euo pipefail
 setopt extendedglob
 
+# Herdr popups run outside the interactive shell that activates Mise.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 typeset -A ACTIONS
 typeset -A SHORTCUTS
 typeset -a LABELS
@@ -170,8 +173,21 @@ workmux_agent_command() {
 
 workmux_post_create_commands() {
   local repo_root="$1"
+  local global_config project_config
 
-  repo_config_array "$repo_root" post_create
+  global_config="$HOME/.config/workmux/config.yaml"
+  project_config="$(workmux_config_for_repo "$repo_root")"
+
+  ruby -ryaml -e '
+    global = File.file?(ARGV[0]) ? YAML.load_file(ARGV[0]) || {} : {}
+    project = File.file?(ARGV[1]) ? YAML.load_file(ARGV[1]) || {} : {}
+    global_hooks = Array(global["post_create"])
+    hooks = project.key?("post_create") ? Array(project["post_create"]) : global_hooks
+
+    hooks.each do |hook|
+      hook == "<global>" ? global_hooks.each { |global_hook| puts global_hook } : puts(hook)
+    end
+  ' "$global_config" "$project_config" 2>/dev/null || true
 }
 
 configured_worktree_dir() {
@@ -408,19 +424,19 @@ new_agent_with_prompt_without_ticket() {
 }
 
 delete_current_worktree() {
-  local workspace_id workspace_json label path is_linked remove_output
+  local workspace_id workspace_json label checkout_path is_linked remove_output
   workspace_id="$(current_workspace_id)"
   workspace_json="$(herdr workspace get "$workspace_id")"
   label="$(jq -er '.result.workspace.label // .result.workspace.workspace_id' <<<"$workspace_json")"
-  path="$(jq -er '.result.workspace.worktree.checkout_path // empty' <<<"$workspace_json" 2>/dev/null || true)"
+  checkout_path="$(jq -er '.result.workspace.worktree.checkout_path // empty' <<<"$workspace_json" 2>/dev/null || true)"
   is_linked="$(jq -er '.result.workspace.worktree.is_linked_worktree // false' <<<"$workspace_json" 2>/dev/null || true)"
 
-  if [[ -z "$path" || "$is_linked" != "true" ]]; then
+  if [[ -z "$checkout_path" || "$is_linked" != "true" ]]; then
     mise x -- gum style --foreground="red" "Current workspace is not a Herdr worktree"
     return 1
   fi
 
-  if ! mise x -- gum confirm "Delete worktree '$label' at $path?"; then
+  if ! mise x -- gum confirm "Delete worktree '$label' at $checkout_path?"; then
     return 0
   fi
 
