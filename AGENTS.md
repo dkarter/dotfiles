@@ -233,7 +233,7 @@ The CI pipeline (`task ci:run`) includes:
 
 ### Common Modifications
 
-- Adding new tools: Update appropriate taskfile and mise.toml
+- Adding new tools: Update appropriate taskfile and run `mise use` commands - NEVER modify lock files manually
 - Neovim plugins: Add to `config/nvim/lua/plugins/`
 - Shell functions: Add to `config/zsh/functions.zsh`
 - Git configuration: Modify `gitconfig` or related files
