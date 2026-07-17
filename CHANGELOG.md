@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.0.1](https://github.com/dkarter/dotfiles/compare/v32.0.0...v32.0.1) (2026-07-17)
+
+
+### Bug Fixes
+
+* revert package install migration ([#429](https://github.com/dkarter/dotfiles/issues/429)) ([6e7eeda](https://github.com/dkarter/dotfiles/commit/6e7eedae59a898db041eea175ca9aa2a8ede00a8))
+
 ## [32.0.0](https://github.com/dkarter/dotfiles/compare/v31.8.0...v32.0.0) (2026-07-17)
 
 
