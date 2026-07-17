@@ -2,47 +2,14 @@
 version: 3
 
 vars:
-  PACMAN_PKGS:
-    - base-devel
-    - bat
-    - curl
-    - figlet
-    - fop
-    - ghostty
-    - httpie
-    - keyd
-    - libxslt
-    - lsof
-    - ncurses
-    - postgresql-client
-    - tmux
-    - tree
-    - unixodbc
-    - wget
-    - wxwidgets
-    - zsh
-
   YAY_PKGS:
     - pspg
 
 tasks:
-  sync:
-    desc: Installs and updates tools
+  tools:extras:install:
+    desc: Installs AUR packages and configures package-provided services
     platforms: [linux]
-    silent: true
     cmds:
-      - task: tools:install
-        if: 'command -v pacman &>/dev/null'
-
-  tools:install:
-    desc: Installs all apt packages
-    platforms: [linux]
-    silent: true
-    cmds:
-      - cmd: |
-          # shellcheck disable=SC1083
-          sudo pacman --noconfirm --needed -S {{.PACMAN_PKGS | join " "}}
-        if: 'command -v pacman &>/dev/null'
       - cmd: |
           # shellcheck disable=SC1083
           yay --noconfirm --needed -S {{.YAY_PKGS | join " "}}

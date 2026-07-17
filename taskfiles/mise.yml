@@ -22,11 +22,17 @@ tasks:
       git commit -m 'chore(mise): update lockfiles'
 
   install:
-    desc: Installs mise itself
+    desc: Installs or updates mise itself
     silent: true
     # https://mise.jdx.dev/getting-started.html
     cmds:
-      - cmd: brew update && brew install mise
+      - cmd: |
+          if command -v mise &>/dev/null; then
+            brew update
+            brew upgrade mise
+          else
+            brew install mise
+          fi
         platforms: [darwin]
 
       - cmd: |
@@ -53,9 +59,20 @@ tasks:
       - cmd: mise lock
       - cmd: mise lock -g
 
+  1password:update:
+    desc: Updates the 1Password CLI version and checksums
+    requires:
+      vars: [VERSION]
+    env:
+      OP_VERSION: '{{.VERSION}}'
+    cmds:
+      - mise exec elixir -- elixir scripts/update-1password-cli.exs
+      - mise lock -g http:1password-cli
+
   sync:
     desc: Updates mise tools (runtimes), mise itself and installs packages for this project
     cmds:
+      - task: install
       - task: tools:install
       - task: tools:update
 

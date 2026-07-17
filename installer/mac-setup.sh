@@ -40,7 +40,12 @@ set_app_shortcut "$app_id" 'Activate the tab to the left' '\0'
 set_app_shortcut "$app_id" 'Activate the tab to the right' '\0'
 
 echo 'Getting brew packages...'
-brew bundle
+if ! command -v mise &>/dev/null; then
+  brew install mise
+fi
+# The rest of the package set is installed by task install. These are needed
+# below before Task takes over.
+brew install duti mas
 
 # NOTE: check this page if getting an error from xcodebuild:
 # https://stackoverflow.com/questions/17980759/xcode-select-active-developer-directory-error
