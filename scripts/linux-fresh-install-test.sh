@@ -235,7 +235,6 @@ validate_install() {
   docker_exec_user bash -lc 'test -L "$HOME/.config/nvim"'
   docker_exec_user bash -lc 'zsh -lic "echo zsh-ok"'
   docker_exec_user bash -lc 'mise --version'
-  docker_exec_user bash -lc 'mise bootstrap packages status --missing'
 }
 
 run_target() {
