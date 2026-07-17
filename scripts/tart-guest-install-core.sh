@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #MISE description="Run a dotfiles install flow inside a Tart macOS guest"
-#USAGE flag "--install-mode <mode>" help="Install path to run: core, packages, task, or setup" default="core"
+#USAGE flag "--install-mode <mode>" help="Install path to run: core, task, or setup" default="core"
 #USAGE flag "--skip-mise-tools" help="Skip installing configured mise tools"
 #USAGE flag "--skip-zinit-plugins" help="Skip warming/updating zinit plugins"
 #USAGE flag "--skip-nvim" help="Skip Neovim plugin/package installation and validation"
@@ -59,8 +59,8 @@ while [[ $# -gt 0 ]]; do
 done
 
 case "$INSTALL_MODE" in
-  core | packages | task | setup) ;;
-  *) usage_error "--install-mode must be one of: core, packages, task, setup" ;;
+  core | task | setup) ;;
+  *) usage_error "--install-mode must be one of: core, task, setup" ;;
 esac
 
 if [[ "$(uname)" != "Darwin" ]]; then
@@ -131,8 +131,7 @@ run_core_install() {
 
   run_task dot:create:dirs
   run_task mise:install
-  mise bootstrap dotfiles apply --yes
-  run_task dot:skills:sync
+  run_task dot:symlink
   run_task op:install:ssh:agent
   run_task zinit:install
   run_task mac:set:defaults
@@ -167,36 +166,6 @@ run_task_install() {
   run_task install
 }
 
-run_packages_install() {
-  echo "Running package install path..."
-  ensure_homebrew
-  ensure_task
-
-  # The Tart base image includes Homebrew packages. Reduce it to the state of a
-  # blank Mac after installing mise so this tests bootstrap rather than adoption.
-  set --
-  for formula in $(brew list --formula); do
-    case "$formula" in
-      mise | usage) ;;
-      *) set -- "$@" "$formula" ;;
-    esac
-  done
-  if [[ $# -gt 0 ]]; then
-    brew uninstall --formula --ignore-dependencies "$@"
-  fi
-
-  set --
-  for cask in $(brew list --cask); do
-    set -- "$@" "$cask"
-  done
-  if [[ $# -gt 0 ]]; then
-    brew uninstall --cask --force "$@"
-  fi
-
-  run_task mise:install
-  mise bootstrap --only packages,final-hook --update --yes
-}
-
 run_setup_install() {
   echo "Running setup.sh install path..."
   ./setup.sh
@@ -204,22 +173,11 @@ run_setup_install() {
 
 case "$INSTALL_MODE" in
   core) run_core_install ;;
-  packages) run_packages_install ;;
   task) run_task_install ;;
   setup) run_setup_install ;;
 esac
 
 echo "Validating dotfiles install..."
-
-if [[ $INSTALL_MODE == packages ]]; then
-  mise --version
-  mise bootstrap packages status --missing
-  brew list --formula sudo-touchid tmux-fingers >/dev/null
-  brew list --cask orbstack raycast >/dev/null
-  echo "Package install validation passed."
-  exit 0
-fi
-
 assert_symlink "$HOME/.zshrc" "$HOME/dotfiles/zshrc"
 assert_symlink "$HOME/.zshenv" "$HOME/dotfiles/zshenv"
 assert_symlink "$HOME/.config/nvim" "$HOME/dotfiles/config/nvim"
@@ -229,10 +187,6 @@ zsh -lic 'echo zsh-ok'
 mise --version
 mise bootstrap dotfiles status --missing
 mise bootstrap macos defaults status --missing
-
-if [[ $INSTALL_MODE != core ]]; then
-  mise bootstrap packages status --missing
-fi
 
 if [[ "$(defaults -currentHost read com.apple.controlcenter.plist BatteryShowPercentage 2>/dev/null)" != 1 ]]; then
   echo "error: expected the menu bar battery percentage to be enabled" >&2

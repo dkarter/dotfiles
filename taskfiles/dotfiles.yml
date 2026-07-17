@@ -78,10 +78,12 @@ tasks:
       Installs all dependencies and symlink dotfiles.
     silent: true
     cmds:
-      - task: mise:install
-      - task: create:dirs
-      - cmd: mise bootstrap --yes --locked
+      - task: debian:sync
+      - task: arch:sync
       - task: shell:zsh:default
+      - task: create:dirs
+      - task: mise:install
+      - task: symlink
       - task: op:install:ssh:agent
       - task: zinit:install
       - task: zinit:plugins:update
@@ -89,6 +91,7 @@ tasks:
       - task: mise:tools:extras:prompt
       - task: mise:tools:install
       - task: fonts:sync
+      - task: brew:sync
       - task: bat:sync
       - task: tmux:plugins:install
       - task: gh:plugins:install
@@ -113,8 +116,7 @@ tasks:
       - task: shell:zsh:default
       - task: create:dirs
       - task: mise:install
-      - mise bootstrap dotfiles apply --yes
-      - task: skills:sync
+      - task: symlink
       - task: op:install:ssh:agent
       - task: zinit:install
       - task: mise:tools:install:devcontainer
@@ -130,9 +132,12 @@ tasks:
       Use this task to get the latest tool versions and configuration changes
       after pulling the repo
     cmds:
+      - task: debian:sync
+      - task: arch:sync
       - task: create:dirs
-      - cmd: mise bootstrap --yes
+      - task: symlink
       - task: mise:sync
+      - task: brew:sync
       - task: bat:sync
       - task: tmux:sync
       - task: zinit:sync
@@ -156,6 +161,12 @@ tasks:
       - cmd: mkdir -p {{.DIRS | join " "}}
         # we don't care about failures if they already exist
         ignore_error: true
+
+  symlink:
+    desc: Symlinks dotfiles and folders
+    cmds:
+      - mise bootstrap dotfiles apply --yes
+      - task: skills:sync
 
   skills:sync:
     desc: Synchronizes repo and local skills into global skill directories

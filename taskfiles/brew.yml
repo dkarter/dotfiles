@@ -3,23 +3,21 @@
 version: 3
 
 tasks:
-  packages:fallbacks:
-    desc: Installs packages unsupported by mise's Homebrew backend
+  sync:
+    desc: Synchronize homebrew packages
+    summary: |
+      Updates Homebrew packages
+
+      Then automatically commits the changes to the Brewfile.lock.json file, if there are any.
+    platforms: ['darwin']
+    cmds:
+      - brew bundle
+      - task: commit
+
+  commit:
+    desc: Commits the Brewfile.lock.json file if changed
     silent: true
     cmd: |
-      # These taps do not publish the API metadata required by mise.
-      brew trust --formula \
-        dkarter/tap/sudo-touchid \
-        morantron/tmux-fingers/tmux-fingers
-      brew install \
-        dkarter/tap/sudo-touchid \
-        morantron/tmux-fingers/tmux-fingers
-      # Mise cannot run OrbStack's postflight stanza or identify Raycast's
-      # extensionless download URL as an archive.
-      for cask in orbstack raycast; do
-        if brew list --cask "$cask" >/dev/null 2>&1; then
-          brew upgrade --cask --greedy "$cask"
-        else
-          brew install --cask "$cask"
-        fi
-      done
+      ./scripts/commit_changed_file.sh \
+          'Brewfile.lock.json' \
+          'chore(brew): update packages'

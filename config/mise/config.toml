@@ -95,22 +95,6 @@ uv = "latest"                         # install python packages
 yazi = "latest"                       # terminal file manager
 zoxide = "latest"                     # a modern version of autojump
 
-[tools."http:1password-cli"]
-version = "2.35.0"
-postinstall = '''
-if [ "$(uname)" = Linux ]; then
-  sudo groupadd -f onepassword-cli
-  sudo chgrp onepassword-cli "$MISE_TOOL_INSTALL_PATH/op"
-  sudo chmod g+s "$MISE_TOOL_INSTALL_PATH/op"
-fi
-'''
-
-[tools."http:1password-cli".platforms]
-macos-x64 = { url = "https://cache.agilebits.com/dist/1P/op2/pkg/v{{version}}/op_darwin_amd64_v{{version}}.zip", checksum = "sha256:174ed82e76002a0589aed0996fe068d8cdee9997e6b9b3acee409cdc4862cd3e" }
-macos-arm64 = { url = "https://cache.agilebits.com/dist/1P/op2/pkg/v{{version}}/op_darwin_arm64_v{{version}}.zip", checksum = "sha256:6dcb9528c1ace2f18f7808418afe5dd58ed1376038aa4f907af7e0462582712b" }
-linux-x64 = { url = "https://cache.agilebits.com/dist/1P/op2/pkg/v{{version}}/op_linux_amd64_v{{version}}.zip", checksum = "sha256:4457ade59850b852c64c77164235b34dd0b984ef7826eb0ccd32f1fd78a2ceb7" }
-linux-arm64 = { url = "https://cache.agilebits.com/dist/1P/op2/pkg/v{{version}}/op_linux_arm64_v{{version}}.zip", checksum = "sha256:28153b3e1b379cc117a2b8478fc29c73e4a391d0a9b7876c360d305e98390a78" }
-
 [tools."npm:opencode-ai"] # the best AI agent wrapper
 version = "latest"
 aube_args = "--allow-build=opencode-ai"
