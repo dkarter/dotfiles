@@ -21,10 +21,10 @@ rows = [["state_icon", "workspace", "$pr"], ["agent"]]
 prefix = "ctrl+z"
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
-focus_pane_left = "ctrl+h"
-focus_pane_down = "ctrl+j"
-focus_pane_up = "ctrl+k"
-focus_pane_right = "ctrl+l"
+focus_pane_left = ""
+focus_pane_down = ""
+focus_pane_up = ""
+focus_pane_right = ""
 split_vertical = "prefix+\\"
 rename_pane = ""
 rename_tab = ""
@@ -37,3 +37,51 @@ key = "prefix+shift+p"
 type = "plugin_action"
 command = "dotfiles.command-palette.open"
 description = "command palette"
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.navigate-left"
+description = "navigate left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.navigate-down"
+description = "navigate down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.navigate-up"
+description = "navigate up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.navigate-right"
+description = "navigate right"
+
+[[keys.command]]
+key = "alt+h"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.resize-left"
+description = "resize left"
+
+[[keys.command]]
+key = "alt+j"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.resize-down"
+description = "resize down"
+
+[[keys.command]]
+key = "alt+k"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.resize-up"
+description = "resize up"
+
+[[keys.command]]
+key = "alt+l"
+type = "plugin_action"
+command = "dotfiles.seamless-navigation.resize-right"
+description = "resize right"

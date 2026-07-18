@@ -1,0 +1,54 @@
+id = "dotfiles.seamless-navigation"
+name = "Seamless Navigation"
+version = "0.1.0"
+min_herdr_version = "0.7.4"
+description = "Vim-aware pane navigation and resizing"
+platforms = ["macos", "linux"]
+
+[[actions]]
+id = "navigate-left"
+title = "Navigate left"
+contexts = ["pane"]
+command = ["./dispatch", "navigate", "left", "ctrl+h", "ctrl+h"]
+
+[[actions]]
+id = "navigate-down"
+title = "Navigate down"
+contexts = ["pane"]
+command = ["./dispatch", "navigate", "down", "ctrl+j", "ctrl+j"]
+
+[[actions]]
+id = "navigate-up"
+title = "Navigate up"
+contexts = ["pane"]
+command = ["./dispatch", "navigate", "up", "ctrl+k", "ctrl+k"]
+
+[[actions]]
+id = "navigate-right"
+title = "Navigate right"
+contexts = ["pane"]
+command = ["./dispatch", "navigate", "right", "ctrl+l", "ctrl+l"]
+
+[[actions]]
+id = "resize-left"
+title = "Resize left"
+contexts = ["pane"]
+command = ["./dispatch", "resize", "left", "alt+shift+h", "alt+h"]
+
+[[actions]]
+id = "resize-down"
+title = "Resize down"
+contexts = ["pane"]
+command = ["./dispatch", "resize", "down", "alt+shift+j", "alt+j"]
+
+[[actions]]
+id = "resize-up"
+title = "Resize up"
+contexts = ["pane"]
+command = ["./dispatch", "resize", "up", "alt+shift+k", "alt+k"]
+
+[[actions]]
+id = "resize-right"
+title = "Resize right"
+contexts = ["pane"]
+command = ["./dispatch", "resize", "right", "alt+shift+l", "alt+l"]

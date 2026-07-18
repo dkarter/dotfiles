@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   'aserowy/tmux.nvim',
+  cond = not require('core.utils').in_herdr(),
   event = 'VeryLazy',
   opts = {
     copy_sync = {
