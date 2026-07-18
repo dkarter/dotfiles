@@ -311,6 +311,8 @@ create_worktree() {
   local base_branch="$4"
   local configured_path create_args create_json checkout_path
 
+  branch="${branch//[[:space:]]/-}"
+
   configured_path="$(configured_worktree_path "$repo_root" "$branch")"
   create_args=(worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json)
 

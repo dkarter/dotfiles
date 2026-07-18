@@ -55,6 +55,7 @@ if [[ -n "$use_lnr_quick" ]]; then
   fi
 fi
 
+worktree_name=${worktree_name//[[:space:]]/-}
 prompt_file=$(mktemp -t workmux-add-prompt)
 trap 'rm -f "$prompt_file"' EXIT
 

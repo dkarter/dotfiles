@@ -55,4 +55,5 @@ if [[ -n "$use_lnr_quick" ]]; then
   fi
 fi
 
+worktree_name=${worktree_name//[[:space:]]/-}
 mise x -- workmux add "$worktree_name" --base "$base_branch"
