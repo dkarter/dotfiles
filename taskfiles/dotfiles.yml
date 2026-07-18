@@ -1,6 +1,11 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
+vars:
+  HERDR_PLUGINS:
+    map:
+      gh-pr: 'wyattjoh/herdr-plugin-gh-pr'
+
 includes:
   1password:
     taskfile: ./1password.yaml
@@ -170,19 +175,28 @@ tasks:
       - mise bootstrap dotfiles apply --yes
       - task: skills:sync
 
-  herdr:plugins:sync:
-    desc: Registers repo-managed Herdr plugins using this checkout's path
+  herdr:plugins:install:
+    desc: Installs Herdr plugins
     cmds:
+      - for:
+          var: HERDR_PLUGINS
+        cmd: |
+          set -eu
+
+          installed="$(herdr plugin list --plugin '{{.KEY}}' --json | jq '.result.plugins | length')"
+          if [ "$installed" -eq 0 ]; then
+            herdr plugin install '{{.ITEM}}' --yes >/dev/null
+          fi
+        silent: true
+
+  herdr:plugins:sync:
+    desc: Installs Herdr plugins and registers repo-managed plugins
+    cmds:
+      - task: herdr:plugins:install
       - cmd: |
           set -eu
 
           plugin="$(realpath ./config/herdr/plugins/command-palette)"
-          gh_pr_installed="$(herdr plugin list --plugin gh-pr --json | jq '.result.plugins | length')"
-
-          if [ "$gh_pr_installed" -eq 0 ]; then
-            herdr plugin install wyattjoh/herdr-plugin-gh-pr --yes >/dev/null
-          fi
-
           herdr plugin unlink dotfiles.command-palette >/dev/null 2>&1 || true
           herdr plugin link "$plugin" >/dev/null
 
