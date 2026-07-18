@@ -48,10 +48,23 @@ agent_summary() {
   fi
 }
 
+truncate_label() {
+  local value="$1"
+  local max_width=56
+  local tail_width=16
+  local head_width=$(( max_width - tail_width - 3 ))
+
+  if (( ${#value} > max_width )); then
+    REPLY="${value[1,$head_width]}...${value[-$tail_width,-1]}"
+  else
+    REPLY="$value"
+  fi
+}
+
 list_workspaces() {
-  local workspace_id number label focused linked repo_name parent_label agent_status
-  local blocked working done idle unknown pane_count tab_count
-  local focus_icon display_label summary status_icon status_color pane_suffix tab_suffix
+  local workspace_id number label focused linked repo_name agent_status
+  local blocked working done idle unknown
+  local focus_icon display_label summary status_icon status_color
 
   herdr api snapshot | jq -r '
     .result.snapshot as $snapshot
@@ -83,7 +96,6 @@ list_workspaces() {
           }
       ]
     | sort_by(.order)[]
-    | .parent as $parent
     | .workspace
     | [
         .workspace_id,
@@ -92,42 +104,33 @@ list_workspaces() {
         .focused,
         (.worktree.is_linked_worktree // false),
         ((.worktree.repo_name // "-") | gsub("[\\t\\r\\n]"; " ")),
-        (($parent.label // "-") | gsub("[\\t\\r\\n]"; " ")),
         .agent_status,
         ($agent_counts[.workspace_id].blocked // 0),
         ($agent_counts[.workspace_id].working // 0),
         ($agent_counts[.workspace_id].done // 0),
         ($agent_counts[.workspace_id].idle // 0),
-        ($agent_counts[.workspace_id].unknown // 0),
-        .pane_count,
-        .tab_count
+        ($agent_counts[.workspace_id].unknown // 0)
       ]
     | @tsv
   ' | while IFS=$'\t' read -r \
-    workspace_id number label focused linked repo_name parent_label agent_status \
-    blocked working done idle unknown pane_count tab_count; do
+    workspace_id number label focused linked repo_name agent_status \
+    blocked working done idle unknown; do
     focus_icon=" "
     [[ "$focused" == "true" ]] && focus_icon="${color_blue}▶${color_reset}"
 
     display_label="󰉋 $label"
     if [[ "$linked" == "true" ]]; then
-      if [[ "$parent_label" == "-" ]]; then
-        display_label=" $repo_name › $label"
-      else
-        display_label="  ↳  $label"
-      fi
+      display_label=" $repo_name › $label"
     fi
+    truncate_label "$display_label"
+    display_label="$REPLY"
 
     agent_summary "$blocked" "$working" "$done" "$idle" "$unknown"
     summary="$REPLY"
     status_icon="${STATUS_ICONS[$agent_status]:-${STATUS_ICONS[unknown]}}"
     status_color="${STATUS_COLORS[$agent_status]:-${STATUS_COLORS[unknown]}}"
-    pane_suffix=""
-    tab_suffix=""
-    [[ "$pane_count" == 1 ]] || pane_suffix="s"
-    [[ "$tab_count" == 1 ]] || tab_suffix="s"
 
-    printf '%s%d%s %s %-32s %s%s%s %-30s %s%d pane%s · %d tab%s%s\n' \
+    printf '%s%d%s %s %-56s %s%s%s %s\n' \
       "$color_dim" \
       "$number" \
       "$color_reset" \
@@ -136,13 +139,7 @@ list_workspaces() {
       "$status_color" \
       "$status_icon" \
       "$color_reset" \
-      "$summary" \
-      "$color_dim" \
-      "$pane_count" \
-      "$pane_suffix" \
-      "$tab_count" \
-      "$tab_suffix" \
-      "$color_reset"
+      "$summary"
   done
 }
 
