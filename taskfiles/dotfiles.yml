@@ -1,6 +1,11 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
+vars:
+  HERDR_PLUGINS:
+    map:
+      gh-pr: 'wyattjoh/herdr-plugin-gh-pr'
+
 includes:
   1password:
     taskfile: ./1password.yaml
@@ -90,6 +95,7 @@ tasks:
       - task: mac:set:defaults
       - task: mise:tools:extras:prompt
       - task: mise:tools:install
+      - task: herdr:plugins:sync
       - task: fonts:sync
       - task: brew:sync
       - task: bat:sync
@@ -137,6 +143,7 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: mise:sync
+      - task: herdr:plugins:sync
       - task: brew:sync
       - task: bat:sync
       - task: tmux:sync
@@ -167,6 +174,31 @@ tasks:
     cmds:
       - mise bootstrap dotfiles apply --yes
       - task: skills:sync
+
+  herdr:plugins:install:
+    desc: Installs Herdr plugins
+    cmds:
+      - for:
+          var: HERDR_PLUGINS
+        cmd: |
+          set -eu
+
+          installed="$(herdr plugin list --plugin '{{.KEY}}' --json | jq '.result.plugins | length')"
+          if [ "$installed" -eq 0 ]; then
+            herdr plugin install '{{.ITEM}}' --yes >/dev/null
+          fi
+        silent: true
+
+  herdr:plugins:sync:
+    desc: Installs Herdr plugins and registers repo-managed plugins
+    cmds:
+      - task: herdr:plugins:install
+      - cmd: |
+          set -eu
+
+          plugin="$(realpath ./config/herdr/plugins/command-palette)"
+          herdr plugin unlink dotfiles.command-palette >/dev/null 2>&1 || true
+          herdr plugin link "$plugin" >/dev/null
 
   skills:sync:
     desc: Synchronizes repo and local skills into global skill directories
