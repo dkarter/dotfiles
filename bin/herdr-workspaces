@@ -1,0 +1,170 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# Herdr popups run outside the interactive shell that activates Mise.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+typeset -A STATUS_ICONS=(
+  blocked "!"
+  working "●"
+  done "✓"
+  idle "✓"
+  unknown "○"
+)
+typeset -A STATUS_COLORS=(
+  blocked $'\e[31m'
+  working $'\e[34m'
+  done $'\e[33m'
+  idle $'\e[32m'
+  unknown $'\e[90m'
+)
+
+color_blue=$'\e[34m'
+color_dim=$'\e[90m'
+color_reset=$'\e[0m'
+
+agent_summary() {
+  local blocked="$1"
+  local working="$2"
+  local done="$3"
+  local idle="$4"
+  local unknown="$5"
+  local -a parts
+  local count state
+
+  for count state in \
+    "$blocked" blocked \
+    "$working" working \
+    "$done" done \
+    "$idle" idle \
+    "$unknown" unknown; do
+    (( count > 0 )) && parts+=("$count $state")
+  done
+
+  if (( ${#parts} == 0 )); then
+    REPLY="no agents"
+  else
+    REPLY="${(j: · :)parts}"
+  fi
+}
+
+list_workspaces() {
+  local workspace_id number label focused linked repo_name parent_label agent_status
+  local blocked working done idle unknown pane_count tab_count
+  local focus_icon display_label summary status_icon status_color pane_suffix tab_suffix
+
+  herdr api snapshot | jq -r '
+    .result.snapshot as $snapshot
+    | reduce $snapshot.agents[] as $agent (
+        {};
+        ($agent.agent_status | if . == "blocked" or . == "working" or . == "done" or . == "idle" then . else "unknown" end) as $state
+        | .[$agent.workspace_id][$state] = ((.[$agent.workspace_id][$state] // 0) + 1)
+      ) as $agent_counts
+    | reduce $snapshot.workspaces[] as $workspace (
+        {};
+        if ($workspace.worktree.repo_key // "") != "" and ($workspace.worktree.is_linked_worktree // false) == false then
+          .[$workspace.worktree.repo_key] = {number: $workspace.number, label: $workspace.label}
+        else
+          .
+        end
+      ) as $parents
+    | [
+        $snapshot.workspaces[]
+        | . as $workspace
+        | ($parents[$workspace.worktree.repo_key // ""] // null) as $parent
+        | {
+            workspace: $workspace,
+            parent: $parent,
+            order: if ($workspace.worktree.is_linked_worktree // false) and $parent != null then
+              [$parent.number, 1, $workspace.number]
+            else
+              [$workspace.number, 0, $workspace.number]
+            end
+          }
+      ]
+    | sort_by(.order)[]
+    | .parent as $parent
+    | .workspace
+    | [
+        .workspace_id,
+        .number,
+        (.label | gsub("[\\t\\r\\n]"; " ")),
+        .focused,
+        (.worktree.is_linked_worktree // false),
+        ((.worktree.repo_name // "-") | gsub("[\\t\\r\\n]"; " ")),
+        (($parent.label // "-") | gsub("[\\t\\r\\n]"; " ")),
+        .agent_status,
+        ($agent_counts[.workspace_id].blocked // 0),
+        ($agent_counts[.workspace_id].working // 0),
+        ($agent_counts[.workspace_id].done // 0),
+        ($agent_counts[.workspace_id].idle // 0),
+        ($agent_counts[.workspace_id].unknown // 0),
+        .pane_count,
+        .tab_count
+      ]
+    | @tsv
+  ' | while IFS=$'\t' read -r \
+    workspace_id number label focused linked repo_name parent_label agent_status \
+    blocked working done idle unknown pane_count tab_count; do
+    focus_icon=" "
+    [[ "$focused" == "true" ]] && focus_icon="${color_blue}▶${color_reset}"
+
+    display_label="󰉋 $label"
+    if [[ "$linked" == "true" ]]; then
+      if [[ "$parent_label" == "-" ]]; then
+        display_label=" $repo_name › $label"
+      else
+        display_label="  ↳  $label"
+      fi
+    fi
+
+    agent_summary "$blocked" "$working" "$done" "$idle" "$unknown"
+    summary="$REPLY"
+    status_icon="${STATUS_ICONS[$agent_status]:-${STATUS_ICONS[unknown]}}"
+    status_color="${STATUS_COLORS[$agent_status]:-${STATUS_COLORS[unknown]}}"
+    pane_suffix=""
+    tab_suffix=""
+    [[ "$pane_count" == 1 ]] || pane_suffix="s"
+    [[ "$tab_count" == 1 ]] || tab_suffix="s"
+
+    printf '%s%d%s %s %-32s %s%s%s %-30s %s%d pane%s · %d tab%s%s\n' \
+      "$color_dim" \
+      "$number" \
+      "$color_reset" \
+      "$focus_icon" \
+      "$display_label" \
+      "$status_color" \
+      "$status_icon" \
+      "$color_reset" \
+      "$summary" \
+      "$color_dim" \
+      "$pane_count" \
+      "$pane_suffix" \
+      "$tab_count" \
+      "$tab_suffix" \
+      "$color_reset"
+  done
+}
+
+focus_workspace() {
+  local number="$1"
+  local workspace_id
+
+  [[ "$number" == <-> ]] || return 1
+
+  workspace_id="$(herdr workspace list | jq -er --argjson number "$number" '.result.workspaces[] | select(.number == $number) | .workspace_id')"
+  herdr workspace focus "$workspace_id" >/dev/null
+}
+
+case "${1:-list}" in
+  list)
+    list_workspaces
+    ;;
+  focus)
+    focus_workspace "${2:-}"
+    ;;
+  *)
+    print -r -- "Usage: herdr-workspaces list | focus <workspace-number>" >&2
+    exit 1
+    ;;
+esac

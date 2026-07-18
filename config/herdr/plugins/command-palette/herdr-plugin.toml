@@ -12,6 +12,12 @@ contexts = ["workspace"]
 command = ["./open"]
 
 [[actions]]
+id = "open-workspace-picker"
+title = "Jump to workspace"
+contexts = ["workspace"]
+command = ["./open-workspace-picker"]
+
+[[actions]]
 id = "new-worktree"
 title = "New worktree"
 contexts = ["workspace"]
@@ -36,6 +42,14 @@ placement = "popup"
 width = "80%"
 height = "60%"
 command = ["./palette"]
+
+[[panes]]
+id = "workspace-picker"
+title = "Jump to Workspace"
+placement = "popup"
+width = "75%"
+height = "50%"
+command = ["./workspace-picker"]
 
 [[panes]]
 id = "worktree"

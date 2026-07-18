@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+export PATH="$HOME/dotfiles/bin:$HOME/.local/share/mise/shims:$PATH"
+
+exec tv herdr-workspaces --layout portrait --no-preview --no-status-bar --no-remote

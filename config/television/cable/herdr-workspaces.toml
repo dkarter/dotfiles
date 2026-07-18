@@ -1,0 +1,18 @@
+[metadata]
+name = "herdr-workspaces"
+description = "Jump to a Herdr workspace"
+requirements = ["tv", "herdr", "jq"]
+
+[source]
+command = "$HOME/dotfiles/bin/herdr-workspaces list"
+output = "{strip_ansi|split: :0}"
+ansi = true
+watch = 2.0
+
+[keybindings]
+enter = "actions:switch"
+
+[actions.switch]
+description = "Switch to selected workspace"
+command = "$HOME/dotfiles/bin/herdr-workspaces focus '{strip_ansi|split: :0}'"
+mode = "execute"
