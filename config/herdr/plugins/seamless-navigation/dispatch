@@ -1,0 +1,47 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if (( $# != 4 )); then
+  print -u2 'usage: dispatch <navigate|resize> <left|down|up|right> <nvim-key> <tmux-key>'
+  exit 2
+fi
+
+mode="$1"
+direction="$2"
+nvim_key="$3"
+tmux_key="$4"
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+pane_id="${HERDR_ACTIVE_PANE_ID:-${HERDR_PANE_ID:-}}"
+
+if [[ -z "$pane_id" ]]; then
+  pane_id="$($herdr_bin pane current 2>/dev/null | jq -r '.result.pane.pane_id // empty' 2>/dev/null || true)"
+fi
+
+if [[ -z "$pane_id" ]]; then
+  print -u2 'could not determine the active Herdr pane'
+  exit 1
+fi
+
+process_name="$($herdr_bin pane process-info --pane "$pane_id" 2>/dev/null | jq -r '.result.process_info.foreground_processes[0].name // empty' 2>/dev/null || true)"
+
+case "$process_name" in
+  nvim|vim|view|lvim|nvim-*)
+    exec "$herdr_bin" pane send-keys "$pane_id" "$nvim_key"
+    ;;
+  tmux|tmate)
+    exec "$herdr_bin" pane send-keys "$pane_id" "$tmux_key"
+    ;;
+esac
+
+case "$mode" in
+  navigate)
+    exec "$herdr_bin" pane focus --direction "$direction" --pane "$pane_id"
+    ;;
+  resize)
+    exec "$herdr_bin" pane resize --direction "$direction" --pane "$pane_id"
+    ;;
+  *)
+    print -u2 "unknown mode: $mode"
+    exit 2
+    ;;
+esac

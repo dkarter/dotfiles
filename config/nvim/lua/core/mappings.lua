@@ -68,6 +68,7 @@ local tmux = function(fun)
 end
 
 local silent = { silent = true }
+local is_herdr = utils.in_herdr()
 
 -- a more useful gf
 nmap { 'gf', 'gF', { desc = 'Go to file under cursor', silent = true } }
@@ -112,55 +113,47 @@ vmap { '<', '<gv' }
 -- Search for selected text
 vmap { '*', '"xy/<C-R>x<CR>' }
 
---  Navigate neovim + tmux with ctrl+direction
-vmap { '<C-h>', tmux 'move_left', { desc = 'Move to left pane' } }
-vmap { '<C-j>', tmux 'move_bottom', { desc = 'Move to bottom pane' } }
-vmap { '<C-k>', tmux 'move_top', { desc = 'Move to top pane' } }
-vmap { '<C-l>', tmux 'move_right', { desc = 'Move to right pane' } }
+if not is_herdr then
+  -- Navigate neovim + tmux with ctrl+direction
+  vmap { '<C-h>', tmux 'move_left', { desc = 'Move to left pane' } }
+  vmap { '<C-j>', tmux 'move_bottom', { desc = 'Move to bottom pane' } }
+  vmap { '<C-k>', tmux 'move_top', { desc = 'Move to top pane' } }
+  vmap { '<C-l>', tmux 'move_right', { desc = 'Move to right pane' } }
 
---  Navigate neovim + neovim terminal emulator + tmux with ctrl+direction
-tmap { '<C-h>', tmux 'move_left' }
-tmap { '<C-j>', tmux 'move_bottom' }
-tmap { '<C-k>', tmux 'move_top' }
-tmap { '<C-l>', tmux 'move_right' }
+  -- Navigate neovim + neovim terminal emulator + tmux with ctrl+direction
+  tmap { '<C-h>', tmux 'move_left' }
+  tmap { '<C-j>', tmux 'move_bottom' }
+  tmap { '<C-k>', tmux 'move_top' }
+  tmap { '<C-l>', tmux 'move_right' }
+end
 
 -- easily escape terminal
 tmap { '<esc><esc>', '<C-\\><C-n><esc><cr>' }
 tmap { '<C-o>', '<C-\\><C-n><esc><cr>' }
 
--- resize windows with alt+hjkl in terminal mode (matches tmux behavior)
-tmap {
-  '<M-h>',
-  function()
-    require('core.tmux_resizer').resize_left()
+for _, resize in ipairs {
+  { key = 'h', direction = 'left' },
+  { key = 'j', direction = 'down' },
+  { key = 'k', direction = 'up' },
+  { key = 'l', direction = 'right' },
+} do
+  local direction = resize.direction
+  local resize_pane = function()
+    require('core.tmux_resizer')['resize_' .. direction]()
+  end
+  local terminal_resize = function()
+    resize_pane()
     vim.cmd 'startinsert'
-  end,
-  silent,
-}
-tmap {
-  '<M-j>',
-  function()
-    require('core.tmux_resizer').resize_down()
-    vim.cmd 'startinsert'
-  end,
-  silent,
-}
-tmap {
-  '<M-k>',
-  function()
-    require('core.tmux_resizer').resize_up()
-    vim.cmd 'startinsert'
-  end,
-  silent,
-}
-tmap {
-  '<M-l>',
-  function()
-    require('core.tmux_resizer').resize_right()
-    vim.cmd 'startinsert'
-  end,
-  silent,
-}
+  end
+
+  if is_herdr then
+    local key = '<M-' .. resize.key:upper() .. '>'
+    vim.keymap.set({ 'n', 'x', 's' }, key, resize_pane, { desc = 'Resize ' .. direction })
+    vim.keymap.set('t', key, terminal_resize, { desc = 'Resize ' .. direction })
+  else
+    tmap { '<M-' .. resize.key .. '>', terminal_resize, silent }
+  end
+end
 
 -- close all other windows with <leader>o
 nmap { '<leader>wo', '<c-w>o', { desc = 'Close other windows' } }

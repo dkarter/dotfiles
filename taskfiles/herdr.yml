@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+vars:
+  PLUGINS:
+    map:
+      gh-pr: 'wyattjoh/herdr-plugin-gh-pr'
+  LOCAL_PLUGINS:
+    map:
+      dotfiles.command-palette: command-palette
+      dotfiles.seamless-navigation: seamless-navigation
+
+tasks:
+  plugins:install:
+    desc: Installs Herdr plugins
+    cmds:
+      - for:
+          var: PLUGINS
+        cmd: |
+          set -eu
+
+          installed="$(herdr plugin list --plugin '{{.KEY}}' --json | jq '.result.plugins | length')"
+          if [ "$installed" -eq 0 ]; then
+            herdr plugin install '{{.ITEM}}' --yes >/dev/null
+          fi
+        silent: true
+
+  plugins:sync:
+    desc: Installs Herdr plugins and registers repo-managed plugins
+    cmds:
+      - task: plugins:install
+      - for:
+          var: LOCAL_PLUGINS
+        cmd: |
+          set -eu
+
+          plugin="$(realpath './config/herdr/plugins/{{.ITEM}}')"
+          herdr plugin unlink '{{.KEY}}' >/dev/null 2>&1 || true
+          herdr plugin link "$plugin" >/dev/null

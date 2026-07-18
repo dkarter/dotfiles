@@ -2,6 +2,7 @@
 -- Based on RyanMillerC/better-vim-tmux-resizer
 
 local M = {}
+local utils = require 'core.utils'
 
 -- Configuration
 M.config = {
@@ -12,6 +13,10 @@ M.config = {
 -- Check if we're in tmux
 local function in_tmux()
   return vim.env.TMUX ~= nil
+end
+
+local function in_herdr()
+  return utils.in_herdr()
 end
 
 -- Get tmux executable (tmux or tmate)
@@ -34,6 +39,17 @@ local function tmux_command(args)
 
   local cmd = string.format('%s -S %s %s', tmux_executable(), tmux_socket(), args)
   vim.fn.system(cmd)
+end
+
+local function herdr_resize(direction)
+  local args = { vim.env.HERDR_BIN_PATH or 'herdr', 'pane', 'resize', '--direction', direction }
+  local pane_id = vim.env.HERDR_PANE_ID
+  if pane_id and pane_id ~= '' then
+    vim.list_extend(args, { '--pane', pane_id })
+  else
+    args[#args + 1] = '--current'
+  end
+  vim.system(args, { text = true }, function() end)
 end
 
 -- Vim window resize logic
@@ -78,16 +94,22 @@ local function vim_resize(direction)
   vim.cmd(command .. ' ' .. modifier .. window_resize_count)
 end
 
--- Tmux-aware resize function
-local function tmux_aware_resize(direction)
+-- Multiplexer-aware resize function
+local function multiplexer_aware_resize(direction)
   local previous_window_width = vim.fn.winwidth(0)
   local previous_window_height = vim.fn.winheight(0)
 
   -- Attempt to resize Vim window
   vim_resize(direction)
 
-  -- Call tmux if Vim window dimensions did not change
+  -- Resize the surrounding multiplexer pane if the Vim window did not change.
   if previous_window_height == vim.fn.winheight(0) and previous_window_width == vim.fn.winwidth(0) then
+    local directions = { h = 'left', j = 'down', k = 'up', l = 'right' }
+    if in_herdr() then
+      herdr_resize(directions[direction])
+      return
+    end
+
     local resize_count
     if direction == 'h' or direction == 'l' then
       resize_count = M.config.vertical_resize_count
@@ -110,32 +132,32 @@ end
 
 -- Public API functions
 function M.resize_left()
-  if in_tmux() then
-    tmux_aware_resize 'h'
+  if in_tmux() or in_herdr() then
+    multiplexer_aware_resize 'h'
   else
     vim_resize 'h'
   end
 end
 
 function M.resize_down()
-  if in_tmux() then
-    tmux_aware_resize 'j'
+  if in_tmux() or in_herdr() then
+    multiplexer_aware_resize 'j'
   else
     vim_resize 'j'
   end
 end
 
 function M.resize_up()
-  if in_tmux() then
-    tmux_aware_resize 'k'
+  if in_tmux() or in_herdr() then
+    multiplexer_aware_resize 'k'
   else
     vim_resize 'k'
   end
 end
 
 function M.resize_right()
-  if in_tmux() then
-    tmux_aware_resize 'l'
+  if in_tmux() or in_herdr() then
+    multiplexer_aware_resize 'l'
   else
     vim_resize 'l'
   end
