@@ -35,8 +35,11 @@ custom-shader-animation = true
 # open new tab
 keybind = super+shift+t=text:\x1ac
 # navigate tabs
-keybind = super+shift+left_bracket=text:\x1ap
-keybind = super+shift+right_bracket=text:\x1an
+keybind = super+shift+[=text:\x1ap
+keybind = super+shift+]=text:\x1an
+# navigate herdr spaces (CSI u encoded ctrl+[ / ctrl+])
+keybind = super+[=csi:91;5u
+keybind = super+]=csi:93;5u
 keybind = super+digit_1=text:\x1a1
 keybind = super+digit_2=text:\x1a2
 keybind = super+digit_3=text:\x1a3
