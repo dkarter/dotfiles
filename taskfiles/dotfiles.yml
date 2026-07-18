@@ -177,6 +177,12 @@ tasks:
           set -eu
 
           plugin="$(realpath ./config/herdr/plugins/command-palette)"
+          gh_pr_installed="$(herdr plugin list --plugin gh-pr --json | jq '.result.plugins | length')"
+
+          if [ "$gh_pr_installed" -eq 0 ]; then
+            herdr plugin install wyattjoh/herdr-plugin-gh-pr --yes >/dev/null
+          fi
+
           herdr plugin unlink dotfiles.command-palette >/dev/null 2>&1 || true
           herdr plugin link "$plugin" >/dev/null
 
