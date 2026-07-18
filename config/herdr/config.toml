@@ -18,6 +18,9 @@ sidebar_collapsed_mode = "hidden"
 rows = [["state_icon", "workspace", "$pr"], ["agent"]]
 
 [keys]
+switch_tab = "prefix+1..9"
+switch_workspace = "prefix+shift+1..9"
+focus_agent = "prefix+alt+1..9"
 prefix = "ctrl+z"
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
