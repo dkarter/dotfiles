@@ -14,6 +14,9 @@ show_agent_labels_on_pane_borders = true
 agent_panel_scope = "current"
 sidebar_collapsed_mode = "hidden"
 
+[ui.sidebar.agents]
+rows = [["state_icon", "workspace", "$pr"], ["agent"]]
+
 [keys]
 prefix = "ctrl+z"
 navigate_workspace_up = "k"
