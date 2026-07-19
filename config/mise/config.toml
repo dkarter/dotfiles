@@ -116,6 +116,9 @@ aube_args = "--allow-low-downloads"
 rebar = 'asdf:mise-plugins/mise-rebar'
 redis = 'asdf:mise-plugins/mise-redis'
 
+[shell_alias]
+npx = "aubx"
+
 [settings]
 # needed to enable ruby gems install
 experimental = true
