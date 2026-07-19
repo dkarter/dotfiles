@@ -397,28 +397,30 @@ new_agent_with_prompt() {
   [[ -z "$base_branch" ]] && return 0
 
   temp_prompt_file="$(mktemp -t herdr-command-prompt)"
-  trap 'rm -f "$temp_prompt_file"' RETURN
+  {
+    mise x -- nvim "+startinsert" "+set ft=markdown" "$temp_prompt_file"
+    prompt_text="$(<"$temp_prompt_file")"
 
-  mise x -- nvim "+startinsert" "+set ft=markdown" "$temp_prompt_file"
-  prompt_text="$(<"$temp_prompt_file")"
+    if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
+      return 0
+    fi
 
-  if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
-    return 0
-  fi
+    create_json="$(create_worktree "$workspace_id" "$repo_root" "$branch" "$base_branch")"
+    checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
+    root_pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$create_json")"
+    new_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$create_json")"
 
-  create_json="$(create_worktree "$workspace_id" "$repo_root" "$branch" "$base_branch")"
-  checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
-  root_pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$create_json")"
-  new_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$create_json")"
+    cp "$temp_prompt_file" "$checkout_path/.herdr-agent-prompt.md"
+    prompt_file="$checkout_path/.herdr-agent-prompt.md"
 
-  cp "$temp_prompt_file" "$checkout_path/.herdr-agent-prompt.md"
-  prompt_file="$checkout_path/.herdr-agent-prompt.md"
+    agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-$(workmux_agent_command "$repo_root")}"
+    agent_command="${agent_command:-opencode --port --model \"$(opencode-last-model)\"}"
 
-  agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-$(workmux_agent_command "$repo_root")}"
-  agent_command="${agent_command:-opencode --port --model \"$(opencode-last-model)\"}"
-
-  herdr pane run "$root_pane_id" "HERDR_COMMANDS_AGENT_COMMAND=${(q)agent_command} herdr-run-agent-with-prompt ${(q)prompt_file}"
-  herdr workspace focus "$new_workspace_id" >/dev/null
+    herdr pane run "$root_pane_id" "HERDR_COMMANDS_AGENT_COMMAND=${(q)agent_command} herdr-run-agent-with-prompt ${(q)prompt_file}"
+    herdr workspace focus "$new_workspace_id" >/dev/null
+  } always {
+    rm -f "$temp_prompt_file"
+  }
 }
 
 new_agent_with_prompt_without_ticket() {
