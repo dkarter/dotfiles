@@ -22,6 +22,7 @@ add_command() {
 add_command "󰙅 New workspace" "new_workspace" "prefix+shift+n"
 add_command " New worktree" "new_worktree" "prefix+shift+g"
 add_command " New worktree without ticket" "new_worktree_without_ticket"
+add_command " Checkout PR or branch" "checkout_worktree"
 add_command "󰚩 New agent with prompt" "new_agent_with_prompt"
 add_command "󰚩 New agent with prompt without ticket" "new_agent_with_prompt_without_ticket"
 add_command "󰆴 Delete current worktree" "delete_current_worktree"
@@ -368,6 +369,89 @@ new_worktree() {
 
 new_worktree_without_ticket() {
   new_worktree false
+}
+
+checkout_worktree() {
+  local workspace_id cwd repo_root input branch base_ref existing_ref
+  local owner repo pr current_repo pr_json fetch_output short_oid
+
+  cwd="$(current_pane_cwd)"
+  repo_root="$(repo_root_for_cwd "$cwd")"
+  if [[ -z "$repo_root" ]]; then
+    mise x -- gum style --foreground="red" "Not in a git repository"
+    return 1
+  fi
+
+  input="$(mise x -- gum input --placeholder="GitHub PR URL, Graphite PR URL, or branch name...")"
+  [[ -z "$input" ]] && return 0
+
+  if [[ "$input" =~ '^https://github\.com/([^/]+)/([^/]+)/pull/([0-9]+)([/?#].*)?$' ]]; then
+    owner="$match[1]"
+    repo="$match[2]"
+    pr="$match[3]"
+  elif [[ "$input" =~ '^https://app\.graphite\.com/github/pr/([^/]+)/([^/]+)/([0-9]+)([/?#].*)?$' ]]; then
+    owner="$match[1]"
+    repo="$match[2]"
+    pr="$match[3]"
+  elif [[ "$input" == *://* ]]; then
+    mise x -- gum style --foreground="red" "Expected a GitHub PR URL, Graphite PR URL, or branch name"
+    return 1
+  fi
+
+  if [[ -n "$pr" ]]; then
+    if ! current_repo="$(cd "$repo_root" && gh repo view --json nameWithOwner --jq '.nameWithOwner' 2>&1)"; then
+      mise x -- gum style --foreground="red" "$current_repo"
+      return 1
+    fi
+
+    if [[ "${(L)current_repo}" != "${(L)owner}/${(L)repo}" ]]; then
+      mise x -- gum style --foreground="red" "PR belongs to $owner/$repo, but the current repository is $current_repo"
+      return 1
+    fi
+
+    if ! pr_json="$(gh pr view "$pr" --repo "$owner/$repo" --json headRefName 2>&1)"; then
+      mise x -- gum style --foreground="red" "$pr_json"
+      return 1
+    fi
+
+    branch="$(jq -er '.headRefName' <<<"$pr_json")"
+
+    if ! fetch_output="$(git -C "$repo_root" fetch origin "refs/pull/$pr/head" 2>&1)"; then
+      mise x -- gum style --foreground="red" "$fetch_output"
+      return 1
+    fi
+
+    base_ref="$(git -C "$repo_root" rev-parse FETCH_HEAD)"
+    if git -C "$repo_root" show-ref --verify --quiet "refs/heads/$branch"; then
+      existing_ref="$(git -C "$repo_root" rev-parse "refs/heads/$branch")"
+
+      if [[ "$existing_ref" != "$base_ref" ]]; then
+        short_oid="$(git -C "$repo_root" rev-parse --short "$base_ref")"
+        branch="pr-$pr-$short_oid"
+      fi
+    fi
+  else
+    branch="$input"
+
+    if ! git check-ref-format --branch "$branch" >/dev/null 2>&1; then
+      mise x -- gum style --foreground="red" "Invalid branch name: $branch"
+      return 1
+    fi
+
+    if git -C "$repo_root" show-ref --verify --quiet "refs/heads/$branch"; then
+      base_ref="$branch"
+    else
+      if ! fetch_output="$(git -C "$repo_root" fetch origin "+refs/heads/$branch:refs/remotes/origin/$branch" 2>&1)"; then
+        mise x -- gum style --foreground="red" "Could not fetch branch '$branch' from origin: $fetch_output"
+        return 1
+      fi
+
+      base_ref="refs/remotes/origin/$branch"
+    fi
+  fi
+
+  workspace_id="$(current_workspace_id)"
+  create_worktree "$workspace_id" "$repo_root" "$branch" "$base_ref" >/dev/null
 }
 
 run_post_create_hooks() {
