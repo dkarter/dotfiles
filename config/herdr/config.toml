@@ -55,6 +55,14 @@ command = "dotfiles.command-palette.open"
 description = "command palette"
 
 [[keys.command]]
+key = "prefix+shift+a"
+type = "popup"
+command = "herdr-popup-insert-file-path"
+description = "insert file path at cursor"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
 command = "dotfiles.seamless-navigation.navigate-left"
