@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+title="$("$herdr_bin" workspace list | jq -r '[.result.workspaces[] | select(.focused) | .label][0] // empty')"
+
+[[ -n "$title" ]] || exit 0
+
+exec "$herdr_bin" terminal title set "$title"

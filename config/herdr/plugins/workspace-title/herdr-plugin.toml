@@ -1,0 +1,14 @@
+id = "dotfiles.workspace-title"
+name = "Workspace Title"
+version = "0.1.0"
+min_herdr_version = "0.7.4"
+description = "Keeps the terminal window title in sync with the focused workspace"
+platforms = ["macos", "linux"]
+
+[[events]]
+on = "workspace.focused"
+command = ["./update-title"]
+
+[[events]]
+on = "workspace.renamed"
+command = ["./update-title"]
