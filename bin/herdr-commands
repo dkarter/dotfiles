@@ -152,7 +152,7 @@ repo_config_value() {
 
 repo_config_array() {
   local repo_root="$1"
-  local path="$2"
+  local key_path="$2"
   local config_file
   config_file="$(repo_config_for_repo "$repo_root")"
 
@@ -161,7 +161,7 @@ repo_config_array() {
       cfg = YAML.load_file(ARGV[0]) || {}
       value = ARGV[1].split(".").reduce(cfg) { |memo, key| memo.respond_to?(:[]) ? memo[key] : nil }
       Array(value).each { |item| puts item unless item == "<global>" }
-    ' "$config_file" "$path" 2>/dev/null || true
+    ' "$config_file" "$key_path" 2>/dev/null || true
   fi
 }
 
@@ -256,7 +256,13 @@ copy_configured_files() {
 
     mise x -- gum style --foreground="240" "Copying $item" >&2
     mkdir -p "$dest_parent"
-    cp -a "$source" "$dest"
+
+    if [[ -d "$source" ]]; then
+      mkdir -p "$dest"
+      cp -a "$source/." "$dest"
+    else
+      cp -a "$source" "$dest"
+    fi
   done < <(repo_config_array "$repo_root" files.copy)
 }
 
