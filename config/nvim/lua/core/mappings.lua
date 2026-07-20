@@ -243,6 +243,15 @@ end
 
 -- stylua: ignore
 ---@type LazyKeysSpec[]
+M.navi_mappings = {
+  { ']n', ':NaviNext<cr>', desc = 'Next [N]avi' },
+  { '[n', ':NaviPrev<cr>', desc = 'Previous [N]avi' },
+  { '<leader>np', ':NaviPick<cr>', desc = '[N]avi [P]icker' },
+  { '<leader>nc', ':NaviClear', desc = '[N]avi [C]lear' },
+}
+
+-- stylua: ignore
+---@type LazyKeysSpec[]
 M.splitjoin_mappings = {
   {'gJ', function() require('treesj').join() end, desc = 'Join Code Block' },
   {'gS', function() require('treesj').split() end, desc = 'Split Code Block' },
