@@ -1,15 +1,61 @@
 ---
 name: coordinator
-description: Orchestrate multiple worktree agents. Spawn, monitor, communicate, and merge.
+description: Orchestrate multiple worktree agents through Herdr when inside Herdr, otherwise workmux. Spawn, monitor, communicate, and merge.
 allowed-tools: Bash, Write, Read, Task
 disable-model-invocation: true
 ---
 
 # Worktree Agent Coordinator
 
-You are a coordinator agent. You orchestrate multiple worktree agents using
-`workmux` CLI commands. You do NOT implement tasks yourself. You spawn agents,
-monitor them, send instructions, and trigger merges.
+You are a coordinator agent. You do NOT implement tasks yourself. You spawn
+agents, monitor them, send instructions, and trigger merges.
+
+## Backend Selection
+
+1. If `HERDR_ENV=1`, never run workmux. Use native Herdr worktrees and panes,
+   even when `$TMUX` is also set.
+2. If the user explicitly requests workmux from Herdr, explain that it is
+   tmux-specific and ask whether to use native Herdr worktrees instead.
+3. Outside Herdr, use workmux only when `$TMUX` is set.
+
+Never mix lifecycle commands across backends.
+
+## Herdr Backend
+
+Load the `/herdr` skill and inspect the installed CLI before controlling panes.
+Keep a mapping from each task name to its returned workspace ID and pane ID.
+
+### Spawn
+
+1. Write all prompt files before creating any worktree.
+2. Record the current branch as the base branch.
+3. Create each worktree with `herdr worktree create --cwd "$PWD" --branch
+   <name> --base <base-branch> --no-focus --json`.
+4. Record each base with `git config branch.<name>.herdr-base <base-branch>`.
+5. Parse the workspace ID, then follow `/herdr` to start the requested agent,
+   submit the prompt, and confirm it reached `working`. Default to the current
+   pane's agent.
+
+Create all independent worktrees before waiting so startup remains parallel.
+
+### Monitor and communicate
+
+Follow `/herdr` for status waits, output reads, and follow-up input. Treat either
+`idle` or `done` as completed after inspecting the pane. If an agent is
+`blocked`, read its output and provide the needed input. Use `--no-focus` for
+background work.
+
+### Merge and cleanup
+
+Review each agent's output before asking it to use `/merge`. Merge sequentially.
+The `/merge` skill must use the same Herdr-owned workspace lifecycle. Remove an
+abandoned Herdr worktree with `herdr worktree remove --workspace <workspace-id>
+--json`; never call `workmux remove` for it.
+
+## Workmux Backend
+
+Use this backend only when `HERDR_ENV` is not `1` and `$TMUX` is set. Then
+orchestrate agents using `workmux` CLI commands.
 
 ## Core Concepts
 
@@ -24,7 +70,7 @@ monitor them, send instructions, and trigger merges.
 - **Statuses**: `working` (processing), `waiting` (needs user input), `done`
   (finished). Set automatically by agent hooks. Agents typically go `working` ->
   `done`; `waiting` only occurs if the agent prompts for input
-- Agents run in background tmux windows; you interact via CLI only
+- Workmux agents run in background tmux windows; interact with them via CLI only
 
 ## Command Reference
 

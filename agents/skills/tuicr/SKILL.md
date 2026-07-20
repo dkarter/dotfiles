@@ -1,6 +1,6 @@
 ---
 name: tuicr
-description: Use when the user says "tuicr review", "/tuicr", "open tuicr", or asks to review local changes in tuicr. Launch tuicr in tmux, then use tuicr's review CLI to read or add comments in TUI review sessions.
+description: Use when the user says "tuicr review", "/tuicr", "open tuicr", or asks to review local changes in tuicr. Launch tuicr in Herdr or tmux, then use tuicr's review CLI to read or add comments in TUI review sessions.
 ---
 
 # tuicr Review Workflow
@@ -67,17 +67,18 @@ If the user's intent is ambiguous, ask which workflow they want.
      `"active": true` as a convenience signal. If slug resolution fails, ask the
      user for the slug or repo path used by the session.
 
-The CLI works even if the agent is not running inside tmux, so do not require a
-multiplexer just to connect to an existing active session.
+The CLI works even if the agent is not running inside a multiplexer, so do not
+require a multiplexer just to connect to an existing active session.
 
 ## Start A Session
 
 When the user needs an interactive tuicr pane and no active session exists:
 
-| Environment    | Action                                                                                                                               |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `$TMUX` is set | Run `tuicr-wrapper.sh /path/to/repo`                                                                                                 |
-| Neither is set | Tell the user you are waiting for them to start `tuicr` in the repo, then attach with `tuicr review list` after they say it is ready |
+| Environment        | Action                                                                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `HERDR_ENV=1`      | Run `tuicr-wrapper.sh /path/to/repo`; it creates and focuses a Herdr pane                                                            |
+| Otherwise, `$TMUX` | Run `tuicr-wrapper.sh /path/to/repo`; it creates and focuses a tmux pane                                                             |
+| Neither is set     | Tell the user you are waiting for them to start `tuicr` in the repo, then attach with `tuicr review list` after they say it is ready |
 
 Wrapper paths are relative to this skill directory:
 
@@ -85,7 +86,8 @@ Wrapper paths are relative to this skill directory:
 <skill-directory>/tuicr-wrapper.sh /path/to/repo
 ```
 
-The tmux wrapper selects and zooms the new tuicr pane after opening it.
+The wrapper selects and zooms the new tuicr pane after opening it. Always prefer
+Herdr when `HERDR_ENV=1`, even when `$TMUX` is also set.
 
 Do not treat a `tuicr` process in another pane, window, session, or repo as
 satisfying a request to open a review. Open a new review for the requested repo;
@@ -195,7 +197,7 @@ For structured input, use `--input` with literal JSON, `@path/to/file.json`, or
 
 ## Exported Wrapper Output
 
-The tmux wrapper may emit exported tuicr instructions after the TUI exits:
+The wrapper may emit exported tuicr instructions after the TUI exits:
 
 ```text
 === TUICR INSTRUCTIONS ===
@@ -213,9 +215,8 @@ comments are unavailable.
 | Situation                          | Action                                                            |
 | ---------------------------------- | ----------------------------------------------------------------- |
 | Multiple plausible active sessions | Ask which session slug to use                                     |
-| No active session, tmux available  | Start a new tuicr pane for the target repo with the wrapper       |
 | tuicr already running elsewhere    | Ignore it; start a new review for the requested repo              |
-| No active session, no tmux         | Tell the user you are waiting for them to start `tuicr`           |
+| No active session                  | Follow the environment routing under "Start A Session"            |
 | `tuicr` not installed              | Tell the user to install tuicr                                    |
 | Not a repository                   | Ask for the correct repo directory                                |
 | Comments are empty                 | Confirm the selected session or ask the user to save/add comments |
