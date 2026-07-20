@@ -65,7 +65,7 @@ version = "1.2.4"
 backend = "cargo:du-dust"
 
 [[tools."cargo:forgejo-cli"]]
-version = "0.5.0"
+version = "0.6.0"
 backend = "cargo:forgejo-cli"
 
 [[tools."cargo:htmlq"]]
@@ -454,43 +454,43 @@ url = "https://github.com/orf/gping/releases/download/gping-v1.20.4/gping-Window
 url_api = "https://api.github.com/repos/orf/gping/releases/assets/456988049"
 
 [[tools."github:preiter93/wireman"]]
-version = "0.3.5"
+version = "0.3.8"
 backend = "github:preiter93/wireman"
 
 [tools."github:preiter93/wireman"."platforms.linux-arm64"]
-checksum = "sha256:7c75c9b743175dd255c6baa2874245d342775fbdee8396ea567783db452337d1"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133445"
+checksum = "sha256:1fcd9318d6f4209eab98e179bfa53d7c07e0013624b57455893716242b757749"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481590478"
 
 [tools."github:preiter93/wireman"."platforms.linux-arm64-musl"]
-checksum = "sha256:7c75c9b743175dd255c6baa2874245d342775fbdee8396ea567783db452337d1"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133445"
+checksum = "sha256:1fcd9318d6f4209eab98e179bfa53d7c07e0013624b57455893716242b757749"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481590478"
 
 [tools."github:preiter93/wireman"."platforms.linux-x64"]
-checksum = "sha256:a0bb5c2e7164febbf9cd7d079ecd9aaac3d60fc8c45167687a8bf00885990de1"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133458"
+checksum = "sha256:481fed0ad0af4d7a328817bcd3de0c96fb29776361f79cd6e7440179e18cea12"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481590748"
 
 [tools."github:preiter93/wireman"."platforms.linux-x64-musl"]
-checksum = "sha256:a0bb5c2e7164febbf9cd7d079ecd9aaac3d60fc8c45167687a8bf00885990de1"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133458"
+checksum = "sha256:481fed0ad0af4d7a328817bcd3de0c96fb29776361f79cd6e7440179e18cea12"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481590748"
 
 [tools."github:preiter93/wireman"."platforms.macos-arm64"]
-checksum = "sha256:7814244e57150c8bf290cab56094b056844e1c951615dab3ff48266ff2107b2c"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133423"
+checksum = "sha256:8e7866ad05fe7445c31e279f012e14fcaa668da781842eae88f1a7bf473834d2"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481589769"
 
 [tools."github:preiter93/wireman"."platforms.macos-x64"]
-checksum = "sha256:47c59fdfc67e076306e06747133b81f753a48e7bc0bdb834a41294b8d67718d8"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133539"
+checksum = "sha256:a7601849f125e3f3a98e70c4fc45dbc61ecfe4452160f6b5eee2c99c70c3d53c"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481590395"
 
 [tools."github:preiter93/wireman"."platforms.windows-x64"]
-checksum = "sha256:194773cb7b3cb8a3b4d7a208a340f6ff1f8b509414a1e4e565a01085746c3e0c"
-url = "https://github.com/preiter93/wireman/releases/download/v0.3.5/wireman-0.3.5-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/340133557"
+checksum = "sha256:94033cb08c1c605e22bf20aee05e8d365489b7cc51473155a7965daf795705b7"
+url = "https://github.com/preiter93/wireman/releases/download/v0.3.8/wireman-0.3.8-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/preiter93/wireman/releases/assets/481591576"
 
 [[tools."github:sharkdp/hyperfine"]]
 version = "1.20.0"
