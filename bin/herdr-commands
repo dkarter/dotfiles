@@ -306,16 +306,16 @@ prompt_worktree_name() {
 }
 
 create_worktree() {
-  local workspace_id="$1"
-  local repo_root="$2"
-  local branch="$3"
-  local base_branch="$4"
-  local configured_path create_args create_json checkout_path
+  local repo_root="$1"
+  local branch="$2"
+  local base_branch="$3"
+  local source_checkout configured_path create_args create_json checkout_path
 
   branch="${branch//[[:space:]]/-}"
 
+  source_checkout="$(herdr worktree list --cwd "$repo_root" --json | jq -er '.result.source.source_checkout_path')"
   configured_path="$(configured_worktree_path "$repo_root" "$branch")"
-  create_args=(worktree create --workspace "$workspace_id" --branch "$branch" --base "$base_branch" --focus --json)
+  create_args=(worktree create --cwd "$source_checkout" --branch "$branch" --base "$base_branch" --focus --json)
 
   if [[ -n "$configured_path" ]]; then
     create_args+=(--path "$configured_path")
@@ -342,8 +342,7 @@ new_workspace() {
 
 new_worktree() {
   local allow_ticket="${1:-true}"
-  local workspace_id cwd repo_root branch base_branch
-  workspace_id="$(current_workspace_id)"
+  local cwd repo_root branch base_branch
   cwd="$(current_pane_cwd)"
   branch="$(prompt_worktree_name "$allow_ticket")"
 
@@ -358,7 +357,7 @@ new_worktree() {
   base_branch="$(select_base_branch "$cwd")"
   [[ -z "$base_branch" ]] && return 0
 
-  create_worktree "$workspace_id" "$repo_root" "$branch" "$base_branch" >/dev/null
+  create_worktree "$repo_root" "$branch" "$base_branch" >/dev/null
 }
 
 new_worktree_without_ticket() {
@@ -366,7 +365,7 @@ new_worktree_without_ticket() {
 }
 
 checkout_worktree() {
-  local workspace_id cwd repo_root input branch base_ref existing_ref
+  local cwd repo_root input branch base_ref existing_ref
   local owner repo pr current_repo pr_json fetch_output short_oid
 
   cwd="$(current_pane_cwd)"
@@ -444,8 +443,7 @@ checkout_worktree() {
     fi
   fi
 
-  workspace_id="$(current_workspace_id)"
-  create_worktree "$workspace_id" "$repo_root" "$branch" "$base_ref" >/dev/null
+  create_worktree "$repo_root" "$branch" "$base_ref" >/dev/null
 }
 
 run_post_create_hooks() {
@@ -462,9 +460,8 @@ run_post_create_hooks() {
 
 new_agent_with_prompt() {
   local allow_ticket="${1:-true}"
-  local workspace_id cwd repo_root branch base_branch temp_prompt_file prompt_file prompt_text create_json checkout_path root_pane_id new_workspace_id agent_command
+  local cwd repo_root branch base_branch temp_prompt_file prompt_file prompt_text create_json checkout_path root_pane_id new_workspace_id agent_command
 
-  workspace_id="$(current_workspace_id)"
   cwd="$(current_pane_cwd)"
 
   if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
@@ -489,7 +486,7 @@ new_agent_with_prompt() {
       return 0
     fi
 
-    create_json="$(create_worktree "$workspace_id" "$repo_root" "$branch" "$base_branch")"
+    create_json="$(create_worktree "$repo_root" "$branch" "$base_branch")"
     checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
     root_pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$create_json")"
     new_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$create_json")"
