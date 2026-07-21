@@ -15,8 +15,13 @@ agent_panel_scope = "current"
 sidebar_collapsed_mode = "hidden"
 hide_tab_bar_when_single_tab = true
 
+agent_panel_sort = "priority"
 [ui.sidebar.agents]
 rows = [["state_icon", "workspace", "$pr"], ["agent"]]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [["state_icon", "workspace", "$pr"], ["terminal_title_stripped"]]
+opencode = [["state_icon", "workspace", "$pr"], ["terminal_title_stripped"]]
 
 [keys]
 prefix = "ctrl+z"
