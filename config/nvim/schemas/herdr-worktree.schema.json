@@ -16,17 +16,6 @@
       "description": "Directory where worktrees are created. Relative paths are resolved from the repository root.",
       "examples": ["../", ".worktrees"]
     },
-    "worktrees": {
-      "type": "object",
-      "description": "Nested worktree path settings.",
-      "additionalProperties": false,
-      "properties": {
-        "directory": {
-          "type": "string",
-          "description": "Directory where worktrees are created. Used when worktree_dir is not set."
-        }
-      }
-    },
     "worktree_naming": {
       "type": "string",
       "description": "Strategy for deriving the worktree directory name from the branch name.",

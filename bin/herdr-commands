@@ -193,14 +193,8 @@ workmux_post_create_commands() {
 
 configured_worktree_dir() {
   local repo_root="$1"
-  local dir
-  dir="$(repo_config_value "$repo_root" worktree_dir)"
 
-  if [[ -z "$dir" ]]; then
-    dir="$(repo_config_value "$repo_root" worktrees.directory)"
-  fi
-
-  print -r -- "$dir"
+  repo_config_value "$repo_root" worktree_dir
 }
 
 worktree_slug() {
