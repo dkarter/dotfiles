@@ -6,6 +6,7 @@
   - [ ] doesn't look like herdr has that built in right now - could be a pull request
 - [ ] show prs with draft status and link
 - [ ] open dev dir
+- [ ] refactor @bin/herdr-commands to smaller scripts
 - [ ] ability to change themes easily and in a synchronized way with: ghostty,
       herdr, nvim, lualine - the key is to have a fuzzy finder that shows a list of
       themes with both light and dark themes and the ability to preview them as I
