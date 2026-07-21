@@ -5,7 +5,6 @@
 - [ ] super-l toggle last workspace like in tmux (mapped to prefix+shift-L)
   - [ ] doesn't look like herdr has that built in right now - could be a pull request
 - [ ] show prs with draft status and link
-- [ ] open dev dir
 - [ ] refactor @bin/herdr-commands to smaller scripts
 - [ ] ability to change themes easily and in a synchronized way with: ghostty,
       herdr, nvim, lualine - the key is to have a fuzzy finder that shows a list of
@@ -20,6 +19,7 @@
 
 # Done
 
+- [x] open dev dir
 - [x] insert file with super-shift-. with a popup
 - [x] it would be cool if there was a way to show the space/worktree title when it's focused
 - [x] resize panes with alt+hjkl

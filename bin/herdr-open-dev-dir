@@ -1,0 +1,79 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# Herdr popups run outside the interactive shell that activates Mise.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+dir="${1:-$(tv dev-dirs --layout portrait --hide-status-bar)}"
+dir="${dir%$'\r'}"
+
+[[ -z "$dir" ]] && exit 0
+
+dir="${dir:A}"
+if [[ ! -d "$dir" ]]; then
+  print -r -- "Not a directory: $dir" >&2
+  exit 1
+fi
+
+label="${dir:t}"
+if ! worktree_json="$("$herdr_bin" worktree list --cwd "$dir" --json 2>&1)"; then
+  error_code="$(jq -r '.error.code // empty' <<<"$worktree_json" 2>/dev/null || true)"
+  if [[ "$error_code" != "not_git_worktree" ]]; then
+    print -r -- "$worktree_json" >&2
+    exit 1
+  fi
+
+  worktree_json=""
+fi
+
+worktree=""
+if [[ -n "$worktree_json" ]]; then
+  if ! worktree="$(jq -cer --arg path "$dir" 'first(.result.worktrees[]? | select(.path == $path))' <<<"$worktree_json")"; then
+    print -r -- "Herdr did not return worktree metadata for $dir" >&2
+    exit 1
+  fi
+fi
+
+if [[ -n "$worktree" ]]; then
+  workspace_id="$(jq -r '.open_workspace_id // empty' <<<"$worktree")"
+  if [[ -n "$workspace_id" ]]; then
+    "$herdr_bin" workspace focus "$workspace_id" >/dev/null
+    exit 0
+  fi
+
+  is_linked="$(jq -r '.is_linked_worktree // false' <<<"$worktree")"
+  if [[ "$is_linked" == "true" ]]; then
+    parent_workspace_id="$(jq -r '.result.source.source_workspace_id // empty' <<<"$worktree_json")"
+
+    if [[ -z "$parent_workspace_id" ]]; then
+      repo_root="$(jq -er '.result.source.repo_root' <<<"$worktree_json")"
+      repo_name="$(jq -er '.result.source.repo_name' <<<"$worktree_json")"
+      parent_json="$("$herdr_bin" workspace create --cwd "$repo_root" --label "$repo_name" --no-focus)"
+      parent_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$parent_json")"
+    fi
+
+    worktree_label="$(jq -r '.branch // empty' <<<"$worktree")"
+    worktree_label="${worktree_label:-$label}"
+    "$herdr_bin" worktree open \
+      --workspace "$parent_workspace_id" \
+      --path "$dir" \
+      --label "$worktree_label" \
+      --focus \
+      --json >/dev/null
+    exit 0
+  fi
+fi
+
+workspace_id="$(
+  "$herdr_bin" api snapshot | jq -r --arg cwd "$dir" '
+    [.result.snapshot.panes[] | select(.cwd == $cwd or .foreground_cwd == $cwd) | .workspace_id]
+    | first // empty
+  '
+)"
+
+if [[ -n "$workspace_id" ]]; then
+  "$herdr_bin" workspace focus "$workspace_id" >/dev/null
+else
+  "$herdr_bin" workspace create --cwd "$dir" --label "$label" --focus >/dev/null
+fi

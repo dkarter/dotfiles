@@ -20,6 +20,7 @@ add_command() {
 }
 
 add_command "󰙅 New workspace" "new_workspace" "prefix+shift+n"
+add_command "󰉋 Open dev directory" "herdr-open-dev-dir" "prefix+shift+o"
 add_command " New worktree" "new_worktree" "prefix+shift+g"
 add_command " New worktree without ticket" "new_worktree_without_ticket"
 add_command " Checkout PR or branch" "checkout_worktree"
