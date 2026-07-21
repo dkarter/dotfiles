@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dkarter/dotfiles/blob/master/config/nvim/schemas/herdr-worktree.schema.json",
+  "title": "Herdr Worktree Configuration",
+  "description": "Repository-specific settings supported by the Herdr worktree commands in these dotfiles.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "agent": {
+      "type": "string",
+      "description": "Command used to start an agent in a newly created worktree.",
+      "examples": ["opencode --port"]
+    },
+    "worktree_dir": {
+      "type": "string",
+      "description": "Directory where worktrees are created. Relative paths are resolved from the repository root.",
+      "examples": ["../", ".worktrees"]
+    },
+    "worktrees": {
+      "type": "object",
+      "description": "Nested worktree path settings.",
+      "additionalProperties": false,
+      "properties": {
+        "directory": {
+          "type": "string",
+          "description": "Directory where worktrees are created. Used when worktree_dir is not set."
+        }
+      }
+    },
+    "worktree_naming": {
+      "type": "string",
+      "description": "Strategy for deriving the worktree directory name from the branch name.",
+      "default": "full",
+      "enum": ["full", "basename"],
+      "enumDescriptions": [
+        "Use the complete branch name, replacing path separators with hyphens.",
+        "Use only the part of the branch name after the final path separator."
+      ]
+    },
+    "worktree_prefix": {
+      "type": "string",
+      "description": "Prefix added to generated worktree directory names.",
+      "examples": ["houston-"]
+    },
+    "files": {
+      "type": "object",
+      "description": "File operations performed after creating a worktree.",
+      "additionalProperties": false,
+      "properties": {
+        "copy": {
+          "type": "array",
+          "description": "Repository-relative files or directories copied into each new worktree. Missing paths are ignored.",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

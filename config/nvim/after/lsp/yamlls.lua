@@ -1,6 +1,8 @@
 local schemaStoreSchemas = require('schemastore').yaml.schemas()
+local configDir = vim.fn.stdpath 'config'
 
 local ownSchemas = {
+  ['file://' .. configDir .. '/schemas/herdr-worktree.schema.json'] = '.herdr-worktree.yaml',
   ['https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json'] = '/*.k8s.yaml',
   ['https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/configmap.json'] = '*onfigma*.{yml,yaml}',
   ['https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/deployment.json'] = '*eployment*.{yml,yaml}',
