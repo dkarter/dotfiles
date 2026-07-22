@@ -2,12 +2,23 @@ if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} && -z ${HERDR_DISABLE_PANE_TI
   autoload -Uz add-zsh-hook
 
   typeset -gA HERDR_PANE_TITLES=(
+    btop '󰄪 btop'
     claude '󰚩 claude'
+    diffnav ' diffnav'
+    dive ' dive'
+    fx ' fx'
+    gh ' github'
+    kdash '󱃾 kdash'
     lazydocker ' lazydocker'
     lazygit ' lazygit'
     nvim ' neovim'
     opencode ' opencode'
+    pi '󰏿 pi'
+    posting '󰒊 posting'
+    pspg ' pspg'
     tuicr ' tuicr'
+    tv ' television'
+    yazi ' yazi'
   )
 
   _herdr_update_pane_title() {
