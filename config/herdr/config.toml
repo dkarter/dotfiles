@@ -16,11 +16,38 @@ hide_tab_bar_when_single_tab = true
 
 agent_panel_sort = "priority"
 [ui.sidebar.agents]
-rows = [["state_icon", "workspace", "$pr"], ["agent"]]
+rows = [
+  [
+    "state_icon",
+    { token = "workspace", bold = true },
+    { token = "$pr", fg = "#bb9af7" },
+  ],
+  [
+    { token = "agent", fg = "#7dcfff" },
+  ],
+]
 
 [ui.sidebar.agents.rows_by_agent]
-claude = [["state_icon", "workspace", "$pr"], ["terminal_title_stripped"]]
-opencode = [["state_icon", "workspace", "$pr"], ["terminal_title_stripped"]]
+claude = [
+  [
+    "state_icon",
+    { token = "workspace", bold = true },
+    { token = "$pr", fg = "#bb9af7" },
+  ],
+  [
+    { token = "terminal_title_stripped", fg = "#c0caf5" },
+  ],
+]
+opencode = [
+  [
+    "state_icon",
+    { token = "workspace", bold = true },
+    { token = "$pr", fg = "#bb9af7" },
+  ],
+  [
+    { token = "terminal_title_stripped", fg = "#c0caf5" },
+  ],
+]
 
 [keys]
 prefix = "ctrl+z"
