@@ -1,0 +1,61 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if [[ ${HERDR_ENV:-} != 1 || -z ${HERDR_PANE_ID:-} ]]; then
+  print -r -- "btw-herdr requires a Herdr-managed agent pane" >&2
+  exit 1
+fi
+
+prompt="${1:-}"
+if [[ -z ${prompt//[[:space:]]/} ]]; then
+  print -r -- "Usage: launch <prompt>" >&2
+  exit 1
+fi
+
+agent_json="$(herdr agent get "$HERDR_PANE_ID")"
+agent_kind="$(jq -er '.result.agent.agent' <<<"$agent_json")"
+new_pane_id=""
+prompt_file=""
+handoff_complete=false
+
+cleanup() {
+  local exit_status=$?
+
+  if [[ "$handoff_complete" != true ]]; then
+    [[ -z "$prompt_file" ]] || rm -f "$prompt_file" "${prompt_file}.log"
+    [[ -z "$new_pane_id" ]] || herdr pane close "$new_pane_id" >/dev/null 2>&1 || true
+  fi
+
+  return "$exit_status"
+}
+trap cleanup EXIT
+
+layout_json="$(herdr pane layout --pane "$HERDR_PANE_ID")"
+read -r pane_width pane_height <<<"$(
+  jq -r --arg pane_id "$HERDR_PANE_ID" \
+    '.result.layout.panes[] | select(.pane_id == $pane_id) | "\(.rect.width) \(.rect.height)"' \
+    <<<"$layout_json"
+)"
+
+if (( pane_width >= pane_height * 2 )); then
+  direction=right
+else
+  direction=down
+fi
+
+split_json="$(herdr pane split --pane "$HERDR_PANE_ID" --direction "$direction" --cwd "$PWD" --no-focus)"
+new_pane_id="$(jq -er '.result.pane.pane_id' <<<"$split_json")"
+agent_name="${(L)${new_pane_id//[^[:alnum:]]/-}}"
+agent_name="btw-$agent_name"
+agent_name="${agent_name[1,32]}"
+prompt_file="$(mktemp -t btw-herdr-prompt)"
+log_file="${prompt_file}.log"
+print -rn -- "$prompt" >| "$prompt_file"
+chmod 600 "$prompt_file"
+
+script_dir="${0:A:h}"
+nohup "$script_dir/start-agent" "$agent_kind" "$agent_name" "$new_pane_id" "$prompt_file" \
+  >| "$log_file" 2>&1 </dev/null &!
+handoff_complete=true
+
+print -r -- "Queued $agent_kind side agent $agent_name in pane $new_pane_id"

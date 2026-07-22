@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+agent_kind="$1"
+agent_name="$2"
+pane_id="$3"
+prompt_file="$4"
+log_file="${prompt_file}.log"
+start_output=""
+error_code=""
+
+cleanup() {
+  local exit_status=$?
+  rm -f "$prompt_file" "$log_file"
+
+  if (( exit_status != 0 )); then
+    herdr pane close "$pane_id" >/dev/null 2>&1 || true
+  fi
+}
+trap cleanup EXIT
+
+for _ in {1..50}; do
+  if start_output="$(herdr agent start "$agent_name" --kind "$agent_kind" --pane "$pane_id" --timeout 30000 2>&1)"; then
+    print -r -- "$start_output"
+    break
+  fi
+
+  error_code="$(jq -r '.error.code // empty' <<<"$start_output" 2>/dev/null || true)"
+  if [[ "$error_code" != agent_pane_busy ]]; then
+    print -r -- "$start_output" >&2
+    exit 1
+  fi
+
+  sleep 0.1
+done
+
+if [[ "$error_code" == agent_pane_busy ]]; then
+  print -r -- "$start_output" >&2
+  exit 1
+fi
+
+herdr agent prompt "$agent_name" "$(<"$prompt_file")"
