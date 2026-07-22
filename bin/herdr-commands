@@ -20,6 +20,7 @@ add_command() {
 }
 
 add_command "󰙅 New workspace" "new_workspace" "prefix+shift+n"
+add_command "󰆍 Move pane to new tab" "move_pane_to_new_tab"
 add_command "󰉋 Open dev directory" "herdr-open-dev-dir" "prefix+shift+o"
 add_command " New worktree" "new_worktree" "prefix+shift+g"
 add_command " New worktree without ticket" "new_worktree_without_ticket"
@@ -93,6 +94,18 @@ current_workspace_id() {
   fi
 
   herdr pane current --current | jq -er '.result.pane.workspace_id'
+}
+
+current_pane_id() {
+  local value
+  value="$(context_value '.focused_pane.pane_id // .focused_pane.id // .pane.pane_id // .pane.id')"
+
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  herdr pane current --current | jq -er '.result.pane.pane_id'
 }
 
 current_pane_cwd() {
@@ -339,6 +352,10 @@ new_workspace() {
   [[ -z "$name" ]] && return 0
 
   herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null
+}
+
+move_pane_to_new_tab() {
+  herdr pane move "$(current_pane_id)" --new-tab --focus >/dev/null
 }
 
 new_worktree() {
