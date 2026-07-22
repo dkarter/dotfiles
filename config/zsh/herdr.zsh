@@ -1,4 +1,4 @@
-if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} ]]; then
+if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} && -z ${HERDR_DISABLE_PANE_TITLES:-} ]]; then
   autoload -Uz add-zsh-hook
 
   typeset -gA HERDR_PANE_TITLES=(
@@ -25,6 +25,8 @@ if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} ]]; then
   }
 
   _herdr_set_mapped_pane_title() {
+    [[ -z ${HERDR_DISABLE_PANE_TITLES:-} ]] || return
+
     local executable=${3%% *}
     executable=${executable##*/}
     local title=${HERDR_PANE_TITLES[$executable]-}
