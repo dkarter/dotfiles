@@ -375,36 +375,36 @@ url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x8
 url_api = "https://api.github.com/repos/theryangeary/choose/releases/assets/286227058"
 
 [[tools.claude-code]]
-version = "2.1.218"
+version = "2.1.219"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:e3c9f86571c14c5dee9ab6e0906a24a25575da55ceea1045d44b0bdc56bd04ca"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/darwin-arm64/claude"
+checksum = "blake3:b8b71a697cde3eaa39bbe1ce93233bff063d818cb3505e29c50b4ee19b9346bd"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.218/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.219/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -500,52 +500,52 @@ url = "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2
 url_api = "https://api.github.com/repos/dandavison/delta/releases/assets/383663165"
 
 [[tools.deno]]
-version = "2.9.3"
+version = "2.9.4"
 backend = "core:deno"
 
 [tools.deno."platforms.linux-arm64"]
-checksum = "sha256:753937db98a4b56cbbbd26e8f00eb4b789191a229afec93f74bcfa4e79bc2c8b"
-url = "https://dl.deno.land/release/v2.9.3/deno-aarch64-unknown-linux-gnu.zip"
+checksum = "sha256:111da5c05c240cfdc4340f234a0e3539d39dbcb6755221f19dcd60bacc8be5aa"
+url = "https://dl.deno.land/release/v2.9.4/deno-aarch64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.linux-arm64-musl"]
-checksum = "sha256:753937db98a4b56cbbbd26e8f00eb4b789191a229afec93f74bcfa4e79bc2c8b"
-url = "https://dl.deno.land/release/v2.9.3/deno-aarch64-unknown-linux-gnu.zip"
+checksum = "sha256:111da5c05c240cfdc4340f234a0e3539d39dbcb6755221f19dcd60bacc8be5aa"
+url = "https://dl.deno.land/release/v2.9.4/deno-aarch64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.linux-x64"]
-checksum = "sha256:8101865641cbede56f08ad19c0a67a87df84bce127fee0d3e3e1f7467717ffa6"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:c24f955d9fbfe0ea5ae2b501c8e71ae76e31e4c9782390a54a284b3364fda725"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.linux-x64-baseline"]
-checksum = "sha256:8101865641cbede56f08ad19c0a67a87df84bce127fee0d3e3e1f7467717ffa6"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:c24f955d9fbfe0ea5ae2b501c8e71ae76e31e4c9782390a54a284b3364fda725"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.linux-x64-musl"]
-checksum = "sha256:8101865641cbede56f08ad19c0a67a87df84bce127fee0d3e3e1f7467717ffa6"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:c24f955d9fbfe0ea5ae2b501c8e71ae76e31e4c9782390a54a284b3364fda725"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:8101865641cbede56f08ad19c0a67a87df84bce127fee0d3e3e1f7467717ffa6"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-unknown-linux-gnu.zip"
+checksum = "sha256:c24f955d9fbfe0ea5ae2b501c8e71ae76e31e4c9782390a54a284b3364fda725"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-unknown-linux-gnu.zip"
 
 [tools.deno."platforms.macos-arm64"]
-checksum = "sha256:1b2972f7ceb6df28d9600eab18d423bebb9aa18db02f01d7eb37a5b501482203"
-url = "https://dl.deno.land/release/v2.9.3/deno-aarch64-apple-darwin.zip"
+checksum = "sha256:6d17647fdbf9c587a581dba205054c4ccf732dae0a196cc1e9b44c07589db412"
+url = "https://dl.deno.land/release/v2.9.4/deno-aarch64-apple-darwin.zip"
 
 [tools.deno."platforms.macos-x64"]
-checksum = "sha256:cff2bce236fde0952aac62a5699464c46901b4eb1e61d0caffbb33d556e098c1"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-apple-darwin.zip"
+checksum = "sha256:f757df6d3991e37601c69fad56c22b37c4ea77b5dcfad3636a642c2ba4c9b19f"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-apple-darwin.zip"
 
 [tools.deno."platforms.macos-x64-baseline"]
-checksum = "sha256:cff2bce236fde0952aac62a5699464c46901b4eb1e61d0caffbb33d556e098c1"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-apple-darwin.zip"
+checksum = "sha256:f757df6d3991e37601c69fad56c22b37c4ea77b5dcfad3636a642c2ba4c9b19f"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-apple-darwin.zip"
 
 [tools.deno."platforms.windows-x64"]
-checksum = "sha256:60343461ac5fe3a31f4ef12667f2946bb852e20655c8610aeb7e751e87f7df3a"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:68ed08b05c56cf887e9aa509947dc3f468f7e12f47a13e5c1abd51d46d1453ef"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-pc-windows-msvc.zip"
 
 [tools.deno."platforms.windows-x64-baseline"]
-checksum = "sha256:60343461ac5fe3a31f4ef12667f2946bb852e20655c8610aeb7e751e87f7df3a"
-url = "https://dl.deno.land/release/v2.9.3/deno-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:68ed08b05c56cf887e9aa509947dc3f468f7e12f47a13e5c1abd51d46d1453ef"
+url = "https://dl.deno.land/release/v2.9.4/deno-x86_64-pc-windows-msvc.zip"
 
 [[tools.devcontainer-cli]]
 version = "0.88.0"
@@ -1185,63 +1185,63 @@ url_api = "https://api.github.com/repos/cli/cli/releases/assets/464728577"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/lnr"]]
-version = "1.3.0"
+version = "2.0.0"
 backend = "github:dkarter/lnr"
 
 [tools."github:dkarter/lnr"."platforms.linux-arm64"]
-checksum = "sha256:be29c067860ff793fd620df55329c2c0bbf0f2fd661206838f50e3d523552002"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537641"
+checksum = "sha256:76b6031298116411d80774562a35287838476ced4e2b2c962449ccfcac2184c8"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770972"
 
 [tools."github:dkarter/lnr"."platforms.linux-arm64-musl"]
-checksum = "sha256:be29c067860ff793fd620df55329c2c0bbf0f2fd661206838f50e3d523552002"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537641"
+checksum = "sha256:76b6031298116411d80774562a35287838476ced4e2b2c962449ccfcac2184c8"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770972"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64"]
-checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
+checksum = "sha256:2621a6fa07ec55224a12f4c1b2c1c0eda4a6cf279138a686d325a1b06c0dd35b"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770993"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64-baseline"]
-checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
+checksum = "sha256:2621a6fa07ec55224a12f4c1b2c1c0eda4a6cf279138a686d325a1b06c0dd35b"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770993"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64-musl"]
-checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
+checksum = "sha256:2621a6fa07ec55224a12f4c1b2c1c0eda4a6cf279138a686d325a1b06c0dd35b"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770993"
 
 [tools."github:dkarter/lnr"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:3b8c4a697dd0caab4a9f3b54731d7c5ecde5d5c125b0f11558e4fa740bec12cd"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537649"
+checksum = "sha256:2621a6fa07ec55224a12f4c1b2c1c0eda4a6cf279138a686d325a1b06c0dd35b"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770993"
 
 [tools."github:dkarter/lnr"."platforms.macos-arm64"]
-checksum = "sha256:ace852e1d269a1e0f59cc24f9c5da0a7c1fee0f897aa7690b66a2745cfda2b65"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537650"
+checksum = "sha256:8f4cd314b39fa9f68b27134b08a2272c6d76af304bd803e9b9e7d683e66dbd54"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770992"
 
 [tools."github:dkarter/lnr"."platforms.macos-x64"]
-checksum = "sha256:0948ae3827deeea9aa9d3d5a18b42de2a2ff5b08ecc4d59dfc16da7bbf0884a5"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537643"
+checksum = "sha256:4c22c1f0e3680bb35929886258544d5d8891fb7bc61c465c2ea469b9bafa513d"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770970"
 
 [tools."github:dkarter/lnr"."platforms.macos-x64-baseline"]
-checksum = "sha256:0948ae3827deeea9aa9d3d5a18b42de2a2ff5b08ecc4d59dfc16da7bbf0884a5"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537643"
+checksum = "sha256:4c22c1f0e3680bb35929886258544d5d8891fb7bc61c465c2ea469b9bafa513d"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770970"
 
 [tools."github:dkarter/lnr"."platforms.windows-x64"]
-checksum = "sha256:e619eadbffffe6e787e29c72516f3dbbf1f49ab0dd99f2ce520274e90ce166a6"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537651"
+checksum = "sha256:1b02abf16a4d18cc03e6b4595af33a4f113a733977c6788e2573ac63a85a3d8b"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770991"
 
 [tools."github:dkarter/lnr"."platforms.windows-x64-baseline"]
-checksum = "sha256:e619eadbffffe6e787e29c72516f3dbbf1f49ab0dd99f2ce520274e90ce166a6"
-url = "https://github.com/dkarter/lnr/releases/download/v1.3.0/lnr_1.3.0_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/463537651"
+checksum = "sha256:1b02abf16a4d18cc03e6b4595af33a4f113a733977c6788e2573ac63a85a3d8b"
+url = "https://github.com/dkarter/lnr/releases/download/v2.0.0/lnr_2.0.0_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/488770991"
 
 [[tools."github:dlvhdr/diffnav"]]
 version = "0.11.0"
