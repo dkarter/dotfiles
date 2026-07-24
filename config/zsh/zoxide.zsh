@@ -1,2 +1,2 @@
 # sets up z for better cd command
-eval "$(zoxide init zsh)"
+eval "$(_mise_run zoxide init zsh)"

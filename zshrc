@@ -34,6 +34,16 @@ export PATH="/opt/homebrew/bin:$PATH"
 # are loaded since they may depend on it
 eval "$(mise activate zsh)"
 
+# Trusting a config does not update the toolset already computed by activation.
+# Let startup integrations recompute it while mise's prompt hook catches up.
+_mise_run() {
+  if command -v "$1" >/dev/null; then
+    command "$@"
+  else
+    mise exec --fresh-env -- "$@"
+  fi
+}
+
 # load all config files
 for f in ${XDG_CONFIG_HOME}/zsh/*; do
   source $f
@@ -140,4 +150,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # set up starship prompt
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
-eval "$(starship init zsh)"
+eval "$(_mise_run starship init zsh)"
+unset -f _mise_run
