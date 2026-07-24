@@ -1,0 +1,16 @@
+[metadata]
+name = "gh-repos"
+description = "Select one of your personal or organization GitHub repositories"
+requirements = ["gh", "bat"]
+
+[source]
+command = "$HOME/dotfiles/bin/tv-gh-repo-list"
+output = "{strip_ansi|split:\t:0}"
+ansi = true
+
+[preview]
+command = "$HOME/dotfiles/bin/tv-gh-repo-preview '{strip_ansi|split:\t:0}'"
+env = { BAT_THEME = "ansi" }
+
+[ui]
+preview_panel = { header = "{strip_ansi|split:\t:0}" }

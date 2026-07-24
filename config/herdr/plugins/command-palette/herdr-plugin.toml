@@ -35,6 +35,12 @@ title = "New agent with prompt"
 contexts = ["workspace"]
 command = ["./open-agent-prompt"]
 
+[[actions]]
+id = "open-repo-checkout"
+title = "Checkout GitHub repository"
+contexts = ["workspace"]
+command = ["./open-repo-checkout"]
+
 [[panes]]
 id = "palette"
 title = "Command Palette"
@@ -50,6 +56,14 @@ placement = "popup"
 width = "75%"
 height = "50%"
 command = ["./workspace-picker"]
+
+[[panes]]
+id = "repo-checkout"
+title = "Checkout GitHub Repository"
+placement = "popup"
+width = "95%"
+height = "90%"
+command = ["./repo-checkout"]
 
 [[panes]]
 id = "worktree"

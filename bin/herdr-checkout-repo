@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# Herdr popups run outside the interactive shell that activates Mise.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+repo="${1:-$(tv gh-repos --layout landscape --hide-status-bar --no-remote)}"
+repo="${repo%$'\r'}"
+
+[[ -z "$repo" ]] && exit 0
+
+name="${repo:t}"
+target="$HOME/dev/$name"
+
+mkdir -p "$HOME/dev"
+if [[ ! -e "$target" ]]; then
+  gh repo clone "$repo" "$target"
+fi
+
+if [[ ! -d "$target" ]]; then
+  print -r -- "Cannot open non-directory path: $target" >&2
+  exit 1
+fi
+
+herdr-open-dev-dir "$target"

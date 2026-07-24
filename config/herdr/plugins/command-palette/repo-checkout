@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+export PATH="$HOME/dotfiles/bin:$HOME/.local/share/mise/shims:$PATH"
+
+exec herdr-checkout-repo

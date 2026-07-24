@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# Television previews run outside the interactive shell that activates Mise.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+repo="$1"
+tmp_file="$(mktemp)"
+trap 'rm -f "$tmp_file"' EXIT INT TERM
+
+if gh api -H "Accept: application/vnd.github.v3.raw" "repos/$repo/readme" >"$tmp_file" 2>/dev/null && [[ -s "$tmp_file" ]]; then
+  bat --plain --color=always --language=markdown "$tmp_file"
+else
+  gh repo view "$repo" --json description --template 'No README found.
+
+Description: {{.description}}
+'
+fi

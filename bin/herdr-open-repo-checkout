@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+
+exec "$herdr_bin" plugin action invoke open-repo-checkout \
+  --plugin dotfiles.command-palette
