@@ -95,7 +95,7 @@ tasks:
       - task: mac:set:defaults
       - task: mise:tools:extras:prompt
       - task: mise:tools:install
-      - task: herdr:plugins:sync
+      - task: herdr:sync
       - task: fonts:sync
       - task: brew:sync
       - task: bat:sync
@@ -143,7 +143,7 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: mise:sync
-      - task: herdr:plugins:sync
+      - task: herdr:sync
       - task: brew:sync
       - task: bat:sync
       - task: tmux:sync

@@ -12,6 +12,27 @@ vars:
       dotfiles.workspace-title: workspace-title
 
 tasks:
+  sync:
+    desc: Configures Herdr integrations and plugins
+    cmds:
+      - task: raycast:symlink
+      - task: plugins:sync
+
+  raycast:symlink:
+    desc: Makes the mise-managed Herdr binary discoverable by Raycast
+    platforms: [darwin]
+    status:
+      - test "$(readlink "$HOME/.local/bin/herdr" 2>/dev/null)" = "$HOME/.local/share/mise/shims/herdr"
+    cmds:
+      - mkdir -p "$HOME/.local/bin"
+      - |
+        destination="$HOME/.local/bin/herdr"
+        if [ -e "$destination" ] && [ ! -L "$destination" ]; then
+          echo "$destination exists and is not a symlink; refusing to replace it" >&2
+          exit 1
+        fi
+        ln -sfn "$HOME/.local/share/mise/shims/herdr" "$destination"
+
   plugins:install:
     desc: Installs Herdr plugins
     cmds:
