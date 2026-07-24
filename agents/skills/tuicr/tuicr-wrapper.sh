@@ -204,7 +204,7 @@ launch_tuicr_herdr_pane() {
 
   log_info "tuicr is running in pane $new_pane_id"
   log_info "Waiting for tuicr to exit..."
-  if ! herdr wait output "$new_pane_id" --match "$finished_marker" --source recent-unwrapped >/dev/null; then
+  if ! herdr pane wait-output "$new_pane_id" --match "$finished_marker" --source recent-unwrapped --timeout 3600000 >/dev/null; then
     log_error "Failed while waiting for tuicr pane $new_pane_id"
     return 1
   fi

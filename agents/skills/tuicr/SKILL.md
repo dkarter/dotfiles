@@ -86,18 +86,24 @@ Wrapper paths are relative to this skill directory:
 <skill-directory>/tuicr-wrapper.sh /path/to/repo
 ```
 
-The wrapper selects and zooms the new tuicr pane after opening it. Always prefer
-Herdr when `HERDR_ENV=1`, even when `$TMUX` is also set.
+The wrapper selects and zooms the new tuicr pane after opening it, blocks until
+the review exits, closes the temporary pane to restore the original layout, and
+returns any exported review text to the agent. Always prefer Herdr when
+`HERDR_ENV=1`, even when `$TMUX` is also set.
 
 Do not treat a `tuicr` process in another pane, window, session, or repo as
 satisfying a request to open a review. Open a new review for the requested repo;
 separate tuicr panes do not conflict for local review sessions.
 
-If your tool supports command timeouts, use a long timeout, such as 10 minutes,
-because the wrappers wait for the TUI to exit. Once the TUI creates its active
-session, use `tuicr review list --repo /path/to/repo` to capture the slug. If
-your environment cannot run another command while the wrapper is waiting, read
-the comments after the user exits tuicr.
+Run the wrapper as a blocking command. Do not send a final response while it is
+open or ask the user to report when they are finished. If your tool supports
+command timeouts, use a long timeout, such as 10 minutes, because the wrapper
+waits for the TUI to exit. Once it returns, process exported instructions and
+immediately discover the completed session with
+`tuicr review list --repo /path/to/repo`, then read its comments without waiting
+for another user message. If the execution environment allows concurrent tool
+calls while the wrapper is open, the active session slug may be captured early,
+but this is not required.
 
 ## Read User Comments
 
