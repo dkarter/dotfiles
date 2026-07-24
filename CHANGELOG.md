@@ -2,6 +2,63 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.1.0](https://github.com/dkarter/dotfiles/compare/v32.0.1...v32.1.0) (2026-07-24)
+
+
+### Features
+
+* **ghostty,herdr:** add binding for toggling sidebar ([ceb9bac](https://github.com/dkarter/dotfiles/commit/ceb9bac957b5ab09139c7a7bbc507f433d9e1433))
+* **herdr,ghostty:** automatically change window title to workspace ([b9855a3](https://github.com/dkarter/dotfiles/commit/b9855a3900d8ef0d08d5cbdc5253dc9519d0bf61))
+* **herdr:** add btw side agents ([82f1338](https://github.com/dkarter/dotfiles/commit/82f1338b27a97beee20f10325041274703d411fb))
+* **herdr:** add checkout pr command ([0812756](https://github.com/dkarter/dotfiles/commit/0812756b7a663ba78cf0385395a4799386e12c1d))
+* **herdr:** add herdr-worktree.yaml config json schema ([1bcbc43](https://github.com/dkarter/dotfiles/commit/1bcbc43c52b1b30d1b98544151c8e32d6c6b8dea))
+* **herdr:** add mapping to jump to pr for current workspace ([1eef704](https://github.com/dkarter/dotfiles/commit/1eef704ac4caab27141f188dc35af553df913688))
+* **herdr:** add open dev dir command ([70cbc40](https://github.com/dkarter/dotfiles/commit/70cbc40ebe691a0e522549d0ce58cc6909f7190b))
+* **herdr:** add remove remove_worktree mapping ([cfc076e](https://github.com/dkarter/dotfiles/commit/cfc076e13a0bd417b58337e86e9ae836c7915f54))
+* **herdr:** add seamless Neovim navigation ([#433](https://github.com/dkarter/dotfiles/issues/433)) ([ab65282](https://github.com/dkarter/dotfiles/commit/ab65282129552f5739bf9314b9b411ba2a01c114))
+* **herdr:** allow disabling pane titles ([12f5290](https://github.com/dkarter/dotfiles/commit/12f5290ab6e11f91dc05a80676827c0472ba4c0e))
+* **herdr:** bind pane rename action ([c09893b](https://github.com/dkarter/dotfiles/commit/c09893b5001b17838810ca619af1ffbe04e10b28))
+* **herdr:** enable prefix+numbers for space/agent nav ([3069e8b](https://github.com/dkarter/dotfiles/commit/3069e8b4060a7ba4cf47291b0151d1df506140fd))
+* **herdr:** expand pane title mappings ([e8c79bb](https://github.com/dkarter/dotfiles/commit/e8c79bb0057f88c5f9b97529f51a181ca24d474f))
+* **herdr:** expose mise shim to Raycast ([c4956a5](https://github.com/dkarter/dotfiles/commit/c4956a57ec03adb2fe9bb8d98c4bf140bf31ec79))
+* **herdr:** improve keybindings ([687c6da](https://github.com/dkarter/dotfiles/commit/687c6da9548f29fb1d0b9aac3b6fa6e5314a5553))
+* **herdr:** improved space/worktree nav bindings ([3c0f633](https://github.com/dkarter/dotfiles/commit/3c0f63358220c5b3dcdfc91a0b081009da986a18))
+* **herdr:** insert file with `super-shift-.` ([0446f54](https://github.com/dkarter/dotfiles/commit/0446f549e6db7a76af5336282efb9c041274929a))
+* **herdr:** label mapped pane commands ([370fa80](https://github.com/dkarter/dotfiles/commit/370fa808a9eec6baf851e55f34b3e6c5c9497343))
+* **herdr:** move panes to new tabs ([aff84c8](https://github.com/dkarter/dotfiles/commit/aff84c8e895a62b78fadce11dd93ac2cefc35235))
+* **herdr:** show agent session title ([9bd36c9](https://github.com/dkarter/dotfiles/commit/9bd36c959052ba9997fcac13510d8333d89fe9e1))
+* **herdr:** style agent sidebar fields ([877cc94](https://github.com/dkarter/dotfiles/commit/877cc943e89cc7369a9a12bcda53252d0a8320de))
+* **herdr:** update icon mapping ([1ca6c59](https://github.com/dkarter/dotfiles/commit/1ca6c59451b40c96e24db104362ecdd16ad28a8b))
+* **mise:** add npx -&gt; aubx alias ([27627d9](https://github.com/dkarter/dotfiles/commit/27627d9182d40950c8ed70bdd3b24572dbe03cd0))
+* **nvim,skills:** add code walkthroughs with navi.nvim + skill ([6ccfbac](https://github.com/dkarter/dotfiles/commit/6ccfbac6f7ca9c289e1957cdfa6d972813a6fbff))
+* **nvim:** add mappings for Navi ([f9a43dd](https://github.com/dkarter/dotfiles/commit/f9a43dde31ab75f3d9fab582424776c96de85b17))
+* **nvim:** support herdr in vim-test ([605accf](https://github.com/dkarter/dotfiles/commit/605accf549a17c54824a6ecaf3bd2a451a4ed3de))
+
+
+### Bug Fixes
+
+* **git:** ignore herdr worktree config globally ([7f6f809](https://github.com/dkarter/dotfiles/commit/7f6f8090c5564a7852d02b5901001b82421165b1))
+* **herdr,tmux:** allow worktree names with spaces on entry ([9c4d4f2](https://github.com/dkarter/dotfiles/commit/9c4d4f2b6cfd8d933f45fb529edff25827da0fed))
+* **herdr:** allow creating worktrees from other worktrees ([b7a6c5b](https://github.com/dkarter/dotfiles/commit/b7a6c5b17c503a15c21270f5b83482582e509059))
+* **herdr:** copy files on worktree creation ([b050178](https://github.com/dkarter/dotfiles/commit/b0501780a194c1ae5d6794e5048ab3faea232627))
+* **herdr:** correct detach mapping ([2be88cd](https://github.com/dkarter/dotfiles/commit/2be88cd0ee86449f0e4d840fafd8601c7f0bc2d0))
+* **herdr:** ignore plugin registry lock ([1f34444](https://github.com/dkarter/dotfiles/commit/1f34444a7d66fca4cd6d19ef0787ef0d460ee013))
+* **herdr:** make plugin paths portable ([#431](https://github.com/dkarter/dotfiles/issues/431)) ([d4545ec](https://github.com/dkarter/dotfiles/commit/d4545ec444013350e78de57ce566446cc6a4a9b4))
+* **herdr:** register workspace title plugin ([27d45a6](https://github.com/dkarter/dotfiles/commit/27d45a661634298b228a3ed25bf531abfe8a5dc2))
+* **herdr:** remove confusing `worktrees -> directory` from config ([bb796d4](https://github.com/dkarter/dotfiles/commit/bb796d4b6d5c98c16ba3940307f9b8172fc9bcbe))
+* **herdr:** remove obsolete agent panel scope ([88c33db](https://github.com/dkarter/dotfiles/commit/88c33dba982c295ca9e5673228fb23a09f8429c9))
+* **herdr:** truncate long worktree names ([e5f57a0](https://github.com/dkarter/dotfiles/commit/e5f57a0b40ee3250dbd2ccf4d8a15381a0be6bf9))
+* **herdr:** use terminal notifications ([eb976d7](https://github.com/dkarter/dotfiles/commit/eb976d71846059ad086899a17a041c38365f999b))
+* **herdr:** worktree with prompt didn't work ([22f9e75](https://github.com/dkarter/dotfiles/commit/22f9e752b7fcc374270cfa5d3957501603065b5d))
+* **nvim:** preserve Snacks hidden toggle in Herdr ([e338cb6](https://github.com/dkarter/dotfiles/commit/e338cb6c22142ee534a53fa607f4fa88735fc8b3))
+* **opencode:** disable oauth for github mcp ([9da2ca3](https://github.com/dkarter/dotfiles/commit/9da2ca3f78d900bbe65f8cf323eb49ceb1d58830))
+* **opencode:** use oauth for context7 ([d92a1d1](https://github.com/dkarter/dotfiles/commit/d92a1d126b431b026d0ce2e278650b79e093ae96))
+* **skills:** add support for herdr on tmux skills ([490b8ee](https://github.com/dkarter/dotfiles/commit/490b8ee5e2fc03a1de39126f6af37bdd818c132f))
+* **tmux:** set window title based on session ([9409497](https://github.com/dkarter/dotfiles/commit/9409497de74be7efafcbcef838e3bd2c3b0203c2))
+* **tuicr:** restore blocking Herdr reviews ([968d6a7](https://github.com/dkarter/dotfiles/commit/968d6a7e69bf896685e5886f612fc6fb76738468))
+* **tv:** improve dev-dir cable ([d15fce8](https://github.com/dkarter/dotfiles/commit/d15fce821fe024334f738ffcc78dc4e4c40042e7))
+* **zsh:** pgtmp alias compat ([5ee4fe3](https://github.com/dkarter/dotfiles/commit/5ee4fe3946158bf70604ea2c509cfa31c3a945f1))
+
 ## [32.0.1](https://github.com/dkarter/dotfiles/compare/v32.0.0...v32.0.1) (2026-07-17)
 
 
