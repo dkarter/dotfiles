@@ -60,6 +60,14 @@ return {
 
             -- the default is <c-s> but I'm used to <c-x> from telescope
             ['<c-x>'] = { 'edit_split', mode = { 'i', 'n' } },
+
+            -- Herdr consumes <M-h> for resizing and forwards <M-H> as its Neovim resize signal.
+            ['<M-H>'] = { 'toggle_hidden', mode = { 'i', 'n' } },
+          },
+        },
+        list = {
+          keys = {
+            ['<M-H>'] = 'toggle_hidden',
           },
         },
       },
