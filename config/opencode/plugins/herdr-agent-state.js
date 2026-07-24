@@ -2,13 +2,15 @@
 // managed by herdr; reinstalling or updating the integration overwrites this file.
 // add custom hooks/plugins beside this file instead of editing it.
 // HERDR_INTEGRATION_ID=opencode
-// HERDR_INTEGRATION_VERSION=8
+// HERDR_INTEGRATION_VERSION=9
 
 import net from 'node:net';
 
 const SOURCE = 'herdr:opencode';
 const AGENT = 'opencode';
 let reportSeq = Date.now() * 1000;
+let requestChain = Promise.resolve();
+let reportedRootSessionID;
 
 // Subagent (task tool) sessions carry a parentID; the main agent session does
 // not. Their lifecycle events would otherwise clobber the pane's real state, so
@@ -45,12 +47,20 @@ function stateFromSessionStatus(status) {
 }
 
 function request(method, params) {
+  const pending = requestChain.then(() => requestOnce(method, params));
+  requestChain = pending.catch(() => {});
+  return pending;
+}
+
+function requestOnce(method, params) {
   const paneId = process.env.HERDR_PANE_ID;
   const socketPath = process.env.HERDR_SOCKET_PATH;
 
   if (!paneId || !socketPath) {
     return Promise.resolve();
   }
+
+  const socketEndpoint = process.platform === 'win32' ? `\\\\.\\pipe\\${socketPath}` : socketPath;
 
   const requestId = `${SOURCE}:${Date.now()}:${Math.floor(Math.random() * 1_000_000)
     .toString()
@@ -68,7 +78,7 @@ function request(method, params) {
   };
 
   return new Promise((resolve) => {
-    const client = net.createConnection(socketPath, () => {
+    const client = net.createConnection(socketEndpoint, () => {
       client.write(`${JSON.stringify(request)}\n`);
     });
 
@@ -99,6 +109,7 @@ function reportSession(sessionID, sessionStartSource) {
 function reportState(state, sessionID) {
   const params = { state };
   if (sessionID) {
+    reportedRootSessionID = sessionID;
     params.agent_session_id = sessionID;
   }
   return request('pane.report_agent', params);
@@ -154,7 +165,9 @@ export const HerdrAgentStatePlugin = async () => {
           await reportSession(sessionID, 'new');
           break;
         case 'session.updated':
-          await reportSession(sessionID);
+          if (sessionID && sessionID !== reportedRootSessionID) {
+            await reportSession(sessionID);
+          }
           break;
         case 'session.status': {
           const state = stateFromSessionStatus(properties.status);
