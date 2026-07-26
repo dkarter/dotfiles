@@ -350,6 +350,20 @@ move_pane_to_new_tab() {
   herdr pane move "$(current_pane_id)" --new-tab --focus >/dev/null
 }
 
+open_current_workspace_repo() {
+  local workspace_id workspace_json checkout_path
+  workspace_id="$(current_workspace_id)"
+  workspace_json="$(herdr workspace get "$workspace_id")"
+  checkout_path="$(jq -er '.result.workspace.worktree.checkout_path // empty' <<<"$workspace_json" 2>/dev/null || true)"
+
+  if [[ -z "$checkout_path" ]]; then
+    mise x -- gum style --foreground="red" "Current workspace is not associated with a git repository"
+    return 1
+  fi
+
+  (cd "$checkout_path" && gh browse)
+}
+
 new_worktree() {
   local allow_ticket="${1:-true}"
   local cwd repo_root branch base_branch
