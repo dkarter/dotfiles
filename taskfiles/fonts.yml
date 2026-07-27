@@ -2,20 +2,16 @@
 version: 3
 
 vars:
-  BASE_URL: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/'
+  FONT_SOURCE_DIR: '{{.ROOT_DIR}}/assets/fonts/AgentMonoNerdFont'
   FONTS:
-    # Regular
-    - 'JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Regular.ttf'
-    # Italic
-    - 'JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Italic.ttf'
-    # Bold
-    - 'JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFontMono-Bold.ttf'
-    # Bold Italic
-    - 'JetBrainsMono/Ligatures/Bold/JetBrainsMonoNerdFontMono-BoldItalic.ttf'
+    - 'AgentMonoNerdFont-Regular.ttf'
+    - 'AgentMonoNerdFont-Italic.ttf'
+    - 'AgentMonoNerdFont-Bold.ttf'
+    - 'AgentMonoNerdFont-BoldItalic.ttf'
 
 tasks:
   sync:
-    desc: Installs/updates fonts
+    desc: Installs/updates the custom Nerd Font
     platforms: [linux, darwin]
     vars:
       FONT_DIR:
@@ -23,24 +19,39 @@ tasks:
           if [ "$(uname)" = "Darwin" ]; then
             echo "$HOME/Library/Fonts"
           elif [ "$(uname)" = "Linux" ]; then
-            mkdir -p "$HOME/.fonts"
-            echo "$HOME/.fonts"
+            mkdir -p "$HOME/.local/share/fonts"
+            echo "$HOME/.local/share/fonts"
           else
             echo "Can't install fonts. Unsupported OS." >&2
             exit 1
           fi
-
     cmds:
-      - for:
-          var: FONTS
-          as: FONT
-        cmd: |
-          # temporarily skip Windows in WSL, until I can figure out how to
-          # install fonts here.
-          [[ "$(uname -r)" == *microsoft* ]] && exit 0
+      - |
+        # WSL cannot install fonts into the Windows host.
+        [[ "$(uname -r)" == *microsoft* ]] && exit 0
 
-          filename=$(basename {{.FONT}})
-          echo -n "Installing $filename..."
-          curl --silent -L -o "{{.FONT_DIR}}/$filename" '{{joinPath .BASE_URL .FONT}}'
-          echo "DONE"
-        silent: true
+        changed=0
+        for filename in {{range .FONTS}}{{.}} {{end}}; do
+          source={{shellQuote .FONT_SOURCE_DIR}}/$filename
+          destination={{shellQuote .FONT_DIR}}/$filename
+          if [[ ! -f "$destination" ]] || ! cmp -s "$source" "$destination"; then
+            echo "Installing $filename..."
+            install -m 0644 "$source" "$destination"
+            changed=1
+          fi
+        done
+
+        if (( changed )) && [[ "$(uname)" = "Linux" ]] && command -v fc-cache >/dev/null; then
+          fc-cache -f {{shellQuote .FONT_DIR}}
+        fi
+    silent: true
+
+  update:
+    desc: Refreshes the committed custom Nerd Font (at most once every 30 days)
+    cmds:
+      - uv run {{shellQuote .ROOT_DIR}}/scripts/update-agent-font.py
+
+  update:force:
+    desc: Refreshes the committed custom Nerd Font regardless of its age
+    cmds:
+      - uv run {{shellQuote .ROOT_DIR}}/scripts/update-agent-font.py --force
