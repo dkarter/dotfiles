@@ -351,13 +351,18 @@ move_pane_to_new_tab() {
 }
 
 open_current_workspace_repo() {
-  local workspace_id workspace_json checkout_path
+  local workspace_id workspace_json checkout_path cwd
   workspace_id="$(current_workspace_id)"
   workspace_json="$(herdr workspace get "$workspace_id")"
   checkout_path="$(jq -er '.result.workspace.worktree.checkout_path // empty' <<<"$workspace_json" 2>/dev/null || true)"
 
   if [[ -z "$checkout_path" ]]; then
-    mise x -- gum style --foreground="red" "Current workspace is not associated with a git repository"
+    cwd="$(current_pane_cwd)"
+    checkout_path="$(repo_root_for_cwd "$cwd")"
+  fi
+
+  if [[ -z "$checkout_path" ]]; then
+    mise x -- gum style --foreground="red" "Current workspace pane is not in a git repository"
     return 1
   fi
 
