@@ -33,7 +33,6 @@ brew info --json=v2 '{0}' | jq -r '
   end
 '
 """
-ansi = true
 
 [keybindings]
 enter = "actions:open"

@@ -18,7 +18,6 @@ mise registry --json | jq -r --arg tool '{split:\t:0}' '
   (if ((.aliases // []) | length) > 0 then "\n\n\u001b[1mAliases:\u001b[0m \\(.aliases | join(", "))" else "" end)
 '
 """
-ansi = true
 
 [keybindings]
 enter = "actions:install-local"
