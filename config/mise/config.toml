@@ -97,7 +97,8 @@ zoxide = "latest"                     # a modern version of autojump
 
 [tools."npm:opencode-ai"] # the best AI agent wrapper
 version = "latest"
-aube_args = "--allow-build=opencode-ai"
+# Reviewed postinstall selects and links the matching prebuilt OpenCode binary.
+allow_builds = ["opencode-ai"]
 
 # spec driven development tool
 [tools."npm:@fission-ai/openspec"]
