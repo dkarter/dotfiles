@@ -14,6 +14,10 @@ tasks:
   shell:lint:
     cmd: shellcheck $({ rg -l --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -g '!*.{*}' '^#!.*bash' .; } | sort -u)
 
+  television:lint:
+    desc: Validate Television cable channels against their schema
+    cmd: taplo lint --config .taplo.toml "config/television/cable/**/*.toml"
+
   spelling:lint:
     desc: Check for code spelling errors
     cmd: typos
@@ -31,6 +35,9 @@ tasks:
         silent: true
 
       - task: shell:lint
+        silent: true
+
+      - task: television:lint
         silent: true
 
       - task: yaml:lint

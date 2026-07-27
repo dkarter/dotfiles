@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Television Channels
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/television.yml'
+      - '.taplo.toml'
+      - 'config/nvim/schemas/television-channel.schema.json'
+      - 'config/television/cable/**'
+      - 'taskfiles/ci.yml'
+
+  pull_request:
+    paths:
+      - '.github/workflows/television.yml'
+      - '.taplo.toml'
+      - 'config/nvim/schemas/television-channel.schema.json'
+      - 'config/television/cable/**'
+      - 'taskfiles/ci.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: 'Lint: Television Channels'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install Runtimes w/ MISE
+        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+
+      - name: Validate channel schemas
+        run: task ci:television:lint

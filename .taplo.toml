@@ -1,0 +1,6 @@
+[[rule]]
+include = ["config/television/cable/**/*.toml"]
+
+[rule.schema]
+path = "config/nvim/schemas/television-channel.schema.json"
+enabled = true

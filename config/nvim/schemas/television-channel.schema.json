@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/dkarter/dotfiles/master/config/nvim/schemas/television-channel.schema.json",
+  "title": "Television Cable Channel",
+  "description": "A Television fuzzy-finder channel configuration file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "source"],
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "preview": {
+      "$ref": "#/$defs/preview"
+    },
+    "ui": {
+      "$ref": "#/$defs/ui"
+    },
+    "keybindings": {
+      "$ref": "#/$defs/keybindings"
+    },
+    "actions": {
+      "type": "object",
+      "description": "Named external actions available to channel keybindings and the action picker.",
+      "additionalProperties": {
+        "$ref": "#/$defs/action"
+      }
+    },
+    "watch": {
+      "$ref": "#/$defs/watch"
+    },
+    "history": {
+      "$ref": "#/$defs/history"
+    }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique channel identifier.",
+          "examples": ["files"]
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable channel description."
+        },
+        "requirements": {
+          "type": "array",
+          "description": "Executables that must be available on PATH for this channel to load.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "default": []
+        }
+      }
+    },
+    "sourceCommand": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "A shell command that writes channel entries to stdout."
+        },
+        {
+          "$ref": "#/$defs/namedCommand"
+        }
+      ]
+    },
+    "sourceCommands": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sourceCommand"
+        },
+        {
+          "type": "array",
+          "description": "Commands cycled with the cycle_sources action.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceCommand"
+          }
+        }
+      ]
+    },
+    "namedCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "run"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Label shown in the results panel while this source is active."
+        },
+        "run": {
+          "type": "string",
+          "description": "Shell command to run."
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "description": "Environment variables supplied to the command.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "shell": {
+      "type": "string",
+      "description": "Shell used to execute the command instead of the detected default.",
+      "enum": ["bash", "zsh", "fish", "powershell", "cmd", "nu"]
+    },
+    "watch": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Automatic source reload interval in seconds; zero disables watching."
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command"],
+      "properties": {
+        "command": {
+          "$ref": "#/$defs/sourceCommands"
+        },
+        "interactive": {
+          "type": "boolean",
+          "description": "Run the source command interactively.",
+          "default": false
+        },
+        "env": {
+          "$ref": "#/$defs/environment"
+        },
+        "shell": {
+          "$ref": "#/$defs/shell"
+        },
+        "entry_delimiter": {
+          "type": "string",
+          "description": "Character separating source entries. Escape sequences such as \\n and \\0 are supported.",
+          "pattern": "^(?:\\\\[ntr0]|[\\u0000-\\u007f])$"
+        },
+        "ansi": {
+          "type": "boolean",
+          "description": "Parse ANSI escape sequences in source entries.",
+          "default": false
+        },
+        "display": {
+          "type": "string",
+          "description": "Template that transforms each entry for display."
+        },
+        "output": {
+          "type": "string",
+          "description": "Template that transforms selected entries for final output."
+        },
+        "no_sort": {
+          "type": "boolean",
+          "description": "Preserve source order instead of sorting by match quality.",
+          "default": false
+        },
+        "frecency": {
+          "type": "boolean",
+          "description": "Rank previously selected entries using frequency and recency.",
+          "default": true
+        }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command"],
+      "properties": {
+        "command": {
+          "$ref": "#/$defs/sourceCommands",
+          "description": "Preview command or commands cycled with the cycle_previews action."
+        },
+        "interactive": {
+          "type": "boolean",
+          "description": "Run the preview command interactively.",
+          "default": false
+        },
+        "env": {
+          "$ref": "#/$defs/environment"
+        },
+        "shell": {
+          "$ref": "#/$defs/shell"
+        },
+        "offset": {
+          "type": "string",
+          "description": "Template that extracts the initial preview line offset."
+        },
+        "cached": {
+          "type": "boolean",
+          "description": "Cache preview output for previously visited entries.",
+          "default": true
+        }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ui_scale": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 100,
+          "description": "Percentage of the terminal occupied by the UI."
+        },
+        "layout": {
+          "$ref": "#/$defs/orientation"
+        },
+        "orientation": {
+          "$ref": "#/$defs/orientation",
+          "description": "Legacy alias for layout."
+        },
+        "theme": {
+          "type": "string",
+          "description": "Built-in or custom Television theme name."
+        },
+        "theme_overrides": {
+          "$ref": "#/$defs/themeOverrides"
+        },
+        "input_bar": {
+          "$ref": "#/$defs/inputBar"
+        },
+        "preview_panel": {
+          "$ref": "#/$defs/previewPanel"
+        },
+        "results_panel": {
+          "$ref": "#/$defs/panel"
+        },
+        "status_bar": {
+          "$ref": "#/$defs/statusBar"
+        },
+        "help_panel": {
+          "$ref": "#/$defs/helpPanel"
+        },
+        "remote_control": {
+          "$ref": "#/$defs/remoteControl"
+        }
+      }
+    },
+    "orientation": {
+      "type": "string",
+      "description": "Orientation of the results and preview panes.",
+      "enum": ["landscape", "portrait"],
+      "default": "landscape"
+    },
+    "inputPosition": {
+      "type": "string",
+      "enum": ["top", "bottom"],
+      "default": "top"
+    },
+    "borderType": {
+      "type": "string",
+      "enum": ["none", "plain", "rounded", "thick"],
+      "default": "none"
+    },
+    "padding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "top": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "default": 0
+        },
+        "bottom": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "default": 0
+        },
+        "left": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "default": 0
+        },
+        "right": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "default": 0
+        }
+      }
+    },
+    "panel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "border_type": {
+          "$ref": "#/$defs/borderType"
+        },
+        "padding": {
+          "$ref": "#/$defs/padding"
+        }
+      }
+    },
+    "inputBar": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/inputPosition"
+        },
+        "header": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "border_type": {
+          "$ref": "#/$defs/borderType"
+        },
+        "padding": {
+          "$ref": "#/$defs/padding"
+        }
+      }
+    },
+    "previewPanel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 50
+        },
+        "header": {
+          "type": "string"
+        },
+        "footer": {
+          "type": "string"
+        },
+        "scrollbar": {
+          "type": "boolean",
+          "default": false
+        },
+        "border_type": {
+          "$ref": "#/$defs/borderType"
+        },
+        "padding": {
+          "$ref": "#/$defs/padding"
+        },
+        "word_wrap": {
+          "type": "boolean",
+          "default": false
+        },
+        "hidden": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "statusBar": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hidden": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "helpPanel": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "show_categories": {
+          "type": "boolean",
+          "default": true
+        },
+        "hidden": {
+          "type": "boolean",
+          "default": true
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "remoteControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "show_channel_descriptions": {
+          "type": "boolean",
+          "default": true
+        },
+        "sort_alphabetically": {
+          "type": "boolean",
+          "default": true
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "themeOverrides": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "background": { "type": "string" },
+        "border_fg": { "type": "string" },
+        "text_fg": { "type": "string" },
+        "dimmed_text_fg": { "type": "string" },
+        "input_text_fg": { "type": "string" },
+        "result_count_fg": { "type": "string" },
+        "result_name_fg": { "type": "string" },
+        "result_line_number_fg": { "type": "string" },
+        "result_value_fg": { "type": "string" },
+        "selection_bg": { "type": "string" },
+        "selection_fg": { "type": "string" },
+        "match_fg": { "type": "string" },
+        "preview_title_fg": { "type": "string" },
+        "channel_mode_fg": { "type": "string" },
+        "channel_mode_bg": { "type": "string" },
+        "remote_control_mode_fg": { "type": "string" },
+        "remote_control_mode_bg": { "type": "string" },
+        "action_picker_mode_fg": { "type": "string" },
+        "action_picker_mode_bg": { "type": "string" }
+      }
+    },
+    "keybindings": {
+      "type": "object",
+      "description": "Keyboard key names mapped to built-in or external actions. shortcut switches directly to this channel.",
+      "propertyNames": {
+        "pattern": "^(?:shortcut|(?:(?:ctrl|shift|alt|cmd|super)-)*(?:esc|enter|left|right|up|down|home|end|pageup|pagedown|backspace|delete|insert|f(?:[1-9]|1[0-2])|space|hyphen|minus|tab|backtab|.))$"
+      },
+      "properties": {
+        "shortcut": {
+          "$ref": "#/$defs/key"
+        }
+      },
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ]
+      }
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?:(?:ctrl|shift|alt|cmd|super)-)*(?:esc|enter|left|right|up|down|home|end|pageup|pagedown|backspace|delete|insert|f(?:[1-9]|1[0-2])|space|hyphen|minus|tab|backtab|.)$"
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description shown in the action picker."
+        },
+        "command": {
+          "$ref": "#/$defs/sourceCommands"
+        },
+        "interactive": {
+          "type": "boolean",
+          "default": false
+        },
+        "env": {
+          "$ref": "#/$defs/environment"
+        },
+        "shell": {
+          "$ref": "#/$defs/shell"
+        },
+        "mode": {
+          "type": "string",
+          "description": "fork runs a child process and returns to Television; execute replaces Television.",
+          "enum": ["fork", "execute"],
+          "default": "fork"
+        },
+        "separator": {
+          "type": "string",
+          "description": "String inserted between multiple selected entries.",
+          "default": " "
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "global_mode": {
+          "type": "boolean",
+          "description": "Override whether this channel shares global search history."
+        }
+      }
+    }
+  }
+}
