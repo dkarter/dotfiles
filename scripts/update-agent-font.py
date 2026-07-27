@@ -9,7 +9,6 @@
 from __future__ import annotations
 
 import argparse
-import copy
 import hashlib
 import io
 import json
@@ -21,7 +20,6 @@ import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from pathlib import Path
 
-from fontTools.colorLib.builder import buildCOLR, buildCPAL
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.cu2quPen import Cu2QuPen
 from fontTools.pens.transformPen import TransformPen
@@ -41,7 +39,6 @@ LOBE_ICONS_COMMIT_API = (
 FONT_ARCHIVE_NAME = "JetBrainsMono.tar.xz"
 FONT_STYLES = ("Regular", "Italic", "Bold", "BoldItalic")
 FONTTOOLS_VERSION = "4.63.0"
-CLAUDE_COLOR = (0xD7 / 255, 0x77 / 255, 0x57 / 255, 1.0)
 
 # Keep these stable: pane-title strings persist independently of font updates.
 ICONS = {
@@ -156,18 +153,6 @@ def patch_font(source: Path, destination: Path, style: str, svgs: dict[str, byte
         for table in unicode_tables:
             table.cmap[codepoint] = glyph_name
 
-        if name == "claude":
-            layer_name = f"{glyph_name}.color"
-            font["glyf"][layer_name] = copy.deepcopy(glyph)
-            font["hmtx"].metrics[layer_name] = (advance_width, glyph.xMin)
-
-    font["COLR"] = buildCOLR(
-        {"agent.claude": [("agent.claude.color", 0)]},
-        version=0,
-        glyphMap=font.getReverseGlyphMap(),
-    )
-    font["CPAL"] = buildCPAL([[CLAUDE_COLOR]])
-
     rename_font(font, style)
     font.save(destination, reorderTables=False)
 
@@ -227,7 +212,6 @@ def main() -> None:
         "nerd_fonts_archive_sha256": archive_sha256,
         "lobe_icons_commit": lobe_commit,
         "fonttools_version": FONTTOOLS_VERSION,
-        "colors": {"claude": "#D77757"},
         "glyphs": {
             name: {"codepoint": f"U+{codepoint:04X}", "source": filename}
             for name, (codepoint, filename) in ICONS.items()
