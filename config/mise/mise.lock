@@ -638,67 +638,58 @@ checksum = "sha256:eb04bbe0748cfc1414081a005c711a102d0b3f551ff96cc8cff81b0e7d468
 url = "https://builds.hex.pm/builds/elixir/v1.20.0-otp-29.zip"
 
 [[tools.erlang]]
-version = "29.0.3"
+version = "29.0.4"
 backend = "core:erlang"
 
 [tools.erlang."platforms.linux-arm64-musl"]
-checksum = "sha256:f920c660b16794bcb7270d1cbf680f7747c719650bcd6ac449508a32c2a8972a"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.3/otp_src_29.0.3.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/464470013"
+url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
 install = "source"
 
 [tools.erlang."platforms.linux-x64-musl"]
-checksum = "sha256:f920c660b16794bcb7270d1cbf680f7747c719650bcd6ac449508a32c2a8972a"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.3/otp_src_29.0.3.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/464470013"
+url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
 install = "source"
 
 [tools.erlang."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:f920c660b16794bcb7270d1cbf680f7747c719650bcd6ac449508a32c2a8972a"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.3/otp_src_29.0.3.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/464470013"
+url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
 install = "source"
 
 [tools.erlang."platforms.macos-arm64"]
-checksum = "sha256:bfb187843b00fdff9a9eb79f15f17ffcd48d89150212f77206279fcd51136706"
-url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.3/otp-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/464419851"
+checksum = "sha256:d8be2db258d70e4b9980806ef75d56450a61a53b2ccd2872f867ba94e63faeff"
+url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.4/otp-aarch64-apple-darwin.tar.gz"
 
 [tools.erlang."platforms.macos-x64"]
-checksum = "sha256:9fb73031da37363200df4459ef57e16bb4e00134ec94bfb92b7a1b4db640dcca"
-url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.3/otp-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/464426319"
+checksum = "sha256:4483f4c69b0463aa8a06b99911bb5d63472ba546e93ed9757450569ba4212f30"
+url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.4/otp-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/491500484"
 
 [tools.erlang."platforms.macos-x64-baseline"]
-checksum = "sha256:9fb73031da37363200df4459ef57e16bb4e00134ec94bfb92b7a1b4db640dcca"
-url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.3/otp-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/464426319"
+checksum = "sha256:4483f4c69b0463aa8a06b99911bb5d63472ba546e93ed9757450569ba4212f30"
+url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.4/otp-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/491500484"
 
 [tools.erlang."platforms.windows-x64"]
-checksum = "sha256:11a7bda6cb602641cb13d319967c72add457e0ea0bc467d3dc2159a937d8ab6a"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.3/otp_win64_29.0.3.zip"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/464473205"
+url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
+install = "source"
 
 [tools.erlang."platforms.windows-x64-baseline"]
-checksum = "sha256:11a7bda6cb602641cb13d319967c72add457e0ea0bc467d3dc2159a937d8ab6a"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.3/otp_win64_29.0.3.zip"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/464473205"
+url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
+install = "source"
 
 [[tools.erlang]]
-version = "29.0.3"
+version = "29.0.4"
 backend = "core:erlang"
 
 [tools.erlang.options]
 precompiled_os = "ubuntu-24.04"
 
 [tools.erlang."platforms.linux-arm64"]
-url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.0.3.tar.gz"
+url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.0.4.tar.gz"
 
 [tools.erlang."platforms.linux-x64"]
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.3.tar.gz"
+url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.4.tar.gz"
 
 [tools.erlang."platforms.linux-x64-baseline"]
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.3.tar.gz"
+url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.4.tar.gz"
 
 [[tools.expert]]
 version = "0.1.7"
@@ -1405,53 +1396,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.226"
+version = "0.1.228"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:6996fedd552225b58abb5a311f6b239346a9890d7996baa5793078ae7f67d983"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427681"
+checksum = "sha256:bdf5e013aeee8808b1034c7d3b6d723af62790d2d557500b0fadf4d2e8221f55"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413790"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:6996fedd552225b58abb5a311f6b239346a9890d7996baa5793078ae7f67d983"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427681"
+checksum = "sha256:bdf5e013aeee8808b1034c7d3b6d723af62790d2d557500b0fadf4d2e8221f55"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413790"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:5a5b604868594c2f166e4a8666916b16c005051e62fc18cf632c7144e5301c2d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427676"
+checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
 
 [tools."github:raine/workmux"."platforms.linux-x64-baseline"]
-checksum = "sha256:5a5b604868594c2f166e4a8666916b16c005051e62fc18cf632c7144e5301c2d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427676"
+checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:5a5b604868594c2f166e4a8666916b16c005051e62fc18cf632c7144e5301c2d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427676"
+checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:5a5b604868594c2f166e4a8666916b16c005051e62fc18cf632c7144e5301c2d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427676"
+checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:ff912e9f8b35a4a74ee1f98990025d4910ba5a77e13cbe0c6ffcb56b4362a561"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427675"
+checksum = "sha256:b927d285fd3404cfbf70bb5dbc697c1e4a4df44ac67d426bc4cbd0ac095b338b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413789"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:fbbf7f44ea760f96c8e306137e686b16429ca604bfd9786daff30fe5e8604112"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427678"
+checksum = "sha256:5e0ab4976ef6c5623a2ec63e55939fc8c3091d39adc63d4d6e153dd24fb15b5d"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413788"
 
 [tools."github:raine/workmux"."platforms.macos-x64-baseline"]
-checksum = "sha256:fbbf7f44ea760f96c8e306137e686b16429ca604bfd9786daff30fe5e8604112"
-url = "https://github.com/raine/workmux/releases/download/v0.1.226/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/489427678"
+checksum = "sha256:5e0ab4976ef6c5623a2ec63e55939fc8c3091d39adc63d4d6e153dd24fb15b5d"
+url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413788"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.7.1"
@@ -2157,7 +2148,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.18.6"
+version = "1.18.7"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
