@@ -36,8 +36,7 @@ tasks:
         - 'mise|mise completion zsh'
         - 'mix|cat "{{.ROOT_DIR}}/scripts/mix-dynamic-completion.zsh"'
         - 'op|op completion zsh'
-        # Bypass aube's shim, which currently launches OpenCode's native .exe with Node.
-        - 'opencode|"$(mise where npm:opencode-ai)/node_modules/opencode-ai/bin/opencode.exe" completion'
+        - 'opencode|opencode completion'
         - 'openspec|openspec completion generate zsh'
         - 'pdf-redact|pdf-redact completion zsh'
         - 'pitchfork|pitchfork completion zsh'
