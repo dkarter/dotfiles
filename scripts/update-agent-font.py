@@ -92,10 +92,12 @@ def svg_glyph(svg: bytes, advance_width: int, units_per_em: int):
     min_x, min_y, max_x, max_y = bounds_pen.bounds
     width = max_x - min_x
     height = max_y - min_y
-    target_size = advance_width
-    scale = target_size / max(width, height)
-    x_offset = (advance_width - width * scale) / 2 - min_x * scale
-    y_offset = (units_per_em - height * scale) / 2 + max_y * scale
+    # Match Nerd Font's 720-unit icon height while keeping short, wide marks legible.
+    scale = max(advance_width * 1.2 / max(width, height), advance_width / height)
+    rendered_width = width * scale
+    x_offset = max(0, (advance_width - rendered_width) / 2) - min_x * scale
+    center_y = units_per_em * 0.36
+    y_offset = center_y + (min_y + max_y) * scale / 2
 
     glyph_pen = TTGlyphPen(None)
     curve_pen = Cu2QuPen(glyph_pen, max_err=1.0, reverse_direction=False)
