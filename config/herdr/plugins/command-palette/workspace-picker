@@ -1,6 +1,15 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-export PATH="$HOME/dotfiles/bin:$HOME/.local/share/mise/shims:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-exec tv herdr-workspaces --layout portrait --no-preview --no-status-bar --no-remote
+# Vellum 0.4.1 writes both its TUI and selection to stdout. Mirror the TUI back
+# to the terminal, then extract the opaque selection after it restores the screen.
+output="$(vellum herdr-workspaces | tee /dev/tty)"
+alternate_screen_end=$'\e[?1049l'
+
+[[ "$output" == *"$alternate_screen_end"* ]] || exit 1
+workspace_id="${output##*"$alternate_screen_end"}"
+[[ -n "$workspace_id" ]] || exit 0
+
+exec "${HERDR_BIN_PATH:-herdr}" workspace focus "$workspace_id"

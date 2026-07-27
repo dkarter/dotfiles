@@ -1,0 +1,34 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Workspaces"
+placeholder = "Switch workspace..."
+
+[source]
+builtin = "herdr-workspaces"
+refresh_ms = 1000
+
+[item]
+value = "$workspace_id"
+template = [
+  [
+    { token = "$label", fg = "$focus_color", bold = true },
+    { token = "$status_icon", fg = "$status_color", searchable = false, align = "right" },
+    " ",
+    { token = "$agent_status", fg = "$status_color", searchable = false, align = "right" },
+  ],
+  [
+    { token = "󰉋 ", fg = "#7dcfff", searchable = false },
+    { token = "$checkout_path", fg = "#a9b1d6" },
+  ],
+]
+
+[theme]
+foreground = "#c0caf5"
+background = "#1a1b26"
+selection_foreground = "#c0caf5"
+selection_background = "#283457"
+border = "#565f89"
+mode_foreground = "#1a1b26"
+insert_mode_background = "#9ece6a"
+normal_mode_background = "#e0af68"
