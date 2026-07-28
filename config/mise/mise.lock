@@ -642,15 +642,21 @@ version = "29.0.4"
 backend = "core:erlang"
 
 [tools.erlang."platforms.linux-arm64-musl"]
-url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
+checksum = "sha256:67426425f0eed0dbd6c8cd3d500de4c47bbf1bbe337be0e2c13fc8f8f3e4997a"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.0.4/otp_src_29.0.4.tar.gz"
+url_api = "https://api.github.com/repos/erlang/otp/releases/assets/491582514"
 install = "source"
 
 [tools.erlang."platforms.linux-x64-musl"]
-url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
+checksum = "sha256:67426425f0eed0dbd6c8cd3d500de4c47bbf1bbe337be0e2c13fc8f8f3e4997a"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.0.4/otp_src_29.0.4.tar.gz"
+url_api = "https://api.github.com/repos/erlang/otp/releases/assets/491582514"
 install = "source"
 
 [tools.erlang."platforms.linux-x64-musl-baseline"]
-url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
+checksum = "sha256:67426425f0eed0dbd6c8cd3d500de4c47bbf1bbe337be0e2c13fc8f8f3e4997a"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.0.4/otp_src_29.0.4.tar.gz"
+url_api = "https://api.github.com/repos/erlang/otp/releases/assets/491582514"
 install = "source"
 
 [tools.erlang."platforms.macos-arm64"]
@@ -668,12 +674,14 @@ url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.0.4/otp-x86_
 url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/491500484"
 
 [tools.erlang."platforms.windows-x64"]
-url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
-install = "source"
+checksum = "sha256:a6702b70c6d8101e1e65729a7a5283f6eb3fd3cceded3dfaf760aa1da887f196"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.0.4/otp_win64_29.0.4.zip"
+url_api = "https://api.github.com/repos/erlang/otp/releases/assets/491604670"
 
 [tools.erlang."platforms.windows-x64-baseline"]
-url = "https://github.com/erlang/otp/archive/OTP-29.0.4.tar.gz"
-install = "source"
+checksum = "sha256:a6702b70c6d8101e1e65729a7a5283f6eb3fd3cceded3dfaf760aa1da887f196"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.0.4/otp_win64_29.0.4.zip"
+url_api = "https://api.github.com/repos/erlang/otp/releases/assets/491604670"
 
 [[tools.erlang]]
 version = "29.0.4"
@@ -692,63 +700,63 @@ url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.4.tar.gz"
 url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.4.tar.gz"
 
 [[tools.expert]]
-version = "0.1.7"
+version = "0.1.8"
 backend = "aqua:expert-lsp/expert"
 
 [tools.expert."platforms.linux-arm64"]
-checksum = "sha256:3653ce5aefba8cc0ea021c03988156530dcaf16d70526f1b4f5f2d4102592417"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_linux_arm64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203584"
+checksum = "sha256:d3df648c7fed17a962878f95444e2fcdf1c64cfa807a2d5221b558f5c85d86af"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_linux_arm64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340828"
 
 [tools.expert."platforms.linux-arm64-musl"]
-checksum = "sha256:3653ce5aefba8cc0ea021c03988156530dcaf16d70526f1b4f5f2d4102592417"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_linux_arm64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203584"
+checksum = "sha256:d3df648c7fed17a962878f95444e2fcdf1c64cfa807a2d5221b558f5c85d86af"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_linux_arm64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340828"
 
 [tools.expert."platforms.linux-x64"]
-checksum = "sha256:dc6cbb6171ae52915e883b4746652638caf0c297a2829212c162ecefd5c909c3"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_linux_amd64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203586"
+checksum = "sha256:caf0ded54e83f318cfe659e2ac3dd1f2d2e71a1c1a3c28ab3290475954fd9aee"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_linux_amd64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340826"
 
 [tools.expert."platforms.linux-x64-baseline"]
-checksum = "sha256:dc6cbb6171ae52915e883b4746652638caf0c297a2829212c162ecefd5c909c3"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_linux_amd64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203586"
+checksum = "sha256:caf0ded54e83f318cfe659e2ac3dd1f2d2e71a1c1a3c28ab3290475954fd9aee"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_linux_amd64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340826"
 
 [tools.expert."platforms.linux-x64-musl"]
-checksum = "sha256:dc6cbb6171ae52915e883b4746652638caf0c297a2829212c162ecefd5c909c3"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_linux_amd64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203586"
+checksum = "sha256:caf0ded54e83f318cfe659e2ac3dd1f2d2e71a1c1a3c28ab3290475954fd9aee"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_linux_amd64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340826"
 
 [tools.expert."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:dc6cbb6171ae52915e883b4746652638caf0c297a2829212c162ecefd5c909c3"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_linux_amd64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203586"
+checksum = "sha256:caf0ded54e83f318cfe659e2ac3dd1f2d2e71a1c1a3c28ab3290475954fd9aee"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_linux_amd64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340826"
 
 [tools.expert."platforms.macos-arm64"]
-checksum = "sha256:f8b8f3a6ba84540812d6347207f4ce9c328df6caa5c486cd06642a05320d02a7"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_darwin_arm64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203587"
+checksum = "sha256:65b574eb64cbf3ccb0f5c1e0d8147e5f67f71f087a7a93c05ebec757659d4d72"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_darwin_arm64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340831"
 
 [tools.expert."platforms.macos-x64"]
-checksum = "sha256:1f6b1400eceb88255b50b95fed5602921be925c790421268aa73b8b80ecff895"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_darwin_amd64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203583"
+checksum = "sha256:289bcb6e0405962ae21fdc625c3b31a3226981e3c801092b4232eec856fe0fd4"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_darwin_amd64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340830"
 
 [tools.expert."platforms.macos-x64-baseline"]
-checksum = "sha256:1f6b1400eceb88255b50b95fed5602921be925c790421268aa73b8b80ecff895"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_darwin_amd64"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203583"
+checksum = "sha256:289bcb6e0405962ae21fdc625c3b31a3226981e3c801092b4232eec856fe0fd4"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_darwin_amd64"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340830"
 
 [tools.expert."platforms.windows-x64"]
-checksum = "sha256:f6aa42b198b855fc9f633aaea3e60435c9950fc0c12b3a8022d3d7216132fd20"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_windows_amd64.exe"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203597"
+checksum = "sha256:6214f1663ab634a76b662ceb9431bf5804821254052cdfa2d950d300e436e8c5"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_windows_amd64.exe"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340844"
 
 [tools.expert."platforms.windows-x64-baseline"]
-checksum = "sha256:f6aa42b198b855fc9f633aaea3e60435c9950fc0c12b3a8022d3d7216132fd20"
-url = "https://github.com/expert-lsp/expert/releases/download/v0.1.7/expert_windows_amd64.exe"
-url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/486203597"
+checksum = "sha256:6214f1663ab634a76b662ceb9431bf5804821254052cdfa2d950d300e436e8c5"
+url = "https://github.com/expert-lsp/expert/releases/download/v0.1.8/expert_windows_amd64.exe"
+url_api = "https://api.github.com/repos/expert-lsp/expert/releases/assets/491340844"
 
 [[tools.fd]]
 version = "10.4.2"
@@ -1305,63 +1313,63 @@ url = "https://github.com/dlvhdr/diffnav/releases/download/v0.12.0/diffnav_Windo
 url_api = "https://api.github.com/repos/dlvhdr/diffnav/releases/assets/488282401"
 
 [[tools."github:joshmedeski/sesh"]]
-version = "2.27.0"
+version = "2.28.0"
 backend = "github:joshmedeski/sesh"
 
 [tools."github:joshmedeski/sesh"."platforms.linux-arm64"]
-checksum = "sha256:b68513f96ed358073cbcf79e1b0cba07215fe9c2c722244b286bc05dac71eeea"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687197"
+checksum = "sha256:30249b47a0f60a2da557ecde76c169d0dbc82161b12aa46f9ed47af27a265dc6"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857146"
 
 [tools."github:joshmedeski/sesh"."platforms.linux-arm64-musl"]
-checksum = "sha256:b68513f96ed358073cbcf79e1b0cba07215fe9c2c722244b286bc05dac71eeea"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687197"
+checksum = "sha256:30249b47a0f60a2da557ecde76c169d0dbc82161b12aa46f9ed47af27a265dc6"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857146"
 
 [tools."github:joshmedeski/sesh"."platforms.linux-x64"]
-checksum = "sha256:199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687223"
+checksum = "sha256:ac4a0b07f0be4cbb13691a197055ac82e00341e77b915d878df8ad2bcc867fda"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857157"
 
 [tools."github:joshmedeski/sesh"."platforms.linux-x64-baseline"]
-checksum = "sha256:199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687223"
+checksum = "sha256:ac4a0b07f0be4cbb13691a197055ac82e00341e77b915d878df8ad2bcc867fda"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857157"
 
 [tools."github:joshmedeski/sesh"."platforms.linux-x64-musl"]
-checksum = "sha256:199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687223"
+checksum = "sha256:ac4a0b07f0be4cbb13691a197055ac82e00341e77b915d878df8ad2bcc867fda"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857157"
 
 [tools."github:joshmedeski/sesh"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687223"
+checksum = "sha256:ac4a0b07f0be4cbb13691a197055ac82e00341e77b915d878df8ad2bcc867fda"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857157"
 
 [tools."github:joshmedeski/sesh"."platforms.macos-arm64"]
-checksum = "sha256:eb3109bf5bda11b819b3d2d3bf2012cba91734a4200ac6f80712930136d45a12"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687220"
+checksum = "sha256:112f0171ff7379c3f1f4317561f796fc6fd77af04320ed952711a38f96f7d30c"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857156"
 
 [tools."github:joshmedeski/sesh"."platforms.macos-x64"]
-checksum = "sha256:beb05f497866ac201662f476a06e7e1fd94235104b079161ab035397a709318a"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687214"
+checksum = "sha256:098a4b817b1d7a183ebb3618850a5b6c1ef9cd5e9439dc032d8601b00b6d2fe5"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857155"
 
 [tools."github:joshmedeski/sesh"."platforms.macos-x64-baseline"]
-checksum = "sha256:beb05f497866ac201662f476a06e7e1fd94235104b079161ab035397a709318a"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687214"
+checksum = "sha256:098a4b817b1d7a183ebb3618850a5b6c1ef9cd5e9439dc032d8601b00b6d2fe5"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857155"
 
 [tools."github:joshmedeski/sesh"."platforms.windows-x64"]
-checksum = "sha256:e67ccc7b1780f2fee857f5997e28437b9da6fae7c5c4668876df5b299d25371f"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687198"
+checksum = "sha256:3a5bbb54935c14d03b5e98c6f81728cff3367eb294423ae831ae12ec94a12982"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857147"
 
 [tools."github:joshmedeski/sesh"."platforms.windows-x64-baseline"]
-checksum = "sha256:e67ccc7b1780f2fee857f5997e28437b9da6fae7c5c4668876df5b299d25371f"
-url = "https://github.com/joshmedeski/sesh/releases/download/v2.27.0/sesh_Windows_x86_64.zip"
-url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/475687198"
+checksum = "sha256:3a5bbb54935c14d03b5e98c6f81728cff3367eb294423ae831ae12ec94a12982"
+url = "https://github.com/joshmedeski/sesh/releases/download/v2.28.0/sesh_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/joshmedeski/sesh/releases/assets/490857147"
 
 [[tools."github:mazznoer/lolcrab"]]
 version = "0.4.1"
@@ -1396,53 +1404,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.228"
+version = "0.1.229"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:bdf5e013aeee8808b1034c7d3b6d723af62790d2d557500b0fadf4d2e8221f55"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413790"
+checksum = "sha256:21a4c1ffee59446e92fb1c2be53858c5bab0f2fca0e9a10e73fdd8d983f3dea7"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605927"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:bdf5e013aeee8808b1034c7d3b6d723af62790d2d557500b0fadf4d2e8221f55"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413790"
+checksum = "sha256:21a4c1ffee59446e92fb1c2be53858c5bab0f2fca0e9a10e73fdd8d983f3dea7"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605927"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
+checksum = "sha256:b81fc29663ab10f9cdd9b623e6a115553dd50268e3a6ae3f4316fa6e3bbdce5c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605930"
 
 [tools."github:raine/workmux"."platforms.linux-x64-baseline"]
-checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
+checksum = "sha256:b81fc29663ab10f9cdd9b623e6a115553dd50268e3a6ae3f4316fa6e3bbdce5c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605930"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
+checksum = "sha256:b81fc29663ab10f9cdd9b623e6a115553dd50268e3a6ae3f4316fa6e3bbdce5c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605930"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:ea92f2b09b6e65afbd2c28b73acd354c6d32a1437b96b91b99e8cfc811b8fa6f"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413786"
+checksum = "sha256:b81fc29663ab10f9cdd9b623e6a115553dd50268e3a6ae3f4316fa6e3bbdce5c"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605930"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:b927d285fd3404cfbf70bb5dbc697c1e4a4df44ac67d426bc4cbd0ac095b338b"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413789"
+checksum = "sha256:a994831e5b6f6ab127aea5d33d2d3fd56a52c18ae49d2386ca8a2683ac2694ec"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605928"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:5e0ab4976ef6c5623a2ec63e55939fc8c3091d39adc63d4d6e153dd24fb15b5d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413788"
+checksum = "sha256:0f3cc7e2b4dd133703086eb1a056bd5a72b6b0281d427480b883603dd511f1cb"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605926"
 
 [tools."github:raine/workmux"."platforms.macos-x64-baseline"]
-checksum = "sha256:5e0ab4976ef6c5623a2ec63e55939fc8c3091d39adc63d4d6e153dd24fb15b5d"
-url = "https://github.com/raine/workmux/releases/download/v0.1.228/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490413788"
+checksum = "sha256:0f3cc7e2b4dd133703086eb1a056bd5a72b6b0281d427480b883603dd511f1cb"
+url = "https://github.com/raine/workmux/releases/download/v0.1.229/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/490605926"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.7.1"
@@ -2148,7 +2156,7 @@ version = "5.4.0"
 backend = "npm:neovim"
 
 [[tools."npm:opencode-ai"]]
-version = "1.18.7"
+version = "1.18.9"
 backend = "npm:opencode-ai"
 
 [tools."npm:opencode-ai".options]
