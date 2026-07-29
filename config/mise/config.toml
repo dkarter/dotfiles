@@ -78,6 +78,7 @@ lima = "latest"                       # linux virtual machines for macOS (used b
 lsd = "latest"                        # ls with icons and colors, like `exa` but with more features
 lua-language-server = "latest"        # Lua Language Server
 node = "24"                           # node javascript runtime
+opencode = "latest"                   # coding agent
 pitchfork = "latest"                  # run multiple commands in parallel, with a nice UI
 python = "3.12"                       # Python programming language
 resvg = "latest"                      # svg rendering library and CLI tool (used by yazi)
@@ -94,11 +95,6 @@ usage = "latest"                      # generates completion scripts for various
 uv = "latest"                         # install python packages
 yazi = "latest"                       # terminal file manager
 zoxide = "latest"                     # a modern version of autojump
-
-[tools."npm:opencode-ai"] # the best AI agent wrapper
-version = "latest"
-# Reviewed postinstall selects and links the matching prebuilt OpenCode binary.
-allow_builds = ["opencode-ai"]
 
 # spec driven development tool
 [tools."npm:@fission-ai/openspec"]
