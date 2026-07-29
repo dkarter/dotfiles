@@ -350,6 +350,10 @@ move_pane_to_new_tab() {
   herdr pane move "$(current_pane_id)" --new-tab --focus >/dev/null
 }
 
+kill_current_pane() {
+  herdr pane close "$(current_pane_id)" >/dev/null
+}
+
 open_current_workspace_repo() {
   local workspace_id workspace_json checkout_path cwd
   workspace_id="$(current_workspace_id)"
