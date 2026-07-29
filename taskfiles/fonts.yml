@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+silent: true
+
 vars:
   FONT_SOURCE_DIR: '{{.ROOT_DIR}}/assets/fonts/AgentMonoNerdFont'
   FONTS:
