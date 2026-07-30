@@ -53,7 +53,7 @@ new_state() {
 test_verified_herdr_handoff() {
   local state_dir target_file output calls sent_text
   state_dir="$(new_state)"
-  target_file="$tmp_root/target space's ü;\$|.md"
+  target_file="$tmp_root/target"$'\t'"space's ü;\$|.md"
   : >"$target_file"
   print -r -- '{"result":{"panes":[{"workspace_id":"w1","tab_id":"w1:t1","pane_id":"w1:p1"},{"workspace_id":"w1","tab_id":"w1:t1","pane_id":"w1:p2"}]}}' >"$state_dir/panes.json"
   write_process "$state_dir" w1:p1 101 zsh
@@ -70,7 +70,8 @@ test_verified_herdr_handoff() {
   assert_contains "$calls" 'pane send-keys w1:p2 Enter'
   assert_not_contains "$calls" 'pane run'
   assert_contains "$sent_text" ':execute '\''tabedit '\'' . fnameescape('
-  assert_contains "$sent_text" 'fnameescape("'
+  assert_contains "$sent_text" "fnameescape(join(map(["
+  assert_not_contains "$sent_text" "$target_file"
   assert_not_contains "$sent_text" 'edit!'
   ((++tests_run))
 }

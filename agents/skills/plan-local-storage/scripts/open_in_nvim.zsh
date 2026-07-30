@@ -297,9 +297,8 @@ open_in_tmux() {
 }
 
 prepare_ack() {
-  vim_file="${target_file//\\/\\\\}"
-  vim_file="${vim_file//\"/\\\"}"
-  vim_file="${vim_file//$'\n'/\\n}"
+  capture_command encode-target-path jq -nr --arg path "$target_file" '$path | explode | join(",")'
+  vim_file_expr="join(map([$REPLY], 'nr2char(v:val)'), '')"
   zmodload zsh/datetime
   token="OPEN_IN_NVIM_${$}_${EPOCHREALTIME//[^0-9]/}_${RANDOM}"
   token_split=$((${#token} / 2))
@@ -314,13 +313,13 @@ build_edit_command() {
   local vim_ack_file="${ACK_FILE//\\/\\\\}"
   vim_ack_file="${vim_ack_file//\"/\\\"}"
   # Keep the full token out of the typed text so only executed Neovim code can acknowledge success.
-  edit_command=":execute 'tabedit ' . fnameescape(\"$vim_file\") | if resolve(expand('%:p')) ==# resolve(\"$vim_file\") | call writefile(['$token_left' . '$token_right'], \"$vim_ack_file\") | endif"
+  edit_command=":execute 'tabedit ' . fnameescape($vim_file_expr) | if resolve(expand('%:p')) ==# resolve($vim_file_expr) | call writefile(['$token_left' . '$token_right'], \"$vim_ack_file\") | endif"
 }
 
 build_launch_command() {
   local vim_ack_file="${ACK_FILE//\\/\\\\}"
   vim_ack_file="${vim_ack_file//\"/\\\"}"
-  local verify_command="if resolve(expand('%:p')) ==# resolve(\"$vim_file\") | call writefile(['$token'], \"$vim_ack_file\") | endif"
+  local verify_command="if resolve(expand('%:p')) ==# resolve($vim_file_expr) | call writefile(['$token'], \"$vim_ack_file\") | endif"
   launch_command="exec nvim -c ${(q)verify_command} -- ${(q)target_file}"
 }
 
