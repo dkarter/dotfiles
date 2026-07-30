@@ -11,6 +11,10 @@ tasks:
     desc: Check for Lua diagnostic warnings and errors
     cmd: lua-language-server --check config/nvim/lua --checklevel=Warning
 
+  nvim-handoff:test:
+    desc: Test safe Neovim file handoff behavior
+    cmd: agents/skills/plan-local-storage/tests/open_in_nvim_test.zsh
+
   shell:lint:
     cmd: shellcheck $({ rg -l --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -g '!*.{*}' '^#!.*bash' .; } | sort -u)
 
@@ -29,6 +33,9 @@ tasks:
   run:
     deps:
       - task: lua:lint
+        silent: true
+
+      - task: nvim-handoff:test
         silent: true
 
       - task: fmt:check
