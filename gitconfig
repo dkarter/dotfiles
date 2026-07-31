@@ -131,6 +131,9 @@
 [tag]
   sort = version:refname
 
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers
+
 [help]
   autocorrect = prompt
 
