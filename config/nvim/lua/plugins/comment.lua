@@ -1,18 +1,17 @@
--- Comment out code easily
+-- Use the correct comment string for embedded languages
 ---@type LazySpec
 return {
-  'numToStr/Comment.nvim',
+  'JoosepAlviste/nvim-ts-context-commentstring',
   event = { 'BufReadPost', 'BufNewFile' },
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      opts = {},
-    },
-  },
-  opts = function(_self, _opts)
-    return {
-      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-    }
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  opts = { enable_autocmd = false },
+  config = function(_self, opts)
+    require('ts_context_commentstring').setup(opts)
+
+    local get_option = vim.filetype.get_option
+    vim.filetype.get_option = function(filetype, option)
+      return option == 'commentstring' and require('ts_context_commentstring').calculate_commentstring()
+        or get_option(filetype, option)
+    end
   end,
 }
