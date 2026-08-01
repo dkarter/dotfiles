@@ -7,7 +7,7 @@ if ! command -v op &>/dev/null; then
   exit 1
 fi
 
-# This will install the Github + signing info from 1password
+# Install the user-specific GitHub identity and signing config from 1Password.
 gitconfig_file="$HOME/.gitconfig.local"
 allowed_signers_file="$HOME/.ssh/allowed_signers"
 gitconfig_tmp=$(mktemp)
@@ -33,5 +33,8 @@ chmod 600 "$allowed_signers_file"
 
 signer_entry="$signing_email $signing_key"
 if ! grep -Fqx -- "$signer_entry" "$allowed_signers_file"; then
+  if [[ -s $allowed_signers_file && $(tail -c 1 "$allowed_signers_file" | wc -l) -eq 0 ]]; then
+    printf '\n' >>"$allowed_signers_file"
+  fi
   printf '%s\n' "$signer_entry" >>"$allowed_signers_file"
 fi

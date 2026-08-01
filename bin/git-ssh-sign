@@ -1,0 +1,250 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+forwarded_socket_override=${GIT_SSH_SIGN_AGENT_SOCK:-}
+forwarded_socket=${forwarded_socket_override:-"$HOME/.ssh/agent.sock"}
+selection_file=${GIT_SSH_SIGN_SELECTION_FILE:-"${XDG_CONFIG_HOME:-$HOME/.config}/git-ssh-sign/fingerprint"}
+forwarded_keys=()
+forwarded_mode=false
+
+if [[ -n ${SSH_CONNECTION:-} || -n $forwarded_socket_override ]]; then
+  forwarded_mode=true
+fi
+
+load_forwarded_keys() {
+  local key
+
+  if [[ $forwarded_mode == false ]]; then
+    return
+  fi
+  if [[ ! -S $forwarded_socket ]]; then
+    return
+  fi
+  while IFS= read -r key; do
+    [[ -n $key ]] && forwarded_keys+=("$key")
+  done < <(SSH_AUTH_SOCK="$forwarded_socket" ssh-add -L 2>/dev/null)
+}
+
+key_fingerprint() {
+  local details fingerprint
+
+  details=$(ssh-keygen -lf /dev/stdin <<<"$1")
+  fingerprint=${details#* }
+  printf '%s\n' "${fingerprint%% *}"
+}
+
+key_comment() {
+  local _type _data comment
+
+  read -r _type _data comment <<<"$1"
+  printf '%s\n' "${comment:-no comment}"
+}
+
+print_forwarded_keys() {
+  local key
+
+  for key in "${forwarded_keys[@]}"; do
+    printf '  %s  %s\n' "$(key_fingerprint "$key")" "$(key_comment "$key")" >&2
+  done
+}
+
+trust_signing_key() {
+  local key="$1"
+  local key_type key_data _
+  local signing_email allowed_signers_file allowed_signers_dir signer_entry
+
+  signing_email=$(git config --get user.email || true)
+  allowed_signers_file=$(git config --path --get gpg.ssh.allowedSignersFile || true)
+  if [[ -z $signing_email || -z $allowed_signers_file ]]; then
+    echo "git-ssh-sign: user.email and gpg.ssh.allowedSignersFile must be configured" >&2
+    exit 1
+  fi
+
+  read -r key_type key_data _ <<<"$key"
+  signer_entry="$signing_email $key_type $key_data"
+  if [[ $allowed_signers_file == */* ]]; then
+    allowed_signers_dir=${allowed_signers_file%/*}
+  else
+    allowed_signers_dir=.
+  fi
+
+  mkdir -p "$allowed_signers_dir"
+  touch "$allowed_signers_file"
+
+  if ! grep -Fqx -- "$signer_entry" "$allowed_signers_file"; then
+    if [[ -s $allowed_signers_file && $(tail -c 1 "$allowed_signers_file" | wc -l) -eq 0 ]]; then
+      printf '\n' >>"$allowed_signers_file"
+    fi
+    printf '%s\n' "$signer_entry" >>"$allowed_signers_file"
+  fi
+}
+
+select_forwarded_key() {
+  local key fingerprint selected_fingerprint selected_key
+  local options=()
+
+  if [[ ! -t 0 || ! -t 1 ]]; then
+    echo "git-ssh-sign: --select requires an interactive terminal" >&2
+    exit 1
+  fi
+  if ! command -v gum >/dev/null 2>&1; then
+    echo "git-ssh-sign: gum is required to select a signing key" >&2
+    exit 1
+  fi
+  if ((${#forwarded_keys[@]} == 0)); then
+    echo "git-ssh-sign: the forwarded agent has no keys" >&2
+    exit 1
+  fi
+
+  for key in "${forwarded_keys[@]}"; do
+    fingerprint=$(key_fingerprint "$key")
+    options+=("$fingerprint  $(key_comment "$key")"$'\t'"$fingerprint")
+  done
+
+  selected_fingerprint=$(gum choose \
+    --header="Select the SSH key used to sign Git commits" \
+    --label-delimiter=$'\t' \
+    "${options[@]}")
+
+  for key in "${forwarded_keys[@]}"; do
+    if [[ $(key_fingerprint "$key") == "$selected_fingerprint" ]]; then
+      selected_key=$key
+      break
+    fi
+  done
+  if [[ -z ${selected_key:-} ]]; then
+    echo "git-ssh-sign: selected key is no longer available from the forwarded agent" >&2
+    exit 1
+  fi
+
+  trust_signing_key "$selected_key"
+
+  mkdir -p "${selection_file%/*}"
+  chmod 700 "${selection_file%/*}"
+  printf '%s\n' "$selected_fingerprint" >"$selection_file"
+  chmod 600 "$selection_file"
+  printf 'Selected %s\n' "$selected_fingerprint"
+}
+
+find_selected_key() {
+  local key fingerprint
+  local selected_fingerprint=${GIT_SSH_SIGN_KEY_FINGERPRINT:-}
+
+  if [[ -z $selected_fingerprint && -r $selection_file ]]; then
+    read -r selected_fingerprint <"$selection_file" || true
+  fi
+
+  if [[ -n $selected_fingerprint ]]; then
+    for key in "${forwarded_keys[@]}"; do
+      fingerprint=$(key_fingerprint "$key")
+      if [[ $fingerprint == "$selected_fingerprint" ]]; then
+        printf '%s\n' "$key"
+        return
+      fi
+    done
+    printf 'git-ssh-sign: selected key %s is not available from the forwarded agent\n' "$selected_fingerprint" >&2
+  else
+    echo "git-ssh-sign: no signing key has been selected for the forwarded agent" >&2
+  fi
+
+  echo "Available keys:" >&2
+  print_forwarded_keys
+  echo "Run 'git-ssh-sign --select' in an interactive session, then retry the commit." >&2
+  exit 1
+}
+
+find_1password_signer() {
+  local candidate
+
+  if [[ -n ${GIT_SSH_SIGN_1PASSWORD_PROGRAM:-} ]]; then
+    printf '%s\n' "$GIT_SSH_SIGN_1PASSWORD_PROGRAM"
+    return
+  fi
+
+  if command -v op-ssh-sign >/dev/null 2>&1; then
+    command -v op-ssh-sign
+    return
+  fi
+
+  case $(uname -s) in
+    Darwin)
+      candidate=/Applications/1Password.app/Contents/MacOS/op-ssh-sign
+      ;;
+    Linux)
+      candidate=/opt/1Password/op-ssh-sign
+      ;;
+    *)
+      candidate=
+      ;;
+  esac
+
+  if [[ -n $candidate && -x $candidate ]]; then
+    printf '%s\n' "$candidate"
+    return
+  fi
+
+  echo "Can't find the 1Password SSH signer" >&2
+  exit 1
+}
+
+if [[ ${1:-} == --select ]]; then
+  load_forwarded_keys
+  select_forwarded_key
+  exit
+fi
+
+original_args=("$@")
+is_signing_request=false
+for ((index = 0; index < ${#original_args[@]} - 1; index++)); do
+  if [[ ${original_args[index]} == -Y && ${original_args[index + 1]} == sign ]]; then
+    is_signing_request=true
+    break
+  fi
+done
+
+if [[ $is_signing_request == false ]]; then
+  exec ssh-keygen "$@"
+fi
+
+load_forwarded_keys
+
+if [[ $forwarded_mode == true && ${#forwarded_keys[@]} -eq 0 ]]; then
+  echo "git-ssh-sign: the SSH session has no available forwarded-agent keys" >&2
+  echo "Check agent forwarding and SSH_AUTH_SOCK, then retry the commit." >&2
+  exit 1
+fi
+
+replacement_key=
+if ((${#forwarded_keys[@]} > 0)); then
+  export SSH_AUTH_SOCK=$forwarded_socket
+  program=$(command -v ssh-keygen)
+  replacement_key=$(mktemp "${TMPDIR:-/tmp}/git-ssh-sign.XXXXXX")
+  trap 'rm -f "$replacement_key"' EXIT
+  find_selected_key >"$replacement_key"
+else
+  unset SSH_AUTH_SOCK
+  program=$(find_1password_signer)
+fi
+
+args=()
+while (($# > 0)); do
+  if [[ $1 == -f ]]; then
+    if (($# < 2)); then
+      echo "Missing argument for -f" >&2
+      exit 1
+    fi
+
+    args+=(-f "${replacement_key:-$2}")
+    shift 2
+  else
+    args+=("$1")
+    shift
+  fi
+done
+
+if [[ -n $replacement_key ]]; then
+  "$program" "${args[@]}"
+else
+  exec "$program" "${args[@]}"
+fi
