@@ -14,7 +14,6 @@ acquire_state_lock() {
   for _ in {1..100}; do
     if mkdir "$lock_dir" 2>/dev/null; then
       print -r -- "$$" >| "$lock_dir/owner"
-      trap release_state_lock EXIT
       return
     fi
 
@@ -30,7 +29,6 @@ acquire_state_lock() {
   # Recover a lock abandoned before its owner file was written.
   if rmdir "$lock_dir" 2>/dev/null && mkdir "$lock_dir" 2>/dev/null; then
     print -r -- "$$" >| "$lock_dir/owner"
-    trap release_state_lock EXIT
     return
   fi
 
@@ -52,6 +50,7 @@ read_focus_state() {
   previous=""
   [[ -f "$state_dir/current" ]] && current="$(<"$state_dir/current")"
   [[ -f "$state_dir/previous" ]] && previous="$(<"$state_dir/previous")"
+  return 0
 }
 
 record_focused_workspace() {
