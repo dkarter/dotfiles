@@ -86,6 +86,12 @@ command = "dotfiles.command-palette.open"
 description = "command palette"
 
 [[keys.command]]
+key = "prefix+shift+l"
+type = "plugin_action"
+command = "dotfiles.last-workspace.toggle"
+description = "toggle last workspace"
+
+[[keys.command]]
 key = "prefix+shift+o"
 type = "popup"
 command = "herdr-open-dev-dir"

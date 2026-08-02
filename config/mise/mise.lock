@@ -323,7 +323,7 @@ version = "1.13.1"
 backend = "cargo:tlrc"
 
 [[tools."cargo:tuicr"]]
-version = "0.19.1"
+version = "0.20.0"
 backend = "cargo:tuicr"
 
 [[tools."cargo:vivid"]]
@@ -808,73 +808,74 @@ url = "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-x86_64
 url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/370661516"
 
 [[tools.fnox]]
-version = "1.31.1"
+version = "1.32.0"
 backend = "github:jdx/fnox"
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:807d74596112622ea1cb0c24100d3bbf42fb5a9f5efce6a2242931d823ab0f63"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427415"
+checksum = "sha256:7b6287489b780ebd474fa51c026a7df43ee9ad684fcbe13ad3a75b3e1d4a276b"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823870"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:2538ac320c37495777174e1d9eaf02af2a1065bcce888652b5c351bca0767cde"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427418"
+checksum = "sha256:2d9336fd2b508880e91933147f7bfcf9269774c81e685f4e8bc9c4f16f8fefa3"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823871"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:f87808cb1b5db2382daf244ced84f342ab01352654df2f50faa1cd1565941102"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427453"
+checksum = "sha256:7d619e0dc30a1c229a58356f04bcae326255d6a19e78c256bd06b239429728df"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823899"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64-baseline"]
-checksum = "sha256:f87808cb1b5db2382daf244ced84f342ab01352654df2f50faa1cd1565941102"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427453"
+checksum = "sha256:7d619e0dc30a1c229a58356f04bcae326255d6a19e78c256bd06b239429728df"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823899"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:32e16ce164736a834ce767908ec2fe4d3f17b77d71a7187b2f0f973c161da518"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427457"
+checksum = "sha256:f47e91a4b70cb4f54deb418605b7015f7509bd578a470df1f2ba531b1df80975"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823900"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:32e16ce164736a834ce767908ec2fe4d3f17b77d71a7187b2f0f973c161da518"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427457"
+checksum = "sha256:f47e91a4b70cb4f54deb418605b7015f7509bd578a470df1f2ba531b1df80975"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823900"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:8426d9a2b7fc3a82d73d1a5fb7831d749d195ac811efb598dfbd96222d52c293"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427417"
+checksum = "sha256:8eac892958b54b01146e103d0aaaf80ca09c4bd77652930a7864da0b7eacd243"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823872"
 provenance = "github-attestations"
+provenance_verified = true
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:e7cbce08f71c9b6d90c68f535fc757a26a673a4a247a31bce66356da971c915e"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427412"
+checksum = "sha256:ec75551b74cfbe62f592aaa7d6d8d29f4bdd8eaeaca33c0aaab262600c7e4ed5"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823869"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.macos-x64-baseline"]
-checksum = "sha256:e7cbce08f71c9b6d90c68f535fc757a26a673a4a247a31bce66356da971c915e"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427412"
+checksum = "sha256:ec75551b74cfbe62f592aaa7d6d8d29f4bdd8eaeaca33c0aaab262600c7e4ed5"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823869"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:49ea9a62555cea64d57daf08658f4074abcd1055546adcd7047a4ec324c0c078"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427448"
+checksum = "sha256:d81bf1305a64f2faa3a1c9316074c3295bcfb7792085d90f8c383b968f67a7be"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823892"
 provenance = "github-attestations"
 
 [tools.fnox."platforms.windows-x64-baseline"]
-checksum = "sha256:49ea9a62555cea64d57daf08658f4074abcd1055546adcd7047a4ec324c0c078"
-url = "https://github.com/jdx/fnox/releases/download/v1.31.1/fnox-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/488427448"
+checksum = "sha256:d81bf1305a64f2faa3a1c9316074c3295bcfb7792085d90f8c383b968f67a7be"
+url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823892"
 provenance = "github-attestations"
 
 [[tools.fx]]
@@ -2167,64 +2168,68 @@ allow_builds = '["opencode-ai"]'
 version = "7.2.0"
 backend = "npm:trash-cli"
 
+[[tools."npm:varlock"]]
+version = "1.16.0"
+backend = "npm:varlock"
+
 [[tools.opencode]]
-version = "1.18.10"
+version = "1.18.11"
 backend = "aqua:anomalyco/opencode"
 
 [tools.opencode."platforms.linux-arm64"]
-checksum = "sha256:41ae3041e91b894e4c0dc06a73a9a2796254bf390ffb99626a43af5e2912d170"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455828"
+checksum = "sha256:03e07aa461ac241dfa8c7ab54ed58c7a0e911c62fc3cb490b83e4fb3424eb73b"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843344"
 
 [tools.opencode."platforms.linux-arm64-musl"]
-checksum = "sha256:cc5f2670b4ba833cccc4b6c532adcffba8731bbe21c697c6b0309c359ac38366"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-linux-arm64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455772"
+checksum = "sha256:ab1a1154bc559dd54abc7b931f9b78715ef37a1fb16b64955ef39e97da741b47"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843354"
 
 [tools.opencode."platforms.linux-x64"]
-checksum = "sha256:6b1113da704253fb4da12b41e4236acecb9f2b62949c945f6eeacaa15111b976"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455789"
+checksum = "sha256:a4dffcc00a5a93256c6bd06aa0c984320528f564db52a1f4becd5c7de9fb59a1"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843338"
 
 [tools.opencode."platforms.linux-x64-baseline"]
-checksum = "sha256:6b1113da704253fb4da12b41e4236acecb9f2b62949c945f6eeacaa15111b976"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455789"
+checksum = "sha256:a4dffcc00a5a93256c6bd06aa0c984320528f564db52a1f4becd5c7de9fb59a1"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843338"
 
 [tools.opencode."platforms.linux-x64-musl"]
-checksum = "sha256:9ba337873804891254d4dad37cb4cc06465006ddeebb1c1f55f2eedb1e775f7e"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455846"
+checksum = "sha256:871a389b495609e013e9af44d4abd0f76421b55fde3907e6edf13e457a15284b"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843388"
 
 [tools.opencode."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:9ba337873804891254d4dad37cb4cc06465006ddeebb1c1f55f2eedb1e775f7e"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455846"
+checksum = "sha256:871a389b495609e013e9af44d4abd0f76421b55fde3907e6edf13e457a15284b"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843388"
 
 [tools.opencode."platforms.macos-arm64"]
-checksum = "sha256:641fe2e65e42db76c2d32db5f85573c3682a8c72f82d01568a922a8feccc4658"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-darwin-arm64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455691"
+checksum = "sha256:188ff6a716bcd40e33ac62f17f4aec9bd760164fa6a2cde66f779a5db4abc7ce"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-darwin-arm64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843327"
 
 [tools.opencode."platforms.macos-x64"]
-checksum = "sha256:b2d9e161b3c6f398ab8a21a129455550c7b79b68579bb542dbc986f10b084ae4"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-darwin-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455685"
+checksum = "sha256:95953ab2aca4322b90690bf34697cc9b47b6a7c72f78e7c469056fb589124d31"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-darwin-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843266"
 
 [tools.opencode."platforms.macos-x64-baseline"]
-checksum = "sha256:b2d9e161b3c6f398ab8a21a129455550c7b79b68579bb542dbc986f10b084ae4"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-darwin-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495455685"
+checksum = "sha256:95953ab2aca4322b90690bf34697cc9b47b6a7c72f78e7c469056fb589124d31"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-darwin-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497843266"
 
 [tools.opencode."platforms.windows-x64"]
-checksum = "sha256:b1d85ce5211bfefbc2b4940a19e1639fc75cb87ff82eb79806ffb84b01dd1482"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-windows-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495459170"
+checksum = "sha256:f3a5ea814aecc692a4e04259d9005283f364225b38456c90f9a47b7a9d83c0e9"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-windows-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497846191"
 
 [tools.opencode."platforms.windows-x64-baseline"]
-checksum = "sha256:b1d85ce5211bfefbc2b4940a19e1639fc75cb87ff82eb79806ffb84b01dd1482"
-url = "https://github.com/anomalyco/opencode/releases/download/v1.18.10/opencode-windows-x64.zip"
-url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/495459170"
+checksum = "sha256:f3a5ea814aecc692a4e04259d9005283f364225b38456c90f9a47b7a9d83c0e9"
+url = "https://github.com/anomalyco/opencode/releases/download/v1.18.11/opencode-windows-x64.zip"
+url_api = "https://api.github.com/repos/anomalyco/opencode/releases/assets/497846191"
 
 [[tools."pipx:httpie"]]
 version = "3.2.4"

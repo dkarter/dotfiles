@@ -1,0 +1,65 @@
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+state_dir="${HERDR_PLUGIN_STATE_DIR:?HERDR_PLUGIN_STATE_DIR is not set}"
+lock_dir="$state_dir/focus.lock"
+
+release_state_lock() {
+  rm -f "$lock_dir/owner"
+  rmdir "$lock_dir" 2>/dev/null || true
+}
+
+acquire_state_lock() {
+  local owner
+
+  mkdir -p "$state_dir"
+  for _ in {1..100}; do
+    if mkdir "$lock_dir" 2>/dev/null; then
+      print -r -- "$$" >| "$lock_dir/owner"
+      return
+    fi
+
+    owner=""
+    [[ -f "$lock_dir/owner" ]] && owner="$(<"$lock_dir/owner")"
+    if [[ "$owner" == <-> ]] && ! kill -0 "$owner" 2>/dev/null; then
+      rm -f "$lock_dir/owner"
+      rmdir "$lock_dir" 2>/dev/null || true
+    fi
+    sleep 0.01
+  done
+
+  # Recover a lock abandoned before its owner file was written.
+  if rmdir "$lock_dir" 2>/dev/null && mkdir "$lock_dir" 2>/dev/null; then
+    print -r -- "$$" >| "$lock_dir/owner"
+    return
+  fi
+
+  return 1
+}
+
+focused_workspace_id() {
+  if [[ -n ${HERDR_WORKSPACE_ID:-} ]]; then
+    REPLY="$HERDR_WORKSPACE_ID"
+  elif [[ -n ${HERDR_PLUGIN_EVENT_JSON:-} ]]; then
+    REPLY="$(jq -r '.data.workspace_id // .workspace_id // empty' <<<"$HERDR_PLUGIN_EVENT_JSON")"
+  else
+    REPLY="$("$herdr_bin" workspace list | jq -r '[.result.workspaces[] | select(.focused) | .workspace_id][0] // empty')"
+  fi
+}
+
+read_focus_state() {
+  current=""
+  previous=""
+  [[ -f "$state_dir/current" ]] && current="$(<"$state_dir/current")"
+  [[ -f "$state_dir/previous" ]] && previous="$(<"$state_dir/previous")"
+  return 0
+}
+
+record_focused_workspace() {
+  local focused="$1"
+
+  [[ -n "$focused" ]] || return 0
+  read_focus_state
+  [[ "$focused" != "$current" ]] || return 0
+
+  [[ -z "$current" ]] || print -r -- "$current" >| "$state_dir/previous"
+  print -r -- "$focused" >| "$state_dir/current"
+}

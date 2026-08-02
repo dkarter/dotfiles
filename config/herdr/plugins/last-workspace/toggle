@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+source "${0:A:h}/state"
+
+acquire_state_lock
+focused_workspace_id
+focused="$REPLY"
+record_focused_workspace "$focused"
+read_focus_state
+target="$previous"
+release_state_lock
+
+[[ -n "$target" && "$target" != "$focused" ]] || exit 0
+"$herdr_bin" workspace focus "$target" >/dev/null 2>&1 || true
