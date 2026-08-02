@@ -138,7 +138,7 @@ lockfile = true
 # Exclude some tools that are frequently updated and have a low risk profile.
 minimum_release_age = "24h"
 minimum_release_age_excludes = [
-  "npm:opencode-ai",
+  "opencode",
   "npm:@openai/codex",
   "claude-code",
   "erlang",
