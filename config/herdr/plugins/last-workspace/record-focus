@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+source "${0:A:h}/state"
+
+acquire_state_lock
+focused_workspace_id
+record_focused_workspace "$REPLY"

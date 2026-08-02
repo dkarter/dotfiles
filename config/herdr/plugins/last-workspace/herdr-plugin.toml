@@ -1,0 +1,19 @@
+id = "dotfiles.last-workspace"
+name = "Last Workspace"
+version = "0.1.0"
+min_herdr_version = "0.7.4"
+description = "Toggles between the current and last focused workspace"
+platforms = ["macos", "linux"]
+
+[[startup]]
+command = ["./record-focus"]
+
+[[actions]]
+id = "toggle"
+title = "Toggle last workspace"
+contexts = ["workspace"]
+command = ["./toggle"]
+
+[[events]]
+on = "workspace.focused"
+command = ["./record-focus"]
