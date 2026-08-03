@@ -9,6 +9,14 @@ tasks:
     aliases: [format:check]
     cmd: dprint check
 
+  ghostty:validate:
+    desc: Validates Ghostty config
+    cmd: ghostty +validate-config
+
+  herdr:validate:
+    desc: Validates Herdr config
+    cmd: herdr config check
+
   lua:lint:
     desc: Check for Lua diagnostic warnings and errors
     cmd: lua-language-server --check config/nvim/lua --checklevel=Warning
@@ -31,22 +39,13 @@ tasks:
   run:
     deps:
       - task: lua:lint
-        silent: true
-
+      - task: ghostty:validate
+      - task: herdr:validate
       - task: fmt:check
-        silent: true
-
       - task: shell:lint
-        silent: true
-
       - task: television:lint
-        silent: true
-
       - task: yaml:lint
-        silent: true
-
       - task: spelling:lint
-        silent: true
     cmds:
       - cmd: figlet -f rectangles done! | lolcrab -g warm
         silent: true
