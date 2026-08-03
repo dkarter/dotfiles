@@ -43,16 +43,10 @@ For plan persistence:
 ## Neovim Handoff Behavior
 
 - Always use `open_in_nvim.zsh`; never use `herdr pane run`, repeat its pane discovery, or send editor input directly.
-- In Herdr, the helper searches only `$HERDR_WORKSPACE_ID` and `$HERDR_TAB_ID`. It fails rather than guessing when more
-  than one Neovim pane exists there.
-- If that tab has no editor pane, the helper splits from the caller pane and launches Neovim with the requested file. In
-  this one case, `pane run` starts a shell command in the new pane; it is never used to send input to a running editor.
+- In Herdr, the helper searches only the caller's workspace and tab. It reuses one editor, creates one when none exists,
+  and fails rather than guessing when multiple editors exist.
+- `pane run` is used only to launch Neovim in a newly created shell pane, never to send input to a running editor.
 - Otherwise, in tmux, it searches only the caller pane's current window.
-- It sends raw Escape, literal Ex text, and Enter, then verifies the target and editor process before reporting `opened`.
+- It sends raw mode-escape keys, literal Ex text, and Enter to an existing editor.
 - It uses a new editor tab so a modified current buffer remains loaded and unchanged.
-- Reusing an editor takes one workspace-scoped pane list, one process lookup per pane in the current tab, three raw-input
-  calls, a local acknowledgment check, and one final process lookup: `N + 5` Herdr calls for `N` panes. Creating an editor
-  takes `N + 4` calls when `$HERDR_PANE_ID` is set, or one extra caller-pane lookup otherwise. Neither path performs
-  version probes, arbitrary sleeps, CLI retries, or unrelated workspace reads.
-- `skipped` is a successful no-op. `error` is a failure and must be reported without retrying or falling back to another
-  workspace, tab, or pane.
+- Report the helper's concise `opened`, `skipped`, or `error` result without retrying in another workspace or tab.

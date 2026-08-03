@@ -5,73 +5,26 @@ state_dir="${FAKE_HERDR_STATE:?}"
 print -r -- "${(j: :)@}" >>"$state_dir/calls"
 
 case "$1 $2" in
-  'pane list')
-    <"$state_dir/panes.json"
-    ;;
+  'pane list') <"$state_dir/panes.json" ;;
   'pane process-info')
-    pane_id="$4"
-    pane_key="${pane_id//:/_}"
-    count_file="$state_dir/process-count-$pane_key"
-    count=0
-    [[ -f $count_file ]] && count="$(<$count_file)"
-    ((++count))
-    print -r -- "$count" >"$count_file"
-
-    response_file="$state_dir/process-$pane_key.json"
-    if ((count > 1)) && [[ -f "$state_dir/process-$pane_key-after.json" ]]; then
-      response_file="$state_dir/process-$pane_key-after.json"
-    fi
-    <"$response_file"
+    pane_key="${4//:/_}"
+    <"$state_dir/process-$pane_key.json"
     ;;
   'pane current')
     print -r -- '{"result":{"pane":{"workspace_id":"w1","tab_id":"w1:t1","pane_id":"w1:p1"}}}'
     ;;
   'pane send-text')
-    if [[ ${FAKE_HERDR_FAIL_COMMAND:-} == send-text ]]; then
+    if [[ ${FAKE_HERDR_FAIL_SEND:-} == 1 ]]; then
       exit 41
     fi
-    command_text="$4"
-    print -r -- "$command_text" >"$state_dir/sent-text"
-    if [[ ${FAKE_HERDR_SKIP_ACK:-} != 1 ]]; then
-      ack_pattern='writefile\(\['\''([^'\'']*)'\'' \. '\''([^'\'']*)'\''\], "([^"]*)"\)'
-      if [[ $command_text =~ $ack_pattern ]]; then
-        print -r -- "$match[1]$match[2]" >"$match[3]"
-      else
-        print -u2 -- 'fake herdr could not parse acknowledgement command'
-        exit 65
-      fi
-    fi
+    print -r -- "$4" >"$state_dir/sent-text"
     ;;
-  'pane send-keys')
-    if [[ ${FAKE_HERDR_FAIL_COMMAND:-} == send-keys ]]; then
-      exit 42
-    fi
-    ;;
+  'pane send-keys') ;;
   'pane split')
     print -r -- '{"result":{"pane":{"workspace_id":"w1","tab_id":"w1:t1","pane_id":"w1:pnew"}}}'
     ;;
   'pane run')
-    command_text="$4"
-    if [[ ${FAKE_HERDR_SKIP_ACK:-} == 1 ]]; then
-      exit 0
-    fi
-    token_pattern='(OPEN_IN_NVIM_[0-9_]+)'
-    ack_pattern='(/[^ ]+/ack)'
-    if [[ $command_text =~ $token_pattern ]]; then
-      launch_token="$match[1]"
-    else
-      exit 65
-    fi
-    if [[ $command_text =~ $ack_pattern ]]; then
-      print -r -- "$launch_token" >"$match[1]"
-    else
-      exit 65
-    fi
+    print -r -- "$4" >"$state_dir/run-command"
     ;;
-  'pane close')
-    ;;
-  *)
-    print -u2 -- "unexpected fake herdr command: ${(j: :)@}"
-    exit 64
-    ;;
+  *) exit 64 ;;
 esac
