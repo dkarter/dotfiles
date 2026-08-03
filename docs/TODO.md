@@ -2,8 +2,6 @@
 
 ## Herdr
 
-- [ ] super-l toggle last workspace like in tmux (mapped to prefix+shift-L)
-  - [ ] doesn't look like herdr has that built in right now - could be a pull request
 - [ ] show prs with draft status and link
 - [ ] refactor @bin/herdr-commands to smaller scripts
 - [ ] ability to change themes easily and in a synchronized way with: ghostty,
@@ -19,6 +17,7 @@
 
 # Done
 
+- [x] super-l toggle last workspace like in tmux (mapped to prefix+shift-L)
 - [x] open dev dir
 - [x] insert file with super-shift-. with a popup
 - [x] it would be cool if there was a way to show the space/worktree title when it's focused

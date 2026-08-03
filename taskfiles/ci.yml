@@ -1,11 +1,21 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+silent: true
+
 tasks:
   fmt:check:
     desc: Checks formatting
     aliases: [format:check]
     cmd: dprint check
+
+  ghostty:validate:
+    desc: Validates Ghostty config
+    cmd: ghostty +validate-config
+
+  herdr:validate:
+    desc: Validates Herdr config
+    cmd: herdr config check
 
   lua:lint:
     desc: Check for Lua diagnostic warnings and errors
@@ -16,11 +26,16 @@ tasks:
     cmd: agents/skills/plan-local-storage/tests/open_in_nvim_test.zsh
 
   shell:lint:
-    cmd: shellcheck $({ rg -l --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -g '!*.{*}' '^#!.*bash' .; } | sort -u)
+    cmd: |
+      # The YAML integration misreads NUL flags as command names.
+      # shellcheck disable=SC2215
+      { rg -l -0 --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -0 -g '!*.{*}' '^#!.*bash' .; } |
+      sort -zu |
+      xargs -0 shellcheck
 
   television:lint:
     desc: Validate Television cable channels against their schema
-    cmd: taplo lint --config .taplo.toml "config/television/cable/**/*.toml"
+    cmd: RUST_LOG=error taplo lint --config .taplo.toml "config/television/cable/**/*.toml"
 
   spelling:lint:
     desc: Check for code spelling errors
@@ -33,25 +48,14 @@ tasks:
   run:
     deps:
       - task: lua:lint
-        silent: true
-
       - task: nvim-handoff:test
-        silent: true
-
+      - task: ghostty:validate
+      - task: herdr:validate
       - task: fmt:check
-        silent: true
-
       - task: shell:lint
-        silent: true
-
       - task: television:lint
-        silent: true
-
       - task: yaml:lint
-        silent: true
-
       - task: spelling:lint
-        silent: true
     cmds:
       - cmd: figlet -f rectangles done! | lolcrab -g warm
         silent: true

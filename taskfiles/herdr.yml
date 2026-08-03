@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+silent: true
+
 vars:
   PLUGINS:
     map:
@@ -8,6 +10,7 @@ vars:
   LOCAL_PLUGINS:
     map:
       dotfiles.command-palette: command-palette
+      dotfiles.last-workspace: last-workspace
       dotfiles.seamless-navigation: seamless-navigation
       dotfiles.workspace-title: workspace-title
 

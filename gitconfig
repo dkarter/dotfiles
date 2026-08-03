@@ -131,6 +131,10 @@
 [tag]
   sort = version:refname
 
+[gpg "ssh"]
+  program = git-ssh-sign
+  allowedSignersFile = ~/.ssh/allowed_signers
+
 [help]
   autocorrect = prompt
 

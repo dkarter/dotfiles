@@ -21,14 +21,14 @@ add_command() {
 
 source "${0:A:h}/herdr-command-definitions"
 
-color_dim=$'\e[90m'
+color_dim=$'\e[2m'
 color_reset=$'\e[0m'
 
 list_commands() {
   for label in "${LABELS[@]}"; do
     local shortcut="${SHORTCUTS[$label]}"
     if [[ -n "$shortcut" ]]; then
-      print -r -- "$label ${color_dim}(${shortcut})${color_reset}"
+      print -r -- "$label ${color_dim}(${shortcut}${color_reset}${color_dim})${color_reset}"
     else
       print -r -- "$label"
     fi
@@ -346,8 +346,24 @@ new_workspace() {
   herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null
 }
 
+reload_herdr_config() {
+  herdr server reload-config >/dev/null
+}
+
+split_pane_right() {
+  herdr pane split --current --direction right --focus >/dev/null
+}
+
+split_pane_below() {
+  herdr pane split --current --direction down --focus >/dev/null
+}
+
 move_pane_to_new_tab() {
   herdr pane move "$(current_pane_id)" --new-tab --focus >/dev/null
+}
+
+kill_current_pane() {
+  herdr pane close "$(current_pane_id)" >/dev/null
 }
 
 open_current_workspace_repo() {

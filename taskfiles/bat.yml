@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: 3
 
+silent: true
+
 tasks:
   sync:
     desc: Rebuilds bat cache to make it aware of themes

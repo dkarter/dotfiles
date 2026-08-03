@@ -32,6 +32,15 @@ lockfile = true
 autohide = true
 mru_spaces = false
 
+[bootstrap.macos.finder]
+show_pathbar = true
+show_status_bar = true
+preferred_view_style = "list"
+
+[bootstrap.macos.trackpad]
+tap_to_click = true
+three_finger_drag = true
+
 [bootstrap.macos.keyboard]
 key_repeat = 2
 initial_key_repeat = 15

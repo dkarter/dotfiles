@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+if (( $# != 2 )); then
+  print -r -- "Usage: nvim-sibling-pane <file> <line>" >&2
+  exit 1
+fi
+
+file=$1
+line=$2
+command="nvim +${(q)line} -- ${(q)file}"
+
+if [[ ${HERDR_ENV:-} == 1 ]]; then
+  herdr_bin="${HERDR_BIN_PATH:-herdr}"
+  pane_json="$("$herdr_bin" pane split --current --direction right --cwd "$PWD" --focus)"
+  pane_id="$(jq -er '.result.pane.pane_id' <<<"$pane_json")"
+  "$herdr_bin" pane run "$pane_id" "$command; exit" >/dev/null
+elif [[ -n ${TMUX:-} ]]; then
+  tmux split-window -h -c "$PWD" "$command"
+else
+  print -r -- "nvim-sibling-pane requires Herdr or tmux" >&2
+  exit 1
+fi

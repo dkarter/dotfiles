@@ -13,8 +13,8 @@ delivery = "terminal"
 show_agent_labels_on_pane_borders = true
 sidebar_collapsed_mode = "hidden"
 hide_tab_bar_when_single_tab = true
-
 agent_panel_sort = "priority"
+
 [ui.sidebar.agents]
 rows = [
   [
@@ -69,6 +69,7 @@ remove_worktree = "prefix+shift+d"
 rename_pane = "prefix+<"
 rename_tab = "prefix+,"
 rename_workspace = "prefix+r"
+split_horizontal = "prefix+minus"
 split_vertical = "prefix+\\"
 switch_tab = "prefix+1..9"
 switch_workspace = "prefix+shift+1..9"
@@ -84,6 +85,12 @@ key = "prefix+shift+p"
 type = "plugin_action"
 command = "dotfiles.command-palette.open"
 description = "command palette"
+
+[[keys.command]]
+key = "prefix+shift+l"
+type = "plugin_action"
+command = "dotfiles.last-workspace.toggle"
+description = "toggle last workspace"
 
 [[keys.command]]
 key = "prefix+shift+o"
