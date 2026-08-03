@@ -26,7 +26,7 @@ tasks:
 
   television:lint:
     desc: Validate Television cable channels against their schema
-    cmd: taplo lint --config .taplo.toml "config/television/cable/**/*.toml"
+    cmd: RUST_LOG=error taplo lint --config .taplo.toml "config/television/cable/**/*.toml"
 
   spelling:lint:
     desc: Check for code spelling errors
