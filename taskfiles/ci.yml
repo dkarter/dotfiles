@@ -22,7 +22,12 @@ tasks:
     cmd: lua-language-server --check config/nvim/lua --checklevel=Warning
 
   shell:lint:
-    cmd: shellcheck $({ rg -l --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -g '!*.{*}' '^#!.*bash' .; } | sort -u)
+    cmd: |
+      # The YAML integration misreads NUL flags as command names.
+      # shellcheck disable=SC2215
+      { rg -l -0 --type-add 'shell:*.{sh,bash}' --type shell '' .; rg -l -0 -g '!*.{*}' '^#!.*bash' .; } |
+      sort -zu |
+      xargs -0 shellcheck
 
   television:lint:
     desc: Validate Television cable channels against their schema
