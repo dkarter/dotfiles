@@ -101,12 +101,12 @@ zoxide = "latest"                     # a modern version of autojump
 # spec driven development tool
 [tools."npm:@fission-ai/openspec"]
 version = "latest"
-aube_args = "--deny-build=@fission-ai/openspec"
+allow_builds = false
 
 # squash-safe stacked PR/MR repair CLI
 [tools."npm:@kitlangton/stack"]
 version = "latest"
-aube_args = "--allow-low-downloads"
+allow_low_downloads = true
 
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
