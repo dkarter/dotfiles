@@ -28,7 +28,7 @@ list_commands() {
   for label in "${LABELS[@]}"; do
     local shortcut="${SHORTCUTS[$label]}"
     if [[ -n "$shortcut" ]]; then
-      print -r -- "$label ${color_dim}(${shortcut})${color_reset}"
+      print -r -- "$label ${color_dim}(${shortcut}${color_reset}${color_dim})${color_reset}"
     else
       print -r -- "$label"
     fi
@@ -344,6 +344,14 @@ new_workspace() {
   [[ -z "$name" ]] && return 0
 
   herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null
+}
+
+split_pane_right() {
+  herdr pane split --current --direction right --focus >/dev/null
+}
+
+split_pane_below() {
+  herdr pane split --current --direction down --focus >/dev/null
 }
 
 move_pane_to_new_tab() {
