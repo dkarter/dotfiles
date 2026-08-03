@@ -31,7 +31,8 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # pinned to SHA because actions/checkout does not have immutable releases enabled
+        # pinned to SHA; actions/checkout has no immutable releases
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Install Runtimes w/ MISE
         uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
