@@ -346,6 +346,10 @@ new_workspace() {
   herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null
 }
 
+reload_herdr_config() {
+  herdr server reload-config >/dev/null
+}
+
 split_pane_right() {
   herdr pane split --current --direction right --focus >/dev/null
 }
