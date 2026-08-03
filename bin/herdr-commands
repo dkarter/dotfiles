@@ -21,7 +21,7 @@ add_command() {
 
 source "${0:A:h}/herdr-command-definitions"
 
-color_dim=$'\e[90m'
+color_dim=$'\e[2m'
 color_reset=$'\e[0m'
 
 list_commands() {
