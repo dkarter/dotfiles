@@ -553,8 +553,86 @@ new_agent_with_prompt_without_ticket() {
   new_agent_with_prompt false
 }
 
+worktree_removal_blocker() {
+  local checkout_path="$1"
+  local git_dir git_status
+
+  git_dir="$(git -C "$checkout_path" rev-parse --path-format=absolute --git-dir 2>/dev/null)" || {
+    print -r -- "Could not inspect worktree metadata at $checkout_path"
+    return 1
+  }
+
+  if [[ -f "$git_dir/locked" ]]; then
+    print -r -- "Worktree is locked: $checkout_path"
+    return 1
+  fi
+
+  if ! git_status="$(git -C "$checkout_path" status --porcelain --untracked-files=normal 2>&1)"; then
+    print -r -- "$git_status"
+    return 1
+  fi
+
+  if [[ -n "$git_status" ]]; then
+    print -r -- "Worktree has uncommitted or untracked files: $checkout_path"
+    return 1
+  fi
+
+  return 0
+}
+
+trash_worktree() {
+  local workspace_id="$1"
+  local checkout_path="$2"
+  local force="${3:-false}"
+  local blocker git_dir git_common_dir git_worktree_root metadata_worktree_path
+  local parent_dir checkout_name trash_root trash_path output
+
+  if [[ "$force" != "true" ]] && ! blocker="$(worktree_removal_blocker "$checkout_path")"; then
+    print -r -- "$blocker" >&2
+    return 1
+  fi
+
+  git_dir="$(git -C "$checkout_path" rev-parse --path-format=absolute --git-dir)"
+  git_common_dir="$(git -C "$checkout_path" rev-parse --path-format=absolute --git-common-dir)"
+  git_worktree_root="$(git -C "$checkout_path" rev-parse --path-format=absolute --show-toplevel)"
+
+  if [[ "${git_dir:h}" != "$git_common_dir/worktrees" ]]; then
+    print -r -- "Refusing to remove unexpected worktree metadata path: $git_dir" >&2
+    return 1
+  fi
+
+  metadata_worktree_path="$(<"$git_dir/gitdir")"
+  if [[ "$metadata_worktree_path" != "$git_worktree_root/.git" ]]; then
+    print -r -- "Worktree metadata does not point to $checkout_path: $metadata_worktree_path" >&2
+    return 1
+  fi
+
+  parent_dir="${checkout_path:h}"
+  checkout_name="${checkout_path:t}"
+  trash_root="$(mktemp -d "$parent_dir/.herdr-trash-$checkout_name.XXXXXX")"
+  trash_path="$trash_root/$checkout_name"
+
+  if ! command mv -- "$checkout_path" "$trash_path"; then
+    command rmdir -- "$trash_root" 2>/dev/null || true
+    return 1
+  fi
+
+  if ! output="$(herdr workspace close "$workspace_id" 2>&1)"; then
+    if [[ -e "$checkout_path" ]] || ! command mv -- "$trash_path" "$checkout_path"; then
+      print -r -- "Workspace close failed; worktree retained at $trash_path" >&2
+    else
+      command rmdir -- "$trash_root" 2>/dev/null || true
+    fi
+    print -r -- "$output" >&2
+    return 1
+  fi
+
+  /bin/rm -rf -- "$git_dir"
+  nohup /bin/rm -rf -- "$trash_root" </dev/null >/dev/null 2>&1 &!
+}
+
 delete_current_worktree() {
-  local workspace_id workspace_json label checkout_path is_linked remove_output
+  local workspace_id workspace_json label checkout_path is_linked blocker remove_output force
   workspace_id="$(current_workspace_id)"
   workspace_json="$(herdr workspace get "$workspace_id")"
   label="$(jq -er '.result.workspace.label // .result.workspace.workspace_id' <<<"$workspace_json")"
@@ -570,14 +648,20 @@ delete_current_worktree() {
     return 0
   fi
 
-  if remove_output="$(herdr worktree remove --workspace "$workspace_id" --json 2>&1)"; then
-    return 0
+  force=false
+  if ! blocker="$(worktree_removal_blocker "$checkout_path")"; then
+    mise x -- gum style --foreground="red" "$blocker"
+
+    if ! mise x -- gum confirm "Git refused safe removal. Force delete dirty worktree?"; then
+      return 0
+    fi
+
+    force=true
   fi
 
-  mise x -- gum style --foreground="red" "$remove_output"
-
-  if mise x -- gum confirm "Git refused safe removal. Force delete dirty worktree?"; then
-    herdr worktree remove --workspace "$workspace_id" --force --json >/dev/null
+  if ! remove_output="$(trash_worktree "$workspace_id" "$checkout_path" "$force" 2>&1)"; then
+    mise x -- gum style --foreground="red" "$remove_output"
+    return 1
   fi
 }
 
