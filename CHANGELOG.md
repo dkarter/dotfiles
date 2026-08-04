@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.2.0](https://github.com/dkarter/dotfiles/compare/v32.1.0...v32.2.0) (2026-08-04)
+
+
+### Features
+
+* add varlock globally ([b31ce26](https://github.com/dkarter/dotfiles/commit/b31ce26cf6e133a828aa536b7052d91e531f9098))
+* **fonts:** add agent-patched nerd font ([7bd1759](https://github.com/dkarter/dotfiles/commit/7bd175917313d83863cc938f571c4935c20fb656))
+* **fonts:** color Claude icon ([382f533](https://github.com/dkarter/dotfiles/commit/382f5338b7ca48d4f2871420ca37f431ace5c5cf))
+* **git,ssh:** support signing commits over ssh sessions ([c71d814](https://github.com/dkarter/dotfiles/commit/c71d814845bc785d16cb3cda015ea4608f9edcd7))
+* **herdr:** add GitHub repo checkout ([3a2eceb](https://github.com/dkarter/dotfiles/commit/3a2eceb0eadca512572e56c6acabfd82657ca275))
+* **herdr:** add kill pane to command palette ([c1b2a32](https://github.com/dkarter/dotfiles/commit/c1b2a32c3d7c260304495dda1d31591c0e1f8dde))
+* **herdr:** add pane splitting commands to command palette ([6354279](https://github.com/dkarter/dotfiles/commit/6354279293f4615d86646cc195cbae5ab950cd2f))
+* **herdr:** add reload config to palette ([b60c9ca](https://github.com/dkarter/dotfiles/commit/b60c9caf9f41ab7ad44613b3cf5b1313f7f88234))
+* **herdr:** open workspace repo from palette ([81e8191](https://github.com/dkarter/dotfiles/commit/81e8191bff0eb02572a0095e7a410cbb268e4811))
+* **herdr:** toggle last workspace ([0fdd8d1](https://github.com/dkarter/dotfiles/commit/0fdd8d1b5d6e127a142e4fe70b413aaffdf0eb53))
+* **mise:** add more macos defaults ([c2dd60b](https://github.com/dkarter/dotfiles/commit/c2dd60ba8b556c1f8d891f1e35035aefed75f609))
+* **raycast:** open pull requests in Linear Review ([1cee0b6](https://github.com/dkarter/dotfiles/commit/1cee0b6714714841699a344ecfdb0f41493c838e))
+* **skills:** generate skills from CLIs ([c0ff710](https://github.com/dkarter/dotfiles/commit/c0ff710d49160463c485b5fd84d48879683fb63d))
+* **task:** add validations for ghostty + herdr config ([65ed881](https://github.com/dkarter/dotfiles/commit/65ed881d88c0814f8bda1ed9935c2301d50ba926))
+* **television:** validate channel configs ([f11a59d](https://github.com/dkarter/dotfiles/commit/f11a59d3b92c596653b8afab3c931ac4ed9aa41b))
+* **zsh:** open Elixir editor in sibling pane ([dd94b5f](https://github.com/dkarter/dotfiles/commit/dd94b5f59d95ece4600ca7d111ed83e4089c35c2))
+
+
+### Bug Fixes
+
+* **ci:** reduce taplo lint noise ([68e95b9](https://github.com/dkarter/dotfiles/commit/68e95b931d05b88334f08e27a700d814acb7f6d8))
+* **ci:** safely pass shell lint files ([c98380b](https://github.com/dkarter/dotfiles/commit/c98380b94c01788467d25b699ecc296930771856))
+* **completions:** bypass broken opencode shim ([bfec553](https://github.com/dkarter/dotfiles/commit/bfec5532a78cf61d603d92103d1adf7456889956))
+* **completions:** use managed opencode executable ([9f2649e](https://github.com/dkarter/dotfiles/commit/9f2649e368b00d4352b1288bb06388487f5c32ee))
+* **fonts:** align agent glyphs ([cf8af96](https://github.com/dkarter/dotfiles/commit/cf8af9631049eaefef304920614daa5971c7034f))
+* **git:** configure SSH signature verification ([1881520](https://github.com/dkarter/dotfiles/commit/1881520a218e6de0d25c7aa334371684ac0f80c0))
+* **git:** ignore claude's junk ([322338f](https://github.com/dkarter/dotfiles/commit/322338f902990ef9459bb10586d90bfbd9410104))
+* **herdr:** add open repo fallback to git root ([38d84bf](https://github.com/dkarter/dotfiles/commit/38d84bf493399ee631a1ee00c464855c04964e41))
+* **herdr:** improve palette colors ([951abe5](https://github.com/dkarter/dotfiles/commit/951abe5b0db768c433e58a4a102dd8fd5ff20bd0))
+* **herdr:** repair last workspace state tracking ([ec0448a](https://github.com/dkarter/dotfiles/commit/ec0448a45df1a699aecac95b6214a155ac0b9a87))
+* **mise,zsh:** starship prompt + other tools not working on untrusted ([454535d](https://github.com/dkarter/dotfiles/commit/454535df63a549c19630afcf86484713eafcdfd1))
+* **mise:** allow opencode postinstall ([8968d61](https://github.com/dkarter/dotfiles/commit/8968d616a49e09d8e4ef7f17b32d61d667c3d26e))
+* **mise:** migrate embedded aube options ([b65c16c](https://github.com/dkarter/dotfiles/commit/b65c16ce4e738e8157941628194f51549bf6ec7c))
+* **mise:** use correct tool name for opencode min release age ([a9d262d](https://github.com/dkarter/dotfiles/commit/a9d262d3d86c64957e9176d9f7181104ddbda614))
+* **nvim:** keep treesitter parsers updated ([85439cd](https://github.com/dkarter/dotfiles/commit/85439cde0ea7fec031301d1a79f2c603b5319a49))
+* **nvim:** navi didn't lazy load on commands ([f9080e5](https://github.com/dkarter/dotfiles/commit/f9080e5bbecb9faa944906deb1bfe0bec1b02088))
+* **opencode:** mise shim stopped working ([317b67e](https://github.com/dkarter/dotfiles/commit/317b67eb7599774a9ad86b1d0b7bd02a4faf7eee))
+* **ssh:** add support for forward agent github access ([f78d607](https://github.com/dkarter/dotfiles/commit/f78d6071c9e2abeb31dec0b18897ed81b9d256be))
+* **task:** don't sync skills twice on task sync ([14d29b8](https://github.com/dkarter/dotfiles/commit/14d29b85d45ccf3fde9a2f3b3faeaeda85aa129f))
+* **task:** make all tasks silent ([2c30e80](https://github.com/dkarter/dotfiles/commit/2c30e803babf6e020bcb793a37eedf74a0675f92))
+* **television:** correct channel settings ([a4d285a](https://github.com/dkarter/dotfiles/commit/a4d285a74bb8f6a29f266b6721a01bd3060194d0))
+* **zsh:** pin opencode to mise shim ([a5b757e](https://github.com/dkarter/dotfiles/commit/a5b757e448d5e6d82af1733bfc3afc372fd83ffc))
+* **zsh:** remove opencode workaround ([3e6a639](https://github.com/dkarter/dotfiles/commit/3e6a639c57c49ed7890a1515db19f1319ba86e86))
+
 ## [32.1.0](https://github.com/dkarter/dotfiles/compare/v32.0.1...v32.1.0) (2026-07-24)
 
 
