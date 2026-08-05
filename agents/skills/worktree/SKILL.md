@@ -89,14 +89,13 @@ Load the `/herdr` skill and inspect the installed CLI before dispatching. For
 each task:
 
 1. Record the current branch as the base branch.
-2. Run `herdr worktree create --cwd "$PWD" --branch <worktree-name> --base
-   <base-branch> --no-focus --json`.
-3. Record the base for `/merge` with `git config
-   branch.<worktree-name>.herdr-base <base-branch>`.
-4. Read the workspace ID from the JSON response.
-5. Follow `/herdr` to start the requested agent, submit the prompt file, and
+2. Run `hwt create --cwd "$PWD" --branch <worktree-name> --base <base-branch>
+   --json`. This applies global and repository `.herdr-worktree.yaml` rules and
+   records the merge base.
+3. Read the workspace and root pane IDs from the JSON response.
+4. Follow `/herdr` to start the requested agent, submit the prompt file, and
    confirm it reached `working`. Default to the current pane's agent.
-6. Keep a mapping of worktree name to the returned workspace and pane IDs.
+5. Keep a mapping of worktree name to the returned workspace and pane IDs.
 
 Create all worktrees before waiting for agents so independent tasks launch in
 parallel. Use `--no-focus` throughout.

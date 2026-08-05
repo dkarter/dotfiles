@@ -123,13 +123,6 @@ repo_root_for_cwd() {
   git -C "$cwd" rev-parse --show-toplevel 2>/dev/null || true
 }
 
-workmux_config_for_repo() {
-  local repo_root="$1"
-  local config_file="$repo_root/.workmux.yaml"
-
-  [[ -f "$config_file" ]] && print -r -- "$config_file"
-}
-
 repo_config_for_repo() {
   local repo_root="$1"
   local config_file
@@ -157,114 +150,10 @@ repo_config_value() {
   fi
 }
 
-repo_config_array() {
-  local repo_root="$1"
-  local key_path="$2"
-  local config_file
-  config_file="$(repo_config_for_repo "$repo_root")"
-
-  if [[ -n "$config_file" ]]; then
-    ruby -ryaml -e '
-      cfg = YAML.load_file(ARGV[0]) || {}
-      value = ARGV[1].split(".").reduce(cfg) { |memo, key| memo.respond_to?(:[]) ? memo[key] : nil }
-      Array(value).each { |item| puts item unless item == "<global>" }
-    ' "$config_file" "$key_path" 2>/dev/null || true
-  fi
-}
-
 workmux_agent_command() {
   local repo_root="$1"
 
   repo_config_value "$repo_root" agent
-}
-
-workmux_post_create_commands() {
-  local repo_root="$1"
-  local global_config project_config
-
-  global_config="$HOME/.config/workmux/config.yaml"
-  project_config="$(workmux_config_for_repo "$repo_root")"
-
-  ruby -ryaml -e '
-    global = File.file?(ARGV[0]) ? YAML.load_file(ARGV[0]) || {} : {}
-    project = File.file?(ARGV[1]) ? YAML.load_file(ARGV[1]) || {} : {}
-    global_hooks = Array(global["post_create"])
-    hooks = project.key?("post_create") ? Array(project["post_create"]) : global_hooks
-
-    hooks.each do |hook|
-      hook == "<global>" ? global_hooks.each { |global_hook| puts global_hook } : puts(hook)
-    end
-  ' "$global_config" "$project_config" 2>/dev/null || true
-}
-
-configured_worktree_dir() {
-  local repo_root="$1"
-
-  repo_config_value "$repo_root" worktree_dir
-}
-
-worktree_slug() {
-  local repo_root="$1"
-  local branch="$2"
-  local naming name
-  naming="$(repo_config_value "$repo_root" worktree_naming)"
-
-  if [[ "$naming" == "basename" ]]; then
-    name="${branch:t}"
-  else
-    name="$branch"
-  fi
-
-  name="${name//\//-}"
-  name="${name//[^[:alnum:]._-]/-}"
-  print -r -- "$name"
-}
-
-configured_worktree_path() {
-  local repo_root="$1"
-  local branch="$2"
-  local dir prefix slug
-  dir="$(configured_worktree_dir "$repo_root")"
-
-  [[ -z "$dir" ]] && return 0
-
-  prefix="$(repo_config_value "$repo_root" worktree_prefix)"
-  slug="$(worktree_slug "$repo_root" "$branch")"
-  dir="${dir/#\~/$HOME}"
-
-  if [[ "$dir" != /* ]]; then
-    dir="$repo_root/$dir"
-  fi
-
-  print -r -- "${dir:A}/${prefix}${slug}"
-}
-
-copy_configured_files() {
-  local repo_root="$1"
-  local checkout_path="$2"
-  local item source dest dest_parent
-
-  while IFS= read -r item; do
-    [[ -z "$item" ]] && continue
-
-    source="$repo_root/$item"
-    dest="$checkout_path/$item"
-    dest_parent="${dest:h}"
-
-    if [[ ! -e "$source" ]]; then
-      continue
-    fi
-
-    mise x -- gum style --foreground="240" "Copying $item" >&2
-    mkdir -p "$dest_parent"
-
-    if [[ -d "$source" ]]; then
-      mkdir -p "$dest"
-      cp -a "$source/." "$dest"
-    else
-      cp -a "$source" "$dest"
-    fi
-  done < <(repo_config_array "$repo_root" files.copy)
 }
 
 select_base_branch() {
@@ -315,23 +204,12 @@ create_worktree() {
   local repo_root="$1"
   local branch="$2"
   local base_branch="$3"
-  local source_checkout configured_path create_args create_json checkout_path
+  local create_args create_json
 
   branch="${branch//[[:space:]]/-}"
 
-  source_checkout="$(herdr worktree list --cwd "$repo_root" --json | jq -er '.result.source.source_checkout_path')"
-  configured_path="$(configured_worktree_path "$repo_root" "$branch")"
-  create_args=(worktree create --cwd "$source_checkout" --branch "$branch" --base "$base_branch" --focus --json)
-
-  if [[ -n "$configured_path" ]]; then
-    create_args+=(--path "$configured_path")
-  fi
-
-  create_json="$(herdr "${create_args[@]}")"
-  checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
-
-  copy_configured_files "$repo_root" "$checkout_path"
-  run_post_create_hooks "$repo_root" "$checkout_path"
+  create_args=(create --cwd "$repo_root" --branch "$branch" --base "$base_branch" --focus --json)
+  create_json="$(hwt "${create_args[@]}")"
 
   print -r -- "$create_json"
 }
@@ -491,18 +369,6 @@ checkout_worktree() {
   create_worktree "$repo_root" "$branch" "$base_ref" >/dev/null
 }
 
-run_post_create_hooks() {
-  local repo_root="$1"
-  local checkout_path="$2"
-  local hook
-
-  while IFS= read -r hook; do
-    [[ -z "$hook" ]] && continue
-    mise x -- gum style --foreground="240" "Running post-create: $hook" >&2
-    (cd "$checkout_path" && zsh -lc "$hook") >&2
-  done < <(workmux_post_create_commands "$repo_root")
-}
-
 new_agent_with_prompt() {
   local allow_ticket="${1:-true}"
   local cwd repo_root branch base_branch temp_prompt_file prompt_file prompt_text create_json checkout_path root_pane_id new_workspace_id agent_command
@@ -532,9 +398,9 @@ new_agent_with_prompt() {
     fi
 
     create_json="$(create_worktree "$repo_root" "$branch" "$base_branch")"
-    checkout_path="$(jq -er '.result.worktree.path' <<<"$create_json")"
-    root_pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$create_json")"
-    new_workspace_id="$(jq -er '.result.workspace.workspace_id' <<<"$create_json")"
+    checkout_path="$(jq -er '.path' <<<"$create_json")"
+    root_pane_id="$(jq -er '.pane_id' <<<"$create_json")"
+    new_workspace_id="$(jq -er '.workspace_id' <<<"$create_json")"
 
     cp "$temp_prompt_file" "$checkout_path/.herdr-agent-prompt.md"
     prompt_file="$checkout_path/.herdr-agent-prompt.md"
@@ -553,86 +419,8 @@ new_agent_with_prompt_without_ticket() {
   new_agent_with_prompt false
 }
 
-worktree_removal_blocker() {
-  local checkout_path="$1"
-  local git_dir git_status
-
-  git_dir="$(git -C "$checkout_path" rev-parse --path-format=absolute --git-dir 2>/dev/null)" || {
-    print -r -- "Could not inspect worktree metadata at $checkout_path"
-    return 1
-  }
-
-  if [[ -f "$git_dir/locked" ]]; then
-    print -r -- "Worktree is locked: $checkout_path"
-    return 1
-  fi
-
-  if ! git_status="$(git -C "$checkout_path" status --porcelain --untracked-files=normal 2>&1)"; then
-    print -r -- "$git_status"
-    return 1
-  fi
-
-  if [[ -n "$git_status" ]]; then
-    print -r -- "Worktree has uncommitted or untracked files: $checkout_path"
-    return 1
-  fi
-
-  return 0
-}
-
-trash_worktree() {
-  local workspace_id="$1"
-  local checkout_path="$2"
-  local force="${3:-false}"
-  local blocker git_dir git_common_dir git_worktree_root metadata_worktree_path
-  local parent_dir checkout_name trash_root trash_path output
-
-  if [[ "$force" != "true" ]] && ! blocker="$(worktree_removal_blocker "$checkout_path")"; then
-    print -r -- "$blocker" >&2
-    return 1
-  fi
-
-  git_dir="$(git -C "$checkout_path" rev-parse --path-format=absolute --git-dir)"
-  git_common_dir="$(git -C "$checkout_path" rev-parse --path-format=absolute --git-common-dir)"
-  git_worktree_root="$(git -C "$checkout_path" rev-parse --path-format=absolute --show-toplevel)"
-
-  if [[ "${git_dir:h}" != "$git_common_dir/worktrees" ]]; then
-    print -r -- "Refusing to remove unexpected worktree metadata path: $git_dir" >&2
-    return 1
-  fi
-
-  metadata_worktree_path="$(<"$git_dir/gitdir")"
-  if [[ "$metadata_worktree_path" != "$git_worktree_root/.git" ]]; then
-    print -r -- "Worktree metadata does not point to $checkout_path: $metadata_worktree_path" >&2
-    return 1
-  fi
-
-  parent_dir="${checkout_path:h}"
-  checkout_name="${checkout_path:t}"
-  trash_root="$(mktemp -d "$parent_dir/.herdr-trash-$checkout_name.XXXXXX")"
-  trash_path="$trash_root/$checkout_name"
-
-  if ! command mv -- "$checkout_path" "$trash_path"; then
-    command rmdir -- "$trash_root" 2>/dev/null || true
-    return 1
-  fi
-
-  if ! output="$(herdr workspace close "$workspace_id" 2>&1)"; then
-    if [[ -e "$checkout_path" ]] || ! command mv -- "$trash_path" "$checkout_path"; then
-      print -r -- "Workspace close failed; worktree retained at $trash_path" >&2
-    else
-      command rmdir -- "$trash_root" 2>/dev/null || true
-    fi
-    print -r -- "$output" >&2
-    return 1
-  fi
-
-  /bin/rm -rf -- "$git_dir"
-  nohup /bin/rm -rf -- "$trash_root" </dev/null >/dev/null 2>&1 &!
-}
-
 delete_current_worktree() {
-  local workspace_id workspace_json label checkout_path is_linked blocker remove_output force
+  local workspace_id workspace_json label checkout_path is_linked remove_output
   workspace_id="$(current_workspace_id)"
   workspace_json="$(herdr workspace get "$workspace_id")"
   label="$(jq -er '.result.workspace.label // .result.workspace.workspace_id' <<<"$workspace_json")"
@@ -648,20 +436,12 @@ delete_current_worktree() {
     return 0
   fi
 
-  force=false
-  if ! blocker="$(worktree_removal_blocker "$checkout_path")"; then
-    mise x -- gum style --foreground="red" "$blocker"
-
+  if ! remove_output="$(hwt remove --workspace "$workspace_id" --json 2>&1)"; then
+    mise x -- gum style --foreground="red" "$remove_output"
     if ! mise x -- gum confirm "Git refused safe removal. Force delete dirty worktree?"; then
       return 0
     fi
-
-    force=true
-  fi
-
-  if ! remove_output="$(trash_worktree "$workspace_id" "$checkout_path" "$force" 2>&1)"; then
-    mise x -- gum style --foreground="red" "$remove_output"
-    return 1
+    hwt remove --workspace "$workspace_id" --force --json >/dev/null
   fi
 }
 

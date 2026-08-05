@@ -12,7 +12,7 @@ allowed-tools: Read, Bash, Glob, Grep
 Check the arguments for flags:
 
 - `--keep`, `-k` keeps the environment after merging. In Herdr this is skill
-  behavior; do not pass it to `herdr worktree remove`.
+  behavior; do not pass it to `hwt remove`.
 - `--no-verify`, `-n` is supported only by the workmux backend. Do not invent a
   Herdr equivalent or pass it to a Herdr command.
 
@@ -75,7 +75,7 @@ If conflicts occur:
 
 Choose the owner before cleanup:
 
-1. If `HERDR_ENV=1`, never run workmux. Capture `herdr worktree list --cwd
+1. If `HERDR_ENV=1`, never run workmux. Capture `hwt list --cwd
    "$PWD" --json` once and require it to identify the current workspace as a
    linked worktree whose path differs from `source_checkout_path`. Stop if it
    does not.
@@ -99,7 +99,7 @@ branch, and exit:
 ```bash
 herdr pane split <source-pane-id> --direction down --cwd <source-checkout> --no-focus
 herdr pane run <helper-pane-id> \
-  "herdr worktree remove --workspace <worktree-workspace-id> --json && git branch -d <branch>; exit"
+  "hwt remove --workspace <worktree-workspace-id> --json && git branch -d <branch>; exit"
 ```
 
 Parse both pane IDs from Herdr JSON responses. Do not target the focused pane or

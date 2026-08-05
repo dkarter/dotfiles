@@ -16,8 +16,8 @@ Choose the backend before creating or opening anything:
 
 1. If `HERDR_ENV=1`, never run workmux. It is tmux-specific and is not compatible
    with Herdr, even when `$TMUX` is also set.
-2. For a generic worktree request in Herdr, use native `herdr worktree` and
-   `herdr pane` commands.
+2. For a generic worktree request in Herdr, use `hwt` for configured worktree
+   creation/removal and native `herdr pane` commands for pane control.
 3. If the user explicitly requests workmux while in Herdr, explain the
    incompatibility and ask whether to use the native Herdr equivalent. Do not
    silently translate lifecycle or flag semantics.
@@ -33,17 +33,17 @@ groups. Use returned workspace and pane IDs; never derive them.
 
 ```bash
 # Create or open an isolated worktree workspace without stealing focus
-herdr worktree create --cwd "$PWD" --branch <branch> --base <base> --no-focus --json
+hwt create --cwd "$PWD" --branch <branch> --base <base> --json
 herdr worktree open --cwd "$PWD" --branch <branch> --no-focus --json
 
 # Remove a Herdr-owned worktree
-herdr worktree remove --workspace <workspace-id> --json
+hwt remove --workspace <workspace-id> --json
 ```
 
-After `herdr worktree create`, read the workspace ID from its JSON response,
-record the merge base with `git config branch.<branch>.herdr-base <base>`, then
-follow `/herdr` for pane startup, control, status, and output. Track its returned
-workspace and pane IDs as the Herdr equivalents of a workmux handle.
+After `hwt create`, read the workspace and root pane IDs from its JSON response,
+then follow `/herdr` for pane startup, control, status, and output. `hwt` applies
+the global and repository worktree rules and records the merge base. Track its
+returned IDs as the Herdr equivalents of a workmux handle.
 
 **If the user asks you to create worktrees or dispatch tasks (e.g.,
 "/workmux add ..."), you are a dispatcher.** Write prompt files and run
@@ -249,8 +249,7 @@ When `HERDR_ENV=1`, create the worktree directly from the target checkout
 without looking for a tmux session or running workmux:
 
 ```bash
-herdr worktree create --cwd <project-path> --branch <branch> --base <base> --no-focus --json
-git -C <project-path> config branch.<branch>.herdr-base <base>
+hwt create --cwd <project-path> --branch <branch> --base <base> --json
 ```
 
 Otherwise, `workmux add` creates worktrees in the current git repo and adds the

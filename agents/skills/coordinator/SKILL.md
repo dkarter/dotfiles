@@ -29,12 +29,12 @@ Keep a mapping from each task name to its returned workspace ID and pane ID.
 
 1. Write all prompt files before creating any worktree.
 2. Record the current branch as the base branch.
-3. Create each worktree with `herdr worktree create --cwd "$PWD" --branch
-   <name> --base <base-branch> --no-focus --json`.
-4. Record each base with `git config branch.<name>.herdr-base <base-branch>`.
-5. Parse the workspace ID, then follow `/herdr` to start the requested agent,
-   submit the prompt, and confirm it reached `working`. Default to the current
-   pane's agent.
+3. Create each worktree with `hwt create --cwd "$PWD" --branch <name> --base
+   <base-branch> --json`. This applies global and repository worktree rules and
+   records the merge base.
+4. Parse the workspace and root pane IDs, then follow `/herdr` to start the
+   requested agent, submit the prompt, and confirm it reached `working`. Default
+   to the current pane's agent.
 
 Create all independent worktrees before waiting so startup remains parallel.
 
@@ -49,8 +49,8 @@ background work.
 
 Review each agent's output before asking it to use `/merge`. Merge sequentially.
 The `/merge` skill must use the same Herdr-owned workspace lifecycle. Remove an
-abandoned Herdr worktree with `herdr worktree remove --workspace <workspace-id>
---json`; never call `workmux remove` for it.
+abandoned Herdr worktree with `hwt remove --workspace <workspace-id> --json`;
+never call `workmux remove` for it.
 
 ## Workmux Backend
 
