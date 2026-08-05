@@ -91,8 +91,6 @@ tasks:
       - task: create:dirs
       - task: mise:install
       - task: symlink
-        vars:
-          SYNC_SKILLS: 'false'
       - task: op:install:ssh:agent
       - task: zinit:install
       - task: zinit:plugins:update
@@ -128,8 +126,6 @@ tasks:
       - task: create:dirs
       - task: mise:install
       - task: symlink
-        vars:
-          SYNC_SKILLS: 'false'
       - task: op:install:ssh:agent
       - task: zinit:install
       - task: mise:tools:install:devcontainer
@@ -150,8 +146,6 @@ tasks:
       - task: arch:sync
       - task: create:dirs
       - task: symlink
-        vars:
-          SYNC_SKILLS: 'false'
       - task: mise:sync
       - task: skills:sync
       - task: herdr:sync
@@ -182,14 +176,8 @@ tasks:
 
   symlink:
     desc: Symlinks dotfiles and folders
-    vars:
-      SYNC_SKILLS: '{{.SYNC_SKILLS | default "true"}}'
     cmds:
       - mise bootstrap dotfiles apply --yes
-      - task: skills:sync
-        if: '{{eq .SYNC_SKILLS "true"}}'
-        vars:
-          GENERATE_CLI_SKILLS: 'false'
 
   skills:sync:
     desc: Synchronizes repo and local skills into global skill directories
