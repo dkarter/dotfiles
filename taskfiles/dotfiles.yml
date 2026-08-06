@@ -252,6 +252,17 @@ tasks:
               unset command_suffix
               trap - EXIT
             done
+
+            if [ -s "$local_skills/hwt/SKILL.md" ] && [ -s "$local_skills/hwt/references/config.md" ]; then
+              cat >> "$local_skills/hwt/SKILL.md" <<'EOF'
+
+          ## Synced Reference
+
+          The synchronized copy of `hwt skill config` is available at
+          [references/config.md](references/config.md). Read it only when changing
+          project configuration.
+          EOF
+            fi
           }
 
           symlink_target() {

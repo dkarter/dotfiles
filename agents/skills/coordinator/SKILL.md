@@ -22,17 +22,15 @@ Never mix lifecycle commands across backends.
 
 ## Herdr Backend
 
-Load the `/herdr` skill and inspect the installed CLI before controlling panes.
-Keep a mapping from each task name to its returned workspace ID and pane ID.
+Load `/hwt` for worktree lifecycle and `/herdr` for pane and agent control. Keep
+a mapping from each task name to its returned workspace ID and pane ID.
 
 ### Spawn
 
 1. Write all prompt files before creating any worktree.
 2. Record the current branch as the base branch.
-3. Create each worktree with `hwt create --cwd "$PWD" --branch <name> --base
-   <base-branch> --json`. This applies global and repository worktree rules and
-   records the merge base.
-4. Parse the workspace and root pane IDs, then follow `/herdr` to start the
+3. Follow `/hwt` to create each worktree from that explicit base branch.
+4. Retain the returned workspace and pane IDs, then follow `/herdr` to start the
    requested agent, submit the prompt, and confirm it reached `working`. Default
    to the current pane's agent.
 
@@ -48,9 +46,9 @@ background work.
 ### Merge and cleanup
 
 Review each agent's output before asking it to use `/merge`. Merge sequentially.
-The `/merge` skill must use the same Herdr-owned workspace lifecycle. Remove an
-abandoned Herdr worktree with `hwt remove --workspace <workspace-id> --json`;
-never call `workmux remove` for it.
+The `/merge` skill must use the same Herdr-owned workspace lifecycle. Follow
+`/hwt` to remove an abandoned Herdr worktree; never call `workmux remove` for
+it.
 
 ## Workmux Backend
 

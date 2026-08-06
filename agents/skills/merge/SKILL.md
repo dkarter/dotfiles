@@ -75,10 +75,10 @@ If conflicts occur:
 
 Choose the owner before cleanup:
 
-1. If `HERDR_ENV=1`, never run workmux. Capture `hwt list --cwd
-   "$PWD" --json` once and require it to identify the current workspace as a
-   linked worktree whose path differs from `source_checkout_path`. Stop if it
-   does not.
+1. If `HERDR_ENV=1`, load `/hwt` for ownership inspection and removal semantics;
+   never run workmux. Capture `hwt list --cwd "$PWD" --json` once and require it
+   to identify the current workspace as a linked worktree whose path differs
+   from `source_checkout_path`. Stop if it does not.
 2. Outside Herdr, use the workmux path only when `$TMUX` is set.
 
 ### Herdr path
@@ -103,8 +103,8 @@ herdr pane run <helper-pane-id> \
 ```
 
 Parse both pane IDs from Herdr JSON responses. Do not target the focused pane or
-construct IDs. The helper is necessary because removing the current workspace
-terminates the calling pane.
+construct IDs. Run removal from the helper so cleanup can finish after the
+current workspace closes.
 
 ### workmux path
 
