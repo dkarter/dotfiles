@@ -112,6 +112,18 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+key = "prefix+shift+["
+type = "shell"
+command = "herdr pane swap --current --direction left"
+description = "swap pane left"
+
+[[keys.command]]
+key = "prefix+shift+]"
+type = "shell"
+command = "herdr pane swap --current --direction right"
+description = "swap pane right"
+
+[[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
 command = "dotfiles.seamless-navigation.navigate-left"
