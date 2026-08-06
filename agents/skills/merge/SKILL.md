@@ -1,6 +1,6 @@
 ---
 name: merge
-description: Commit, rebase, and merge the current branch.
+description: Commit, rebase, and merge the current branch. Do not invoke automatically.
 disable-model-invocation: true
 allowed-tools: Read, Bash, Glob, Grep
 ---

@@ -1,6 +1,6 @@
 ---
 name: coordinator
-description: Orchestrate multiple worktree agents through Herdr when inside Herdr, otherwise workmux. Spawn, monitor, communicate, and merge.
+description: Orchestrate multiple worktree agents through Herdr when inside Herdr, otherwise workmux. Spawn, monitor, communicate, and merge. Do not invoke automatically.
 allowed-tools: Bash, Write, Read, Task
 disable-model-invocation: true
 ---

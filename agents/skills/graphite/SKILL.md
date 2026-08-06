@@ -1,6 +1,6 @@
 ---
 name: graphite
-description: Manage stacked PR workflows with Graphite CLI in Graphite-enabled repos only; supports autonomous coordinator/workmux execution.
+description: Manage stacked PR workflows with Graphite CLI in Graphite-enabled repos only; supports autonomous coordinator/workmux execution. Do not invoke automatically.
 disable-model-invocation: true
 allowed-tools: Read, Bash, Glob, Grep
 ---

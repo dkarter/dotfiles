@@ -1,6 +1,6 @@
 ---
 name: worktree
-description: Launch one or more tasks in new git worktrees using Herdr when inside Herdr, otherwise workmux.
+description: Launch one or more tasks in new git worktrees using Herdr when inside Herdr, otherwise workmux. Do not invoke automatically.
 disable-model-invocation: true
 allowed-tools: Bash, Write
 ---

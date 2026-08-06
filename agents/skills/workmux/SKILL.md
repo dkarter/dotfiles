@@ -1,6 +1,6 @@
 ---
 name: workmux
-description: Reference for workmux's tmux-backed worktree and parallel-agent workflows. Use when the user explicitly mentions workmux or when a worktree workflow runs outside Herdr in tmux. For native Herdr worktrees, use hwt instead.
+description: Reference for workmux's tmux-backed worktree and parallel-agent workflows. Use when the user explicitly mentions workmux or when a worktree workflow runs outside Herdr in tmux. For native Herdr worktrees, use hwt instead. Do not invoke automatically.
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: pdq-add-ticket-to-pr
-description: Attach an issue or attach a ticket by creating a Platform Linear issue for a PDQ PR or unpushed branch, renaming the branch when needed, updating the PR title, and rerunning the ticketing check.
+description: Attach an issue or attach a ticket by creating a Platform Linear issue for a PDQ PR or unpushed branch, renaming the branch when needed, updating the PR title, and rerunning the ticketing check. Do not invoke automatically.
 disable-model-invocation: true
 ---
 

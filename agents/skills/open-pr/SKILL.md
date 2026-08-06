@@ -1,6 +1,6 @@
 ---
 name: open-pr
-description: Always use this skill for PR creation. Use whenever the user asks to open, create, draft, prepare, or submit a pull request, unless they explicitly ask for raw CLI/API commands instead.
+description: Always use this skill for PR creation. Use whenever the user asks to open, create, draft, prepare, or submit a pull request, unless they explicitly ask for raw CLI/API commands instead. Do not invoke automatically.
 disable-model-invocation: true
 ---
 

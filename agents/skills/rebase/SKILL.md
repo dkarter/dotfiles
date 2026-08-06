@@ -1,6 +1,6 @@
 ---
 name: rebase
-description: Rebase the current branch with smart conflict resolution.
+description: Rebase the current branch with smart conflict resolution. Do not invoke automatically.
 disable-model-invocation: true
 allowed-tools: Read, Bash, Glob, Grep
 ---
