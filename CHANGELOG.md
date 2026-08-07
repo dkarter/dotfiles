@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.3.0](https://github.com/dkarter/dotfiles/compare/v32.2.0...v32.3.0) (2026-08-07)
+
+
+### Features
+
+* **herdr:** add non blocking herdr worktree deletion ([4b9e8d2](https://github.com/dkarter/dotfiles/commit/4b9e8d26a17e5544a3875b7c541737c4e1f8431e))
+* **herdr:** add pane swap shortcuts ([186363b](https://github.com/dkarter/dotfiles/commit/186363be12dc3e6b2a09ee1436253f76eccb5635))
+* **herdr:** label opencode v2 panes ([f2740ed](https://github.com/dkarter/dotfiles/commit/f2740ed7638a041ceb5071bd8cf104a80f309bf4))
+* **herdr:** support session history ([ad0676f](https://github.com/dkarter/dotfiles/commit/ad0676fbc4e399b614d20c70779461f62edb4250))
+* **herdr:** use hwt for worktree orchestration ([d115cae](https://github.com/dkarter/dotfiles/commit/d115cae1a5559a1d3495131819232a4fa354c82b))
+* **opencode:** configure v2 TUI ([c3a433c](https://github.com/dkarter/dotfiles/commit/c3a433cd2fda95bf1db2c9c268e0358eb484964b))
+* **opencode:** enable attention notifs ([da50118](https://github.com/dkarter/dotfiles/commit/da5011898cad98a264a32c3d499bcbcd4d512c32))
+* **skills:** add dev process launcher ([dc7c995](https://github.com/dkarter/dotfiles/commit/dc7c99503153ca7c689952efecdc304f421190d7))
+* **skills:** add hwt skills ([6b02a22](https://github.com/dkarter/dotfiles/commit/6b02a224e2cc3bb1aaf0bc759221127d5dc46b57))
+* **skills:** require explicit invocation ([35289e9](https://github.com/dkarter/dotfiles/commit/35289e9655e646675d99beb84425347f5f4a82b9))
+
+
+### Bug Fixes
+
+* **hypr:** free herdr palette shortcuts ([1b93b2d](https://github.com/dkarter/dotfiles/commit/1b93b2d38cc6b942c46b319b96067c7f03af04a6))
+* **hypr:** free herdr shortcuts ([c23a812](https://github.com/dkarter/dotfiles/commit/c23a812b26dcaf3748d4796ca65090ef415d4217))
+* **task:** sync skills once ([201e21b](https://github.com/dkarter/dotfiles/commit/201e21bb3e854c44e4b26a57fd7f3721eb244ca7))
+* **yamllint:** exclude all node modules ([7097589](https://github.com/dkarter/dotfiles/commit/7097589cf745f363094551d503178c342df4c842))
+
 ## [32.2.0](https://github.com/dkarter/dotfiles/compare/v32.1.0...v32.2.0) (2026-08-04)
 
 
