@@ -375,35 +375,36 @@ url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x8
 url_api = "https://api.github.com/repos/theryangeary/choose/releases/assets/286227058"
 
 [[tools.claude-code]]
-version = "2.1.224"
+version = "2.1.226"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/darwin-arm64/claude"
+checksum = "blake3:5454571f0f6df5467c7b7ee682243f8e3e7e4defa5f0d505800605fddacc85ad"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.224/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.226/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -573,6 +574,7 @@ url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.7.2.tgz"
 url = "https://download.docker.com/linux/static/stable/x86_64/docker-29.7.2.tgz"
 
 [tools.docker-cli."platforms.macos-arm64"]
+checksum = "blake3:c8ca1f8853af6be97265b4a9ea68a3edc34cf844d4a7485a9420fd574ad3404a"
 url = "https://download.docker.com/mac/static/stable/aarch64/docker-29.7.2.tgz"
 
 [tools.docker-cli."platforms.macos-x64"]
@@ -639,25 +641,7 @@ url = "https://builds.hex.pm/builds/elixir/v1.20.0-otp-29.zip"
 version = "29.0.5"
 backend = "core:erlang"
 
-[tools.erlang."platforms.linux-arm64"]
-checksum = "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_src_29.0.5.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/501327246"
-install = "source"
-
 [tools.erlang."platforms.linux-arm64-musl"]
-checksum = "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_src_29.0.5.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/501327246"
-install = "source"
-
-[tools.erlang."platforms.linux-x64"]
-checksum = "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_src_29.0.5.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/501327246"
-install = "source"
-
-[tools.erlang."platforms.linux-x64-baseline"]
 checksum = "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04"
 url = "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_src_29.0.5.tar.gz"
 url_api = "https://api.github.com/repos/erlang/otp/releases/assets/501327246"
@@ -698,6 +682,22 @@ url_api = "https://api.github.com/repos/erlang/otp/releases/assets/501281670"
 checksum = "sha256:8bd0be5f6a1bd866bf8b8955c35d0cb4de7c7c935da29f351b599e0b5ed92409"
 url = "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_win64_29.0.5.zip"
 url_api = "https://api.github.com/repos/erlang/otp/releases/assets/501281670"
+
+[[tools.erlang]]
+version = "29.0.5"
+backend = "core:erlang"
+
+[tools.erlang.options]
+precompiled_os = "ubuntu-24.04"
+
+[tools.erlang."platforms.linux-arm64"]
+url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.0.5.tar.gz"
+
+[tools.erlang."platforms.linux-x64"]
+url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.5.tar.gz"
+
+[tools.erlang."platforms.linux-x64-baseline"]
+url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.0.5.tar.gz"
 
 [[tools.expert]]
 version = "0.1.8"
@@ -852,6 +852,7 @@ checksum = "sha256:8eac892958b54b01146e103d0aaaf80ca09c4bd77652930a7864da0b7eacd
 url = "https://github.com/jdx/fnox/releases/download/v1.32.0/fnox-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/jdx/fnox/releases/assets/497823872"
 provenance = "github-attestations"
+provenance_verified = true
 
 [tools.fnox."platforms.macos-x64"]
 checksum = "sha256:ec75551b74cfbe62f592aaa7d6d8d29f4bdd8eaeaca33c0aaab262600c7e4ed5"
@@ -996,63 +997,63 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.74.2/fzf-0.74.2-wind
 url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/497342617"
 
 [[tools."github:ast-grep/ast-grep"]]
-version = "0.45.0"
+version = "0.45.1"
 backend = "github:ast-grep/ast-grep"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-arm64"]
-checksum = "sha256:62b60892dafacfa76d6de87157659f880bbf85ff38bdab52db12f1f14ec60f94"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-aarch64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487374979"
+checksum = "sha256:9ee7ec49aada3dc05135d21977af089a33fc3154ada25bab102daca90b5098f2"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-aarch64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505306241"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-arm64-musl"]
-checksum = "sha256:62b60892dafacfa76d6de87157659f880bbf85ff38bdab52db12f1f14ec60f94"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-aarch64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487374979"
+checksum = "sha256:9ee7ec49aada3dc05135d21977af089a33fc3154ada25bab102daca90b5098f2"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-aarch64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505306241"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64"]
-checksum = "sha256:78931ae35ebac33d9a72b3aecea3e3d62d6e5b0b718ac8bbedfbe69d68421e41"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487374029"
+checksum = "sha256:76fb6555be6734fb5057dba8d2fb756430f374bb9e1af694cf1ce00e13238d63"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305291"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64-baseline"]
-checksum = "sha256:78931ae35ebac33d9a72b3aecea3e3d62d6e5b0b718ac8bbedfbe69d68421e41"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487374029"
+checksum = "sha256:76fb6555be6734fb5057dba8d2fb756430f374bb9e1af694cf1ce00e13238d63"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305291"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64-musl"]
-checksum = "sha256:78931ae35ebac33d9a72b3aecea3e3d62d6e5b0b718ac8bbedfbe69d68421e41"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487374029"
+checksum = "sha256:76fb6555be6734fb5057dba8d2fb756430f374bb9e1af694cf1ce00e13238d63"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305291"
 
 [tools."github:ast-grep/ast-grep"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:78931ae35ebac33d9a72b3aecea3e3d62d6e5b0b718ac8bbedfbe69d68421e41"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-unknown-linux-gnu.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487374029"
+checksum = "sha256:76fb6555be6734fb5057dba8d2fb756430f374bb9e1af694cf1ce00e13238d63"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-unknown-linux-gnu.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305291"
 
 [tools."github:ast-grep/ast-grep"."platforms.macos-arm64"]
-checksum = "sha256:ec2e3680f4f84c68b48420bcca01d21389787c7318b52083dde6f46ac12ad946"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-aarch64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487376083"
+checksum = "sha256:6c761afbdc072a7a9006d0dc5c49b3247fef195b8bebe675b4aa385ff872d9c3"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-aarch64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505305714"
 
 [tools."github:ast-grep/ast-grep"."platforms.macos-x64"]
-checksum = "sha256:78d0d9db2f4dfd964fd313e70e92571c6d4204243ad8f3d0abbb2ffc56e45fc6"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487375810"
+checksum = "sha256:38ec2d1c7c97f1efc1c1080526e3c54b964e263478e347f44a65b5287ef5a6ad"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505306213"
 
 [tools."github:ast-grep/ast-grep"."platforms.macos-x64-baseline"]
-checksum = "sha256:78d0d9db2f4dfd964fd313e70e92571c6d4204243ad8f3d0abbb2ffc56e45fc6"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487375810"
+checksum = "sha256:38ec2d1c7c97f1efc1c1080526e3c54b964e263478e347f44a65b5287ef5a6ad"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505306213"
 
 [tools."github:ast-grep/ast-grep"."platforms.windows-x64"]
-checksum = "sha256:a1b5b7c06994992755d4cd0b9cf10c2f4a6e7b4a82d2810edee5985a59f67ac5"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487376855"
+checksum = "sha256:b816b375df6a30f8e5d91d706dccae6127346e68970788cf8c2decee54bcaa31"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505308188"
 
 [tools."github:ast-grep/ast-grep"."platforms.windows-x64-baseline"]
-checksum = "sha256:a1b5b7c06994992755d4cd0b9cf10c2f4a6e7b4a82d2810edee5985a59f67ac5"
-url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.0/app-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/487376855"
+checksum = "sha256:b816b375df6a30f8e5d91d706dccae6127346e68970788cf8c2decee54bcaa31"
+url = "https://github.com/ast-grep/ast-grep/releases/download/0.45.1/app-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ast-grep/ast-grep/releases/assets/505308188"
 
 [[tools."github:chmln/sd"]]
 version = "1.1.0"
@@ -1158,6 +1159,7 @@ checksum = "sha256:a58b8fd77b417a38f47a0b54d1370c59b0fcdb324ccc9ca002b0998f7c4c9
 url = "https://github.com/cli/cli/releases/download/v2.97.0/gh_2.97.0_macOS_arm64.zip"
 url_api = "https://api.github.com/repos/cli/cli/releases/assets/496108298"
 provenance = "github-attestations"
+provenance_verified = true
 
 [tools."github:cli/cli"."platforms.macos-x64"]
 checksum = "sha256:63298c998cc2a924c9e254c6af6a1caad6ece281122687a91f079bc0a462700e"
@@ -1184,73 +1186,74 @@ url_api = "https://api.github.com/repos/cli/cli/releases/assets/496108319"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/hwt"]]
-version = "0.3.0"
+version = "0.4.0"
 backend = "github:dkarter/hwt"
 
 [tools."github:dkarter/hwt"."platforms.linux-arm64"]
-checksum = "sha256:712571cb3ec41cafbbfcc036fa1373ea9a3792cbf93f2b77163ec357e044a48d"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520236"
+checksum = "sha256:a98526c93a4278c3a2811008ad34c1ac74ed7ea606ea4f9e066ac0df95b8b0f8"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685154"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-arm64-musl"]
-checksum = "sha256:712571cb3ec41cafbbfcc036fa1373ea9a3792cbf93f2b77163ec357e044a48d"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520236"
+checksum = "sha256:a98526c93a4278c3a2811008ad34c1ac74ed7ea606ea4f9e066ac0df95b8b0f8"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685154"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64"]
-checksum = "sha256:dafa7366bc3c42c0154dd9cabca789c69532876fa585286db5849a1b439c2cc3"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520237"
+checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64-baseline"]
-checksum = "sha256:dafa7366bc3c42c0154dd9cabca789c69532876fa585286db5849a1b439c2cc3"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520237"
+checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64-musl"]
-checksum = "sha256:dafa7366bc3c42c0154dd9cabca789c69532876fa585286db5849a1b439c2cc3"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520237"
+checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:dafa7366bc3c42c0154dd9cabca789c69532876fa585286db5849a1b439c2cc3"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520237"
+checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.macos-arm64"]
-checksum = "sha256:347d44fd9326f6db2918d6c374b0ad2c940f6586c4d628da27c5e19589c62361"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520238"
+checksum = "sha256:6484163dab0e52b01b2c7a7c5c465e0973049ee38cbef3562fc594c638413fb9"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685153"
 provenance = "github-attestations"
+provenance_verified = true
 
 [tools."github:dkarter/hwt"."platforms.macos-x64"]
-checksum = "sha256:ae12d0f017c3beb9848f3b3ef305be26db9dea021bb4a7211f76053fce96a7c5"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520235"
+checksum = "sha256:5ada1961f41b0f2ecad1c230a46b380ed901497c7765130d7a9c7827b7722ee1"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685155"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.macos-x64-baseline"]
-checksum = "sha256:ae12d0f017c3beb9848f3b3ef305be26db9dea021bb4a7211f76053fce96a7c5"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt_0.3.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520235"
+checksum = "sha256:5ada1961f41b0f2ecad1c230a46b380ed901497c7765130d7a9c7827b7722ee1"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685155"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.windows-x64"]
-checksum = "sha256:491c091f5794ac0359bed31669ef61cb0e3f08a7038cf748a11b7ab8813e8c69"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt-0.3.0.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520240"
+checksum = "sha256:92e4973ed8d60aa43ea1feef44ff4751469ca66f55f67d479bc100e9d94a494c"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt-0.4.0.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685165"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.windows-x64-baseline"]
-checksum = "sha256:491c091f5794ac0359bed31669ef61cb0e3f08a7038cf748a11b7ab8813e8c69"
-url = "https://github.com/dkarter/hwt/releases/download/v0.3.0/hwt-0.3.0.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/503520240"
+checksum = "sha256:92e4973ed8d60aa43ea1feef44ff4751469ca66f55f67d479bc100e9d94a494c"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt-0.4.0.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685165"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/lnr"]]
@@ -1474,53 +1477,53 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:raine/workmux"]]
-version = "0.1.234"
+version = "0.1.235"
 backend = "github:raine/workmux"
 
 [tools."github:raine/workmux"."platforms.linux-arm64"]
-checksum = "sha256:45c8e6029fc14a86b3a549c1e74a4273ca7e007cd21de62cbdc5577ec0ee60f4"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733299"
+checksum = "sha256:d98c091e69dfca485b412f88be479b008d6003636d871facceff92e29d41a94b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080799"
 
 [tools."github:raine/workmux"."platforms.linux-arm64-musl"]
-checksum = "sha256:45c8e6029fc14a86b3a549c1e74a4273ca7e007cd21de62cbdc5577ec0ee60f4"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733299"
+checksum = "sha256:d98c091e69dfca485b412f88be479b008d6003636d871facceff92e29d41a94b"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080799"
 
 [tools."github:raine/workmux"."platforms.linux-x64"]
-checksum = "sha256:8aa153e07afd568c7a8ac8850254bacd304fbcb93344cdec1fc3d30c1af2f819"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733303"
+checksum = "sha256:761fa7e5f21afc4952208a11ef62a4ce44cbeafdfddece1db0bc7e937b2b1ca6"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080796"
 
 [tools."github:raine/workmux"."platforms.linux-x64-baseline"]
-checksum = "sha256:8aa153e07afd568c7a8ac8850254bacd304fbcb93344cdec1fc3d30c1af2f819"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733303"
+checksum = "sha256:761fa7e5f21afc4952208a11ef62a4ce44cbeafdfddece1db0bc7e937b2b1ca6"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080796"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl"]
-checksum = "sha256:8aa153e07afd568c7a8ac8850254bacd304fbcb93344cdec1fc3d30c1af2f819"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733303"
+checksum = "sha256:761fa7e5f21afc4952208a11ef62a4ce44cbeafdfddece1db0bc7e937b2b1ca6"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080796"
 
 [tools."github:raine/workmux"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:8aa153e07afd568c7a8ac8850254bacd304fbcb93344cdec1fc3d30c1af2f819"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-linux-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733303"
+checksum = "sha256:761fa7e5f21afc4952208a11ef62a4ce44cbeafdfddece1db0bc7e937b2b1ca6"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080796"
 
 [tools."github:raine/workmux"."platforms.macos-arm64"]
-checksum = "sha256:1d948fbfdece89c8e0eacacc43735c51a823fb1e35e060e63fd62f2265fb05ae"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733296"
+checksum = "sha256:639d54de07f8d478247c730e787686e3d61a3b660c146dff9a01619beb495c7e"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080800"
 
 [tools."github:raine/workmux"."platforms.macos-x64"]
-checksum = "sha256:6820620664c6e0b5d0fd6e4ac9dd262d03a0efbff90bb91747e2d2a4e84ea320"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733302"
+checksum = "sha256:5476ec7a5e8e09de36b8879bc6dc99220ee6c95badc11b61157d0373c600be2d"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080798"
 
 [tools."github:raine/workmux"."platforms.macos-x64-baseline"]
-checksum = "sha256:6820620664c6e0b5d0fd6e4ac9dd262d03a0efbff90bb91747e2d2a4e84ea320"
-url = "https://github.com/raine/workmux/releases/download/v0.1.234/workmux-darwin-amd64.tar.gz"
-url_api = "https://api.github.com/repos/raine/workmux/releases/assets/501733302"
+checksum = "sha256:5476ec7a5e8e09de36b8879bc6dc99220ee6c95badc11b61157d0373c600be2d"
+url = "https://github.com/raine/workmux/releases/download/v0.1.235/workmux-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/raine/workmux/releases/assets/505080798"
 
 [[tools."github:remoteoss/dexter"]]
 version = "0.7.1"
@@ -2210,6 +2213,9 @@ backend = "npm:@fission-ai/openspec"
 [[tools."npm:@kitlangton/stack"]]
 version = "0.4.2"
 backend = "npm:@kitlangton/stack"
+
+[tools."npm:@kitlangton/stack".options]
+allow_low_downloads = "true"
 
 [[tools."npm:@openai/codex"]]
 version = "0.147.0"
