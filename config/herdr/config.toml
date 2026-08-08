@@ -68,7 +68,6 @@ navigate_workspace_up = "k"
 next_workspace = "ctrl+]"
 previous_workspace = "ctrl+["
 reload_config = "prefix+shift+r"
-remove_worktree = "prefix+shift+d"
 rename_pane = "prefix+<"
 rename_tab = "prefix+,"
 rename_workspace = "prefix+r"
@@ -176,3 +175,15 @@ key = "prefix+u"
 type = "plugin_action"
 command = "gh-pr.open-pr"
 description = "open PR in browser"
+
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "hwt.worktrees.new"
+description = "new configured worktree"
+
+[[keys.command]]
+key = "prefix+shift+d"
+type = "plugin_action"
+command = "hwt.worktrees.remove"
+description = "remove configured worktree"
