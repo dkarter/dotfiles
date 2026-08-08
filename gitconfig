@@ -102,6 +102,11 @@
   name = automatically merge yarn lockfiles
   driver = npx npm-merge-driver merge %A %O %B %P -c yarn
 
+[merge "mise-lock"]
+  name = keep current Mise lockfiles
+  # Keep %A unchanged and report the conflict as resolved.
+  driver = true
+
 [mergetool]
   ; avoid leaving behind these files after a merge conflict
   keepBackup = false
