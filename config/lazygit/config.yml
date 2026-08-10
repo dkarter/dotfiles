@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --hunk-header-style=omit --file-style=omit
+      command: delta --dark --paging=never --hunk-header-style=omit --file-style=omit
 gui:
   nerdFontsVersion: '3'
 customCommands:
