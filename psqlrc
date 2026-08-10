@@ -4,7 +4,7 @@
 
 -- use pspg as the pager for psql. It is an ncurses like interface for browsing
 -- tabular data https://github.com/okbob/pspg
-\setenv PAGER 'pspg --style 17 --menu-always --ignore-case --highlight-odd-rec --double-header --bold-labels --bold-cursor'
+\setenv PAGER 'pspg'
 
 -- fancy borders
 \pset linestyle unicode
