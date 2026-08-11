@@ -57,6 +57,11 @@ includes:
     dir: ../
     internal: true
 
+  opencode:
+    taskfile: ./opencode.yml
+    dir: ../
+    internal: true
+
   shell:
     taskfile: ./shell.yml
     internal: true
@@ -97,6 +102,7 @@ tasks:
       - task: mac:set:defaults
       - task: mise:tools:extras:prompt
       - task: mise:tools:install
+      - task: opencode:plugins:install
       - task: skills:sync
       - task: herdr:sync
       - task: fonts:sync
@@ -147,6 +153,7 @@ tasks:
       - task: create:dirs
       - task: symlink
       - task: mise:sync
+      - task: opencode:plugins:install
       - task: skills:sync
       - task: herdr:sync
       - task: brew:sync

@@ -2,6 +2,8 @@ advisoryBloomCheck: required
 advisoryCheck: required
 advisoryCheckOnInstall: on # yamllint disable-line rule:truthy
 lockfile: true
+packages:
+  - config/opencode/tui-plugin
 # @kitlangton/stack@0.2.0 is intentionally low-traffic; npm metadata matches
 # the upstream repo/tag and includes registry signature plus SLSA provenance.
 allowedUnpopularPackages:
