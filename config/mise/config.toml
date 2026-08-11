@@ -99,6 +99,10 @@ uv = "latest"                         # install python packages
 yazi = "latest"                       # terminal file manager
 zoxide = "latest"                     # a modern version of autojump
 
+[tools.amp]
+version = "latest"
+allow_builds = ["@ampcode/cli"]
+
 # spec driven development tool
 [tools."npm:@fission-ai/openspec"]
 version = "latest"
