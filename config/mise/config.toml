@@ -45,7 +45,6 @@
 "github:remoteoss/dexter" = "latest"  # fast af Elixir LSP
 "npm:@commitlint/cli" = "latest"      # linter for checking that commits are following conventional commits
 "npm:@openai/codex" = "latest"        # codex agent for AI assisted coding
-"npm:@opencode-ai/cli" = "next"       # opencode v2 (beta)
 "npm:neovim" = "latest"               # support for javascript plugins in neovim
 "npm:trash-cli" = "latest"            # rm -> system trash (cross platform)
 "npm:varlock" = "latest"              # secret manager
@@ -104,6 +103,11 @@ zoxide = "latest"                     # a modern version of autojump
 [tools."npm:@fission-ai/openspec"]
 version = "latest"
 allow_builds = false
+
+# opencode v2 beta
+[tools."npm:@opencode-ai/cli"]
+version = "next"
+allow_builds = true
 
 # squash-safe stacked PR/MR repair CLI
 [tools."npm:@kitlangton/stack"]
