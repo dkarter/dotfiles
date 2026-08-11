@@ -25,6 +25,16 @@
       "type": "remote",
       "url": "https://mcp.linear.app/mcp",
       "oauth": {}
+    },
+    "chrome-devtools": {
+      "enabled": true,
+      "type": "local",
+      "command": [
+        "aubx",
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"
+      ]
     }
   },
   "lsp": {
