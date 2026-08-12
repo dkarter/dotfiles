@@ -147,10 +147,13 @@ const VimModePlugin = {
         return;
       }
 
-      editor.cursorStyle = {
-        ...editor.cursorStyle,
-        style: mode === 'insert' ? 'line' : 'block',
-      };
+      const style = mode === 'insert' ? 'line' : 'block';
+      if (editor.cursorStyle.style !== style) {
+        editor.cursorStyle = {
+          ...editor.cursorStyle,
+          style,
+        };
+      }
     };
 
     const setMode = (mode: Mode) => {
@@ -468,7 +471,11 @@ const VimModePlugin = {
       const handleFocusedEditor = (editor: EditBufferRenderable | null) => {
         updateCursorStyle(state.mode, promptEditor(editor));
       };
+      const handleFrame = () => {
+        updateCursorStyle(state.mode);
+      };
       ctx.renderer.on('focused_editor', handleFocusedEditor);
+      ctx.renderer.on('frame', handleFrame);
       queueMicrotask(() => {
         if (!disposed) {
           updateCursorStyle(state.mode);
@@ -477,6 +484,7 @@ const VimModePlugin = {
       onCleanup(() => {
         disposed = true;
         ctx.renderer.off('focused_editor', handleFocusedEditor);
+        ctx.renderer.off('frame', handleFrame);
         restoreCursorStyle();
       });
 
