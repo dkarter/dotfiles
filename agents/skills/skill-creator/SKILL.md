@@ -261,7 +261,13 @@ Skip this step only if the skill being developed already exists, and iteration o
 
 When creating a new skill from scratch, always run the `init_skill.ts` script. The script conveniently generates a new template skill directory that automatically includes everything a skill requires, making the skill creation process much more efficient and reliable.
 
-For global user skills, default the output directory to `~/dotfiles/agents/skills` unless the user asks for a project-local skill, in which case prefer `./.agents/skills`.
+Choose the output directory based on the requested scope:
+
+- For global user skills, default to `~/dotfiles/agents/skills`; these are synced through Git.
+- For machine-local skills, use `~/.local/share/dotfiles/skills`; these remain outside Git. The `skills:sync` task links them into the global agent skill directories, and a machine-local skill overrides a Git-synced skill with the same name.
+- For project-local skills, use `./.agents/skills`.
+
+Use the machine-local scope only when the user explicitly asks for a machine-specific or non-synced skill. If the intended scope is unclear, ask before initializing it.
 
 Usage:
 
