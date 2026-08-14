@@ -330,7 +330,7 @@ version = "1.13.1"
 backend = "cargo:tlrc"
 
 [[tools."cargo:tuicr"]]
-version = "0.21.0"
+version = "0.22.0"
 backend = "cargo:tuicr"
 
 [[tools."cargo:vivid"]]
@@ -382,36 +382,36 @@ url = "https://github.com/theryangeary/choose/releases/download/v1.3.7/choose-x8
 url_api = "https://api.github.com/repos/theryangeary/choose/releases/assets/286227058"
 
 [[tools.claude-code]]
-version = "2.1.231"
+version = "2.1.232"
 backend = "aqua:anthropics/claude-code"
 
 [tools.claude-code."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/linux-arm64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/linux-arm64/claude"
 
 [tools.claude-code."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/linux-arm64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/linux-arm64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/linux-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/linux-x64/claude"
 
 [tools.claude-code."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.linux-x64-musl-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/linux-x64-musl/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/linux-x64-musl/claude"
 
 [tools.claude-code."platforms.macos-arm64"]
-checksum = "blake3:cf19cda4c667bafec2629794dd25bb513d7d766509b6a43958fb0e1b89e57106"
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/darwin-arm64/claude"
+checksum = "blake3:a7ea0e6731b8bc2b743ba5591f90e19dacaf3a2a8b1590e11a026d602e2ee72a"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/darwin-arm64/claude"
 
 [tools.claude-code."platforms.macos-x64"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/darwin-x64/claude"
 
 [tools.claude-code."platforms.macos-x64-baseline"]
-url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.231/darwin-x64/claude"
+url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.232/darwin-x64/claude"
 
 [[tools.colima]]
 version = "0.10.3"
@@ -1193,74 +1193,74 @@ url_api = "https://api.github.com/repos/cli/cli/releases/assets/496108319"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/hwt"]]
-version = "0.4.0"
+version = "0.4.1"
 backend = "github:dkarter/hwt"
 
 [tools."github:dkarter/hwt"."platforms.linux-arm64"]
-checksum = "sha256:a98526c93a4278c3a2811008ad34c1ac74ed7ea606ea4f9e066ac0df95b8b0f8"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685154"
+checksum = "sha256:d8e8263f7529d1993a4d3257e169a95809fe2bb889e88ef95dd6b4108c26e2d2"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597653"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-arm64-musl"]
-checksum = "sha256:a98526c93a4278c3a2811008ad34c1ac74ed7ea606ea4f9e066ac0df95b8b0f8"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685154"
+checksum = "sha256:d8e8263f7529d1993a4d3257e169a95809fe2bb889e88ef95dd6b4108c26e2d2"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597653"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64"]
-checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
+checksum = "sha256:aea47ddaa2624085fb3b82ba509bbe898795de0d6962de8d9d80f62e80903bd7"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597650"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64-baseline"]
-checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
+checksum = "sha256:aea47ddaa2624085fb3b82ba509bbe898795de0d6962de8d9d80f62e80903bd7"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597650"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64-musl"]
-checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
+checksum = "sha256:aea47ddaa2624085fb3b82ba509bbe898795de0d6962de8d9d80f62e80903bd7"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597650"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:788f135996b8c6c03b3c0c39ff3e691dbd9b66a1327676f310461e834fc1dc2d"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685152"
+checksum = "sha256:aea47ddaa2624085fb3b82ba509bbe898795de0d6962de8d9d80f62e80903bd7"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597650"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.macos-arm64"]
-checksum = "sha256:6484163dab0e52b01b2c7a7c5c465e0973049ee38cbef3562fc594c638413fb9"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685153"
+checksum = "sha256:d0f70d312a0009cb3817c9c5a9ec5d2a91848f243b72d8587173cd968b29a2c6"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597654"
 provenance = "github-attestations"
 provenance_verified = true
 
 [tools."github:dkarter/hwt"."platforms.macos-x64"]
-checksum = "sha256:5ada1961f41b0f2ecad1c230a46b380ed901497c7765130d7a9c7827b7722ee1"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685155"
+checksum = "sha256:26de5bf1578eff0024d3e2f633eb54c502469acb366bc372d15c25c859b32166"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597655"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.macos-x64-baseline"]
-checksum = "sha256:5ada1961f41b0f2ecad1c230a46b380ed901497c7765130d7a9c7827b7722ee1"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt_0.4.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685155"
+checksum = "sha256:26de5bf1578eff0024d3e2f633eb54c502469acb366bc372d15c25c859b32166"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt_0.4.1_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597655"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.windows-x64"]
-checksum = "sha256:92e4973ed8d60aa43ea1feef44ff4751469ca66f55f67d479bc100e9d94a494c"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt-0.4.0.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685165"
+checksum = "sha256:0bedbb3cc1dd4aad0360ad15a06366c8f6072b202a57a9a697b72bc63b7ccac2"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt-0.4.1.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597669"
 provenance = "github-attestations"
 
 [tools."github:dkarter/hwt"."platforms.windows-x64-baseline"]
-checksum = "sha256:92e4973ed8d60aa43ea1feef44ff4751469ca66f55f67d479bc100e9d94a494c"
-url = "https://github.com/dkarter/hwt/releases/download/v0.4.0/hwt-0.4.0.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/505685165"
+checksum = "sha256:0bedbb3cc1dd4aad0360ad15a06366c8f6072b202a57a9a697b72bc63b7ccac2"
+url = "https://github.com/dkarter/hwt/releases/download/v0.4.1/hwt-0.4.1.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/514597669"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/lnr"]]
@@ -1701,52 +1701,52 @@ url_api = "https://api.github.com/repos/charmbracelet/glow/releases/assets/51046
 provenance = "cosign"
 
 [[tools.go]]
-version = "1.25.12"
+version = "1.25.13"
 backend = "core:go"
 
 [tools.go."platforms.linux-arm64"]
-checksum = "sha256:8b5884aef89600aef5b0b051fb971f11f49bb996521e911f30f02a66884f7bd2"
-url = "https://dl.google.com/go/go1.25.12.linux-arm64.tar.gz"
+checksum = "sha256:adad240fcb6bd180cf973b4b7c747baf4ec81d08b7d40ca35940ee4531971490"
+url = "https://dl.google.com/go/go1.25.13.linux-arm64.tar.gz"
 
 [tools.go."platforms.linux-arm64-musl"]
-checksum = "sha256:8b5884aef89600aef5b0b051fb971f11f49bb996521e911f30f02a66884f7bd2"
-url = "https://dl.google.com/go/go1.25.12.linux-arm64.tar.gz"
+checksum = "sha256:adad240fcb6bd180cf973b4b7c747baf4ec81d08b7d40ca35940ee4531971490"
+url = "https://dl.google.com/go/go1.25.13.linux-arm64.tar.gz"
 
 [tools.go."platforms.linux-x64"]
-checksum = "sha256:234828b7a89e0e303d2556310ee549fbcf253d28de937bac3da13d6294262ac1"
-url = "https://dl.google.com/go/go1.25.12.linux-amd64.tar.gz"
+checksum = "sha256:39042a078ea9ceebe3ecda4a7188f0f5b96e14a071d27923ba7f40b456e85ae3"
+url = "https://dl.google.com/go/go1.25.13.linux-amd64.tar.gz"
 
 [tools.go."platforms.linux-x64-baseline"]
-checksum = "sha256:234828b7a89e0e303d2556310ee549fbcf253d28de937bac3da13d6294262ac1"
-url = "https://dl.google.com/go/go1.25.12.linux-amd64.tar.gz"
+checksum = "sha256:39042a078ea9ceebe3ecda4a7188f0f5b96e14a071d27923ba7f40b456e85ae3"
+url = "https://dl.google.com/go/go1.25.13.linux-amd64.tar.gz"
 
 [tools.go."platforms.linux-x64-musl"]
-checksum = "sha256:234828b7a89e0e303d2556310ee549fbcf253d28de937bac3da13d6294262ac1"
-url = "https://dl.google.com/go/go1.25.12.linux-amd64.tar.gz"
+checksum = "sha256:39042a078ea9ceebe3ecda4a7188f0f5b96e14a071d27923ba7f40b456e85ae3"
+url = "https://dl.google.com/go/go1.25.13.linux-amd64.tar.gz"
 
 [tools.go."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:234828b7a89e0e303d2556310ee549fbcf253d28de937bac3da13d6294262ac1"
-url = "https://dl.google.com/go/go1.25.12.linux-amd64.tar.gz"
+checksum = "sha256:39042a078ea9ceebe3ecda4a7188f0f5b96e14a071d27923ba7f40b456e85ae3"
+url = "https://dl.google.com/go/go1.25.13.linux-amd64.tar.gz"
 
 [tools.go."platforms.macos-arm64"]
-checksum = "sha256:fa2c88bbcf64bd3b2aef355f026cfec6d3a4a01c132f999c8f8c964eb767164f"
-url = "https://dl.google.com/go/go1.25.12.darwin-arm64.tar.gz"
+checksum = "sha256:916fe61a2bc78dd516b3629ee3428b06e17141b85a70f1986c260149a3d2ffbd"
+url = "https://dl.google.com/go/go1.25.13.darwin-arm64.tar.gz"
 
 [tools.go."platforms.macos-x64"]
-checksum = "sha256:00a2e743b82bccec03c51c4b0f7e46d5fec52184075fd6c5183c3bb39ae9fb00"
-url = "https://dl.google.com/go/go1.25.12.darwin-amd64.tar.gz"
+checksum = "sha256:d742b7a53f8c8be5e02d75263883482cebabbe14ec9308cb056dd8aebeb040df"
+url = "https://dl.google.com/go/go1.25.13.darwin-amd64.tar.gz"
 
 [tools.go."platforms.macos-x64-baseline"]
-checksum = "sha256:00a2e743b82bccec03c51c4b0f7e46d5fec52184075fd6c5183c3bb39ae9fb00"
-url = "https://dl.google.com/go/go1.25.12.darwin-amd64.tar.gz"
+checksum = "sha256:d742b7a53f8c8be5e02d75263883482cebabbe14ec9308cb056dd8aebeb040df"
+url = "https://dl.google.com/go/go1.25.13.darwin-amd64.tar.gz"
 
 [tools.go."platforms.windows-x64"]
-checksum = "sha256:d5dc82da351b00e5eedd04f41356817d674cc4308131f0f638a5b14c5c3af4cb"
-url = "https://dl.google.com/go/go1.25.12.windows-amd64.zip"
+checksum = "sha256:54a6bbffada82938ac4ae66e354b2e9c04ebdceff96f8d0455406c723b5ed1fc"
+url = "https://dl.google.com/go/go1.25.13.windows-amd64.zip"
 
 [tools.go."platforms.windows-x64-baseline"]
-checksum = "sha256:d5dc82da351b00e5eedd04f41356817d674cc4308131f0f638a5b14c5c3af4cb"
-url = "https://dl.google.com/go/go1.25.12.windows-amd64.zip"
+checksum = "sha256:54a6bbffada82938ac4ae66e354b2e9c04ebdceff96f8d0455406c723b5ed1fc"
+url = "https://dl.google.com/go/go1.25.13.windows-amd64.zip"
 
 [[tools.gum]]
 version = "0.17.0"
@@ -1927,63 +1927,63 @@ url_api = "https://api.github.com/repos/jqlang/jq/releases/assets/453012788"
 provenance = "github-attestations"
 
 [[tools.lazygit]]
-version = "0.64.0"
+version = "0.64.1"
 backend = "aqua:jesseduffield/lazygit"
 
 [tools.lazygit."platforms.linux-arm64"]
-checksum = "sha256:d286487eb18b2b82fccfd0f1c55d8445e6eb82c08ced3b9eb3e5be0e7c627fd0"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040497"
+checksum = "sha256:8b7ca3b344e60340ad1f89f29b9868ee39bcaba5bb92ee818bbe65476bb8b6e7"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894160"
 
 [tools.lazygit."platforms.linux-arm64-musl"]
-checksum = "sha256:d286487eb18b2b82fccfd0f1c55d8445e6eb82c08ced3b9eb3e5be0e7c627fd0"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040497"
+checksum = "sha256:8b7ca3b344e60340ad1f89f29b9868ee39bcaba5bb92ee818bbe65476bb8b6e7"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894160"
 
 [tools.lazygit."platforms.linux-x64"]
-checksum = "sha256:7996236f2c1dd2643d96c3d67a1f7fcd2560bf08bcb7f6be073e26fb29167ac6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040496"
+checksum = "sha256:f8ea237c41f194cd799b48505518bfdaae4edf5a2ad6bd3d898e939785ee4532"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894209"
 
 [tools.lazygit."platforms.linux-x64-baseline"]
-checksum = "sha256:7996236f2c1dd2643d96c3d67a1f7fcd2560bf08bcb7f6be073e26fb29167ac6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040496"
+checksum = "sha256:f8ea237c41f194cd799b48505518bfdaae4edf5a2ad6bd3d898e939785ee4532"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894209"
 
 [tools.lazygit."platforms.linux-x64-musl"]
-checksum = "sha256:7996236f2c1dd2643d96c3d67a1f7fcd2560bf08bcb7f6be073e26fb29167ac6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040496"
+checksum = "sha256:f8ea237c41f194cd799b48505518bfdaae4edf5a2ad6bd3d898e939785ee4532"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894209"
 
 [tools.lazygit."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:7996236f2c1dd2643d96c3d67a1f7fcd2560bf08bcb7f6be073e26fb29167ac6"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040496"
+checksum = "sha256:f8ea237c41f194cd799b48505518bfdaae4edf5a2ad6bd3d898e939785ee4532"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894209"
 
 [tools.lazygit."platforms.macos-arm64"]
-checksum = "sha256:df8d2dd27cdc1075785f1abb85b74fe393fcdc1f3fdf6cb2b587feb3ce72ba33"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040495"
+checksum = "sha256:a106b4c1bf8ab7539c4afb40a01cbde263a96513cdcb8bf7630278f07e88cd99"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894212"
 
 [tools.lazygit."platforms.macos-x64"]
-checksum = "sha256:164d003f2eaa73e898d218882ec1eb9af517d3f3a351dff736390fc649e1b838"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040515"
+checksum = "sha256:f727fdf2efa46f78d102639eafe085cef437928da1e9ec79ec8e203b8a12f2a2"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894192"
 
 [tools.lazygit."platforms.macos-x64-baseline"]
-checksum = "sha256:164d003f2eaa73e898d218882ec1eb9af517d3f3a351dff736390fc649e1b838"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040515"
+checksum = "sha256:f727fdf2efa46f78d102639eafe085cef437928da1e9ec79ec8e203b8a12f2a2"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894192"
 
 [tools.lazygit."platforms.windows-x64"]
-checksum = "sha256:d8b723dd25e098c4a229e7d9a87ff1c3a5779902ebea242b8678f4ac195c1d90"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040510"
+checksum = "sha256:de8eca2cf2e75857882d313bf9dfc706a7aae893951ab29df706c99b525661ae"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894165"
 
 [tools.lazygit."platforms.windows-x64-baseline"]
-checksum = "sha256:d8b723dd25e098c4a229e7d9a87ff1c3a5779902ebea242b8678f4ac195c1d90"
-url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.0/lazygit_0.64.0_windows_x86_64.zip"
-url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/501040510"
+checksum = "sha256:de8eca2cf2e75857882d313bf9dfc706a7aae893951ab29df706c99b525661ae"
+url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/511894165"
 
 [[tools.lima]]
 version = "2.2.0"
@@ -2210,11 +2210,11 @@ checksum = "sha256:0ae68406b42d7725661da979b1403ec9926da205c6770827f33aac9d8f26e
 url = "https://nodejs.org/dist/v24.18.0/node-v24.18.0-win-x64.zip"
 
 [[tools."npm:@commitlint/cli"]]
-version = "21.2.1"
+version = "21.2.2"
 backend = "npm:@commitlint/cli"
 
 [[tools."npm:@fission-ai/openspec"]]
-version = "1.8.0"
+version = "1.9.0"
 backend = "npm:@fission-ai/openspec"
 
 [[tools."npm:@kitlangton/stack"]]
