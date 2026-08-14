@@ -6,4 +6,4 @@ silent: true
 tasks:
   plugins:install:
     desc: Installs dependencies for local OpenCode plugins
-    cmd: aube install --frozen-lockfile --filter ./config/opencode/tui-plugin
+    cmd: mise exec -- aube install --frozen-lockfile --filter ./config/opencode/tui-plugin
