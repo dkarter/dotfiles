@@ -29,6 +29,7 @@ if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} && -z ${HERDR_DISABLE_PANE_TI
     opencode ' opencode'
     pi ' pi'
     posting '󰒊 posting'
+    psql ' psql'
     pspg ' pspg'
     qodercli ' qodercli'
     tuicr ' tuicr'
