@@ -1,0 +1,171 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Enrich Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to enrich
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag to enrich
+        required: true
+        type: string
+
+concurrency:
+  group: enrich-release-${{ inputs.tag || github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      result: ${{ steps.pullfrog.outputs.result }}
+      tag: ${{ steps.release.outputs.tag }}
+    steps:
+      - name: Checkout release history
+        # actions/checkout does not publish immutable releases.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.tag || github.event.release.tag_name }}
+
+      - name: Resolve release range
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Unsupported release tag: $RELEASE_TAG" >&2
+            exit 1
+          fi
+
+          git rev-parse --verify "refs/tags/$RELEASE_TAG" >/dev/null
+          previous_tag=$(git tag --merged "$RELEASE_TAG" --sort=-v:refname |
+            grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' |
+            grep -Fxv "$RELEASE_TAG" |
+            sed -n '1p')
+          if [[ -z "$previous_tag" ]]; then
+            echo "No previous semantic-version tag found" >&2
+            exit 1
+          fi
+
+          gh release view "$RELEASE_TAG" --json body --jq '.body' \
+            > .pullfrog-release-notes.md
+          echo "tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+          echo "previous_tag=$previous_tag" >> "$GITHUB_OUTPUT"
+
+      - name: Summarize release
+        id: pullfrog
+        uses: pullfrog/pullfrog@v0
+        with:
+          push: disabled
+          shell: disabled
+          progress_comments: disabled
+          output_schema: |
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["summary"],
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          prompt: |
+            Compare `${{ steps.release.outputs.previous_tag }}` with
+            `${{ steps.release.outputs.tag }}` and write a concise Markdown
+            summary for people who use this dotfiles repository. Read the
+            existing generated notes in `.pullfrog-release-notes.md`, but
+            verify every claim against the git diff. Include a short overview,
+            notable changes, and migration or breaking-change notes when
+            applicable. Omit empty sections and do not modify the repository or
+            GitHub. Return the result using the required output schema.
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+
+  publish:
+    needs: summarize
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout default branch
+        # actions/checkout does not publish immutable releases.
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Install runtimes
+        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+
+      - name: Prepare enriched notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
+          SUMMARY_JSON: ${{ needs.summarize.outputs.result }}
+        run: |
+          gh release view "$RELEASE_TAG" --json body --jq '.body' \
+            > "$RUNNER_TEMP/release-notes.md"
+          printf '%s' "$SUMMARY_JSON" > "$RUNNER_TEMP/summary.json"
+          mise exec -- node scripts/enrich-release-notes.mjs \
+            "$RELEASE_TAG" \
+            "$RUNNER_TEMP/summary.json" \
+            "$RUNNER_TEMP/release-notes.md" \
+            CHANGELOG.md \
+            "$RUNNER_TEMP/enriched-release-notes.md"
+
+      - name: Update GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
+          RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
+        run: >-
+          gh release edit "$RELEASE_TAG"
+          --notes-file "$RUNNER_TEMP/enriched-release-notes.md"
+
+      - name: Open changelog pull request
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
+          RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
+        run: |
+          version=${RELEASE_TAG#v}
+          branch="automation/enrich-changelog-$RELEASE_TAG"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -B "$branch"
+
+          if git diff --quiet -- CHANGELOG.md; then
+            echo 'Changelog summary is already current.'
+            exit 0
+          fi
+
+          git add CHANGELOG.md
+          git commit -m "docs(changelog): enrich $version release notes"
+          git fetch origin \
+            "refs/heads/$branch:refs/remotes/origin/$branch" || true
+          git push --force-with-lease origin "HEAD:refs/heads/$branch"
+
+          if ! gh pr list --head "$branch" --state open --json number \
+            --jq '.[0].number' | grep -q .; then
+            gh pr create \
+              --base "${{ github.event.repository.default_branch }}" \
+              --head "$branch" \
+              --title "docs(changelog): enrich $version release notes" \
+              --body "Adds the human-readable summary published for $RELEASE_TAG."
+          fi
