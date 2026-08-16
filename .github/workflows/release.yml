@@ -11,13 +11,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
-      uses_pat: ${{ steps.auth.outputs.uses_pat }}
     steps:
       - name: Release Please
-        id: release
         uses: dkarter/release-please-action@5931f1e9ef68429590dc13ea0655d0a2708cbd2f
         with:
           token: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
@@ -31,28 +26,3 @@ jobs:
           signing-commit-author-email: 293262735+release-please-signer@users.noreply.github.com
           signing-commit-committer-name: release-please-signer
           signing-commit-committer-email: 293262735+release-please-signer@users.noreply.github.com
-
-      - name: Record release authentication
-        id: auth
-        env:
-          RELEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN }}
-        run: |
-          if [[ -n "$RELEASE_TOKEN" ]]; then
-            echo 'uses_pat=true' >> "$GITHUB_OUTPUT"
-          else
-            echo 'uses_pat=false' >> "$GITHUB_OUTPUT"
-          fi
-
-  enrich-release:
-    needs: release
-    if: >-
-      needs.release.outputs.release_created == 'true' &&
-      needs.release.outputs.uses_pat != 'true'
-    permissions:
-      contents: write
-      id-token: write
-      pull-requests: write
-    uses: ./.github/workflows/enrich-release.yml
-    with:
-      tag: ${{ needs.release.outputs.tag_name }}
-    secrets: inherit
