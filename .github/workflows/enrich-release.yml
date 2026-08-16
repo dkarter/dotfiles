@@ -124,7 +124,7 @@ jobs:
           gh release view "$RELEASE_TAG" --json body --jq '.body' \
             > "$RUNNER_TEMP/release-notes.md"
           printf '%s' "$SUMMARY_JSON" > "$RUNNER_TEMP/summary.json"
-          mise exec -- node scripts/enrich-release-notes.mjs \
+          mise exec -- nub scripts/enrich-release-notes.ts \
             "$RELEASE_TAG" \
             "$RUNNER_TEMP/summary.json" \
             "$RUNNER_TEMP/release-notes.md" \

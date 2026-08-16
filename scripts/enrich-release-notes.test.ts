@@ -2,11 +2,11 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-import { enrichChangelog, enrichReleaseBody } from './enrich-release-notes.mjs';
+import { enrichChangelog, enrichReleaseBody } from './enrich-release-notes.ts';
 
 const fixtureUrl = new URL('fixtures/enrich-release-notes/', import.meta.url);
 
-async function fixture(name) {
+async function fixture(name: string): Promise<string> {
   return readFile(new URL(name, fixtureUrl), 'utf8');
 }
 

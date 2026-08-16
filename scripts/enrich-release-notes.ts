@@ -4,11 +4,11 @@ import process from 'node:process';
 const START_MARKER = '<!-- pullfrog-summary:start -->';
 const END_MARKER = '<!-- pullfrog-summary:end -->';
 
-function markedSummary(summary) {
+function markedSummary(summary: string): string {
   return `${START_MARKER}\n\n${summary.trim()}\n\n${END_MARKER}`;
 }
 
-export function enrichReleaseBody(body, summary) {
+export function enrichReleaseBody(body: string, summary: string): string {
   const marked = markedSummary(summary);
   const pattern = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}\\n*`);
 
@@ -19,7 +19,7 @@ export function enrichReleaseBody(body, summary) {
   return `${marked}\n\n${body.trimStart()}`;
 }
 
-export function enrichChangelog(changelog, version, summary) {
+export function enrichChangelog(changelog: string, version: string, summary: string): string {
   const heading = new RegExp(`^## \\[${escapeRegex(version)}\\].*$`, 'm');
   const match = heading.exec(changelog);
   if (!match) {
@@ -37,7 +37,7 @@ export function enrichChangelog(changelog, version, summary) {
   return changelog.slice(0, sectionStart) + enriched + changelog.slice(sectionEnd);
 }
 
-function escapeRegex(value) {
+function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
@@ -45,11 +45,14 @@ async function main() {
   const [tag, summaryPath, releaseBodyPath, changelogPath, outputPath] = process.argv.slice(2);
   if (!tag || !summaryPath || !releaseBodyPath || !changelogPath || !outputPath) {
     throw new Error(
-      'Usage: enrich-release-notes.mjs <tag> <summary-json> ' + '<release-body> <changelog> <release-output>',
+      'Usage: enrich-release-notes.ts <tag> <summary-json> ' + '<release-body> <changelog> <release-output>',
     );
   }
 
-  const summaryPayload = JSON.parse(await readFile(summaryPath, 'utf8'));
+  const summaryPayload: unknown = JSON.parse(await readFile(summaryPath, 'utf8'));
+  if (!summaryPayload || typeof summaryPayload !== 'object' || !('summary' in summaryPayload)) {
+    throw new Error('Summary output must contain a non-empty summary string');
+  }
   if (typeof summaryPayload.summary !== 'string' || !summaryPayload.summary.trim()) {
     throw new Error('Summary output must contain a non-empty summary string');
   }
@@ -63,8 +66,8 @@ async function main() {
 }
 
 if (process.argv[1] === new URL(import.meta.url).pathname) {
-  main().catch((error) => {
-    console.error(error.message);
+  main().catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : error);
     process.exitCode = 1;
   });
 }
