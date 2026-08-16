@@ -48,6 +48,10 @@ jobs:
     if: >-
       needs.release.outputs.release_created == 'true' &&
       needs.release.outputs.uses_pat != 'true'
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
     uses: ./.github/workflows/enrich-release.yml
     with:
       tag: ${{ needs.release.outputs.tag_name }}

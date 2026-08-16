@@ -38,6 +38,6 @@ test('prepends and replaces the marked release summary', () => {
 
   assert.equal(
     enrichReleaseBody(enriched, 'Updated overview.'),
-    '<!-- pullfrog-summary:start -->\nUpdated overview.\n' + '<!-- pullfrog-summary:end -->\n\n' + generated,
+    '<!-- pullfrog-summary:start -->\n\nUpdated overview.\n\n' + '<!-- pullfrog-summary:end -->\n\n' + generated,
   );
 });

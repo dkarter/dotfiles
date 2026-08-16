@@ -5,7 +5,7 @@ const START_MARKER = '<!-- pullfrog-summary:start -->';
 const END_MARKER = '<!-- pullfrog-summary:end -->';
 
 function markedSummary(summary) {
-  return `${START_MARKER}\n${summary.trim()}\n${END_MARKER}`;
+  return `${START_MARKER}\n\n${summary.trim()}\n\n${END_MARKER}`;
 }
 
 export function enrichReleaseBody(body, summary) {

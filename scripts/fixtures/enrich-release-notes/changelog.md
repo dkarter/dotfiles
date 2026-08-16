@@ -4,10 +4,10 @@
 
 ### Features
 
-* New feature
+- New feature
 
 ## [1.0.0](https://example.test/releases/v1.0.0)
 
 ### Features
 
-* First feature
+- First feature
