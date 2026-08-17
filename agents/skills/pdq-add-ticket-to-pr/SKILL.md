@@ -1,7 +1,6 @@
 ---
 name: pdq-add-ticket-to-pr
-description: Attach an issue or attach a ticket by creating a Platform Linear issue for a PDQ PR or unpushed branch, renaming the branch when needed, updating the PR title, and rerunning the ticketing check. Do not invoke automatically.
-disable-model-invocation: true
+description: Attach an issue or ticket by creating a Platform Linear issue for a PR or unpushed branch, renaming the branch when needed, updating the PR title, and rerunning the ticketing check. Invoke only when the repository belongs to the pdq GitHub organization and the current branch does not already match `^[a-z]{3}-[0-9]+-`.
 ---
 
 # Skill: pdq-add-ticket-to-pr
@@ -12,11 +11,12 @@ Use this workflow when asked to attach an issue/ticket to PDQ work. It creates a
 
 ## Scope Guardrail (required)
 
-Run this skill only in PDQ repositories.
+Run this skill only when both conditions are true:
 
-- Verify remote first: `git remote get-url origin`
-- Continue only if remote matches `github.com/pdq/` (SSH or HTTPS)
-- If not a PDQ repo, stop and report that this skill is out of scope
+- The `origin` remote belongs to the `pdq` GitHub organization. Verify with `git remote get-url origin` and require `github.com/pdq/` for SSH or HTTPS URLs.
+- The current branch does not match `^[a-z]{3}-[0-9]+-`. Verify with `git branch --show-current`.
+
+If either condition is false, stop without executing the workflow and report why.
 
 ## Inputs
 
