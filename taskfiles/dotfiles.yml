@@ -198,20 +198,22 @@ tasks:
           repo_skills="$(realpath ./agents/skills)"
           local_skills="$HOME/.local/share/dotfiles/skills"
           skill_dests="$HOME/.agents/skills $HOME/.claude/skills"
-          generated_skills='stack|stack|skill|-|SKILL.md
-          lnr|lnr|skill|-|SKILL.md
-          hwt|hwt|skill|-|SKILL.md
-          hwt|hwt|skill|config|references/config.md'
+          generated_skills='stack|stack|stack|skill|-|SKILL.md
+          lnr|lnr|lnr|skill|-|SKILL.md
+          hwt|hwt|hwt|skill|-|SKILL.md
+          hwt|hwt|hwt|skill|config|references/config.md
+          hunk-review|mise|sh|-c|cat "$(mise exec -- hunk skill path hunk-review)"|SKILL.md
+          hunk-extensions|mise|sh|-c|cat "$(mise exec -- hunk skill path hunk-extensions)"|SKILL.md'
 
           mkdir -p "$local_skills" "$HOME/.claude"
 
           generate_cli_skills() {
-            printf '%s\n' "$generated_skills" | while IFS='|' read -r skill_name cli subcommand argument output_path; do
-              if ! command -v "$cli" >/dev/null 2>&1; then
+            printf '%s\n' "$generated_skills" | while IFS='|' read -r skill_name required_cli cli subcommand argument output_path; do
+              if ! command -v "$required_cli" >/dev/null 2>&1; then
                 rm -f "$local_skills/$skill_name/$output_path"
                 rmdir "$(dirname "$local_skills/$skill_name/$output_path")" 2>/dev/null || true
                 rmdir "$local_skills/$skill_name" 2>/dev/null || true
-                echo "Skipping generated skill $skill_name: $cli is not installed" >&2
+                echo "Skipping generated skill $skill_name: $required_cli is not installed" >&2
                 continue
               fi
 
