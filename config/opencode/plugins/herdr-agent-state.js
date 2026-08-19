@@ -2,7 +2,7 @@
 // managed by herdr; reinstalling or updating the integration overwrites this file.
 // add custom hooks/plugins beside this file instead of editing it.
 // HERDR_INTEGRATION_ID=opencode
-// HERDR_INTEGRATION_VERSION=9
+// HERDR_INTEGRATION_VERSION=10
 
 import net from 'node:net';
 
@@ -12,10 +12,16 @@ let reportSeq = Date.now() * 1000;
 let requestChain = Promise.resolve();
 let reportedRootSessionID;
 
-// Subagent (task tool) sessions carry a parentID; the main agent session does
-// not. Their lifecycle events would otherwise clobber the pane's real state, so
-// learn child session ids from session.created/updated and drop their reports.
+// Track child sessions so their events cannot replace the pane's root session.
+// Their user prompts still project state without attaching the child session id.
 const childSessions = new Set();
+const CHILD_EVENT_STATES = new Map([
+  ['permission.asked', 'blocked'],
+  ['question.asked', 'blocked'],
+  ['permission.replied', 'working'],
+  ['question.replied', 'working'],
+  ['question.rejected', 'working'],
+]);
 
 function nextReportSeq() {
   reportSeq += 1;
@@ -26,24 +32,20 @@ function sessionIDFromProperties(properties) {
   return typeof properties?.sessionID === 'string' && properties.sessionID ? properties.sessionID : undefined;
 }
 
+const SESSION_STATE_BY_STATUS = new Map([
+  ['idle', 'idle'],
+  ['active', 'working'],
+  ['busy', 'working'],
+  ['pending', 'working'],
+  ['retry', 'working'],
+  ['running', 'working'],
+  ['streaming', 'working'],
+  ['working', 'working'],
+]);
+
 function stateFromSessionStatus(status) {
-  // session.status carries { type: "idle" | "busy" | "retry" }; older builds used a bare string.
   const kind = typeof status === 'string' ? status : status?.type;
-  if (typeof kind !== 'string') return undefined;
-  switch (kind.toLowerCase()) {
-    case 'idle':
-      return 'idle';
-    case 'active':
-    case 'busy':
-    case 'pending':
-    case 'running':
-    case 'streaming':
-    case 'working':
-    case 'retry':
-      return 'working';
-    default:
-      return undefined;
-  }
+  return typeof kind === 'string' ? SESSION_STATE_BY_STATUS.get(kind.toLowerCase()) : undefined;
 }
 
 function request(method, params) {
@@ -95,15 +97,11 @@ function requestOnce(method, params) {
   });
 }
 
-function reportSession(sessionID, sessionStartSource) {
+function reportSession(sessionID) {
   if (!sessionID) {
     return Promise.resolve();
   }
-  const params = { agent_session_id: sessionID };
-  if (sessionStartSource) {
-    params.session_start_source = sessionStartSource;
-  }
-  return request('pane.report_agent_session', params);
+  return request('pane.report_agent_session', { agent_session_id: sessionID });
 }
 
 function reportState(state, sessionID) {
@@ -137,32 +135,18 @@ export const HerdrAgentStatePlugin = async () => {
         childSessions.add(info.id);
       }
       if (sessionID && childSessions.has(sessionID)) {
-        // Child session events are dropped so they cannot clobber the pane's
-        // root-agent state, but a subagent waiting on the user must still
-        // surface as blocked (and clear once answered). Report state only,
-        // without an agent_session_id, so the pane keeps the root session.
-        switch (type) {
-          case 'permission.asked':
-          case 'question.asked':
-            await reportState('blocked');
-            break;
-          case 'permission.replied':
-          case 'question.replied':
-          case 'question.rejected':
-            await reportState('working');
-            break;
-          default:
-            break;
+        const state = CHILD_EVENT_STATES.get(type);
+        if (state) {
+          await reportState(state);
         }
         return;
       }
 
       switch (type) {
         case 'session.created':
-          // A root session.created is a genuine new-session start (subagent
-          // creates are dropped above). Signal it so herdr replaces the pane's
-          // prior session id instead of treating the change as cross-talk.
-          await reportSession(sessionID, 'new');
+          // Creation is server-global, so an attached client may own it. The
+          // TUI plugin separately reports the root selected in this pane.
+          reportedRootSessionID = sessionID;
           break;
         case 'session.updated':
           if (sessionID && sessionID !== reportedRootSessionID) {
