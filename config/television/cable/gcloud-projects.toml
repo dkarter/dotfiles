@@ -14,7 +14,7 @@ command = [
   cache_file="$cache_dir/gcloud-projects"
   mkdir -p "$cache_dir"
 
-  if [ ! -s "$cache_file" ] || [ -z "$(find "$cache_file" -mmin -1440 -print -quit 2>/dev/null)" ]; then
+  if [ ! -s "$cache_file" ]; then
     cache_tmp="$cache_file.tmp.$$"
     if gcloud projects list --format='value(projectId,name)' > "$cache_tmp"; then
       mv "$cache_tmp" "$cache_file"
