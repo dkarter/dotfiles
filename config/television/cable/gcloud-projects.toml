@@ -3,17 +3,44 @@ name = "gcloud-projects"
 description = '''List and switch between Google Cloud projects.
 
 Press `enter` to set the selected project as the active gcloud project.
+Press `ctrl-r` to refresh the cached project list.
 '''
 requirements = ["gcloud"]
 
 [source]
-command = "gcloud projects list --format='value(projectId,name)'"
-output = "{0}"
+command = [
+  '''
+  cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/television"
+  cache_file="$cache_dir/gcloud-projects"
+  mkdir -p "$cache_dir"
+
+  if [ ! -s "$cache_file" ] || [ -z "$(find "$cache_file" -mmin -1440 -print -quit 2>/dev/null)" ]; then
+    cache_tmp="$cache_file.tmp.$$"
+    if gcloud projects list --format='value(projectId,name)' > "$cache_tmp"; then
+      mv "$cache_tmp" "$cache_file"
+    else
+      rm -f "$cache_tmp"
+    fi
+  fi
+
+  awk -F '\t' '{
+    printf "\033[36m%-40s\033[0m  \033[33m%s\033[0m\n", $1, $2
+  }' "$cache_file"
+  ''',
+]
+ansi = true
+output = "{strip_ansi|split: :0}"
 
 [keybindings]
 enter = "actions:switch"
+ctrl-r = ["actions:clear-cache", "reload_source"]
 
 [actions.switch]
 description = "Set the active Google Cloud project"
-command = "gcloud config set project {0}"
+command = "gcloud config set project '{strip_ansi|split: :0}'"
 mode = "execute"
+
+[actions.clear-cache]
+description = "Refresh the cached Google Cloud projects"
+command = '''rm -f "${XDG_CACHE_HOME:-$HOME/.cache}/television/gcloud-projects"'''
+mode = "fork"
