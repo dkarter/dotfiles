@@ -1,0 +1,19 @@
+[metadata]
+name = "gcloud-projects"
+description = '''List and switch between Google Cloud projects.
+
+Press `enter` to set the selected project as the active gcloud project.
+'''
+requirements = ["gcloud"]
+
+[source]
+command = "gcloud projects list --format='value(projectId,name)'"
+output = "{0}"
+
+[keybindings]
+enter = "actions:switch"
+
+[actions.switch]
+description = "Set the active Google Cloud project"
+command = "gcloud config set project {0}"
+mode = "execute"
