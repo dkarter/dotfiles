@@ -11,7 +11,8 @@ tasks:
       set -- \
         './mise.lock' \
         './config/mise/mise.lock' \
-        './config/mise/mise.extra.lock'
+        './config/mise/mise.extra.lock' \
+        './config/mise/mise.pdq.lock'
 
       if [[ -z "$(git status --porcelain -- "$@")" ]]; then
         echo "No changes in mise lockfiles"
@@ -51,7 +52,9 @@ tasks:
     silent: true
     cmds:
       - cmd: mise lock
-      - cmd: mise lock -g
+      - cmd: MISE_ENV= mise lock -g
+      - cmd: MISE_ENV=extra mise lock -g
+      - cmd: MISE_ENV=pdq mise lock -g
 
   sync:
     desc: Updates mise tools (runtimes), mise itself and installs packages for this project
@@ -88,13 +91,13 @@ tasks:
           mise install --yes --cd "$HOME"
           mise install --yes
 
-  tools:extras:prompt:
-    desc: Prompt to enable optional mise extras profile
+  tools:profiles:prompt:
+    desc: Prompt to enable optional mise tool profiles
     silent: true
     cmds:
       - cmd: |
           if [[ ! -t 0 ]] || [[ ! -t 1 ]]; then
-            echo "Skipping extras prompt (non-interactive shell)."
+            task mise:tools:install
             exit 0
           fi
 
@@ -103,25 +106,72 @@ tasks:
           fi
 
           zshrc_local="$HOME/.zshrc.local"
+          mise_env=""
+          existing_mise_env=""
+          preselected_profiles=""
 
-          if mise exec -- gum confirm "Install optional extra mise tools?"; then
-            touch "$zshrc_local"
+          if [[ -f "$zshrc_local" ]]; then
+            existing_mise_env="$(sed -nE 's/^[[:space:]]*export[[:space:]]+MISE_ENV=([^[:space:]]+)[[:space:]]*$/\1/p' "$zshrc_local" | tail -n 1)"
+          fi
 
-            if grep -qE '^[[:space:]]*export[[:space:]]+MISE_ENV=' "$zshrc_local"; then
-              sed -i.bak -E 's|^[[:space:]]*export[[:space:]]+MISE_ENV=.*$|export MISE_ENV=extra|' "$zshrc_local"
+          append_profile() {
+            if [[ -n "$mise_env" ]]; then
+              mise_env="$mise_env,$1"
             else
-              printf '\nexport MISE_ENV=extra\n' >> "$zshrc_local"
+              mise_env="$1"
             fi
+          }
 
+          append_preselected_profile() {
+            if [[ -n "$preselected_profiles" ]]; then
+              preselected_profiles="$preselected_profiles,$1"
+            else
+              preselected_profiles="$1"
+            fi
+          }
+
+          old_ifs="$IFS"
+          IFS=','
+          for profile in $existing_mise_env; do
+            case "$profile" in
+              "") ;;
+              extra|pdq) append_preselected_profile "$profile" ;;
+              *) append_profile "$profile" ;;
+            esac
+          done
+          IFS="$old_ifs"
+
+          selected_profiles="$(mise exec -- gum choose \
+            --no-limit \
+            --selected "$preselected_profiles" \
+            --output-delimiter=, \
+            --header "Select optional mise tool profiles" \
+            extra pdq)"
+
+          IFS=','
+          for profile in $selected_profiles; do
+            [[ -n "$profile" ]] && append_profile "$profile"
+          done
+          IFS="$old_ifs"
+
+          if [[ -n "$mise_env" ]]; then
+            touch "$zshrc_local"
+            if grep -qE '^[[:space:]]*export[[:space:]]+MISE_ENV=' "$zshrc_local"; then
+              sed -i.bak -E "s|^[[:space:]]*export[[:space:]]+MISE_ENV=.*$|export MISE_ENV=$mise_env|" "$zshrc_local"
+            else
+              printf '\nexport MISE_ENV=%s\n' "$mise_env" >> "$zshrc_local"
+            fi
             rm -f "$zshrc_local.bak"
-            echo "Enabled extras profile via MISE_ENV=extra in $zshrc_local"
+            echo "Enabled mise profiles via MISE_ENV=$mise_env in $zshrc_local"
           else
             if [[ -f "$zshrc_local" ]]; then
-              sed -i.bak -E '/^[[:space:]]*export[[:space:]]+MISE_ENV=extra[[:space:]]*$/d' "$zshrc_local"
+              sed -i.bak -E '/^[[:space:]]*export[[:space:]]+MISE_ENV=/d' "$zshrc_local"
               rm -f "$zshrc_local.bak"
             fi
             echo "Keeping base mise toolset only."
           fi
+
+          MISE_ENV="$mise_env" task mise:tools:install
 
   tools:update:
     desc: Updates all mise based tools

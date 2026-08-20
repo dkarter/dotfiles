@@ -100,8 +100,7 @@ tasks:
       - task: zinit:install
       - task: zinit:plugins:update
       - task: mac:set:defaults
-      - task: mise:tools:extras:prompt
-      - task: mise:tools:install
+      - task: mise:tools:profiles:prompt
       - task: opencode:plugins:install
       - task: skills:sync
       - task: herdr:sync
