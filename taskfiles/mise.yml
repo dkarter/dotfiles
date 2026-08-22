@@ -25,27 +25,7 @@ tasks:
   install:
     desc: Installs mise itself
     silent: true
-    # https://mise.jdx.dev/getting-started.html
-    cmds:
-      - cmd: brew update && brew install mise
-        platforms: [darwin]
-
-      - cmd: |
-          if command -v mise &>/dev/null; then
-            exit 0
-          fi
-
-          if [[ -f /etc/debian_version ]] || command -v apt &>/dev/null; then
-            sudo apt update -y && sudo apt install -y gpg sudo wget curl
-            sudo install -dm 755 /etc/apt/keyrings
-            wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
-            echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch={{ARCH}}] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
-            sudo apt update
-            sudo apt install -y mise
-          elif command -v pacman &> /dev/null; then
-            sudo pacman --noconfirm --needed -S mise
-          fi
-        platforms: [linux]
+    cmd: curl https://mise.run | MISE_INSTALL_SKIP_IF_EXISTS=1 sh
 
   lock:
     desc: Updates all mise lockfiles (globally and locally)
@@ -59,8 +39,32 @@ tasks:
   sync:
     desc: Updates mise tools (runtimes), mise itself and installs packages for this project
     cmds:
+      - task: migrate:standalone
+      - task: self:update
       - task: tools:install
       - task: tools:update
+
+  migrate:standalone:
+    internal: true
+    platforms: [darwin, linux]
+    cmd: |
+      set -e
+      set -o pipefail
+
+      if [[ "$(command -v mise || true)" != "$HOME/.local/bin/mise" ]]; then
+        echo 'Migrating mise to the standalone mise.run installation...'
+        curl https://mise.run | sh
+      fi
+
+      test -x "$HOME/.local/bin/mise"
+
+      if command -v brew >/dev/null && brew list --formula mise &>/dev/null; then
+        brew uninstall mise
+      fi
+
+  self:update:
+    desc: Updates mise itself
+    cmd: ~/.local/bin/mise self-update --yes --no-plugins
 
   tools:install:
     desc: Installs/updates all mise based tools

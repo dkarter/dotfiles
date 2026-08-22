@@ -70,7 +70,7 @@ if [[ ! -f ~/.local/bin/task ]]; then
   sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
 fi
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Run task
 if [[ ${DEVPOD:-} == 'true' || ${DEVCONTAINER:-} == 'true' ]]; then

@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.5.0](https://github.com/dkarter/dotfiles/compare/v32.4.1...v32.5.0) (2026-08-22)
+
+
+### Features
+
+* add ghtkn for safer github tokens ([9ed516a](https://github.com/dkarter/dotfiles/commit/9ed516a489e44b1e3aa49e508d171041d3c87bc9))
+* **agents:** redact credentials across tool output ([08836e6](https://github.com/dkarter/dotfiles/commit/08836e6be8b6f915c52387078d5387569bf21b2e))
+* **mise:** add pi agent ([cd24707](https://github.com/dkarter/dotfiles/commit/cd247070786f088ccfac8200f1c6e6faf45c01cb))
+* **opencode:** guard credentials and restore vim mode ([e4ee69a](https://github.com/dkarter/dotfiles/commit/e4ee69a6289be02a6472f1d34c2baa470542aab4))
+
+
+### Bug Fixes
+
+* **mise:** add github official mcp stdio and ghtkn ([04490bf](https://github.com/dkarter/dotfiles/commit/04490bf9651465c80d3823640d2068f4e7727414))
+* **mise:** migrate to standalone installation ([e296550](https://github.com/dkarter/dotfiles/commit/e296550ed0befdd452260ff5493f207f7826348e))
+* **opencode:** update keybind references ([113720c](https://github.com/dkarter/dotfiles/commit/113720c7640c0bc5d61d3bf5ea20f7bc2cd6f6af))
+* **pi:** preserve default model across launches ([89b46d4](https://github.com/dkarter/dotfiles/commit/89b46d4a8e204d67df936f5f8630656d55529ecd))
+
+## [32.4.1](https://github.com/dkarter/dotfiles/compare/v32.4.0...v32.4.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* **release:** keep enrichment output in one job ([d53b057](https://github.com/dkarter/dotfiles/commit/d53b057f0aa1cb94b114bcd7487b89e37a50a841))
+* **release:** limit enrichment checkout scope ([3db96c2](https://github.com/dkarter/dotfiles/commit/3db96c2715b2335f1a76cb12ce90085dbee6fb3f))
+
 ## [32.4.0](https://github.com/dkarter/dotfiles/compare/v32.3.0...v32.4.0) (2026-08-22)
 
 <!-- pullfrog-summary:start -->
