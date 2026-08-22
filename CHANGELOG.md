@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.4.1](https://github.com/dkarter/dotfiles/compare/v32.4.0...v32.4.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* **release:** keep enrichment output in one job ([d53b057](https://github.com/dkarter/dotfiles/commit/d53b057f0aa1cb94b114bcd7487b89e37a50a841))
+* **release:** limit enrichment checkout scope ([3db96c2](https://github.com/dkarter/dotfiles/commit/3db96c2715b2335f1a76cb12ce90085dbee6fb3f))
+
 ## [32.4.0](https://github.com/dkarter/dotfiles/compare/v32.3.0...v32.4.0) (2026-08-22)
 
 
