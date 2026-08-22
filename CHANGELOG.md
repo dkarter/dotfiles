@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.3.0](https://github.com/dkarter/dotfiles/compare/v32.2.0...v32.3.0) (2026-08-22)
+
+
+### Features
+
+* **agents:** require signed commits ([b0da1ca](https://github.com/dkarter/dotfiles/commit/b0da1caf433a68aaa1322cd6afe896b03033de5b))
+* **herdr:** add hwt plugin ([0243c87](https://github.com/dkarter/dotfiles/commit/0243c875ae7427960adec82894788b62e5a5c096))
+* **herdr:** add non blocking herdr worktree deletion ([4b9e8d2](https://github.com/dkarter/dotfiles/commit/4b9e8d26a17e5544a3875b7c541737c4e1f8431e))
+* **herdr:** add pane swap shortcuts ([186363b](https://github.com/dkarter/dotfiles/commit/186363be12dc3e6b2a09ee1436253f76eccb5635))
+* **herdr:** label opencode v2 panes ([f2740ed](https://github.com/dkarter/dotfiles/commit/f2740ed7638a041ceb5071bd8cf104a80f309bf4))
+* **herdr:** support session history ([ad0676f](https://github.com/dkarter/dotfiles/commit/ad0676fbc4e399b614d20c70779461f62edb4250))
+* **herdr:** use hwt for worktree orchestration ([d115cae](https://github.com/dkarter/dotfiles/commit/d115cae1a5559a1d3495131819232a4fa354c82b))
+* **mise:** add Amp CLI ([4fddc2b](https://github.com/dkarter/dotfiles/commit/4fddc2ba9620711a34cf926a06382c699fab100b))
+* **mise:** add opencode v2 ([94af41b](https://github.com/dkarter/dotfiles/commit/94af41ba6d4fe6e57245d87e1fec493dc5b6a6b7))
+* **mise:** add opencode v2 beta ([8490f06](https://github.com/dkarter/dotfiles/commit/8490f0664ea0bc106a8be2a097aebec5753719a2))
+* **mise:** add opt-in pdq profile ([18fabc6](https://github.com/dkarter/dotfiles/commit/18fabc6b0cea43cfd5f8424de47159fd7af09709))
+* **opencode:** add chrome devtools mcp -&gt; helium ([f3f2343](https://github.com/dkarter/dotfiles/commit/f3f2343feb1a9740049e0e54d0ca17ac0fb1bb0b))
+* **opencode:** configure v2 TUI ([c3a433c](https://github.com/dkarter/dotfiles/commit/c3a433cd2fda95bf1db2c9c268e0358eb484964b))
+* **opencode:** enable attention notifs ([da50118](https://github.com/dkarter/dotfiles/commit/da5011898cad98a264a32c3d499bcbcd4d512c32))
+* **opencode:** install TUI plugin dependencies ([0002f95](https://github.com/dkarter/dotfiles/commit/0002f957c4dff3d854660bbe32c928bd9eed5b60))
+* **opencode:** update TUI preferences ([9ce644b](https://github.com/dkarter/dotfiles/commit/9ce644b5f2cdc47353e8c81a1814a52ecc7da4bc))
+* **pspg:** add XDG config and Tokyo Night theme ([02ef957](https://github.com/dkarter/dotfiles/commit/02ef95744febc3451529d5806aced2d61245b224))
+* **skills:** add dev process launcher ([dc7c995](https://github.com/dkarter/dotfiles/commit/dc7c99503153ca7c689952efecdc304f421190d7))
+* **skills:** add hwt skills ([6b02a22](https://github.com/dkarter/dotfiles/commit/6b02a224e2cc3bb1aaf0bc759221127d5dc46b57))
+* **skills:** add simple explanation guidance ([796032d](https://github.com/dkarter/dotfiles/commit/796032d6a70cc33c16935adecce8b82cd7a67542))
+* **skills:** address bot PR comments ([447ef47](https://github.com/dkarter/dotfiles/commit/447ef473da6db0e3814d757a0bef95a8cf02c4dd))
+* **skills:** enable model invocation for PR workflows ([0eeecbe](https://github.com/dkarter/dotfiles/commit/0eeecbe8b10086e20ce63c57f2b7fdd3a73507e9))
+* **skills:** require explicit invocation ([35289e9](https://github.com/dkarter/dotfiles/commit/35289e9655e646675d99beb84425347f5f4a82b9))
+* **skills:** sync bundled hunk skills ([22f079e](https://github.com/dkarter/dotfiles/commit/22f079e6517e1874db2d046d59e3e0916df0d965))
+* **zsh:** add oc2 alias ([a2b2445](https://github.com/dkarter/dotfiles/commit/a2b2445771dcea1177d1471e87fde94824341396))
+
+
+### Bug Fixes
+
+* **git:** resolve mise lockfile conflicts ([b4d372b](https://github.com/dkarter/dotfiles/commit/b4d372b79a0e45e5cdb43d6f12b9c60100770fd7))
+* **herdr:** add icon for psql ([fc3dfb3](https://github.com/dkarter/dotfiles/commit/fc3dfb34f427ec928f764101fc21f24a2608766f))
+* **hypr:** free herdr palette shortcuts ([1b93b2d](https://github.com/dkarter/dotfiles/commit/1b93b2d38cc6b942c46b319b96067c7f03af04a6))
+* **hypr:** free herdr shortcuts ([c23a812](https://github.com/dkarter/dotfiles/commit/c23a812b26dcaf3748d4796ca65090ef415d4217))
+* **lazygit:** auto update config ([1bf3704](https://github.com/dkarter/dotfiles/commit/1bf37049c06502dfcf42a32ec5e78aba706ff955))
+* **mise:** use correct name for amp for minimum_release_age_excludes ([f4c67d6](https://github.com/dkarter/dotfiles/commit/f4c67d629b2c34966118dda8d92b923a8fc7eb06))
+* **nvim:** opencode.nvim error when pane too small ([63e1904](https://github.com/dkarter/dotfiles/commit/63e1904b9d12eca5c4db8b8d2e9c25f9ef95224d))
+* **opencode:** consistently use persistent v2 sessions ([e77e318](https://github.com/dkarter/dotfiles/commit/e77e3184b28b61a3ff3a474a4b9df5d4911b5106))
+* **opencode:** preserve vim cursor shape ([3a5123b](https://github.com/dkarter/dotfiles/commit/3a5123b43470d31e5a207a2a573151eb93e801ed))
+* **skills:** improve open pr skill ([57757f6](https://github.com/dkarter/dotfiles/commit/57757f6bcae91b416ba63999fb6137a668e50c60))
+* **skills:** refine address-bot-pr-comments skill ([88713ee](https://github.com/dkarter/dotfiles/commit/88713ee47262a70f88f751ada4856a8a114711c4))
+* **task:** sync skills once ([201e21b](https://github.com/dkarter/dotfiles/commit/201e21bb3e854c44e4b26a57fd7f3721eb244ca7))
+* **task:** use mise exec for aube install ([46c2a8f](https://github.com/dkarter/dotfiles/commit/46c2a8f0ce1e09ae4952caf52d6f4f28e66aa77b))
+* **television:** cache gcloud project picker ([6339df2](https://github.com/dkarter/dotfiles/commit/6339df2fd7e595bdfafc32c6cdc1ed860a591020))
+* **television:** remove gcloud project cache ttl ([c611d7f](https://github.com/dkarter/dotfiles/commit/c611d7f2f759dd9c441055eccdbfa5af13200519))
+* **yamllint:** exclude all node modules ([7097589](https://github.com/dkarter/dotfiles/commit/7097589cf745f363094551d503178c342df4c842))
+
 ## [32.2.0](https://github.com/dkarter/dotfiles/compare/v32.1.0...v32.2.0) (2026-08-04)
 
 
