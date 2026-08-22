@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [32.5.1](https://github.com/dkarter/dotfiles/compare/v32.5.0...v32.5.1) (2026-08-22)
 
+<!-- pullfrog-summary:start -->
+
+## Overview
+
+`v32.5.1` is a maintenance release that refreshes dependencies used by the OpenCode TUI plugin and the repository’s JavaScript tooling. It does not change user configuration or workflows.
+
+## Notable Changes
+
+- Updated `@opentui/core`, `@opentui/keymap`, and `@opentui/solid` from `0.5.3` to `0.5.6` for the OpenCode TUI plugin.
+- Updated the root `js-yaml` dependency override from `5.2.3` to `5.3.0`.
+
+<!-- pullfrog-summary:end -->
+
 
 ### Bug Fixes
 
