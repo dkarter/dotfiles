@@ -4,6 +4,10 @@ version: 3
 silent: true
 
 tasks:
+  agent-guard:test:
+    desc: Run credential guard tests
+    cmd: bun test config/agent-guard
+
   fmt:check:
     desc: Checks formatting
     aliases: [format:check]
