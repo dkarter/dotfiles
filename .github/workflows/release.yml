@@ -5,8 +5,11 @@ on:
     branches: [master]
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -15,21 +18,25 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
+      - name: Generate release app token
+        id: release_app_token
+        # GitHub verifies this release tag as immutable.
+        uses: actions/create-github-app-token@v3.2.0
+        with:
+          client-id: ${{ vars.RELEASE_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
       - name: Release Please
         id: release
-        uses: dkarter/release-please-action@5931f1e9ef68429590dc13ea0655d0a2708cbd2f
+        # googleapis/release-please-action v5.0.0
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7
         with:
-          token: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
+          token: ${{ steps.release_app_token.outputs.token }}
           release-type: simple
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-          signing-gpg-private-key: ${{ secrets.RELEASE_PLEASE_GPG_PRIVATE_KEY }}
-          signing-gpg-passphrase: ${{ secrets.RELEASE_PLEASE_GPG_PASSPHRASE }}
-          signing-gpg-key-id: ${{ secrets.RELEASE_PLEASE_GPG_KEY_ID }}
-          signing-commit-author-name: release-please-signer
-          signing-commit-author-email: 293262735+release-please-signer@users.noreply.github.com
-          signing-commit-committer-name: release-please-signer
-          signing-commit-committer-email: 293262735+release-please-signer@users.noreply.github.com
 
   enrich-release:
     needs: release

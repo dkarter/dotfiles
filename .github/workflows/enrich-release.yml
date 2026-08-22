@@ -34,7 +34,7 @@ jobs:
         # actions/checkout does not publish immutable releases.
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           ref: ${{ inputs.tag }}
 
       - name: Resolve release range
@@ -99,13 +99,24 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - name: Generate release app token
+        id: release_app_token
+        # GitHub verifies this release tag as immutable.
+        uses: actions/create-github-app-token@v3.2.0
+        with:
+          client-id: ${{ vars.RELEASE_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
       - name: Checkout default branch
         # actions/checkout does not publish immutable releases.
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
+          persist-credentials: false
           ref: ${{ github.event.repository.default_branch }}
-          token: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
+          token: ${{ steps.release_app_token.outputs.token }}
 
       - name: Install runtimes
         # GitHub verifies this release tag as immutable.
@@ -129,7 +140,7 @@ jobs:
 
       - name: Update GitHub release
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
+          GH_TOKEN: ${{ steps.release_app_token.outputs.token }}
           RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
         run: >-
           gh release edit "$RELEASE_TAG"
@@ -137,30 +148,67 @@ jobs:
 
       - name: Open changelog pull request
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GH_TOKEN: ${{ steps.release_app_token.outputs.token }}
           RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
         run: |
           version=${RELEASE_TAG#v}
           branch="automation/enrich-changelog-$RELEASE_TAG"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git checkout -B "$branch"
 
           if git diff --quiet -- CHANGELOG.md; then
             echo 'Changelog summary is already current.'
             exit 0
           fi
 
-          git add CHANGELOG.md
-          git commit -m "docs(changelog): enrich $version release notes"
-          git fetch origin \
-            "refs/heads/$branch:refs/remotes/origin/$branch" || true
-          git push --force-with-lease origin "HEAD:refs/heads/$branch"
+          base_sha=$(git rev-parse HEAD)
+          base_tree=$(git rev-parse 'HEAD^{tree}')
+          ref_endpoint="repos/$GITHUB_REPOSITORY/git/refs/heads/$branch"
+          ref_error="$RUNNER_TEMP/enrichment-ref-error"
+          if branch_sha=$(gh api "$ref_endpoint" --jq '.object.sha' \
+            2>"$ref_error"); then
+            parents=$(jq -nc --arg branch "$branch_sha" --arg base "$base_sha" \
+              'if $branch == $base then [$base] else [$branch, $base] end')
+          elif grep -q 'HTTP 404' "$ref_error"; then
+            branch_sha=''
+            parents=$(jq -nc --arg base "$base_sha" '[$base]')
+          else
+            sed 's/^/Failed to read enrichment branch: /' "$ref_error" >&2
+            exit 1
+          fi
+
+          blob_sha=$(jq -n --rawfile content CHANGELOG.md \
+            '{content: $content, encoding: "utf-8"}' | \
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/blobs" \
+              --input - --jq '.sha')
+          tree_sha=$(jq -n --arg base "$base_tree" --arg blob "$blob_sha" \
+            '{base_tree: $base, tree: [{path: "CHANGELOG.md", mode: "100644", type: "blob", sha: $blob}]}' | \
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/trees" \
+              --input - --jq '.sha')
+          response=$(jq -n --arg message \
+            "docs(changelog): enrich $version release notes" \
+            --arg tree "$tree_sha" --argjson parents "$parents" \
+            '{message: $message, tree: $tree, parents: $parents}' | \
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/commits" \
+              --input -)
+          commit_sha=$(jq -r '.sha' <<<"$response")
+          if [[ $(jq -r '.verification.verified' <<<"$response") != true ]]; then
+            reason=$(jq -r '.verification.reason' <<<"$response")
+            echo "GitHub did not sign the enrichment commit: $reason" >&2
+            exit 1
+          fi
+
+          if [[ -n "$branch_sha" ]]; then
+            gh api --method PATCH "$ref_endpoint" \
+              -f sha="$commit_sha" >/dev/null
+          else
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/refs" \
+              -f ref="refs/heads/$branch" -f sha="$commit_sha" >/dev/null
+          fi
 
           if ! gh pr list --head "$branch" --state open --json number \
             --jq '.[0].number' | grep -q .; then
             gh pr create \
-              --base "${{ github.event.repository.default_branch }}" \
+              --base "$DEFAULT_BRANCH" \
               --head "$branch" \
               --title "docs(changelog): enrich $version release notes" \
               --body "Adds the human-readable summary published for $RELEASE_TAG."
