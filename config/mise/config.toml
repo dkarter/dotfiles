@@ -45,7 +45,6 @@
 "github:modem-dev/hunk" = "latest"           # interactive terminal diff viewer
 "github:raine/workmux" = "latest"            # git worktree manager in tmux
 "github:remoteoss/dexter" = "latest"         # fast af Elixir LSP
-"github:suzuki-shunsuke/ghtkn" = "latest"    # short-lived GitHub App user tokens for local development
 "npm:@commitlint/cli" = "latest"             # linter for checking that commits are following conventional commits
 "npm:@openai/codex" = "latest"               # codex agent for AI assisted coding
 "npm:neovim" = "latest"                      # support for javascript plugins in neovim
@@ -102,6 +101,7 @@ usage = "latest"                             # generates completion scripts for 
 uv = "latest"                                # install python packages
 yazi = "latest"                              # terminal file manager
 zoxide = "latest"                            # a modern version of autojump
+"github:dkarter/ghtkn" = "latest"
 
 [tools.amp]
 version = "latest"
@@ -160,6 +160,7 @@ minimum_release_age_excludes = [
   "elixir",
   "github:dkarter/hwt",
   "github:dkarter/lnr",
+  "github:dkarter/ghtkn",
   "github:dkarter/vstui",
   "amp",
   "npm:@opencode-ai/cli",
