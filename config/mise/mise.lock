@@ -1395,6 +1395,77 @@ checksum = "sha256:4c02537248b9852bbb33c8b866107fd51efe9a7753e1576d5ea99f92344d8
 url = "https://github.com/dlvhdr/diffnav/releases/download/v0.12.0/diffnav_Windows_x86_64.zip"
 url_api = "https://api.github.com/repos/dlvhdr/diffnav/releases/assets/488282401"
 
+[[tools."github:github/github-mcp-server"]]
+version = "1.10.1"
+backend = "github:github/github-mcp-server"
+
+[tools."github:github/github-mcp-server"."platforms.linux-arm64"]
+checksum = "sha256:c51dc6cf192c35a328b9f71696d42c38a9a3ba3c2ffe010da836bed071d1ac8a"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007505"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.linux-arm64-musl"]
+checksum = "sha256:c51dc6cf192c35a328b9f71696d42c38a9a3ba3c2ffe010da836bed071d1ac8a"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007505"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.linux-x64"]
+checksum = "sha256:c2629e850a344275cfc5a1590acdfd8c11476a44b688812d460163768e05572d"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007554"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.linux-x64-baseline"]
+checksum = "sha256:c2629e850a344275cfc5a1590acdfd8c11476a44b688812d460163768e05572d"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007554"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.linux-x64-musl"]
+checksum = "sha256:c2629e850a344275cfc5a1590acdfd8c11476a44b688812d460163768e05572d"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007554"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:c2629e850a344275cfc5a1590acdfd8c11476a44b688812d460163768e05572d"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007554"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.macos-arm64"]
+checksum = "sha256:ca530ba9abf04030104166cc37e1072087a30a173e921c0ed9064f98c73ca039"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007544"
+provenance = "github-attestations"
+provenance_verified = true
+
+[tools."github:github/github-mcp-server"."platforms.macos-x64"]
+checksum = "sha256:ea6e86baea583c6c5b55cce071c1c19253009a90f1e987788cb5eb228fcd9556"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007548"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.macos-x64-baseline"]
+checksum = "sha256:ea6e86baea583c6c5b55cce071c1c19253009a90f1e987788cb5eb228fcd9556"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Darwin_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007548"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.windows-x64"]
+checksum = "sha256:3b94ca079cf51a54698401b7affea7288a64b38118c243ae488dd8dd96f4ffb2"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007504"
+provenance = "github-attestations"
+
+[tools."github:github/github-mcp-server"."platforms.windows-x64-baseline"]
+checksum = "sha256:3b94ca079cf51a54698401b7affea7288a64b38118c243ae488dd8dd96f4ffb2"
+url = "https://github.com/github/github-mcp-server/releases/download/v1.10.1/github-mcp-server_Windows_x86_64.zip"
+url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/522007504"
+provenance = "github-attestations"
+
 [[tools."github:joshmedeski/sesh"]]
 version = "2.28.0"
 backend = "github:joshmedeski/sesh"
@@ -1644,6 +1715,77 @@ url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/4458453
 checksum = "sha256:9c57c24f515a8efb31df6ed4dfcdcbdcb91fadf40eef98a96c37999620257372"
 url = "https://github.com/remoteoss/dexter/releases/download/v0.7.1/dexter_Darwin_arm64.tar.gz"
 url_api = "https://api.github.com/repos/remoteoss/dexter/releases/assets/445845388"
+
+[[tools."github:suzuki-shunsuke/ghtkn"]]
+version = "0.4.0"
+backend = "github:suzuki-shunsuke/ghtkn"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.linux-arm64"]
+checksum = "sha256:33a0e1f91535fc0a900ddc08e2c182b1debd5656124153c408c2c96a9afc4238"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166604"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.linux-arm64-musl"]
+checksum = "sha256:33a0e1f91535fc0a900ddc08e2c182b1debd5656124153c408c2c96a9afc4238"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166604"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.linux-x64"]
+checksum = "sha256:2dbcdcd0d40966fda13522b23c6522b8c6682f0e71930131967e0f5d70f12526"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166607"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.linux-x64-baseline"]
+checksum = "sha256:2dbcdcd0d40966fda13522b23c6522b8c6682f0e71930131967e0f5d70f12526"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166607"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.linux-x64-musl"]
+checksum = "sha256:2dbcdcd0d40966fda13522b23c6522b8c6682f0e71930131967e0f5d70f12526"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166607"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:2dbcdcd0d40966fda13522b23c6522b8c6682f0e71930131967e0f5d70f12526"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166607"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.macos-arm64"]
+checksum = "sha256:b52aba47d9c777e1eeb205ed4b43d282ebe072a76f33ebd1e5c6690187df3af7"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166583"
+provenance = "github-attestations"
+provenance_verified = true
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.macos-x64"]
+checksum = "sha256:44707ea42eefbccbf4d82609fd1b9829d8bf95832a310a4f5f84e7fee1acfc29"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166586"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.macos-x64-baseline"]
+checksum = "sha256:44707ea42eefbccbf4d82609fd1b9829d8bf95832a310a4f5f84e7fee1acfc29"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166586"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.windows-x64"]
+checksum = "sha256:8e12491956a3b503fecfad50de7a8e0f244318e260d2a3abc3628314f7d6be48"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_windows_amd64.zip"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166610"
+provenance = "github-attestations"
+
+[tools."github:suzuki-shunsuke/ghtkn"."platforms.windows-x64-baseline"]
+checksum = "sha256:8e12491956a3b503fecfad50de7a8e0f244318e260d2a3abc3628314f7d6be48"
+url = "https://github.com/suzuki-shunsuke/ghtkn/releases/download/v0.4.0/ghtkn_windows_amd64.zip"
+url_api = "https://api.github.com/repos/suzuki-shunsuke/ghtkn/releases/assets/515166610"
+provenance = "github-attestations"
 
 [[tools.gitleaks]]
 version = "8.30.1"
@@ -2606,7 +2748,7 @@ url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15
 url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119643"
 
 [[tools.rust]]
-version = "1.97.1"
+version = "1.98.0"
 backend = "core:rust"
 
 [[tools.slsa-verifier]]

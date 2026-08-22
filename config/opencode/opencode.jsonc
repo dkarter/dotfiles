@@ -14,12 +14,8 @@
     },
     "github": {
       "enabled": true,
-      "type": "remote",
-      "oauth": false,
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "Bearer {env:GITHUB_TOKEN}"
-      }
+      "type": "local",
+      "command": ["github-mcp-server", "stdio"]
     },
     "linear": {
       "type": "remote",
