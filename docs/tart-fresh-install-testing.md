@@ -7,8 +7,9 @@ Use the fresh-install tasks to test these dotfiles in disposable macOS and Linux
 You must have tart installed first:
 
 ```bash
-brew trust --formula cirruslabs/cli/tart
-brew install cirruslabs/cli/tart
+brew trust --formula openai/tools/tart
+brew trust --formula openai/tools/softnet
+brew install openai/tools/tart
 ```
 
 You must have Docker running for the Linux container tests.
