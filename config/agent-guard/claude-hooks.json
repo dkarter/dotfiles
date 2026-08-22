@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun ~/.config/agent-guard/hook.ts claude",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

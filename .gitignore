@@ -29,6 +29,8 @@ config/opencode/service.json
 # pi sessions/auth are machine-local and may contain sensitive data
 config/pi/agent/sessions/
 config/pi/agent/auth.json
+# generated cache of remote provider model catalogs
+config/pi/agent/models-store.json
 
 .claude/worktrees
 

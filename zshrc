@@ -28,6 +28,8 @@ export PATH="/usr/local/bin:$PATH"
 # set homebrew on path (Apple Silicon) - should be first to override system bins
 # (e.g. for updating zsh or bash)
 export PATH="/opt/homebrew/bin:$PATH"
+# locally installed tools (including mise) take precedence over Homebrew
+export PATH="$HOME/.local/bin:$PATH"
 # ===================================
 
 # mise global/local runtime version manager - must happen before all other tools
@@ -74,7 +76,7 @@ fi
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
 # set cabal and haskell binaries on path
-export PATH="$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
 
 # Golang
 export PATH="/usr/local/go/bin:$PATH"

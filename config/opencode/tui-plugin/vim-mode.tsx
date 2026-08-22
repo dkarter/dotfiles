@@ -466,225 +466,231 @@ const VimModePlugin = {
     }));
     const normalLayerCommands = [...normalCommands, ...normalNoops];
 
-    ctx.ui.slot('app', () => {
-      let disposed = false;
-      const handleFocusedEditor = (editor: EditBufferRenderable | null) => {
-        updateCursorStyle(state.mode, promptEditor(editor));
-      };
-      const handleFrame = () => {
-        updateCursorStyle(state.mode);
-      };
-      ctx.renderer.on('focused_editor', handleFocusedEditor);
-      ctx.renderer.on('frame', handleFrame);
-      queueMicrotask(() => {
-        if (!disposed) {
+    ctx.ui.slot({
+      append: 'app',
+      render: () => {
+        let disposed = false;
+        const handleFocusedEditor = (editor: EditBufferRenderable | null) => {
+          updateCursorStyle(state.mode, promptEditor(editor));
+        };
+        const handleFrame = () => {
           updateCursorStyle(state.mode);
-        }
-      });
-      onCleanup(() => {
-        disposed = true;
-        ctx.renderer.off('focused_editor', handleFocusedEditor);
-        ctx.renderer.off('frame', handleFrame);
-        restoreCursorStyle();
-      });
+        };
+        ctx.renderer.on('focused_editor', handleFocusedEditor);
+        ctx.renderer.on('frame', handleFrame);
+        queueMicrotask(() => {
+          if (!disposed) {
+            updateCursorStyle(state.mode);
+          }
+        });
+        onCleanup(() => {
+          disposed = true;
+          ctx.renderer.off('focused_editor', handleFocusedEditor);
+          ctx.renderer.off('frame', handleFrame);
+          restoreCursorStyle();
+        });
 
-      ctx.keymap.layer(() => ({
-        enabled: () => state.mode === 'insert' && promptFocused(),
-        priority: 100,
-        commands: [
+        ctx.keymap.layer(() => ({
+          enabled: () => state.mode === 'insert' && promptFocused(),
+          priority: 100,
+          commands: [
+            {
+              bind: 'escape',
+              title: 'Enter Vim normal mode',
+              run: () => {
+                dispatch('input.move.left');
+                setMode('normal');
+              },
+            },
+          ],
+        }));
+
+        ctx.keymap.layer(() => ({
+          enabled: () => state.mode === 'normal' && state.operator === undefined && promptFocused(),
+          priority: 100,
+          commands: normalLayerCommands,
+        }));
+
+        const finishOperator = (command: string, mode: Mode = 'normal') => {
+          dispatch(command);
+          setMode(mode);
+        };
+
+        const createOperatorCommands = (operator: Exclude<Operator, undefined>) => {
+          const changing = operator === 'change';
+          const verb = changing ? 'Change' : 'Delete';
+          const mode: Mode = changing ? 'insert' : 'normal';
+          const finish = (command: string) => finishOperator(command, mode);
+          return [
+            { bind: operator[0], title: `${verb} line`, run: () => finish('input.delete.line') },
+            { bind: 'w', title: `${verb} word`, run: () => finish('input.delete.word.forward') },
+            { bind: 'b', title: `${verb} previous word`, run: () => finish('input.delete.word.backward') },
+            { bind: '$', title: `${verb} to line end`, run: () => finish('input.delete.to.line.end') },
+            { bind: '0', title: `${verb} to line start`, run: () => finish('input.delete.to.line.start') },
+            { bind: 'i', title: `${verb} inner text object`, run: () => setTextObjectModifier('inner') },
+            { bind: 'a', title: `${verb} around text object`, run: () => setTextObjectModifier('around') },
+            { bind: 'escape', title: `Cancel ${operator}`, run: () => setOperator(undefined) },
+          ];
+        };
+
+        const cancelCommands = (commands: Array<{ bind: string }>, title: string) => {
+          const bindings = new Set(commands.map((command) => command.bind));
+          return [...new Set([...PRINTABLE_KEYS, ...PENDING_CANCEL_KEYS])]
+            .filter((key) => !bindings.has(key))
+            .map((bind) => ({
+              bind,
+              title,
+              run: () => setOperator(undefined),
+            }));
+        };
+
+        const deleteCommands = createOperatorCommands('delete');
+        const deleteLayerCommands = [...deleteCommands, ...cancelCommands(deleteCommands, 'Cancel delete')];
+
+        ctx.keymap.layer(() => ({
+          enabled: () =>
+            state.mode === 'normal' &&
+            state.operator === 'delete' &&
+            state.textObjectModifier === undefined &&
+            promptFocused(),
+          priority: 110,
+          commands: deleteLayerCommands,
+        }));
+
+        const changeCommands = createOperatorCommands('change');
+        const changeLayerCommands = [...changeCommands, ...cancelCommands(changeCommands, 'Cancel change')];
+
+        ctx.keymap.layer(() => ({
+          enabled: () =>
+            state.mode === 'normal' &&
+            state.operator === 'change' &&
+            state.textObjectModifier === undefined &&
+            promptFocused(),
+          priority: 110,
+          commands: changeLayerCommands,
+        }));
+
+        const textObjectCommands = [
+          {
+            bind: 'w',
+            title: 'Word text object',
+            run: () => {
+              const editor = promptEditor();
+              applyTextObject(
+                editor
+                  ? state.textObjectModifier === 'around'
+                    ? aroundWordRange(editor)
+                    : innerWordRange(editor)
+                  : undefined,
+              );
+            },
+          },
+          ...CLOSURE_OBJECTS.flatMap((closure) =>
+            closure.binds.map((bind) => ({
+              bind,
+              title: `${closure.title} text object`,
+              run: () => {
+                const editor = promptEditor();
+                applyTextObject(
+                  editor
+                    ? closureRange(editor, closure.open, closure.close, state.textObjectModifier === 'around')
+                    : undefined,
+                );
+              },
+            })),
+          ),
+          { bind: 'escape', title: 'Cancel text object', run: () => setOperator(undefined) },
+        ];
+        const textObjectLayerCommands = [
+          ...textObjectCommands,
+          ...cancelCommands(textObjectCommands, 'Cancel text object'),
+        ];
+
+        ctx.keymap.layer(() => ({
+          enabled: () =>
+            state.mode === 'normal' &&
+            state.operator !== undefined &&
+            state.textObjectModifier !== undefined &&
+            promptFocused(),
+          priority: 120,
+          commands: textObjectLayerCommands,
+        }));
+
+        const visualCommands = [
+          { bind: 'h', title: 'Select left', run: () => dispatch('input.select.left') },
+          { bind: 'j', title: 'Select down', run: () => dispatch('input.select.down') },
+          { bind: 'k', title: 'Select up', run: () => dispatch('input.select.up') },
+          { bind: 'l', title: 'Select right', run: () => dispatch('input.select.right') },
+          { bind: 'space', title: 'Select right', run: () => dispatch('input.select.right') },
+          { bind: 'w', title: 'Select word forward', run: () => dispatch('input.select.word.forward') },
+          { bind: 'e', title: 'Select to word end', run: () => moveWordEnd(true) },
+          { bind: 'b', title: 'Select word backward', run: () => dispatch('input.select.word.backward') },
+          { bind: '0', title: 'Select to line start', run: () => dispatch('input.select.line.home') },
+          { bind: '$', title: 'Select to line end', run: () => dispatch('input.select.line.end') },
+          { bind: 'g', title: 'Select to buffer start', run: () => dispatch('input.select.buffer.home') },
+          { bind: 'shift+g', title: 'Select to buffer end', run: () => dispatch('input.select.buffer.end') },
+          { bind: 'x', title: 'Delete selection', run: () => finishOperator('input.delete') },
+          { bind: 'd', title: 'Delete selection', run: () => finishOperator('input.delete') },
+          { bind: 'c', title: 'Change selection', run: () => finishOperator('input.delete', 'insert') },
           {
             bind: 'escape',
-            title: 'Enter Vim normal mode',
+            title: 'Exit visual mode',
             run: () => {
               dispatch('input.move.left');
               setMode('normal');
             },
           },
-        ],
-      }));
-
-      ctx.keymap.layer(() => ({
-        enabled: () => state.mode === 'normal' && state.operator === undefined && promptFocused(),
-        priority: 100,
-        commands: normalLayerCommands,
-      }));
-
-      const finishOperator = (command: string, mode: Mode = 'normal') => {
-        dispatch(command);
-        setMode(mode);
-      };
-
-      const createOperatorCommands = (operator: Exclude<Operator, undefined>) => {
-        const changing = operator === 'change';
-        const verb = changing ? 'Change' : 'Delete';
-        const mode: Mode = changing ? 'insert' : 'normal';
-        const finish = (command: string) => finishOperator(command, mode);
-        return [
-          { bind: operator[0], title: `${verb} line`, run: () => finish('input.delete.line') },
-          { bind: 'w', title: `${verb} word`, run: () => finish('input.delete.word.forward') },
-          { bind: 'b', title: `${verb} previous word`, run: () => finish('input.delete.word.backward') },
-          { bind: '$', title: `${verb} to line end`, run: () => finish('input.delete.to.line.end') },
-          { bind: '0', title: `${verb} to line start`, run: () => finish('input.delete.to.line.start') },
-          { bind: 'i', title: `${verb} inner text object`, run: () => setTextObjectModifier('inner') },
-          { bind: 'a', title: `${verb} around text object`, run: () => setTextObjectModifier('around') },
-          { bind: 'escape', title: `Cancel ${operator}`, run: () => setOperator(undefined) },
-        ];
-      };
-
-      const cancelCommands = (commands: Array<{ bind: string }>, title: string) => {
-        const bindings = new Set(commands.map((command) => command.bind));
-        return [...new Set([...PRINTABLE_KEYS, ...PENDING_CANCEL_KEYS])]
-          .filter((key) => !bindings.has(key))
-          .map((bind) => ({
-            bind,
-            title,
-            run: () => setOperator(undefined),
-          }));
-      };
-
-      const deleteCommands = createOperatorCommands('delete');
-      const deleteLayerCommands = [...deleteCommands, ...cancelCommands(deleteCommands, 'Cancel delete')];
-
-      ctx.keymap.layer(() => ({
-        enabled: () =>
-          state.mode === 'normal' &&
-          state.operator === 'delete' &&
-          state.textObjectModifier === undefined &&
-          promptFocused(),
-        priority: 110,
-        commands: deleteLayerCommands,
-      }));
-
-      const changeCommands = createOperatorCommands('change');
-      const changeLayerCommands = [...changeCommands, ...cancelCommands(changeCommands, 'Cancel change')];
-
-      ctx.keymap.layer(() => ({
-        enabled: () =>
-          state.mode === 'normal' &&
-          state.operator === 'change' &&
-          state.textObjectModifier === undefined &&
-          promptFocused(),
-        priority: 110,
-        commands: changeLayerCommands,
-      }));
-
-      const textObjectCommands = [
-        {
-          bind: 'w',
-          title: 'Word text object',
-          run: () => {
-            const editor = promptEditor();
-            applyTextObject(
-              editor
-                ? state.textObjectModifier === 'around'
-                  ? aroundWordRange(editor)
-                  : innerWordRange(editor)
-                : undefined,
-            );
-          },
-        },
-        ...CLOSURE_OBJECTS.flatMap((closure) =>
-          closure.binds.map((bind) => ({
-            bind,
-            title: `${closure.title} text object`,
+          {
+            bind: 'v',
+            title: 'Exit visual mode',
             run: () => {
-              const editor = promptEditor();
-              applyTextObject(
-                editor
-                  ? closureRange(editor, closure.open, closure.close, state.textObjectModifier === 'around')
-                  : undefined,
-              );
+              dispatch('input.move.left');
+              setMode('normal');
             },
-          })),
-        ),
-        { bind: 'escape', title: 'Cancel text object', run: () => setOperator(undefined) },
-      ];
-      const textObjectLayerCommands = [
-        ...textObjectCommands,
-        ...cancelCommands(textObjectCommands, 'Cancel text object'),
-      ];
-
-      ctx.keymap.layer(() => ({
-        enabled: () =>
-          state.mode === 'normal' &&
-          state.operator !== undefined &&
-          state.textObjectModifier !== undefined &&
-          promptFocused(),
-        priority: 120,
-        commands: textObjectLayerCommands,
-      }));
-
-      const visualCommands = [
-        { bind: 'h', title: 'Select left', run: () => dispatch('input.select.left') },
-        { bind: 'j', title: 'Select down', run: () => dispatch('input.select.down') },
-        { bind: 'k', title: 'Select up', run: () => dispatch('input.select.up') },
-        { bind: 'l', title: 'Select right', run: () => dispatch('input.select.right') },
-        { bind: 'space', title: 'Select right', run: () => dispatch('input.select.right') },
-        { bind: 'w', title: 'Select word forward', run: () => dispatch('input.select.word.forward') },
-        { bind: 'e', title: 'Select to word end', run: () => moveWordEnd(true) },
-        { bind: 'b', title: 'Select word backward', run: () => dispatch('input.select.word.backward') },
-        { bind: '0', title: 'Select to line start', run: () => dispatch('input.select.line.home') },
-        { bind: '$', title: 'Select to line end', run: () => dispatch('input.select.line.end') },
-        { bind: 'g', title: 'Select to buffer start', run: () => dispatch('input.select.buffer.home') },
-        { bind: 'shift+g', title: 'Select to buffer end', run: () => dispatch('input.select.buffer.end') },
-        { bind: 'x', title: 'Delete selection', run: () => finishOperator('input.delete') },
-        { bind: 'd', title: 'Delete selection', run: () => finishOperator('input.delete') },
-        { bind: 'c', title: 'Change selection', run: () => finishOperator('input.delete', 'insert') },
-        {
-          bind: 'escape',
-          title: 'Exit visual mode',
-          run: () => {
-            dispatch('input.move.left');
-            setMode('normal');
           },
-        },
-        {
-          bind: 'v',
-          title: 'Exit visual mode',
-          run: () => {
-            dispatch('input.move.left');
-            setMode('normal');
-          },
-        },
-      ];
-      const visualBindings = new Set(visualCommands.map((command) => command.bind));
-      const visualNoops = PRINTABLE_KEYS.filter((key) => !visualBindings.has(key)).map((bind) => ({
-        bind,
-        title: 'Vim visual mode',
-        run: () => {},
-      }));
-      const visualLayerCommands = [...visualCommands, ...visualNoops];
+        ];
+        const visualBindings = new Set(visualCommands.map((command) => command.bind));
+        const visualNoops = PRINTABLE_KEYS.filter((key) => !visualBindings.has(key)).map((bind) => ({
+          bind,
+          title: 'Vim visual mode',
+          run: () => {},
+        }));
+        const visualLayerCommands = [...visualCommands, ...visualNoops];
 
-      ctx.keymap.layer(() => ({
-        enabled: () => state.mode === 'visual' && promptFocused(),
-        priority: 100,
-        commands: visualLayerCommands,
-      }));
+        ctx.keymap.layer(() => ({
+          enabled: () => state.mode === 'visual' && promptFocused(),
+          priority: 100,
+          commands: visualLayerCommands,
+        }));
 
-      return undefined;
+        return undefined;
+      },
     });
 
-    ctx.ui.slot('prompt.footer.end', ({ mode }) => {
-      if (mode === 'shell') {
-        return undefined;
-      }
+    ctx.ui.slot({
+      append: 'prompt.footer',
+      render: ({ mode }) => {
+        if (mode === 'shell') {
+          return undefined;
+        }
 
-      const theme = ctx.theme as unknown as VimTheme;
-      const label = state.operator
-        ? `${state.operator[0]}${state.textObjectModifier?.[0] ?? ''}`.toUpperCase()
-        : state.mode.toUpperCase();
-      const backgroundColor = {
-        normal: theme.hue.blue[500],
-        insert: theme.hue.green[500],
-        visual: theme.hue.purple[500],
-      }[state.mode];
-      return (
-        <box>
-          <text>
-            <span style={{ bg: backgroundColor, fg: theme.text.default }}>{` ${label} `}</span>
-          </text>
-        </box>
-      );
+        const theme = ctx.theme as unknown as VimTheme;
+        const label = state.operator
+          ? `${state.operator[0]}${state.textObjectModifier?.[0] ?? ''}`.toUpperCase()
+          : state.mode.toUpperCase();
+        const backgroundColor = {
+          normal: theme.hue.blue[500],
+          insert: theme.hue.green[500],
+          visual: theme.hue.purple[500],
+        }[state.mode];
+        return (
+          <box>
+            <text>
+              <span style={{ bg: backgroundColor, fg: theme.text.default }}>{` ${label} `}</span>
+            </text>
+          </box>
+        );
+      },
     });
   },
 } satisfies Plugin.Definition;
