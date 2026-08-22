@@ -53,6 +53,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [32.4.1](https://github.com/dkarter/dotfiles/compare/v32.4.0...v32.4.1) (2026-08-22)
 
+<!-- pullfrog-summary:start -->
+
+## Overview
+
+`v32.4.1` is a release automation patch. It does not change shell, editor, tool, or platform configuration, so dotfiles users do not need to migrate anything.
+
+## Notable changes
+
+- Release note summarization and publication now run in one `enrich` job, keeping the Pullfrog result and workspace available through the full workflow.
+- Release history checkout is now narrowly scoped: the workflow checks out the target tag with depth 1, identifies the two latest stable GitHub releases, and fetches only the previous tag needed for comparison.
+- The default branch is shallow-fetched into the existing workspace before preparing the changelog pull request, replacing a second full-history checkout.
+
+<!-- pullfrog-summary:end -->
+
 
 ### Bug Fixes
 
