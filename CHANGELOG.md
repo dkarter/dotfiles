@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.4.0](https://github.com/dkarter/dotfiles/compare/v32.3.0...v32.4.0) (2026-08-22)
+
+
+### Features
+
+* **release:** enrich published release notes ([eac9c33](https://github.com/dkarter/dotfiles/commit/eac9c3363b74a62302233e803a020de6f5469ec0))
+
+
+### Bug Fixes
+
+* **release:** fetch complete release history ([ef932c4](https://github.com/dkarter/dotfiles/commit/ef932c453f0b1e9fe91b5aaee8e4bffcb977248e))
+* **release:** grant enrichment OIDC permission ([30b9d2c](https://github.com/dkarter/dotfiles/commit/30b9d2c5cf815b04713d059c29787453e3ecf8e0))
+* **release:** make enrichment reliable ([b03b5b7](https://github.com/dkarter/dotfiles/commit/b03b5b7b3c9636c30999bd0391c25921c5d8e7e4))
+* **release:** rely on published release trigger ([066631e](https://github.com/dkarter/dotfiles/commit/066631eecfe152c30a11ce816b55dbbe376fdde7))
+* **release:** simplify enrichment credentials ([267c3b0](https://github.com/dkarter/dotfiles/commit/267c3b03b2c2dd4d58dadd58ff7e80b7fd6fa99f))
+* **release:** use GitHub App signed commits ([e50f528](https://github.com/dkarter/dotfiles/commit/e50f528dbf6cfe95af49541eee32fe41f9eee4d2))
+
 ## [32.3.0](https://github.com/dkarter/dotfiles/compare/v32.2.0...v32.3.0) (2026-08-22)
 
 
