@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [32.4.0](https://github.com/dkarter/dotfiles/compare/v32.3.0...v32.4.0) (2026-08-22)
 
+<!-- pullfrog-summary:start -->
+
+## Overview
+
+`v32.4.0` focuses on release automation, adding verified, human-readable summaries to published releases and `CHANGELOG.md`. It also refreshes Yazi dependencies and adds the `nub` CLI to the Mise-managed toolset.
+
+## Notable changes
+
+- Release Please now uses the upstream action with GitHub App authentication and triggers a reusable enrichment workflow after a release is created.
+- The enrichment workflow checks out complete tag history, summarizes the verified tag diff, updates the GitHub release body, and opens or updates a changelog pull request with a GitHub-signed commit.
+- New enrichment scripts and fixtures are covered by Node tests, now included in `task ci:run`.
+- Mise installs `nub` `0.7.5`, which powers release-note processing.
+- Yazi's `smart-enter` plugin and Catppuccin Mocha flavor references were updated.
+
+## Migration notes
+
+Normal dotfiles users do not need to migrate configuration; run the usual sync process. Maintainers or forks using the release workflow must provide `RELEASE_CLIENT_ID` and `RELEASE_PRIVATE_KEY` for a GitHub App. The previous GPG signing helper, its Mise tasks, and the old release signing credentials are no longer used.
+
+<!-- pullfrog-summary:end -->
+
 
 ### Features
 
