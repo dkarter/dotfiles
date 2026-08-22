@@ -11,8 +11,12 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - name: Release Please
+        id: release
         uses: dkarter/release-please-action@5931f1e9ef68429590dc13ea0655d0a2708cbd2f
         with:
           token: ${{ secrets.RELEASE_PLEASE_GITHUB_TOKEN || github.token }}
@@ -26,3 +30,15 @@ jobs:
           signing-commit-author-email: 293262735+release-please-signer@users.noreply.github.com
           signing-commit-committer-name: release-please-signer
           signing-commit-committer-email: 293262735+release-please-signer@users.noreply.github.com
+
+  enrich-release:
+    needs: release
+    if: needs.release.outputs.release_created == 'true'
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
+    uses: ./.github/workflows/enrich-release.yml
+    with:
+      tag: ${{ needs.release.outputs.tag_name }}
+    secrets: inherit

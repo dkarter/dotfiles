@@ -269,6 +269,65 @@ url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/2493767
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
+[[tools."github:nubjs/nub"]]
+version = "0.7.5"
+backend = "github:nubjs/nub"
+
+[tools."github:nubjs/nub"."platforms.linux-arm64"]
+checksum = "sha256:de28e3df5a84fb410640d7ab820e172401d85d63ba44d4b6f6454bf9c27380d3"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734611"
+
+[tools."github:nubjs/nub"."platforms.linux-arm64-musl"]
+checksum = "sha256:e9d98e41c6a89ab89e103a94a7a61561cd9db05fc470600ac02918ad89a2f8ca"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734615"
+
+[tools."github:nubjs/nub"."platforms.linux-x64"]
+checksum = "sha256:34ad027792b7702e88f71eadde9fc2bf4ebade13a1c91b92fa056954f15880eb"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734614"
+
+[tools."github:nubjs/nub"."platforms.linux-x64-baseline"]
+checksum = "sha256:34ad027792b7702e88f71eadde9fc2bf4ebade13a1c91b92fa056954f15880eb"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734614"
+
+[tools."github:nubjs/nub"."platforms.linux-x64-musl"]
+checksum = "sha256:830e811bfabbd6edd1e20e975965d75d21d20fd9191bb45484efb2a29fe9789b"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734610"
+
+[tools."github:nubjs/nub"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:830e811bfabbd6edd1e20e975965d75d21d20fd9191bb45484efb2a29fe9789b"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734610"
+
+[tools."github:nubjs/nub"."platforms.macos-arm64"]
+checksum = "sha256:dd5a6a9bf30d96e36fe5ba7df870156db7089b3b5bbf73734c881ecc86ed693f"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734604"
+
+[tools."github:nubjs/nub"."platforms.macos-x64"]
+checksum = "sha256:45396491a922e9a6ff75ab6add500bf597b2be51b80acbaeaa055a7a9d845748"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734605"
+
+[tools."github:nubjs/nub"."platforms.macos-x64-baseline"]
+checksum = "sha256:45396491a922e9a6ff75ab6add500bf597b2be51b80acbaeaa055a7a9d845748"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734605"
+
+[tools."github:nubjs/nub"."platforms.windows-x64"]
+checksum = "sha256:061956457776121ec8a4de43da47a85eebb9e3c26111ff39fc5c55865836de43"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-win32-x64.zip"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734620"
+
+[tools."github:nubjs/nub"."platforms.windows-x64-baseline"]
+checksum = "sha256:061956457776121ec8a4de43da47a85eebb9e3c26111ff39fc5c55865836de43"
+url = "https://github.com/nubjs/nub/releases/download/v0.7.5/nub-win32-x64.zip"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/507734620"
+
 [[tools.gitleaks]]
 version = "8.30.1"
 backend = "aqua:gitleaks/gitleaks"

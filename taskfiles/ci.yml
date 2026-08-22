@@ -37,6 +37,10 @@ tasks:
     desc: Check for code spelling errors
     cmd: typos
 
+  scripts:test:
+    desc: Run script tests
+    cmd: node --test scripts/*.test.ts
+
   yaml:lint:
     desc: Runs yamllint on this repo
     cmd: yamllint --strict --config-file ./config/yamllint/config .
@@ -48,6 +52,7 @@ tasks:
       - task: herdr:validate
       - task: fmt:check
       - task: shell:lint
+      - task: scripts:test
       - task: television:lint
       - task: yaml:lint
       - task: spelling:lint
