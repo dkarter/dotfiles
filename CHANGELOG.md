@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.5.1](https://github.com/dkarter/dotfiles/compare/v32.5.0...v32.5.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @opentui/core to v0.5.6 ([#447](https://github.com/dkarter/dotfiles/issues/447)) ([aed4ac2](https://github.com/dkarter/dotfiles/commit/aed4ac2855614f004aee8e529c83bce5927ea4d8))
+* **deps:** update dependency @opentui/keymap to v0.5.6 ([#457](https://github.com/dkarter/dotfiles/issues/457)) ([5db0d10](https://github.com/dkarter/dotfiles/commit/5db0d100918a103c54707e265b67b711e364d1fa))
+* **deps:** update dependency @opentui/solid to v0.5.6 ([#448](https://github.com/dkarter/dotfiles/issues/448)) ([d6f1098](https://github.com/dkarter/dotfiles/commit/d6f10980702398522ba135f73a73d3aa4631d9ce))
+
 ## [32.5.0](https://github.com/dkarter/dotfiles/compare/v32.4.1...v32.5.0) (2026-08-22)
 
 <!-- pullfrog-summary:start -->
