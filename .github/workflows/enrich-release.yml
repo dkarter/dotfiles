@@ -21,14 +21,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  summarize:
+  enrich:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
-    outputs:
-      result: ${{ steps.pullfrog.outputs.result }}
-      tag: ${{ steps.release.outputs.tag }}
     steps:
       - name: Checkout release history
         # actions/checkout does not publish immutable releases.
@@ -70,6 +67,7 @@ jobs:
           git fetch --no-tags --depth=1 origin \
             "refs/tags/$previous_tag:refs/tags/$previous_tag"
 
+          printf '%s\n' '.pullfrog-release-notes.md' >> .git/info/exclude
           gh release view "$RELEASE_TAG" --json body --jq '.body' \
             > .pullfrog-release-notes.md
           echo "tag=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
@@ -104,13 +102,7 @@ jobs:
             notable changes, and migration or breaking-change notes when
             applicable. Omit empty sections and do not modify the repository or
             GitHub. Return the result using the required output schema.
-  publish:
-    needs: summarize
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    steps:
+
       - name: Generate release app token
         id: release_app_token
         # GitHub verifies this release tag as immutable.
@@ -122,11 +114,11 @@ jobs:
           permission-pull-requests: write
 
       - name: Checkout default branch
-        # actions/checkout does not publish immutable releases.
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          fetch-depth: 1
-          ref: ${{ github.event.repository.default_branch }}
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git fetch --no-tags --depth=1 origin "refs/heads/$DEFAULT_BRANCH"
+          git checkout --force -B "$DEFAULT_BRANCH" FETCH_HEAD
 
       - name: Install runtimes
         # GitHub verifies this release tag as immutable.
@@ -135,8 +127,8 @@ jobs:
       - name: Prepare enriched notes
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
-          SUMMARY_JSON: ${{ needs.summarize.outputs.result }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+          SUMMARY_JSON: ${{ steps.pullfrog.outputs.result }}
         run: |
           gh release view "$RELEASE_TAG" --json body --jq '.body' \
             > "$RUNNER_TEMP/release-notes.md"
@@ -151,7 +143,7 @@ jobs:
       - name: Update GitHub release
         env:
           GH_TOKEN: ${{ steps.release_app_token.outputs.token }}
-          RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: >-
           gh release edit "$RELEASE_TAG"
           --notes-file "$RUNNER_TEMP/enriched-release-notes.md"
@@ -160,7 +152,7 @@ jobs:
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
           GH_TOKEN: ${{ steps.release_app_token.outputs.token }}
-          RELEASE_TAG: ${{ needs.summarize.outputs.tag }}
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
         run: |
           version=${RELEASE_TAG#v}
           branch="automation/enrich-changelog-$RELEASE_TAG"
