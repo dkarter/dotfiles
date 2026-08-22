@@ -1,0 +1,17 @@
+{
+  "description": "Replaces credential-like tool output with a redacted result.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun ~/.config/agent-guard/hook.ts codex",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
