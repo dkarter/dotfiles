@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["./plugin/linear-mcp-sanitize.ts"],
+  "plugin": ["./plugin/credential-guard.ts", "./plugin/linear-mcp-sanitize.ts"],
   "mcp": {
     "playwright": {
       "enabled": true,
@@ -60,7 +60,9 @@
       "rg *": "allow",
       "rm -rf *": "ask",
       "rm *": "ask",
-      "fnox *": "ask"
+      "fnox *": "ask",
+      "opencode debug config*": "deny",
+      "opencode2 debug config*": "deny"
     },
     "external_directory": {
       "/tmp/**": "allow"
@@ -90,7 +92,9 @@
           "rg *": "allow",
           "head *": "allow",
           "tail *": "allow",
-          "task *": "allow"
+          "task *": "allow",
+          "opencode debug config*": "deny",
+          "opencode2 debug config*": "deny"
         }
       }
     }
