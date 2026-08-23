@@ -154,3 +154,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 eval "$(_mise_run starship init zsh)"
 unset -f _mise_run
+
+test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
+
+if [[ "$LC_TERMINAL" == "ShellFish" ]] && shellfish_tty=$(tty 2>/dev/null); then
+  shellfish_tty_dir="$HOME/.cache/shellfish/ttys"
+  mkdir -p "$shellfish_tty_dir"
+  printf '%s\n' "$$" >> "$shellfish_tty_dir/${shellfish_tty##*/}"
+  unset shellfish_tty shellfish_tty_dir
+fi
