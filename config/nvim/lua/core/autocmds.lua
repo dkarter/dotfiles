@@ -2,6 +2,8 @@
 
 local augroup = require('core.utils').augroup
 
+require('pi_editor_context').apply()
+
 -- automatic spell check for some file types
 augroup('SetSpell', {
   {
