@@ -4,6 +4,7 @@ set -euo pipefail
 
 gitconfig_file=${GHTKN_GITCONFIG_FILE:-"$HOME/.gitconfig.local"}
 include_file=${GHTKN_GITCONFIG_INCLUDE_FILE:-"$HOME/.config/git/ghtkn.gitconfig"}
+ghtkn_config_file=${GHTKN_CONFIG:-"${XDG_CONFIG_HOME:-$HOME/.config}/ghtkn/ghtkn.yaml"}
 credential_section='credential.https://github.com'
 
 unset_config_value() {
@@ -62,6 +63,25 @@ if ! command -v ghtkn >/dev/null 2>&1; then
   exit 1
 fi
 
+if [[ ! -e $ghtkn_config_file ]]; then
+  ghtkn_config_dir=$(dirname "$ghtkn_config_file")
+  mkdir -p "$ghtkn_config_dir"
+  temporary=$(mktemp "$ghtkn_config_dir/.ghtkn.yaml.XXXXXX")
+  trap 'rm -f "$temporary"' EXIT
+  chmod 600 "$temporary"
+
+  # shellcheck disable=SC2016 # $schema is a literal YAML language-server key.
+  printf '%s\n' \
+    '# yaml-language-server: $schema=https://raw.githubusercontent.com/suzuki-shunsuke/ghtkn/main/json-schema/ghtkn.json' \
+    'apps:' \
+    '  - name: dkarter/write' \
+    '    client_id: Iv23liVwH6IuogjoaQ0X' >"$temporary"
+
+  mv "$temporary" "$ghtkn_config_file"
+  trap - EXIT
+  printf 'Created ghtkn app configuration at %s\n' "$ghtkn_config_file"
+fi
+
 gitconfig_dir=$(dirname "$gitconfig_file")
 include_dir=$(dirname "$include_file")
 mkdir -p "$gitconfig_dir" "$include_dir"
@@ -96,3 +116,5 @@ fi
 
 printf 'Configured ghtkn for github.com via %s\n' "$include_file"
 printf 'Set GHTKN_GITHUB_TOKEN only when an explicit PAT override is required.\n'
+# shellcheck disable=SC2016 # Backticks format the command for display.
+printf 'Run `ghtkn auth -p dkarter/write` interactively to authorize this machine.\n'
