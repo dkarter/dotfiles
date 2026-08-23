@@ -155,9 +155,9 @@ class VimEditor extends CustomEditor {
     this.tui.terminal.write(insert ? '\x1b[6 q' : '\x1b[2 q');
   }
 
-  restoreCursorAppearance(): void {
+  restoreCursorAppearance(showTerminalCursor = false): void {
     this.tui.setShowHardwareCursor(this.originalHardwareCursor);
-    this.tui.terminal.write('\x1b[0 q');
+    this.tui.terminal.write(`${showTerminalCursor ? '\x1b[?25h' : ''}\x1b[0 q`);
   }
 
   private replaceRange(range: TextRange, replacement = '', cursor = range.start): void {
@@ -599,8 +599,8 @@ export default function (pi: ExtensionAPI) {
     });
   });
 
-  pi.on('session_shutdown', () => {
-    editor?.restoreCursorAppearance();
+  pi.on('session_shutdown', (event) => {
+    editor?.restoreCursorAppearance(event.reason === 'quit');
     editor = undefined;
   });
 }
