@@ -377,43 +377,43 @@ url = "https://github.com/mr-karan/doggo/releases/download/v1.3.0/doggo-windows-
 url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/504896303"
 
 [[tools."github:nushell/nushell"]]
-version = "0.115.0"
+version = "0.115.1"
 backend = "github:nushell/nushell"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64"]
-checksum = "sha256:508f00f858474e754335bea741c8f729b8ae526451aa01b9c1e36944311b846a"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516036041"
+checksum = "sha256:5c4a5bca0af5b070e903a68fa014cc24e6419d0ac9cec03a2948494b2d310e08"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526013775"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64-musl"]
-checksum = "sha256:7e60824f66b8c814fdbb52741047d38c8379e4bc5e8271135667ef04e3c55324"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516032451"
+checksum = "sha256:86a869f44c2abd37f4a4c215af78c8da058812b76fa131476d28e62fc0262a91"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526013290"
 
 [tools."github:nushell/nushell"."platforms.linux-x64"]
-checksum = "sha256:da83cfe482060d2c34b6b9af829975a313bce6b92e0398c3b2a59cb38630c7b2"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516034986"
+checksum = "sha256:d11d825241f6504a3617c535fa725a9dd6d009c86d7b19fb3168b47635b9d8b0"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526012815"
 
 [tools."github:nushell/nushell"."platforms.linux-x64-musl"]
-checksum = "sha256:d510565b039b5384986652e579fe443877fcc4df86f16072ed5edca641ad92f1"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516035896"
+checksum = "sha256:8a9722177ddd421eba927b4baae4ae341a4d1c3434504be7b1b17d998bafdd87"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526013643"
 
 [tools."github:nushell/nushell"."platforms.macos-arm64"]
-checksum = "sha256:91f3c77e4f634b54029b07e3dc4e99ffec5fc0f98537f9b630bda32b4d06da5e"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516037608"
+checksum = "sha256:2e6ed1eb043869ff05b5f2448a8c443e4d3a93557ba4303b21008a0523c96734"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526010403"
 
 [tools."github:nushell/nushell"."platforms.macos-x64"]
-checksum = "sha256:0bddb610efd2a3567076af9a337c6dd078582e8e9e9af76e0cc2204cbfe3e6d1"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516042388"
+checksum = "sha256:0292f4b92af29cfe5d9c4b2ec06eeb325b705d1d6c19536a8bec2b75859b3485"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526015418"
 
 [tools."github:nushell/nushell"."platforms.windows-x64"]
-checksum = "sha256:4f6a0bcbbc2975cf46f3ff93aecc7093c91fa59aca28020e4294906db13ace23"
-url = "https://github.com/nushell/nushell/releases/download/0.115.0/nu-0.115.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/516052087"
+checksum = "sha256:b83009cbc88021f4dc293c49320118886b78363f9a4bb14933d33c8803241f46"
+url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526030176"
 
 [[tools."github:orf/gping"]]
 version = "gping-v1.20.4"
@@ -533,43 +533,43 @@ url = "https://github.com/sharkdp/hyperfine/releases/download/v1.20.0/hyperfine-
 url_api = "https://api.github.com/repos/sharkdp/hyperfine/releases/assets/317832313"
 
 [[tools."github:sibprogrammer/xq"]]
-version = "1.5.0"
+version = "1.5.1"
 backend = "github:sibprogrammer/xq"
 
 [tools."github:sibprogrammer/xq"."platforms.linux-arm64"]
-checksum = "sha256:0b0f071e0fc20baa7851a6c83747c8b46ad3e564813b8d5704364d2aa52ae794"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604318"
+checksum = "sha256:e69e382c6fb7c39457a0cbd7b088970cf0dced47c15c01596c78a403560289ca"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299385"
 
 [tools."github:sibprogrammer/xq"."platforms.linux-arm64-musl"]
-checksum = "sha256:0b0f071e0fc20baa7851a6c83747c8b46ad3e564813b8d5704364d2aa52ae794"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604318"
+checksum = "sha256:e69e382c6fb7c39457a0cbd7b088970cf0dced47c15c01596c78a403560289ca"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299385"
 
 [tools."github:sibprogrammer/xq"."platforms.linux-x64"]
-checksum = "sha256:217acb7b25fa32af9d10cab492695e4887378283535df84459e5c436bf090ea4"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604321"
+checksum = "sha256:40ec8915ca3809bc6cdd75eeacdeb8e31276f82bdaca1bfa0b4a5260d8416414"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299387"
 
 [tools."github:sibprogrammer/xq"."platforms.linux-x64-musl"]
-checksum = "sha256:217acb7b25fa32af9d10cab492695e4887378283535df84459e5c436bf090ea4"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604321"
+checksum = "sha256:40ec8915ca3809bc6cdd75eeacdeb8e31276f82bdaca1bfa0b4a5260d8416414"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299387"
 
 [tools."github:sibprogrammer/xq"."platforms.macos-arm64"]
-checksum = "sha256:c6623df835e35b7af1742a75f9bf96bfa8cd33a8808e08102d68bae48153dab9"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604334"
+checksum = "sha256:855af44281b8892d237c3860b4e387c0f6ef20f4ff2e0d3fb8a7b81008408ac4"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299403"
 
 [tools."github:sibprogrammer/xq"."platforms.macos-x64"]
-checksum = "sha256:1ae28114e745f729acaf492607b2180d9a08c6548ac4e559a4e435bf466d714d"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604333"
+checksum = "sha256:7b8ddc308695ffca431c41c5bfc750dd5e32e6363c6964199246fbe7fef2ca68"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299402"
 
 [tools."github:sibprogrammer/xq"."platforms.windows-x64"]
-checksum = "sha256:18beec27466906775bdf4184e44202716f95a2b57ec3aab95f3451d9a236da15"
-url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.0/xq_1.5.0_windows_amd64.zip"
-url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/510604339"
+checksum = "sha256:52ba9baba2bb74ea7711232419b2185cd046c8482a8e31c7f3cf942db4f94121"
+url = "https://github.com/sibprogrammer/xq/releases/download/v1.5.1/xq_1.5.1_windows_amd64.zip"
+url_api = "https://api.github.com/repos/sibprogrammer/xq/releases/assets/526299409"
 
 [[tools.helm]]
 version = "4.2.4"
