@@ -1035,6 +1035,65 @@ checksum = "sha256:cf5c137d9b391c3988c54af8f5fc490ffbef6f70444651e7d57fdb45ad04c
 url = "https://github.com/junegunn/fzf/releases/download/v0.74.3/fzf-0.74.3-windows_amd64.zip"
 url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/517537078"
 
+[[tools."github:TBXark/mcp-proxy"]]
+version = "0.58.0"
+backend = "github:TBXark/mcp-proxy"
+
+[tools."github:TBXark/mcp-proxy"."platforms.linux-arm64"]
+checksum = "sha256:b2ae8c3e2d10a3f16ffd15ec22ab9edc885f66bd8dd1e1305fcfc096ba34a257"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695703"
+
+[tools."github:TBXark/mcp-proxy"."platforms.linux-arm64-musl"]
+checksum = "sha256:b2ae8c3e2d10a3f16ffd15ec22ab9edc885f66bd8dd1e1305fcfc096ba34a257"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695703"
+
+[tools."github:TBXark/mcp-proxy"."platforms.linux-x64"]
+checksum = "sha256:fdaea13fe9af4119349628a1e62ef9e67338c96b9939c2818cf2a9ace26121dd"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695701"
+
+[tools."github:TBXark/mcp-proxy"."platforms.linux-x64-baseline"]
+checksum = "sha256:fdaea13fe9af4119349628a1e62ef9e67338c96b9939c2818cf2a9ace26121dd"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695701"
+
+[tools."github:TBXark/mcp-proxy"."platforms.linux-x64-musl"]
+checksum = "sha256:fdaea13fe9af4119349628a1e62ef9e67338c96b9939c2818cf2a9ace26121dd"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695701"
+
+[tools."github:TBXark/mcp-proxy"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:fdaea13fe9af4119349628a1e62ef9e67338c96b9939c2818cf2a9ace26121dd"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695701"
+
+[tools."github:TBXark/mcp-proxy"."platforms.macos-arm64"]
+checksum = "sha256:78ad6566ba94b30201570b773fce563e3e580a19ea935aa4b69d36e92542b270"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695700"
+
+[tools."github:TBXark/mcp-proxy"."platforms.macos-x64"]
+checksum = "sha256:1f586f8b20eb98534014d9d36a15fc38d2a084ba9155509e604be9016af75e5c"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695702"
+
+[tools."github:TBXark/mcp-proxy"."platforms.macos-x64-baseline"]
+checksum = "sha256:1f586f8b20eb98534014d9d36a15fc38d2a084ba9155509e604be9016af75e5c"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695702"
+
+[tools."github:TBXark/mcp-proxy"."platforms.windows-x64"]
+checksum = "sha256:65d75c3cc36ec906b4f301a54e829f447b5d3caf56d5736f9621ea07d8027c3f"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695713"
+
+[tools."github:TBXark/mcp-proxy"."platforms.windows-x64-baseline"]
+checksum = "sha256:65d75c3cc36ec906b4f301a54e829f447b5d3caf56d5736f9621ea07d8027c3f"
+url = "https://github.com/tbxark/mcp-proxy/releases/download/v0.58.0/mcp-proxy_0.58.0_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/516695713"
+
 [[tools."github:ast-grep/ast-grep"]]
 version = "0.45.2"
 backend = "github:ast-grep/ast-grep"

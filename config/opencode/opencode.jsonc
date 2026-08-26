@@ -14,8 +14,9 @@
     },
     "github": {
       "enabled": true,
-      "type": "local",
-      "command": ["github-mcp-server", "stdio"]
+      "type": "remote",
+      "url": "http://127.0.0.1:9090/github/mcp",
+      "oauth": false
     },
     "linear": {
       "type": "remote",

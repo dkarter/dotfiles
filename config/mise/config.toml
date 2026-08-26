@@ -107,6 +107,10 @@ zoxide = "latest"                            # a modern version of autojump
 version = "latest"
 allow_builds = ["@ampcode/cli"]
 
+[tools."github:TBXark/mcp-proxy"]
+version = "latest"
+rename_exe = "github-mcp-proxy"
+
 # spec driven development tool
 [tools."npm:@fission-ai/openspec"]
 version = "latest"
