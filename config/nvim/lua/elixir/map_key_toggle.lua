@@ -226,6 +226,7 @@ function M.toggle_elixir_map_keys(opts)
   local bufnr = vim.api.nvim_get_current_buf()
 
   -- Find enclosing map
+  ---@type TSNode?
   local map_node = node
   while map_node and map_node:type() ~= 'map' do
     map_node = map_node:parent()

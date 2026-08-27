@@ -61,35 +61,35 @@ end
 ---@param port number
 ---@param on_success fun(response: opencode.server.PathResponse)
 ---@param on_error fun()
----@return number job_id
+---@return Promise
 function M.get_path(port, on_success, on_error)
   return with_callbacks(from_port(port):get_path(), on_success, on_error)
 end
 
 ---@param port number
 ---@param callback fun(agents: opencode.server.Agent[])
----@return number job_id
+---@return Promise
 function M.get_agents(port, callback)
   return with_callbacks(from_port(port):get_agents(), callback)
 end
 
 ---@param port number
 ---@param callback fun(sessions: opencode.server.Session[])
----@return number job_id
+---@return Promise
 function M.get_sessions(port, callback)
   return with_callbacks(from_port(port):get_sessions(), callback)
 end
 
 ---@param port number
 ---@param callback fun(statuses: opencode.server.SessionStatus[])
----@return number job_id
+---@return Promise
 function M.get_sessions_status(port, callback)
   return get(port, '/session/status', callback)
 end
 
 ---@param port number
 ---@param callback fun(commands: opencode.server.Command[])
----@return number job_id
+---@return Promise
 function M.get_commands(port, callback)
   return get(port, '/command', callback)
 end

@@ -8,7 +8,7 @@ local function run(cmd)
     return ''
   end
 
-  return (result.stdout or ''):gsub('%s+$', '')
+  return ((result.stdout or ''):gsub('%s+$', ''))
 end
 
 ---@param cmd string[]

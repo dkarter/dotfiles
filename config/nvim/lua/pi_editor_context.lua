@@ -298,6 +298,8 @@ function M.apply()
   local tab_id = vim.env.HERDR_TAB_ID:gsub('[^%w_.-]', '_')
   local directory = cache_root() .. '/pi/editor-context'
   context_file = directory .. '/' .. tab_id .. '.json'
+  -- Neovim's generated Lua metadata types {prot} as string, but mkdir() documents it as a number.
+  ---@diagnostic disable-next-line: param-type-mismatch
   vim.fn.mkdir(directory, 'p', tonumber('700', 8))
   pcall(uv.fs_chmod, directory, tonumber('700', 8))
 
