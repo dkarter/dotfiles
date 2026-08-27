@@ -39,7 +39,7 @@
 "github:dkarter/hwt" = "latest"              # deterministic Herdr worktree orchestration
 "github:dkarter/lnr" = "latest"              # linear cli
 "github:dlvhdr/diffnav" = "latest"           # A git diff pager based on delta but with a file tree, à la GitHub.
-"github:github/github-mcp-server" = "1.10.1" # GitHub MCP server for local development
+"github:github/github-mcp-server" = "1.11.0" # GitHub MCP server for local development
 "github:joshmedeski/sesh" = "latest"         # tmux session manager
 "github:mazznoer/lolcrab" = "latest"         # like lolcat, but written in Rust and with more features
 "github:modem-dev/hunk" = "latest"           # interactive terminal diff viewer
@@ -64,7 +64,7 @@ delta = "latest"                             # nicer git diffs
 deno = "2"                                   # Deno programming language
 devcontainer-cli = "latest"                  # sandboxed container runtime for development environments, with support for running devcontainers
 docker-cli = "latest"                        # just the cli - for the backend I'll use orbstack or colima
-elixir = "1.20.0-otp-29"                     # Elixir programming language
+elixir = "1.20.3-otp-29"                     # Elixir programming language
 erlang = "29"                                # Erlang programming language
 expert = "latest"                            # Elixir official LSP
 fd = "latest"                                # modern `find`
@@ -73,7 +73,7 @@ fx = "latest"                                # like jq, but allows interactive e
 fzf = "latest"                               # fuzzy finder
 gitleaks = "latest"                          # git leaks is a tool for detecting and preventing hardcoded secrets like passwords, API keys, and tokens in git repositories
 glow = "latest"                              # Render markdown on the CLI
-go = "1.25"                                  # Go programming language
+go = "1.27"                                  # Go programming language
 gum = "latest"                               # CLI / scripting UI tools
 herdr = "latest"                             # like tmux but built for AI agents
 jq = "latest"                                # pretty print and query json
@@ -85,7 +85,7 @@ node = "24"                                  # node javascript runtime
 opencode = "latest"                          # coding agent
 pi = "latest"                                # customizable ai agent
 pitchfork = "latest"                         # run multiple commands in parallel, with a nice UI
-python = "3.12"                              # Python programming language
+python = "3.14"                              # Python programming language
 resvg = "latest"                             # svg rendering library and CLI tool (used by yazi)
 ripgrep = "latest"                           # modern `grep`
 rust = "1"                                   # Rust programming language
@@ -118,7 +118,7 @@ allow_builds = false
 
 # opencode v2 beta
 [tools."npm:@opencode-ai/cli"]
-version = "next"
+version = "beta"
 allow_builds = true
 
 # squash-safe stacked PR/MR repair CLI
