@@ -169,3 +169,6 @@ minimum_release_age_excludes = [
   "amp",
   "npm:@opencode-ai/cli",
 ]
+
+[settings.github]
+credential_command = "ghtkn get -m 1h"
