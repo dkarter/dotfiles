@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+silent: true
+
+tasks:
+  git:configure:
+    desc: Opt this machine in to ghtkn for Git and gh
+    summary: |
+      Creates the dkarter/write app config when missing and adds a tool-owned
+      Git config include to ~/.gitconfig.local. It provides GitHub HTTPS
+      credentials and enables the short-lived-token gh wrapper. Existing ghtkn
+      app configuration is preserved. This is intentionally not part of install
+      or sync because ghtkn may not be appropriate on every machine.
+    cmd: mise exec -- bash ./scripts/configure-ghtkn-git-credential.sh
+
+  git:remove:
+    desc: Remove this machine's ghtkn Git and gh opt-in
+    cmd: bash ./scripts/configure-ghtkn-git-credential.sh --remove
+
+  unlock:
+    desc: Unlock the ghtkn agent from 1Password and enable silent token refresh
+    cmd: op read --no-newline 'op://Private/ghtkn passphrase/password' | mise exec -- ghtkn agent unlock --enable-refresh --passphrase-stdin

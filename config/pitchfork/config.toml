@@ -1,6 +1,11 @@
 [settings.general]
 mise = true
 
+[daemons.ghtkn-agent]
+run = "exec ghtkn agent start"
+boot_start = true
+retry = true
+
 [daemons.github-mcp-proxy]
 run = "exec github-mcp-proxy -config ~/.config/mcp-proxy/config.json"
 boot_start = true

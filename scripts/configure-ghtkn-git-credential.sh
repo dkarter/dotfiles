@@ -73,6 +73,8 @@ if [[ ! -e $ghtkn_config_file ]]; then
   # shellcheck disable=SC2016 # $schema is a literal YAML language-server key.
   printf '%s\n' \
     '# yaml-language-server: $schema=https://raw.githubusercontent.com/suzuki-shunsuke/ghtkn/main/json-schema/ghtkn.json' \
+    'backend:' \
+    '  type: agent' \
     'apps:' \
     '  - name: dkarter/write' \
     '    client_id: Iv23liVwH6IuogjoaQ0X' >"$temporary"
