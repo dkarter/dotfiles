@@ -1614,6 +1614,65 @@ url = "https://github.com/github/github-mcp-server/releases/download/v1.11.0/git
 url_api = "https://api.github.com/repos/github/github-mcp-server/releases/assets/529291448"
 provenance = "github-attestations"
 
+[[tools."github:jnsahaj/lumen"]]
+version = "2.32.0"
+backend = "github:jnsahaj/lumen"
+
+[tools."github:jnsahaj/lumen"."platforms.linux-arm64"]
+checksum = "sha256:ebdb801b5639a913094dff1820c7b5ace91cedb0832dd027a16abe1d557eea89"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707246"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.linux-arm64-musl"]
+checksum = "sha256:cd7d4c46249e85192b7621f927b68311b0e1ec8e9d40a7fbee18c287f438f045"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707241"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.linux-x64"]
+checksum = "sha256:596ea1dc78f63dd419854206adb2038a04be2248084373602c9a88a4efbf51a1"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707254"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.linux-x64-baseline"]
+checksum = "sha256:596ea1dc78f63dd419854206adb2038a04be2248084373602c9a88a4efbf51a1"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707254"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.linux-x64-musl"]
+checksum = "sha256:60caee48278762d017b66264b6b015c706c956e06230a74b681063c9cfa56fd4"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707256"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:60caee48278762d017b66264b6b015c706c956e06230a74b681063c9cfa56fd4"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707256"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.macos-arm64"]
+checksum = "sha256:45377ec96f28f9b9c1831cb52fd5d21e3f8bc58c2f1dd8abb79ba44d3ef33537"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707243"
+provenance = "github-attestations"
+provenance_verified = true
+
+[tools."github:jnsahaj/lumen"."platforms.macos-x64"]
+checksum = "sha256:254010a118fb225565589c56411d51b27521fcc5a9b94a5dcf9a2fe706d92e96"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707251"
+provenance = "github-attestations"
+
+[tools."github:jnsahaj/lumen"."platforms.macos-x64-baseline"]
+checksum = "sha256:254010a118fb225565589c56411d51b27521fcc5a9b94a5dcf9a2fe706d92e96"
+url = "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/jnsahaj/lumen/releases/assets/479707251"
+provenance = "github-attestations"
+
 [[tools."github:joshmedeski/sesh"]]
 version = "2.28.0"
 backend = "github:joshmedeski/sesh"
