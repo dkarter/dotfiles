@@ -6,4 +6,4 @@ export PATH="$HOME/.local/share/mise/shims:$PATH"
 command="$(mise --cd "$HOME" exec -- vellum herdr-commands)"
 [[ -n "$command" ]] || exit 0
 
-exec "$command"
+exec "${0:A:h}/$command"
