@@ -1465,6 +1465,65 @@ url = "https://github.com/dkarter/lnr/releases/download/v3.0.1/lnr_3.0.1_windows
 url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/490777747"
 provenance = "github-attestations"
 
+[[tools."github:dkarter/vellum"]]
+version = "0.6.0"
+backend = "github:dkarter/vellum"
+
+[tools."github:dkarter/vellum"."platforms.linux-arm64"]
+checksum = "sha256:b4759a9b3018310fe221e3915a8a6e44b423c1f254f7e79e96592c03f8f733cb"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765871"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.linux-arm64-musl"]
+checksum = "sha256:b4759a9b3018310fe221e3915a8a6e44b423c1f254f7e79e96592c03f8f733cb"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765871"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.linux-x64"]
+checksum = "sha256:321ff3af72f742d7bdc2849e1c08c21906748bd8ad6749a1a5dab1ebf630db59"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765909"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.linux-x64-baseline"]
+checksum = "sha256:321ff3af72f742d7bdc2849e1c08c21906748bd8ad6749a1a5dab1ebf630db59"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765909"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.linux-x64-musl"]
+checksum = "sha256:321ff3af72f742d7bdc2849e1c08c21906748bd8ad6749a1a5dab1ebf630db59"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765909"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:321ff3af72f742d7bdc2849e1c08c21906748bd8ad6749a1a5dab1ebf630db59"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765909"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.macos-arm64"]
+checksum = "sha256:7892f5a66b8ee49b2c4c9256bd8ce7b625fba177a15fad6da8844e07ecf7632e"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765318"
+provenance = "github-attestations"
+provenance_verified = true
+
+[tools."github:dkarter/vellum"."platforms.windows-x64"]
+checksum = "sha256:4d6aeaf4c80ad28f54ca93012f6fab8a3a3eee064a62fc78e808e2050301ca67"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765933"
+provenance = "github-attestations"
+
+[tools."github:dkarter/vellum"."platforms.windows-x64-baseline"]
+checksum = "sha256:4d6aeaf4c80ad28f54ca93012f6fab8a3a3eee064a62fc78e808e2050301ca67"
+url = "https://github.com/dkarter/vellum/releases/download/v0.6.0/vellum_0.6.0_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/vellum/releases/assets/535765933"
+provenance = "github-attestations"
+
 [[tools."github:dlvhdr/diffnav"]]
 version = "0.12.0"
 backend = "github:dlvhdr/diffnav"
