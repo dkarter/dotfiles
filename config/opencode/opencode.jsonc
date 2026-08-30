@@ -5,7 +5,7 @@
     "playwright": {
       "enabled": true,
       "type": "local",
-      "command": ["bunx", "@playwright/mcp@latest", "--browser", "webkit"]
+      "command": ["playwright-mcp", "--browser", "webkit"]
     },
     "context7": {
       "enabled": true,
@@ -26,12 +26,7 @@
     "chrome-devtools": {
       "enabled": true,
       "type": "local",
-      "command": [
-        "aubx",
-        "-y",
-        "chrome-devtools-mcp@latest",
-        "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"
-      ]
+      "command": ["chrome-devtools-mcp", "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"]
     }
   },
   "lsp": {

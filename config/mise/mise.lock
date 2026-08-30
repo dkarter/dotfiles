@@ -2649,6 +2649,14 @@ backend = "npm:@opencode-ai/cli"
 [tools."npm:@opencode-ai/cli".options]
 allow_builds = "true"
 
+[[tools."npm:@playwright/mcp"]]
+version = "0.0.79"
+backend = "npm:@playwright/mcp"
+
+[[tools."npm:chrome-devtools-mcp"]]
+version = "1.8.0"
+backend = "npm:chrome-devtools-mcp"
+
 [[tools."npm:neovim"]]
 version = "5.4.0"
 backend = "npm:neovim"
