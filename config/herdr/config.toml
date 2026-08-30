@@ -83,6 +83,12 @@ command = "dotfiles.command-palette.open-workspace-picker"
 description = "jump to workspace"
 
 [[keys.command]]
+key = "prefix+shift+j"
+type = "plugin_action"
+command = "dotfiles.command-palette.open-agent-picker"
+description = "jump to agent"
+
+[[keys.command]]
 key = "prefix+shift+p"
 type = "plugin_action"
 command = "dotfiles.command-palette.open"

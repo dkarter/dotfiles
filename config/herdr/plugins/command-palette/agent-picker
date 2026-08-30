@@ -3,4 +3,4 @@ set -euo pipefail
 
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-exec mise --cd "$HOME" exec -- vellum herdr-workspaces
+exec mise --cd "$HOME" exec -- vellum herdr-agents

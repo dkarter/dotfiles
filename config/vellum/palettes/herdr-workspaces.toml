@@ -1,0 +1,137 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Workspaces"
+placeholder = "Switch workspace..."
+
+[source]
+builtin = "herdr-workspaces"
+refresh_ms = 1000
+
+[filters]
+label = "status"
+mode = "ctrl-g"
+clear = "a"
+
+[[filters.choices]]
+key = "w"
+label = "working"
+source = "agent_status"
+value = "working"
+icon = "●"
+fg = "yellow"
+
+[[filters.choices]]
+key = "d"
+label = "done"
+source = "agent_status"
+value = "done"
+icon = "●"
+fg = "#89b4fa"
+
+[[filters.choices]]
+key = "i"
+label = "idle"
+source = "agent_status"
+value = "idle"
+icon = "○"
+fg = "#a6e3a1"
+
+[[filters.choices]]
+key = "b"
+label = "blocked"
+source = "agent_status"
+value = "blocked"
+icon = "●"
+fg = "#ff6188"
+
+[[filters.choices]]
+key = "u"
+label = "unknown"
+source = "agent_status"
+value = "unknown"
+icon = "·"
+fg = "#999999"
+
+[actions]
+default = "focus"
+menu = "ctrl-a"
+
+[[actions.items]]
+name = "focus"
+label = "Focus workspace"
+icon = "󰍉"
+description = "Switch to the selected Herdr workspace"
+command = ["herdr", "workspace", "focus", "$workspace_id"]
+on_success = "exit"
+
+[[actions.items]]
+name = "remove-worktree"
+label = "Remove worktree"
+icon = "󰆴"
+description = "Remove this HWT worktree and refresh the list"
+command = ["hwt", "remove", "--workspace", "$workspace_id"]
+when = [
+  { field = "focused", equals = false },
+  { field = "worktree.is_linked_worktree", equals = true },
+]
+on_success = "refresh"
+
+[[actions.items]]
+name = "open-repository"
+label = "Open repository"
+icon = "󰊤"
+description = "Open this checkout's repository on GitHub"
+command = ["gh", "repo", "view", "--web"]
+cwd = "$checkout_path"
+when = [{ field = "checkout_path", is_set = true }]
+on_success = "exit"
+
+[[actions.items]]
+name = "open-pull-request"
+label = "Open pull request"
+icon = ""
+description = "Open the pull request for this checkout branch"
+command = ["gh", "pr", "view", "--web"]
+cwd = "$checkout_path"
+availability = { command = [
+  "gh",
+  "pr",
+  "view",
+  "--json",
+  "number",
+], cwd = "$checkout_path", cache_ms = 30000 }
+when = [{ field = "checkout_path", is_set = true }]
+on_success = "exit"
+
+[[actions.items]]
+name = "open-pull-request-checks"
+label = "Open PR checks"
+icon = "󰙨"
+description = "Open GitHub Actions checks for this pull request"
+command = ["gh", "pr", "checks", "--web"]
+cwd = "$checkout_path"
+availability = { command = [
+  "gh",
+  "pr",
+  "view",
+  "--json",
+  "number",
+], cwd = "$checkout_path", cache_ms = 30000 }
+when = [{ field = "checkout_path", is_set = true }]
+on_success = "exit"
+
+[item]
+value = "$workspace_id"
+template = [
+  [
+    { token = "$label", fg = "$focus_color", bold = true },
+    { token = "$status_icon", fg = "$status_color", searchable = false, align = "right" },
+    " ",
+    { token = "$agent_status", fg = "$status_color", searchable = true, align = "right" },
+  ],
+  [
+    { token = "󰉋 ", fg = "#7dcfff", searchable = false },
+    { token = "$checkout_path_display", fg = "#a9b1d6" },
+  ],
+]
