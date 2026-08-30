@@ -66,6 +66,14 @@ command = ["herdr", "workspace", "focus", "$workspace_id"]
 on_success = "exit"
 
 [[actions.items]]
+name = "close-workspace"
+label = "Close workspace"
+icon = "󰅖"
+description = "Close the selected Herdr workspace"
+command = ["herdr", "workspace", "close", "$workspace_id"]
+on_success = "exit"
+
+[[actions.items]]
 name = "remove-worktree"
 label = "Remove worktree"
 icon = "󰆴"
@@ -123,6 +131,7 @@ on_success = "exit"
 
 [item]
 value = "$workspace_id"
+alternate_background = "#1e2030"
 template = [
   [
     { token = "$label", fg = "$focus_color", bold = true },
@@ -131,7 +140,102 @@ template = [
     { token = "$agent_status", fg = "$status_color", searchable = true, align = "right" },
   ],
   [
-    { token = "󰉋 ", fg = "#7dcfff", searchable = false },
-    { token = "$checkout_path_display", fg = "#a9b1d6" },
+    { token = "󰉋 ", fg = "#565f89", searchable = false },
+    { token = "$checkout_path_display", fg = "#565f89" },
+    { for_each = "$agents", token = "$agent_icon", separator = " ", unique = true, fg = "#565f89", searchable = true, align = "right" },
   ],
 ]
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["amp"]
+text = " Amp"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["claude"]
+text = " Claude"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["cline"]
+text = " Cline"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["codex"]
+text = " Codex"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["copilot"]
+text = " Copilot"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["cursor"]
+text = " Cursor"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["gemini"]
+text = " Gemini"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["grok"]
+text = " Grok"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["hermes"]
+text = " Hermes"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["kilo"]
+text = " Kilo"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["kimi"]
+text = " Kimi"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["mastracode"]
+text = " Mastra Code"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["opencode", "opencode2"]
+text = " OpenCode"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["pi"]
+text = " Pi"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
+when = ["qodercli"]
+text = " Qoder CLI"
+
+[[item.tokens]]
+name = "agent_icon"
+source = "agent"
