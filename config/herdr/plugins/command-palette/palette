@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-exec mise x -- tv herdr-commands --layout portrait --hide-status-bar
+command="$(mise --cd "$HOME" exec -- vellum herdr-commands)"
+[[ -n "$command" ]] || exit 0
+
+exec "$command"

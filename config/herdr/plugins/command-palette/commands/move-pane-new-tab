@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+herdr pane move "$(current_pane_id)" --new-tab --focus >/dev/null

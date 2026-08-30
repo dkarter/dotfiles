@@ -2,5 +2,7 @@
 set -euo pipefail
 
 pane_id=$(tmux display-message -p "#{pane_id}")
+cwd=$(tmux display-message -p -t "$pane_id" "#{pane_current_path}")
 
-tmux display-popup -E -w 80% -h 80% "mise x -- tv files | xargs -I {} tmux send-keys -t ${pane_id} @{}"
+tmux display-popup -E -d "$cwd" -w 80% -h 80% \
+  "selected=\$(mise exec -- vellum files) && [[ -n \"\$selected\" ]] && tmux send-keys -t ${(q)pane_id} -- \"@\$selected\""

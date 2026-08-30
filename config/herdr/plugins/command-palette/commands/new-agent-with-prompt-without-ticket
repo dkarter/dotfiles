@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+exec "${0:A:h}/new-agent-with-prompt" false

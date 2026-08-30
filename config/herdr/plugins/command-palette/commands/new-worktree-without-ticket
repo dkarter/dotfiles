@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-exec "${0:A:h}/commands/new-worktree"
+exec "${0:A:h}/new-worktree" false

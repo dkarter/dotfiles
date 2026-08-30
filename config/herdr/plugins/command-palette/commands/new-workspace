@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+cwd="$(current_pane_cwd)"
+name="$(mise x -- gum input --placeholder="Workspace name...")"
+[[ -z "$name" ]] && exit 0
+
+herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null

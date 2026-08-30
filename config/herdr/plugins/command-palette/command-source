@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+plugin_dir="${0:A:h}"
+command_dir="$plugin_dir/commands"
+
+jq -nc --arg dir "$command_dir" --arg plugin "$plugin_dir" '[
+  {id: "new-workspace", icon: "󰙅", label: "New workspace", shortcut: "prefix+shift+n", command: ($dir + "/new-workspace")},
+  {id: "reload-config", icon: "󰑓", label: "Reload Herdr config", shortcut: "prefix+R", command: ($dir + "/reload-config")},
+  {id: "split-right", icon: "", label: "Split pane right", shortcut: "prefix+\\", command: ($dir + "/split-right")},
+  {id: "split-below", icon: "", label: "Split pane below", shortcut: "prefix+-", command: ($dir + "/split-below")},
+  {id: "move-pane-new-tab", icon: "󰆍", label: "Move pane to new tab", shortcut: "", command: ($dir + "/move-pane-new-tab")},
+  {id: "kill-pane", icon: "󰆴", label: "Kill current pane", shortcut: "prefix+x", command: ($dir + "/kill-pane")},
+  {id: "open-dev-directory", icon: "󰉋", label: "Open dev directory", shortcut: "prefix+shift+o", command: ($dir + "/open-dev-directory")},
+  {id: "open-workspace-repo", icon: "󰊢", label: "Open workspace repo", shortcut: "", command: ($dir + "/open-workspace-repo")},
+  {id: "checkout-github-repo", icon: "󰊢", label: "Checkout GitHub repo", shortcut: "", command: ($dir + "/checkout-github-repo")},
+  {id: "new-worktree", icon: "", label: "New worktree", shortcut: "prefix+shift+g", command: ($dir + "/new-worktree")},
+  {id: "new-worktree-without-ticket", icon: "", label: "New worktree without ticket", shortcut: "", command: ($dir + "/new-worktree-without-ticket")},
+  {id: "checkout-worktree", icon: "", label: "Checkout PR or branch", shortcut: "", command: ($dir + "/checkout-worktree")},
+  {id: "new-agent-with-prompt", icon: "󰚩", label: "New agent with prompt", shortcut: "", command: ($dir + "/new-agent-with-prompt")},
+  {id: "new-agent-with-prompt-without-ticket", icon: "󰚩", label: "New agent with prompt without ticket", shortcut: "", command: ($dir + "/new-agent-with-prompt-without-ticket")},
+  {id: "delete-current-worktree", icon: "󰆴", label: "Delete current worktree", shortcut: "", command: ($plugin + "/delete-worktree")}
+]'

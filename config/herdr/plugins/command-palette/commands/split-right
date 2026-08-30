@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+herdr pane split --current --direction right --focus >/dev/null
