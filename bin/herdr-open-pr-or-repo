@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+branch="$(git branch --show-current)"
+if [ -z "$branch" ]; then
+  gh repo view --web
+  exit
+fi
+
+pr_url="$(gh pr list --head "$branch" --state all --limit 1 --json url --jq '.[0].url // empty')"
+if [ -n "$pr_url" ]; then
+  herdr plugin action invoke gh-pr.open-pr
+else
+  gh repo view --web
+fi

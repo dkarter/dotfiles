@@ -178,9 +178,9 @@ description = "resize right"
 
 [[keys.command]]
 key = "prefix+u"
-type = "plugin_action"
-command = "gh-pr.open-pr"
-description = "open PR in browser"
+type = "shell"
+command = "herdr-open-pr-or-repo"
+description = "open PR or repo in browser"
 
 [[keys.command]]
 key = "prefix+shift+g"
