@@ -1,6 +1,7 @@
 /** @jsxImportSource @opentui/solid */
 import type { Plugin } from '@opencode-ai/plugin-v2/tui';
 import type { RGBA } from '@opentui/core';
+import { useTerminalDimensions } from '@opentui/solid';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { createSignal, onCleanup, onMount } from 'solid-js';
@@ -30,6 +31,16 @@ type GitTheme = {
 
 const execFileAsync = promisify(execFile);
 const CONFLICTED = new Set(['DD', 'AU', 'UD', 'UA', 'DU', 'AA', 'UU']);
+
+const truncateMiddle = (value: string, maxLength: number) => {
+  if (value.length <= maxLength) {
+    return value;
+  }
+
+  const startLength = Math.ceil((maxLength - 1) / 2);
+  const endLength = Math.floor((maxLength - 1) / 2);
+  return `${value.slice(0, startLength)}…${value.slice(-endLength)}`;
+};
 
 const parseStatus = (output: string): GitStatus | undefined => {
   const status: GitStatus = {
@@ -127,6 +138,7 @@ const GitStatusPlugin = {
     const unregister = ctx.ui.slot({
       append: 'prompt.footer.status',
       render: ({ mode }) => {
+        const dimensions = useTerminalDimensions();
         onMount(() => {
           void refresh();
           const timer = setInterval(refresh, 3_000);
@@ -134,6 +146,9 @@ const GitStatusPlugin = {
         });
 
         const theme = ctx.theme as unknown as GitTheme;
+        const showBranch = () => dimensions().width >= 100;
+        const branch = () =>
+          truncateMiddle(status()?.branch ?? '', Math.max(12, Math.min(28, dimensions().width - 90)));
         const clean = () => {
           const value = status();
           return (
@@ -150,7 +165,7 @@ const GitStatusPlugin = {
           status() && (
             <box flexShrink={0}>
               <text>
-                <span style={{ fg: theme.hue.purple[500] }}>{`  ${status()!.branch}`}</span>
+                {showBranch() && <span style={{ fg: theme.hue.purple[500] }}>{`  ${branch()}`}</span>}
                 {status()!.ahead > 0 && <span style={{ fg: theme.hue.green[500] }}>{` ⇡${status()!.ahead}`}</span>}
                 {status()!.behind > 0 && <span style={{ fg: theme.hue.red[500] }}>{` ⇣${status()!.behind}`}</span>}
                 {status()!.staged > 0 && <span style={{ fg: theme.hue.green[500] }}>{` +${status()!.staged}`}</span>}
