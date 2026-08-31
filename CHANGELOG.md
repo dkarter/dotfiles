@@ -4,6 +4,31 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [32.6.0](https://github.com/dkarter/dotfiles/compare/v32.5.1...v32.6.0) (2026-08-31)
 
+<!-- pullfrog-summary:start -->
+
+## Overview
+
+`v32.6.0` expands the repository's AI-agent workflow across Pi, Herdr, Vellum, and OpenCode, while speeding up shell startup and refreshing core runtimes and editor tooling.
+
+## Notable changes
+
+- Pi now has Vim-style prompt editing, Herdr agent-state reporting, and Neovim context sharing for the current file or visual selection. Its configured model list is reduced to `openai-codex/gpt-5.6-sol`.
+- Herdr command and workspace selection moves from Television and the old `herdr-*` scripts to Vellum. New palettes cover commands, files, workspaces, and agents; `prefix+shift+j` opens the agent picker, and `prefix+u` opens the current PR or falls back to the repository.
+- OpenCode gains a responsive Git status footer and a compact Vim-mode indicator on narrow terminals. Playwright and Chrome DevTools MCPs now use Mise-managed executables, while GitHub MCP traffic goes through a local proxy.
+- Pitchfork is added to `install` and `sync` to enable boot startup for the `ghtkn` agent and GitHub MCP proxy. `ghtkn` also gets app provisioning, short-lived-token refresh, and Mise credential integration.
+- Zsh startup avoids several subprocesses, caches Vivid colors and completion metadata, compiles Zinit, and cleans stale completions.
+- Neovim moves `nvim-colorizer` to the maintained `catgoose` fork and makes Tree-sitter parser updates wait reliably for completion. Amp now disables commit co-author attribution.
+- Toolchains move to Node.js 26, Python 3.14, Go 1.27, Elixir 1.20.3, Lua Language Server 3, and ShellCheck 0.11; plugin and lockfile versions are refreshed throughout.
+
+## Migration notes
+
+- Run `task sync` after updating. This now enables and starts Pitchfork-managed global daemons on macOS and Linux.
+- The opt-in ghtkn tasks moved from `task github:ghtkn:git:configure` to `task ghtkn:git:configure`. New setups must authorize with `ghtkn auth -p dkarter/write`; `task ghtkn:unlock` enables silent refresh through 1Password.
+- Custom integrations calling `bin/herdr-commands`, `bin/herdr-workspaces`, `bin/herdr-command-definitions`, or the removed Television cables must migrate to the corresponding Vellum palettes.
+- Review compatibility before accepting the major runtime upgrades. Also note that `task mise:sync` now creates a `chore(mise): update lockfiles` commit when Mise lockfiles change.
+
+<!-- pullfrog-summary:end -->
+
 
 ### Features
 
