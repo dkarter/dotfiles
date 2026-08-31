@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.6.0](https://github.com/dkarter/dotfiles/compare/v32.5.1...v32.6.0) (2026-08-31)
+
+
+### Features
+
+* **amp:** add settings file ([684d7ed](https://github.com/dkarter/dotfiles/commit/684d7ed5457c71f9ee36b560913f72c37e154b35))
+* **ghtkn:** automate token refresh ([3cc06e4](https://github.com/dkarter/dotfiles/commit/3cc06e46f3d4378739129e1f873cb67375143ae9))
+* **ghtkn:** provision app configuration ([d092018](https://github.com/dkarter/dotfiles/commit/d09201868f41add4d7563c1962d5d09085d9092c))
+* **herdr:** add vellum workspace and agent palettes ([0fbc52f](https://github.com/dkarter/dotfiles/commit/0fbc52f4e535fd9eca70f0200722ce9629ab5ebc))
+* **herdr:** open repository when branch has no pull request ([f5245ee](https://github.com/dkarter/dotfiles/commit/f5245eecc168c388f47aca2b0f022f1e1a0037ee))
+* **opencode:** add git status plugin ([46b6877](https://github.com/dkarter/dotfiles/commit/46b6877438983e42fae2dab233c232aa2040012e))
+* **opencode:** persist GitHub MCP authentication ([e9eea4f](https://github.com/dkarter/dotfiles/commit/e9eea4f74c8663086ccb9afe117719fecf5add76))
+* **opencode:** use mise-managed MCP servers ([0842b04](https://github.com/dkarter/dotfiles/commit/0842b04a2b1e03b235182e66ce915d877a097052))
+* **pi:** add herdr integration ([2023a79](https://github.com/dkarter/dotfiles/commit/2023a79c1ca5ee941afd9938dd9145f6e84e438a))
+* **pi:** add Neovim editor context integration ([6fb223f](https://github.com/dkarter/dotfiles/commit/6fb223f143247ca063247f4dbd763868788badca))
+* **pi:** add vim mode ([d903470](https://github.com/dkarter/dotfiles/commit/d9034706252aa50be2ff14299ed13b84401de97b))
+* **vellum:** enhance workspace palette ([441444d](https://github.com/dkarter/dotfiles/commit/441444d5fbf78615d10bcca4e03514e1d02b9d9a))
+* **vellum:** migrate command and file palettes ([548b58f](https://github.com/dkarter/dotfiles/commit/548b58fe1828b86db1ee7898ee935770c46926f9))
+
+
+### Bug Fixes
+
+* **ci:** support LuaLS 3 diagnostics ([0339139](https://github.com/dkarter/dotfiles/commit/0339139e4154e09473aa4d197c9bef63e777fadb))
+* **deps:** update dependency solid-js to v1.9.15 ([#446](https://github.com/dkarter/dotfiles/issues/446)) ([7157d17](https://github.com/dkarter/dotfiles/commit/7157d170a0c895919473387736999663922a065d))
+* **mise:** use ghtkn as credential_command ([38ddf1f](https://github.com/dkarter/dotfiles/commit/38ddf1fb427008fdb0d25e12e3d9e63ba0ed9ae4))
+* **nvim:** migrate nvim-colorizer to maintained fork ([fd5f662](https://github.com/dkarter/dotfiles/commit/fd5f66271e24a26af6bcf66e6ebb10a265972bc8))
+* **nvim:** more reliable TSUpdate ([4325a46](https://github.com/dkarter/dotfiles/commit/4325a46aaa2d6f96dbb47600963555fbfbdecebf))
+* **opencode:** make git status responsive ([d419ad7](https://github.com/dkarter/dotfiles/commit/d419ad746edd6b817c13e0a8ceeb91c619669ff6))
+* **opencode:** make vim mode indicator responsive ([0b978fd](https://github.com/dkarter/dotfiles/commit/0b978fd658a0c6820e445303a13554ca7bc04f38))
+* **pi:** remove unused models ([cfb482b](https://github.com/dkarter/dotfiles/commit/cfb482b1583e962196755312afaa7ceb0098828c))
+* **pi:** restore shell cursor after quitting ([f9355e7](https://github.com/dkarter/dotfiles/commit/f9355e7d1b7b56119a0d9eace17eb952aad70c67))
+
+
+### Performance Improvements
+
+* **zsh:** optimize shell startup ([817cbbe](https://github.com/dkarter/dotfiles/commit/817cbbec7b55129154486f5efa876f2fdb8779f4))
+
 ## [32.5.1](https://github.com/dkarter/dotfiles/compare/v32.5.0...v32.5.1) (2026-08-22)
 
 
