@@ -43,6 +43,7 @@ tasks:
       - task: self:update
       - task: tools:install
       - task: tools:update
+      - task: commit
 
   migrate:standalone:
     internal: true
