@@ -9,19 +9,6 @@ vars:
     - 'meiji163/gh-notify'
 
 tasks:
-  ghtkn:git:configure:
-    desc: Opt this machine in to ghtkn for Git and gh
-    summary: |
-      Adds a tool-owned ghtkn config include to ~/.gitconfig.local. It provides
-      GitHub HTTPS credentials and enables the short-lived-token gh wrapper.
-      This is intentionally not part of install or sync because ghtkn may not
-      be appropriate on every machine.
-    cmd: mise exec -- bash ./scripts/configure-ghtkn-git-credential.sh
-
-  ghtkn:git:remove:
-    desc: Remove this machine's ghtkn Git and gh opt-in
-    cmd: bash ./scripts/configure-ghtkn-git-credential.sh --remove
-
   automerge:renovate:
     desc: Auto merges all PRs
     summary: |

@@ -1,0 +1,151 @@
+set -euo pipefail
+
+# Herdr popups run outside the interactive shell that activates Mise.
+export PATH="$HOME/dotfiles/bin:$HOME/.local/share/mise/shims:$PATH"
+
+context_value() {
+  local query="$1"
+
+  if [[ -n "${HERDR_PLUGIN_CONTEXT_JSON:-}" ]]; then
+    jq -er "$query // empty" <<<"$HERDR_PLUGIN_CONTEXT_JSON" 2>/dev/null || true
+  fi
+}
+
+current_workspace_id() {
+  local value
+  value="$(context_value '.workspace.workspace_id // .workspace.id // .workspace_id')"
+
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  value="${HERDR_WORKSPACE_ID:-}"
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  herdr pane current --current | jq -er '.result.pane.workspace_id'
+}
+
+current_pane_id() {
+  local value
+  value="$(context_value '.focused_pane.pane_id // .focused_pane.id // .pane.pane_id // .pane.id')"
+
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  herdr pane current --current | jq -er '.result.pane.pane_id'
+}
+
+current_pane_cwd() {
+  local value
+  value="$(context_value '.focused_pane.foreground_cwd // .focused_pane.cwd // .pane.foreground_cwd // .pane.cwd')"
+
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  value="${HERDR_ACTIVE_PANE_CWD:-}"
+  if [[ -n "$value" ]]; then
+    print -r -- "$value"
+    return 0
+  fi
+
+  herdr pane current --current | jq -er '.result.pane.foreground_cwd // .result.pane.cwd'
+}
+
+repo_root_for_cwd() {
+  git -C "$1" rev-parse --show-toplevel 2>/dev/null || true
+}
+
+repo_config_for_repo() {
+  local repo_root="$1"
+  local config_file
+
+  for config_file in "$repo_root/.herdr-worktree.yaml" "$repo_root/.herdr.yaml" "$repo_root/.workmux.yaml"; do
+    if [[ -f "$config_file" ]]; then
+      print -r -- "$config_file"
+      return 0
+    fi
+  done
+}
+
+repo_config_value() {
+  local repo_root="$1"
+  local key="$2"
+  local config_file
+  config_file="$(repo_config_for_repo "$repo_root")"
+
+  if [[ -n "$config_file" ]]; then
+    ruby -ryaml -e '
+      cfg = YAML.load_file(ARGV[0]) || {}
+      value = ARGV[1].split(".").reduce(cfg) { |memo, key| memo.respond_to?(:[]) ? memo[key] : nil }
+      puts(value) if value
+    ' "$config_file" "$key" 2>/dev/null || true
+  fi
+}
+
+workmux_agent_command() {
+  repo_config_value "$1" agent
+}
+
+select_base_branch() {
+  local cwd="$1"
+  local base_branch
+
+  base_branch="$(cd "$cwd" && mise x -- tv workmux-base-branch --hide-status-bar || true)"
+  print -r -- "$base_branch"
+}
+
+prompt_worktree_name() {
+  local allow_ticket="${1:-true}"
+  local use_lnr_quick="${TMUX_WORKMUX_LNR_QUICK:-}"
+  local input_placeholder="Worktree branch/name..."
+  local worktree_input worktree_name
+
+  if [[ "$allow_ticket" != "true" ]]; then
+    use_lnr_quick=""
+  fi
+
+  if [[ -n "$use_lnr_quick" ]] && ! mise x -- gum confirm "Create a ticket for this worktree?"; then
+    use_lnr_quick=""
+  fi
+
+  if [[ -n "$use_lnr_quick" ]]; then
+    input_placeholder="Ticket title..."
+  fi
+
+  worktree_input="$(mise x -- gum input --placeholder="$input_placeholder")"
+  [[ -z "$worktree_input" ]] && return 0
+
+  worktree_name="$worktree_input"
+
+  if [[ -n "$use_lnr_quick" ]]; then
+    worktree_name="$(mise x -- lnr quick "$worktree_input")"
+    worktree_name="${worktree_name//$'\r'/}"
+
+    if [[ -z "$worktree_name" ]]; then
+      mise x -- gum style --foreground="red" "lnr quick did not return a branch name" >&2
+      return 1
+    fi
+  fi
+
+  print -r -- "$worktree_name"
+}
+
+create_worktree() {
+  local repo_root="$1"
+  local branch="$2"
+  local base_branch="$3"
+  local create_args create_json
+
+  branch="${branch//[[:space:]]/-}"
+  create_args=(create --cwd "$repo_root" --branch "$branch" --base "$base_branch" --focus --json)
+  create_json="$(hwt "${create_args[@]}")"
+  print -r -- "$create_json"
+}

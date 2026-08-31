@@ -23,7 +23,13 @@ tasks:
 
   lua:lint:
     desc: Check for Lua diagnostic warnings and errors
-    cmd: lua-language-server --check config/nvim/lua --checklevel=Warning
+    cmd: |
+      VIMRUNTIME="$(NVIM_LOG_FILE="${TMPDIR:-/tmp}/nvim-lua-lint.log" nvim --headless --clean --cmd 'lua io.stdout:write(vim.env.VIMRUNTIME)' --cmd qa)" \
+        lua-language-server \
+          --check config/nvim/lua \
+          --checklevel=Warning \
+          --configpath="$PWD/config/nvim/lua_ls_ci.lua" \
+          --metapath="${TMPDIR:-/tmp}/lua-language-server-meta"
 
   shell:lint:
     cmd: |

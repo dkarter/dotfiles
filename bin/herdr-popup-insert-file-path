@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-selected=$(mise x -- tv files)
+selected="$(mise --cd "${HERDR_ACTIVE_PANE_CWD:-$PWD}" exec -- vellum files)"
+[[ -n "$selected" ]] || exit 0
 
 "${HERDR_BIN_PATH:-herdr}" pane send-text "$HERDR_ACTIVE_PANE_ID" "@${selected}"

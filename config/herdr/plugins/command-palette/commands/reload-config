@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+herdr server reload-config >/dev/null

@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+workspace_id="$(current_workspace_id)"
+workspace_json="$(herdr workspace get "$workspace_id")"
+label="$(jq -er '.result.workspace.label // .result.workspace.workspace_id' <<<"$workspace_json")"
+checkout_path="$(jq -er '.result.workspace.worktree.checkout_path // empty' <<<"$workspace_json" 2>/dev/null || true)"
+is_linked="$(jq -er '.result.workspace.worktree.is_linked_worktree // false' <<<"$workspace_json" 2>/dev/null || true)"
+
+if [[ -z "$checkout_path" || "$is_linked" != "true" ]]; then
+  mise x -- gum style --foreground="red" "Current workspace is not a Herdr worktree"
+  exit 1
+fi
+
+if ! mise x -- gum confirm "Delete worktree '$label' at $checkout_path?"; then
+  exit 0
+fi
+
+if ! remove_output="$(hwt remove --workspace "$workspace_id" --json 2>&1)"; then
+  mise x -- gum style --foreground="red" "$remove_output"
+  if ! mise x -- gum confirm "Git refused safe removal. Force delete dirty worktree?"; then
+    exit 0
+  fi
+  hwt remove --workspace "$workspace_id" --force --json >/dev/null
+fi

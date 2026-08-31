@@ -1,6 +1,7 @@
 /** @jsxImportSource @opentui/solid */
 import type { Plugin } from '@opencode-ai/plugin-v2/tui';
 import type { CursorStyleOptions, EditBufferRenderable, RGBA } from '@opentui/core';
+import { useTerminalDimensions } from '@opentui/solid';
 import { onCleanup } from 'solid-js';
 
 type Mode = 'normal' | 'insert' | 'visual';
@@ -90,6 +91,8 @@ const PENDING_CANCEL_KEYS = [
   'tab',
   ...[...'abcdefghijklmnopqrstuvwxyz'].map((key) => `ctrl+${key}`),
 ];
+
+const FULL_MODE_LABEL_MIN_TERMINAL_WIDTH = 80;
 
 const CLOSURE_OBJECTS = [
   { binds: ['(', ')', 'shift+9', 'shift+0'], open: '(', close: ')', title: 'parentheses' },
@@ -674,19 +677,25 @@ const VimModePlugin = {
           return undefined;
         }
 
+        const dimensions = useTerminalDimensions();
         const theme = ctx.theme as unknown as VimTheme;
-        const label = state.operator
-          ? `${state.operator[0]}${state.textObjectModifier?.[0] ?? ''}`.toUpperCase()
-          : state.mode.toUpperCase();
+        const label = () => {
+          if (state.operator) {
+            return `${state.operator[0]}${state.textObjectModifier?.[0] ?? ''}`.toUpperCase();
+          }
+          return dimensions().width < FULL_MODE_LABEL_MIN_TERMINAL_WIDTH
+            ? state.mode[0].toUpperCase()
+            : state.mode.toUpperCase();
+        };
         const backgroundColor = {
           normal: theme.hue.blue[500],
           insert: theme.hue.green[500],
           visual: theme.hue.purple[500],
         }[state.mode];
         return (
-          <box>
+          <box flexShrink={0}>
             <text>
-              <span style={{ bg: backgroundColor, fg: theme.text.default }}>{` ${label} `}</span>
+              <span style={{ bg: backgroundColor, fg: theme.text.default }}>{` ${label()} `}</span>
             </text>
           </box>
         );

@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+allow_ticket="${1:-true}"
+cwd="$(current_pane_cwd)"
+
+if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
+  mise x -- gum style --foreground="red" "Not in a git repository"
+  exit 1
+fi
+
+repo_root="$(repo_root_for_cwd "$cwd")"
+branch="$(prompt_worktree_name "$allow_ticket")"
+[[ -z "$branch" ]] && exit 0
+
+base_branch="$(select_base_branch "$cwd")"
+[[ -z "$base_branch" ]] && exit 0
+
+temp_prompt_file="$(mktemp -t herdr-command-prompt)"
+trap 'rm -f "$temp_prompt_file"' EXIT
+
+mise x -- nvim "+startinsert" "+set ft=markdown" "$temp_prompt_file"
+prompt_text="$(<"$temp_prompt_file")"
+
+if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
+  exit 0
+fi
+
+create_json="$(create_worktree "$repo_root" "$branch" "$base_branch")"
+IFS=$'\t' read -r checkout_path root_pane_id new_workspace_id \
+  <<<"$(jq -er '[.path, .pane_id, .workspace_id] | @tsv' <<<"$create_json")"
+
+cp "$temp_prompt_file" "$checkout_path/.herdr-agent-prompt.md"
+prompt_file="$checkout_path/.herdr-agent-prompt.md"
+
+agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-$(workmux_agent_command "$repo_root")}"
+runner_command="herdr-run-agent-with-prompt ${(q)prompt_file}"
+if [[ -n "$agent_command" ]]; then
+  runner_command="HERDR_COMMANDS_AGENT_COMMAND=${(q)agent_command} $runner_command"
+fi
+
+herdr pane run "$root_pane_id" "$runner_command"
+herdr workspace focus "$new_workspace_id" >/dev/null

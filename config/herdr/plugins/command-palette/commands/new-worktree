@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+allow_ticket="${1:-true}"
+cwd="$(current_pane_cwd)"
+
+if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
+  mise x -- gum style --foreground="red" "Not in a git repository"
+  exit 1
+fi
+
+repo_root="$(repo_root_for_cwd "$cwd")"
+branch="$(prompt_worktree_name "$allow_ticket")"
+[[ -z "$branch" ]] && exit 0
+
+base_branch="$(select_base_branch "$cwd")"
+[[ -z "$base_branch" ]] && exit 0
+
+create_worktree "$repo_root" "$branch" "$base_branch" >/dev/null

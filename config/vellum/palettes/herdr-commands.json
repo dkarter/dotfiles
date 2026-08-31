@@ -1,0 +1,107 @@
+[
+  {
+    "id": "new-workspace",
+    "icon": "󰙅",
+    "label": "New workspace",
+    "shortcut": "prefix+shift+n",
+    "command": "commands/new-workspace"
+  },
+  {
+    "id": "reload-config",
+    "icon": "󰑓",
+    "label": "Reload Herdr config",
+    "shortcut": "prefix+R",
+    "command": "commands/reload-config"
+  },
+  {
+    "id": "split-right",
+    "icon": "",
+    "label": "Split pane right",
+    "shortcut": "prefix+\\",
+    "command": "commands/split-right"
+  },
+  {
+    "id": "split-below",
+    "icon": "",
+    "label": "Split pane below",
+    "shortcut": "prefix+-",
+    "command": "commands/split-below"
+  },
+  {
+    "id": "move-pane-new-tab",
+    "icon": "󰆍",
+    "label": "Move pane to new tab",
+    "shortcut": "",
+    "command": "commands/move-pane-new-tab"
+  },
+  {
+    "id": "kill-pane",
+    "icon": "󰆴",
+    "label": "Kill current pane",
+    "shortcut": "prefix+x",
+    "command": "commands/kill-pane"
+  },
+  {
+    "id": "open-dev-directory",
+    "icon": "󰉋",
+    "label": "Open dev directory",
+    "shortcut": "prefix+shift+o",
+    "command": "commands/open-dev-directory"
+  },
+  {
+    "id": "open-workspace-repo",
+    "icon": "󰊢",
+    "label": "Open workspace repo",
+    "shortcut": "",
+    "command": "commands/open-workspace-repo"
+  },
+  {
+    "id": "checkout-github-repo",
+    "icon": "󰊢",
+    "label": "Checkout GitHub repo",
+    "shortcut": "",
+    "command": "commands/checkout-github-repo"
+  },
+  {
+    "id": "new-worktree",
+    "icon": "",
+    "label": "New worktree",
+    "shortcut": "prefix+shift+g",
+    "command": "commands/new-worktree"
+  },
+  {
+    "id": "new-worktree-without-ticket",
+    "icon": "",
+    "label": "New worktree without ticket",
+    "shortcut": "",
+    "command": "commands/new-worktree-without-ticket"
+  },
+  {
+    "id": "checkout-worktree",
+    "icon": "",
+    "label": "Checkout PR or branch",
+    "shortcut": "",
+    "command": "commands/checkout-worktree"
+  },
+  {
+    "id": "new-agent-with-prompt",
+    "icon": "󰚩",
+    "label": "New agent with prompt",
+    "shortcut": "",
+    "command": "commands/new-agent-with-prompt"
+  },
+  {
+    "id": "new-agent-with-prompt-without-ticket",
+    "icon": "󰚩",
+    "label": "New agent with prompt without ticket",
+    "shortcut": "",
+    "command": "commands/new-agent-with-prompt-without-ticket"
+  },
+  {
+    "id": "delete-current-worktree",
+    "icon": "󰆴",
+    "label": "Delete current worktree",
+    "shortcut": "",
+    "command": "delete-worktree"
+  }
+]

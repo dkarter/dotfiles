@@ -21,12 +21,18 @@ tasks:
           mkdir -p "$(dirname $ZINIT_HOME)" && \
           rm -rf "$ZINIT_HOME" && \
           git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+      - task: compile
+
+  compile:
+    internal: true
+    cmd: zsh -fc 'zcompile -R -- "${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git/zinit.zsh"'
 
   plugins:update:
     desc: Updates all zinit plugins
     cmds:
       - cmd: |
           zsh -c 'source {{.ZINIT_HOME}}/zinit.zsh && zinit update --all --parallel'
+      - task: compile
       - task: plugins:cleanup-stale-completions
 
   plugins:warm:

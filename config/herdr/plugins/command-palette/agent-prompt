@@ -1,6 +1,4 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-export PATH="$HOME/dotfiles/bin:$PATH"
-
-exec herdr-commands run new_agent_with_prompt
+exec "${0:A:h}/commands/new-agent-with-prompt"

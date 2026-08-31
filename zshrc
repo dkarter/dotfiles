@@ -91,12 +91,12 @@ if [[ -f ~/.ssh/id_rsa.pub ]]; then
   export SSH_FINGERPRINT=$(ssh-keygen -lf ~/.ssh/id_rsa.pub | awk '{print $2}')
 fi
 
-case "$(uname -s)" in
-  Darwin*)
+case $OSTYPE in
+  darwin*)
     # ruby-build -> configure readline path from homebrew
     export RUBY_CONFIGURE_OPTS=--with-readline-dir="$BREW_PREFIX/opt/readline"
     ;;
-  Linux*)
+  linux*)
     # ruby-build -> configure readline path
     export RUBY_CONFIGURE_OPTS=--with-readline-dir="/usr/include/readline"
     ;;
@@ -117,11 +117,11 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 export PATH=$PATH:$GOPATH/bin
 
 # qt
-case "$(uname -s)" in
-  Darwin*)
+case $OSTYPE in
+  darwin*)
     # don't mess with this.. or erlang will stop compiling.
     ;;
-  Linux*)
+  linux*)
     export PATH="/usr/local/opt/libpq/bin:$PATH"
     export PATH="/usr/local/opt/qt/bin:$PATH"
     export LDFLAGS="$LDFLAGS -L/usr/local/opt/qt/lib"
@@ -132,11 +132,11 @@ esac
 # OPEN SSL
 # =====================================================
 
-case "$(uname -s)" in
-  Darwin*)
+case $OSTYPE in
+  darwin*)
     # don't mess with this.. or erlang will stop compiling.
     ;;
-  Linux*)
+  linux*)
     export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
     # For compilers to find openssl@1.1 you may need to set:

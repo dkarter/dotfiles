@@ -66,7 +66,10 @@ tasks:
           cmd='{{splitList "|" .COMP | last}}'
           comp_path="{{.CACHE_PATH}}/_$app"
           echo -n "Generating completions for $app..."
-          if app="$app" mise exec -- bash -lc 'command -v "$app"' >/dev/null 2>&1; then
+          if app="$app" mise exec -- bash -lc '
+            executable=$(command -v "$app") || exit 1
+            [[ $executable != "$HOME/.local/share/mise/shims/"* ]] || mise which "$app" >/dev/null
+          ' >/dev/null 2>&1; then
             app="$app" cmd="$cmd" comp_path="$comp_path" mise exec -- bash -lc 'eval "$cmd" > "$comp_path"'
             echo "DONE"
           else
@@ -78,9 +81,20 @@ tasks:
     desc: Reloads completion cache
     cmd: |
       echo -n Reloading completions cache...
-      rm -f ~/.zcompdump*
-      zsh -c 'builtin autoload -Uz +X compinit'
-      zsh -c 'autoload -Uz compinit && compinit'
+      zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+      rm -f "${zcompdump}"*
+      ZCOMPDUMP="$zcompdump" zsh -c '
+        fpath=(
+          "$HOME/.cache/zsh/completions"
+          "${XDG_DATA_HOME:-$HOME/.local/share}/zinit/completions"
+          "${XDG_DATA_HOME:-$HOME/.local/share}/zinit/plugins/zsh-users---zsh-completions/src"
+          /usr/local/share/zsh/site-functions
+          /opt/homebrew/share/zsh/site-functions
+          $fpath
+        )
+        autoload -Uz compinit
+        compinit -d "$ZCOMPDUMP"
+      '
       echo "DONE"
     silent: true
 

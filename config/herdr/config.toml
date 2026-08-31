@@ -83,6 +83,12 @@ command = "dotfiles.command-palette.open-workspace-picker"
 description = "jump to workspace"
 
 [[keys.command]]
+key = "prefix+shift+j"
+type = "plugin_action"
+command = "dotfiles.command-palette.open-agent-picker"
+description = "jump to agent"
+
+[[keys.command]]
 key = "prefix+shift+p"
 type = "plugin_action"
 command = "dotfiles.command-palette.open"
@@ -172,9 +178,9 @@ description = "resize right"
 
 [[keys.command]]
 key = "prefix+u"
-type = "plugin_action"
-command = "gh-pr.open-pr"
-description = "open PR in browser"
+type = "shell"
+command = "herdr-open-pr-or-repo"
+description = "open PR or repo in browser"
 
 [[keys.command]]
 key = "prefix+shift+g"

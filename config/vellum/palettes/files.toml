@@ -1,0 +1,19 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Files"
+placeholder = "Find a file..."
+
+[source]
+builtin = "files"
+
+[item]
+value = "$path"
+template = [
+  [
+    { token = "$icon", fg = "$icon_color", searchable = false },
+    " ",
+    { token = "$parent_prefix", fg = "#565f89" },
+    { token = "$name", bold = true },
+  ],
+]

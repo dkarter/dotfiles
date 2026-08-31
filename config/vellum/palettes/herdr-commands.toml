@@ -1,0 +1,19 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Commands"
+placeholder = "Run a Herdr command..."
+
+[source]
+file = "herdr-commands.json"
+
+[item]
+value = "$command"
+template = [
+  [
+    { token = "$icon", fg = "#7dcfff", searchable = false },
+    " ",
+    { token = "$label", bold = true },
+    { token = "$shortcut", fg = "#565f89", searchable = false, align = "right" },
+  ],
+]

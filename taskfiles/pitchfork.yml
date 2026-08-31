@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: 3
+
+silent: true
+
+tasks:
+  boot:enable:
+    internal: true
+    platforms: [darwin, linux]
+    status:
+      - pitchfork boot status 2>&1 | rg --quiet 'enabled'
+    cmd: pitchfork boot enable
+
+  sync:
+    desc: Enables Pitchfork at boot and starts global daemons
+    platforms: [darwin, linux]
+    cmds:
+      - task: boot:enable
+      - pitchfork start --global --quiet

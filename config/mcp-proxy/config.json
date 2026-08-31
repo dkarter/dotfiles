@@ -1,0 +1,18 @@
+{
+  "mcpProxy": {
+    "baseURL": "http://127.0.0.1:9090",
+    "addr": "127.0.0.1:9090",
+    "name": "Local MCP Proxy",
+    "version": "1.0.0",
+    "type": "streamable-http",
+    "options": {
+      "panicIfInvalid": true
+    }
+  },
+  "mcpServers": {
+    "github": {
+      "command": "github-mcp-server",
+      "args": ["stdio"]
+    }
+  }
+}

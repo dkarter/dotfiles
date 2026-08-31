@@ -43,6 +43,9 @@ includes:
     aliases: [github]
     taskfile: ./taskfiles/github.yml
 
+  ghtkn:
+    taskfile: ./taskfiles/ghtkn.yml
+
   herdr:
     taskfile: ./taskfiles/herdr.yml
 
@@ -54,6 +57,9 @@ includes:
 
   nvim:
     taskfile: ./taskfiles/nvim.yml
+
+  pitchfork:
+    taskfile: ./taskfiles/pitchfork.yml
 
   shell:
     aliases: [sh]

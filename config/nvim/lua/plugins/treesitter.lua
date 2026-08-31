@@ -70,7 +70,9 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
-    build = ':TSUpdate',
+    build = function()
+      require('nvim-treesitter').update(parsers):wait(300000)
+    end,
     dependencies = {},
     opts = {
       install_dir = vim.fn.stdpath 'data' .. '/site',

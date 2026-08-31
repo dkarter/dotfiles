@@ -18,7 +18,13 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # --------------------------------
 
 # === Completion paths ===
-fpath=($HOME/.cache/zsh/completions /usr/local/share/zsh/site-functions $fpath)
+fpath=(
+  $HOME/.cache/zsh/completions
+  ${XDG_DATA_HOME:-$HOME/.local/share}/zinit/completions
+  ${XDG_DATA_HOME:-$HOME/.local/share}/zinit/plugins/zsh-users---zsh-completions/src
+  /usr/local/share/zsh/site-functions
+  $fpath
+)
 
 # === Optional: Homebrew completions ===
 homebrew_comps="/opt/homebrew/share/zsh/site-functions"
@@ -26,5 +32,12 @@ homebrew_comps="/opt/homebrew/share/zsh/site-functions"
 
 # === Load completion system ===
 autoload -Uz compinit bashcompinit
-compinit
+zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+[[ -d ${zcompdump:h} ]] || mkdir -p "${zcompdump:h}"
+if [[ -r $zcompdump ]]; then
+  compinit -C -d "$zcompdump"
+else
+  compinit -d "$zcompdump"
+fi
+unset zcompdump
 bashcompinit

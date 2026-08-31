@@ -1,0 +1,240 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Agents"
+placeholder = "Find an agent..."
+
+[source]
+builtin = "herdr-agents"
+refresh_ms = 750
+
+[filters]
+label = "status"
+mode = "ctrl-g"
+clear = "a"
+
+[[filters.choices]]
+key = "w"
+label = "working"
+source = "agent_status"
+value = "working"
+icon = "●"
+fg = "yellow"
+
+[[filters.choices]]
+key = "d"
+label = "done"
+source = "agent_status"
+value = "done"
+icon = "●"
+fg = "#89b4fa"
+
+[[filters.choices]]
+key = "i"
+label = "idle"
+source = "agent_status"
+value = "idle"
+icon = "○"
+fg = "#a6e3a1"
+
+[[filters.choices]]
+key = "b"
+label = "blocked"
+source = "agent_status"
+value = "blocked"
+icon = "●"
+fg = "#ff6188"
+
+[[filters.choices]]
+key = "u"
+label = "unknown"
+source = "agent_status"
+value = "unknown"
+icon = "·"
+fg = "#999999"
+
+[actions]
+default = "focus"
+menu = "ctrl-a"
+
+[[actions.items]]
+name = "focus"
+label = "Focus agent"
+icon = "󰍉"
+description = "Switch to the selected Herdr agent"
+command = ["herdr", "agent", "focus", "$pane_id"]
+on_success = "exit"
+
+[[actions.items]]
+name = "focus-workspace"
+label = "Focus workspace"
+icon = "󰉋"
+description = "Switch to the agent's Herdr workspace"
+command = ["herdr", "workspace", "focus", "$workspace_id"]
+on_success = "exit"
+
+[[actions.items]]
+name = "open-repository"
+label = "Open repository"
+icon = "󰊤"
+description = "Open the agent's repository on GitHub"
+command = ["gh", "repo", "view", "--web"]
+cwd = "$cwd"
+availability = { command = [
+  "git",
+  "rev-parse",
+  "--git-dir",
+], cwd = "$cwd", cache_ms = 30000 }
+on_success = "exit"
+
+[[actions.items]]
+name = "open-pull-request"
+label = "Open pull request"
+icon = ""
+description = "Open the pull request for the agent's branch"
+command = ["gh", "pr", "view", "--web"]
+cwd = "$cwd"
+availability = { command = [
+  "gh",
+  "pr",
+  "view",
+  "--json",
+  "number",
+], cwd = "$cwd", cache_ms = 30000 }
+on_success = "exit"
+
+[[actions.items]]
+name = "open-pull-request-checks"
+label = "Open PR checks"
+icon = "󰙨"
+description = "Open GitHub Actions checks for the agent's pull request"
+command = ["gh", "pr", "checks", "--web"]
+cwd = "$cwd"
+availability = { command = [
+  "gh",
+  "pr",
+  "view",
+  "--json",
+  "number",
+], cwd = "$cwd", cache_ms = 30000 }
+on_success = "exit"
+
+[item]
+value = "$pane_id"
+template = [
+  [
+    { token = "$agent_label", bold = true },
+    { token = "$status_icon", fg = "$status_color", searchable = false, align = "right" },
+    " ",
+    { token = "$agent_status", fg = "$status_color", searchable = true },
+  ],
+  [
+    { token = "$terminal_title_stripped", fg = "#c0caf5" },
+  ],
+  [
+    { token = "󰉋 ", fg = "#7dcfff", searchable = false },
+    { token = "$workspace_label", fg = "#7dcfff", bold = true },
+    "  ",
+    { token = "$cwd", fg = "#565f89" },
+  ],
+]
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["amp"]
+text = " Amp"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["claude"]
+text = " Claude"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["cline"]
+text = " Cline"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["codex"]
+text = " Codex"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["copilot"]
+text = " Copilot"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["cursor"]
+text = " Cursor"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["gemini"]
+text = " Gemini"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["grok"]
+text = " Grok"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["hermes"]
+text = " Hermes"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["kilo"]
+text = " Kilo"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["kimi"]
+text = " Kimi"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["mastracode"]
+text = " Mastra Code"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["opencode"]
+text = " OpenCode"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["opencode2"]
+text = " OpenCode v2"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["pi"]
+text = " Pi"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
+when = ["qodercli"]
+text = " Qoder CLI"
+
+[[item.tokens]]
+name = "agent_label"
+source = "agent"
