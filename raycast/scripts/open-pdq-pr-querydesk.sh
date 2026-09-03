@@ -64,4 +64,4 @@ else
   exit 1
 fi
 
-open "https://devhub.pdq.tools/querydesk/databases/houston-pr-$pr/query"
+open "https://devhub.pdq.tools/querydesk/databases/pr-$pr/query"
