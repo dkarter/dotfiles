@@ -3,6 +3,12 @@ version: 3
 
 silent: true
 
+includes:
+  opencode:
+    taskfile: ./opencode.yml
+    dir: ../
+    internal: true
+
 tasks:
   agent-guard:test:
     desc: Run credential guard tests
@@ -58,6 +64,7 @@ tasks:
   run:
     deps:
       - task: lua:lint
+      - task: opencode:plugins:check
       - task: ghostty:validate
       - task: herdr:validate
       - task: fmt:check
