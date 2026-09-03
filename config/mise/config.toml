@@ -103,7 +103,17 @@ yazi = "latest"                              # terminal file manager
 zoxide = "latest"                            # a modern version of autojump
 "github:dkarter/ghtkn" = "latest"
 "github:dkarter/vellum" = "latest"
-"npm:@playwright/mcp" = "latest"
+# Playwright 0.0.80 moved npm publishing from GitHub OIDC to Microsoft's ESRP
+# pipeline. These releases match the official tags and retain registry signatures,
+# but ESRP omits trusted-publisher/SLSA provenance and gitHead metadata.
+# On version bumps, verify the microsoft1es publisher, registry signatures, official
+# source tag, tarball integrity/contents, and aube audit before replacing these exact
+# versions. Remove the exclusions once trusted-publisher or SLSA provenance returns.
+"npm:@playwright/mcp" = { version = "0.0.80", trust_policy_excludes = [
+  "@playwright/mcp@0.0.80",
+  "playwright@1.63.0-alpha-2026-08-31",
+  "playwright-core@1.63.0-alpha-2026-08-31",
+] }
 "npm:chrome-devtools-mcp" = "latest"
 
 [tools.amp]
