@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.7.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v32.7.0) (2026-09-06)
+
+
+### Features
+
+* **hunk:** add vim horizontal navigation ([6f9331b](https://github.com/dkarter/dotfiles/commit/6f9331b33ae1df0b8f128a84cd25e25f47e37127))
+* **opencode:** add ShellFish notifications ([bef3776](https://github.com/dkarter/dotfiles/commit/bef37761ce37f93cc0ae9a21b25642071952940e))
+* **opencode:** add visual line mode to vim plugin ([4b83808](https://github.com/dkarter/dotfiles/commit/4b838087b241017370f6929778122c99543e67ad))
+* **raycast:** add PR Querydesk shortcut ([3fcf14c](https://github.com/dkarter/dotfiles/commit/3fcf14c69d1ce3472f7ceed91f1e90b0ae09d5b4))
+
+
+### Bug Fixes
+
+* allow aarch64 in MACHTYPE detection ([f6ba2d2](https://github.com/dkarter/dotfiles/commit/f6ba2d298e328bf6d0377c8ea1585e707f680ee9))
+* **mise:** pin Playwright MCP trust exceptions ([6df53c3](https://github.com/dkarter/dotfiles/commit/6df53c367d2b449915341a2d7feb281b7bb4e40f))
+* **opencode:** repair stale plugin lockfiles ([17b5b8a](https://github.com/dkarter/dotfiles/commit/17b5b8abc22586c5699ce9e7c80d980b52d6272f))
+* **popup:** include hidden files in picker ([ee4bede](https://github.com/dkarter/dotfiles/commit/ee4bede56f0a941d1ea56530a8e4078acdf3a85d))
+* **raycast:** update PR QueryDesk database path ([a0b90d4](https://github.com/dkarter/dotfiles/commit/a0b90d4789da70a942fd4334d0a7ff2bd21ee265))
+
 ## [32.6.0](https://github.com/dkarter/dotfiles/compare/v32.5.1...v32.6.0) (2026-08-31)
 
 <!-- pullfrog-summary:start -->
