@@ -25,3 +25,8 @@ signing works again.
 ## Dependency Management
 
 - Never update lockfiles directly for dependency management - always update the dependency specifications, and then use the plugin manager to cause the dependencies to install and the lockfile to get updated automatically. Lock files should never be updated directly!
+
+## Deleting files
+
+- Always use `trash` instead of `rm -rf` when deleting files
+- Beware of env var expansion during deletes
