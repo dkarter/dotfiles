@@ -230,7 +230,7 @@ The CI pipeline (`task ci:run`) includes:
 3. **Document changes:** Update this file when adding new major components
 4. **Platform awareness:** Consider macOS/Linux compatibility
 5. **Performance focus:** This setup prioritizes speed and efficiency
-6. **Be aware of symlinking** this repo symlinks configs from ./config to ~/.config/ always check the local directory config first because you already have permissions to access it and it may be enough to solve issues
+6. **Manage symlinks through Mise:** This repository maps dotfiles in `mise.toml`; apply them with `mise bootstrap dotfiles apply --yes` instead of creating symlinks manually. Check `./config` first because it is usually the source for `~/.config`.
 
 ### Common Modifications
 
