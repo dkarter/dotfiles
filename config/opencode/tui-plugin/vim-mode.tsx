@@ -4,7 +4,7 @@ import type { CursorStyleOptions, EditBufferRenderable, RGBA } from '@opentui/co
 import { useTerminalDimensions } from '@opentui/solid';
 import { onCleanup } from 'solid-js';
 
-type Mode = 'normal' | 'insert' | 'visual';
+type Mode = 'normal' | 'insert' | 'visual' | 'visual-line';
 type Operator = 'change' | 'delete' | undefined;
 type TextObjectModifier = 'around' | 'inner' | undefined;
 type TextRange = { start: number; end: number };
@@ -116,6 +116,7 @@ const VimModePlugin = {
 
     let styledEditor: PromptEditor | undefined;
     let originalCursorStyle: CursorStyleOptions['style'];
+    let visualLineAnchor: number | undefined;
 
     const promptEditor = (editor = ctx.renderer.currentFocusedEditor) => {
       const candidate = editor as PromptEditor | null;
@@ -160,6 +161,9 @@ const VimModePlugin = {
     };
 
     const setMode = (mode: Mode) => {
+      if (mode !== 'visual-line') {
+        visualLineAnchor = undefined;
+      }
       update((draft) => {
         draft.mode = mode;
         draft.operator = undefined;
@@ -222,6 +226,75 @@ const VimModePlugin = {
       while (editor.cursorOffset < destination) {
         editor.moveCursorRight({ select });
       }
+    };
+
+    const lineRange = (editor: PromptEditor, offset: number): TextRange => {
+      const row = editor.editBuffer.offsetToPosition(offset)?.row ?? editor.lineCount - 1;
+      return {
+        start: editor.editBuffer.getLineStartOffset(row),
+        end: row + 1 < editor.lineCount ? editor.editBuffer.getLineStartOffset(row + 1) : editor.plainText.length,
+      };
+    };
+
+    const selectVisualLines = (editor: PromptEditor) => {
+      if (visualLineAnchor === undefined) {
+        return;
+      }
+
+      const anchor = lineRange(editor, visualLineAnchor);
+      const active = lineRange(editor, editor.cursorOffset);
+      let start = Math.min(anchor.start, active.start);
+      const end = Math.max(anchor.end, active.end);
+      if (end === editor.plainText.length && start > 0) {
+        start -= 1;
+      }
+      editor.setSelection(start, end);
+    };
+
+    const enterVisualLineMode = () => {
+      const editor = promptEditor();
+      if (!editor) {
+        return;
+      }
+
+      visualLineAnchor = editor.cursorOffset;
+      setMode('visual-line');
+      selectVisualLines(editor);
+    };
+
+    const moveVisualLine = (direction: 'down' | 'up') => {
+      const editor = promptEditor();
+      if (!editor) {
+        return;
+      }
+
+      const cursor = editor.logicalCursor;
+      const row = Math.max(0, Math.min(editor.lineCount - 1, cursor.row + (direction === 'down' ? 1 : -1)));
+      if (row === cursor.row) {
+        return;
+      }
+      editor.clearSelection();
+      editor.setCursor(row, cursor.col);
+      selectVisualLines(editor);
+    };
+
+    const changeVisualLines = () => {
+      const editor = promptEditor();
+      const selection = editor?.getSelection();
+      if (!editor || !selection) {
+        setMode('insert');
+        return;
+      }
+
+      const endsAtBufferEnd = selection.end === editor.plainText.length;
+      editor.deleteSelection();
+      if (editor.plainText.length > 0) {
+        editor.insertText('\n');
+        if (!endsAtBufferEnd) {
+          editor.cursorOffset = selection.start;
+        }
+      }
+      setMode('insert');
     };
 
     const characterKind = (character: string) => {
@@ -452,6 +525,7 @@ const VimModePlugin = {
       { bind: 'u', title: 'Undo', run: () => dispatch('input.undo') },
       { bind: 'ctrl+r', title: 'Redo', run: () => dispatch('input.redo') },
       { bind: 'v', title: 'Enter visual mode', run: () => setMode('visual') },
+      { bind: 'shift+v', title: 'Enter visual line mode', run: enterVisualLineMode },
       { bind: 'return', title: 'Submit prompt', run: () => dispatch('prompt.submit') },
       { bind: 'enter', title: 'Submit prompt', run: () => dispatch('prompt.submit') },
       {
@@ -666,6 +740,42 @@ const VimModePlugin = {
           commands: visualLayerCommands,
         }));
 
+        const visualLineCommands = [
+          { bind: 'j', title: 'Select line down', run: () => moveVisualLine('down') },
+          { bind: 'k', title: 'Select line up', run: () => moveVisualLine('up') },
+          { bind: 'x', title: 'Delete selected lines', run: () => finishOperator('input.delete') },
+          { bind: 'd', title: 'Delete selected lines', run: () => finishOperator('input.delete') },
+          { bind: 'c', title: 'Change selected lines', run: changeVisualLines },
+          {
+            bind: 'escape',
+            title: 'Exit visual line mode',
+            run: () => {
+              dispatch('input.move.left');
+              setMode('normal');
+            },
+          },
+          {
+            bind: 'shift+v',
+            title: 'Exit visual line mode',
+            run: () => {
+              dispatch('input.move.left');
+              setMode('normal');
+            },
+          },
+        ];
+        const visualLineBindings = new Set(visualLineCommands.map((command) => command.bind));
+        const visualLineNoops = PRINTABLE_KEYS.filter((key) => !visualLineBindings.has(key)).map((bind) => ({
+          bind,
+          title: 'Vim visual line mode',
+          run: () => {},
+        }));
+
+        ctx.keymap.layer(() => ({
+          enabled: () => state.mode === 'visual-line' && promptFocused(),
+          priority: 100,
+          commands: [...visualLineCommands, ...visualLineNoops],
+        }));
+
         return undefined;
       },
     });
@@ -684,13 +794,16 @@ const VimModePlugin = {
             return `${state.operator[0]}${state.textObjectModifier?.[0] ?? ''}`.toUpperCase();
           }
           return dimensions().width < FULL_MODE_LABEL_MIN_TERMINAL_WIDTH
-            ? state.mode[0].toUpperCase()
-            : state.mode.toUpperCase();
+            ? state.mode === 'visual-line'
+              ? 'VL'
+              : state.mode[0].toUpperCase()
+            : state.mode.replace('-', ' ').toUpperCase();
         };
         const backgroundColor = {
           normal: theme.hue.blue[500],
           insert: theme.hue.green[500],
           visual: theme.hue.purple[500],
+          'visual-line': theme.hue.purple[500],
         }[state.mode];
         return (
           <box flexShrink={0}>
