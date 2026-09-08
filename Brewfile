@@ -99,6 +99,7 @@ brew 'morantron/tmux-fingers/tmux-fingers'
 # sudo with touch id
 tap 'dkarter/tap', trusted: true
 brew 'dkarter/tap/sudo-touchid'
+brew 'dkarter/tap/pam-watchid'
 # sudo touch id support for tmux
 brew 'pam-reattach'
 
