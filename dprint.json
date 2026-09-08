@@ -16,13 +16,14 @@
     "formatComments": true
   },
   "exec": {
+    "cacheKey": "taplo-align-single-comments-false",
     "commands": [
       {
         "command": "stylua --allow-hidden --respect-ignores --stdin-filepath {{file_path}} -",
         "exts": [".lua"]
       },
       {
-        "command": "taplo format -",
+        "command": "taplo format --option align_single_comments=false -",
         "exts": [".toml"]
       },
       {

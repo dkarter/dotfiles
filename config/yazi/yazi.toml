@@ -12,7 +12,6 @@ show_hidden = true
 show_symlink = true
 scrolloff = 5
 mouse_events = ["click", "scroll"]
-title_format = "Yazi: {cwd}"
 
 [preview]
 wrap = "no"
@@ -111,19 +110,22 @@ rules = [
 ]
 
 [tasks]
-micro_workers = 10
-macro_workers = 10
+file_workers = 10
+plugin_workers = 10
+fetch_workers = 10
+preload_workers = 10
+process_workers = 10
 bizarre_retry = 3
-image_alloc = 536870912      # 512MB
+image_alloc = 536870912 # 512MB
 image_bound = [10000, 10000]
 suppress_preload = false
 
 [plugin]
 fetchers = [
   # Mimetype
-  { id = "mime", url = "*/", run = "mime.dir", prio = "high" },
-  { id = "mime", url = "local://*", run = "mime.local", prio = "high" },
-  { id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
+  { group = "mime", url = "*/", run = "mime.dir", prio = "high" },
+  { group = "mime", url = "local://*", run = "mime.local", prio = "high" },
+  { group = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
 ]
 spotters = [
   { url = "*/", run = "folder" },

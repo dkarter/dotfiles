@@ -45,6 +45,10 @@ tasks:
       sort -zu |
       xargs -0 shellcheck
 
+  toml:lint:
+    desc: Validate all tracked TOML files and their associated schemas
+    cmd: git ls-files -z '*.toml' | RUST_LOG=error xargs -0 taplo lint --config .taplo.toml
+
   television:lint:
     desc: Validate Television cable channels against their schema
     cmd: RUST_LOG=error taplo lint --config .taplo.toml "config/television/cable/**/*.toml"
@@ -70,7 +74,7 @@ tasks:
       - task: fmt:check
       - task: shell:lint
       - task: scripts:test
-      - task: television:lint
+      - task: toml:lint
       - task: yaml:lint
       - task: spelling:lint
     cmds:

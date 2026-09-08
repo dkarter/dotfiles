@@ -24,6 +24,7 @@ Use these defaults when applying the baseline in a target repository:
 - Install `fnox.toml` at the repository root unless the project already has a standardized secrets config.
 - Default `fnox.toml` provider should be `onepass` (1Password) with keychain fallback for local token storage.
 - Use mise built-in tasks as the default task runner.
+- Keep `#:schema https://mise.jdx.dev/schema/mise.json` at the top of `mise.toml` for Taplo validation and completion.
 
 When wiring commands/tasks:
 
