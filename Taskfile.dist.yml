@@ -94,8 +94,8 @@ tasks:
       - task: dot:sync
 
   install:sudo-touch-id:
-    desc: Sets up touch id as sufficient sudo permission
-    summary: Sets up touch id as sufficient sudo permission
+    desc: Sets up Touch ID and Apple Watch as sufficient sudo permissions
+    summary: Sets up Touch ID and Apple Watch as sufficient sudo permissions
 
       This survives OS updates after macOS Sonoma.
 
@@ -103,6 +103,24 @@ tasks:
     platforms: [darwin]
     cmds:
       - sudo-touchid --with-reattach
+      - sudo install -d -o root -g wheel -m 755 /usr/local/lib/pam
+      - sudo install -o root -g wheel -m 444 "$(brew --prefix pam-watchid)/lib/pam/pam_watchid.so" /usr/local/lib/pam/pam_watchid.so
+      - |
+        watch_id_pattern='^[[:space:]]*auth[[:space:]][[:space:]]*sufficient[[:space:]][[:space:]]*/usr/local/lib/pam/pam_watchid\.so'
+        touch_id_pattern='^[[:space:]]*auth[[:space:]][[:space:]]*sufficient[[:space:]][[:space:]]*pam_tid\.so'
+
+        if ! grep -Eq "$watch_id_pattern" /etc/pam.d/sudo_local; then
+          if ! grep -Eq "$touch_id_pattern" /etc/pam.d/sudo_local; then
+            echo 'Unable to find the active pam_tid.so rule in /etc/pam.d/sudo_local' >&2
+            exit 1
+          fi
+
+          sudo sed -i '' '/^[[:space:]]*auth[[:space:]][[:space:]]*sufficient[[:space:]][[:space:]]*pam_tid\.so/a\
+        auth       sufficient     /usr/local/lib/pam/pam_watchid.so
+        ' /etc/pam.d/sudo_local
+        fi
+
+        grep -Eq "$watch_id_pattern" /etc/pam.d/sudo_local
 
   fmt:
     desc: Formats all formattable files
