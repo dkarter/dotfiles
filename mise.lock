@@ -2,7 +2,7 @@
 
 [[tools.aube]]
 version = "2.2.12"
-backend = "github:endevco/aube"
+backend = "packslip:github.com/aubepkg/aube"
 
 [tools.aube."platforms.linux-arm64"]
 checksum = "sha256:831f212a8b3f2f7a2de891eed7c95856bffadb9e3ec5981377a157f32bcff730"
@@ -45,7 +45,6 @@ checksum = "sha256:30235658a0f328f095ff7f178f352a6bfef753a8fe505d991bd9f5db3825f
 url = "https://github.com/aubepkg/aube/releases/download/v2.2.12/aube-v2.2.12-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/aubepkg/aube/releases/assets/546517467"
 provenance = "github-attestations"
-provenance_verified = true
 
 [tools.aube."platforms.macos-x64"]
 checksum = "sha256:76378aba4cf5f8eb28c6b700456238210572a3928f4814b42ad1b1acc00424aa"
@@ -242,30 +241,37 @@ version = "0.4.1"
 backend = "github:mazznoer/lolcrab"
 
 [tools."github:mazznoer/lolcrab"."platforms.linux-x64"]
+checksum = "sha256:8a98c3dc7a027b53c927224b9c9c4cab53eee015791c0f35de0be536db0236ce"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376138"
 
 [tools."github:mazznoer/lolcrab"."platforms.linux-x64-baseline"]
+checksum = "sha256:8a98c3dc7a027b53c927224b9c9c4cab53eee015791c0f35de0be536db0236ce"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376138"
 
 [tools."github:mazznoer/lolcrab"."platforms.linux-x64-musl"]
+checksum = "sha256:8a98c3dc7a027b53c927224b9c9c4cab53eee015791c0f35de0be536db0236ce"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376138"
 
 [tools."github:mazznoer/lolcrab"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:8a98c3dc7a027b53c927224b9c9c4cab53eee015791c0f35de0be536db0236ce"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-unknown-linux-gnu.tar.gz"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376138"
 
 [tools."github:mazznoer/lolcrab"."platforms.macos-arm64"]
+checksum = "sha256:8019d021be283c15b2700bec718aa91736fbf49fee61a1246a08dca1b311a3ed"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376132"
 
 [tools."github:mazznoer/lolcrab"."platforms.windows-x64"]
+checksum = "sha256:64e9a6d764aa33fb7c94d37c5695f4e92c696d7645464b5ef0a71caf0c756731"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [tools."github:mazznoer/lolcrab"."platforms.windows-x64-baseline"]
+checksum = "sha256:64e9a6d764aa33fb7c94d37c5695f4e92c696d7645464b5ef0a71caf0c756731"
 url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
@@ -805,26 +811,32 @@ version = "0.10.0"
 backend = "aqua:tamasfe/taplo"
 
 [tools.taplo."platforms.linux-arm64"]
+checksum = "sha256:033681d01eec8376c3fd38fa3703c79316f5e14bb013d859943b60a07bccdcc3"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322597"
 
 [tools.taplo."platforms.linux-arm64-musl"]
+checksum = "sha256:033681d01eec8376c3fd38fa3703c79316f5e14bb013d859943b60a07bccdcc3"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-aarch64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322597"
 
 [tools.taplo."platforms.linux-x64"]
+checksum = "sha256:8fe196b894ccf9072f98d4e1013a180306e17d244830b03986ee5e8eabeb6156"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.linux-x64-baseline"]
+checksum = "sha256:8fe196b894ccf9072f98d4e1013a180306e17d244830b03986ee5e8eabeb6156"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.linux-x64-musl"]
+checksum = "sha256:8fe196b894ccf9072f98d4e1013a180306e17d244830b03986ee5e8eabeb6156"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
 [tools.taplo."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:8fe196b894ccf9072f98d4e1013a180306e17d244830b03986ee5e8eabeb6156"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-linux-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257322600"
 
@@ -834,18 +846,22 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-aa
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323110"
 
 [tools.taplo."platforms.macos-x64"]
+checksum = "sha256:898122cde3a0b1cd1cbc2d52d3624f23338218c91b5ddb71518236a4c2c10ef2"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323116"
 
 [tools.taplo."platforms.macos-x64-baseline"]
+checksum = "sha256:898122cde3a0b1cd1cbc2d52d3624f23338218c91b5ddb71518236a4c2c10ef2"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x86_64.gz"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323116"
 
 [tools.taplo."platforms.windows-x64"]
+checksum = "sha256:1615eed140039bd58e7089109883b1c434de5d6de8f64a993e6e8c80ca57bdf9"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323062"
 
 [tools.taplo."platforms.windows-x64-baseline"]
+checksum = "sha256:1615eed140039bd58e7089109883b1c434de5d6de8f64a993e6e8c80ca57bdf9"
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
 url_api = "https://api.github.com/repos/tamasfe/taplo/releases/assets/257323062"
 
