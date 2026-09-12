@@ -166,7 +166,6 @@ python.compile = false
 # using a lockfile helps avoid the need for a GitHub token on first time install
 # activate with `mise lock`
 lockfile = true
-lockfile_mode = "generate"
 
 # supply chain security: only allow installing new versions of tools that have
 # been released for at least 24 hours, to avoid 0-day supply chain attacks.
