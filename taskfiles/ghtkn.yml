@@ -18,6 +18,12 @@ tasks:
     desc: Remove this machine's ghtkn Git and gh opt-in
     cmd: bash ./scripts/configure-ghtkn-git-credential.sh --remove
 
+  auth:
+    desc: Authorize this machine for the dkarter/write GitHub App
+    deps:
+      - task: unlock
+    cmd: mise exec -- ghtkn auth -p dkarter/write
+
   unlock:
     desc: Unlock the ghtkn agent from 1Password and enable silent token refresh
     cmd: op read --no-newline 'op://Private/ghtkn passphrase/password' | mise exec -- ghtkn agent unlock --enable-refresh --passphrase-stdin

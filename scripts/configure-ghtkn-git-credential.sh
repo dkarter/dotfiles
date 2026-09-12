@@ -119,4 +119,4 @@ fi
 printf 'Configured ghtkn for github.com via %s\n' "$include_file"
 printf 'Set GHTKN_GITHUB_TOKEN only when an explicit PAT override is required.\n'
 # shellcheck disable=SC2016 # Backticks format the command for display.
-printf 'Run `ghtkn auth -p dkarter/write` interactively to authorize this machine.\n'
+printf 'Run `task ghtkn:auth` interactively to authorize this machine.\n'
