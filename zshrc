@@ -163,3 +163,4 @@ if [[ "$LC_TERMINAL" == "ShellFish" ]] && shellfish_tty=$(tty 2>/dev/null); then
   printf '%s\n' "$$" >> "$shellfish_tty_dir/${shellfish_tty##*/}"
   unset shellfish_tty shellfish_tty_dir
 fi
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
