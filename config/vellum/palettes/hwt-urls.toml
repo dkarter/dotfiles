@@ -1,0 +1,55 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/config-options.schema.json
+
+[search]
+title = "Worktree URLs"
+placeholder = "Open a URL..."
+
+[source]
+cmd = "hwt url --json | jq 'map(.display_name = (.label // .name))'"
+
+[actions]
+default = "open"
+
+[[actions.items]]
+name = "open"
+label = "Open URL"
+icon = "󰖟"
+description = "Open the selected HWT URL in the browser"
+command = ["hwt", "url", "$name", "--open"]
+on_success = "exit"
+
+[item]
+value = "$url"
+template = [
+  [
+    { token = "$url_icon", fg = "#7dcfff", searchable = false },
+    " ",
+    { token = "$display_name", bold = true },
+  ],
+  [
+    { token = "$url", fg = "#565f89" },
+  ],
+]
+
+[[item.tokens]]
+name = "url_icon"
+source = "name"
+when = ["repo", "repository", "github"]
+text = "󰊤"
+
+[[item.tokens]]
+name = "url_icon"
+source = "name"
+when = ["pr", "pull-request", "pull_request"]
+text = ""
+
+[[item.tokens]]
+name = "url_icon"
+source = "name"
+when = ["ticket", "issue", "linear"]
+text = ""
+
+[[item.tokens]]
+name = "url_icon"
+source = "name"
+text = "󰖟"

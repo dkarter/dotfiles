@@ -183,6 +183,14 @@ command = "herdr-open-pr-or-repo"
 description = "open PR or repo in browser"
 
 [[keys.command]]
+key = "prefix+shift+u"
+type = "popup"
+command = "vellum hwt-urls --select-1"
+description = "open worktree URL"
+width = "70%"
+height = "60%"
+
+[[keys.command]]
 key = "prefix+shift+g"
 type = "plugin_action"
 command = "hwt.worktrees.new"
