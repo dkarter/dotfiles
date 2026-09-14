@@ -188,3 +188,6 @@ minimum_release_age_excludes = [
 
 [settings.github]
 credential_command = "ghtkn get -m 1h"
+
+[settings.upgrade]
+auto_prune = true
