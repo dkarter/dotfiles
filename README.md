@@ -12,7 +12,7 @@
 ```
 
 <p align="center">
-  <b>:sparkles: Dorian's Dotfiles :sparkles:</b>
+  <b>:boom: Dorian's Dotfiles :sparkles:</b>
 </p>
 
 <br />
