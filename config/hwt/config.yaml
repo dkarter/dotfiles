@@ -3,3 +3,21 @@ worktree_naming: full
 
 files:
   copy: []
+
+ticket_commands:
+  default:
+    command: [lnr, quick, '{input}', --json]
+    output:
+      branch: branchName
+      metadata:
+        identifier: issueId
+        title: title
+        url: url
+  search:
+    command: [lnr, issue, search, '{input}', --json]
+    output:
+      branch: branchName
+      metadata:
+        identifier: issueId
+        title: title
+        url: url
