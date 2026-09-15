@@ -1,9 +1,8 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-export PATH="$HOME/.local/share/mise/shims:$PATH"
-
-command="$(mise --cd "$HOME" exec -- vellum herdr-commands)"
+cd "$HOME"
+command="$(vlm herdr-commands)"
 [[ -n "$command" ]] || exit 0
 
 exec "${0:A:h}/$command"

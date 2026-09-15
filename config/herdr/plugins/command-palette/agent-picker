@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-export PATH="$HOME/.local/share/mise/shims:$PATH"
-
-exec mise --cd "$HOME" exec -- vellum herdr-agents
+cd "$HOME"
+exec vlm herdr-agents
