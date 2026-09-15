@@ -10,10 +10,9 @@ if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
 fi
 
 repo_root="$(repo_root_for_cwd "$cwd")"
-branch="$(prompt_worktree_name "$allow_ticket")"
-[[ -z "$branch" ]] && exit 0
+prompt_worktree "$repo_root" "$allow_ticket" || exit 0
 
 base_branch="$(select_base_branch "$cwd")"
 [[ -z "$base_branch" ]] && exit 0
 
-create_worktree "$repo_root" "$branch" "$base_branch" >/dev/null
+create_worktree "$repo_root" "$worktree_input" "$base_branch" "$worktree_ticket" >/dev/null

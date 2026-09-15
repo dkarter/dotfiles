@@ -10,8 +10,7 @@ if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
 fi
 
 repo_root="$(repo_root_for_cwd "$cwd")"
-branch="$(prompt_worktree_name "$allow_ticket")"
-[[ -z "$branch" ]] && exit 0
+prompt_worktree "$repo_root" "$allow_ticket" || exit 0
 
 base_branch="$(select_base_branch "$cwd")"
 [[ -z "$base_branch" ]] && exit 0
@@ -26,7 +25,7 @@ if [[ -z "${prompt_text//[[:space:]]/}" ]]; then
   exit 0
 fi
 
-create_json="$(create_worktree "$repo_root" "$branch" "$base_branch")"
+create_json="$(create_worktree "$repo_root" "$worktree_input" "$base_branch" "$worktree_ticket")"
 IFS=$'\t' read -r checkout_path root_pane_id new_workspace_id \
   <<<"$(jq -er '[.path, .pane_id, .workspace_id] | @tsv' <<<"$create_json")"
 

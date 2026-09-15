@@ -102,50 +102,68 @@ select_base_branch() {
   print -r -- "$base_branch"
 }
 
-prompt_worktree_name() {
-  local allow_ticket="${1:-true}"
-  local use_lnr_quick="${TMUX_WORKMUX_LNR_QUICK:-}"
-  local input_placeholder="Worktree branch/name..."
-  local worktree_input worktree_name
+prompt_worktree() {
+  local repo_root="$1"
+  local allow_ticket="${2:-true}"
+  local choice input_placeholder="Worktree branch/name..."
+  local -a choices ticket_commands
 
-  if [[ "$allow_ticket" != "true" ]]; then
-    use_lnr_quick=""
-  fi
+  worktree_input=""
+  worktree_ticket=""
 
-  if [[ -n "$use_lnr_quick" ]] && ! mise x -- gum confirm "Create a ticket for this worktree?"; then
-    use_lnr_quick=""
-  fi
+  if [[ "$allow_ticket" == "true" ]]; then
+    ticket_commands=("${(@f)$(cd "$repo_root" && hwt config show | jq -r '.ticket_commands // {} | keys[]')}")
 
-  if [[ -n "$use_lnr_quick" ]]; then
-    input_placeholder="Ticket title..."
-  fi
-
-  worktree_input="$(mise x -- gum input --placeholder="$input_placeholder")"
-  [[ -z "$worktree_input" ]] && return 0
-
-  worktree_name="$worktree_input"
-
-  if [[ -n "$use_lnr_quick" ]]; then
-    worktree_name="$(mise x -- lnr quick "$worktree_input")"
-    worktree_name="${worktree_name//$'\r'/}"
-
-    if [[ -z "$worktree_name" ]]; then
-      mise x -- gum style --foreground="red" "lnr quick did not return a branch name" >&2
-      return 1
+    if (( ${ticket_commands[(Ie)default]} )); then
+      choices+=("Create a ticket")
+    fi
+    if (( ${ticket_commands[(Ie)search]} )); then
+      choices+=("Use an existing ticket")
     fi
   fi
 
-  print -r -- "$worktree_name"
+  if (( ${#choices} )); then
+    choices+=("Create without a ticket")
+    choice="$(mise x -- gum choose "${choices[@]}" || true)"
+    [[ -z "$choice" ]] && return 1
+
+    case "$choice" in
+      "Create a ticket")
+        worktree_ticket="default"
+        input_placeholder="Ticket title..."
+        ;;
+      "Use an existing ticket")
+        worktree_ticket="search"
+        return 0
+        ;;
+    esac
+  fi
+
+  worktree_input="$(mise x -- gum input --placeholder="$input_placeholder" || true)"
+  [[ -n "$worktree_input" ]]
 }
 
 create_worktree() {
   local repo_root="$1"
-  local branch="$2"
+  local input="$2"
   local base_branch="$3"
+  local ticket="${4:-}"
   local create_args create_json
 
-  branch="${branch//[[:space:]]/-}"
-  create_args=(create --cwd "$repo_root" --branch "$branch" --base "$base_branch" --focus --json)
+  create_args=(create --cwd "$repo_root" --base "$base_branch" --focus --json)
+  case "$ticket" in
+    default)
+      create_args+=(--ticket "$input")
+      ;;
+    search)
+      create_args+=(--ticket=search)
+      ;;
+    *)
+      input="${input//[[:space:]]/-}"
+      create_args+=(--branch "$input")
+      ;;
+  esac
+
   create_json="$(hwt "${create_args[@]}")"
   print -r -- "$create_json"
 }
