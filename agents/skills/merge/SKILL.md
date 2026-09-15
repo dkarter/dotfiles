@@ -32,7 +32,11 @@ This command finishes work on the current branch by:
 
 ## Step 1: Commit
 
-If there are staged changes, commit them. Use lowercase, imperative mood, no conventional commit prefixes. Skip if nothing is staged.
+If there are staged changes, inspect the repository instructions and recent
+history to determine its commit convention. Repository-specific requirements
+take precedence. Use Conventional Commits when the repository requires them;
+otherwise use lowercase imperative mood without a prefix. Skip if nothing is
+staged.
 
 ## Step 2: Rebase
 
