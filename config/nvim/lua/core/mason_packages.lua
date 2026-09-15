@@ -14,7 +14,6 @@ local packages = {
   -- LSPs
   -- 'expert',
   'ansible-language-server',
-  'arduino-language-server',
   'bash-language-server',
   'clangd',
   'clang-format',
@@ -49,7 +48,6 @@ local packages = {
   'taplo',
   'terraform-ls',
   'typescript-language-server',
-  'typos',
   'typos-lsp',
   'vim-language-server',
   'yaml-language-server',
