@@ -185,7 +185,7 @@ description = "open PR or repo in browser"
 [[keys.command]]
 key = "prefix+shift+u"
 type = "popup"
-command = "vellum hwt-urls --select-1"
+command = "mise --cd \"${HERDR_ACTIVE_PANE_CWD:-$PWD}\" exec -- vellum hwt-urls --select-1"
 description = "open worktree URL"
 width = "70%"
 height = "60%"
