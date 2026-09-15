@@ -151,6 +151,9 @@ redis = 'asdf:mise-plugins/mise-redis'
 [shell_alias]
 npx = "aubx"
 
+[hooks]
+postinstall = 'bash "$HOME/.config/nvim/mason-reinstall-python-packages.sh"'
+
 [settings]
 # needed to enable ruby gems install
 experimental = true
