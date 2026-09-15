@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [32.7.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v32.7.0) (2026-09-15)
+
+
+### Features
+
+* add hwt URL palette ([80fa7e1](https://github.com/dkarter/dotfiles/commit/80fa7e1783e0978c27076b80d99e2eeacdc58513))
+* **brew:** add pam-watchid ([99d79eb](https://github.com/dkarter/dotfiles/commit/99d79eb4bb58165ef964d9236fb1db5e415b0ec7))
+* **hunk:** add vim horizontal navigation ([6f9331b](https://github.com/dkarter/dotfiles/commit/6f9331b33ae1df0b8f128a84cd25e25f47e37127))
+* **hwt:** add ticket config ([ca9cdc4](https://github.com/dkarter/dotfiles/commit/ca9cdc462d40b941ebfe93f31dd0e5445e7aed9f))
+* **hwt:** set default agent to opencode v2 ([0ce9ddc](https://github.com/dkarter/dotfiles/commit/0ce9ddcbb01190f93edac75978a0b6697d74ac0e))
+* **mise:** enable auto_prune ([e79db82](https://github.com/dkarter/dotfiles/commit/e79db82394b04ab978ac47c3b886eab4444207f7))
+* **opencode:** add ShellFish notifications ([bef3776](https://github.com/dkarter/dotfiles/commit/bef37761ce37f93cc0ae9a21b25642071952940e))
+* **opencode:** add visual line mode to vim plugin ([4b83808](https://github.com/dkarter/dotfiles/commit/4b838087b241017370f6929778122c99543e67ad))
+* **raycast:** add PR Querydesk shortcut ([3fcf14c](https://github.com/dkarter/dotfiles/commit/3fcf14c69d1ce3472f7ceed91f1e90b0ae09d5b4))
+* use hwt ticket workflows ([00b03f8](https://github.com/dkarter/dotfiles/commit/00b03f88e2831503605b8bd8ce65ebba53f3b2e6))
+* **vellum:** show icons in file picker ([118049c](https://github.com/dkarter/dotfiles/commit/118049c97731a5a3157059158ada54f69c59cef7))
+
+
+### Bug Fixes
+
+* **agents:** respect repository commit conventions ([aa75027](https://github.com/dkarter/dotfiles/commit/aa75027105500ec8b5ee508ea01e2c5198298f90))
+* allow aarch64 in MACHTYPE detection ([f6ba2d2](https://github.com/dkarter/dotfiles/commit/f6ba2d298e328bf6d0377c8ea1585e707f680ee9))
+* **herdr:** query hwt merged config for ticket_commands ([8685ac5](https://github.com/dkarter/dotfiles/commit/8685ac52b2392249a17a573da3a4eb5d708fc35f))
+* **hwt:** set cwd for vellum source for hwt-urls ([a9be279](https://github.com/dkarter/dotfiles/commit/a9be27968d1d9731add371bb8d4ed9cdeb865329))
+* **mise:** change lockfile_mode back to merge ([c0addac](https://github.com/dkarter/dotfiles/commit/c0addac639d67bf0ecf02e5d1947647dba0bc6cc))
+* **mise:** ignore locks folder in config ([39eea1d](https://github.com/dkarter/dotfiles/commit/39eea1d90e1b4f5bbaf4bd27331486e5ec4115d0))
+* **mise:** pin Playwright MCP trust exceptions ([6df53c3](https://github.com/dkarter/dotfiles/commit/6df53c367d2b449915341a2d7feb281b7bb4e40f))
+* **mise:** switch lock file to generate ([3a91be1](https://github.com/dkarter/dotfiles/commit/3a91be1720a66380d14d3809d9d98f13a6631106))
+* **nvim:** rebuild mason python packages after upgrades ([1cc3a7c](https://github.com/dkarter/dotfiles/commit/1cc3a7c042cac1ccea4943472d8f708fefd230fb))
+* **nvim:** remove mason tools that don't have arm binaries ([cca1dbf](https://github.com/dkarter/dotfiles/commit/cca1dbf73429b99f928824874eebd09b85cd9282))
+* **opencode:** repair stale plugin lockfiles ([17b5b8a](https://github.com/dkarter/dotfiles/commit/17b5b8abc22586c5699ce9e7c80d980b52d6272f))
+* **popup:** include hidden files in picker ([ee4bede](https://github.com/dkarter/dotfiles/commit/ee4bede56f0a941d1ea56530a8e4078acdf3a85d))
+* **raycast:** update PR QueryDesk database path ([a0b90d4](https://github.com/dkarter/dotfiles/commit/a0b90d4789da70a942fd4334d0a7ff2bd21ee265))
+* **task:** configure Apple Watch sudo authentication ([a027cf0](https://github.com/dkarter/dotfiles/commit/a027cf0aa24f7030cc3cd4dd6f0686ffb21c3ac3))
+* **vellum:** use renamed vlm binary ([64c565a](https://github.com/dkarter/dotfiles/commit/64c565a0560a9cef01d5b06fdd6abf1a55ccd7dc))
+* **zsh:** add libpq to path ([8d926de](https://github.com/dkarter/dotfiles/commit/8d926deada7b8116456b09c9a00b8b9bef196573))
+
 ## [32.6.0](https://github.com/dkarter/dotfiles/compare/v32.5.1...v32.6.0) (2026-08-31)
 
 <!-- pullfrog-summary:start -->
