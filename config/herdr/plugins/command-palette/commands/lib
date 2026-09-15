@@ -112,7 +112,7 @@ prompt_worktree() {
   worktree_ticket=""
 
   if [[ "$allow_ticket" == "true" ]]; then
-    ticket_commands=("${(@f)$(cd "$repo_root" && hwt config show | jq -r '.ticket_commands // {} | keys[]')}")
+    ticket_commands=("${(@f)$(cd "$repo_root" && hwt config show | jq -r '.config.ticket_commands // {} | keys[]')}")
 
     if (( ${ticket_commands[(Ie)default]} )); then
       choices+=("Create a ticket")
