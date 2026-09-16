@@ -1,0 +1,52 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+# Herdr popups run outside the interactive shell that activates Mise.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+input="${1:-$(mise x -- gum input --placeholder="GitHub URL or owner/repo...")}"
+input="${input%$'\r'}"
+[[ -n "$input" ]] || exit 0
+
+case "$input" in
+  https://github.com/*)
+    repo="${input#https://github.com/}"
+    ;;
+  git@github.com:*)
+    repo="${input#git@github.com:}"
+    ;;
+  ssh://git@github.com/*)
+    repo="${input#ssh://git@github.com/}"
+    ;;
+  *://* | *@*)
+    print -r -- "Expected a GitHub HTTPS URL, SSH URL, or owner/repo" >&2
+    exit 1
+    ;;
+  *)
+    repo="$input"
+    ;;
+esac
+
+repo="${repo%/}"
+repo="${repo%.git}"
+
+if [[ ! "$repo" =~ '^[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9][A-Za-z0-9._-]*$' ]]; then
+  print -r -- "Invalid GitHub repository: $input" >&2
+  exit 1
+fi
+
+name="${repo#*/}"
+ssh_url="git@github.com:${repo}.git"
+target="$HOME/dev/forks/$name"
+
+mkdir -p "$HOME/dev/forks"
+if [[ ! -e "$target" ]]; then
+  git clone "$ssh_url" "$target"
+fi
+
+if [[ ! -d "$target" ]]; then
+  print -r -- "Cannot open non-directory path: $target" >&2
+  exit 1
+fi
+
+herdr workspace create --cwd "$target" --label "$name" --focus >/dev/null
