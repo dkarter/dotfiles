@@ -15,7 +15,7 @@ ghpre() {
 #   - CTRL-E or Enter key to open with the $EDITOR
 fo() {
   local out file key
-  out=$(fzf-tmux --reverse -p --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
+  out=$(fzf --reverse --height=80% --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
   key=$(head -1 <<<"$out")
   file=$(head -2 <<<"$out" | tail -1)
   if [ -n "$file" ]; then
@@ -54,7 +54,7 @@ fgco() {
       echo "$branches"
       echo "$tags"
     ) \
-      | fzf-tmux -p --reverse -l30 -- --no-hscroll --ansi +m -d "\t" -n 2
+      | fzf --height=80% --reverse --no-hscroll --ansi +m -d "\t" -n 2
   ) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
@@ -103,7 +103,7 @@ fdr() {
       get_parent_dirs $(dirname "$1")
     fi
   }
-  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf --tac)
   cd "$DIR"
 }
 
@@ -125,7 +125,7 @@ fgst() {
 
   local cmd="${FZF_CTRL_T_COMMAND:-"command git status -s"}"
 
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | while read -r item; do
+  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | while read -r item; do
     printf '%q ' "$item" | cut -d " " -f 2
   done
   echo
@@ -293,13 +293,8 @@ muug() {
   fi
 }
 
-# linear create issue form in tmux popup (when in tmux)
 lci() {
-  if [[ -n $TMUX ]]; then
-    tmux popup -w 80% -h 80% lnr
-  else
-    lnr
-  fi
+  lnr
 }
 
 # up [N] - cd up N directories (default: 1)

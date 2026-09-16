@@ -11,16 +11,15 @@ allowed-tools: Read, Bash, Glob, Grep
 
 Check the arguments for flags:
 
-- `--keep`, `-k` keeps the environment after merging. In Herdr this is skill
-  behavior; do not pass it to `hwt remove`.
-- `--no-verify`, `-n` is supported only by the workmux backend. Do not invent a
-  Herdr equivalent or pass it to a Herdr command.
+- `--keep`, `-k` keeps the environment after merging. This is skill behavior;
+  do not pass it to `hwt remove`.
 
 Strip all flags from arguments.
 
-If `HERDR_ENV=1` and `--no-verify` or `-n` was supplied, stop before committing,
-rebasing, or merging. Explain that this workmux flag has no verified Herdr
-equivalent.
+Before committing or rebasing, require `HERDR_ENV=1`, load `/hwt`, and capture
+`hwt list --cwd "$PWD" --json`. Require it to identify the current workspace as
+a linked worktree whose path differs from `source_checkout_path`. Stop without
+changing the repository if either requirement is not met.
 
 Commit, rebase, and merge the current branch.
 
@@ -40,20 +39,14 @@ staged.
 
 ## Step 2: Rebase
 
-Choose the base-branch config for the active backend:
+Read the Herdr base-branch config:
 
 ```bash
-# Herdr
 git config --local --get "branch.$(git branch --show-current).herdr-base"
-
-# workmux outside Herdr
-git config --local --get "branch.$(git branch --show-current).workmux-base"
 ```
 
 For a Herdr-owned worktree, require `herdr-base`. If it is missing, confirm the
 intended base before merging rather than guessing.
-
-For other worktrees, default to "main" when no base branch is configured.
 
 Rebase onto the local base branch (do NOT fetch from origin first):
 
@@ -77,15 +70,7 @@ If conflicts occur:
 
 ## Step 3: Merge
 
-Choose the owner before cleanup:
-
-1. If `HERDR_ENV=1`, load `/hwt` for ownership inspection and removal semantics;
-   never run workmux. Capture `hwt list --cwd "$PWD" --json` once and require it
-   to identify the current workspace as a linked worktree whose path differs
-   from `source_checkout_path`. Stop if it does not.
-2. Outside Herdr, use the workmux path only when `$TMUX` is set.
-
-### Herdr path
+Reuse the ownership response captured before Step 1.
 
 Reuse the captured response to read the source checkout path, source workspace
 ID, current workspace ID, worktree path, and branch. Before merging, verify that
@@ -109,15 +94,3 @@ herdr pane run <helper-pane-id> \
 Parse both pane IDs from Herdr JSON responses. Do not target the focused pane or
 construct IDs. Run removal from the helper so cleanup can finish after the
 current workspace closes.
-
-### workmux path
-
-Never use this path when `HERDR_ENV=1`.
-
-Run: `workmux merge --rebase --notification [--keep] [--no-verify]`
-
-Include `--keep` only if the `--keep` flag was passed in arguments.
-Include `--no-verify` only if the `--no-verify` flag was passed in arguments.
-
-This merges the branch into the base branch and cleans up the workmux-owned
-worktree and tmux window unless `--keep` is used.

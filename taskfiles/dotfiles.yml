@@ -70,11 +70,6 @@ includes:
     taskfile: ./shell.yml
     internal: true
 
-  tmux:
-    taskfile: ./tmux.yml
-    dir: ../
-    internal: true
-
   yazi:
     taskfile: ./yazi.yml
     dir: ../
@@ -113,7 +108,6 @@ tasks:
       - task: fonts:sync
       - task: brew:sync
       - task: bat:sync
-      - task: tmux:plugins:install
       - task: gh:plugins:install
       - task: yazi:install
       # completions needs the tools to be installed
@@ -165,7 +159,6 @@ tasks:
       - task: herdr:sync
       - task: brew:sync
       - task: bat:sync
-      - task: tmux:sync
       - task: zinit:sync
       - task: gh:sync
       - task: fonts:sync

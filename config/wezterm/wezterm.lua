@@ -62,7 +62,7 @@ end
 -- disable annoying window close confirmation
 config.window_close_confirmation = 'NeverPrompt'
 
--- disable tab bar (tabs are handled by tmux)
+-- disable tab bar (tabs are handled by Herdr)
 config.enable_tab_bar = false
 
 -- most common triples:
@@ -98,42 +98,35 @@ config.keys = {
   {
     key = 'T',
     mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix 'c',
+    action = keys.herdr_prefix 'c',
   },
 
   -- open urls
   {
     key = 'u',
     mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix 'u',
+    action = keys.herdr_prefix 'u',
   },
 
-  -- vimium like actions
-  {
-    key = 'f',
-    mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix 'F',
-  },
-
-  -- jump tmux windows
+  -- open the Herdr command palette
   {
     key = 'k',
     mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix 'P',
+    action = keys.herdr_prefix 'P',
   },
 
-  -- open sesh - tmux session manager
+  -- open the Herdr workspace picker
   {
     key = 'j',
     mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix 'T',
+    action = keys.herdr_prefix 'T',
   },
 
-  -- toggle to last tmux session
+  -- toggle to the last Herdr workspace
   {
     key = 'l',
     mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix 'L',
+    action = keys.herdr_prefix 'L',
   },
 
   -- this requires disabling the app's default keybindings in macOS
@@ -144,28 +137,28 @@ config.keys = {
   {
     key = '{',
     mods = 'SUPER|SHIFT',
-    action = keys.tmux_prefix 'p',
+    action = keys.herdr_prefix 'p',
   },
 
   -- Focus tab (next)
   {
     key = '}',
     mods = 'SUPER|SHIFT',
-    action = keys.tmux_prefix 'n',
+    action = keys.herdr_prefix 'n',
   },
 
   -- Move tab left
   {
     key = 'LeftArrow',
     mods = (os == 'mac') and 'SUPER|SHIFT' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix_combo { key = 'LeftArrow' },
+    action = keys.herdr_prefix_combo { key = 'LeftArrow' },
   },
 
   -- Move tab right
   {
     key = 'RightArrow',
     mods = (os == 'mac') and 'SUPER|SHIFT' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix_combo { key = 'RightArrow' },
+    action = keys.herdr_prefix_combo { key = 'RightArrow' },
   },
 }
 
@@ -174,7 +167,7 @@ for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
     mods = (os == 'mac') and 'SUPER' or 'CTRL|SHIFT',
-    action = keys.tmux_prefix(i),
+    action = keys.herdr_prefix(i),
   })
 end
 

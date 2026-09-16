@@ -1,6 +1,6 @@
 ---
 name: graphite
-description: Manage stacked PR workflows with Graphite CLI in Graphite-enabled repos only; supports autonomous coordinator/workmux execution. Do not invoke automatically.
+description: Manage stacked PR workflows with Graphite CLI in Graphite-enabled repos only; supports autonomous Herdr coordinator execution. Do not invoke automatically.
 disable-model-invocation: true
 allowed-tools: Read, Bash, Glob, Grep
 ---
@@ -27,9 +27,9 @@ test -f "$(git rev-parse --git-common-dir)/.graphite_repo_config"
 
 Do not run `gt` commands in repos that fail this check.
 
-## Coordinator / Workmux Compatibility
+## Coordinator Compatibility
 
-This skill must work in delegated background flows (for example `/coordinator`, `/worktree`, or `workmux send ...`).
+This skill must work in delegated Herdr flows such as `/coordinator` and `/worktree`.
 
 - In delegated/autonomous runs, do not block on direct user approvals.
 - Still plan the stack before coding, but proceed after presenting the plan in output.

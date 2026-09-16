@@ -16,13 +16,13 @@
 
 # Done
 
-- [x] super-l toggle last workspace like in tmux (mapped to prefix+shift-L)
+- [x] super-l toggle last workspace (mapped to prefix+shift-L)
 - [x] refactor the Herdr command palette into smaller scripts
 - [x] open dev dir
 - [x] insert file with super-shift-. with a popup
 - [x] it would be cool if there was a way to show the space/worktree title when it's focused
 - [x] resize panes with alt+hjkl
-- [x] seamless navigation with neovim (like I have in tmux between muxer panes and nvim splits)
+- [x] seamless navigation between Herdr panes and Neovim splits
 - [x] keybinds to navigate spaces and worktrees up and down - ctrl+[/] in herdr, cmd+[/] via ghostty
 - [x] vim test integration
 - [x] keybind to quickly jump to PR

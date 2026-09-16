@@ -12,7 +12,6 @@ return {
       lazy = true,
       opts = {},
     },
-    'mgalliou/blink-cmp-tmux',
   },
 
   -- use a release tag to download pre-built binaries
@@ -142,28 +141,12 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'tmux' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
       per_filetype = {
         sql = { 'snippets', 'dadbod', 'buffer' },
       },
       providers = {
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
-        tmux = {
-          enabled = function()
-            return os.getenv 'TMUX' ~= nil
-          end,
-          module = 'blink-cmp-tmux',
-          name = 'tmux',
-          -- default options
-          opts = {
-            all_panes = true,
-            capture_history = true,
-            -- only suggest completions from `tmux` if the `trigger_chars` are
-            -- used
-            triggered_only = true,
-            trigger_chars = { ';' },
-          },
-        },
         snippets = {
           should_show_items = function(ctx)
             return ctx.trigger.initial_kind ~= 'trigger_character'

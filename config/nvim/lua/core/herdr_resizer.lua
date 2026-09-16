@@ -1,5 +1,4 @@
--- Lua implementation of better-vim-tmux-resizer functionality
--- Based on RyanMillerC/better-vim-tmux-resizer
+-- Resize Neovim windows first, then fall through to the surrounding Herdr pane.
 
 local M = {}
 local utils = require 'core.utils'
@@ -10,35 +9,8 @@ M.config = {
   vertical_resize_count = 10,
 }
 
--- Check if we're in tmux
-local function in_tmux()
-  return vim.env.TMUX ~= nil
-end
-
 local function in_herdr()
   return utils.in_herdr()
-end
-
--- Get tmux executable (tmux or tmate)
-local function tmux_executable()
-  local tmux = vim.env.TMUX or ''
-  return tmux:match 'tmate' and 'tmate' or 'tmux'
-end
-
--- Get tmux socket path
-local function tmux_socket()
-  local tmux = vim.env.TMUX or ''
-  return tmux:match '^([^,]+)'
-end
-
--- Execute tmux command
-local function tmux_command(args)
-  if not in_tmux() then
-    return
-  end
-
-  local cmd = string.format('%s -S %s %s', tmux_executable(), tmux_socket(), args)
-  vim.fn.system(cmd)
 end
 
 local function herdr_resize(direction)
@@ -73,7 +45,7 @@ local function vim_resize(direction)
     end
   end
 
-  -- Resize Vim window toward given direction, like tmux
+  -- Resize the Neovim window toward the given direction.
   local current_window_is_last_window = (vim.fn.winnr() == vim.fn.winnr '$')
   local modifier
   if direction == 'h' or direction == 'k' then
@@ -94,76 +66,44 @@ local function vim_resize(direction)
   vim.cmd(command .. ' ' .. modifier .. window_resize_count)
 end
 
--- Multiplexer-aware resize function
-local function multiplexer_aware_resize(direction)
+local function herdr_aware_resize(direction)
   local previous_window_width = vim.fn.winwidth(0)
   local previous_window_height = vim.fn.winheight(0)
 
   -- Attempt to resize Vim window
   vim_resize(direction)
 
-  -- Resize the surrounding multiplexer pane if the Vim window did not change.
+  -- Resize the surrounding Herdr pane if the Neovim window did not change.
   if previous_window_height == vim.fn.winheight(0) and previous_window_width == vim.fn.winwidth(0) then
     local directions = { h = 'left', j = 'down', k = 'up', l = 'right' }
     if in_herdr() then
       herdr_resize(directions[direction])
-      return
     end
-
-    local resize_count
-    if direction == 'h' or direction == 'l' then
-      resize_count = M.config.vertical_resize_count
-    else
-      resize_count = M.config.resize_count
-    end
-
-    -- Convert direction to tmux resize-pane arguments
-    local tmux_direction = {
-      h = 'L',
-      j = 'D',
-      k = 'U',
-      l = 'R',
-    }
-
-    local args = string.format('resize-pane -%s %d', tmux_direction[direction], resize_count)
-    tmux_command(args)
   end
 end
 
--- Public API functions
+local function resize(direction)
+  if in_herdr() then
+    herdr_aware_resize(direction)
+    return
+  end
+
+  vim_resize(direction)
+end
+
 function M.resize_left()
-  if in_tmux() or in_herdr() then
-    multiplexer_aware_resize 'h'
-  else
-    vim_resize 'h'
-  end
+  resize 'h'
 end
-
 function M.resize_down()
-  if in_tmux() or in_herdr() then
-    multiplexer_aware_resize 'j'
-  else
-    vim_resize 'j'
-  end
+  resize 'j'
 end
-
 function M.resize_up()
-  if in_tmux() or in_herdr() then
-    multiplexer_aware_resize 'k'
-  else
-    vim_resize 'k'
-  end
+  resize 'k'
 end
-
 function M.resize_right()
-  if in_tmux() or in_herdr() then
-    multiplexer_aware_resize 'l'
-  else
-    vim_resize 'l'
-  end
+  resize 'l'
 end
 
--- Setup function to configure resize counts
 function M.setup(opts)
   M.config = vim.tbl_deep_extend('force', M.config, opts or {})
 end

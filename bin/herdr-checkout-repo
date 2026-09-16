@@ -2,7 +2,9 @@
 set -euo pipefail
 
 # Herdr popups run outside the interactive shell that activates Mise.
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+if ! command -v tv >/dev/null || ! command -v gh >/dev/null; then
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
 
 repo="${1:-$(tv gh-repos --layout landscape --hide-status-bar --no-remote)}"
 repo="${repo%$'\r'}"

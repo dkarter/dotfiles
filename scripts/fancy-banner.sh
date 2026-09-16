@@ -48,7 +48,7 @@ banner_lines=(
 )
 
 tools=(
-  "neovim" "zsh" "tmux" "ghostty" "mise" "starship" "tv"
+  "neovim" "zsh" "herdr" "ghostty" "mise" "starship" "tv"
 )
 
 subtitle="a developer's home away from home"

@@ -1,0 +1,8 @@
+[metadata]
+name = "base-branch"
+description = "Select a base branch for a new worktree"
+requirements = ["git"]
+
+[source]
+command = "tv-base-branches"
+output = "{split: :0}"

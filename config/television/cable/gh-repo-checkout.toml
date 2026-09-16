@@ -1,7 +1,7 @@
 [metadata]
 name = "gh-repo-checkout"
 description = "Clone one of your GitHub repos into ~/dev"
-requirements = ["gh", "git", "bat", "tmux"]
+requirements = ["gh", "git", "bat", "herdr"]
 
 [source]
 command = "$HOME/dotfiles/bin/tv-gh-repo-list"
@@ -20,5 +20,5 @@ enter = "actions:checkout"
 
 [actions.checkout]
 description = "Clone selected repo to ~/dev"
-command = "zsh -lc 'mkdir -p \"$HOME/dev\"; repo=\"{split:\t:0}\"; name=\"${repo##*/}\"; target=\"$HOME/dev/$name\"; if [ -d \"$target/.git\" ]; then cd \"$target\" && git pull --ff-only; else gh repo clone \"$repo\" \"$target\"; fi; if tmux has-session -t \"$name\" 2>/dev/null; then tmux switch-client -t \"$name\"; else tmux new-session -d -s \"$name\" -c \"$target\" && tmux switch-client -t \"$name\"; fi'"
+command = "zsh -lc 'mkdir -p \"$HOME/dev\"; repo=\"{split:\t:0}\"; name=\"${repo##*/}\"; target=\"$HOME/dev/$name\"; if [ -d \"$target/.git\" ]; then cd \"$target\" && git pull --ff-only; else gh repo clone \"$repo\" \"$target\"; fi; herdr-open-dev-dir \"$target\"'"
 mode = "execute"

@@ -27,7 +27,7 @@ usage() {
   cat <<EOF
 Usage: $(basename "$0") [directory]
 
-Launch tuicr in a Herdr or tmux split pane to review git changes.
+Launch tuicr in a Herdr split pane to review git changes.
 
 Arguments:
   directory    Git repository directory to review (default: current directory)
@@ -41,13 +41,6 @@ Examples:
   $(basename "$0") ~/project          # Review changes in ~/project
   TUICR_PANE_SIZE=70 $(basename "$0") # Use 70% of screen
 EOF
-}
-
-check_tmux() {
-  if [[ -z ${TMUX:-} ]]; then
-    return 1
-  fi
-  return 0
 }
 
 check_herdr() {
@@ -108,61 +101,6 @@ print_tuicr_output() {
   else
     log_info "If you exported instructions, they are in your clipboard - paste them here"
   fi
-}
-
-launch_tuicr_tmux_pane() {
-  local target_dir="$1"
-
-  # Get window height and calculate lines (using -l instead of -p to avoid "size missing" error)
-  local window_height
-  window_height=$(tmux display-message -p '#{window_height}')
-  local pane_lines=$((window_height * TUICR_PANE_SIZE / 100))
-
-  # Build the split-window command
-  local split_args=()
-
-  # Determine split direction based on position
-  if [[ $TUICR_PANE_POSITION == "top" ]]; then
-    split_args+=(-b) # Create pane above
-  fi
-  # For bottom, no -b flag needed (default)
-
-  # Set pane size in lines (not percentage, to work without TTY)
-  split_args+=(-l "$pane_lines")
-
-  # Change to target directory
-  split_args+=(-c "$target_dir")
-
-  log_info "Launching tuicr in $TUICR_PANE_POSITION pane (${pane_lines} lines, ${TUICR_PANE_SIZE}%)"
-  log_info "Directory: $target_dir"
-
-  # Create unique channel for wait-for
-  local wait_channel="tuicr-$$"
-
-  # Check if --stdout is supported and set up output capture
-  prepare_tuicr_output
-
-  # Create the split pane with tuicr, signal when done
-  # Use -d to not switch, -P to print pane info so we can capture the ID
-  local new_pane_id
-  new_pane_id=$(tmux split-window -d -P -F '#{pane_id}' "${split_args[@]}" \
-    "cd '$target_dir' && $tuicr_cmd; tmux wait-for -S '$wait_channel'")
-
-  # Switch focus to the new tuicr pane and zoom it.
-  tmux select-pane -t "$new_pane_id"
-  if [[ "$(tmux display-message -p -t "$new_pane_id" '#{window_zoomed_flag}')" != "1" ]]; then
-    tmux resize-pane -Z -t "$new_pane_id"
-  fi
-
-  log_info "tuicr is running in pane $new_pane_id"
-  log_info "Waiting for tuicr to exit..."
-
-  # Block until tuicr exits
-  tmux wait-for "$wait_channel"
-
-  log_info "tuicr finished"
-
-  print_tuicr_output
 }
 
 launch_tuicr_herdr_pane() {
@@ -237,22 +175,20 @@ main() {
     exit 1
   fi
 
-  if check_herdr; then
-    launch_tuicr_herdr_pane "$target_dir"
-  elif check_tmux; then
-    launch_tuicr_tmux_pane "$target_dir"
-  else
-    log_error "Not running inside Herdr or tmux!"
+  if ! check_herdr; then
+    log_error "Not running inside Herdr!"
     echo ""
-    echo "To use tuicr with your coding agent, run that agent inside Herdr or tmux."
+    echo "To use tuicr with your coding agent, run that agent inside Herdr."
     echo ""
     echo "1. Exit the current agent session."
     echo ""
-    echo "2. Restart the agent inside Herdr or tmux."
+    echo "2. Restart the agent inside Herdr."
     echo ""
     echo "3. Then run /tuicr again."
     exit 1
   fi
+
+  launch_tuicr_herdr_pane "$target_dir"
 }
 
 main "$@"

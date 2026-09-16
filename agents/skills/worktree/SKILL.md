@@ -1,11 +1,11 @@
 ---
 name: worktree
-description: Launch one or more tasks in new git worktrees using Herdr when inside Herdr, otherwise workmux. Do not invoke automatically.
+description: Launch one or more tasks in new git worktrees using Herdr and HWT. Do not invoke automatically.
 disable-model-invocation: true
 allowed-tools: Bash, Write
 ---
 
-Launch one or more tasks in new git worktrees using the active multiplexer.
+Launch one or more tasks in new git worktrees using Herdr.
 
 Tasks: $ARGUMENTS
 
@@ -30,7 +30,7 @@ For each task:
 
 1. Generate a short, descriptive worktree name (2-4 words, kebab-case)
 2. Write a detailed implementation prompt to a temp file
-3. Dispatch with the backend selected below.
+3. Dispatch through Herdr and HWT.
 
 The prompt file should:
 
@@ -73,20 +73,12 @@ Then use the /merge skill to commit, rebase, and merge the branch.
 
 Write ALL temp files first, then dispatch all agents.
 
-### Backend selection
-
-1. If `HERDR_ENV=1`, use Herdr, even if `$TMUX` is also set.
-2. Otherwise use `workmux add` as before.
-
-Never run workmux inside Herdr. If the user explicitly requests it there,
-explain that workmux is tmux-specific and ask whether to use native Herdr
-worktrees instead. Never use Herdr to take over an existing workmux-owned
-worktree.
-
 ### Herdr
 
 Load `/hwt` for worktree lifecycle and `/herdr` for pane and agent control. For
 each task:
+
+If `HERDR_ENV` is not `1`, stop and explain that this skill requires Herdr.
 
 1. Record the current branch as the base branch.
 2. Follow `/hwt` to create the worktree from that explicit base branch.
@@ -96,31 +88,6 @@ each task:
 
 Create all worktrees before waiting for agents so independent tasks launch in
 parallel. Keep background pane and agent operations unfocused.
-
-### workmux
-
-Use this section only when `HERDR_ENV` is not `1` and `$TMUX` is set.
-
-**IMPORTANT:** Run `workmux add` from the CURRENT directory. Do NOT `cd` to the
-main repo or any other directory. The new worktree branches from whatever branch
-is checked out in the current directory.
-
-Step 1 - Write all prompt files (in parallel):
-
-```bash
-tmpfile=$(mktemp).md
-cat > "$tmpfile" << 'EOF'
-Implement feature X...
-EOF
-echo "$tmpfile"  # Note the path for step 2
-```
-
-Step 2 - After all files are written, run workmux commands in parallel:
-
-```bash
-workmux add feature-x -b -P /tmp/tmp.abc123.md
-workmux add feature-y -b -P /tmp/tmp.def456.md
-```
 
 After creating the worktrees, inform the user which branches were created.
 

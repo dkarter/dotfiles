@@ -9,46 +9,46 @@ platforms = ["macos", "linux"]
 id = "navigate-left"
 title = "Navigate left"
 contexts = ["pane"]
-command = ["./dispatch", "navigate", "left", "ctrl+h", "ctrl+h"]
+command = ["./dispatch", "navigate", "left", "ctrl+h"]
 
 [[actions]]
 id = "navigate-down"
 title = "Navigate down"
 contexts = ["pane"]
-command = ["./dispatch", "navigate", "down", "ctrl+j", "ctrl+j"]
+command = ["./dispatch", "navigate", "down", "ctrl+j"]
 
 [[actions]]
 id = "navigate-up"
 title = "Navigate up"
 contexts = ["pane"]
-command = ["./dispatch", "navigate", "up", "ctrl+k", "ctrl+k"]
+command = ["./dispatch", "navigate", "up", "ctrl+k"]
 
 [[actions]]
 id = "navigate-right"
 title = "Navigate right"
 contexts = ["pane"]
-command = ["./dispatch", "navigate", "right", "ctrl+l", "ctrl+l"]
+command = ["./dispatch", "navigate", "right", "ctrl+l"]
 
 [[actions]]
 id = "resize-left"
 title = "Resize left"
 contexts = ["pane"]
-command = ["./dispatch", "resize", "left", "alt+shift+h", "alt+h"]
+command = ["./dispatch", "resize", "left", "alt+shift+h"]
 
 [[actions]]
 id = "resize-down"
 title = "Resize down"
 contexts = ["pane"]
-command = ["./dispatch", "resize", "down", "alt+shift+j", "alt+j"]
+command = ["./dispatch", "resize", "down", "alt+shift+j"]
 
 [[actions]]
 id = "resize-up"
 title = "Resize up"
 contexts = ["pane"]
-command = ["./dispatch", "resize", "up", "alt+shift+k", "alt+k"]
+command = ["./dispatch", "resize", "up", "alt+shift+k"]
 
 [[actions]]
 id = "resize-right"
 title = "Resize right"
 contexts = ["pane"]
-command = ["./dispatch", "resize", "right", "alt+shift+l", "alt+l"]
+command = ["./dispatch", "resize", "right", "alt+shift+l"]

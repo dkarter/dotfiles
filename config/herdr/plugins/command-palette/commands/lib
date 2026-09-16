@@ -1,7 +1,9 @@
 set -euo pipefail
 
-# Herdr popups run outside the interactive shell that activates Mise.
-export PATH="$HOME/dotfiles/bin:$HOME/.local/share/mise/shims:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
+if ! command -v gum >/dev/null || ! command -v tv >/dev/null || ! command -v hwt >/dev/null || ! command -v nvim >/dev/null; then
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
 
 context_value() {
   local query="$1"
@@ -67,7 +69,7 @@ repo_config_for_repo() {
   local repo_root="$1"
   local config_file
 
-  for config_file in "$repo_root/.herdr-worktree.yaml" "$repo_root/.herdr.yaml" "$repo_root/.workmux.yaml"; do
+  for config_file in "$repo_root/.herdr-worktree.yaml" "$repo_root/.herdr.yaml"; do
     if [[ -f "$config_file" ]]; then
       print -r -- "$config_file"
       return 0
@@ -90,7 +92,7 @@ repo_config_value() {
   fi
 }
 
-workmux_agent_command() {
+configured_agent_command() {
   repo_config_value "$1" agent
 }
 
@@ -98,7 +100,7 @@ select_base_branch() {
   local cwd="$1"
   local base_branch
 
-  base_branch="$(cd "$cwd" && mise x -- tv workmux-base-branch --hide-status-bar || true)"
+  base_branch="$(cd "$cwd" && tv base-branch --hide-status-bar || true)"
   print -r -- "$base_branch"
 }
 
@@ -124,7 +126,7 @@ prompt_worktree() {
 
   if (( ${#choices} )); then
     choices+=("Create without a ticket")
-    choice="$(mise x -- gum choose "${choices[@]}" || true)"
+    choice="$(gum choose "${choices[@]}" || true)"
     [[ -z "$choice" ]] && return 1
 
     case "$choice" in
@@ -139,7 +141,7 @@ prompt_worktree() {
     esac
   fi
 
-  worktree_input="$(mise x -- gum input --placeholder="$input_placeholder" || true)"
+  worktree_input="$(gum input --placeholder="$input_placeholder" || true)"
   [[ -n "$worktree_input" ]]
 }
 

@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
+# Emit local branches in a useful order for worktree creation.
+
 pick_main_branch() {
   local detected_main
 

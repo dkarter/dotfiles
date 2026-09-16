@@ -2,7 +2,9 @@
 set -euo pipefail
 
 # Television previews run outside the interactive shell that activates Mise.
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+if ! command -v gh >/dev/null || ! command -v bat >/dev/null; then
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
 
 repo="$1"
 tmp_file="$(mktemp)"

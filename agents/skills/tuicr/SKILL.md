@@ -1,6 +1,6 @@
 ---
 name: tuicr
-description: Use when the user says "tuicr review", "/tuicr", "open tuicr", or asks to review local changes in tuicr. Launch tuicr in Herdr or tmux, then use tuicr's review CLI to read or add comments in TUI review sessions.
+description: Use when the user says "tuicr review", "/tuicr", "open tuicr", or asks to review local changes in tuicr. Launch tuicr in Herdr, then use tuicr's review CLI to read or add comments in TUI review sessions.
 ---
 
 # tuicr Review Workflow
@@ -74,11 +74,10 @@ require a multiplexer just to connect to an existing active session.
 
 When the user needs an interactive tuicr pane and no active session exists:
 
-| Environment        | Action                                                                                                                               |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `HERDR_ENV=1`      | Run `tuicr-wrapper.sh /path/to/repo`; it creates and focuses a Herdr pane                                                            |
-| Otherwise, `$TMUX` | Run `tuicr-wrapper.sh /path/to/repo`; it creates and focuses a tmux pane                                                             |
-| Neither is set     | Tell the user you are waiting for them to start `tuicr` in the repo, then attach with `tuicr review list` after they say it is ready |
+| Environment   | Action                                                                                                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `HERDR_ENV=1` | Run `tuicr-wrapper.sh /path/to/repo`; it creates and focuses a Herdr pane                                                            |
+| Otherwise     | Tell the user you are waiting for them to start `tuicr` in the repo, then attach with `tuicr review list` after they say it is ready |
 
 Wrapper paths are relative to this skill directory:
 
@@ -88,8 +87,7 @@ Wrapper paths are relative to this skill directory:
 
 The wrapper selects and zooms the new tuicr pane after opening it, blocks until
 the review exits, closes the temporary pane to restore the original layout, and
-returns any exported review text to the agent. Always prefer Herdr when
-`HERDR_ENV=1`, even when `$TMUX` is also set.
+returns any exported review text to the agent.
 
 Do not treat a `tuicr` process in another pane, window, session, or repo as
 satisfying a request to open a review. Open a new review for the requested repo;

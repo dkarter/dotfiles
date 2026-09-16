@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-# Herdr popups run outside the interactive shell that activates Mise.
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+# Herdr popups can run outside the interactive shell that activates Mise.
+if ! command -v tv >/dev/null; then
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
 
 herdr_bin="${HERDR_BIN_PATH:-herdr}"
 dir="${1:-$(tv dev-dirs --layout portrait --hide-status-bar)}"

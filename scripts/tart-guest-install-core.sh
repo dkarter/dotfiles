@@ -125,8 +125,6 @@ assert_symlink() {
 
 run_core_install() {
   echo "Running core install path..."
-  bash ./installer/shared.sh
-
   ensure_homebrew
   ensure_task
 

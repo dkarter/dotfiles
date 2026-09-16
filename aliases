@@ -267,8 +267,6 @@ alias gcob='tv git-branch-checkout'
 alias fz="fzf --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort' --preview '[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"
 alias vfz='vim $(fz)'
 alias preview="fzf --preview 'bat --color \"always\" --line-range 0:30 {}'"
-alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
-alias ftk='tmux kill-session -t $(tl | fzf | tr ":" "\n" | head -n1)'
 alias fcd='cd $(fd --type d --exclude node_modules --exclude vendor --exclude build --exclude _build --exclude bundle --exclude Godeps | fzf)'
 
 # network utils
@@ -330,7 +328,6 @@ alias lolcat='lolcrab'
 
 # quick config
 alias vimconfig='vim -o ~/.vimrc ~/.vimrc.bundles'
-alias muxconfig='vim ~/.config/tmux/tmux.conf && tmux source-file ~/.config/tmux/tmux.conf'
 alias sshconfig='vim ~/.ssh/config'
 alias aliasconfig='vim ~/.aliases && source ~/.aliases'
 alias hostsconfig='sudo nvim /etc/hosts'
@@ -342,36 +339,10 @@ alias vifmconfig="vim ~/.config/vifm/vifmrc"
 # faster task alias
 alias t=task
 
-# tmux
-alias mux='airmux'
-# tmux new
-function tn() {
-  local session_name=${1:-$(basename "$PWD")}
-  tmux new -s "$session_name"
-}
-
-# session manager using sesh + tv
-# https://github.com/joshmedeski/sesh
-unalias s 2>/dev/null
-function s() {
-  local session_name
-
-  session_name=$(tv sesh "$@") || return
-  [[ -n $session_name ]] || return
-
-  if [[ -n ${TMUX:-} ]]; then
-    sesh connect --switch "$session_name"
-  else
-    sesh connect "$session_name"
-  fi
-}
 alias tgd='tv git-diff'
 
 # tailscale cli - for when installed from the app store
 alias tscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
-
-# tmux attach
-alias ta='tmux attach -t'
 
 # ripgrep - rg is taken by rails generate alias from the oh-my-zsh rails plugin
 alias rgrep='command rg'
@@ -417,30 +388,6 @@ alias ma='mix_cmd_app'
 # Pitchfork
 # --------------------------------------------
 alias pf='pitchfork'
-
-# Workmux Aliases
-# --------------------------------------------
-
-# Core commands
-alias wm='workmux'
-alias wma='workmux add'
-alias wmo='workmux open'
-alias wmc='workmux close'
-alias wmm='workmux merge'
-alias wmrm='workmux remove'
-alias wmls='workmux list'
-alias wmp='workmux path'
-alias wmd='workmux dashboard'
-
-# Documentation
-alias wmdocs='workmux docs'
-alias wmcl='workmux changelog'
-
-# Setup
-alias wminit='workmux init'
-
-# Claude integration
-alias wmclaude='workmux claude'
 
 # KEEP AT BOTTOM TO ALLOW OVERRIDE
 # Include machine specific aliases

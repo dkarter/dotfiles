@@ -72,7 +72,7 @@ fi
 # agent hook subprocesses (Claude Code, Codex, OpenCode) usually do not.
 # The write then fails with "device not configured" and the notification is
 # silently lost. Walk up the process tree to the shell or agent that owns the
-# ShellFish pty (the tmux pane pty when inside tmux) and write there instead.
+# ShellFish pty and write there instead.
 # Fall back to $SSH_TTY, then /dev/tty.
 tty_path=""
 pid=$$
@@ -90,10 +90,5 @@ done
 [ -z "$tty_path" ] && tty_path="${SSH_TTY:-/dev/tty}"
 
 # stdout is a pipe to the agent process, which would swallow the escape, so
-# write to the resolved terminal. Inside tmux the OSC is wrapped in a
-# passthrough so it reaches the outer terminal (needs allow-passthrough on).
-if [ -n "$TMUX" ]; then
-  printf '\033Ptmux;\033\033]%s\a\033\134' "$osc" >"$tty_path" 2>/dev/null || true
-else
-  printf '\033]%s\a' "$osc" >"$tty_path" 2>/dev/null || true
-fi
+# write to the resolved terminal.
+printf '\033]%s\a' "$osc" >"$tty_path" 2>/dev/null || true

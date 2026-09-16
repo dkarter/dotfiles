@@ -61,9 +61,6 @@ if [[ $DISTRO_BASE == 'debian' ]]; then
   bash ./installer/debian-setup.sh
 fi
 
-echo 'Installing shared steps...'
-bash ./installer/shared.sh
-
 if [[ ! -f ~/.local/bin/task ]]; then
   # Install task
   mkdir -p ~/.local/bin

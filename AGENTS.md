@@ -24,7 +24,7 @@ dependency management.
 ```
 ├── config/                # XDG-compliant configuration files
 │   ├── nvim/              # Neovim configuration (Lua-based)
-│   ├── tmux/              # Terminal multiplexer config
+│   ├── herdr/             # Terminal workspace manager config
 │   ├── zsh/               # Z shell configurations
 │   ├── wezterm/           # Terminal emulator config
 │   └── [various tools]/   # Tool-specific configurations
@@ -41,7 +41,7 @@ dependency management.
 - **Editor:** Neovim (modern Lua configuration)
 - **Terminal:** Ghostty, WezTerm as fallback
 - **Shell:** Zsh with custom configuration
-- **Multiplexer:** tmux with extensive plugin ecosystem
+- **Workspace Manager:** Herdr with HWT worktree orchestration
 - **Version Control:** Git with conventional commits
 
 ### Package Management
@@ -181,7 +181,7 @@ The CI pipeline (`task ci:run`) includes:
 - fd, ripgrep - use these to search for files instead of find and grep
 - bat (cat replacement)
 - git, lazygit (version control)
-- tmux (terminal multiplexer)
+- herdr, hwt (terminal workspaces and worktree orchestration)
 - neovim (editor)
 
 ### macOS Specific

@@ -1,8 +1,7 @@
 local M = {}
 
 function M.in_herdr()
-  return vim.env.TMUX == nil
-    and (vim.env.HERDR_SESSION ~= nil or vim.env.HERDR_PANE_ID ~= nil or vim.env.HERDR_ENV ~= nil)
+  return vim.env.HERDR_SESSION ~= nil or vim.env.HERDR_PANE_ID ~= nil or vim.env.HERDR_ENV ~= nil
 end
 
 -- Load project specific vimrc

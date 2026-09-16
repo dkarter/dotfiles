@@ -2,13 +2,13 @@
 ---@type LazySpec
 return {
   'coder/claudecode.nvim',
-  -- load on start (but delayed) to allow IDE integration from another tmux pane
+  -- load on start (but delayed) to allow IDE integration from another Herdr pane
   -- (/ide)
   event = 'VeryLazy',
   dependencies = { 'folke/snacks.nvim' },
   opts = {
     terminal = {
-      -- for working with tmux only - disables internal terminal buffer
+      -- Herdr provides the external agent pane, so disable the internal terminal buffer
       -- no UI actions; server + tools remain available
       provider = 'none',
     },

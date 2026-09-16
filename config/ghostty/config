@@ -61,10 +61,8 @@ keybind = super+p=text:\x1aP
 # browse herdr workspaces and agents
 keybind = super+j=text:\x1aT
 keybind = super+ctrl+j=text:\x1aJ
-# open tmux windows
+# open Herdr workspace navigator
 keybind = super+k=text:\x1aW
-# open tmux panes
-keybind = super+shift+k=text:\x1aK
 # toggle last session
 keybind = super+l=text:\x1aL
 # create new session
@@ -75,15 +73,10 @@ keybind = super+o=text:\x1aO
 keybind = super+shift+f=text:\x1av
 # create a new linear issue
 keybind = super+shift+i=text:\x1ai
-# open workmux dashboard
-keybind = super+shift+e=text:\x1aE
 # insert file path at cursor (for AI agents)
 keybind = super+shift+period=text:\x1aA
 # toggle herdr sidebar
 keybind = super+ctrl+s=text:\x1ab
-
-# vimium like actions (tmux fingers)
-keybind = super+f=text:\x1aF
 
 # send modified Enter so TUIs can distinguish Shift+Enter from Enter
 keybind = shift+enter=csi:13;2u

@@ -5,7 +5,7 @@ allow_ticket="${1:-true}"
 cwd="$(current_pane_cwd)"
 
 if ! git -C "$cwd" rev-parse --git-dir >/dev/null 2>&1; then
-  mise x -- gum style --foreground="red" "Not in a git repository"
+  gum style --foreground="red" "Not in a git repository"
   exit 1
 fi
 

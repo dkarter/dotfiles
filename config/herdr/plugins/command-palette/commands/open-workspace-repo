@@ -10,7 +10,7 @@ if [[ -z "$checkout_path" ]]; then
 fi
 
 if [[ -z "$checkout_path" ]]; then
-  mise x -- gum style --foreground="red" "Current workspace pane is not in a git repository"
+  gum style --foreground="red" "Current workspace pane is not in a git repository"
   exit 1
 fi
 

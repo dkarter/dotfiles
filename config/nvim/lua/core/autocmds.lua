@@ -46,8 +46,7 @@ augroup('Auto Resume', {
 })
 
 augroup('General Improvements', {
-  -- Vim/tmux layout rebalancing
-  -- automatically rebalance windows on vim resize
+  -- Automatically rebalance Neovim windows after a resize.
   {
     event = { 'VimResized' },
     pattern = { '*' },

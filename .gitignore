@@ -7,9 +7,6 @@ config/vifm/vifmimgpdfpage
 # ignore sumenko lua generated artifact
 .luarc.json
 
-# ignore tmuxinator files since they are workstation specific
-config/tmuxinator/*.yml
-
 # do not commit history - may contain sensitive data
 config/nushell/history.*
 # ignore local nushell environment settings

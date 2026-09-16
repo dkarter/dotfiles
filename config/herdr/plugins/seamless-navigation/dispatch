@@ -1,15 +1,14 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-if (( $# != 4 )); then
-  print -u2 'usage: dispatch <navigate|resize> <left|down|up|right> <nvim-key> <tmux-key>'
+if (( $# != 3 )); then
+  print -u2 'usage: dispatch <navigate|resize> <left|down|up|right> <nvim-key>'
   exit 2
 fi
 
 mode="$1"
 direction="$2"
 nvim_key="$3"
-tmux_key="$4"
 herdr_bin="${HERDR_BIN_PATH:-herdr}"
 pane_id="${HERDR_ACTIVE_PANE_ID:-${HERDR_PANE_ID:-}}"
 
@@ -27,9 +26,6 @@ process_name="$($herdr_bin pane process-info --pane "$pane_id" 2>/dev/null | jq 
 case "$process_name" in
   nvim|vim|view|lvim|nvim-*)
     exec "$herdr_bin" pane send-keys "$pane_id" "$nvim_key"
-    ;;
-  tmux|tmate)
-    exec "$herdr_bin" pane send-keys "$pane_id" "$tmux_key"
     ;;
 esac
 

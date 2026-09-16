@@ -58,17 +58,7 @@ local picker = function(fun, opts)
   end
 end
 
----Convenience shorthand for calling tmux seamless navigator plugin
----@param fun string the function to call
----@return function
-local tmux = function(fun)
-  return function()
-    require('tmux')[fun]()
-  end
-end
-
 local silent = { silent = true }
-local is_herdr = utils.in_herdr()
 
 -- a more useful gf
 nmap { 'gf', 'gF', { desc = 'Go to file under cursor', silent = true } }
@@ -113,20 +103,6 @@ vmap { '<', '<gv' }
 -- Search for selected text
 vmap { '*', '"xy/<C-R>x<CR>' }
 
-if not is_herdr then
-  -- Navigate neovim + tmux with ctrl+direction
-  vmap { '<C-h>', tmux 'move_left', { desc = 'Move to left pane' } }
-  vmap { '<C-j>', tmux 'move_bottom', { desc = 'Move to bottom pane' } }
-  vmap { '<C-k>', tmux 'move_top', { desc = 'Move to top pane' } }
-  vmap { '<C-l>', tmux 'move_right', { desc = 'Move to right pane' } }
-
-  -- Navigate neovim + neovim terminal emulator + tmux with ctrl+direction
-  tmap { '<C-h>', tmux 'move_left' }
-  tmap { '<C-j>', tmux 'move_bottom' }
-  tmap { '<C-k>', tmux 'move_top' }
-  tmap { '<C-l>', tmux 'move_right' }
-end
-
 -- easily escape terminal
 tmap { '<esc><esc>', '<C-\\><C-n><esc><cr>' }
 tmap { '<C-o>', '<C-\\><C-n><esc><cr>' }
@@ -139,20 +115,16 @@ for _, resize in ipairs {
 } do
   local direction = resize.direction
   local resize_pane = function()
-    require('core.tmux_resizer')['resize_' .. direction]()
+    require('core.herdr_resizer')['resize_' .. direction]()
   end
   local terminal_resize = function()
     resize_pane()
     vim.cmd 'startinsert'
   end
 
-  if is_herdr then
-    local key = '<M-' .. resize.key:upper() .. '>'
-    vim.keymap.set({ 'n', 'x', 's' }, key, resize_pane, { desc = 'Resize ' .. direction })
-    vim.keymap.set('t', key, terminal_resize, { desc = 'Resize ' .. direction })
-  else
-    tmap { '<M-' .. resize.key .. '>', terminal_resize, silent }
-  end
+  local key = '<M-' .. resize.key:upper() .. '>'
+  vim.keymap.set({ 'n', 'x', 's' }, key, resize_pane, { desc = 'Resize ' .. direction })
+  vim.keymap.set('t', key, terminal_resize, { desc = 'Resize ' .. direction })
 end
 
 -- close all other windows with <leader>o
@@ -516,105 +488,6 @@ M.vim_test_mappings = {
   { '<leader>ts', ':TestSuite<CR>', silent = true, desc = '[T]est [S]uite' },
   { '<leader>tl', ':TestLast<CR>', silent = true, desc = '[T]est [L]ast' },
 }
-
----@type LazyKeysSpec[]
-M.vimux_mappings = {
-  { '<leader>rp', '<CMD>VimuxPromptCommand<CR>', desc = 'run a command (prompt)' },
-  { '<leader>r.', '<CMD>VimuxRunLastCommand<CR>', desc = 'run the last run command' },
-  { '<leader>rc', '<CMD>VimuxClearTerminalScreen<CR>', desc = 'clear the current run terminal' },
-  { '<leader>rq', '<CMD>VimuxCloseRunner<CR>', desc = 'close the runner' },
-  { '<leader>r?', '<CMD>VimuxInspectRunner<CR>', desc = 'inspect the runner' },
-  { '<leader>r!', '<CMD>VimuxInterruptRunner<CR>', desc = "interrupt the runner (bang'er)" },
-  { '<leader>rz', '<CMD>VimuxZoomRunner<CR>', desc = 'zoom the runner' },
-  {
-    '<C-c><C-c>',
-    function()
-      -- yank text into v register
-      if vim.api.nvim_get_mode()['mode'] == 'n' then
-        vim.cmd 'normal vip"vy'
-      else
-        vim.cmd 'normal "vy'
-      end
-
-      -- construct command with v register as command to send
-      vim.cmd 'call VimuxRunCommand(@v)'
-    end,
-    desc = 'run command under cursor',
-  },
-  {
-    '<leader>rr',
-    function()
-      -- yank text into v register
-      if vim.api.nvim_get_mode()['mode'] == 'n' then
-        vim.cmd 'normal V"vy'
-      else
-        vim.cmd 'normal "vy'
-      end
-
-      -- construct command with v register as command to send
-      vim.cmd 'call VimuxRunCommand(@v)'
-    end,
-    desc = 'run command under cursor',
-  },
-  {
-    '<leader>!',
-    function()
-      vim.o.operatorfunc = "v:lua.require'core.mappings'.vimux_operator"
-      return 'g@'
-    end,
-    expr = true,
-    desc = 'run motion selection with vimux',
-  },
-  {
-    '<leader>!!',
-    function()
-      vim.o.operatorfunc = "v:lua.require'core.mappings'.vimux_operator"
-      return 'g@ip'
-    end,
-    expr = true,
-    desc = 'run current paragraph with vimux',
-  },
-}
-
--- Function to handle vimux operator motions
-function M.vimux_operator(motion_type)
-  local saved_reg = vim.fn.getreg 'v'
-  local saved_regtype = vim.fn.getregtype 'v'
-
-  if motion_type == 'char' then
-    vim.cmd 'normal! `[v`]"vy'
-  elseif motion_type == 'line' then
-    vim.cmd 'normal! `[V`]"vy'
-  elseif motion_type == 'block' then
-    vim.cmd 'normal! `[<C-v>`]"vy'
-  end
-
-  local content = vim.fn.getreg 'v'
-
-  -- Check if content is a markdown codeblock
-  local lines = vim.split(content, '\n')
-
-  -- Find the closing backticks (could be last line or second-to-last if there's trailing newline)
-  local closing_line_idx = #lines
-  if lines[#lines] == '' and #lines > 1 then
-    closing_line_idx = #lines - 1
-  end
-
-  if #lines > 2 and lines[1]:match '^```.*$' and lines[closing_line_idx]:match '^```%s*$' then
-    -- Extract code content (remove first and closing backtick lines)
-    local code_lines = {}
-    for i = 2, closing_line_idx - 1 do
-      table.insert(code_lines, lines[i])
-    end
-    content = table.concat(code_lines, '\n')
-  end
-
-  -- Set the processed content to the v register and run
-  vim.fn.setreg('v', content)
-  vim.cmd 'call VimuxRunCommand(@v)'
-
-  vim.fn.setreg('v', saved_reg, saved_regtype)
-end
 
 ---@type LazyKeysSpec[]
 M.undotree_mappings = {
