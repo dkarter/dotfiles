@@ -74,6 +74,11 @@ git pull # get latest
 task sync # installs/updates tools and symlinks new configs
 ```
 
+> [!IMPORTANT]
+> These dotfiles now use Herdr and HWT exclusively for terminal workspace and
+> worktree management. Tmux, workmux, sesh, and their related configuration and
+> integrations have been removed.
+
 # Note about forking/versioning
 
 I generally don't recommend using other people's dotfiles, at least not when you're just starting with Vim.. these are customized to my personal taste and preferences, and are subject to change at any time.
