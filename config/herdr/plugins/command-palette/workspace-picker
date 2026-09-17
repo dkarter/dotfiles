@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 cd "$HOME"
 exec vlm herdr-workspaces
