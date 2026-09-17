@@ -691,25 +691,6 @@ checksum = "sha256:db57cfdb295154397285c986f6e93e3d8f8b1c6fb56297e3e3a1b96218aa2
 url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_win64_29.1.zip"
 url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567953291"
 
-[[tools.erlang]]
-version = "29.1"
-backend = "core:erlang"
-
-[tools.erlang.options]
-precompiled_os = "ubuntu-24.04"
-
-[tools.erlang."platforms.linux-arm64"]
-checksum = "sha256:c672f984e6fb7db13a71ac38b9659347d32ccb356b48ca35152301ae12429a70"
-url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.1.tar.gz"
-
-[tools.erlang."platforms.linux-x64"]
-checksum = "sha256:008e2dfad440bbbefa8e38b0e0933df1017098e241641251a6235bde50ef6e99"
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.1.tar.gz"
-
-[tools.erlang."platforms.linux-x64-baseline"]
-checksum = "sha256:008e2dfad440bbbefa8e38b0e0933df1017098e241641251a6235bde50ef6e99"
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.1.tar.gz"
-
 [[tools.expert]]
 version = "0.1.10"
 backend = "aqua:expert-lsp/expert"
@@ -2034,74 +2015,73 @@ url_api = "https://api.github.com/repos/charmbracelet/gum/releases/assets/556563
 provenance = "cosign"
 
 [[tools.herdr]]
-version = "0.9.0"
+version = "0.9.1"
 backend = "github:ogulcancelik/herdr"
 
 [tools.herdr."platforms.linux-arm64"]
-checksum = "sha256:9c8db20fb7e7427b138d5367113f1621ffd319f2f65d6f009e2594029115f0d2"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-linux-aarch64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270160"
+checksum = "sha256:f4ccf4de745f2cb9a39a983e9ba3703dad50ec2a58dea83026ceab721bbd8d9e"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-linux-aarch64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559680"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.linux-arm64-musl"]
-checksum = "sha256:9c8db20fb7e7427b138d5367113f1621ffd319f2f65d6f009e2594029115f0d2"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-linux-aarch64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270160"
+checksum = "sha256:f4ccf4de745f2cb9a39a983e9ba3703dad50ec2a58dea83026ceab721bbd8d9e"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-linux-aarch64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559680"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.linux-x64"]
-checksum = "sha256:4fa1a01158dd8043da92d31b270780b0dcc10603038d9b61cac4d81ab63fb71f"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-linux-x86_64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270163"
+checksum = "sha256:2a02fed16beb651ef006e1d43f048f652ca4dc58ad053cd2d44450563d5c54b7"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559679"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.linux-x64-baseline"]
-checksum = "sha256:4fa1a01158dd8043da92d31b270780b0dcc10603038d9b61cac4d81ab63fb71f"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-linux-x86_64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270163"
+checksum = "sha256:2a02fed16beb651ef006e1d43f048f652ca4dc58ad053cd2d44450563d5c54b7"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559679"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.linux-x64-musl"]
-checksum = "sha256:4fa1a01158dd8043da92d31b270780b0dcc10603038d9b61cac4d81ab63fb71f"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-linux-x86_64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270163"
+checksum = "sha256:2a02fed16beb651ef006e1d43f048f652ca4dc58ad053cd2d44450563d5c54b7"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559679"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:4fa1a01158dd8043da92d31b270780b0dcc10603038d9b61cac4d81ab63fb71f"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-linux-x86_64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270163"
+checksum = "sha256:2a02fed16beb651ef006e1d43f048f652ca4dc58ad053cd2d44450563d5c54b7"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-linux-x86_64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559679"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.macos-arm64"]
-checksum = "sha256:32b53df09872628059c789a69f02a6b8e29e14ddf26711421f3463f70c1aef17"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-macos-aarch64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270162"
+checksum = "sha256:5fc7a7e7adfaca56fa80aa89dcb025693357268dab8285b9ce2d08a2313c89de"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-macos-aarch64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559677"
 provenance = "github-attestations"
-provenance_verified = true
 
 [tools.herdr."platforms.macos-x64"]
-checksum = "sha256:d0c920b2a126a74809fa1491411c9a097a44786cac9c2ca51b818a995581cf16"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-macos-x86_64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270161"
+checksum = "sha256:053be0639935fe54ab5efbdb46651054e4f6a753a5b43153c88bd6912bce1e94"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-macos-x86_64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559678"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.macos-x64-baseline"]
-checksum = "sha256:d0c920b2a126a74809fa1491411c9a097a44786cac9c2ca51b818a995581cf16"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-macos-x86_64"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270161"
+checksum = "sha256:053be0639935fe54ab5efbdb46651054e4f6a753a5b43153c88bd6912bce1e94"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-macos-x86_64"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559678"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.windows-x64"]
-checksum = "sha256:b4508c445de1c1a68c760a01735da2aba2fa214b2aafd4b07f732e49b2a64b11"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-windows-x86_64.zip"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270164"
+checksum = "sha256:04ce380cac5af27bfcf75d0951ac49b7afe4c984aee8852985806d4f71f93a6e"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-windows-x86_64.zip"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559681"
 provenance = "github-attestations"
 
 [tools.herdr."platforms.windows-x64-baseline"]
-checksum = "sha256:b4508c445de1c1a68c760a01735da2aba2fa214b2aafd4b07f732e49b2a64b11"
-url = "https://github.com/herdrdev/herdr/releases/download/v0.9.0/herdr-windows-x86_64.zip"
-url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/549270164"
+checksum = "sha256:04ce380cac5af27bfcf75d0951ac49b7afe4c984aee8852985806d4f71f93a6e"
+url = "https://github.com/herdrdev/herdr/releases/download/v0.9.1/herdr-windows-x86_64.zip"
+url_api = "https://api.github.com/repos/herdrdev/herdr/releases/assets/568559681"
 provenance = "github-attestations"
 
 [[tools.jq]]
