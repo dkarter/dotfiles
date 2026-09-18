@@ -1381,6 +1381,64 @@ url = "https://github.com/dkarter/hwt/releases/download/v0.9.1/hwt-0.9.1.tar.gz"
 url_api = "https://api.github.com/repos/dkarter/hwt/releases/assets/563864847"
 provenance = "github-attestations"
 
+[[tools."github:dkarter/ink"]]
+version = "0.2.1"
+backend = "github:dkarter/ink"
+
+[tools."github:dkarter/ink"."platforms.linux-arm64"]
+checksum = "sha256:b28b5d9a833656bc88d2d51362116b76acdb49df4b30d99d932465ba284036d6"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571927980"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.linux-arm64-musl"]
+checksum = "sha256:b28b5d9a833656bc88d2d51362116b76acdb49df4b30d99d932465ba284036d6"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571927980"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.linux-x64"]
+checksum = "sha256:6c3107df3300ec366bafd1f1a80afe580545c85103d5e25f0f698efabce54b07"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571928065"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.linux-x64-baseline"]
+checksum = "sha256:6c3107df3300ec366bafd1f1a80afe580545c85103d5e25f0f698efabce54b07"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571928065"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.linux-x64-musl"]
+checksum = "sha256:6c3107df3300ec366bafd1f1a80afe580545c85103d5e25f0f698efabce54b07"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571928065"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:6c3107df3300ec366bafd1f1a80afe580545c85103d5e25f0f698efabce54b07"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_linux_x86_64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571928065"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.macos-arm64"]
+checksum = "sha256:20b9f0478eb539ba540412b02e736e9f6891cde0bff7c0e92b59c3a95cf18751"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571928185"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.windows-x64"]
+checksum = "sha256:21944df22272faa1f5f99e6eebe40c49f5f29a26a7e6bc8868c002d9a027da57"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571929232"
+provenance = "github-attestations"
+
+[tools."github:dkarter/ink"."platforms.windows-x64-baseline"]
+checksum = "sha256:21944df22272faa1f5f99e6eebe40c49f5f29a26a7e6bc8868c002d9a027da57"
+url = "https://github.com/dkarter/ink/releases/download/v0.2.1/ink_0.2.1_windows_x86_64.zip"
+url_api = "https://api.github.com/repos/dkarter/ink/releases/assets/571929232"
+provenance = "github-attestations"
+
 [[tools."github:dkarter/lnr"]]
 version = "3.1.0"
 backend = "github:dkarter/lnr"
