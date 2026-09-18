@@ -169,7 +169,7 @@ gcbq() {
   if [[ $# -gt 0 ]]; then
     title="$*"
   else
-    title=$(gum input --placeholder="Issue title...") || return
+    title=$(ink input --placeholder="Issue title...") || return
     [[ -n "${title//[[:space:]]/}" ]] || return
   fi
 

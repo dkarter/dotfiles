@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # Herdr popups can run outside the interactive shell that activates Mise.
-if ! command -v gum >/dev/null || ! command -v gh >/dev/null; then
+if ! command -v ink >/dev/null || ! command -v gh >/dev/null; then
   export PATH="$HOME/.local/share/mise/shims:$PATH"
 fi
 
-input="${1:-$(gum input --placeholder="GitHub URL or owner/repo...")}"
+input="${1:-$(ink input --placeholder="GitHub URL or owner/repo...")}"
 input="${input%$'\r'}"
 [[ -n "$input" ]] || exit 0
 

@@ -8,7 +8,7 @@ if [[ -z "$repo_root" ]]; then
   exit 1
 fi
 
-input="$(gum input --placeholder="GitHub PR URL, Graphite PR URL, or branch name...")"
+input="$(ink input --placeholder="GitHub PR URL, Graphite PR URL, or branch name...")"
 [[ -z "$input" ]] && exit 0
 
 if [[ "$input" =~ '^https://github\.com/([^/]+)/([^/]+)/pull/([0-9]+)([/?#].*)?$' ]]; then

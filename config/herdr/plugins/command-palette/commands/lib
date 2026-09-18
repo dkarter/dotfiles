@@ -141,7 +141,7 @@ prompt_worktree() {
     esac
   fi
 
-  worktree_input="$(gum input --placeholder="$input_placeholder" || true)"
+  worktree_input="$(ink input --placeholder="$input_placeholder" || true)"
   [[ -n "$worktree_input" ]]
 }
 
