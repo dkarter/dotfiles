@@ -731,25 +731,6 @@ checksum = "sha256:db57cfdb295154397285c986f6e93e3d8f8b1c6fb56297e3e3a1b96218aa2
 url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_win64_29.1.zip"
 url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567953291"
 
-[[tools.erlang]]
-version = "29.1"
-backend = "core:erlang"
-
-[tools.erlang.options]
-precompiled_os = "ubuntu-24.04"
-
-[tools.erlang."platforms.linux-arm64"]
-checksum = "sha256:c672f984e6fb7db13a71ac38b9659347d32ccb356b48ca35152301ae12429a70"
-url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.1.tar.gz"
-
-[tools.erlang."platforms.linux-x64"]
-checksum = "sha256:008e2dfad440bbbefa8e38b0e0933df1017098e241641251a6235bde50ef6e99"
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.1.tar.gz"
-
-[tools.erlang."platforms.linux-x64-baseline"]
-checksum = "sha256:008e2dfad440bbbefa8e38b0e0933df1017098e241641251a6235bde50ef6e99"
-url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.1.tar.gz"
-
 [[tools.expert]]
 version = "0.1.10"
 backend = "aqua:expert-lsp/expert"
