@@ -4,7 +4,9 @@ import type { RGBA } from '@opentui/core';
 import { useTerminalDimensions } from '@opentui/solid';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { createSignal, onCleanup, onMount } from 'solid-js';
+import { createSignal, onMount } from 'solid-js';
+
+import { createRefreshCoordinator } from './refresh-coordinator';
 
 type GitStatus = {
   branch: string;
@@ -31,6 +33,7 @@ type GitTheme = {
 
 const execFileAsync = promisify(execFile);
 const CONFLICTED = new Set(['DD', 'AU', 'UD', 'UA', 'DU', 'AA', 'UU']);
+export const GIT_STATUS_ARGS = ['--no-optional-locks', 'status', '--no-refresh', '--porcelain=v2', '--branch'];
 
 const truncateMiddle = (value: string, maxLength: number) => {
   if (value.length <= maxLength) {
@@ -42,7 +45,7 @@ const truncateMiddle = (value: string, maxLength: number) => {
   return `${value.slice(0, startLength)}…${value.slice(-endLength)}`;
 };
 
-const parseStatus = (output: string): GitStatus | undefined => {
+export const parseStatus = (output: string): GitStatus | undefined => {
   const status: GitStatus = {
     branch: '',
     ahead: 0,
@@ -104,34 +107,32 @@ const GitStatusPlugin = {
   setup(ctx: Plugin.Context) {
     const location = ctx.location ?? ctx.data.location.default();
     const [status, setStatus] = createSignal<GitStatus>();
-    let refreshID = 0;
-
-    const refresh = async () => {
-      const id = ++refreshID;
+    const refresh = createRefreshCoordinator(async (signal) => {
       try {
-        const { stdout } = await execFileAsync('git', ['--no-optional-locks', 'status', '--porcelain=v2', '--branch'], {
+        const { stdout } = await execFileAsync('git', GIT_STATUS_ARGS, {
           cwd: location.directory,
           timeout: 2_000,
           maxBuffer: 1024 * 1024,
+          signal,
         });
-        if (id === refreshID) {
+        if (!signal.aborted) {
           setStatus(parseStatus(stdout));
         }
       } catch {
-        if (id === refreshID) {
+        if (!signal.aborted) {
           setStatus(undefined);
         }
       }
-    };
+    });
 
     const stopFilesystem = ctx.data.on('filesystem.changed', (event) => {
       if (!event.location || event.location.directory === location.directory) {
-        void refresh();
+        refresh.request();
       }
     });
     const stopBranch = ctx.data.on('vcs.branch.updated', (event) => {
       if (!event.location || event.location.directory === location.directory) {
-        void refresh();
+        refresh.request();
       }
     });
 
@@ -140,9 +141,7 @@ const GitStatusPlugin = {
       render: ({ mode }) => {
         const dimensions = useTerminalDimensions();
         onMount(() => {
-          void refresh();
-          const timer = setInterval(refresh, 3_000);
-          onCleanup(() => clearInterval(timer));
+          refresh.request();
         });
 
         const theme = ctx.theme as unknown as GitTheme;
@@ -187,7 +186,7 @@ const GitStatusPlugin = {
     });
 
     return () => {
-      refreshID += 1;
+      refresh.dispose();
       stopFilesystem();
       stopBranch();
       unregister();
