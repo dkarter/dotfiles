@@ -1,13 +1,26 @@
-[settings.general]
-mise = true
+#:schema https://pitchfork.jdx.dev/schema.json
 
 [daemons.ghtkn-agent]
 run = "exec ghtkn agent start"
-boot_start = true
 retry = true
+boot_start = true
 
 [daemons.github-mcp-proxy]
 run = "exec github-mcp-proxy -config ~/.config/mcp-proxy/config.json"
-boot_start = true
-ready_http = "http://127.0.0.1:9090/_readyz"
 retry = true
+ready_http = "http://127.0.0.1:9090/_readyz"
+boot_start = true
+
+[settings.general]
+mise = true
+
+[settings.proxy]
+auto_trust = true
+enable = true
+https = true
+port = 443
+sync_hosts = false
+
+[settings.supervisor]
+auto_start = true
+user = "dorian"
