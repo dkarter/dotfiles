@@ -4,6 +4,22 @@ local augroup = require('core.utils').augroup
 
 require('pi_editor_context').apply()
 
+augroup('ConfigSchemas', {
+  {
+    event = { 'BufNewFile' },
+    pattern = { 'mise.toml', 'pitchfork.toml' },
+    command = function(args)
+      local schemas = {
+        ['mise.toml'] = 'https://mise.jdx.dev/schema/mise.json',
+        ['pitchfork.toml'] = 'https://pitchfork.jdx.dev/schema.json',
+      }
+      local filename = vim.fn.fnamemodify(args.file, ':t')
+
+      vim.api.nvim_buf_set_lines(args.buf, 0, 0, false, { '#:schema ' .. schemas[filename], '' })
+    end,
+  },
+})
+
 -- automatic spell check for some file types
 augroup('SetSpell', {
   {
