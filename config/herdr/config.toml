@@ -17,21 +17,7 @@ hide_tab_bar_when_single_tab = true
 agent_panel_sort = "priority"
 
 [ui.sidebar.agents]
-rows = [
-  [
-    "state_icon",
-    "workspace",
-    "$pr",
-  ],
-  [
-    "terminal_title_stripped",
-  ],
-  [
-    "agent",
-    "state_text",
-    "$context",
-  ],
-]
+rows = [["state_icon", "workspace", "$pr"], ["agent", "state_text", "$context"]]
 
 [experimental]
 pane_history = true

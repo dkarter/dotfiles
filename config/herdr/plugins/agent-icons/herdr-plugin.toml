@@ -1,0 +1,13 @@
+id = "dotfiles.agent-icons"
+name = "Agent Icons"
+version = "0.1.0"
+min_herdr_version = "0.9.1"
+description = "Adds Nerd Font icons to agent display names"
+platforms = ["macos", "linux"]
+
+[[startup]]
+command = ["./sync"]
+
+[[events]]
+on = "pane.agent_detected"
+command = ["./sync"]

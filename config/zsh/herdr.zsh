@@ -2,36 +2,36 @@ if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} && -z ${HERDR_DISABLE_PANE_TI
   autoload -Uz add-zsh-hook
 
   typeset -gA HERDR_PANE_TITLES=(
-    amp ' amp'
+    amp "${HERDR_AGENT_ICONS[amp]} amp"
     btop '󰄪 btop'
-    claude ' claude'
-    cline ' cline'
-    codex ' codex'
-    copilot ' copilot'
-    cursor ' cursor'
+    claude "${HERDR_AGENT_ICONS[claude]} claude"
+    cline "${HERDR_AGENT_ICONS[cline]} cline"
+    codex "${HERDR_AGENT_ICONS[codex]} codex"
+    copilot "${HERDR_AGENT_ICONS[copilot]} copilot"
+    cursor "${HERDR_AGENT_ICONS[cursor]} cursor"
     diffnav ' diffnav'
     dive '  dive'
     fx ' fx'
-    gemini ' gemini'
+    gemini "${HERDR_AGENT_ICONS[gemini]} gemini"
     gh ' github'
     git ' git'
-    grok ' grok'
-    hermes ' hermes'
+    grok "${HERDR_AGENT_ICONS[grok]} grok"
+    hermes "${HERDR_AGENT_ICONS[hermes]} hermes"
     kdash '󱃾 kdash'
-    kilo ' kilo'
-    kimi ' kimi'
+    kilo "${HERDR_AGENT_ICONS[kilo]} kilo"
+    kimi "${HERDR_AGENT_ICONS[kimi]} kimi"
     lazydocker '  lazydocker'
     lazygit ' lazygit'
-    mastracode ' mastracode'
+    mastracode "${HERDR_AGENT_ICONS[mastracode]} mastracode"
     mix ' elixir'
     nvim ' neovim'
-    opencode2 ' opencode v2'
-    opencode ' opencode'
-    pi ' pi'
+    opencode2 "${HERDR_AGENT_ICONS[opencode]} opencode v2"
+    opencode "${HERDR_AGENT_ICONS[opencode]} opencode"
+    pi "${HERDR_AGENT_ICONS[pi]} pi"
     posting '󰒊 posting'
     psql ' psql'
     pspg ' pspg'
-    qodercli ' qodercli'
+    qodercli "${HERDR_AGENT_ICONS[qodercli]} qodercli"
     tuicr ' tuicr'
     tv '󰟴 television'
     yazi ' yazi'

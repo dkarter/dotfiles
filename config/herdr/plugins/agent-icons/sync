@@ -1,0 +1,48 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+source "${0:A:h}/../../../zsh/agent-icons.zsh"
+
+set_agent_icon() {
+  local pane_id=$1 agent=$2 label=$3 icon=${HERDR_AGENT_ICONS[$2]-}
+  [[ -n $icon ]] || return
+
+  "$herdr_bin" pane report-metadata "$pane_id" \
+    --source "dotfiles:agent-icons:$agent" \
+    --agent "$agent" \
+    --display-agent "$icon $label" >/dev/null
+}
+
+if [[ ${HERDR_PLUGIN_EVENT:-} == pane.agent_detected ]]; then
+  event_fields=$(
+    jq -r \
+      '[.data.pane_id, (.data.agent // ""), (.data.released // false)] | @tsv' \
+      <<<"${HERDR_PLUGIN_EVENT_JSON:?}"
+  )
+  IFS=$'\t' read -r pane_id agent released <<<"$event_fields"
+
+  if [[ $released != true && -n $agent ]]; then
+    agent_json=$("$herdr_bin" agent get "$pane_id")
+    agent_fields=$(
+      jq -r '[.result.agent.agent, (.result.agent.name // .result.agent.agent)] | @tsv' \
+        <<<"$agent_json"
+    )
+    IFS=$'\t' read -r current_agent label <<<"$agent_fields"
+    set_agent_icon "$pane_id" "$current_agent" "$label"
+  fi
+  exit
+fi
+
+agents_json=$("$herdr_bin" agent list)
+agent_rows=$(
+  jq -r \
+    '.result.agents[] | select(.agent != null) | [.pane_id, .agent, (.name // .agent)] | @tsv' \
+    <<<"$agents_json"
+)
+
+if [[ -n $agent_rows ]]; then
+  while IFS=$'\t' read -r pane_id agent label; do
+    set_agent_icon "$pane_id" "$agent" "$label"
+  done <<<"$agent_rows"
+fi
