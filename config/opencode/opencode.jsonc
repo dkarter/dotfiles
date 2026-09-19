@@ -27,6 +27,10 @@
       "enabled": true,
       "type": "local",
       "command": ["chrome-devtools-mcp", "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"]
+    },
+    "pitchfork": {
+      "type": "local",
+      "command": ["pitchfork", "mcp"]
     }
   },
   "lsp": {
