@@ -20,33 +20,16 @@ agent_panel_sort = "priority"
 rows = [
   [
     "state_icon",
-    { token = "workspace", bold = true },
-    { token = "$pr", fg = "#bb9af7" },
+    "workspace",
+    "$pr",
   ],
   [
-    { token = "agent", fg = "#7dcfff" },
-  ],
-]
-
-[ui.sidebar.agents.rows_by_agent]
-claude = [
-  [
-    "state_icon",
-    { token = "workspace", bold = true },
-    { token = "$pr", fg = "#bb9af7" },
+    "terminal_title_stripped",
   ],
   [
-    { token = "terminal_title_stripped", fg = "#383838" },
-  ],
-]
-opencode = [
-  [
-    "state_icon",
-    { token = "workspace", bold = true },
-    { token = "$pr", fg = "#bb9af7" },
-  ],
-  [
-    { token = "terminal_title_stripped", fg = "#c0caf5" },
+    "agent",
+    "state_text",
+    "$context",
   ],
 ]
 
