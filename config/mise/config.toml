@@ -41,7 +41,7 @@
 "github:dkarter/hwt" = "latest"              # deterministic Herdr worktree orchestration
 "github:dkarter/lnr" = "latest"              # linear cli
 "github:dlvhdr/diffnav" = "latest"           # A git diff pager based on delta but with a file tree, à la GitHub.
-"github:github/github-mcp-server" = "1.12.1" # GitHub MCP server for local development
+"github:github/github-mcp-server" = "1.12.2" # GitHub MCP server for local development
 "github:mazznoer/lolcrab" = "latest"         # like lolcat, but written in Rust and with more features
 "github:modem-dev/hunk" = "latest"           # interactive terminal diff viewer
 "github:remoteoss/dexter" = "latest"         # fast af Elixir LSP
@@ -108,7 +108,7 @@ zoxide = "latest"                            # a modern version of autojump
 # On version bumps, verify the microsoft1es publisher, registry signatures, official
 # source tag, tarball integrity/contents, and aube audit before replacing these exact
 # versions. Remove the exclusions once trusted-publisher or SLSA provenance returns.
-"npm:@playwright/mcp" = { version = "0.0.80", trust_policy_excludes = [
+"npm:@playwright/mcp" = { version = "0.0.82", trust_policy_excludes = [
   "@playwright/mcp@0.0.80",
   "playwright@1.63.0-alpha-2026-08-31",
   "playwright-core@1.63.0-alpha-2026-08-31",
