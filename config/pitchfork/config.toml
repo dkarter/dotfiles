@@ -18,7 +18,8 @@ mise = true
 auto_trust = true
 enable = true
 https = true
-port = 443
+# port 443 redirects to 8443 through some pitchfork magic, so we don't need to run as root
+port = 8443
 sync_hosts = false
 
 [settings.supervisor]
