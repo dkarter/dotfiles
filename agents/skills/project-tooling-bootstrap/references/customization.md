@@ -27,9 +27,10 @@ Use these defaults as a baseline, then tune by project needs.
 - Add or remove plugins based on file types in the repository.
 - Adjust `lineWidth` only if the team already has a standard.
 
-## `lefthook.yml`
+## `hk.pkl`
 
 - Keep `commit-msg` for conventional commits when team policy requires it.
+- Prefer file-aware builtins for checks and formatters.
 - Keep `pre-push` checks fast; avoid long-running test suites there.
 
 ## `committed.toml`

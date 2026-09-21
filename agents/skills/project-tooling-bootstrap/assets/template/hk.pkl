@@ -1,0 +1,41 @@
+amends "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Builtins.pkl"
+
+hooks {
+  ["check"] {
+    steps {
+      ["dprint"] = Builtins.dprint
+    }
+  }
+
+  ["fix"] {
+    fix = true
+    steps {
+      ["dprint"] = Builtins.dprint
+    }
+  }
+
+  ["pre-commit"] {
+    steps {
+      ["gitleaks"] = (Builtins.gitleaks) {
+        scan = "staged"
+      }
+    }
+  }
+
+  ["commit-msg"] {
+    steps {
+      ["conventional-commits"] {
+        check = "committed --commit-file {{ commit_msg_file }}"
+      }
+    }
+  }
+
+  ["pre-push"] {
+    steps {
+      ["checks"] {
+        check = "hk check --all"
+      }
+    }
+  }
+}

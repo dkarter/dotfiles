@@ -133,7 +133,7 @@ PY
 copy_template "mise.toml"
 ensure_committed_github_backend
 copy_template "dprint.json"
-copy_template "lefthook.yml"
+copy_template "hk.pkl"
 copy_template "committed.toml"
 copy_template "fnox.toml"
 
@@ -147,7 +147,7 @@ Done.
 
 Run in the target repository:
   mise install
-  lefthook install
+  hk install --mise
   mise run fmt
   mise run fmt-check
 EOF
