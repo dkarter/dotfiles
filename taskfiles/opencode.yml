@@ -13,7 +13,4 @@ tasks:
 
   plugins:check:
     desc: Checks that local OpenCode plugin dependencies match the lockfile
-    cmd: >-
-      mise exec -- aube install --frozen-lockfile --dry-run
-      --filter ./config/opencode/plugins
-      --filter ./config/opencode/tui-plugin
+    cmd: hk check --all --step opencode-dependencies

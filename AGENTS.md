@@ -54,7 +54,7 @@ dependency management.
 ### Automation & Build
 
 - **Task:** Modern Makefile alternative for automation
-- **Lefthook:** Git hooks management
+- **hk:** Git hooks and file-aware check orchestration
 - **Conventional Commits:** Standardized commit messages checked with `committed` CLI
 - **Release Please:** Automated semantic versioning through GitHub Actions
 
@@ -97,7 +97,7 @@ task ci:run     # Run all linting/checks
 ### Development Workflow
 
 ```bash
-# Conventional commits are enforced via lefthook and committed
+# Conventional commits are enforced via hk and committed
 git commit -m "feat: add new feature"
 
 # CI checks run on pre-push
@@ -131,7 +131,7 @@ git push
 
 - **Conventional Commits:** Enforced via commitlint
 - **Semantic Versioning:** Automated via Release Please
-- **Hooks:** Managed by Lefthook
+- **Hooks:** Managed by hk
 - **Templates:** Custom commit message templates
 
 ### macOS Integration

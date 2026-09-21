@@ -1,0 +1,129 @@
+amends "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Builtins.pkl"
+
+local typos = new Step {
+  exclude = ".codespellignorelines"
+  check = """
+    set --
+    for file in {{files}}; do
+      [ ! -e "$file" ] || set -- "$@" "$file"
+    done
+    [ "$#" -eq 0 ] || typos --force-exclude "$@"
+    """
+  fix = """
+    set --
+    for file in {{files}}; do
+      [ ! -e "$file" ] || set -- "$@" "$file"
+    done
+    [ "$#" -eq 0 ] || typos --force-exclude --write-changes "$@"
+    """
+}
+
+local checks = new Mapping<String, Step> {
+  ["dprint"] = Builtins.dprint
+
+  ["ghostty"] {
+    glob = "config/ghostty/**"
+    check = "ghostty +validate-config"
+  }
+
+  ["herdr"] {
+    glob = List(
+      "config/herdr/config.toml",
+      "config/herdr/plugins/**/herdr-plugin.toml"
+    )
+    check = "herdr config check"
+  }
+
+  ["lua"] {
+    glob = List(
+      "config/nvim/lua/**/*.lua",
+      "config/nvim/lua_ls_ci.lua"
+    )
+    check = """
+      VIMRUNTIME="$(NVIM_LOG_FILE="${TMPDIR:-/tmp}/nvim-lua-lint.log" nvim --headless --clean --cmd 'lua io.stdout:write(vim.env.VIMRUNTIME)' --cmd qa)" \
+        lua-language-server \
+          --check config/nvim/lua \
+          --checklevel=Warning \
+          --configpath="$PWD/config/nvim/lua_ls_ci.lua" \
+          --metapath="${TMPDIR:-/tmp}/lua-language-server-meta"
+      """
+  }
+
+  ["opencode-dependencies"] {
+    glob = List(
+      "aube-lock.yaml",
+      "aube-workspace.yaml",
+      "config/opencode/plugins/package.json",
+      "config/opencode/tui-plugin/package.json"
+    )
+    check = """
+      aube install --frozen-lockfile --dry-run \
+        --filter ./config/opencode/plugins \
+        --filter ./config/opencode/tui-plugin
+      """
+  }
+
+  ["script-tests"] {
+    glob = List(
+      "scripts/enrich-release-notes.ts",
+      "scripts/enrich-release-notes.test.ts"
+    )
+    check = "node --test scripts/*.test.ts"
+  }
+
+  ["shellcheck"] = Builtins.shellcheck
+
+  ["taplo"] = (Builtins.taplo) {
+    check = "RUST_LOG=error taplo lint --config .taplo.toml {{files}}"
+  }
+
+  ["typos"] = typos
+
+  ["yamllint"] = (Builtins.yamllint) {
+    check = "yamllint --strict --config-file ./config/yamllint/config {{files}}"
+  }
+}
+
+hooks {
+  ["check"] {
+    steps = checks
+  }
+
+  ["fix"] {
+    fix = true
+    steps {
+      ["dprint"] = checks["dprint"]
+      ["typos"] = checks["typos"]
+    }
+  }
+
+  ["pre-commit"] {
+    fix = false
+    stage = false
+    stash = "none"
+    steps {
+      ["dprint"] = checks["dprint"]
+      ["gitleaks"] = (Builtins.gitleaks) {
+        scan = "staged"
+      }
+      ["typos"] = checks["typos"]
+    }
+  }
+
+  ["commit-msg"] {
+    steps {
+      ["conventional-commits"] {
+        check = "committed --commit-file {{ commit_msg_file }}"
+      }
+    }
+  }
+
+  ["pre-push"] {
+    steps {
+      ["ci"] {
+        check = "hk check --all --no-fail-fast"
+      }
+    }
+  }
+}

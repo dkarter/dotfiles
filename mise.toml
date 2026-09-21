@@ -8,7 +8,7 @@ aube = "latest"
 bun = "latest"
 dprint = "latest"
 gitleaks = "latest"
-lefthook = "latest"
+hk = "latest"
 lua-language-server = "3"
 node = "26"
 "github:nubjs/nub" = "latest"
@@ -23,7 +23,7 @@ uv = "latest"
 yamllint = "1.38"
 
 [hooks]
-postinstall = "lefthook install"
+postinstall = "hk install --mise"
 
 [settings]
 experimental = true
