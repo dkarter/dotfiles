@@ -82,7 +82,6 @@ lima = "latest"                              # linux virtual machines for macOS 
 lsd = "latest"                               # ls with icons and colors, like `exa` but with more features
 lua-language-server = "latest"               # Lua Language Server
 node = "24"                                  # node javascript runtime
-opencode = "latest"                          # coding agent
 pi = "latest"                                # customizable ai agent
 "aqua:jdx/pitchfork" = "latest"              # run multiple commands in parallel, with a nice UI
 python = "3.14"                              # Python programming language
@@ -115,6 +114,7 @@ zoxide = "latest"                            # a modern version of autojump
 ] }
 "npm:chrome-devtools-mcp" = "latest"
 "github:dkarter/ink" = "latest"
+"npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 
 [tools."github:TBXark/mcp-proxy"]
 version = "latest"
@@ -124,11 +124,6 @@ rename_exe = "github-mcp-proxy"
 [tools."npm:@fission-ai/openspec"]
 version = "latest"
 allow_builds = false
-
-# opencode v2 beta
-[tools."npm:@opencode-ai/cli"]
-version = "beta"
-allow_builds = true
 
 # squash-safe stacked PR/MR repair CLI
 [tools."npm:@kitlangton/stack"]
@@ -181,7 +176,7 @@ minimum_release_age_excludes = [
   "github:dkarter/vstui",
   "github:dkarter/vellum",
   "amp",
-  "npm:@opencode-ai/cli",
+  "npm:@opencode/cli",
 ]
 
 [settings.github]

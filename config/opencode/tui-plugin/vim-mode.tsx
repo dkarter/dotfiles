@@ -1,5 +1,5 @@
 /** @jsxImportSource @opentui/solid */
-import type { Plugin } from '@opencode-ai/plugin-v2/tui';
+import type { Plugin } from '@opencode/plugin/tui';
 import type { CursorStyleOptions, EditBufferRenderable, RGBA } from '@opentui/core';
 import { useTerminalDimensions } from '@opentui/solid';
 import { onCleanup } from 'solid-js';

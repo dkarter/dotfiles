@@ -8,7 +8,7 @@ if [[ -z "$prompt_file" || ! -f "$prompt_file" ]]; then
   exit 1
 fi
 
-agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-opencode --port --model \"$(opencode-last-model)\"}"
+agent_command="${HERDR_COMMANDS_AGENT_COMMAND:-opencode}"
 prompt_text="$(<"$prompt_file")"
 rm -f "$prompt_file"
 

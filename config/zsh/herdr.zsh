@@ -25,7 +25,6 @@ if [[ ${HERDR_ENV:-} == 1 && -n ${HERDR_PANE_ID:-} && -z ${HERDR_DISABLE_PANE_TI
     mastracode "${HERDR_AGENT_ICONS[mastracode]} mastracode"
     mix ' elixir'
     nvim ' neovim'
-    opencode2 "${HERDR_AGENT_ICONS[opencode]} opencode v2"
     opencode "${HERDR_AGENT_ICONS[opencode]} opencode"
     pi "${HERDR_AGENT_ICONS[pi]} pi"
     posting '󰒊 posting'

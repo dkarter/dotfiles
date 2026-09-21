@@ -1,4 +1,4 @@
-import type { Plugin } from '@opencode-ai/plugin';
+import { Plugin } from '@opencode/plugin';
 
 type ToolArgs = Record<string, unknown>;
 
@@ -55,14 +55,15 @@ const isUnsetCreateValue = (key: string, value: unknown) => {
   return key === 'estimate' && value === 0;
 };
 
-export const LinearMcpSanitizePlugin: Plugin = async () => {
-  return {
-    'tool.execute.before': async (input, output) => {
-      if (!isLinearSaveIssueTool(input.tool) || !output.args || typeof output.args !== 'object') {
+export const LinearMcpSanitizePlugin = Plugin.define({
+  id: 'linear-mcp-sanitize',
+  async setup(ctx) {
+    await ctx.tool.hook('execute.before', (event) => {
+      if (!isLinearSaveIssueTool(event.tool) || !event.input || typeof event.input !== 'object') {
         return;
       }
 
-      const args = output.args as ToolArgs;
+      const args = event.input as ToolArgs;
 
       if (!isCreate(args)) {
         return;
@@ -75,8 +76,8 @@ export const LinearMcpSanitizePlugin: Plugin = async () => {
           delete args[key];
         }
       }
-    },
-  };
-};
+    });
+  },
+});
 
 export default LinearMcpSanitizePlugin;

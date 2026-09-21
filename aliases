@@ -50,8 +50,7 @@ kctx() {
 alias kns='tv kns --inline'
 
 # AI tooling
-alias oc2='opencode2'
-alias oc='opencode --port'
+alias oc='opencode'
 alias ocr='opencode run'
 # opencode in docker
 alias ocd='docker run -it --rm -v "$(pwd):/workspace" -v "$HOME/.config/opencode:/root/.config/opencode" -v "$HOME/.local/share/opencode:/root/.local/share/opencode" -w /workspace ghcr.io/anomalyco/opencode'
