@@ -1,6 +1,6 @@
 ---
 name: merge
-description: Commit, rebase, and merge the current branch. Do not invoke automatically.
+description: Finish a Herdr worktree by committing, rebasing, merging, and cleaning it up. Use only when the user explicitly invokes /merge or asks to merge the current branch. Never use for a commit-only request.
 disable-model-invocation: true
 allowed-tools: Read, Bash, Glob, Grep
 ---
@@ -8,6 +8,10 @@ allowed-tools: Read, Bash, Glob, Grep
 <!-- Customize the commit style and rebase behavior to match your workflow. -->
 
 **Arguments:** `$ARGUMENTS`
+
+This skill performs the complete merge workflow. A request to commit, stage, or
+save changes without rebasing and merging is outside this skill; handle it as a
+normal Git operation in the current checkout.
 
 Check the arguments for flags:
 
