@@ -2547,7 +2547,7 @@ checksum = "sha256:158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e
 url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip"
 
 [[tools."npm:@commitlint/cli"]]
-version = "21.2.2"
+version = "21.2.3"
 backend = "npm:@commitlint/cli"
 
 [[tools."npm:@fission-ai/openspec"]]
@@ -2566,7 +2566,7 @@ version = "0.155.1"
 backend = "npm:@openai/codex"
 
 [[tools."npm:@opencode/cli"]]
-version = "2.0.10~aube~9d612c535e3f7b77"
+version = "2.0.12"
 backend = "npm:@opencode/cli"
 
 [tools."npm:@opencode/cli".options]
@@ -2596,63 +2596,8 @@ version = "1.20.0"
 backend = "npm:varlock"
 
 [[tools.pi]]
-version = "0.85.1"
+version = "0.86.1"
 backend = "aqua:earendil-works/pi"
-
-[tools.pi."platforms.linux-arm64"]
-checksum = "sha256:042d20ae885ee4f3b102815f3280b962c377b2e9fb44de4037908cc530eae4d4"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797549"
-
-[tools.pi."platforms.linux-arm64-musl"]
-checksum = "sha256:042d20ae885ee4f3b102815f3280b962c377b2e9fb44de4037908cc530eae4d4"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797549"
-
-[tools.pi."platforms.linux-x64"]
-checksum = "sha256:494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797547"
-
-[tools.pi."platforms.linux-x64-baseline"]
-checksum = "sha256:494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797547"
-
-[tools.pi."platforms.linux-x64-musl"]
-checksum = "sha256:494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797547"
-
-[tools.pi."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797547"
-
-[tools.pi."platforms.macos-arm64"]
-checksum = "sha256:d5f70e3c0cf7398eac239fd0261ee074d98b7ba7f6b43fe3617f052ed5b79d06"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797550"
-
-[tools.pi."platforms.macos-x64"]
-checksum = "sha256:adb918b845625f184d8bea408d55eacaf21aa87238793c0f5b4f3b9737bce62b"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797548"
-
-[tools.pi."platforms.macos-x64-baseline"]
-checksum = "sha256:adb918b845625f184d8bea408d55eacaf21aa87238793c0f5b4f3b9737bce62b"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797548"
-
-[tools.pi."platforms.windows-x64"]
-checksum = "sha256:002fa95b90d521245b9985d8f168caebc237ad56e7e30b319807dee1b2e17e1c"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-windows-x64.zip"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797560"
-
-[tools.pi."platforms.windows-x64-baseline"]
-checksum = "sha256:002fa95b90d521245b9985d8f168caebc237ad56e7e30b319807dee1b2e17e1c"
-url = "https://github.com/earendil-works/pi/releases/download/v0.85.1/pi-windows-x64.zip"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/545797560"
 
 [[tools."pipx:httpie"]]
 version = "3.2.4"
@@ -2663,8 +2608,9 @@ version = "2.5.1"
 backend = "pipx:neovim-remote"
 
 [[tools."pipx:yq"]]
-version = "4.1.2"
+version = "4.2.0"
 backend = "pipx:yq"
+uv = { path = "locks/pipx-yq/4.2.0", digest = "sha256:a8b0bd46ad18e6f487da11b9b6ec0b078d0666d2d517fe1ca0fcfef34524fbe1" }
 
 [[tools.python]]
 version = "3.14.7"
