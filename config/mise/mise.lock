@@ -760,52 +760,62 @@ checksum = "sha256:7863c546cda13fecc949e562e326042451dacf8fd8698a36783cb71eeb223
 url = "https://builds.hex.pm/builds/elixir/v1.20.4-otp-29.zip"
 
 [[tools.erlang]]
-version = "29.1"
+version = "29.1.1"
 backend = "core:erlang"
 specifiers = ["29"]
 
 [tools.erlang."platforms.linux-arm64-musl"]
-checksum = "sha256:568b4edbeadc414b87257ebbb5ededc313ad7deaa688679ca0bd6bb49808cce1"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_src_29.1.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567945731"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.1.1/otp_src_29.1.1.tar.gz"
 install = "source"
 
 [tools.erlang."platforms.linux-x64-musl"]
-checksum = "sha256:568b4edbeadc414b87257ebbb5ededc313ad7deaa688679ca0bd6bb49808cce1"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_src_29.1.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567945731"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.1.1/otp_src_29.1.1.tar.gz"
 install = "source"
 
 [tools.erlang."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:568b4edbeadc414b87257ebbb5ededc313ad7deaa688679ca0bd6bb49808cce1"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_src_29.1.tar.gz"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567945731"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.1.1/otp_src_29.1.1.tar.gz"
 install = "source"
 
 [tools.erlang."platforms.macos-arm64"]
-checksum = "sha256:f588fd647dcbbbc0039465ce667f8691a075953f178d3422d3d6b63d444f0595"
-url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.1/otp-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/567801096"
+checksum = "sha256:0e80f209b06d9d13cf3b5f7c07228d9561aff983e6e55ea9c8ebda085db286cc"
+url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.1.1/otp-aarch64-apple-darwin.tar.gz"
 
 [tools.erlang."platforms.macos-x64"]
-checksum = "sha256:f4857836de068b7e31c134dcb19c5bea77320caf1c412e0d6ac449e206f62a51"
-url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.1/otp-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/567818745"
+checksum = "sha256:474373887e7a3395bbe033353be74113a59cfc9f3d1565ca740972c3b7c02aa0"
+url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.1.1/otp-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/580936007"
 
 [tools.erlang."platforms.macos-x64-baseline"]
-checksum = "sha256:f4857836de068b7e31c134dcb19c5bea77320caf1c412e0d6ac449e206f62a51"
-url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.1/otp-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/567818745"
+checksum = "sha256:474373887e7a3395bbe033353be74113a59cfc9f3d1565ca740972c3b7c02aa0"
+url = "https://github.com/erlef/otp_builds/releases/download/OTP-29.1.1/otp-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/erlef/otp_builds/releases/assets/580936007"
 
 [tools.erlang."platforms.windows-x64"]
-checksum = "sha256:db57cfdb295154397285c986f6e93e3d8f8b1c6fb56297e3e3a1b96218aa27ad"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_win64_29.1.zip"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567953291"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.1.1/otp_src_29.1.1.tar.gz"
+install = "source"
 
 [tools.erlang."platforms.windows-x64-baseline"]
-checksum = "sha256:db57cfdb295154397285c986f6e93e3d8f8b1c6fb56297e3e3a1b96218aa27ad"
-url = "https://github.com/erlang/otp/releases/download/OTP-29.1/otp_win64_29.1.zip"
-url_api = "https://api.github.com/repos/erlang/otp/releases/assets/567953291"
+url = "https://github.com/erlang/otp/releases/download/OTP-29.1.1/otp_src_29.1.1.tar.gz"
+install = "source"
+
+[[tools.erlang]]
+version = "29.1.1"
+backend = "core:erlang"
+
+[tools.erlang.options]
+precompiled_os = "ubuntu-24.04"
+
+[tools.erlang."platforms.linux-arm64"]
+checksum = "sha256:734946b92e9caf9866c2ee841f1d987cfa625cbee051a87ba4f3eaa8cab0fc7f"
+url = "https://builds.hex.pm/builds/otp/arm64/ubuntu-24.04/OTP-29.1.1.tar.gz"
+
+[tools.erlang."platforms.linux-x64"]
+checksum = "sha256:35186bdae840028df621d14f3a75c68eb52eea90fabd500f7946a5d74bdaf11b"
+url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.1.1.tar.gz"
+
+[tools.erlang."platforms.linux-x64-baseline"]
+checksum = "sha256:35186bdae840028df621d14f3a75c68eb52eea90fabd500f7946a5d74bdaf11b"
+url = "https://builds.hex.pm/builds/otp/amd64/ubuntu-24.04/OTP-29.1.1.tar.gz"
 
 [[tools.expert]]
 version = "0.1.10"
@@ -928,63 +938,63 @@ url = "https://github.com/sharkdp/fd/releases/download/v10.5.0/fd-v10.5.0-x86_64
 url_api = "https://api.github.com/repos/sharkdp/fd/releases/assets/530482901"
 
 [[tools.fnox]]
-version = "1.35.2"
+version = "1.35.3"
 backend = "packslip:github.com/jdx/fnox"
 specifiers = ["latest"]
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:d404b219b6a3c3c4f3531d88cb7d3b96d00891b826d8fcfc2941b8a060028015"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:0bf2d91b31d57969e6c12e4677d77f2f648dde81685fa07a6d691560c8cd89f7"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:e01d961fd668bb678a0fde108057651c40497d6a086f9b32fa4cbb8afe215b1f"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:d0d808ee972747b0868317800772e80f693cb7023ca39a9e75f77c6e9cf57e38"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-aarch64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:5f95929bb8b73cd849b238fbefe3dbf8706f57f876cc5ae23aa9aa9da62a40a9"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:69066f81f624d355c83bcb394ba80f6add80c06b7be92c7b178d38af14a25c52"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.linux-x64-baseline"]
-checksum = "sha256:5f95929bb8b73cd849b238fbefe3dbf8706f57f876cc5ae23aa9aa9da62a40a9"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:69066f81f624d355c83bcb394ba80f6add80c06b7be92c7b178d38af14a25c52"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:9ddbd3e8304f4bd1aae59f0152efd8ec810ada9656e64ce7533d4c46f8aae985"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e0a9bc1e132bc893301cc108afc849412046ebeb3043ef5b4a3de5e45d5f6701"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:9ddbd3e8304f4bd1aae59f0152efd8ec810ada9656e64ce7533d4c46f8aae985"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e0a9bc1e132bc893301cc108afc849412046ebeb3043ef5b4a3de5e45d5f6701"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:3f6e9b4f7a59a5712abe48cf6c97b2a0600392b5cb54059a80b53497adeab354"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:49965f9739d053f544aa32599494b3e2442dcf8c116d92a6a4afa5575e9decd3"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:efb1a830b0b44704b93d1647cab9b9046da7519a869cc6de3437a028c7db7417"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:f56104dc739e6882e6a85fc32149c372450ba6a6799b31f69766234494bababb"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.macos-x64-baseline"]
-checksum = "sha256:efb1a830b0b44704b93d1647cab9b9046da7519a869cc6de3437a028c7db7417"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:f56104dc739e6882e6a85fc32149c372450ba6a6799b31f69766234494bababb"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:ba662d6a6452f8ab060505ae35e3bd81c890fa1ba5ada778b4c451aaf006d6a8"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:6264f8be31e6de99f6f97fa871f6323c9b01d605c0a9b9887e6364fdd74ad4f2"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [tools.fnox."platforms.windows-x64-baseline"]
-checksum = "sha256:ba662d6a6452f8ab060505ae35e3bd81c890fa1ba5ada778b4c451aaf006d6a8"
-url = "https://github.com/jdx/fnox/releases/download/v1.35.2/fnox-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:6264f8be31e6de99f6f97fa871f6323c9b01d605c0a9b9887e6364fdd74ad4f2"
+url = "https://github.com/jdx/fnox/releases/download/v1.35.3/fnox-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 
 [[tools.fx]]
@@ -2656,8 +2666,7 @@ specifiers = ["latest"]
 allow_low_downloads = "true"
 
 [[tools."npm:@opencode/cli"]]
-version = "2.0.12"
-aube = { path = "locks/npm-opencode-cli/2.0.12~009061c2", digest = "sha256:e8caa8fb3e710414eb1101f3bc9ff767bb55b1419315767bbef85f2f11a02f80" }
+version = "2.0.14"
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
