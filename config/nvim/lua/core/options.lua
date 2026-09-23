@@ -56,6 +56,9 @@ opt.signcolumn = 'yes'
 opt.splitbelow = true
 opt.splitright = true
 
+-- synchronize horizontal scrolling in scrollbound windows (useful for diffing)
+opt.scrollopt:append 'hor'
+
 -- should make scrolling faster
 opt.ttyfast = true
 

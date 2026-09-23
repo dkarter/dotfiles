@@ -467,6 +467,11 @@ M.diffview_mappings = {
 }
 
 ---@type LazyKeysSpec[]
+M.codediff_mappings = {
+  { '<leader>gD', '<cmd>CodeDiff<CR>', desc = '[G]it Code[D]iff' },
+}
+
+---@type LazyKeysSpec[]
 M.ripgrep_mappings = {
   --  alias for above
   --  Grep project for selection with Rg
