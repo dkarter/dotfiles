@@ -5,17 +5,19 @@ silent: true
 
 tasks:
   commit:
-    desc: Commits mise lockfiles if changed
+    desc: Commits mise lockfiles and dependency sidecars if changed
     silent: true
     cmd: |
+      # mise.lock records digests of these sidecars; they must travel together.
       set -- \
         './mise.lock' \
         './config/mise/mise.lock' \
         './config/mise/mise.extra.lock' \
-        './config/mise/mise.pdq.lock'
+        './config/mise/mise.pdq.lock' \
+        './config/mise/locks/'
 
       if [[ -z "$(git status --porcelain -- "$@")" ]]; then
-        echo "No changes in mise lockfiles"
+        echo "No changes in mise lockfiles or dependency sidecars"
         exit 0
       fi
 
