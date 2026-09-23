@@ -106,6 +106,8 @@ hooks {
       ["dprint"] = checks["dprint"]
       ["gitleaks"] = (Builtins.gitleaks) {
         scan = "staged"
+        // silence INF chatter on stderr; findings log at warn so leaks still surface
+        check = "gitleaks git --pre-commit --redact --staged --verbose --no-banner --log-level warn"
       }
       ["typos"] = checks["typos"]
     }
