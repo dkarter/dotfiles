@@ -1,0 +1,29 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/config-options.schema.json
+
+[search]
+title = "Visible Files"
+placeholder = "Open a file from this tab..."
+
+[source]
+cmd = "herdr-visible-files"
+
+[actions]
+default = "open"
+
+[[actions.items]]
+name = "open"
+label = "Open in Neovim"
+icon = "󰈙"
+command = ["herdr-open-visible-file", "$path"]
+on_success = "exit"
+
+[item]
+value = "$path"
+template = [
+  [
+    { token = "$display_path", bold = true },
+  ],
+  [
+    { token = "$pane_title", fg = "#565f89" },
+  ],
+]

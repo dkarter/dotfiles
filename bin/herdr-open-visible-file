@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""Reuse a Neovim pane in this tab, or split one to open a selected file."""
+
+import json
+import os
+import shlex
+import subprocess
+import sys
+
+
+def herdr(*args):
+    return subprocess.check_output(
+        [os.environ.get("HERDR_BIN_PATH", "herdr"), *args], text=True
+    )
+
+
+def main():
+    path = os.path.abspath(sys.argv[1])
+    if not os.path.isfile(path):
+        sys.exit(f"File no longer exists: {path}")
+    active = os.environ.get("HERDR_ACTIVE_PANE_ID") or os.environ.get("HERDR_PANE_ID")
+    if not active:
+        sys.exit("No active Herdr pane")
+    layout = json.loads(herdr("pane", "layout", "--pane", active))["result"]["layout"]
+    for pane in sorted(layout["panes"], key=lambda pane: not pane["focused"]):
+        pane_id = pane["pane_id"]
+        info = json.loads(herdr("pane", "process-info", "--pane", pane_id))["result"]["process_info"]
+        if any(process["name"] in ("nvim", "neovim") for process in info["foreground_processes"]):
+            # Send a Vim command, escaping the path as a Vim string and filename.
+            command = "execute 'edit ' . fnameescape('" + path.replace("'", "''") + "')"
+            herdr("pane", "send-keys", pane_id, "esc", "shift+semicolon")
+            herdr("pane", "send-text", pane_id, command)
+            herdr("pane", "send-keys", pane_id, "enter")
+            return
+    new = json.loads(herdr("pane", "split", "--pane", active, "--direction", "right", "--cwd", os.path.dirname(path), "--focus"))["result"]["pane"]["pane_id"]
+    herdr("pane", "run", new, "nvim -- " + shlex.quote(path))
+
+
+if __name__ == "__main__":
+    main()

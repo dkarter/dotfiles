@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+"""List HTTP(S) URLs on the currently visible Herdr tab for Vellum."""
+
+import json
+import os
+import re
+import subprocess
+import sys
+
+URL = re.compile(r"https?://[^\s<>\[\]{}()\"'`]+")
+CONTINUATION = re.compile(r"^[a-zA-Z0-9_~%#/?=&.+:@!$*,-]+")
+TRAILING = ".,;:!?"
+
+
+def herdr(*args):
+    return subprocess.check_output(
+        [os.environ.get("HERDR_BIN_PATH", "herdr"), *args], text=True
+    )
+
+
+def extract_urls(text, width):
+    """Join a link split at the right edge of the terminal, including indented wraps."""
+    lines = text.splitlines()
+    found = []
+    for index, line in enumerate(lines):
+        for match in URL.finditer(line):
+            url = match.group()
+            end = match.end()
+            row = index
+            while end == len(lines[row]) and row + 1 < len(lines):
+                # Herdr's text snapshot trims right padding. A wrapped row fills
+                # the pane; leave a little room for app borders and wide glyphs.
+                edge = len(lines[row].rstrip()) >= width - 4
+                explicit = url.endswith(("/", "-", "=", "#"))
+                if not (edge or explicit):
+                    break
+                next_line = lines[row + 1].lstrip()
+                continuation = CONTINUATION.match(next_line)
+                if not continuation:
+                    break
+                fragment = continuation.group()
+                # A new URL is a separate result, not part of the previous one.
+                if fragment.startswith(("http://", "https://")):
+                    break
+                url += fragment
+                row += 1
+                end = len(lines[row]) - len(next_line) + len(fragment)
+            url = url.rstrip(TRAILING)
+            if url:
+                found.append(url)
+    return found
+
+
+def pane_title(pane):
+    label = pane.get("label") or ""
+    agent = pane.get("agent") or ""
+    if label and label == pane.get("display_agent") and agent:
+        return agent
+    return label or agent or pane.get("terminal_title_stripped") or pane["pane_id"]
+
+
+def main():
+    pane_id = os.environ.get("HERDR_ACTIVE_PANE_ID") or os.environ.get("HERDR_PANE_ID")
+    if not pane_id:
+        sys.exit("No active Herdr pane")
+    layout = json.loads(herdr("pane", "layout", "--pane", pane_id))["result"]["layout"]
+    panes = json.loads(herdr("pane", "list", "--workspace", layout["workspace_id"]))["result"]["panes"]
+    titles = {pane["pane_id"]: pane_title(pane) for pane in panes}
+    urls = []
+    seen = set()
+    for pane in layout["panes"]:
+        if layout["zoomed"] and not pane["focused"]:
+            continue
+        text = herdr("pane", "read", pane["pane_id"], "--source", "visible", "--format", "text")
+        for url in extract_urls(text, pane["rect"]["width"]):
+            if url not in seen:
+                seen.add(url)
+                urls.append({"url": url, "pane_title": titles.get(pane["pane_id"], pane["pane_id"])})
+    json.dump(urls, sys.stdout)
+    print()
+
+
+if __name__ == "__main__":
+    main()

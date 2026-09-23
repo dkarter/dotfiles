@@ -1,0 +1,37 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/config-options.schema.json
+
+[search]
+title = "Visible URLs"
+placeholder = "Open a URL from this tab..."
+
+[source]
+cmd = "herdr-visible-urls"
+
+[actions]
+default = "open"
+menu = "ctrl-a"
+
+[[actions.items]]
+name = "open"
+label = "Open URL"
+icon = "󰖟"
+command = ["herdr-open-visible-url", "$url"]
+on_success = "exit"
+
+[[actions.items]]
+name = "copy"
+label = "Copy URL"
+icon = "󰆏"
+command = ["herdr-copy-visible-url", "$url"]
+on_success = "exit"
+
+[item]
+value = "$url"
+template = [
+  [
+    { token = "$url", bold = true },
+  ],
+  [
+    { token = "$pane_title", fg = "#565f89" },
+  ],
+]

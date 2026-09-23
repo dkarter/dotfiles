@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -eu
+
+case "$(uname -s)" in
+  Darwin) exec open "$1" ;;
+  *) exec xdg-open "$1" ;;
+esac

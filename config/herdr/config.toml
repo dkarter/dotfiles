@@ -161,6 +161,22 @@ width = "70%"
 height = "60%"
 
 [[keys.command]]
+key = "prefix+shift+y"
+type = "popup"
+command = "vlm herdr-visible-urls"
+description = "open visible URL"
+width = "85%"
+height = "65%"
+
+[[keys.command]]
+key = "prefix+shift+e"
+type = "popup"
+command = "vlm herdr-visible-files"
+description = "open visible file in Neovim"
+width = "85%"
+height = "65%"
+
+[[keys.command]]
 key = "prefix+shift+g"
 type = "plugin_action"
 command = "hwt.worktrees.new"

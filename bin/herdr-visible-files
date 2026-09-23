@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+"""List existing file paths on the visible Herdr tab for Vellum."""
+
+import json
+import os
+import re
+import subprocess
+import sys
+
+TOKEN = re.compile(r"[^\s<>\"'`]+")
+QUOTED = re.compile(r"`([^`]+)`|\"([^\"]+)\"")
+LINE_NUMBER = re.compile(r"^(.*?):(\d+)(?::\d+)?$")
+
+
+def herdr(*args):
+    return subprocess.check_output(
+        [os.environ.get("HERDR_BIN_PATH", "herdr"), *args], text=True
+    )
+
+
+def pane_title(pane):
+    label = pane.get("label") or ""
+    agent = pane.get("agent") or ""
+    if label and label == pane.get("display_agent") and agent:
+        return agent
+    return label or agent or pane.get("terminal_title_stripped") or pane["pane_id"]
+
+
+def paths_in(text, cwd, width):
+    lines = text.splitlines()
+    candidates = list(lines)
+    for index, line in enumerate(lines[:-1]):
+        if len(line.rstrip()) >= width - 4 or line.rstrip().endswith("/"):
+            candidates.append(line.rstrip() + lines[index + 1].lstrip())
+    for line in candidates:
+        yield from paths_on_line(line, cwd)
+
+
+def paths_on_line(text, cwd):
+    quoted = [match.group(1) or match.group(2) for match in QUOTED.finditer(text)]
+    for token in [*quoted, *(match.group() for match in TOKEN.finditer(text))]:
+        token = token.strip("([{,;:!?)]}")
+        token = token.rstrip(".,;:!?)").lstrip("@")
+        if "://" in token:
+            continue
+        numbered = LINE_NUMBER.match(token)
+        display = numbered.group(1) if numbered else token
+        if not display or display.startswith(("-", "#")):
+            continue
+        path = os.path.abspath(os.path.join(cwd, os.path.expanduser(display)))
+        if os.path.isfile(path):
+            yield path, token
+
+
+def main():
+    pane_id = os.environ.get("HERDR_ACTIVE_PANE_ID") or os.environ.get("HERDR_PANE_ID")
+    if not pane_id:
+        sys.exit("No active Herdr pane")
+    layout = json.loads(herdr("pane", "layout", "--pane", pane_id))["result"]["layout"]
+    panes = json.loads(herdr("pane", "list", "--workspace", layout["workspace_id"]))["result"]["panes"]
+    details = {pane["pane_id"]: pane for pane in panes}
+    files = []
+    seen = set()
+    for pane in layout["panes"]:
+        if layout["zoomed"] and not pane["focused"]:
+            continue
+        info = details[pane["pane_id"]]
+        text = herdr("pane", "read", pane["pane_id"], "--source", "visible", "--format", "text")
+        for path, display in paths_in(text, info.get("foreground_cwd") or info["cwd"], pane["rect"]["width"]):
+            if path not in seen:
+                seen.add(path)
+                files.append({"path": path, "display_path": display, "pane_title": pane_title(info)})
+    json.dump(files, sys.stdout)
+    print()
+
+
+if __name__ == "__main__":
+    main()
