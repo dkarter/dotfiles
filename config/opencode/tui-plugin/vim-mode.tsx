@@ -224,7 +224,11 @@ const VimModePlugin = {
 
       const destination = select ? offset + 1 : offset;
       while (editor.cursorOffset < destination) {
+        const previousOffset = editor.cursorOffset;
         editor.moveCursorRight({ select });
+        if (editor.cursorOffset <= previousOffset) {
+          break;
+        }
       }
     };
 
