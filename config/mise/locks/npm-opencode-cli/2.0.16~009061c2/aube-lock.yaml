@@ -1,0 +1,134 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@opencode/cli':
+        specifier: 2.0.16
+        version: 2.0.16
+
+packages:
+
+  '@opencode/cli-darwin-arm64@2.0.16':
+    resolution: {integrity: sha512-WlzjaxNb/QY/nJk93AbFNmlxpb5YDdy/2/6FPLbd10QbrkYtfz1TmI6Y0sM3BASDOLG/yJ+0oBfj9OZ5fZ5rfA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@opencode/cli-darwin-x64-baseline@2.0.16':
+    resolution: {integrity: sha512-T+tKaSaDXMF9t0mNV3bflCQNeK5mAdqnDBHsisT+9AHYztsyoRr2oeVrR5bjMC5PeyxTJLYrlLVUTOkbgFyUFA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@opencode/cli-darwin-x64@2.0.16':
+    resolution: {integrity: sha512-CdVCiYfFAOVXdt+DP0vrUqpDxJHzs/vGX8PNxfSPeJuw3lNmn/5JxeQC7dkasSm7FQFphNdU/2rkys38rGU6pA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@opencode/cli-linux-arm64-musl@2.0.16':
+    resolution: {integrity: sha512-lL5nQm2PSahKKVLAiX0uSBuD+4AdP8CGjfr60tI69sYJ7xoEDfVw1kCuJY9SW0NMT4uBso1gkD8StYttBHXYMw==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@opencode/cli-linux-arm64@2.0.16':
+    resolution: {integrity: sha512-BThpExec9wEIhC4U9iRY/jWecM8bVOVuYw2YTYYZ/qNn2r/RljDG2flngDmCZFM1cC6miu2kqOgPkVnVeqaapQ==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@opencode/cli-linux-x64-baseline-musl@2.0.16':
+    resolution: {integrity: sha512-CeD2oYHH/vR2jCs7CSJoWWWpvGMy5iNWWyy4BpjdjravfwjqcgbKgaVm9BABnAMlHPFJklz1upvPyfYk/nEaEw==}
+    cpu: [x64]
+    os: [linux]
+
+  '@opencode/cli-linux-x64-baseline@2.0.16':
+    resolution: {integrity: sha512-gux35kDqrnl41h41d4xudIN/fab/7hfBlLtYb3dbSdCC+bhwL1TmD9M3PIMaeznya8tqra31HMyRkc7aeJFnYg==}
+    cpu: [x64]
+    os: [linux]
+
+  '@opencode/cli-linux-x64-musl@2.0.16':
+    resolution: {integrity: sha512-QUQQG8nwzROSwSX7NT3o4Dq8pSdxqBYLaBNVB7WBvpkylg7eTbMtPEQwYtEJHdNLprHkPkJJudZn1yHHMG+JdA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@opencode/cli-linux-x64@2.0.16':
+    resolution: {integrity: sha512-BVmvVddA7c4VhSXgTiGtZB9pU+xTyFgsd56KkvQoYMydqy8xfzPGu9BRwQVCG/RTxGhRAwda/MYEWarddscIUg==}
+    cpu: [x64]
+    os: [linux]
+
+  '@opencode/cli-windows-arm64@2.0.16':
+    resolution: {integrity: sha512-zZqQ/yxkGuoVSRup4LXhOEN/4KhSSv4qS+sqsDdTpsD/4oMw7OkYIV+rQ4vdPeqGPmBK2OeevmBUndEUusBHmA==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@opencode/cli-windows-x64-baseline@2.0.16':
+    resolution: {integrity: sha512-MyfEOA9Pzsx4yary0WcLrXhjsQjIOfaeq1ngmLxBpmTWV6EBmtL5VZ3t5IfDfULvBlxhdizQ/36DR3Wu1t7UgA==}
+    cpu: [x64]
+    os: [win32]
+
+  '@opencode/cli-windows-x64@2.0.16':
+    resolution: {integrity: sha512-0Nia1Zq9dz/AUNhpXIcHG1rbIFH/17DH/l6NajfYEnv0clZ505BtqbsTZ0YpHoR0h+TpYQ6tkaGyrulS/FRwIQ==}
+    cpu: [x64]
+    os: [win32]
+
+  '@opencode/cli@2.0.16':
+    resolution: {integrity: sha512-x8FzHgXduEoFWQsuTZ5K/uyOCCwqa6jDVQt6P0lQkhsYCCQpiwUisjnmdzZlmaJuHwEVUmE4tH9YyW472gTDzQ==}
+    cpu: [arm64, x64]
+    os: [darwin, linux, win32]
+    hasBin: true
+
+snapshots:
+
+  '@opencode/cli-darwin-arm64@2.0.16':
+    optional: true
+
+  '@opencode/cli-darwin-x64-baseline@2.0.16':
+    optional: true
+
+  '@opencode/cli-darwin-x64@2.0.16':
+    optional: true
+
+  '@opencode/cli-linux-arm64-musl@2.0.16':
+    optional: true
+
+  '@opencode/cli-linux-arm64@2.0.16':
+    optional: true
+
+  '@opencode/cli-linux-x64-baseline-musl@2.0.16':
+    optional: true
+
+  '@opencode/cli-linux-x64-baseline@2.0.16':
+    optional: true
+
+  '@opencode/cli-linux-x64-musl@2.0.16':
+    optional: true
+
+  '@opencode/cli-linux-x64@2.0.16':
+    optional: true
+
+  '@opencode/cli-windows-arm64@2.0.16':
+    optional: true
+
+  '@opencode/cli-windows-x64-baseline@2.0.16':
+    optional: true
+
+  '@opencode/cli-windows-x64@2.0.16':
+    optional: true
+
+  '@opencode/cli@2.0.16':
+    optionalDependencies:
+      '@opencode/cli-darwin-arm64': 2.0.16
+      '@opencode/cli-darwin-x64': 2.0.16
+      '@opencode/cli-darwin-x64-baseline': 2.0.16
+      '@opencode/cli-linux-arm64': 2.0.16
+      '@opencode/cli-linux-arm64-musl': 2.0.16
+      '@opencode/cli-linux-x64': 2.0.16
+      '@opencode/cli-linux-x64-baseline': 2.0.16
+      '@opencode/cli-linux-x64-baseline-musl': 2.0.16
+      '@opencode/cli-linux-x64-musl': 2.0.16
+      '@opencode/cli-windows-arm64': 2.0.16
+      '@opencode/cli-windows-x64': 2.0.16
+      '@opencode/cli-windows-x64-baseline': 2.0.16

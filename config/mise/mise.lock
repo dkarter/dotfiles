@@ -2676,6 +2676,7 @@ allow_low_downloads = "true"
 
 [[tools."npm:@opencode/cli"]]
 version = "2.0.16"
+aube = { path = "locks/npm-opencode-cli/2.0.16~009061c2", digest = "sha256:240fd591b5478563014abb2a1f12ffcb19475c913ca0779c4e11cc17450ee639" }
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
@@ -2693,6 +2694,7 @@ trust_policy_excludes = '["@playwright/mcp@0.0.80", "playwright-core@1.63.0-alph
 
 [[tools."npm:chrome-devtools-mcp"]]
 version = "1.10.1"
+aube = { path = "locks/npm-chrome-devtools-mcp/1.10.1", digest = "sha256:d0ad9551fb0928d247af33705d0cf1ea01382aa6691da825a4480ae9505dcf70" }
 backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
