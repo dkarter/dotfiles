@@ -48,6 +48,11 @@ def paths_on_line(text, cwd):
         if not display or display.startswith(("-", "#")):
             continue
         path = os.path.abspath(os.path.join(cwd, os.path.expanduser(display)))
+        if not os.path.isfile(path) and display.endswith("*"):
+            # ls -F marks executable files with *, but * may also be a real filename character.
+            display = display[:-1]
+            token = token[:-1]
+            path = os.path.abspath(os.path.join(cwd, os.path.expanduser(display)))
         if os.path.isfile(path):
             yield path, token
 
