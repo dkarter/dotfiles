@@ -1,0 +1,51 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/config-options.schema.json
+
+[search]
+title = "Panes"
+placeholder = "Inspect a pane in this tab..."
+
+[source]
+cmd = "herdr-popup-pane-read --source"
+
+[item]
+value = "$pane_id"
+template = [
+  [
+    { token = "$label", bold = true },
+    "  ",
+    { token = "$agent_status", fg = "#7dcfff" },
+    { token = "$current_label", fg = "#9ece6a", searchable = false, align = "right" },
+  ],
+  [
+    { token = "$cwd", fg = "#565f89" },
+    "  ",
+    { token = "$pane_id", fg = "#565f89" },
+  ],
+]
+
+[preview]
+enabled = true
+position = "right"
+size = 55
+title = "Recent output"
+command = [
+  "herdr",
+  "pane",
+  "read",
+  "$pane_id",
+  "--source",
+  "recent-unwrapped",
+  "--format",
+  "ansi",
+  "--lines",
+  "160",
+]
+
+[actions]
+default = "paste"
+
+[[actions.items]]
+name = "paste"
+label = "Paste pane read command"
+command = ["herdr-popup-pane-read", "--paste", "$pane_id"]
+on_success = "exit"

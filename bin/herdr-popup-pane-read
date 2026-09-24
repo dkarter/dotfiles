@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+herdr_bin="${HERDR_BIN_PATH:-herdr}"
+active_pane_id="${HERDR_ACTIVE_PANE_ID:-${HERDR_PANE_ID:-}}"
+
+if [[ -z "$active_pane_id" ]]; then
+  printf 'No active Herdr pane\n' >&2
+  exit 1
+fi
+
+if [[ "${1:-}" == "--paste" ]]; then
+  pane_id="${2:?Missing pane ID}"
+  "$herdr_bin" pane send-text "$active_pane_id" \
+    "herdr pane read $pane_id --source recent-unwrapped --lines 160"
+  exit 0
+fi
+
+if [[ "${1:-}" == "--source" ]]; then
+  current_pane="$("$herdr_bin" pane current --pane "$active_pane_id")"
+  tab_id="$(jq -r '.result.pane.tab_id' <<<"$current_pane")"
+  workspace_id="$(jq -r '.result.pane.workspace_id' <<<"$current_pane")"
+
+  "$herdr_bin" pane list --workspace "$workspace_id" | jq -c \
+    --arg active_pane_id "$active_pane_id" \
+    --arg tab_id "$tab_id" '
+      [.result.panes[]
+        | select(.tab_id == $tab_id)
+        | {
+            pane_id,
+            current_label: (if .pane_id == $active_pane_id then "current" else "" end),
+            label: (.label // .terminal_title_stripped // .agent // "terminal"),
+            agent_status: (.agent_status // "unknown"),
+            cwd: (.foreground_cwd // .cwd)
+          }]
+    '
+  exit 0
+fi
+
+exec "$HOME/.local/share/mise/shims/vlm" herdr-panes

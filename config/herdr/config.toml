@@ -87,6 +87,14 @@ width = "80%"
 height = "80%"
 
 [[keys.command]]
+key = "prefix+shift+i"
+type = "popup"
+command = "herdr-popup-pane-read"
+description = "insert pane read command"
+width = "85%"
+height = "75%"
+
+[[keys.command]]
 key = "prefix+shift+["
 type = "shell"
 command = "herdr pane swap --current --direction left"
