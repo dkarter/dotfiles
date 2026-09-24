@@ -52,6 +52,7 @@ tasks:
         - 'usage|usage --completions zsh'
         - 'uv|uv generate-shell-completion zsh'
         - 'varlock|varlock complete zsh'
+        - 'vlm|vlm --completions=zsh'
       CACHE_PATH:
         sh: echo "$HOME/.cache/zsh/completions"
 
