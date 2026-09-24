@@ -1,4 +1,4 @@
-theme = "tokyo-night"
+theme = "catppuccin-mocha"
 mode = "auto"
 line_numbers = true
 wrap_lines = false
@@ -9,6 +9,7 @@ copy_decorations = false
 cursor_line = "row"
 
 [keybindings]
+"hunk.review.startVisualSelection" = "V"
 "hunk.review.scrollCodeLeft" = ["left", "shift+left", "h"]
 "hunk.review.scrollCodeRight" = ["right", "shift+right", "l"]
 "horizontal-scroll.jumpToStart" = "0"
