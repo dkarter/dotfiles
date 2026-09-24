@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 set -euo pipefail
 
 export PATH="$HOME/dotfiles/bin:$PATH"
@@ -141,7 +142,7 @@ prompt_worktree() {
     esac
   fi
 
-  worktree_input="$(ink input --placeholder="$input_placeholder" || true)"
+  worktree_input="$(ink input --placeholder="$input_placeholder" --fullscreen || true)"
   [[ -n "$worktree_input" ]]
 }
 

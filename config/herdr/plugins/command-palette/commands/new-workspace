@@ -2,7 +2,7 @@
 source "${0:A:h}/lib"
 
 cwd="$(current_pane_cwd)"
-name="$(ink input --placeholder="Workspace name...")"
+name="$(ink input --placeholder="Workspace name..." --fullscreen)"
 [[ -z "$name" ]] && exit 0
 
 herdr workspace create --cwd "$cwd" --label "$name" --focus >/dev/null
