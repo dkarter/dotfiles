@@ -1,0 +1,21 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Themes"
+placeholder = "Find a theme..."
+
+[source]
+builtin = "themes"
+
+[preview]
+enabled = true
+position = "right"
+size = 60
+title = "Palette preview"
+border = "none"
+scrollbar = false
+
+[item]
+box_title = "Themes · Enter to apply"
+value = "$id"
+template = [["$name"]]
