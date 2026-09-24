@@ -68,15 +68,14 @@ keybind = super+l=text:\x1aL
 keybind = super+shift+n=text:\x1aN
 # open a dev dir in new/existing session
 keybind = super+o=text:\x1aO
-# fork github repo
-keybind = super+shift+f=text:\x1av
 # create a new linear issue
 keybind = super+shift+i=text:\x1ai
 # insert file path at cursor (for AI agents)
 keybind = super+shift+period=text:\x1aA
-# pick a URL or file path from visible Herdr panes
+# pick a URL from visible Herdr panes
 keybind = super+u=text:\x1aY
-keybind = super+shift+e=text:\x1aE
+# pick visible files from Herdr panes
+keybind = super+shift+f=text:\x1aE
 # toggle herdr sidebar
 keybind = super+ctrl+s=text:\x1ab
 
