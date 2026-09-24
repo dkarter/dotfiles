@@ -28,7 +28,7 @@ def main():
         if any(process["name"] in ("nvim", "neovim") for process in info["foreground_processes"]):
             # Send a Vim command, escaping the path as a Vim string and filename.
             command = "execute 'edit ' . fnameescape('" + path.replace("'", "''") + "')"
-            herdr("pane", "send-keys", pane_id, "esc", "shift+semicolon")
+            herdr("pane", "send-keys", pane_id, "esc", ":")
             herdr("pane", "send-text", pane_id, command)
             herdr("pane", "send-keys", pane_id, "enter")
             return
