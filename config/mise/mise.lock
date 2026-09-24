@@ -810,7 +810,6 @@ url_api = "https://api.github.com/repos/erlang/otp/releases/assets/581038947"
 [[tools.erlang]]
 version = "29.1.1"
 backend = "core:erlang"
-specifiers = ["29"]
 
 [tools.erlang.options]
 precompiled_os = "ubuntu-24.04"
@@ -2676,8 +2675,7 @@ specifiers = ["latest"]
 allow_low_downloads = "true"
 
 [[tools."npm:@opencode/cli"]]
-version = "2.0.15"
-aube = { path = "locks/npm-opencode-cli/2.0.15~009061c2", digest = "sha256:83018bf457fcf1c21a0c4c26325eddbd60b423f61b54748b8f3b4e59e5f2569e" }
+version = "2.0.16"
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
@@ -2694,8 +2692,7 @@ specifiers = ["0.0.82"]
 trust_policy_excludes = '["@playwright/mcp@0.0.80", "playwright-core@1.63.0-alpha-2026-08-31", "playwright@1.63.0-alpha-2026-08-31"]'
 
 [[tools."npm:chrome-devtools-mcp"]]
-version = "1.9.0"
-aube = { path = "locks/npm-chrome-devtools-mcp/1.9.0", digest = "sha256:a4ccda111746ea387b128ebb3c89e1ea30336a4f1c71bdc1131ca314cd564a11" }
+version = "1.10.1"
 backend = "npm:chrome-devtools-mcp"
 specifiers = ["latest"]
 
