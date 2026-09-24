@@ -9,12 +9,21 @@ cmd = "herdr-visible-files"
 
 [actions]
 default = "open"
+menu = "ctrl-a"
 
 [[actions.items]]
 name = "open"
 label = "Open in Neovim"
 icon = "󰈙"
 command = ["herdr-open-visible-file", "$path"]
+on_success = "exit"
+
+[[actions.items]]
+name = "paste-path"
+label = "Paste path into active pane"
+icon = "󰏫"
+description = "Insert the selected file path into the pane that opened this picker"
+command = ["herdr-paste-visible-file", "$path"]
 on_success = "exit"
 
 [item]
