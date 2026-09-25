@@ -37,7 +37,7 @@ local checks = new Mapping<String, Step> {
 
   ["hk-config"] {
     glob = "hk.pkl"
-    check = "hk validate"
+    check = "hk validate 2>&1"
   }
 
   ["lua"] {
@@ -121,7 +121,7 @@ hooks {
           "config/opencode/tui-plugin/vim-mode.tsx",
           "config/opencode/tui-plugin/vim-mode.test.ts"
         )
-        check = "bun test config/opencode/tui-plugin/vim-mode.test.ts"
+        check = "bun test config/opencode/tui-plugin/vim-mode.test.ts 2>&1"
       }
     }
   }
