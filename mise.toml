@@ -25,6 +25,9 @@ yamllint = "1.38"
 [hooks]
 postinstall = "hk install --mise"
 
+[env]
+HK_HIDE_WHEN_DONE = "1"
+
 [settings]
 experimental = true
 # using a lockfile helps avoid the need for a GitHub token on first time install

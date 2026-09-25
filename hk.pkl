@@ -35,6 +35,11 @@ local checks = new Mapping<String, Step> {
     check = "herdr config check"
   }
 
+  ["hk-config"] {
+    glob = "hk.pkl"
+    check = "hk validate"
+  }
+
   ["lua"] {
     glob = List(
       "config/nvim/lua/**/*.lua",
@@ -109,6 +114,7 @@ hooks {
         // silence INF chatter on stderr; findings log at warn so leaks still surface
         check = "gitleaks git --pre-commit --redact --staged --verbose --no-banner --log-level warn"
       }
+      ["hk-config"] = checks["hk-config"]
       ["typos"] = checks["typos"]
       ["vim-mode-tests"] {
         glob = List(
@@ -129,10 +135,6 @@ hooks {
   }
 
   ["pre-push"] {
-    steps {
-      ["ci"] {
-        check = "hk check --all --no-fail-fast"
-      }
-    }
+    steps = checks
   }
 }
