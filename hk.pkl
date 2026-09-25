@@ -110,6 +110,13 @@ hooks {
         check = "gitleaks git --pre-commit --redact --staged --verbose --no-banner --log-level warn"
       }
       ["typos"] = checks["typos"]
+      ["vim-mode-tests"] {
+        glob = List(
+          "config/opencode/tui-plugin/vim-mode.tsx",
+          "config/opencode/tui-plugin/vim-mode.test.ts"
+        )
+        check = "bun test config/opencode/tui-plugin/vim-mode.test.ts"
+      }
     }
   }
 
