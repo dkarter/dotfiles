@@ -3,20 +3,26 @@ import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Builtins.
 
 local typos = new Step {
   exclude = ".codespellignorelines"
-  check = """
+  check = new CommandSpec {
+    effect = "read"
+    command = """
     set --
     for file in {{files}}; do
       [ ! -e "$file" ] || set -- "$@" "$file"
     done
     [ "$#" -eq 0 ] || typos --force-exclude "$@"
     """
-  fix = """
+  }
+  fix = new CommandSpec {
+    effect = "write"
+    command = """
     set --
     for file in {{files}}; do
       [ ! -e "$file" ] || set -- "$@" "$file"
     done
     [ "$#" -eq 0 ] || typos --force-exclude --write-changes "$@"
     """
+  }
 }
 
 local checks = new Mapping<String, Step> {
@@ -24,7 +30,7 @@ local checks = new Mapping<String, Step> {
 
   ["ghostty"] {
     glob = "config/ghostty/**"
-    check = "ghostty +validate-config"
+    check = new CommandSpec { command = "ghostty +validate-config"; effect = "read" }
   }
 
   ["herdr"] {
@@ -32,12 +38,12 @@ local checks = new Mapping<String, Step> {
       "config/herdr/config.toml",
       "config/herdr/plugins/**/herdr-plugin.toml"
     )
-    check = "herdr config check"
+    check = new CommandSpec { command = "herdr config check"; effect = "read" }
   }
 
   ["hk-config"] {
     glob = "hk.pkl"
-    check = "hk validate 2>&1"
+    check = new CommandSpec { command = "hk validate 2>&1"; effect = "read" }
   }
 
   ["lua"] {
@@ -45,7 +51,9 @@ local checks = new Mapping<String, Step> {
       "config/nvim/lua/**/*.lua",
       "config/nvim/lua_ls_ci.lua"
     )
-    check = """
+    check = new CommandSpec {
+      effect = "write"
+      command = """
       VIMRUNTIME="$(NVIM_LOG_FILE="${TMPDIR:-/tmp}/nvim-lua-lint.log" nvim --headless --clean --cmd 'lua io.stdout:write(vim.env.VIMRUNTIME)' --cmd qa)" \
         lua-language-server \
           --check config/nvim/lua \
@@ -53,6 +61,7 @@ local checks = new Mapping<String, Step> {
           --configpath="$PWD/config/nvim/lua_ls_ci.lua" \
           --metapath="${TMPDIR:-/tmp}/lua-language-server-meta"
       """
+    }
   }
 
   ["opencode-dependencies"] {
@@ -62,11 +71,14 @@ local checks = new Mapping<String, Step> {
       "config/opencode/plugins/package.json",
       "config/opencode/tui-plugin/package.json"
     )
-    check = """
+    check = new CommandSpec {
+      effect = "write"
+      command = """
       aube install --frozen-lockfile --dry-run \
         --filter ./config/opencode/plugins \
         --filter ./config/opencode/tui-plugin
       """
+    }
   }
 
   ["script-tests"] {
@@ -74,19 +86,19 @@ local checks = new Mapping<String, Step> {
       "scripts/enrich-release-notes.ts",
       "scripts/enrich-release-notes.test.ts"
     )
-    check = "node --test scripts/*.test.ts"
+    check = new CommandSpec { command = "node --test scripts/*.test.ts"; effect = "read" }
   }
 
   ["shellcheck"] = Builtins.shellcheck
 
   ["taplo"] = (Builtins.taplo) {
-    check = "RUST_LOG=error taplo lint --config .taplo.toml {{files}}"
+    check = new CommandSpec { command = "RUST_LOG=error taplo lint --config .taplo.toml {{files}}"; effect = "read" }
   }
 
   ["typos"] = typos
 
   ["yamllint"] = (Builtins.yamllint) {
-    check = "yamllint --strict --config-file ./config/yamllint/config {{files}}"
+    check = new CommandSpec { command = "yamllint --strict --config-file ./config/yamllint/config {{files}}"; effect = "read" }
   }
 }
 
@@ -112,7 +124,10 @@ hooks {
       ["gitleaks"] = (Builtins.gitleaks) {
         scan = "staged"
         // silence INF chatter on stderr; findings log at warn so leaks still surface
-        check = "gitleaks git --pre-commit --redact --staged --verbose --no-banner --log-level warn"
+        check = new CommandSpec {
+          command = "gitleaks git --pre-commit --redact --staged --verbose --no-banner --log-level warn"
+          effect = "read"
+        }
       }
       ["hk-config"] = checks["hk-config"]
       ["typos"] = checks["typos"]
@@ -121,7 +136,10 @@ hooks {
           "config/opencode/tui-plugin/vim-mode.tsx",
           "config/opencode/tui-plugin/vim-mode.test.ts"
         )
-        check = "bun test config/opencode/tui-plugin/vim-mode.test.ts 2>&1"
+        check = new CommandSpec {
+          command = "bun test config/opencode/tui-plugin/vim-mode.test.ts 2>&1"
+          effect = "read"
+        }
       }
     }
   }
@@ -129,7 +147,7 @@ hooks {
   ["commit-msg"] {
     steps {
       ["conventional-commits"] {
-        check = "committed --commit-file {{ commit_msg_file }}"
+        check = new CommandSpec { command = "committed --commit-file {{ commit_msg_file }}"; effect = "read" }
       }
     }
   }
