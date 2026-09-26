@@ -2,6 +2,102 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [33.0.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v33.0.0) (2026-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ghostty:** change super+shift+f to visible files vellum
+* **ghostty:** change cmd-k to herdr agents vellum
+* tmux, workmux, and sesh are no longer included.
+
+### Features
+
+* add hwt URL palette ([80fa7e1](https://github.com/dkarter/dotfiles/commit/80fa7e1783e0978c27076b80d99e2eeacdc58513))
+* **brew:** add pam-watchid ([99d79eb](https://github.com/dkarter/dotfiles/commit/99d79eb4bb58165ef964d9236fb1db5e415b0ec7))
+* **ghtkn:** add authentication task ([3e5abc6](https://github.com/dkarter/dotfiles/commit/3e5abc6f4aafbcbbec07d2926692828c9e483275))
+* **herdr:** add fork repository command ([9bfebb9](https://github.com/dkarter/dotfiles/commit/9bfebb9f3604392384a97a823caa966ccf11c748))
+* **herdr:** add Vellum pane inspection picker ([ff6b44f](https://github.com/dkarter/dotfiles/commit/ff6b44ffd32c94d64ca8e7b486f622886a29aedb))
+* **herdr:** paste path to active pane ([aa1378f](https://github.com/dkarter/dotfiles/commit/aa1378fcadb43301e2f205c14afb43d26a9341c7))
+* **herdr:** pick visible URLs and files from panes ([3d9f361](https://github.com/dkarter/dotfiles/commit/3d9f361608998c6480f05e8072cdfd76ad0914f1))
+* **herdr:** show agent icons in sidebar ([f72a756](https://github.com/dkarter/dotfiles/commit/f72a75609228af1ef1e7b145f3d7696c7fd244e1))
+* **hk:** add check for hk config + hide output when done ([e6c91c4](https://github.com/dkarter/dotfiles/commit/e6c91c4c843fb76dcf6d822943f7d7fe4cb5f3a1))
+* **hk:** migrate hooks and checks ([5f3c5db](https://github.com/dkarter/dotfiles/commit/5f3c5dbb4923f7c203dc97aecdef91a1fe153781))
+* **hunk:** add vim horizontal navigation ([6f9331b](https://github.com/dkarter/dotfiles/commit/6f9331b33ae1df0b8f128a84cd25e25f47e37127))
+* **hwt:** add ticket config ([ca9cdc4](https://github.com/dkarter/dotfiles/commit/ca9cdc462d40b941ebfe93f31dd0e5445e7aed9f))
+* **hwt:** set default agent to opencode v2 ([0ce9ddc](https://github.com/dkarter/dotfiles/commit/0ce9ddcbb01190f93edac75978a0b6697d74ac0e))
+* **ink:** replace gum input prompts ([7c85233](https://github.com/dkarter/dotfiles/commit/7c852339807efb5ae2727e218ff23baf0c183821))
+* **mise:** add ink tui ([9cd0108](https://github.com/dkarter/dotfiles/commit/9cd0108168b8af0a67661e18754e9c752dc5a8de))
+* **mise:** enable auto_prune ([e79db82](https://github.com/dkarter/dotfiles/commit/e79db82394b04ab978ac47c3b886eab4444207f7))
+* **nvim:** add CodeDiff.nvim ([06361a1](https://github.com/dkarter/dotfiles/commit/06361a190cd6badad17fccfe5dab6108731d1a42))
+* **nvim:** automatically add schema for pitchfork and mise configs ([81ea1ac](https://github.com/dkarter/dotfiles/commit/81ea1acaf2cf477d958b24b9033305d32fc1f6fc))
+* open visible file references at their lines ([58985cd](https://github.com/dkarter/dotfiles/commit/58985cd1a47aa7a9734b31d9bdde44fc6987a1bb))
+* **opencode:** add pitchfork mcp ([9b59dc4](https://github.com/dkarter/dotfiles/commit/9b59dc4283d7c9860a368e5eab34b742512a21c4))
+* **opencode:** add ShellFish notifications ([bef3776](https://github.com/dkarter/dotfiles/commit/bef37761ce37f93cc0ae9a21b25642071952940e))
+* **opencode:** add visual line mode to vim plugin ([4b83808](https://github.com/dkarter/dotfiles/commit/4b838087b241017370f6929778122c99543e67ad))
+* **opencode:** complete v2 migration ([f203ecb](https://github.com/dkarter/dotfiles/commit/f203ecbd4ee9e0c990c7d391e6cfbdd81222db7b))
+* **raycast:** add PR Querydesk shortcut ([3fcf14c](https://github.com/dkarter/dotfiles/commit/3fcf14c69d1ce3472f7ceed91f1e90b0ae09d5b4))
+* **tooling:** migrate bootstrap template to hk ([76245f2](https://github.com/dkarter/dotfiles/commit/76245f2b0da552f2881e0686e30d90956daa17cc))
+* **tuicr:** update config to use more features ([f42c375](https://github.com/dkarter/dotfiles/commit/f42c375359c8e21feea87b903f5ee64b62c8a9e4))
+* use hwt ticket workflows ([00b03f8](https://github.com/dkarter/dotfiles/commit/00b03f88e2831503605b8bd8ce65ebba53f3b2e6))
+* **vellum:** add themes palette ([a1d8c60](https://github.com/dkarter/dotfiles/commit/a1d8c606a3a9021c7f63cbc5d38f734df4511c87))
+* **vellum:** show icons in file picker ([118049c](https://github.com/dkarter/dotfiles/commit/118049c97731a5a3157059158ada54f69c59cef7))
+* **vellum:** start Herdr pane previews at bottom ([63c0d67](https://github.com/dkarter/dotfiles/commit/63c0d67ccbb07753f1e26b1c454447f7128672fa))
+* **vellum:** start herdr-agents palette in filter mode ([c48bb2d](https://github.com/dkarter/dotfiles/commit/c48bb2da79b044dce8fdd3a7675602926f7a6fbb))
+* **zsh:** add vellum completions ([83b7f4b](https://github.com/dkarter/dotfiles/commit/83b7f4b5e3efdea1c678a51130899957546b0f12))
+
+
+### Bug Fixes
+
+* **agents:** respect repository commit conventions ([aa75027](https://github.com/dkarter/dotfiles/commit/aa75027105500ec8b5ee508ea01e2c5198298f90))
+* allow aarch64 in MACHTYPE detection ([f6ba2d2](https://github.com/dkarter/dotfiles/commit/f6ba2d298e328bf6d0377c8ea1585e707f680ee9))
+* detect executable files in visible pane listings ([0731beb](https://github.com/dkarter/dotfiles/commit/0731beb3abccf05fbf7dc17829de9d30b054b5d7))
+* **ghostty:** change cmd-k to herdr agents vellum ([8f97fb7](https://github.com/dkarter/dotfiles/commit/8f97fb7f201aebab8b9b1e79a392cc4c08e8a732))
+* **ghostty:** change super+shift+f to visible files vellum ([d389508](https://github.com/dkarter/dotfiles/commit/d38950834281b515432ed89b12f25f19e2af0979))
+* **herdr:** enter Neovim command mode when opening files ([c2c379c](https://github.com/dkarter/dotfiles/commit/c2c379cb48f3b15e781c71c9c3c40b6130e1bc8f))
+* **herdr:** make agent title more subdued ([40e9a31](https://github.com/dkarter/dotfiles/commit/40e9a314befb24712084ff49a734f2b10b19c1f6))
+* **herdr:** query hwt merged config for ticket_commands ([8685ac5](https://github.com/dkarter/dotfiles/commit/8685ac52b2392249a17a573da3a4eb5d708fc35f))
+* **herdr:** resolve vellum through mise shims ([96fbe71](https://github.com/dkarter/dotfiles/commit/96fbe71a11570e37d7597d58107cdddbefc9be5c))
+* **herdr:** simplify agent list ([2290381](https://github.com/dkarter/dotfiles/commit/229038140f4cf05a9500ee9a7ed0259fb7b0a5e1))
+* **herdr:** use ink input with --fullscreen in popups ([71cbf65](https://github.com/dkarter/dotfiles/commit/71cbf657242d7683926b9c7b86ec850bb775413a))
+* **herdr:** use native workspace window title ([966a1dc](https://github.com/dkarter/dotfiles/commit/966a1dc4feaeccc57748e307e6252e8acf4b3612))
+* **hk:** don't show std err for successful checks ([755f335](https://github.com/dkarter/dotfiles/commit/755f335137e05b915c322a7ca56747e5e9b213b4))
+* **hk:** silence gitleak info logs ([3bf43cf](https://github.com/dkarter/dotfiles/commit/3bf43cf9b5ea31800e3c5c65898cec4c1ed26872))
+* **hunk:** update hunk settings for better compatibility ([4b01d48](https://github.com/dkarter/dotfiles/commit/4b01d4805e9b7da7f832479d06093f690ab6665a))
+* **hwt:** set cwd for vellum source for hwt-urls ([a9be279](https://github.com/dkarter/dotfiles/commit/a9be27968d1d9731add371bb8d4ed9cdeb865329))
+* **mise:** change lockfile_mode back to merge ([c0addac](https://github.com/dkarter/dotfiles/commit/c0addac639d67bf0ecf02e5d1947647dba0bc6cc))
+* **mise:** commit dependency sidecars with lockfile ([6e4c5e2](https://github.com/dkarter/dotfiles/commit/6e4c5e242d375d08b7696d539a9b53c8d82ace08))
+* **mise:** ignore locks folder in config ([39eea1d](https://github.com/dkarter/dotfiles/commit/39eea1d90e1b4f5bbaf4bd27331486e5ec4115d0))
+* **mise:** pin Playwright MCP trust exceptions ([6df53c3](https://github.com/dkarter/dotfiles/commit/6df53c367d2b449915341a2d7feb281b7bb4e40f))
+* **mise:** remove outdated opencode package ([bed85ff](https://github.com/dkarter/dotfiles/commit/bed85ff45d74e8492e2ffcc3f194a027c0db6b94))
+* **mise:** switch lock file to generate ([3a91be1](https://github.com/dkarter/dotfiles/commit/3a91be1720a66380d14d3809d9d98f13a6631106))
+* **nvim:** rebuild mason python packages after upgrades ([1cc3a7c](https://github.com/dkarter/dotfiles/commit/1cc3a7c042cac1ccea4943472d8f708fefd230fb))
+* **nvim:** remove mason tools that don't have arm binaries ([cca1dbf](https://github.com/dkarter/dotfiles/commit/cca1dbf73429b99f928824874eebd09b85cd9282))
+* **nvim:** run fe tests in houston with correct command ([80e5f0a](https://github.com/dkarter/dotfiles/commit/80e5f0ab60301d0ceb86cde4e85fa589d4d47113))
+* **opencode:** herdr plugin support for opencodev2 ([ef6583b](https://github.com/dkarter/dotfiles/commit/ef6583bcce37a8ad863cbeb34154c15b6e295a3b))
+* **opencode:** load local TUI plugins ([168b3a9](https://github.com/dkarter/dotfiles/commit/168b3a9ef456da2df1489c9fc4eec359b217e18e))
+* **opencode:** migrate shellfish notification plugin ([94e8bb3](https://github.com/dkarter/dotfiles/commit/94e8bb3908bf65c7556dc7d9c0466e173788ee3a))
+* **opencode:** prevent visual word motion from freezing TUI ([a80a596](https://github.com/dkarter/dotfiles/commit/a80a5969edade7304d9d9ba847960d225dc326bb))
+* **opencode:** repair stale plugin lockfiles ([17b5b8a](https://github.com/dkarter/dotfiles/commit/17b5b8abc22586c5699ce9e7c80d980b52d6272f))
+* **opencode:** stop git status idle refresh loop ([4a9e78e](https://github.com/dkarter/dotfiles/commit/4a9e78ec899b080cd3ebd974c1c36c0c11f2a40d))
+* **opencode:** visual mode got stuck sometimes ([816f657](https://github.com/dkarter/dotfiles/commit/816f657b17fd824fb64e35edf4c8ebbd1376d5af))
+* **pitchfork:** detect existing boot registration ([8a7a09f](https://github.com/dkarter/dotfiles/commit/8a7a09fdd19515089158444b28628e06d1bb8842))
+* **pitchfork:** remove user ([96bc3fe](https://github.com/dkarter/dotfiles/commit/96bc3fe5c13e29f8138d9a785cbfa74ebddd779a))
+* **pitchfork:** use 8443-&gt;443 port redirect for TLS ([aca4af8](https://github.com/dkarter/dotfiles/commit/aca4af8ee4d365ccd19eefd602fc7d8be6aa0628))
+* **popup:** include hidden files in picker ([ee4bede](https://github.com/dkarter/dotfiles/commit/ee4bede56f0a941d1ea56530a8e4078acdf3a85d))
+* **raycast:** update PR QueryDesk database path ([a0b90d4](https://github.com/dkarter/dotfiles/commit/a0b90d4789da70a942fd4334d0a7ff2bd21ee265))
+* **task:** configure Apple Watch sudo authentication ([a027cf0](https://github.com/dkarter/dotfiles/commit/a027cf0aa24f7030cc3cd4dd6f0686ffb21c3ac3))
+* **taskfile:** remove herdr title plugin ([297f0fe](https://github.com/dkarter/dotfiles/commit/297f0fe277142eb13bd2f8071f2363ff6d8a34fb))
+* **task:** opencode completions shell command syntax ([69ee4c8](https://github.com/dkarter/dotfiles/commit/69ee4c87dea117012ae1ba9741ce02b46689304c))
+* **vellum:** use available schema for palettes ([17c432a](https://github.com/dkarter/dotfiles/commit/17c432a98341b008cf3bfcc6835e29829a431eb9))
+* **vellum:** use renamed vlm binary ([64c565a](https://github.com/dkarter/dotfiles/commit/64c565a0560a9cef01d5b06fdd6abf1a55ccd7dc))
+* **zsh:** add libpq to path ([8d926de](https://github.com/dkarter/dotfiles/commit/8d926deada7b8116456b09c9a00b8b9bef196573))
+
+
+### Documentation
+
+* document Herdr-only workflow ([61adcd4](https://github.com/dkarter/dotfiles/commit/61adcd49755137fe61180ef3d2d46e2cd2132e0a))
+
 ## [32.6.0](https://github.com/dkarter/dotfiles/compare/v32.5.1...v32.6.0) (2026-08-31)
 
 <!-- pullfrog-summary:start -->
