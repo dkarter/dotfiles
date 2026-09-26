@@ -3,9 +3,22 @@
 
 import json
 import os
+import re
 import shlex
 import subprocess
 import sys
+
+LINE_REFERENCE = re.compile(r":(\d+)(?:[-–—](\d+)|:\d+)?$")
+
+
+def location_command(reference):
+    match = LINE_REFERENCE.search(reference)
+    if not match:
+        return None
+    start, end = match.groups()
+    if end and int(end) >= int(start):
+        return f"normal! {int(start)}GV{int(end)}G"
+    return f"normal! {int(start)}G"
 
 
 def herdr(*args):
@@ -16,6 +29,7 @@ def herdr(*args):
 
 def main():
     path = os.path.abspath(sys.argv[1])
+    location = location_command(sys.argv[2]) if len(sys.argv) > 2 else None
     if not os.path.isfile(path):
         sys.exit(f"File no longer exists: {path}")
     active = os.environ.get("HERDR_ACTIVE_PANE_ID") or os.environ.get("HERDR_PANE_ID")
@@ -28,12 +42,15 @@ def main():
         if any(process["name"] in ("nvim", "neovim") for process in info["foreground_processes"]):
             # Send a Vim command, escaping the path as a Vim string and filename.
             command = "execute 'edit ' . fnameescape('" + path.replace("'", "''") + "')"
+            if location:
+                command += " | " + location
             herdr("pane", "send-keys", pane_id, "esc", ":")
             herdr("pane", "send-text", pane_id, command)
             herdr("pane", "send-keys", pane_id, "enter")
             return
     new = json.loads(herdr("pane", "split", "--pane", active, "--direction", "right", "--cwd", os.path.dirname(path), "--focus"))["result"]["pane"]["pane_id"]
-    herdr("pane", "run", new, "nvim -- " + shlex.quote(path))
+    command = "nvim " + ("+" + shlex.quote(location) + " " if location else "") + "-- " + shlex.quote(path)
+    herdr("pane", "run", new, command)
 
 
 if __name__ == "__main__":

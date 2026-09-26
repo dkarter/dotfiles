@@ -9,7 +9,8 @@ import sys
 
 TOKEN = re.compile(r"[^\s<>\"'`]+")
 QUOTED = re.compile(r"`([^`]+)`|\"([^\"]+)\"")
-LINE_NUMBER = re.compile(r"^(.*?):(\d+)(?::\d+)?$")
+LINE_NUMBER = re.compile(r"^(.*?):\d+(?::\d+|[-–—]\d+)?$")
+MAX_WRAP_ROWS = 8
 
 
 def herdr(*args):
@@ -28,12 +29,19 @@ def pane_title(pane):
 
 def paths_in(text, cwd, width):
     lines = text.splitlines()
-    candidates = list(lines)
-    for index, line in enumerate(lines[:-1]):
-        if len(line.rstrip()) >= width - 4 or line.rstrip().endswith("/"):
-            candidates.append(line.rstrip() + lines[index + 1].lstrip())
-    for line in candidates:
-        yield from paths_on_line(line, cwd)
+    for index, line in enumerate(lines):
+        joined = line.rstrip()
+        row = index
+        wrapped = []
+        while row < index + MAX_WRAP_ROWS and row + 1 < len(lines) and (
+            len(lines[row].rstrip()) >= width - 4 or lines[row].rstrip().endswith("/")
+        ):
+            joined += lines[row + 1].lstrip()
+            wrapped.append(joined)
+            row += 1
+        # Prefer complete wrapped references over a path without its range.
+        for candidate in [*reversed(wrapped), line]:
+            yield from paths_on_line(candidate, cwd)
 
 
 def paths_on_line(text, cwd):
