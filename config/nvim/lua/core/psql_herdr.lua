@@ -46,11 +46,15 @@ local function statement_under_cursor()
   local bufnr = vim.api.nvim_get_current_buf()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local ok, parser = pcall(vim.treesitter.get_parser, bufnr, 'sql')
-  if not ok then
+  if not ok or not parser then
     return dollar_quoted_block_under_cursor(bufnr, row, col)
   end
 
-  local root = parser:parse()[1]:root()
+  local tree = parser:parse()[1]
+  if not tree then
+    return dollar_quoted_block_under_cursor(bufnr, row, col)
+  end
+  local root = tree:root()
   local node = root:named_descendant_for_range(row - 1, col, row - 1, col)
   -- Tree-sitter keeps the terminator outside the statement node.
   if node == root and col > 0 and vim.api.nvim_get_current_line():sub(col + 1, col + 1) == ';' then
@@ -64,10 +68,14 @@ local function statement_under_cursor()
   end
 
   -- A CTE contains nested statements; execute the whole top-level statement.
-  while node:parent() and node:parent():type() ~= 'program' do
-    node = node:parent()
+  while node do
+    local parent = node:parent()
+    if not parent or parent:type() == 'program' then
+      break
+    end
+    node = parent
   end
-  if node:type() ~= 'statement' then
+  if not node or node:type() ~= 'statement' then
     return dollar_quoted_block_under_cursor(bufnr, row, col)
   end
 
