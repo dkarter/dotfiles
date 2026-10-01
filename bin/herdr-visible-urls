@@ -9,6 +9,7 @@ import sys
 
 URL = re.compile(r"https?://[^\s<>\[\]{}()\"'`]+")
 CONTINUATION = re.compile(r"^[a-zA-Z0-9_~%#/?=&.+:@!$*,-]+")
+LINE_GUTTER = re.compile(r"^\s*\d+(?:\s{2,}|\s*$)")
 TRAILING = ".,;:!?"
 
 
@@ -34,6 +35,8 @@ def extract_urls(text, width):
                 explicit = url.endswith(("/", "-", "=", "#"))
                 if not (edge or explicit):
                     break
+                if LINE_GUTTER.match(lines[row + 1]):
+                    break
                 next_line = lines[row + 1].lstrip()
                 continuation = CONTINUATION.match(next_line)
                 if not continuation:
@@ -52,11 +55,7 @@ def extract_urls(text, width):
 
 
 def pane_title(pane):
-    label = pane.get("label") or ""
-    agent = pane.get("agent") or ""
-    if label and label == pane.get("display_agent") and agent:
-        return agent
-    return label or agent or pane.get("terminal_title_stripped") or pane["pane_id"]
+    return pane.get("label") or pane.get("agent") or pane.get("terminal_title_stripped") or "󰆍 terminal"
 
 
 def main():
