@@ -34,6 +34,12 @@ class VisibleUrlsTest(unittest.TestCase):
             ["https://mise.jdx.dev/dev-tools/aliases.html"],
         )
 
+    def test_literal_escaped_newline_is_not_part_of_url(self):
+        self.assertEqual(
+            EXTRACT_URLS(r"https://mise.jdx.dev/registry.html\n", 80),
+            ["https://mise.jdx.dev/registry.html"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

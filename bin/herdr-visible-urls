@@ -7,7 +7,7 @@ import re
 import subprocess
 import sys
 
-URL = re.compile(r"https?://[^\s<>\[\]{}()\"'`]+")
+URL = re.compile(r"https?://[^\s<>\[\]{}()\"'`\\]+")
 CONTINUATION = re.compile(r"^[a-zA-Z0-9_~%#/?=&.+:@!$*,-]+")
 LINE_GUTTER = re.compile(r"^\s*\d+(?:\s{2,}|\s*$)")
 TRAILING = ".,;:!?"
