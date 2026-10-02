@@ -5,14 +5,3 @@ lockfile: true
 packages:
   - config/opencode/plugins
   - config/opencode/tui-plugin
-# @kitlangton/stack@0.2.0 is intentionally low-traffic; npm metadata matches
-# the upstream repo/tag and includes registry signature plus SLSA provenance.
-allowedUnpopularPackages:
-  - '@kitlangton/stack'
-# @kitlangton/stack pulls Effect beta packages that repeatedly move between
-# trusted-publisher metadata and provenance-only publishes. Keep this scoped to
-# Effect packages instead of disabling trustPolicy globally.
-trustPolicyExclude:
-  - '@effect/*'
-  - effect
-  - tinyexec@1.2.2

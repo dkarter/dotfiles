@@ -202,8 +202,7 @@ tasks:
           repo_skills="$(realpath ./agents/skills)"
           local_skills="$HOME/.local/share/dotfiles/skills"
           skill_dests="$HOME/.agents/skills $HOME/.claude/skills"
-          generated_skills='stack|stack|stack|skill|-|SKILL.md
-          lnr|lnr|lnr|skill|-|SKILL.md
+          generated_skills='lnr|lnr|lnr|skill|-|SKILL.md
           hwt|hwt|hwt|skill|-|SKILL.md
           hwt|hwt|hwt|skill|config|references/config.md
           hunk-review|mise|sh|-c|cat "$(mise exec -- hunk skill path hunk-review)"|SKILL.md
