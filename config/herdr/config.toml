@@ -65,6 +65,14 @@ command = "dotfiles.command-palette.open"
 description = "command palette"
 
 [[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "cd \"${HERDR_ACTIVE_PANE_CWD:-$PWD}\" && PATH=\"$HOME/.local/share/mise/shims:$PATH\" vlm github-prs --preview"
+description = "browse GitHub pull requests"
+width = "95%"
+height = "90%"
+
+[[keys.command]]
 key = "prefix+shift+l"
 type = "plugin_action"
 command = "dotfiles.last-workspace.toggle"

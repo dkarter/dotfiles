@@ -1,0 +1,154 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "GitHub PRs"
+placeholder = "Search pull requests..."
+
+[source]
+builtin = "github-prs"
+refresh_ms = 300000
+
+[source.remote]
+page_size = 30
+cache_ttl_ms = 300000
+probe_filters = true
+search_debounce_ms = 300
+
+[input]
+start_mode = "filter"
+
+[frecency]
+enabled = false
+
+[filters]
+label = "PRs"
+initial = "mine-open"
+cycle_nonempty = true
+
+[[filters.choices]]
+key = "m"
+label = "mine open"
+source = "category"
+value = "mine-open"
+fg = "theme.colors.green"
+
+[[filters.choices]]
+key = "o"
+label = "all open"
+source = "category"
+value = "all-open"
+fg = "theme.colors.green"
+
+[[filters.choices]]
+key = "r"
+label = "needs my review"
+source = "category"
+value = "needs-review"
+fg = "theme.colors.yellow"
+
+[[filters.choices]]
+key = "c"
+label = "mine closed"
+source = "category"
+value = "mine-closed"
+fg = "theme.colors.magenta"
+
+[[filters.choices]]
+key = "v"
+label = "reviewed closed"
+source = "category"
+value = "reviewed-closed"
+fg = "theme.colors.cyan"
+
+[preview]
+enabled = true
+title = "Reviews and checks"
+command = [
+  "sh",
+  "-c",
+  'if command -v glow >/dev/null 2>&1; then printf "%s" "$1" | glow --style "$VELLUM_PREVIEW_STYLE" --width "$VELLUM_PREVIEW_WIDTH" - || printf "%s" "$1"; else printf "%s" "$1"; fi',
+  "sh",
+  "$details",
+]
+
+[actions]
+default = "open"
+
+[[actions.items]]
+name = "open"
+label = "Open pull request"
+icon = ""
+command = ["gh", "pr", "view", "$number", "--web"]
+
+[[actions.items]]
+name = "checkout"
+label = "Check out branch"
+icon = ""
+command = ["gh", "pr", "checkout", "$number"]
+
+[[actions.items]]
+name = "review"
+label = "Review in HWT"
+icon = ""
+description = "Open a focused HWT review workspace"
+command = ["hwt", "review", "$url", "--focus"]
+on_success = "exit"
+
+[[actions.items]]
+name = "checks"
+label = "Open status checks"
+icon = "󰙨"
+command = ["gh", "pr", "checks", "$number", "--web"]
+
+[[actions.items]]
+name = "auto-merge"
+label = "Enable auto-merge (squash)"
+icon = ""
+description = "Squash-merge once requirements are met; may merge immediately"
+command = ["gh", "pr", "merge", "$url", "--auto", "--squash"]
+when = [{ field = "status", equals = "OPEN" }]
+on_success = "refresh"
+
+[item]
+value = "$url"
+template = [
+  [
+    "#",
+    { token = "$number", fg = "theme.colors.blue" },
+    " ",
+    { token = "$title", bold = true },
+    { token = "$pr_state", align = "right", bold = true },
+  ],
+  [
+    { token = "@", fg = "theme.colors.cyan" },
+    { token = "$author", fg = "theme.colors.cyan" },
+    " · ",
+    { token = "$approvals", fg = "theme.colors.green" },
+    " · ",
+    "$checks",
+  ],
+]
+
+[[item.tokens]]
+name = "pr_state"
+source = "status"
+when = ["OPEN"]
+fg = "theme.colors.green"
+
+[[item.tokens]]
+name = "pr_state"
+source = "status"
+when = ["MERGED"]
+fg = "theme.colors.magenta"
+
+[[item.tokens]]
+name = "pr_state"
+source = "status"
+when = ["CLOSED"]
+fg = "theme.colors.red"
+
+[[item.tokens]]
+name = "pr_state"
+source = "status"
+when = ["DRAFT"]
+fg = "theme.muted"
