@@ -15,7 +15,14 @@ menu = "ctrl-a"
 name = "open"
 label = "Open in Neovim"
 icon = "󰈙"
-command = ["herdr-open-visible-file", "$path"]
+command = ["herdr-open-visible-file", "$path", "$display_path"]
+on_success = "exit"
+
+[[actions.items]]
+name = "copy"
+label = "Copy file path"
+icon = "󰆏"
+command = ["herdr-copy-visible-file", "$path"]
 on_success = "exit"
 
 [[actions.items]]
@@ -27,7 +34,7 @@ command = ["herdr-paste-visible-file", "$path"]
 on_success = "exit"
 
 [item]
-value = "$path"
+value = "$reference"
 template = [
   [
     { token = "$display_path", bold = true },

@@ -1,35 +1,37 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "playwright": {
-      "enabled": true,
-      "type": "local",
-      "command": ["playwright-mcp", "--browser", "webkit"]
-    },
-    "context7": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp/oauth"
-    },
-    "github": {
-      "enabled": true,
-      "type": "remote",
-      "url": "http://127.0.0.1:9090/github/mcp",
-      "oauth": false
-    },
-    "linear": {
-      "type": "remote",
-      "url": "https://mcp.linear.app/mcp",
-      "oauth": {}
-    },
-    "chrome-devtools": {
-      "enabled": true,
-      "type": "local",
-      "command": ["chrome-devtools-mcp", "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"]
-    },
-    "pitchfork": {
-      "type": "local",
-      "command": ["pitchfork", "mcp"]
+    "servers": {
+      "playwright": {
+        "enabled": true,
+        "type": "local",
+        "command": ["playwright-mcp", "--browser", "webkit"]
+      },
+      "context7": {
+        "enabled": true,
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp/oauth"
+      },
+      "github": {
+        "enabled": true,
+        "type": "remote",
+        "url": "http://127.0.0.1:9090/github/mcp",
+        "oauth": false
+      },
+      "linear": {
+        "type": "remote",
+        "url": "https://mcp.linear.app/mcp",
+        "oauth": {}
+      },
+      "chrome-devtools": {
+        "enabled": true,
+        "type": "local",
+        "command": ["chrome-devtools-mcp", "--executable-path=/Applications/Helium.app/Contents/MacOS/Helium"]
+      },
+      "pitchfork": {
+        "type": "local",
+        "command": ["pitchfork", "mcp"]
+      }
     }
   },
   "lsp": {

@@ -470,6 +470,11 @@ const VimModePlugin = {
       setMode('insert');
     };
 
+    const insertFromVisual = () => {
+      promptEditor()?.clearSelection();
+      setMode('insert');
+    };
+
     const normalCommands = [
       { bind: 'h', title: 'Move left', run: () => dispatch('input.move.left') },
       { bind: 'j', title: 'Move down', run: () => dispatch('input.move.down') },
@@ -552,7 +557,14 @@ const VimModePlugin = {
       render: () => {
         let disposed = false;
         const handleFocusedEditor = (editor: EditBufferRenderable | null) => {
-          updateCursorStyle(state.mode, promptEditor(editor));
+          const prompt = promptEditor(editor);
+          if (!prompt && (state.mode === 'visual' || state.mode === 'visual-line')) {
+            if (styledEditor && !styledEditor.isDestroyed) {
+              styledEditor.clearSelection();
+            }
+            setMode('normal');
+          }
+          updateCursorStyle(state.mode, prompt);
         };
         const handleFrame = () => {
           updateCursorStyle(state.mode);
@@ -713,6 +725,7 @@ const VimModePlugin = {
           { bind: 'x', title: 'Delete selection', run: () => finishOperator('input.delete') },
           { bind: 'd', title: 'Delete selection', run: () => finishOperator('input.delete') },
           { bind: 'c', title: 'Change selection', run: () => finishOperator('input.delete', 'insert') },
+          { bind: 'i', title: 'Insert without replacing selection', run: insertFromVisual },
           {
             bind: 'escape',
             title: 'Exit visual mode',
@@ -750,6 +763,7 @@ const VimModePlugin = {
           { bind: 'x', title: 'Delete selected lines', run: () => finishOperator('input.delete') },
           { bind: 'd', title: 'Delete selected lines', run: () => finishOperator('input.delete') },
           { bind: 'c', title: 'Change selected lines', run: changeVisualLines },
+          { bind: 'i', title: 'Insert without replacing selection', run: insertFromVisual },
           {
             bind: 'escape',
             title: 'Exit visual line mode',

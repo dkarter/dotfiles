@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+pane_id="$(current_pane_id)"
+source_workspace="$(herdr pane get "$pane_id" | jq -er '.result.pane.workspace_id')"
+destination="$(vlm herdr-move-pane-workspace)"
+[[ -n "$destination" && "$destination" != "$source_workspace" ]] || exit 0
+
+tab_id="$(herdr workspace get "$destination" | jq -er '.result.workspace.active_tab_id')"
+herdr pane move "$pane_id" --tab "$tab_id" --split right --focus >/dev/null

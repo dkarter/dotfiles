@@ -390,44 +390,44 @@ url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-windows-
 url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320011"
 
 [[tools."github:nushell/nushell"]]
-version = "0.115.1"
+version = "0.116.0"
 backend = "github:nushell/nushell"
 specifiers = ["latest"]
 
 [tools."github:nushell/nushell"."platforms.linux-arm64"]
-checksum = "sha256:5c4a5bca0af5b070e903a68fa014cc24e6419d0ac9cec03a2948494b2d310e08"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526013775"
+checksum = "sha256:bd854a1c7286cabb7830e744810c27152e3d332192e75cea9e3c92dced4e3dce"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591220342"
 
 [tools."github:nushell/nushell"."platforms.linux-arm64-musl"]
-checksum = "sha256:86a869f44c2abd37f4a4c215af78c8da058812b76fa131476d28e62fc0262a91"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526013290"
+checksum = "sha256:bc3503d0588caa7c2835d61337825152141c748c126817739cb86519c593416e"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591238656"
 
 [tools."github:nushell/nushell"."platforms.linux-x64"]
-checksum = "sha256:d11d825241f6504a3617c535fa725a9dd6d009c86d7b19fb3168b47635b9d8b0"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526012815"
+checksum = "sha256:9f73a6913f9515a621bd916dc91d7f3e0494e488161c2d686f6b98ffa0555945"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591232732"
 
 [tools."github:nushell/nushell"."platforms.linux-x64-musl"]
-checksum = "sha256:8a9722177ddd421eba927b4baae4ae341a4d1c3434504be7b1b17d998bafdd87"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526013643"
+checksum = "sha256:7b91aeef575080f4b90405ba4512f4ccd0c21a6fbcd99f18bde3272c75213f00"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591225382"
 
 [tools."github:nushell/nushell"."platforms.macos-arm64"]
-checksum = "sha256:2e6ed1eb043869ff05b5f2448a8c443e4d3a93557ba4303b21008a0523c96734"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526010403"
+checksum = "sha256:8d3169054b0e8f04b60b38ac1673acf61cbf66c6d8073ebc732d5bc108b3add6"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591247156"
 
 [tools."github:nushell/nushell"."platforms.macos-x64"]
-checksum = "sha256:0292f4b92af29cfe5d9c4b2ec06eeb325b705d1d6c19536a8bec2b75859b3485"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526015418"
+checksum = "sha256:c03c8cc16e7a1d616d0dd5992b114ae28d84b622e00b43905118147cc0bccdaf"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591247388"
 
 [tools."github:nushell/nushell"."platforms.windows-x64"]
-checksum = "sha256:b83009cbc88021f4dc293c49320118886b78363f9a4bb14933d33c8803241f46"
-url = "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/526030176"
+checksum = "sha256:745b165d847e34b5dea80c2cfc867383c02b907d288a59a44b25e39bcac14015"
+url = "https://github.com/nushell/nushell/releases/download/0.116.0/nu-0.116.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/nushell/nushell/releases/assets/591270585"
 
 [[tools."github:preiter93/wireman"]]
 version = "0.3.8"
@@ -583,37 +583,37 @@ checksum = "sha256:551b0065fdfae8ba74ddac3a213e46e0144188cacf997ae1002f508af1697
 url = "https://get.helm.sh/helm-v4.3.0-windows-amd64.tar.gz"
 
 [[tools.kubectl]]
-version = "1.37.0"
+version = "1.37.1"
 backend = "aqua:kubernetes/kubernetes/kubectl"
 specifiers = ["latest"]
 
 [tools.kubectl."platforms.linux-arm64"]
-checksum = "sha256:922df28df248cc00a9e025f947704f1d1482de64ece54cfe57e61f19eaf1eef3"
-url = "https://dl.k8s.io/v1.37.0/bin/linux/arm64/kubectl"
+checksum = "sha256:ff749f4b78d9c4f1ec87307df9b50119ed819e2094aa9810cb9acffc3286c8c7"
+url = "https://dl.k8s.io/v1.37.1/bin/linux/arm64/kubectl"
 
 [tools.kubectl."platforms.linux-arm64-musl"]
-checksum = "sha256:922df28df248cc00a9e025f947704f1d1482de64ece54cfe57e61f19eaf1eef3"
-url = "https://dl.k8s.io/v1.37.0/bin/linux/arm64/kubectl"
+checksum = "sha256:ff749f4b78d9c4f1ec87307df9b50119ed819e2094aa9810cb9acffc3286c8c7"
+url = "https://dl.k8s.io/v1.37.1/bin/linux/arm64/kubectl"
 
 [tools.kubectl."platforms.linux-x64"]
-checksum = "sha256:6129359f4e1f3848a5572ccb0b26cf28b8ca08cef38c95a765b2f64a2c961a2f"
-url = "https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubectl"
+checksum = "sha256:65691ff77eb6fa44c908b77a1082c9f092c3b9733b5cefabec0d1104890e21a8"
+url = "https://dl.k8s.io/v1.37.1/bin/linux/amd64/kubectl"
 
 [tools.kubectl."platforms.linux-x64-musl"]
-checksum = "sha256:6129359f4e1f3848a5572ccb0b26cf28b8ca08cef38c95a765b2f64a2c961a2f"
-url = "https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubectl"
+checksum = "sha256:65691ff77eb6fa44c908b77a1082c9f092c3b9733b5cefabec0d1104890e21a8"
+url = "https://dl.k8s.io/v1.37.1/bin/linux/amd64/kubectl"
 
 [tools.kubectl."platforms.macos-arm64"]
-checksum = "sha256:583beedaebe422e71d3f1a96acef8b1fef86ea2f09a45ad01aa6c9ce287c1380"
-url = "https://dl.k8s.io/v1.37.0/bin/darwin/arm64/kubectl"
+checksum = "sha256:fd65982c97ddad3106754b69ffa196d0e543aa591930ae52aed1adfb92f8c77f"
+url = "https://dl.k8s.io/v1.37.1/bin/darwin/arm64/kubectl"
 
 [tools.kubectl."platforms.macos-x64"]
-checksum = "sha256:d5276c0f4fde77fc446070290f345944a7f1fda153df6b960e5fde93b7a9bccd"
-url = "https://dl.k8s.io/v1.37.0/bin/darwin/amd64/kubectl"
+checksum = "sha256:6851381c486ff6edd691623e3d65c87cb9a5b02887ff8fbbb38d8a031b748387"
+url = "https://dl.k8s.io/v1.37.1/bin/darwin/amd64/kubectl"
 
 [tools.kubectl."platforms.windows-x64"]
-checksum = "sha256:4721b614a67bb4932a0369e61f4a323d8c6ca00943d3a2ff14837c124da06f0e"
-url = "https://dl.k8s.io/v1.37.0/bin/windows/amd64/kubectl.exe"
+checksum = "sha256:14b93c4916a6f37a06fbc1f46b0a1d2404c4f9741be09f00d6caf8af3b05f1d3"
+url = "https://dl.k8s.io/v1.37.1/bin/windows/amd64/kubectl.exe"
 
 [[tools.lazydocker]]
 version = "0.25.2"
@@ -656,44 +656,44 @@ url = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/laz
 url_api = "https://api.github.com/repos/jesseduffield/lazydocker/releases/assets/399711571"
 
 [[tools.opentofu]]
-version = "1.12.6"
+version = "1.13.0"
 backend = "aqua:opentofu/opentofu"
 specifiers = ["latest"]
 
 [tools.opentofu."platforms.linux-arm64"]
-checksum = "sha256:9bd0228a81bcd0c88f7045c74378f45a815779f19897191dff7d9efba9976b9e"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762688"
+checksum = "sha256:ea1c9a95e38d5d890b2eccbeec4d65481ad56bf6775dfbb15c4d9e34ff793dc6"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021551"
 
 [tools.opentofu."platforms.linux-arm64-musl"]
-checksum = "sha256:9bd0228a81bcd0c88f7045c74378f45a815779f19897191dff7d9efba9976b9e"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762688"
+checksum = "sha256:ea1c9a95e38d5d890b2eccbeec4d65481ad56bf6775dfbb15c4d9e34ff793dc6"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021551"
 
 [tools.opentofu."platforms.linux-x64"]
-checksum = "sha256:50a6106fa4de523d09c87af85f3db1dd47535fc005727fdca6852146476b88ec"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762723"
+checksum = "sha256:1f0cb37fc85dea4e7633a72aca2332b801f72650a32be911b8b9b32907f214fb"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021472"
 
 [tools.opentofu."platforms.linux-x64-musl"]
-checksum = "sha256:50a6106fa4de523d09c87af85f3db1dd47535fc005727fdca6852146476b88ec"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762723"
+checksum = "sha256:1f0cb37fc85dea4e7633a72aca2332b801f72650a32be911b8b9b32907f214fb"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021472"
 
 [tools.opentofu."platforms.macos-arm64"]
-checksum = "sha256:f958ec5e511063be9feb180ca015a4cb7977566a9cf6a8550bba8c2a9b5aba74"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762710"
+checksum = "sha256:b30ee6ee0b40545673b2934f0f0cdbd785d02b58d8930aab0e1679eda76cd7e4"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021648"
 
 [tools.opentofu."platforms.macos-x64"]
-checksum = "sha256:44bb1855f372f17f365fb94517906e78da5001da10f4c98de57a39bf982f3a92"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762655"
+checksum = "sha256:a50f8666d6c82aab5696d9453222f5d9ebea1f19e4d47bab5b0581c24935e978"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021470"
 
 [tools.opentofu."platforms.windows-x64"]
-checksum = "sha256:bcbcd9ca744af6c4053e2d5e75dae79ff33ad7dc38d45e1233e693d096284538"
-url = "https://github.com/opentofu/opentofu/releases/download/v1.12.6/tofu_1.12.6_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/520762708"
+checksum = "sha256:6ee91581b304580fa408ec68ff108f7b11a73277979d2a6039944ed84c111d88"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.0/tofu_1.13.0_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/601021656"
 
 [[tools.terraform]]
 version = "1.16.4"

@@ -59,6 +59,11 @@ context_alias = "!! qa"
 style = "bold black bg:#ff69b4"
 
 [[kubernetes.contexts]]
+context_pattern = "gke_disaster-recovery-.*_us-central1_disaster-recovery"
+context_alias = "!! disaster recovery"
+style = "bold black bg:yellow"
+
+[[kubernetes.contexts]]
 context_pattern = "gke_prod-.*-central1_main"
 context_alias = " prod  "
 style = "bold black bg:red"

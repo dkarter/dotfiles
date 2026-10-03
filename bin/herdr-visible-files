@@ -9,7 +9,8 @@ import sys
 
 TOKEN = re.compile(r"[^\s<>\"'`]+")
 QUOTED = re.compile(r"`([^`]+)`|\"([^\"]+)\"")
-LINE_NUMBER = re.compile(r"^(.*?):(\d+)(?::\d+)?$")
+LINE_NUMBER = re.compile(r"^(.*?)(:\d+(?::\d+|[-–—]\d+)?)$")
+MAX_WRAP_ROWS = 8
 
 
 def herdr(*args):
@@ -19,21 +20,24 @@ def herdr(*args):
 
 
 def pane_title(pane):
-    label = pane.get("label") or ""
-    agent = pane.get("agent") or ""
-    if label and label == pane.get("display_agent") and agent:
-        return agent
-    return label or agent or pane.get("terminal_title_stripped") or pane["pane_id"]
+    return pane.get("label") or pane.get("agent") or pane.get("terminal_title_stripped") or "󰆍 terminal"
 
 
 def paths_in(text, cwd, width):
     lines = text.splitlines()
-    candidates = list(lines)
-    for index, line in enumerate(lines[:-1]):
-        if len(line.rstrip()) >= width - 4 or line.rstrip().endswith("/"):
-            candidates.append(line.rstrip() + lines[index + 1].lstrip())
-    for line in candidates:
-        yield from paths_on_line(line, cwd)
+    for index, line in enumerate(lines):
+        joined = line.rstrip()
+        row = index
+        wrapped = []
+        while row < index + MAX_WRAP_ROWS and row + 1 < len(lines) and (
+            len(lines[row].rstrip()) >= width - 4 or lines[row].rstrip().endswith("/")
+        ):
+            joined += lines[row + 1].lstrip()
+            wrapped.append(joined)
+            row += 1
+        # Prefer complete wrapped references over a path without its range.
+        for candidate in [*reversed(wrapped), line]:
+            yield from paths_on_line(candidate, cwd)
 
 
 def paths_on_line(text, cwd):
@@ -72,9 +76,11 @@ def main():
         info = details[pane["pane_id"]]
         text = herdr("pane", "read", pane["pane_id"], "--source", "visible", "--format", "text")
         for path, display in paths_in(text, info.get("foreground_cwd") or info["cwd"], pane["rect"]["width"]):
-            if path not in seen:
-                seen.add(path)
-                files.append({"path": path, "display_path": display, "pane_title": pane_title(info)})
+            numbered = LINE_NUMBER.match(display)
+            reference = path + (numbered.group(2) if numbered else "")
+            if reference not in seen:
+                seen.add(reference)
+                files.append({"path": path, "reference": reference, "display_path": display, "pane_title": pane_title(info)})
     json.dump(files, sys.stdout)
     print()
 

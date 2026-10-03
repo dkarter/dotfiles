@@ -1,12 +1,3 @@
-allowedUnpopularPackages = ["@kitlangton/stack"]
-trustPolicyExclude = [
-  # Effect beta packages repeatedly move between trusted-publisher metadata
-  # and provenance-only publishes. Keep this scoped to Effect instead of
-  # disabling trustPolicy globally.
-  "@effect/*",
-  "effect",
-]
-
 [allowBuilds]
 # @fission-ai/openspec postinstall only checks CI/OPENSPEC_NO_COMPLETIONS,
 # verifies dist/, then prints a shell completion install tip. Keep skipped.
