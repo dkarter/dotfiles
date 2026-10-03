@@ -87,6 +87,14 @@ icon = ""
 command = ["gh", "pr", "checkout", "$number"]
 
 [[actions.items]]
+name = "checkout-hwt"
+label = "Check out in HWT"
+icon = ""
+description = "Open the PR branch in a focused HWT worktree"
+command = ["hwt", "checkout", "$url", "--focus"]
+on_success = "exit"
+
+[[actions.items]]
 name = "review"
 label = "Review in HWT"
 icon = ""
@@ -107,6 +115,15 @@ icon = ""
 description = "Squash-merge once requirements are met; may merge immediately"
 command = ["gh", "pr", "merge", "$url", "--auto", "--squash"]
 when = [{ field = "status", equals = "OPEN" }]
+on_success = "refresh"
+
+[[actions.items]]
+name = "close"
+label = "Close pull request"
+icon = ""
+description = "Close the pull request without deleting its branch"
+command = ["gh", "pr", "close", "$url"]
+when = [{ field = "state", equals = "OPEN" }]
 on_success = "refresh"
 
 [item]
