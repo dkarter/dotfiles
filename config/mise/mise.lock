@@ -2661,6 +2661,7 @@ specifiers = ["latest"]
 
 [[tools."npm:@fission-ai/openspec"]]
 version = "1.14.0"
+aube = { path = "locks/npm-fission-ai-openspec/1.14.0", digest = "sha256:1ddc80772d2348cd2f1eaa6bb35f7e338fea9088f9948908326d373ceb7def2a" }
 backend = "npm:@fission-ai/openspec"
 specifiers = ["latest"]
 
@@ -2675,6 +2676,7 @@ allow_low_downloads = "true"
 
 [[tools."npm:@opencode/cli"]]
 version = "2.0.22"
+aube = { path = "locks/npm-opencode-cli/2.0.22~009061c2", digest = "sha256:ee9e1c2e66d9e59b120bdd976c7d6946e67eb0877ec453ce69deefef2f53619c" }
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
