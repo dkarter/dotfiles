@@ -6,11 +6,34 @@ import os
 import re
 import subprocess
 import sys
+from functools import lru_cache
 
 TOKEN = re.compile(r"[^\s<>\"'`]+")
 QUOTED = re.compile(r"`([^`]+)`|\"([^\"]+)\"")
 LINE_NUMBER = re.compile(r"^(.*?)(:\d+(?::\d+|[-–—]\d+)?)$")
+LINE_NUMBER_CONTINUATION = re.compile(r"^(?!\d+[.)](?:\s|$))\d+(?::\d+|[-–—]\d+)?(?=$|[\s.,;!?)\]}\"'`])")
 MAX_WRAP_ROWS = 8
+
+
+@lru_cache(maxsize=32)
+def project_files(cwd):
+    """Index tracked and non-ignored untracked files once per pane directory."""
+    try:
+        root = subprocess.check_output(
+            ["git", "-C", cwd, "rev-parse", "--show-toplevel"],
+            text=True, stderr=subprocess.DEVNULL,
+        ).strip()
+        files = subprocess.check_output(
+            ["git", "-C", root, "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
+            text=True, stderr=subprocess.DEVNULL,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    by_name = {}
+    for relative in dict.fromkeys(files.split("\0")):
+        if relative:
+            by_name.setdefault(os.path.basename(relative), []).append(os.path.join(root, relative))
+    return by_name
 
 
 def herdr(*args):
@@ -31,6 +54,11 @@ def paths_in(text, cwd, width):
         wrapped = []
         while row < index + MAX_WRAP_ROWS and row + 1 < len(lines) and (
             len(lines[row].rstrip()) >= width - 4 or lines[row].rstrip().endswith("/")
+            # Text renderers can wrap before the pane edge because of padding.
+            or (
+                lines[row].rstrip().endswith(":")
+                and LINE_NUMBER_CONTINUATION.match(lines[row + 1].lstrip())
+            )
         ):
             joined += lines[row + 1].lstrip()
             wrapped.append(joined)
@@ -59,6 +87,12 @@ def paths_on_line(text, cwd):
             path = os.path.abspath(os.path.join(cwd, os.path.expanduser(display)))
         if os.path.isfile(path):
             yield path, token
+        elif os.path.basename(display) == display and "." in display:
+            # Agent prose often names a nested project file without its directory.
+            suffix = numbered.group(2) if numbered else ""
+            for found in project_files(cwd).get(display, []):
+                if os.path.isfile(found):
+                    yield found, os.path.relpath(found, os.path.realpath(cwd)) + suffix
 
 
 def main():
