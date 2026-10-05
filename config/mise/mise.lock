@@ -272,74 +272,74 @@ checksum = "sha256:78c221c2376f79731ccf4e4af0b3bb46d81fefa3296c5abee09ad8a1b21e6
 url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-windows-x64-baseline.zip"
 
 [[tools.cargo-binstall]]
-version = "1.25.0"
+version = "1.25.1"
 backend = "aqua:cargo-bins/cargo-binstall"
 specifiers = ["latest"]
 
 [tools.cargo-binstall."platforms.linux-arm64"]
-checksum = "sha256:f21f4b209f33d9f4e55a712e530e566c327c93aa54627f28829ef740142bd624"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-aarch64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606891417"
+checksum = "sha256:0c209d4fecaf428358b1a798d35e2372c98a9a5513c541ba08450c2ba1b2bf69"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-aarch64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607778085"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-arm64-musl"]
-checksum = "sha256:4d3cc6e0308d2f76b7de7f69d1d316a2749917bb6c1a9c69cea803400460e5a6"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-aarch64-unknown-linux-musl.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606891321"
+checksum = "sha256:87495c6a6e921e02dd9ccf4dc8cc0a9b3a8d7ae8a07681f7f99bbcf306f42fdd"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-aarch64-unknown-linux-musl.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777995"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64"]
-checksum = "sha256:ff5a7ebf50c3a0f2edaf44bcabc9c05b85ead42f485e026647325a3c665f29c4"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890700"
+checksum = "sha256:7566158bf76a99974e081abe442978b8a3e5f4e834ee8247d847902b588b2133"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777440"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64-baseline"]
-checksum = "sha256:ff5a7ebf50c3a0f2edaf44bcabc9c05b85ead42f485e026647325a3c665f29c4"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890700"
+checksum = "sha256:7566158bf76a99974e081abe442978b8a3e5f4e834ee8247d847902b588b2133"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-unknown-linux-gnu.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777440"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64-musl"]
-checksum = "sha256:6d864dd99e63386b54c7ca1808eb000571a9e00f530ed86a2c0016d0290083b9"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890630"
+checksum = "sha256:8e06c41af972f9922f28c6ae467e41ffa9b0688d563d0aabd0dcbd5244ab849b"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777371"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:6d864dd99e63386b54c7ca1808eb000571a9e00f530ed86a2c0016d0290083b9"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-unknown-linux-musl.tgz"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890630"
+checksum = "sha256:8e06c41af972f9922f28c6ae467e41ffa9b0688d563d0aabd0dcbd5244ab849b"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-unknown-linux-musl.tgz"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777371"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-arm64"]
-checksum = "sha256:800baf25b33a9c7b9ab9d8f41240ad33a030f3bfaf30ff5a7f1777af4ad4d0cb"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-aarch64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606891617"
+checksum = "sha256:44fc93543677e08d9e591d7c72a0b0346049ff249816814335da864e588f0413"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-aarch64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607778292"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-x64"]
-checksum = "sha256:08b8fb524040cc339e34441a3d8e87baabc79453b13061e04a414a4d10aec736"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890817"
+checksum = "sha256:0f39bb6dcb534ffe20d5cee7e0c131451eb721ca6c6b962418d1fc1a48d5917d"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777587"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.macos-x64-baseline"]
-checksum = "sha256:08b8fb524040cc339e34441a3d8e87baabc79453b13061e04a414a4d10aec736"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-apple-darwin.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890817"
+checksum = "sha256:0f39bb6dcb534ffe20d5cee7e0c131451eb721ca6c6b962418d1fc1a48d5917d"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-apple-darwin.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777587"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.windows-x64"]
-checksum = "sha256:fc589e927d3c0b82876504c2b4bd2d448f31564479df42a39324948f430100fd"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890773"
+checksum = "sha256:8b8019ac54adbb5338e68c3cd6e37dc48a156747eb9174a9231089ce648c5df3"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777522"
 provenance = "github-attestations"
 
 [tools.cargo-binstall."platforms.windows-x64-baseline"]
-checksum = "sha256:fc589e927d3c0b82876504c2b4bd2d448f31564479df42a39324948f430100fd"
-url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.0/cargo-binstall-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/606890773"
+checksum = "sha256:8b8019ac54adbb5338e68c3cd6e37dc48a156747eb9174a9231089ce648c5df3"
+url = "https://github.com/cargo-bins/cargo-binstall/releases/download/v1.25.1/cargo-binstall-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/cargo-bins/cargo-binstall/releases/assets/607777522"
 provenance = "github-attestations"
 
 [[tools."cargo:erdtree"]]
@@ -2439,74 +2439,74 @@ url = "https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygi
 url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/560658241"
 
 [[tools.lima]]
-version = "2.2.0"
+version = "2.2.1"
 backend = "aqua:lima-vm/lima"
 specifiers = ["latest"]
 
 [tools.lima."platforms.linux-arm64"]
-checksum = "sha256:7c6a09c6844f55f811e9b7b2b60a6070a512c696c8ec752dfdb3c8ed50ed0364"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Linux-aarch64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813992"
+checksum = "sha256:fbcf4d127936666aa2cf6013b663c250431f2a59394757b404070f8d6a160e10"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822566"
 provenance = "github-attestations"
 
 [tools.lima."platforms.linux-arm64-musl"]
-checksum = "sha256:7c6a09c6844f55f811e9b7b2b60a6070a512c696c8ec752dfdb3c8ed50ed0364"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Linux-aarch64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813992"
+checksum = "sha256:fbcf4d127936666aa2cf6013b663c250431f2a59394757b404070f8d6a160e10"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822566"
 provenance = "github-attestations"
 
 [tools.lima."platforms.linux-x64"]
-checksum = "sha256:a0ea1ccf6b7335a900adb5f8d2b8384457965fecb1ba72f09b4e3e46d12f424a"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813993"
+checksum = "sha256:b391ac7fcac2b2a5a1628107756463188ded4d18d3104a40a66a8bb6fec01bcb"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822567"
 provenance = "github-attestations"
 
 [tools.lima."platforms.linux-x64-baseline"]
-checksum = "sha256:a0ea1ccf6b7335a900adb5f8d2b8384457965fecb1ba72f09b4e3e46d12f424a"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813993"
+checksum = "sha256:b391ac7fcac2b2a5a1628107756463188ded4d18d3104a40a66a8bb6fec01bcb"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822567"
 provenance = "github-attestations"
 
 [tools.lima."platforms.linux-x64-musl"]
-checksum = "sha256:a0ea1ccf6b7335a900adb5f8d2b8384457965fecb1ba72f09b4e3e46d12f424a"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813993"
+checksum = "sha256:b391ac7fcac2b2a5a1628107756463188ded4d18d3104a40a66a8bb6fec01bcb"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822567"
 provenance = "github-attestations"
 
 [tools.lima."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:a0ea1ccf6b7335a900adb5f8d2b8384457965fecb1ba72f09b4e3e46d12f424a"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813993"
+checksum = "sha256:b391ac7fcac2b2a5a1628107756463188ded4d18d3104a40a66a8bb6fec01bcb"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822567"
 provenance = "github-attestations"
 
 [tools.lima."platforms.macos-arm64"]
-checksum = "sha256:bbdef91774885a0d05f7b048c4eb89ae2bcf3a0c252ae7ca7934e63df76d93c3"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813994"
+checksum = "sha256:9e9eacce88f37e185c346bad73aa6136f738d8cdf8c3bb23cd42b071824bc66e"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822568"
 provenance = "github-attestations"
 
 [tools.lima."platforms.macos-x64"]
-checksum = "sha256:0d6f99c19f6e4bc3c92730c4c29d929e6927f0cb0a0ba1a84383367135a8ff31"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Darwin-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813996"
+checksum = "sha256:6b776e4bc41f358e6ee01fefcc78e2eb26f11635a0fcff632234af77a566c6c4"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Darwin-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822574"
 provenance = "github-attestations"
 
 [tools.lima."platforms.macos-x64-baseline"]
-checksum = "sha256:0d6f99c19f6e4bc3c92730c4c29d929e6927f0cb0a0ba1a84383367135a8ff31"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Darwin-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484813996"
+checksum = "sha256:6b776e4bc41f358e6ee01fefcc78e2eb26f11635a0fcff632234af77a566c6c4"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Darwin-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822574"
 provenance = "github-attestations"
 
 [tools.lima."platforms.windows-x64"]
-checksum = "sha256:e7bf7dd2d2e7ab7ce020631f8f7533665f6e6f9068686d3ffcd0f3c438856ea9"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Windows-AMD64.zip"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484814002"
+checksum = "sha256:34061dd322daa014c03f1cc8bc253be40596835990a3017426bc2189a3fdd75d"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Windows-AMD64.zip"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822585"
 provenance = "github-attestations"
 
 [tools.lima."platforms.windows-x64-baseline"]
-checksum = "sha256:e7bf7dd2d2e7ab7ce020631f8f7533665f6e6f9068686d3ffcd0f3c438856ea9"
-url = "https://github.com/lima-vm/lima/releases/download/v2.2.0/lima-2.2.0-Windows-AMD64.zip"
-url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/484814002"
+checksum = "sha256:34061dd322daa014c03f1cc8bc253be40596835990a3017426bc2189a3fdd75d"
+url = "https://github.com/lima-vm/lima/releases/download/v2.2.1/lima-2.2.1-Windows-AMD64.zip"
+url_api = "https://api.github.com/repos/lima-vm/lima/releases/assets/607822585"
 provenance = "github-attestations"
 
 [[tools.lsd]]
@@ -2691,8 +2691,7 @@ backend = "npm:@fission-ai/openspec"
 specifiers = ["latest"]
 
 [[tools."npm:@opencode/cli"]]
-version = "2.0.22"
-aube = { path = "locks/npm-opencode-cli/2.0.22~009061c2", digest = "sha256:ee9e1c2e66d9e59b120bdd976c7d6946e67eb0877ec453ce69deefef2f53619c" }
+version = "2.0.23"
 backend = "npm:@opencode/cli"
 specifiers = ["latest"]
 
@@ -2733,64 +2732,64 @@ backend = "npm:varlock"
 specifiers = ["latest"]
 
 [[tools.pi]]
-version = "1.0.0"
+version = "1.0.2"
 backend = "aqua:earendil-works/pi"
 specifiers = ["latest"]
 
 [tools.pi."platforms.linux-arm64"]
-checksum = "sha256:b60b3fda830a43c1dc3f5edb5fc7b681f22a0a930b48cdac13b97570c6045819"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916759"
+checksum = "sha256:3321ccdc3ff38d6c52274bdab28246e06434618d1988a54e99cce45e535a013c"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828192"
 
 [tools.pi."platforms.linux-arm64-musl"]
-checksum = "sha256:b60b3fda830a43c1dc3f5edb5fc7b681f22a0a930b48cdac13b97570c6045819"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916759"
+checksum = "sha256:3321ccdc3ff38d6c52274bdab28246e06434618d1988a54e99cce45e535a013c"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828192"
 
 [tools.pi."platforms.linux-x64"]
-checksum = "sha256:8fd5543a52a889d60ad57ccbf6c969e73c75c5240aae18ac40b506947a63dc38"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916768"
+checksum = "sha256:0d7687a6a9fcbaa88ff664cb6b28683ce9ee3e028931b55eb48a70ae9a285d18"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828196"
 
 [tools.pi."platforms.linux-x64-baseline"]
-checksum = "sha256:8fd5543a52a889d60ad57ccbf6c969e73c75c5240aae18ac40b506947a63dc38"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916768"
+checksum = "sha256:0d7687a6a9fcbaa88ff664cb6b28683ce9ee3e028931b55eb48a70ae9a285d18"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828196"
 
 [tools.pi."platforms.linux-x64-musl"]
-checksum = "sha256:8fd5543a52a889d60ad57ccbf6c969e73c75c5240aae18ac40b506947a63dc38"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916768"
+checksum = "sha256:0d7687a6a9fcbaa88ff664cb6b28683ce9ee3e028931b55eb48a70ae9a285d18"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828196"
 
 [tools.pi."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:8fd5543a52a889d60ad57ccbf6c969e73c75c5240aae18ac40b506947a63dc38"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916768"
+checksum = "sha256:0d7687a6a9fcbaa88ff664cb6b28683ce9ee3e028931b55eb48a70ae9a285d18"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828196"
 
 [tools.pi."platforms.macos-arm64"]
-checksum = "sha256:97291e7d2eb2d7d95ab1f67d26de7902302201bc8786c132bbbc9e53fa8526cc"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916769"
+checksum = "sha256:c2f035ea4adba87916f005c99515e3c91674b11d16ba75d95d0881e4781aa3bb"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828195"
 
 [tools.pi."platforms.macos-x64"]
-checksum = "sha256:62fb78fcdbc7c0dbd21044dd44bfb3af20df447285bb55e9debf86ff4838776d"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916767"
+checksum = "sha256:d54be8df33ab6a2f3457bd7de37edc947050ac4a7f043456d37e03afd15684de"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828194"
 
 [tools.pi."platforms.macos-x64-baseline"]
-checksum = "sha256:62fb78fcdbc7c0dbd21044dd44bfb3af20df447285bb55e9debf86ff4838776d"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916767"
+checksum = "sha256:d54be8df33ab6a2f3457bd7de37edc947050ac4a7f043456d37e03afd15684de"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828194"
 
 [tools.pi."platforms.windows-x64"]
-checksum = "sha256:f7dbd39814bf6763f01e7f688ad089615de1d0eb55fc8915a49acdc2088f4404"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-windows-x64.zip"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916799"
+checksum = "sha256:37a2ee3c5222a73efc78b49f571748f11a74f4dbe160da3030a404da71f464e7"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-windows-x64.zip"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828204"
 
 [tools.pi."platforms.windows-x64-baseline"]
-checksum = "sha256:f7dbd39814bf6763f01e7f688ad089615de1d0eb55fc8915a49acdc2088f4404"
-url = "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-windows-x64.zip"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/603916799"
+checksum = "sha256:37a2ee3c5222a73efc78b49f571748f11a74f4dbe160da3030a404da71f464e7"
+url = "https://github.com/earendil-works/pi/releases/download/v1.0.2/pi-windows-x64.zip"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/608828204"
 
 [[tools."pipx:httpie"]]
 version = "3.2.4"
