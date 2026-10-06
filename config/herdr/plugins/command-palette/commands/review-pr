@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+cwd="$(current_pane_cwd)"
+repo_root="$(repo_root_for_cwd "$cwd")"
+if [[ -z "$repo_root" ]]; then
+  gum style --foreground="red" "Not in a git repository"
+  exit 1
+fi
+
+input="$(ink input --placeholder="GitHub PR URL, PR number, or branch name..." --fullscreen)" || exit 0
+[[ -z "$input" ]] && exit 0
+
+exec hwt review --cwd "$repo_root" --focus -- "$input"
