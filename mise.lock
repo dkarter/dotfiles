@@ -3,54 +3,54 @@
 lockfile_version = 2
 
 [[tools.aube]]
-version = "2.4.0"
+version = "2.6.1"
 backend = "packslip:github.com/aubepkg/aube"
 specifiers = ["latest"]
 
 [tools.aube."platforms.linux-arm64"]
-checksum = "sha256:cb21f9acd7240253021662d4f874912ef8614ad2af7847083e7370c518e419aa"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-aarch64-unknown-linux-gnu.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:ff945fd7a68d25d87b47e45877228ad269d5a053c04522599b31c130d734f40d"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-aarch64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.linux-arm64-musl"]
-checksum = "sha256:015e34008dafffda17a3f05ffb7affdeec71c0bea31847c57c95c7d4bdbb59d3"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-aarch64-unknown-linux-musl.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:521b5cb38cf6c07c1a43a6bce2d3c34c603a26b47a05ff8b5f6112cdadf18996"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-aarch64-unknown-linux-musl.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.linux-x64"]
-checksum = "sha256:7896047bcbf2b21bc278c0a766d6d8a200ca1e4a37d261552e7e97788be0d3d5"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-x86_64-unknown-linux-gnu.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:364b4cf201970cd5c943390dd3e736b4256b14a0ac52d304f8fb4acfd6a1fbd3"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-x86_64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.linux-x64-baseline"]
-checksum = "sha256:7896047bcbf2b21bc278c0a766d6d8a200ca1e4a37d261552e7e97788be0d3d5"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-x86_64-unknown-linux-gnu.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:364b4cf201970cd5c943390dd3e736b4256b14a0ac52d304f8fb4acfd6a1fbd3"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-x86_64-unknown-linux-gnu.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.linux-x64-musl"]
-checksum = "sha256:69aef2a7cec0f2bcb88504bf06c418c788f47cf11d8830c831bb42cbf6e156c8"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-x86_64-unknown-linux-musl.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:d69ab74a5e21f4dcaf5a41899a623114d6df77c11a170089ade86348bbc2b234"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-x86_64-unknown-linux-musl.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:69aef2a7cec0f2bcb88504bf06c418c788f47cf11d8830c831bb42cbf6e156c8"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-x86_64-unknown-linux-musl.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:d69ab74a5e21f4dcaf5a41899a623114d6df77c11a170089ade86348bbc2b234"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-x86_64-unknown-linux-musl.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.macos-arm64"]
-checksum = "sha256:93c782fa74a5558c8f67d43b15b1db85598b61df84faf19ba8e72698e38ef9b1"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-aarch64-apple-darwin.tar.gz"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:a36856db187dd8f2c3cbf651de1384a2d0748d7cc5507671e6ec02751f00c032"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-aarch64-apple-darwin.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.windows-x64"]
-checksum = "sha256:8357e02ea6251ad325ccc8c99163a3d0a63ca8eaf2e7e75f0ed8578a81847455"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-x86_64-pc-windows-msvc.zip"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:f6399466cc0e0c2f52248b56477182d4857a8a02d518936b055a3a67f0f25f87"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-x86_64-pc-windows-msvc.zip"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.windows-x64-baseline"]
-checksum = "sha256:8357e02ea6251ad325ccc8c99163a3d0a63ca8eaf2e7e75f0ed8578a81847455"
-url = "https://github.com/aubepkg/aube/releases/download/v2.4.0/aube-v2.4.0-x86_64-pc-windows-msvc.zip"
-signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release-plz.yml"
+checksum = "sha256:f6399466cc0e0c2f52248b56477182d4857a8a02d518936b055a3a67f0f25f87"
+url = "https://github.com/aubepkg/aube/releases/download/v2.6.1/aube-v2.6.1-x86_64-pc-windows-msvc.zip"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [[tools.bun]]
 version = "1.4.2"
@@ -894,64 +894,64 @@ url = "https://github.com/go-task/task/releases/download/v3.54.0/task_windows_am
 url_api = "https://api.github.com/repos/go-task/task/releases/assets/604090005"
 
 [[tools.typos]]
-version = "1.50.3"
+version = "1.51.0"
 backend = "aqua:crate-ci/typos"
 specifiers = ["latest"]
 
 [tools.typos."platforms.linux-arm64"]
-checksum = "sha256:456f9fe7aa6e7c1597879f5e951d7de2fab261a9ca05f16f324f896c806c55db"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/588999780"
+checksum = "sha256:ec77ba48a6cf05f8416455b83e9aa86e206480c2be72136071842aba3b9f71ea"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615958302"
 
 [tools.typos."platforms.linux-arm64-musl"]
-checksum = "sha256:456f9fe7aa6e7c1597879f5e951d7de2fab261a9ca05f16f324f896c806c55db"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/588999780"
+checksum = "sha256:ec77ba48a6cf05f8416455b83e9aa86e206480c2be72136071842aba3b9f71ea"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615958302"
 
 [tools.typos."platforms.linux-x64"]
-checksum = "sha256:aca6b5d546307092b8d0a8e0a89dd80f9da51f2f7617c5e45c5607c1684ffbf2"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589000924"
+checksum = "sha256:cfaf1683883b2851afeccf310c8f9c086e70d6ea33f939e595a6b1b1c2c8e5d6"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959214"
 
 [tools.typos."platforms.linux-x64-baseline"]
-checksum = "sha256:aca6b5d546307092b8d0a8e0a89dd80f9da51f2f7617c5e45c5607c1684ffbf2"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589000924"
+checksum = "sha256:cfaf1683883b2851afeccf310c8f9c086e70d6ea33f939e595a6b1b1c2c8e5d6"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959214"
 
 [tools.typos."platforms.linux-x64-musl"]
-checksum = "sha256:aca6b5d546307092b8d0a8e0a89dd80f9da51f2f7617c5e45c5607c1684ffbf2"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589000924"
+checksum = "sha256:cfaf1683883b2851afeccf310c8f9c086e70d6ea33f939e595a6b1b1c2c8e5d6"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959214"
 
 [tools.typos."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:aca6b5d546307092b8d0a8e0a89dd80f9da51f2f7617c5e45c5607c1684ffbf2"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589000924"
+checksum = "sha256:cfaf1683883b2851afeccf310c8f9c086e70d6ea33f939e595a6b1b1c2c8e5d6"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959214"
 
 [tools.typos."platforms.macos-arm64"]
-checksum = "sha256:844d4121fb47a95604aa5566843bb9e3d6078040b3c8f22367709f563038f2c5"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589002568"
+checksum = "sha256:9b650aed321349d9b0b2d61ac1c03b0a291be4c3c02b4d0d4d3d103bffb7fd96"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959461"
 
 [tools.typos."platforms.macos-x64"]
-checksum = "sha256:7cc75e42fff1e3b66928de325b3ea1ec7e23ce35ffaa3561fdb0ede8e7275f6f"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589006772"
+checksum = "sha256:fef59b9297a808bffeffe3be61754d5f71d9ab0d4eeaf46bd281929d4dd8f95d"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959073"
 
 [tools.typos."platforms.macos-x64-baseline"]
-checksum = "sha256:7cc75e42fff1e3b66928de325b3ea1ec7e23ce35ffaa3561fdb0ede8e7275f6f"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589006772"
+checksum = "sha256:fef59b9297a808bffeffe3be61754d5f71d9ab0d4eeaf46bd281929d4dd8f95d"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615959073"
 
 [tools.typos."platforms.windows-x64"]
-checksum = "sha256:b59f149d84e86aab535d52db029fa8d3ac5ecba9ae5c7f19cf07acb5aa0caaaf"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589001623"
+checksum = "sha256:6b9a2084e508cf90553430ffe920c5b186bb87b66f5d6e75400e446c1d9ea494"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615957729"
 
 [tools.typos."platforms.windows-x64-baseline"]
-checksum = "sha256:b59f149d84e86aab535d52db029fa8d3ac5ecba9ae5c7f19cf07acb5aa0caaaf"
-url = "https://github.com/crate-ci/typos/releases/download/v1.50.3/typos-v1.50.3-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/589001623"
+checksum = "sha256:6b9a2084e508cf90553430ffe920c5b186bb87b66f5d6e75400e446c1d9ea494"
+url = "https://github.com/crate-ci/typos/releases/download/v1.51.0/typos-v1.51.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/615957729"
 
 [[tools.uv]]
 version = "0.12.23"
