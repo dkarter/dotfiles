@@ -41,11 +41,16 @@ tasks:
   sync:
     desc: Updates mise tools (runtimes), mise itself and installs packages for this project
     cmds:
+      - task: sync:prepare
+      - task: commit
+
+  sync:prepare:
+    internal: true
+    cmds:
       - task: migrate:standalone
       - task: self:update
       - task: tools:install
       - task: tools:update
-      - task: commit
 
   migrate:standalone:
     internal: true

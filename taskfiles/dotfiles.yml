@@ -151,7 +151,7 @@ tasks:
       - task: arch:sync
       - task: create:dirs
       - task: symlink
-      - task: mise:sync
+      - task: mise:sync:prepare
       - task: pitchfork:sync
       - task: agent-guard:install
       - task: opencode:plugins:install
@@ -166,6 +166,8 @@ tasks:
       - task: yazi:sync
       # completions needs the tools to be installed
       - task: completions:sync
+      # Later mise invocations can generate dependency sidecars; commit them last.
+      - task: mise:commit
       - task: print:done
 
   create:dirs:
