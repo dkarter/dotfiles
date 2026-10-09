@@ -55,9 +55,6 @@ done
 ITERM2_INTEGRATION_SCRIPT="${HOME}/.iterm2_shell_integration.zsh"
 test -e "$ITERM2_INTEGRATION_SCRIPT" && source "$ITERM2_INTEGRATION_SCRIPT"
 
-# force delta pager even for small diffs
-export GIT_PAGER=delta
-
 # set nvim as default pager for man
 export MANPAGER='nvim +Man!'
 
