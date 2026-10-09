@@ -4,4 +4,9 @@ return {
   'esmuellert/codediff.nvim',
   cmd = 'CodeDiff',
   keys = require('core.mappings').codediff_mappings,
+  opts = {
+    explorer = {
+      view_mode = 'tree',
+    },
+  },
 }
