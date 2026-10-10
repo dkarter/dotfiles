@@ -11,9 +11,17 @@ tasks:
       - pitchfork boot status >/dev/null 2>&1
     cmd: pitchfork boot enable
 
+  restart:
+    desc: Restarts supervisor and starts global daemons
+    platforms: [darwin, linux]
+    cmds:
+      - pitchfork sup stop
+      - pitchfork sup start
+      - pitchfork start --all-global
+
   sync:
     desc: Enables Pitchfork at boot and starts global daemons
     platforms: [darwin, linux]
     cmds:
       - task: boot:enable
-      - pitchfork start --global --quiet
+      - pitchfork start --all-global --quiet
