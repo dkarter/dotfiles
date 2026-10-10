@@ -13,7 +13,7 @@ Before issuing any control command, verify that this agent is running inside a H
 test "${HERDR_ENV:-}" = 1
 ```
 
-If the check fails, say that you are not running inside Herdr and stop. Do not inspect or control the focused Herdr session from outside Herdr.
+If the check fails, do not issue control commands. For an explicitly requested read-only workspace context lookup from Raycast or another outside client, use the separate `herdr-workspace-context` skill; that workflow may fetch live metadata and bounded relevant pane output without `HERDR_ENV=1`. Otherwise say that you are not running inside Herdr and stop. Never spoof Herdr environment variables or use this exception to operate panes or agents.
 
 When the check passes, the `herdr` binary in `PATH` talks to the current session. Use it to inspect neighboring work, create terminal layout, start agents and commands, read output, and wait for state changes.
 

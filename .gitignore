@@ -6,6 +6,9 @@ config/vifm/vifmimgpdfpage
 
 .build/
 
+# generated Python bytecode
+__pycache__/
+
 # ignore sumenko lua generated artifact
 .luarc.json
 

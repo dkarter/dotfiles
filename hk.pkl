@@ -30,7 +30,18 @@ local checks = new Mapping<String, Step> {
 
   ["ghostty"] {
     glob = "config/ghostty/**"
-    check = new CommandSpec { command = "ghostty +validate-config"; effect = "read" }
+    check = new CommandSpec {
+      effect = "read"
+      command = """
+      if command -v ghostty >/dev/null 2>&1; then
+        ghostty +validate-config
+      elif [ "$(uname -s)" = Darwin ]; then
+        /Applications/Ghostty.app/Contents/MacOS/ghostty +validate-config
+      else
+        ghostty +validate-config
+      fi
+      """
+    }
   }
 
   ["herdr"] {
@@ -87,6 +98,15 @@ local checks = new Mapping<String, Step> {
       "scripts/enrich-release-notes.test.ts"
     )
     check = new CommandSpec { command = "node --test scripts/*.test.ts"; effect = "read" }
+  }
+
+  ["sniff-review-tests"] {
+    glob = List(
+      "agents/skills/sniff-review/scripts/*.py",
+      "agents/skills/sniff-review/references/*.md",
+      "scripts/sniff-review.test.py"
+    )
+    check = new CommandSpec { command = "python3 -B scripts/sniff-review.test.py"; effect = "read" }
   }
 
   ["shellcheck"] = Builtins.shellcheck
