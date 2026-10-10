@@ -11,7 +11,7 @@ for _, navigation in ipairs {
   keys[#keys + 1] = {
     navigation.key,
     function()
-      require('herdr-navigator')[name]()
+      require('core.herdr_navigator').navigate(vim_direction, name)
     end,
     mode = { 'n', 'x', 's' },
     desc = 'Navigate ' .. name,

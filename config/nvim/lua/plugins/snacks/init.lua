@@ -5,6 +5,20 @@ local exclude_commit_editmsg = function(item)
   return not path or not path:match '/%.git/COMMIT_EDITMSG$'
 end
 
+local explorer_navigation = {}
+if require('core.utils').in_herdr() then
+  local keys = {}
+  for direction, name in pairs { h = 'left', j = 'down', k = 'up', l = 'right' } do
+    keys['<c-' .. direction .. '>'] = {
+      function()
+        require('core.herdr_navigator').navigate(direction, name)
+      end,
+      mode = { 'i', 'n' },
+    }
+  end
+  explorer_navigation = { input = { keys = keys }, list = { keys = keys } }
+end
+
 ---@type LazySpec
 return {
   'folke/snacks.nvim',
@@ -72,6 +86,7 @@ return {
         },
       },
       sources = {
+        explorer = { win = explorer_navigation },
         files = {
           filter = {
             filter = exclude_commit_editmsg,
