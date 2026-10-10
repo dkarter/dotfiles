@@ -69,6 +69,9 @@ if [ -z ${GIT_EDITOR+x} ]; then
   export GIT_EDITOR='nvim'
 fi
 
+# force hunk pager even for small diffs
+export GIT_PAGER='hunk pager'
+
 # ssh
 export SSH_KEY_PATH="$HOME/.ssh/id_rsa"
 
