@@ -1,6 +1,9 @@
 advisoryBloomCheck: required
 advisoryCheck: required
 advisoryCheckOnInstall: on # yamllint disable-line rule:truthy
+allowBuilds:
+  # Audited: reads manifests and warns about version ranges; no network or writes.
+  protobufjs@7.6.6: true
 lockfile: true
 packages:
   - config/opencode/plugins
