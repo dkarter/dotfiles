@@ -1,0 +1,59 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      varlock:
+        specifier: 1.22.0
+        version: 1.22.0
+
+packages:
+
+  '@varlock/native-helper-darwin@1.22.0':
+    resolution: {integrity: sha512-SseBFiqO9kugEc8Key8QsthdzrfUwj/vBRJeH4oC+gmT97I/aqmVjG6UH5a3n4RyLE2As2V+Es4aJoeNGav8dA==}
+    os: [darwin]
+
+  '@varlock/native-helper-linux-arm64@1.22.0':
+    resolution: {integrity: sha512-n4xymSJvI3cw7ggGvaiqaVU0+/md3DinB14C7oYGQMMOHbw90XcM0rXTPM79xQRseBwEm5XOX3P8H6m6Lb1rkw==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@varlock/native-helper-linux-x64@1.22.0':
+    resolution: {integrity: sha512-tWKekf01VSq3/1xrqEAZVUjGkw2gntR1oLOH6Djz9cZTYJ/WD8tB2yX6WbiFQicbMokJt5nxA2v67O+2UZTT+A==}
+    cpu: [x64]
+    os: [linux]
+
+  '@varlock/native-helper-win32-x64@1.22.0':
+    resolution: {integrity: sha512-vtoa2TDL45vGw7IFanI6FMPJDz2Brth8hOWeAttNW+NqGJiToOPX3NxCE/kFyXpSMtferuyp8rmsY7Q/cY8qZw==}
+    os: [win32, linux]
+
+  varlock@1.22.0:
+    resolution: {integrity: sha512-xpGiBtpmk3mfbLfJWqR1yEiopcXdUMzWLyidiT2slTktB/LPQuWk3+zvhjO0jSL7pn0MiX8qt1F/hjEQD4E/WA==}
+    engines: {bun: '>=1.3.3', node: '>=22.3.0'}
+    hasBin: true
+
+snapshots:
+
+  '@varlock/native-helper-darwin@1.22.0':
+    optional: true
+
+  '@varlock/native-helper-linux-arm64@1.22.0':
+    optional: true
+
+  '@varlock/native-helper-linux-x64@1.22.0':
+    optional: true
+
+  '@varlock/native-helper-win32-x64@1.22.0':
+    optional: true
+
+  varlock@1.22.0:
+    optionalDependencies:
+      '@varlock/native-helper-darwin': 1.22.0
+      '@varlock/native-helper-linux-arm64': 1.22.0
+      '@varlock/native-helper-linux-x64': 1.22.0
+      '@varlock/native-helper-win32-x64': 1.22.0
