@@ -95,7 +95,7 @@ local checks = new Mapping<String, Step> {
       command = """
       aube install --frozen-lockfile --dry-run \
         --filter ./config/opencode/plugins \
-        --filter ./config/opencode/tui-plugin
+        --filter ./config/opencode/tui-plugin 2>&1
       """
     }
   }
@@ -105,7 +105,7 @@ local checks = new Mapping<String, Step> {
       "scripts/enrich-release-notes.ts",
       "scripts/enrich-release-notes.test.ts"
     )
-    check = new CommandSpec { command = "node --test scripts/*.test.ts"; effect = "read" }
+    check = new CommandSpec { command = "node --test scripts/*.test.ts 2>&1"; effect = "read" }
   }
 
   ["inline-command-tests"] {
@@ -124,12 +124,12 @@ local checks = new Mapping<String, Step> {
 
   ["inline-command-install-tests"] {
     glob = List("config/inline-command/install.sh", "config/inline-command/hooks.json", "scripts/inline-command-install.test.py")
-    check = new CommandSpec { command = "python3 -B scripts/inline-command-install.test.py"; effect = "read" }
+    check = new CommandSpec { command = "python3 -B scripts/inline-command-install.test.py 2>&1"; effect = "read" }
   }
 
   ["herdr-pane-picker-tests"] {
     glob = List("bin/herdr-popup-pane-read", "scripts/herdr-popup-pane-read.test.py")
-    check = new CommandSpec { command = "python3 -B scripts/herdr-popup-pane-read.test.py"; effect = "read" }
+    check = new CommandSpec { command = "python3 -B scripts/herdr-popup-pane-read.test.py 2>&1"; effect = "read" }
   }
 
   ["sniff-review-tests"] {
@@ -138,7 +138,7 @@ local checks = new Mapping<String, Step> {
       "agents/skills/sniff-review/references/*.md",
       "scripts/sniff-review.test.py"
     )
-    check = new CommandSpec { command = "python3 -B scripts/sniff-review.test.py"; effect = "read" }
+    check = new CommandSpec { command = "python3 -B scripts/sniff-review.test.py 2>&1"; effect = "read" }
   }
 
   ["shellcheck"] = Builtins.shellcheck
