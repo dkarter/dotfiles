@@ -412,4 +412,13 @@ class SnapshotTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    output = io.StringIO()
+
+    class BufferedTestRunner(unittest.TextTestRunner):
+        def __init__(self, **kwargs):
+            super().__init__(stream=output, **kwargs)
+
+    program = unittest.main(testRunner=BufferedTestRunner, exit=False)
+    result = program.result
+    print(output.getvalue(), end="", file=sys.stdout if result.wasSuccessful() else sys.stderr)
+    sys.exit(5 if result.testsRun == 0 else 0 if result.wasSuccessful() else 1)
