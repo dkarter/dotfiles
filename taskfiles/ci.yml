@@ -14,6 +14,10 @@ tasks:
     desc: Run credential guard tests
     cmd: bun test config/agent-guard
 
+  inline-command:test:
+    desc: Run shared inline command and harness adapter tests
+    cmd: bun test config/inline-command config/opencode/inline-command
+
   fmt:check:
     desc: Checks formatting
     aliases: [format:check]

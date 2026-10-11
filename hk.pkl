@@ -100,6 +100,30 @@ local checks = new Mapping<String, Step> {
     check = new CommandSpec { command = "node --test scripts/*.test.ts"; effect = "read" }
   }
 
+  ["inline-command-tests"] {
+    glob = List(
+      "config/inline-command/*.ts",
+      "config/agent-guard/core.ts",
+      "config/opencode/plugins/inline-command/*.ts",
+      "config/opencode/inline-command/*.ts",
+      "config/pi/agent/extensions/inline-command.ts"
+    )
+    check = new CommandSpec {
+      command = "bun test config/inline-command config/opencode/inline-command"
+      effect = "read"
+    }
+  }
+
+  ["inline-command-install-tests"] {
+    glob = List("config/inline-command/install.sh", "config/inline-command/hooks.json", "scripts/inline-command-install.test.py")
+    check = new CommandSpec { command = "python3 -B scripts/inline-command-install.test.py"; effect = "read" }
+  }
+
+  ["herdr-pane-picker-tests"] {
+    glob = List("bin/herdr-popup-pane-read", "scripts/herdr-popup-pane-read.test.py")
+    check = new CommandSpec { command = "python3 -B scripts/herdr-popup-pane-read.test.py"; effect = "read" }
+  }
+
   ["sniff-review-tests"] {
     glob = List(
       "agents/skills/sniff-review/scripts/*.py",

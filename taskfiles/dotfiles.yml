@@ -96,6 +96,7 @@ tasks:
       - task: mise:install
       - task: symlink
       - task: agent-guard:install
+      - task: inline-command:install
       - task: op:install:ssh:agent
       - task: zinit:install
       - task: zinit:plugins:update
@@ -154,6 +155,7 @@ tasks:
       - task: mise:sync:prepare
       - task: pitchfork:sync
       - task: agent-guard:install
+      - task: inline-command:install
       - task: opencode:plugins:install
       - task: skills:sync
       - task: herdr:sync
@@ -191,6 +193,10 @@ tasks:
   agent-guard:install:
     desc: Installs shared credential-redaction hooks for local coding agents
     cmd: ./config/agent-guard/install.sh
+
+  inline-command:install:
+    desc: Installs inline shell command prompt hooks for Claude and Codex
+    cmd: sh ./config/inline-command/install.sh
 
   skills:sync:
     desc: Synchronizes repo and local skills into global skill directories

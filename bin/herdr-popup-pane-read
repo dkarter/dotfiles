@@ -12,7 +12,7 @@ fi
 if [[ "${1:-}" == "--paste" ]]; then
   pane_id="${2:?Missing pane ID}"
   "$herdr_bin" pane send-text "$active_pane_id" \
-    "herdr pane read $pane_id --source recent-unwrapped --lines 160"
+    "!\`herdr pane read $pane_id --source recent-unwrapped --lines 160\`"
   exit 0
 fi
 
@@ -29,7 +29,9 @@ if [[ "${1:-}" == "--source" ]]; then
         | {
             pane_id,
             current_label: (if .pane_id == $active_pane_id then "current" else "" end),
-            label: (.label // .terminal_title_stripped // .agent // "terminal"),
+            label: ([.label, .agent, .terminal_title_stripped]
+              | map(select(. != null and . != ""))
+              | first // "󰆍 terminal"),
             agent_status: (.agent_status // "unknown"),
             cwd: (.foreground_cwd // .cwd)
           }]

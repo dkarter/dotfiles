@@ -121,6 +121,11 @@ git push
 
 ### Terminal & Shell
 
+- **Inline agent commands:** `config/inline-command/` shares prompt preprocessing
+  across OpenCode, Claude Code, Codex, and Pi. Explicit inline shell commands run
+  before model processing without tool approval; see its README for syntax,
+  limits, adapters, and installation. Test with `task ci:inline-command:test`.
+
 - **Zsh Config:** Modular files in `config/zsh/`
 - **Zinit:** Zsh plugin manager
 - **Starship:** Cross-shell prompt

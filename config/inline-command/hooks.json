@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun \"$HOME/.config/inline-command/hook.ts\"",
+            "timeout": 25
+          }
+        ]
+      }
+    ]
+  }
+}
