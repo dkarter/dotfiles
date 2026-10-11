@@ -17,6 +17,7 @@ tasks:
         - 'ast-grep|ast-grep completions zsh'
         - 'aube|aube completion zsh'
         - 'bat|bat --completion=zsh'
+        - 'betterleaks|betterleaks completion zsh'
         - 'bun|bun --print "await (await fetch(\"https://raw.githubusercontent.com/oven-sh/bun/refs/heads/main/completions/bun.zsh\")).text()"'
         - 'colima|colima completion zsh'
         - 'delta|delta --generate-completion zsh'
@@ -28,7 +29,6 @@ tasks:
         - 'fx|fx --comp zsh'
         - 'gh|gh completion -s zsh'
         - 'ghtkn|ghtkn completion zsh'
-        - 'gitleaks|gitleaks completion zsh'
         - 'gt|gt completion' # Graphite CLI
         - 'helm|helm completion zsh'
         - 'herdr|herdr completion zsh'

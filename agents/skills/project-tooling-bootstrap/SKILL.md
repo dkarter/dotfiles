@@ -1,6 +1,6 @@
 ---
 name: project-tooling-bootstrap
-description: 'Bootstrap a repository with the Toolkit baseline developer tooling: mise, dprint, hk, committed, gitleaks, pitchfork, and fnox. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, commit-message linting, local command orchestration, or secrets handling in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks.'
+description: 'Bootstrap a repository with the Toolkit baseline developer tooling: mise, dprint, hk, committed, betterleaks, pitchfork, and fnox. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, commit-message linting, local command orchestration, or secrets handling in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks.'
 ---
 
 # Project Tooling Bootstrap

@@ -1,3 +1,5 @@
+import { redactBatchWithBetterleaks, redactWithBetterleaks } from './betterleaks';
+
 const MAY_CONTAIN_CREDENTIAL =
   /authorization|cookie|token|secret|password|api[_-]?key|private[_-]?key|\bgh[pousr]_|\bgithub_pat_|\bglpat-|\bnpm_|\bpypi-|\bsk-|\bxox[baprs]-|\bAKIA|\beyJ|-----BEGIN/i;
 
@@ -25,7 +27,7 @@ const TOKEN_PATTERNS = [
 const CREDENTIAL_KEY =
   /(?:^|[_-])(?:authorization|cookie|token|secret|secret[_-]?access[_-]?key|password|api[_-]?key|private[_-]?key)$/i;
 
-export const redactCredentials = (value: string): string => {
+const redactKnownCredentials = (value: string): string => {
   if (!MAY_CONTAIN_CREDENTIAL.test(value)) return value;
 
   let redacted = value;
@@ -37,14 +39,16 @@ export const redactCredentials = (value: string): string => {
   );
 };
 
-export const redactCredentialValue = <T>(value: T, key = ''): T => {
+export const redactCredentials = (value: string): string => redactWithBetterleaks(redactKnownCredentials(value));
+
+const mapTextValues = <T>(value: T, transform: (text: string, key: string) => string, key = ''): T => {
   if (typeof value === 'string') {
-    return (CREDENTIAL_KEY.test(key) ? '[REDACTED]' : redactCredentials(value)) as T;
+    return transform(value, key) as T;
   }
   if (Array.isArray(value)) {
     let changed = false;
     const redacted = value.map((item) => {
-      const next = redactCredentialValue(item);
+      const next = mapTextValues(item, transform);
       changed ||= next !== item;
       return next;
     });
@@ -54,7 +58,7 @@ export const redactCredentialValue = <T>(value: T, key = ''): T => {
     let changed = false;
     const redacted = Object.fromEntries(
       Object.entries(value).map(([childKey, item]) => {
-        const next = redactCredentialValue(item, childKey);
+        const next = mapTextValues(item, transform, childKey);
         changed ||= next !== item;
         return [childKey, next];
       }),
@@ -62,6 +66,24 @@ export const redactCredentialValue = <T>(value: T, key = ''): T => {
     return (changed ? redacted : value) as T;
   }
   return value;
+};
+
+export const redactCredentialValue = <T>(value: T, key = ''): T => {
+  const texts: string[] = [];
+  const masked = mapTextValues(
+    value,
+    (text, childKey) => {
+      if (CREDENTIAL_KEY.test(childKey)) return '[REDACTED]';
+      const redacted = redactKnownCredentials(text);
+      texts.push(redacted);
+      return redacted;
+    },
+    key,
+  );
+  const redacted = redactBatchWithBetterleaks(texts);
+  if (redacted === texts) return masked;
+  let index = 0;
+  return mapTextValues(masked, (text, childKey) => (CREDENTIAL_KEY.test(childKey) ? text : redacted[index++]), key);
 };
 
 export const containsCredential = (value: unknown): boolean => redactCredentialValue(value) !== value;

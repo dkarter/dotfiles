@@ -430,7 +430,7 @@ tasks:
 
   leaks:
     desc: Checks for secret leaks across the history of this project
-    cmd: gitleaks git -v --redact -b gitleaks-report.json
+    cmd: betterleaks git -v --redact --validation=false --report-format json --report-path betterleaks-report.json
 
   fmt:
     desc: Format all formattable files

@@ -1,14 +1,38 @@
 import { describe, expect, test } from 'bun:test';
 import ampPlugin from '../amp/plugins/credential-guard';
-import opencodePlugin from '../opencode/plugin/credential-guard';
+import opencodePlugin from '../opencode/plugins/credential-guard';
 import piPlugin from '../pi/agent/extensions/credential-guard';
 
 describe('native agent adapters', () => {
   test('OpenCode redacts shell output', async () => {
-    const hooks = await opencodePlugin({} as never);
-    const output = { output: 'TOKEN=dummy-opencode-token' };
-    await hooks['tool.execute.after']?.({ tool: 'bash' } as never, output as never);
-    expect(output.output).toBe('TOKEN=[REDACTED]');
+    let hook: (event: any) => void = () => {
+      throw new Error('hook not registered');
+    };
+    await opencodePlugin.setup({
+      tool: {
+        hook: async (name: string, callback: typeof hook) => {
+          expect(name).toBe('execute.after');
+          hook = callback;
+        },
+      },
+    } as never);
+    const file = { type: 'file', url: 'file:///example.png', mediaType: 'image/png' };
+    const event = {
+      tool: 'bash',
+      status: 'completed',
+      result: {
+        output: 'TOKEN=dummy-opencode-token',
+        content: [{ type: 'text', text: 'rk_live_' + 'aB3dE5fG7hI9jK1mN3pQ5rS7' }, file],
+      },
+    };
+    hook(event);
+    expect(event.result.output).toBe('TOKEN=[REDACTED]');
+    expect(event.result.content[0]).toEqual({ type: 'text', text: '[REDACTED]' });
+    expect(event.result.content[1]).toBe(file);
+    const safeResult = { output: 'safe output', content: [{ type: 'text', text: 'safe text' }, file] };
+    const safeEvent = { tool: 'bash', status: 'completed', result: safeResult };
+    hook(safeEvent);
+    expect(safeEvent.result).toBe(safeResult);
   });
 
   test('Pi replaces text content in tool results', async () => {

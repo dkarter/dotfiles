@@ -1,0 +1,10 @@
+# Use the built-in rules, not configuration from the scanned project's cwd.
+[extend]
+useDefault = true
+
+# A mandatory finding proves stdin was scanned, not silently skipped as binary.
+[[rules]]
+id = "agent-guard-sentinel"
+description = "Agent guard scan completeness marker (not a credential)"
+regex = '''AGENT_GUARD_SCAN_SENTINEL'''
+keywords = ["AGENT_GUARD_SCAN_SENTINEL"]

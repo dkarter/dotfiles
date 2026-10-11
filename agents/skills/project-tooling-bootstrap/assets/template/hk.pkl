@@ -17,8 +17,11 @@ hooks {
 
   ["pre-commit"] {
     steps {
-      ["gitleaks"] = (Builtins.gitleaks) {
-        scan = "staged"
+      ["betterleaks"] {
+        check = new CommandSpec {
+          command = "betterleaks git --pre-commit --staged --redact --verbose --no-banner --validation=false"
+          effect = "read"
+        }
       }
     }
   }
