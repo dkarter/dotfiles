@@ -102,6 +102,38 @@ class VisibleFilesTest(unittest.TestCase):
                     matches = list(PATHS_IN(text, cwd, 120))
                     self.assertEqual(matches[0], (str(path), f"organizations_resolver.ex:{location}"))
 
+    def test_wrapped_path_inside_scrollbar_padded_text(self):
+        with tempfile.TemporaryDirectory() as cwd:
+            path = Path(cwd) / "assets/src/components/app/app.tsx"
+            path.parent.mkdir(parents=True)
+            path.touch()
+            text = (
+                "     Yes—the icon is gated by the LaunchDarkly      █\n"
+                "     reactQueryDevTools flag in assets/src/         █\n"
+                "     components/app/app.tsx:40. Turning that flag   █\n"
+                "     off for your local user hides it.              █"
+            )
+            self.assertIn(
+                (str(path), "assets/src/components/app/app.tsx:40"),
+                list(PATHS_IN(text, cwd, 57)),
+            )
+
+    def test_scrollbar_removal_preserves_wrap_width_detection(self):
+        with tempfile.TemporaryDirectory() as cwd:
+            path = Path(cwd) / "some_long_filename.ex"
+            path.touch()
+            text = "  some_long_file   █\n  name.ex:         █\n  93–99           █"
+            self.assertEqual(
+                list(PATHS_IN(text, cwd, 23))[0],
+                (str(path), "some_long_filename.ex:93–99"),
+            )
+
+    def test_scrollbar_removal_preserves_filename_block_character(self):
+        with tempfile.TemporaryDirectory() as cwd:
+            path = Path(cwd) / "example█"
+            path.touch()
+            self.assertEqual(list(PATHS_IN("example█", cwd, 80)), [(str(path), "example█")])
+
     def test_trailing_colon_does_not_join_unrelated_text(self):
         with tempfile.TemporaryDirectory() as cwd:
             path = Path(cwd) / "example.ex"

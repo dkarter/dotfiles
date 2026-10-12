@@ -47,13 +47,15 @@ def pane_title(pane):
 
 
 def paths_in(text, cwd, width):
-    lines = text.splitlines()
+    rendered_lines = text.splitlines()
+    # OpenCode's scrollbar and padding are UI chrome, not part of a wrapped path.
+    lines = [re.sub(r"\s+█\s*$", "", line) for line in rendered_lines]
     for index, line in enumerate(lines):
         joined = line.rstrip()
         row = index
         wrapped = []
         while row < index + MAX_WRAP_ROWS and row + 1 < len(lines) and (
-            len(lines[row].rstrip()) >= width - 4 or lines[row].rstrip().endswith("/")
+            len(rendered_lines[row].rstrip()) >= width - 4 or lines[row].rstrip().endswith("/")
             # Text renderers can wrap before the pane edge because of padding.
             or (
                 lines[row].rstrip().endswith(":")
