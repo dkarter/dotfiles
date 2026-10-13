@@ -70,6 +70,7 @@ Guidelines:
 ## Create the PR
 
 1. Write a short PR title (max 52 characters) - it should always be a in conventional commit style
+   - For PDQ repositories that require a ticket, use `<type>: <description> [<TICKET-ID>]`; the bracketed ticket MUST be the final element, e.g. `fix: guard last enabled shard [PLT-4261]`.
 
 2. Ensure the branch is pushed:
    ```bash
