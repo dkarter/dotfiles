@@ -3,8 +3,8 @@
 lockfile_version = 2
 
 [[tools.amp]]
-version = "0.0.1791826398-g4ffc77"
-aube = { path = "locks/mise.pdq/amp/0.0.1791826398-g4ffc77~23fc35d7", digest = "sha256:89d10fb432f9c0226782c9bd6c39fbd6af85ee04c0b474807cb285f11fb8cd8b" }
+version = "0.0.1791907253-g874296"
+aube = { path = "locks/mise.pdq/amp/0.0.1791907253-g874296~23fc35d7", digest = "sha256:7c0c4152e53ce3ed9d7f1d1a5a167eb77ae10dc4b1d0e3801038f5c23d015ec4" }
 backend = "npm:@ampcode/cli"
 specifiers = ["latest"]
 
@@ -12,27 +12,27 @@ specifiers = ["latest"]
 allow_builds = '["@ampcode/cli"]'
 
 [[tools.gcloud]]
-version = "588.0.0"
+version = "589.0.0"
 backend = "vfox:mise-plugins/vfox-gcloud"
 specifiers = ["latest"]
 
 [tools.gcloud."platforms.linux-arm64"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-linux-arm.tar.gz"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-linux-arm.tar.gz"
 
 [tools.gcloud."platforms.linux-arm64-musl"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-linux-arm.tar.gz"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-linux-arm.tar.gz"
 
 [tools.gcloud."platforms.linux-x64"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-linux-x86_64.tar.gz"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-linux-x86_64.tar.gz"
 
 [tools.gcloud."platforms.linux-x64-musl"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-linux-x86_64.tar.gz"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-linux-x86_64.tar.gz"
 
 [tools.gcloud."platforms.macos-arm64"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-darwin-arm.tar.gz"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-darwin-arm.tar.gz"
 
 [tools.gcloud."platforms.macos-x64"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-darwin-x86_64.tar.gz"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-darwin-x86_64.tar.gz"
 
 [tools.gcloud."platforms.windows-x64"]
-url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-588.0.0-windows-x86_64-bundled-python.zip"
+url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-589.0.0-windows-x86_64-bundled-python.zip"

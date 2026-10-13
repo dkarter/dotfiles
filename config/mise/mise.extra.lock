@@ -3,44 +3,44 @@
 lockfile_version = 2
 
 [[tools.argocd]]
-version = "3.5.4"
+version = "3.5.5"
 backend = "aqua:argoproj/argo-cd"
 specifiers = ["latest"]
 
 [tools.argocd."platforms.linux-arm64"]
-checksum = "sha256:fe7c737ac912e281fa13dc27b2be6695634b9fe483d52846f3e7e65067b11c12"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-linux-arm64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636677"
+checksum = "sha256:13f423b9014e212a3e0052b7826e1d6b95ee5ac156f2436fc856f2eb8c827537"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-linux-arm64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633520284"
 
 [tools.argocd."platforms.linux-arm64-musl"]
-checksum = "sha256:fe7c737ac912e281fa13dc27b2be6695634b9fe483d52846f3e7e65067b11c12"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-linux-arm64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636677"
+checksum = "sha256:13f423b9014e212a3e0052b7826e1d6b95ee5ac156f2436fc856f2eb8c827537"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-linux-arm64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633520284"
 
 [tools.argocd."platforms.linux-x64"]
-checksum = "sha256:9cd8cb9f8f785357af441a9544cc1c63a2b8d9bad45ebe88503ab8e315c64ae3"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-linux-amd64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636682"
+checksum = "sha256:c3ddfa606fc3e89ab14f55bda6600b207c355b028f8eaabe69b817a4c4621aba"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-linux-amd64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633519800"
 
 [tools.argocd."platforms.linux-x64-musl"]
-checksum = "sha256:9cd8cb9f8f785357af441a9544cc1c63a2b8d9bad45ebe88503ab8e315c64ae3"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-linux-amd64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636682"
+checksum = "sha256:c3ddfa606fc3e89ab14f55bda6600b207c355b028f8eaabe69b817a4c4621aba"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-linux-amd64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633519800"
 
 [tools.argocd."platforms.macos-arm64"]
-checksum = "sha256:aac1cd7606c5960513edfc2a3ee7226c3860f0982f63b93b2f7e8b5c4d880873"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-darwin-arm64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636938"
+checksum = "sha256:e1957a758d727f6e3efcdef44209f6bc0c41b98a77057eec9bb5cac5dbd0667f"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-darwin-arm64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633520286"
 
 [tools.argocd."platforms.macos-x64"]
-checksum = "sha256:2b414b2d1d4c224db3ca07bec343522270242acca8e8f8f55865a32a3ef49b9c"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-darwin-amd64"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636678"
+checksum = "sha256:5ecec70354a79fe206f3b677c8784bd4f3e1d60ec8e7d794e1b84a4ff54935d1"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-darwin-amd64"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633520276"
 
 [tools.argocd."platforms.windows-x64"]
-checksum = "sha256:f5c7e60f30328821dfe66ca74733f924581c8656752a0480a616e56cb1f4f98c"
-url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.4/argocd-windows-amd64.exe"
-url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/616636982"
+checksum = "sha256:4b441aea390ff8526d69ccafa4e8b22d8b4701ae6612fbbed9a8095d6a914a2c"
+url = "https://github.com/argoproj/argo-cd/releases/download/v3.5.5/argocd-windows-amd64.exe"
+url_api = "https://api.github.com/repos/argoproj/argo-cd/releases/assets/633519799"
 
 [[tools."cargo:du-dust"]]
 version = "1.2.6"
@@ -329,44 +329,44 @@ url = "https://github.com/kdash-rs/kdash/releases/download/v2.1.1/kdash-windows.
 url_api = "https://api.github.com/repos/kdash-rs/kdash/releases/assets/486304447"
 
 [[tools."github:mr-karan/doggo"]]
-version = "1.4.0"
+version = "1.4.1"
 backend = "github:mr-karan/doggo"
 specifiers = ["latest"]
 
 [tools."github:mr-karan/doggo"."platforms.linux-arm64"]
-checksum = "sha256:bf5bd32f26fa8f652f3ac73f08af2ecc9e59955bc47e98a260d7dc6860710162"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-linux-aarch64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320052"
+checksum = "sha256:69b9ce66545744459c0287bf3df6ce8a64e114b94d2dd617ea6119314c73b992"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-linux-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632787017"
 
 [tools."github:mr-karan/doggo"."platforms.linux-arm64-musl"]
-checksum = "sha256:bf5bd32f26fa8f652f3ac73f08af2ecc9e59955bc47e98a260d7dc6860710162"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-linux-aarch64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320052"
+checksum = "sha256:69b9ce66545744459c0287bf3df6ce8a64e114b94d2dd617ea6119314c73b992"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-linux-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632787017"
 
 [tools."github:mr-karan/doggo"."platforms.linux-x64"]
-checksum = "sha256:f85e2471737677a5fa65491b4241e0f46960aae6cc2211cc660ee6394a1a3d06"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320012"
+checksum = "sha256:d4785ab19287c5973cbd0c3390945c3edce3105b7c9aaa5a08bc19c7d7f2dcbc"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632786942"
 
 [tools."github:mr-karan/doggo"."platforms.linux-x64-musl"]
-checksum = "sha256:f85e2471737677a5fa65491b4241e0f46960aae6cc2211cc660ee6394a1a3d06"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-linux-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320012"
+checksum = "sha256:d4785ab19287c5973cbd0c3390945c3edce3105b7c9aaa5a08bc19c7d7f2dcbc"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632786942"
 
 [tools."github:mr-karan/doggo"."platforms.macos-arm64"]
-checksum = "sha256:9817c57a21644b51dc8b23a98a13c686f8a7f2de945b3adc61b8141991dd65a2"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-darwin-aarch64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320057"
+checksum = "sha256:4052103fca53fa63623bbee3c6075ad3fb80c10e8413d6d10bbe66851ceee416"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-darwin-aarch64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632787053"
 
 [tools."github:mr-karan/doggo"."platforms.macos-x64"]
-checksum = "sha256:cd2aa6ead10feff313d7afd52bccc6b9db80414132fab9702f279b2b5f686900"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-darwin-x86_64.tar.gz"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320095"
+checksum = "sha256:2bc89d17d022d597e2b0e4a1a238a7bc29505a059f3e04aeed4e45a148b746ea"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-darwin-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632786975"
 
 [tools."github:mr-karan/doggo"."platforms.windows-x64"]
-checksum = "sha256:24ff6fe2be4baff39574ccc50c50c467a344804998d1773b9b76b838a26acd67"
-url = "https://github.com/mr-karan/doggo/releases/download/v1.4.0/doggo-windows-x86_64.zip"
-url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/539320011"
+checksum = "sha256:93472211f07ef69e1a57349f29d9ebc988ded191b1f1df191a2d23e081d8c2ac"
+url = "https://github.com/mr-karan/doggo/releases/download/v1.4.1/doggo-windows-x86_64.zip"
+url_api = "https://api.github.com/repos/mr-karan/doggo/releases/assets/632787032"
 
 [[tools."github:nushell/nushell"]]
 version = "0.116.1"
