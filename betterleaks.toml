@@ -1,0 +1,7 @@
+# Generated aube lockfiles contain dependency metadata, not credentials.
+prefilter = '''
+filter.matchesAny(attributes["path"], [`(^|/)aube-lock\.yaml$`])
+'''
+
+[extend]
+useDefault = true

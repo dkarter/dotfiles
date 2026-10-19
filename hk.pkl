@@ -176,7 +176,7 @@ hooks {
       ["betterleaks"] {
         // silence INF chatter on stderr; findings log at warn so leaks still surface
         check = new CommandSpec {
-          command = "betterleaks git --pre-commit --redact --staged --verbose --no-banner --log-level warn --validation=false"
+          command = "betterleaks git --config betterleaks.toml --pre-commit --redact --staged --verbose --no-banner --log-level warn --validation=false"
           effect = "read"
         }
       }
