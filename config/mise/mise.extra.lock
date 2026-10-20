@@ -634,6 +634,12 @@ checksum = "sha256:facae8869c1bf144468191c563002162273a2c2761f052659170530cae3fa
 url = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/lazydocker_0.25.2_Windows_x86_64.zip"
 url_api = "https://api.github.com/repos/jesseduffield/lazydocker/releases/assets/399711571"
 
+[[tools."npm:rea-agents"]]
+version = "6.7.0"
+aube = { path = "locks/mise.extra/npm-rea-agents/6.7.0", digest = "sha256:5f33b3a9c0e01c3293b038451572b592e867381404957bae97ed04c91a90077a" }
+backend = "npm:rea-agents"
+specifiers = ["latest"]
+
 [[tools.opentofu]]
 version = "1.13.1"
 backend = "aqua:opentofu/opentofu"

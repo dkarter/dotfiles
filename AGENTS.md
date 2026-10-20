@@ -126,6 +126,10 @@ git push
   before model processing without tool approval; see its README for syntax,
   limits, adapters, and installation. Test with `task ci:inline-command:test`.
 
+- **Pi MCP servers:** Synced servers live in `config/pi/agent/mcp.shared.json`;
+  native `mcp.json`, OAuth credentials, and logs are machine-local and ignored.
+  See `config/pi/README.md` for precedence and CLI limitations.
+
 - **Zsh Config:** Modular files in `config/zsh/`
 - **Zinit:** Zsh plugin manager
 - **Starship:** Cross-shell prompt

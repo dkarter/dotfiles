@@ -28,9 +28,12 @@ config/opencode/package-lock.json
 # machine-local OpenCode V2 service password
 config/opencode/service.json
 
-# pi sessions/auth are machine-local and may contain sensitive data
+# pi sessions/auth/MCP config are machine-local and may contain sensitive data
 config/pi/agent/sessions/
 config/pi/agent/auth.json
+config/pi/agent/mcp.json
+config/pi/agent/mcp-auth.json
+config/pi/agent/mcp.log*
 # generated cache of remote provider model catalogs
 config/pi/agent/models-store.json
 
