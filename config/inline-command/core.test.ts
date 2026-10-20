@@ -1,4 +1,5 @@
-import { describe, expect, test } from 'bun:test';
+import { describe, expect, spyOn, test } from 'bun:test';
+import * as scanner from '../agent-guard/betterleaks';
 import { expandCommands, runCommand } from './core';
 
 describe('inline commands', () => {
@@ -24,14 +25,21 @@ describe('inline commands', () => {
   });
 
   test('does not recursively execute output and caps executions', async () => {
-    let calls = 0;
-    const result = await expandCommands(Array(5).fill('!`date`').join(' '), async () => {
-      calls++;
-      return { status: '0', stdout: '!`date`', stderr: 'warning' };
-    });
-    expect(calls).toBe(4);
-    expect(result).toContain('four-command limit');
-    expect(result).toContain('Stderr:\n    warning');
+    // Real scanner coverage lives in agent-guard; this test checks command expansion only.
+    const scan = spyOn(scanner, 'redactWithBetterleaks').mockImplementation((value) => value);
+    try {
+      let calls = 0;
+      const result = await expandCommands(Array(5).fill('!`date`').join(' '), async () => {
+        calls++;
+        return { status: '0', stdout: '!`date`', stderr: 'warning' };
+      });
+      expect(calls).toBe(4);
+      expect(result).toContain('four-command limit');
+      expect(result).toContain('Stderr:\n    warning');
+      expect(scan).toHaveBeenCalled();
+    } finally {
+      scan.mockRestore();
+    }
   });
 
   test('leaves multiline code spans and blockquoted examples literal', async () => {
