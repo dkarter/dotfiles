@@ -115,6 +115,7 @@ const VimModePlugin = {
     });
 
     let styledEditor: PromptEditor | undefined;
+    let restoreEditorClear: (() => void) | undefined;
     let originalCursorStyle: CursorStyleOptions['style'];
     let visualLineAnchor: number | undefined;
 
@@ -128,6 +129,8 @@ const VimModePlugin = {
     };
 
     const restoreCursorStyle = () => {
+      restoreEditorClear?.();
+      restoreEditorClear = undefined;
       if (styledEditor && !styledEditor.isDestroyed) {
         styledEditor.cursorStyle = {
           ...styledEditor.cursorStyle,
@@ -146,6 +149,20 @@ const VimModePlugin = {
         }
         styledEditor = editor;
         originalCursorStyle = editor.cursorStyle.style;
+        // OpenCode calls clear() when submitting/resetting the composer. Native
+        // clear() leaves history behind; reset it here without watching keystrokes
+        // or retaining prompt text. Deleting all text remains undoable.
+        const originalClear = editor.clear;
+        const clear: typeof editor.clear = function (this: PromptEditor) {
+          originalClear.call(this);
+          this.editBuffer.clearHistory();
+        };
+        editor.clear = clear;
+        restoreEditorClear = () => {
+          if (editor.clear === clear) {
+            editor.clear = originalClear;
+          }
+        };
       }
       if (!editor) {
         return;
@@ -475,6 +492,44 @@ const VimModePlugin = {
       setMode('insert');
     };
 
+    const yank = () => {
+      const editor = promptEditor();
+      const text = editor?.getSelectedText();
+      if (!editor || !text) {
+        return;
+      }
+
+      // Let the terminal own the system clipboard. A separate native clipboard
+      // service can keep polling while it owns a Linux clipboard selection.
+      try {
+        if (!ctx.renderer.copyToClipboardOSC52(text.replaceAll('\0', ''))) {
+          throw new Error('Clipboard unavailable');
+        }
+      } catch {
+        ctx.ui.toast.show({ message: 'Could not yank to clipboard (OSC52 required)', variant: 'error' });
+        return;
+      }
+
+      editor.clearSelection();
+      setMode('normal');
+    };
+
+    const paste = () => {
+      // The built-in paste path replaces selections, preserves prompt attachments,
+      // and guards against asynchronous clipboard reads landing in a changed prompt.
+      dispatch('prompt.paste');
+      setMode('normal');
+    };
+
+    // Use the editor's native history (including extmarks), not retained snapshots.
+    // The clear() hook above resets both stacks on submission.
+    const undo = () => {
+      promptEditor()?.undo();
+    };
+    const redo = () => {
+      promptEditor()?.redo();
+    };
+
     const normalCommands = [
       { bind: 'h', title: 'Move left', run: () => dispatch('input.move.left') },
       { bind: 'j', title: 'Move down', run: () => dispatch('input.move.down') },
@@ -531,8 +586,10 @@ const VimModePlugin = {
       },
       { bind: 'd', title: 'Delete operator', run: () => setOperator('delete') },
       { bind: 'c', title: 'Change operator', run: () => setOperator('change') },
-      { bind: 'u', title: 'Undo', run: () => dispatch('input.undo') },
-      { bind: 'ctrl+r', title: 'Redo', run: () => dispatch('input.redo') },
+      { bind: 'y', title: 'Yank selection to clipboard', run: yank },
+      { bind: 'p', title: 'Paste from clipboard', run: paste },
+      { bind: 'u', title: 'Undo', run: undo },
+      { bind: 'ctrl+r', title: 'Redo', run: redo },
       { bind: 'v', title: 'Enter visual mode', run: () => setMode('visual') },
       { bind: 'shift+v', title: 'Enter visual line mode', run: enterVisualLineMode },
       { bind: 'return', title: 'Submit prompt', run: () => dispatch('prompt.submit') },
@@ -710,6 +767,8 @@ const VimModePlugin = {
         }));
 
         const visualCommands = [
+          { bind: 'y', title: 'Yank selection to clipboard', run: yank },
+          { bind: 'p', title: 'Replace selection from clipboard', run: paste },
           { bind: 'h', title: 'Select left', run: () => dispatch('input.select.left') },
           { bind: 'j', title: 'Select down', run: () => dispatch('input.select.down') },
           { bind: 'k', title: 'Select up', run: () => dispatch('input.select.up') },
@@ -758,6 +817,8 @@ const VimModePlugin = {
         }));
 
         const visualLineCommands = [
+          { bind: 'y', title: 'Yank selected lines to clipboard', run: yank },
+          { bind: 'p', title: 'Replace selected lines from clipboard', run: paste },
           { bind: 'j', title: 'Select line down', run: () => moveVisualLine('down') },
           { bind: 'k', title: 'Select line up', run: () => moveVisualLine('up') },
           { bind: 'x', title: 'Delete selected lines', run: () => finishOperator('input.delete') },
