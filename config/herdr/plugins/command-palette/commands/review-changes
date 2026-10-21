@@ -1,0 +1,89 @@
+#!/usr/bin/env zsh
+source "${0:A:h}/lib"
+
+# Optional arguments also allow launching a review without the pickers.
+# Usage: review-changes [working-tree|branch] [tuicr|hunk|codediff]
+cwd="$(current_pane_cwd)"
+repo_root="$(repo_root_for_cwd "$cwd")"
+if [[ -z "$repo_root" ]]; then
+  gum style --foreground="red" "Not in a git repository"
+  exit 1
+fi
+
+scope="${1:-}"
+if [[ -z "$scope" ]]; then
+  choice="$(gum choose --header='Review scope' \
+    'Working tree (staged + unstaged + untracked)' \
+    'Branch vs PR base / main (committed + uncommitted)')" || exit 0
+  case "$choice" in
+    'Working tree'*) scope=working-tree ;;
+    'Branch vs PR base'*) scope=branch ;;
+    *) exit 0 ;;
+  esac
+fi
+
+case "$scope" in
+  working-tree) label='working tree' ;;
+  branch)
+    # A stacked PR targets its parent branch, not necessarily main. Do not use
+    # @{upstream}: that usually tracks this very branch on the remote.
+    base_name=''
+    if command -v gh >/dev/null; then
+      base_name="$(cd "$repo_root" && gh pr view --json baseRefName --jq '.baseRefName' 2>/dev/null || true)"
+    fi
+    base_name="${base_name:-main}"
+    base_ref=''
+    for ref in "refs/remotes/origin/$base_name" "refs/heads/$base_name"; do
+      if git -C "$repo_root" rev-parse --verify --quiet "$ref^{commit}" >/dev/null; then
+        base_ref="$ref"
+        break
+      fi
+    done
+    if [[ -z "$base_ref" ]]; then
+      gum style --foreground="red" "No $base_name or origin/$base_name ref found (fetch the base branch first)"
+      exit 1
+    fi
+    base="$(git -C "$repo_root" merge-base "$base_ref" HEAD)"
+    label="branch vs $base_name"
+    ;;
+  *) print -u2 -- "Unknown review scope: $scope"; exit 1 ;;
+esac
+
+viewer="${2:-}"
+if [[ -z "$viewer" ]]; then
+  viewer="$(gum choose --header='Review with' tuicr hunk 'CodeDiff (Neovim)')" || exit 0
+  [[ -n "$viewer" ]] || exit 0
+fi
+
+case "$viewer" in
+  tuicr)
+    review_command=(tuicr --no-update-check)
+    if [[ "$scope" == branch ]]; then
+      review_command+=(-r "$base..HEAD" --working-tree)
+    else
+      review_command+=(--working-tree)
+    fi
+    ;;
+  hunk)
+    review_command=(hunk diff)
+    [[ "$scope" != branch ]] || review_command+=("$base")
+    ;;
+  codediff|'CodeDiff (Neovim)')
+    viewer=CodeDiff
+    review_command=(nvim)
+    if [[ "$scope" == branch ]]; then
+      review_command+=("+CodeDiff $base")
+    else
+      review_command+=(+CodeDiff)
+    fi
+    ;;
+  *) print -u2 -- "Unknown review viewer: $viewer"; exit 1 ;;
+esac
+
+command -v "${review_command[1]}" >/dev/null
+tab_json="$(herdr tab create --workspace "$(current_workspace_id)" \
+  --cwd "$repo_root" --label "$viewer: $label" --no-focus)"
+tab_id="$(jq -er '.result.tab.tab_id' <<<"$tab_json")"
+pane_id="$(jq -er '.result.root_pane.pane_id' <<<"$tab_json")"
+herdr pane run "$pane_id" "${(j: :)${(@q)review_command}}" >/dev/null
+herdr tab focus "$tab_id" >/dev/null

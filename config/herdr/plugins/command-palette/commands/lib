@@ -44,7 +44,7 @@ current_pane_id() {
 
 current_pane_cwd() {
   local value
-  value="$(context_value '.focused_pane.foreground_cwd // .focused_pane.cwd // .pane.foreground_cwd // .pane.cwd')"
+  value="$(context_value '.focused_pane.foreground_cwd // .focused_pane.cwd // .pane.foreground_cwd // .pane.cwd // .focused_pane_cwd')"
 
   if [[ -n "$value" ]]; then
     print -r -- "$value"
