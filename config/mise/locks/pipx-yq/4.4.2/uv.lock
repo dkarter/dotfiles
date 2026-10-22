@@ -7,13 +7,10 @@ resolution-markers = [
     "python_full_version < '3.9'",
 ]
 
-[options]
-exclude-newer = "2026-10-10T18:46:09.730764Z"
-
 [[package]]
 name = "argcomplete"
 version = "3.7.0"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version == '3.9.*'",
     "python_full_version < '3.9'",
@@ -26,7 +23,7 @@ wheels = [
 [[package]]
 name = "argcomplete"
 version = "3.7.2"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.10'",
 ]
@@ -44,12 +41,12 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "yq", specifier = "==4.4.2" }]
+requires-dist = [{ name = "yq", specifier = "==4.4.5" }]
 
 [[package]]
 name = "pyyaml"
 version = "6.0.3"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz", hash = "sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f", size = 130960, upload-time = "2025-09-25T21:33:16.546Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0d/a2/09f67a3589cb4320fb5ce90d3fd4c9752636b8b6ad8f34b54d76c5a54693/PyYAML-6.0.3-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:c2514fceb77bc5e7a2f7adfaa1feb2fb311607c9cb518dbc378688ec73d8292f", size = 186824, upload-time = "2025-09-29T20:27:35.918Z" },
@@ -129,7 +126,7 @@ wheels = [
 [[package]]
 name = "tomlkit"
 version = "0.13.3"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version < '3.9'",
 ]
@@ -141,7 +138,7 @@ wheels = [
 [[package]]
 name = "tomlkit"
 version = "0.15.1"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.10'",
     "python_full_version == '3.9.*'",
@@ -154,7 +151,7 @@ wheels = [
 [[package]]
 name = "xmltodict"
 version = "0.15.0"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version < '3.9'",
 ]
@@ -166,7 +163,7 @@ wheels = [
 [[package]]
 name = "xmltodict"
 version = "1.0.4"
-source = { registry = "https://pypi.org/simple/" }
+source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.10'",
     "python_full_version == '3.9.*'",
@@ -178,18 +175,18 @@ wheels = [
 
 [[package]]
 name = "yq"
-version = "4.4.2"
-source = { registry = "https://pypi.org/simple/" }
+version = "4.4.5"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "argcomplete", version = "3.7.0", source = { registry = "https://pypi.org/simple/" }, marker = "python_full_version < '3.10'" },
-    { name = "argcomplete", version = "3.7.2", source = { registry = "https://pypi.org/simple/" }, marker = "python_full_version >= '3.10'" },
+    { name = "argcomplete", version = "3.7.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "argcomplete", version = "3.7.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "pyyaml" },
-    { name = "tomlkit", version = "0.13.3", source = { registry = "https://pypi.org/simple/" }, marker = "python_full_version < '3.9'" },
-    { name = "tomlkit", version = "0.15.1", source = { registry = "https://pypi.org/simple/" }, marker = "python_full_version >= '3.9'" },
-    { name = "xmltodict", version = "0.15.0", source = { registry = "https://pypi.org/simple/" }, marker = "python_full_version < '3.9'" },
-    { name = "xmltodict", version = "1.0.4", source = { registry = "https://pypi.org/simple/" }, marker = "python_full_version >= '3.9'" },
+    { name = "tomlkit", version = "0.13.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "tomlkit", version = "0.15.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
+    { name = "xmltodict", version = "0.15.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "xmltodict", version = "1.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/db/63/6ddfc78e231d2c11538a08debdf96cbe0f372013a849fe391521a4db975e/yq-4.4.2.tar.gz", hash = "sha256:d9e2d2cc643f5035dddfdf3d1b1efd58edc19f1d4f3c3ad0bb20645d1900e1f8", size = 52584, upload-time = "2026-10-10T18:06:42.419Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fd/be/ae37199d28a0a99eb79084f91da94f6e7e58550552361a2397c5032d5d37/yq-4.4.5.tar.gz", hash = "sha256:e17b21a927d04ae33f61a7284351b69b0a539bfb73b852a04a907b79bcd15de2", size = 54535, upload-time = "2026-10-11T02:20:56.748Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/97/a6/c193381771742dac17820ab0ffc9ed772c0eded55df0337236b33c70bbfa/yq-4.4.2-py3-none-any.whl", hash = "sha256:0e576f5f2143623a11a138e54a3d06b82efad20d8311827e6a7d3b6f228371af", size = 29890, upload-time = "2026-10-10T18:06:40.841Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/38/cca2b04f284c788ded19a9401e3049fd1f82d0467c1d6bd361915a77c063/yq-4.4.5-py3-none-any.whl", hash = "sha256:4e8b4e54979b26554c72a7e669009017a7fdd3fb00bbae0b26f82a86636c289f", size = 30255, upload-time = "2026-10-11T02:20:55.272Z" },
 ]
