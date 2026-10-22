@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v7.0.1
 
       - name: Install Bun and Task with Mise
-        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+        uses: jdx/mise-action@8418fedb1110381a0d3ba51a7a415d7c1b884550 # v5.2.2
         with:
           install_args: bun task
 
