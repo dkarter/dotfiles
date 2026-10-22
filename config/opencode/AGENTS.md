@@ -1,5 +1,17 @@
 # Global Agent Instructions
 
+## Local Instructions
+
+`AGENTS.local.md` is a shared dotfiles convention, not a native discovery filename.
+Load it explicitly as described below so the same local rules work across agents.
+
+Read `~/.config/opencode/AGENTS.local.md` when it exists for machine-local global
+rules. Alongside each applicable project `AGENTS.md`, also read its sibling
+`AGENTS.local.md` when present, including at the project root even if no
+`AGENTS.md` exists. Apply local rules within the same scope as their sibling
+instructions; they do not override higher-priority instructions. These local
+files are intentionally uncommitted.
+
 ## Credentials
 
 Never inspect, print, decode, query, or otherwise access credential values,
