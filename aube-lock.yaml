@@ -29,22 +29,22 @@ importers:
     dependencies:
       '@opencode/plugin':
         specifier: 2.0.11
-        version: 2.0.11(@opentui/core@0.5.10(web-tree-sitter@0.25.10))(@opentui/solid@0.5.10(solid-js@1.9.15))(solid-js@1.9.15)
+        version: 2.0.11(@opentelemetry/api-logs@0.214.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(@opentui/core@0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10))(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(redis@6.2.1(@opentelemetry/api@1.9.0))(solid-js@1.9.15)
 
   config/opencode/tui-plugin:
     dependencies:
       '@opencode/plugin':
         specifier: 2.0.11
-        version: 2.0.11(@opentui/core@0.5.10(web-tree-sitter@0.25.10))(@opentui/solid@0.5.10(solid-js@1.9.15))(solid-js@1.9.15)
+        version: 2.0.11(@opentelemetry/api-logs@0.214.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(@opentui/core@0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10))(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(redis@6.2.1(@opentelemetry/api@1.9.0))(solid-js@1.9.15)
       '@opentui/core':
         specifier: 0.5.10
-        version: 0.5.10(web-tree-sitter@0.25.10)
+        version: 0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)
       '@opentui/keymap':
         specifier: 0.5.10
-        version: 0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15))
+        version: 0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(typescript@7.0.2)(web-tree-sitter@0.25.10)
       '@opentui/solid':
         specifier: 0.5.10
-        version: 0.5.10(solid-js@1.9.15)
+        version: 0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)
       solid-js:
         specifier: 1.9.15
         version: 1.9.15
@@ -2479,7 +2479,10 @@ snapshots:
       tinyexec: 1.1.2
       yargs: 18.0.0
     transitivePeerDependencies:
+      - '@types/node'
       - conventional-commits-filter
+      - conventional-commits-parser
+      - typescript
 
   '@commitlint/config-conventional@21.0.2':
     dependencies:
@@ -2526,6 +2529,9 @@ snapshots:
       es-toolkit: 1.46.1
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
+    transitivePeerDependencies:
+      - '@types/node'
+      - typescript
 
   '@commitlint/message@21.0.2': {}
 
@@ -2543,6 +2549,7 @@ snapshots:
       tinyexec: 1.1.2
     transitivePeerDependencies:
       - conventional-commits-filter
+      - conventional-commits-parser
 
   '@commitlint/resolve-extends@21.0.1':
     dependencies:
@@ -2577,13 +2584,18 @@ snapshots:
       conventional-commits-parser: 6.4.0
       semver: 7.8.0
 
-  '@effect/opentelemetry@4.0.0-rc.112(@opentelemetry/api@1.9.0)(@opentelemetry/sdk-trace-base@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(effect@4.0.0-rc.112)':
+  '@effect/opentelemetry@4.0.0-rc.112(@opentelemetry/api-logs@0.214.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(effect@4.0.0-rc.112)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/sdk-trace-base': 2.6.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-node': 2.6.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.43.0
       effect: 4.0.0-rc.112
+    optionalDependencies:
+      '@opentelemetry/api-logs': 0.214.0
+      '@opentelemetry/resources': 2.6.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-logs': 0.214.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/sdk-metrics': 2.6.1(@opentelemetry/api@1.9.0)
 
   '@effect/platform-node-shared@4.0.0-rc.112(effect@4.0.0-rc.112)':
     dependencies:
@@ -2594,7 +2606,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1)':
+  '@effect/platform-node@4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))':
     dependencies:
       '@effect/platform-node-shared': 4.0.0-rc.112(effect@4.0.0-rc.112)
       effect: 4.0.0-rc.112
@@ -2801,16 +2813,16 @@ snapshots:
       effect: 4.0.0-rc.112
       solid-js: 1.9.15
 
-  '@opencode/plugin@2.0.11(@opentui/core@0.5.10(web-tree-sitter@0.25.10))(@opentui/solid@0.5.10(solid-js@1.9.15))(solid-js@1.9.15)':
+  '@opencode/plugin@2.0.11(@opentelemetry/api-logs@0.214.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(@opentui/core@0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10))(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(redis@6.2.1(@opentelemetry/api@1.9.0))(solid-js@1.9.15)':
     dependencies:
       '@ai-sdk/provider': 3.0.8
       '@opencode/ai': 2.0.11
       '@opencode/client': 2.0.11(effect@4.0.0-rc.112)(solid-js@1.9.15)
       '@opencode/protocol': 2.0.11
       '@opencode/schema': 2.0.11
-      '@opencode/util': 2.0.11(@opentelemetry/semantic-conventions@1.43.0)(redis@6.2.1)
-      '@opentui/core': 0.5.10(web-tree-sitter@0.25.10)
-      '@opentui/solid': 0.5.10(solid-js@1.9.15)
+      '@opencode/util': 2.0.11(@opentelemetry/api-logs@0.214.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(redis@6.2.1(@opentelemetry/api@1.9.0))
+      '@opentui/core': 0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)
+      '@opentui/solid': 0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)
       '@standard-schema/spec': 1.1.0
       effect: 4.0.0-rc.112
       solid-js: 1.9.15
@@ -2821,7 +2833,9 @@ snapshots:
       - '@opentelemetry/sdk-logs'
       - '@opentelemetry/sdk-metrics'
       - '@opentelemetry/sdk-trace-web'
+      - '@opentelemetry/semantic-conventions'
       - bufferutil
+      - redis
       - supports-color
       - utf-8-validate
 
@@ -2835,10 +2849,10 @@ snapshots:
       '@standard-schema/spec': 1.1.0
       effect: 4.0.0-rc.112
 
-  '@opencode/util@2.0.11(@opentelemetry/semantic-conventions@1.43.0)(redis@6.2.1)':
+  '@opencode/util@2.0.11(@opentelemetry/api-logs@0.214.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(redis@6.2.1(@opentelemetry/api@1.9.0))':
     dependencies:
-      '@effect/opentelemetry': 4.0.0-rc.112(@opentelemetry/api@1.9.0)(@opentelemetry/sdk-trace-base@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(effect@4.0.0-rc.112)
-      '@effect/platform-node': 4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1)
+      '@effect/opentelemetry': 4.0.0-rc.112(@opentelemetry/api-logs@0.214.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.214.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.6.1(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.43.0)(effect@4.0.0-rc.112)
+      '@effect/platform-node': 4.0.0-rc.112(effect@4.0.0-rc.112)(redis@6.2.1(@opentelemetry/api@1.9.0))
       '@effect/platform-node-shared': 4.0.0-rc.112(effect@4.0.0-rc.112)
       '@npmcli/arborist': 9.4.0
       '@npmcli/config': 10.8.1
@@ -2860,7 +2874,9 @@ snapshots:
       - '@opentelemetry/sdk-logs'
       - '@opentelemetry/sdk-metrics'
       - '@opentelemetry/sdk-trace-web'
+      - '@opentelemetry/semantic-conventions'
       - bufferutil
+      - redis
       - supports-color
       - utf-8-validate
 
@@ -2965,7 +2981,7 @@ snapshots:
   '@opentui/core-win32-x64@0.5.10':
     optional: true
 
-  '@opentui/core@0.5.10(web-tree-sitter@0.25.10)':
+  '@opentui/core@0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)':
     dependencies:
       bun-ffi-structs: 0.3.1(typescript@7.0.2)
       diff: 9.0.0
@@ -2982,17 +2998,22 @@ snapshots:
       '@opentui/core-linux-x64-musl': 0.5.10
       '@opentui/core-win32-arm64': 0.5.10
       '@opentui/core-win32-x64': 0.5.10
+    transitivePeerDependencies:
+      - typescript
 
-  '@opentui/keymap@0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15))':
+  '@opentui/keymap@0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(typescript@7.0.2)(web-tree-sitter@0.25.10)':
     dependencies:
-      '@opentui/core': 0.5.10(web-tree-sitter@0.25.10)
-      '@opentui/solid': 0.5.10(solid-js@1.9.15)
+      '@opentui/core': 0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)
+      '@opentui/solid': 0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)
+    transitivePeerDependencies:
+      - typescript
+      - web-tree-sitter
 
-  '@opentui/solid@0.5.10(solid-js@1.9.15)':
+  '@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/preset-typescript': 7.27.1(@babel/core@7.28.0)
-      '@opentui/core': 0.5.10(web-tree-sitter@0.25.10)
+      '@opentui/core': 0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)
       babel-plugin-module-resolver: 5.0.2
       babel-preset-solid: 1.9.12(@babel/core@7.28.0)(solid-js@1.9.15)
       entities: 7.0.1
@@ -3000,6 +3021,8 @@ snapshots:
       solid-js: 1.9.15
     transitivePeerDependencies:
       - supports-color
+      - typescript
+      - web-tree-sitter
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -3540,6 +3563,7 @@ snapshots:
       meow: 13.2.0
     transitivePeerDependencies:
       - conventional-commits-filter
+      - conventional-commits-parser
 
   glob@10.5.0:
     dependencies:
@@ -4012,6 +4036,7 @@ snapshots:
       '@redis/time-series': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.9.0))
     transitivePeerDependencies:
       - '@node-rs/xxhash'
+      - '@opentelemetry/api'
 
   require-from-string@2.0.2: {}
 
