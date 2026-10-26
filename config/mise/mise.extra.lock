@@ -98,44 +98,50 @@ url = "https://github.com/wagoodman/dive/releases/download/v0.13.1/dive_0.13.1_w
 url_api = "https://api.github.com/repos/wagoodman/dive/releases/assets/241842460"
 
 [[tools."github:babs/multiping"]]
-version = "1.5.1"
+version = "1.5.2"
 backend = "github:babs/multiping"
 specifiers = ["latest"]
 
 [tools."github:babs/multiping"."platforms.linux-arm64"]
-checksum = "sha256:9e9809bc7fdac8b7d4b2441ad0caee427975b6a3b555c7c00bb0c85ffa8c9ebb"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-linux-arm64.xz"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469605"
+checksum = "sha256:8bc81b28a80bc29dae518903ea80ff944b4c1d2efa5b4cba5166b896ad2b119e"
+checksum_source = "mise-versions"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-linux-arm64.xz"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672209117"
 
 [tools."github:babs/multiping"."platforms.linux-arm64-musl"]
-checksum = "sha256:9e9809bc7fdac8b7d4b2441ad0caee427975b6a3b555c7c00bb0c85ffa8c9ebb"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-linux-arm64.xz"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469605"
+checksum = "sha256:8bc81b28a80bc29dae518903ea80ff944b4c1d2efa5b4cba5166b896ad2b119e"
+checksum_source = "mise-versions"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-linux-arm64.xz"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672209117"
 
 [tools."github:babs/multiping"."platforms.linux-x64"]
-checksum = "sha256:b665ad757b5c4ce40e1366a31cce0c580024dbfe9f87607e22bc5976a64c061a"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-linux-amd64.xz"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469597"
+checksum = "sha256:2881770744b8557e9f25c82bdc88971065ae2481b479d591258310b25470c619"
+checksum_source = "mise-versions"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-linux-amd64.xz"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672209054"
 
 [tools."github:babs/multiping"."platforms.linux-x64-musl"]
-checksum = "sha256:b665ad757b5c4ce40e1366a31cce0c580024dbfe9f87607e22bc5976a64c061a"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-linux-amd64.xz"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469597"
+checksum = "sha256:2881770744b8557e9f25c82bdc88971065ae2481b479d591258310b25470c619"
+checksum_source = "mise-versions"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-linux-amd64.xz"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672209054"
 
 [tools."github:babs/multiping"."platforms.macos-arm64"]
-checksum = "sha256:6fd1bcd59f2d109ed4f565eeaf2f1d67845ef13601cb307dc558cee3c65b3c22"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-darwin-arm64.xz"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469559"
+checksum = "sha256:5a5302045e86c4fed583c42553d6e649269a7a2ed822e19ed37f8719ecf73071"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-darwin-arm64.xz"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672208790"
 
 [tools."github:babs/multiping"."platforms.macos-x64"]
-checksum = "sha256:95d2458142d6f20bbbdb9f7aca4e3939cb4d84265a66830101d6e188877cb17b"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-darwin-amd64.xz"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469556"
+checksum = "sha256:0659c2cfe8d76a659192397a84d55403f36ef5e0a38134c4826b2cd426d1c73c"
+checksum_source = "mise-versions"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-darwin-amd64.xz"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672208773"
 
 [tools."github:babs/multiping"."platforms.windows-x64"]
-checksum = "sha256:799e7849ae91b4b3f3a1043ffcbb24175d0095c45c32858d2e97a55a70b7ee06"
-url = "https://github.com/babs/multiping/releases/download/v1.5.1/multiping-windows-amd64.zip"
-url_api = "https://api.github.com/repos/babs/multiping/releases/assets/326469657"
+checksum = "sha256:c9544befbc7b42376f5108c2232d682890ab292366fcb39dfb77250c6b6405fa"
+checksum_source = "mise-versions"
+url = "https://github.com/babs/multiping/releases/download/v1.5.2/multiping-windows-amd64.zip"
+url_api = "https://api.github.com/repos/babs/multiping/releases/assets/672209412"
 
 [[tools."github:bgreenwell/lstr"]]
 version = "0.4.0"
@@ -635,8 +641,8 @@ url = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/laz
 url_api = "https://api.github.com/repos/jesseduffield/lazydocker/releases/assets/399711571"
 
 [[tools."npm:rea-agents"]]
-version = "6.7.0"
-aube = { path = "locks/mise.extra/npm-rea-agents/6.7.0", digest = "sha256:5f33b3a9c0e01c3293b038451572b592e867381404957bae97ed04c91a90077a" }
+version = "6.8.0"
+aube = { path = "locks/mise.extra/npm-rea-agents/6.8.0", digest = "sha256:0c92f2f1316085a12b9efec0be7a7998b7451f5c2d1b377e42aeabaf8c00841f" }
 backend = "npm:rea-agents"
 specifiers = ["latest"]
 
