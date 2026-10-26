@@ -6,6 +6,11 @@ agent: opencode
 files:
   copy: []
 
+# Synchronous: ask before HWT closes the workspace and removes ticket metadata.
+# Project pre_remove lists must include <global> to retain this hook.
+pre_remove:
+  - sh "$HOME/.config/hwt/close-ticket.sh"
+
 ticket_commands:
   default:
     command: [lnr, quick, '{input}', --json]

@@ -108,6 +108,11 @@ local checks = new Mapping<String, Step> {
     check = new CommandSpec { command = "node --test scripts/*.test.ts 2>&1"; effect = "read" }
   }
 
+  ["hwt-ticket-tests"] {
+    glob = List("config/hwt/config.yaml", "config/hwt/close-ticket.sh", "scripts/hwt-close-ticket.test.py")
+    check = new CommandSpec { command = "python3 -B scripts/hwt-close-ticket.test.py 2>&1"; effect = "read" }
+  }
+
   ["inline-command-tests"] {
     glob = List(
       "config/inline-command/*.ts",
