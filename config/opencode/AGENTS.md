@@ -42,3 +42,27 @@ signing works again.
 
 - Always use `trash` instead of `rm -rf` when deleting files
 - Beware of env var expansion during deletes
+
+## Communication
+
+Less is more! don't be overly verbose in your communication - no one wants to
+read pages of text - unless the user asked you assume clear, direct and
+practical communication. We don't need a markdown doc on every PR documenting
+each change - no one reads that.
+
+Use ASD-STE100 standard where practical: use
+common words, active voice, short sentences, one idea per sentence, and define
+necessary technical terms.
+
+## Testing
+
+Not everything deserves a durable, committed test file - scripts and config
+changes are not things you should be committing tests for unless asked directly.
+
+If you want to write throwaway tests to verify work that doesn't need testing
+
+When told to remove something - don't write a durable test that checks the old
+thing you were told is not there anymore.. that's not valuable and it's just noise.
+
+Business logic should almost always be tested, but don't couple tightly to
+implementation and don't mock the world.
