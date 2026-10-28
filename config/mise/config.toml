@@ -42,7 +42,6 @@
 "github:dkarter/lnr" = "latest"              # linear cli
 "github:dlvhdr/diffnav" = "latest"           # A git diff pager based on delta but with a file tree, à la GitHub.
 "github:github/github-mcp-server" = "1.13.0" # GitHub MCP server for local development
-"github:mazznoer/lolcrab" = "latest"         # like lolcat, but written in Rust and with more features
 "github:modem-dev/hunk" = "latest"           # interactive terminal diff viewer
 "github:remoteoss/dexter" = "latest"         # fast af Elixir LSP
 "npm:@commitlint/cli" = "latest"             # linter for checking that commits are following conventional commits
@@ -114,6 +113,12 @@ zoxide = "latest"                            # a modern version of autojump
 "npm:chrome-devtools-mcp" = "latest"
 "github:dkarter/ink" = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
+
+# Like lolcat, but written in Rust and with more features.
+# Upstream only publishes binaries for these OS/architecture combinations.
+[tools."github:mazznoer/lolcrab"]
+version = "latest"
+os = ["linux/x64", "macos/arm64", "windows/x64"]
 
 [tools."github:TBXark/mcp-proxy"]
 version = "latest"

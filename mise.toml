@@ -3,7 +3,12 @@
 [tools]
 
 "github:crate-ci/committed" = "latest"
-"github:mazznoer/lolcrab" = "latest"
+# Upstream only publishes binaries for these OS/architecture combinations.
+"github:mazznoer/lolcrab" = { version = "latest", os = [
+  "linux/x64",
+  "macos/arm64",
+  "windows/x64",
+] }
 aube = "latest"
 betterleaks = "1.9.0"
 bun = "latest"
