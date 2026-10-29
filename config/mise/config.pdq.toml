@@ -1,5 +1,24 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
+[tool_alias]
+gcloud = "http:gcloud"
+
 [tools]
-gcloud = "latest"
 amp = "latest"
+
+[tools.gcloud]
+version = "latest"
+version_list_url = "https://storage.googleapis.com/storage/v1/b/cloud-sdk-release/o?matchGlob=google-cloud-sdk-*-linux-x86_64.tar.gz&maxResults=1000&fields=nextPageToken,items(name,timeCreated)"
+version_expr = 'map(fromJSON(body).items, { trimSuffix(trimPrefix(#.name, "google-cloud-sdk-"), "-linux-x86_64.tar.gz") })'
+version_order = "semver"
+version_date_expr = 'map(fromJSON(body).items, { [trimSuffix(trimPrefix(#.name, "google-cloud-sdk-"), "-linux-x86_64.tar.gz"), #.timeCreated] })'
+strip_components = 1
+bin_path = "bin"
+
+# mise records download checksums in mise.pdq.lock.
+[tools.gcloud.platforms]
+macos-arm64 = { url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-{{ version }}-darwin-arm.tar.gz" }
+macos-x64 = { url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-{{ version }}-darwin-x86_64.tar.gz" }
+linux-arm64 = { url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-{{ version }}-linux-arm.tar.gz" }
+linux-x64 = { url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-{{ version }}-linux-x86_64.tar.gz" }
+windows-x64 = { url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-{{ version }}-windows-x86_64-bundled-python.zip" }
