@@ -55,8 +55,10 @@ keybind = super+digit_9=text:\x1a9
 # add quick terminal shortcut cmd+single quote
 keybind = global:super+'=toggle_quick_terminal
 
+# Project agents
+keybind = super+p=text:\x1ap
 # command palette
-keybind = super+p=text:\x1aP
+keybind = super+shift+p=text:\x1aP
 # GitHub pull requests (large Herdr popup with preview)
 keybind = super+g=text:\x1ag
 
