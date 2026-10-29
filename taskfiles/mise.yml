@@ -14,7 +14,7 @@ tasks:
         './config/mise/mise.lock' \
         './config/mise/mise.extra.lock' \
         './config/mise/mise.pdq.lock' \
-        './config/mise/locks/'
+        './config/mise/.mise/locks/'
 
       if [[ -z "$(git status --porcelain -- "$@")" ]]; then
         echo "No changes in mise lockfiles or dependency sidecars"
