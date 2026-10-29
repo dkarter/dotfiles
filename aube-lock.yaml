@@ -41,7 +41,7 @@ importers:
         version: 0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)
       '@opentui/keymap':
         specifier: 0.5.10
-        version: 0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(typescript@7.0.2)(web-tree-sitter@0.25.10)
+        version: 0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)
       '@opentui/solid':
         specifier: 0.5.10
         version: 0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)
@@ -2968,11 +2968,12 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@opentui/keymap@0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(typescript@7.0.2)(web-tree-sitter@0.25.10)':
+  '@opentui/keymap@0.5.10(@opentui/solid@0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10))(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)':
     dependencies:
       '@opentui/core': 0.5.10(typescript@7.0.2)(web-tree-sitter@0.25.10)
     optionalDependencies:
       '@opentui/solid': 0.5.10(solid-js@1.9.15)(typescript@7.0.2)(web-tree-sitter@0.25.10)
+      solid-js: 1.9.15
     transitivePeerDependencies:
       - typescript
       - web-tree-sitter
