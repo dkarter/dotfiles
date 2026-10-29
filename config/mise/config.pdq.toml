@@ -8,10 +8,13 @@ amp = "latest"
 
 [tools.gcloud]
 version = "latest"
-version_list_url = "https://storage.googleapis.com/storage/v1/b/cloud-sdk-release/o?matchGlob=google-cloud-sdk-*-linux-x86_64.tar.gz&maxResults=1000&fields=nextPageToken,items(name,timeCreated)"
-version_expr = 'map(fromJSON(body).items, { trimSuffix(trimPrefix(#.name, "google-cloud-sdk-"), "-linux-x86_64.tar.gz") })'
+# Release notes contain the version history without archive-list pagination.
+version_list_url = "https://docs.cloud.google.com/sdk/docs/release-notes"
+version_regex = '<h2[^>]*data-text="([0-9]+\.[0-9]+\.[0-9]+) \('
 version_order = "semver"
-version_date_expr = 'map(fromJSON(body).items, { [trimSuffix(trimPrefix(#.name, "google-cloud-sdk-"), "-linux-x86_64.tar.gz"), #.timeCreated] })'
+version_date_url = "https://storage.googleapis.com/storage/v1/b/cloud-sdk-release/o?matchGlob=google-cloud-sdk-*-linux-x86_64.tar.gz&maxResults=1000&fields=nextPageToken,items(name,timeCreated)"
+version_date_next_expr = 'fromJSON(body).nextPageToken != nil ? split(url, "&pageToken=")[0] + "&pageToken=" + fromJSON(body).nextPageToken : nil'
+version_date_expr = 'map(flatten(map(bodies, { fromJSON(#).items ?? [] })), { [trimSuffix(trimPrefix(#.name, "google-cloud-sdk-"), "-linux-x86_64.tar.gz"), #.timeCreated] })'
 strip_components = 1
 bin_path = "bin"
 
