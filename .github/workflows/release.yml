@@ -14,14 +14,14 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - name: Generate release app token
         id: release_app_token
-        # GitHub verifies this release tag as immutable.
-        uses: actions/create-github-app-token@v3.2.0
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           client-id: ${{ vars.RELEASE_CLIENT_ID }}
           private-key: ${{ secrets.RELEASE_PRIVATE_KEY }}
@@ -48,4 +48,5 @@ jobs:
     uses: ./.github/workflows/enrich-release.yml
     with:
       tag: ${{ needs.release.outputs.tag_name }}
-    secrets: inherit
+    secrets:
+      RELEASE_PRIVATE_KEY: ${{ secrets.RELEASE_PRIVATE_KEY }}

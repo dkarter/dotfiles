@@ -65,6 +65,12 @@ local checks = new Mapping<String, Step> {
     check = new CommandSpec { command = "hk validate 2>&1"; effect = "read" }
   }
 
+  ["jactionlint"] {
+    glob = List(".github/workflows/*.yml", ".github/workflows/*.yaml", "**/action.yml", "**/action.yaml")
+    batch = true
+    check = new CommandSpec { command = "jactionlint {{files}}"; effect = "read" }
+  }
+
   ["lua"] {
     glob = List(
       "config/nvim/lua/**/*.lua",
@@ -186,6 +192,7 @@ hooks {
         }
       }
       ["hk-config"] = checks["hk-config"]
+      ["jactionlint"] = checks["jactionlint"]
       ["typos"] = checks["typos"]
       ["vim-mode-tests"] {
         glob = List(
