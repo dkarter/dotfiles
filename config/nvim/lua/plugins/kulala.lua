@@ -1,9 +1,13 @@
 -- Rest client for Neovim
 ---@type LazySpec
 return {
-  'mistweaverco/kulala.nvim',
-  -- Pin before the kulala-core download started prompting for a license token on :qa.
-  commit = 'dcad056448773ae5b54cadbfdbd188a599cfebd3',
+  'dkarter/kulala.nvim',
+  name = 'kulala-v5.nvim',
+  main = 'kulala',
+  branch = 'main',
+  submodules = false,
+  -- Compile our bundled grammar and JS helpers; never fetch upstream binaries.
+  build = 'scripts/build.lua',
   keys = {
     { '<leader>rs', desc = 'Send request' },
     { '<leader>ra', desc = 'Send all requests' },
