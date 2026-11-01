@@ -8,11 +8,33 @@ on:
     paths:
       - '.github/workflows/agent-guard.yml'
       - 'config/agent-guard/**'
+      - 'config/amp/plugins/credential-guard.ts'
+      - 'config/pi/agent/extensions/credential-guard.ts'
+      - 'config/opencode/plugins/credential-guard.ts'
+      - 'config/opencode/plugins/package.json'
+      - 'aube-lock.yaml'
+      - 'aube-workspace.yaml'
+      - 'package.json'
+      - 'Taskfile.dist.yml'
+      - 'mise.toml'
+      - 'mise.lock'
+      - 'taskfiles/ci.yml'
 
   pull_request:
     paths:
       - '.github/workflows/agent-guard.yml'
       - 'config/agent-guard/**'
+      - 'config/amp/plugins/credential-guard.ts'
+      - 'config/pi/agent/extensions/credential-guard.ts'
+      - 'config/opencode/plugins/credential-guard.ts'
+      - 'config/opencode/plugins/package.json'
+      - 'aube-lock.yaml'
+      - 'aube-workspace.yaml'
+      - 'package.json'
+      - 'Taskfile.dist.yml'
+      - 'mise.toml'
+      - 'mise.lock'
+      - 'taskfiles/ci.yml'
 
 permissions:
   contents: read
@@ -33,10 +55,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install Bun and Task with Mise
+      - name: Install test tools with Mise
         uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
         with:
-          install_args: bun task
+          install_args: bun task aube betterleaks node
+
+      - name: Install plugin dependencies
+        run: aube install --frozen-lockfile --filter ./config/opencode/plugins
 
       - name: Run credential guard tests
         run: task ci:agent-guard:test
