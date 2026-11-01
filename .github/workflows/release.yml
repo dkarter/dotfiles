@@ -21,7 +21,7 @@ jobs:
       - name: Generate release app token
         id: release_app_token
         # GitHub verifies this release tag as immutable.
-        uses: actions/create-github-app-token@v3.2.0
+        uses: actions/create-github-app-token@v3.3.0
         with:
           client-id: ${{ vars.RELEASE_CLIENT_ID }}
           private-key: ${{ secrets.RELEASE_PRIVATE_KEY }}
