@@ -1,4 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dkarter/hwt/main/schema/herdr-worktree.schema.json
+files:
+  copy: []
+
 post_create:
   - mise trust mise.toml
   - <global>
