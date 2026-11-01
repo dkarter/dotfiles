@@ -1,0 +1,6 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dkarter/hwt/main/schema/herdr-worktree.schema.json
+post_create:
+  - mise trust mise.toml
+  - <global>
+  - mise install
+  - mise exec -- aube install --frozen-lockfile

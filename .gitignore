@@ -6,6 +6,9 @@ config/vifm/vifmimgpdfpage
 
 .build/
 
+# Share repository-specific worktree setup despite the global ignore rule.
+!.herdr-worktree.yaml
+
 # generated Python bytecode
 __pycache__/
 
