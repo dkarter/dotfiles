@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: GitHub Actions
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/**'
+      - '**/action.yml'
+      - '**/action.yaml'
+      - 'hk.pkl'
+      - 'mise.toml'
+      - 'mise.lock'
+      - 'taskfiles/ci.yml'
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - '**/action.yml'
+      - '**/action.yaml'
+      - 'hk.pkl'
+      - 'mise.toml'
+      - 'mise.lock'
+      - 'taskfiles/ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: 'Lint: GitHub Actions'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install lint tools with Mise
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+        with:
+          install_args: jactionlint shellcheck hk task node
+
+      - name: Lint workflows and actions
+        run: task ci:workflows:lint

@@ -58,6 +58,10 @@ tasks:
     desc: Runs yamllint on this repo
     cmd: hk check --all --step yamllint
 
+  workflows:lint:
+    desc: Lint GitHub Actions workflows and local actions
+    cmd: hk check --all --step jactionlint
+
   run:
     cmds:
       - cmd: hk check --all --no-fail-fast

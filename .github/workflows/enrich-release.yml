@@ -10,6 +10,9 @@ on:
         required: true
         type: string
   workflow_call:
+    secrets:
+      RELEASE_PRIVATE_KEY:
+        required: true
     inputs:
       tag:
         description: Release tag to enrich
@@ -20,9 +23,14 @@ concurrency:
   group: enrich-release-${{ inputs.tag }}
   cancel-in-progress: false
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   enrich:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
       id-token: write
@@ -31,6 +39,7 @@ jobs:
         # actions/checkout does not publish immutable releases.
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
+          persist-credentials: false
           fetch-depth: 1
           ref: ${{ inputs.tag }}
 
@@ -105,8 +114,7 @@ jobs:
 
       - name: Generate release app token
         id: release_app_token
-        # GitHub verifies this release tag as immutable.
-        uses: actions/create-github-app-token@v3.2.0
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           client-id: ${{ vars.RELEASE_CLIENT_ID }}
           private-key: ${{ secrets.RELEASE_PRIVATE_KEY }}
@@ -121,8 +129,7 @@ jobs:
           git checkout --force -B "$DEFAULT_BRANCH" FETCH_HEAD
 
       - name: Install runtimes
-        # GitHub verifies this release tag as immutable.
-        uses: jdx/mise-action@v4.3.0
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
       - name: Prepare enriched notes
         env:
