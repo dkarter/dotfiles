@@ -7,6 +7,23 @@ placeholder = "Open a Project agent..."
 [source]
 cmd = "herdr-project-agent list"
 
+[filters]
+label = "projects"
+initial = "workspace open"
+
+[[filters.choices]]
+key = "o"
+label = "open"
+source = "status"
+value = "workspace open"
+fg = "theme.colors.green"
+
+[[filters.choices]]
+key = "c"
+label = "closed"
+source = "status"
+value = "open project"
+
 [actions]
 default = "open"
 
