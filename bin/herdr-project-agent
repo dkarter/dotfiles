@@ -1,0 +1,190 @@
+#!/usr/bin/env python3
+"""List root projects for Vellum, or focus/resume their OpenCode Project agent."""
+
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+from urllib.parse import urlencode
+
+
+def command(*args):
+    return json.loads(subprocess.check_output(args, text=True, timeout=90))
+
+
+def herdr(*args):
+    return command(os.environ.get("HERDR_BIN_PATH", "herdr"), *args)["result"]
+
+
+def opencode(method, path, body=None):
+    args = ["opencode", "api", method, path]
+    if body is not None:
+        args.extend(["--data", json.dumps(body)])
+    return command(*args)
+
+
+def canonical(path):
+    return str(Path(path).expanduser().resolve())
+
+
+def workspaces_with_roots():
+    snapshot = herdr("api", "snapshot")["snapshot"]
+    workspaces = snapshot["workspaces"]
+    for workspace in workspaces:
+        if workspace.get("worktree"):
+            continue
+        # Non-Git projects have no worktree metadata. Use their original pane cwd,
+        # not the foreground process's potentially temporary working directory.
+        paths = {
+            canonical(pane["cwd"]) for pane in snapshot["panes"]
+            if pane["workspace_id"] == workspace["workspace_id"] and pane.get("cwd")
+        }
+        if len(paths) == 1:
+            root = paths.pop()
+            if not (Path(root) / ".git").is_file():
+                workspace["project_root"] = root
+    return workspaces
+
+
+def project_roots(workspaces):
+    roots = {
+        canonical(workspace["worktree"]["repo_root"])
+        for workspace in workspaces
+        if workspace.get("worktree", {}).get("repo_root")
+    }
+    roots.update(workspace["project_root"] for workspace in workspaces if workspace.get("project_root"))
+    # Match the dev-directory picker, but omit linked worktrees and non-repos.
+    for parent in [Path.home() / "dev", Path.home() / "dev/forks", Path.home() / "dev/learning"]:
+        if parent.is_dir():
+            roots.update(str(path.resolve()) for path in parent.iterdir() if (path / ".git").is_dir())
+    return sorted((root for root in roots if Path(root).is_dir()), key=str.casefold)
+
+
+def root_workspaces(workspaces, root):
+    return [
+        workspace for workspace in workspaces
+        if workspace.get("project_root") == root or (
+            (tree := workspace.get("worktree"))
+            and not tree["is_linked_worktree"]
+            and canonical(tree["checkout_path"]) == root
+        )
+    ]
+
+
+def list_projects(workspaces):
+    return [
+        {
+            "path": root,
+            "label": Path(root).name,
+            "display_path": root.replace(str(Path.home()) + "/", "~/", 1),
+            "status": "workspace open" if root_workspaces(workspaces, root) else "open project",
+        }
+        for root in project_roots(workspaces)
+    ]
+
+
+def project_sessions(root):
+    query = {"directory": root, "parentID": "null", "archived": "false", "limit": "100"}
+    sessions = []
+    while True:
+        page = opencode("get", "/api/session?" + urlencode(query))
+        sessions.extend(
+            session for session in page["data"]
+            if session.get("agent") == "project"
+            and canonical(session["location"]["directory"]) == root
+        )
+        cursor = page["cursor"].get("next")
+        if not cursor:
+            return sessions
+        query["cursor"] = cursor
+
+
+def open_project(root):
+    # Serialize concurrent selections, including startup, to avoid duplicate agents.
+    lock_dir = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "herdr-project-agent"
+    lock_dir.mkdir(parents=True, exist_ok=True)
+    key = hashlib.sha256(root.encode()).hexdigest()
+    reservation = lock_dir / (key + ".json")
+    with (lock_dir / (key + ".lock")).open("w") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise ValueError("This project's agent is already opening. Try again shortly.") from None
+        workspaces = workspaces_with_roots()
+        if root not in project_roots(workspaces):
+            raise ValueError(f"Not a known root project: {root}")
+        roots = root_workspaces(workspaces, root)
+        agents = herdr("agent", "list")["agents"]
+        # Focusing an open coordinator must not scan its entire session history.
+        for agent in agents:
+            session_id = agent.get("agent_session", {}).get("value")
+            if agent.get("agent") != "opencode" or not session_id or not any(
+                workspace["workspace_id"] == agent["workspace_id"] for workspace in roots
+            ):
+                continue
+            session = opencode("get", f"/api/session/{session_id}")["data"]
+            if session.get("agent") == "project" and canonical(session["location"]["directory"]) == root:
+                herdr("agent", "focus", agent["pane_id"])
+                return
+        sessions = project_sessions(root)
+        session_ids = {session["id"] for session in sessions}
+        for agent in agents:
+            if agent.get("agent") != "opencode" or agent.get("agent_session", {}).get("value") not in session_ids:
+                continue
+            if not any(workspace["workspace_id"] == agent["workspace_id"] for workspace in roots):
+                raise ValueError("Project agent is open outside its root workspace; move it there before retrying.")
+            herdr("agent", "focus", agent["pane_id"])
+            return
+
+        # Resume the most recently used Project session, never an unrelated Build session.
+        session = max(sessions, key=lambda item: item["time"]["updated"]) if sessions else opencode(
+            "post", "/api/session",
+            {"agent": "project", "title": f"Project: {Path(root).name}", "location": {"directory": root}},
+        )["data"]
+        pending = json.loads(reservation.read_text()) if reservation.exists() else {}
+        pane_id = None
+        if pending.get("session_id") == session["id"]:
+            for workspace in roots:
+                panes = herdr("pane", "list", "--workspace", workspace["workspace_id"])["panes"]
+                if any(pane["pane_id"] == pending.get("pane_id") for pane in panes):
+                    pane_id = pending["pane_id"]
+                    break
+        if not pane_id:
+            cli_profile = "OPENCODE_CLI_CONFIG_CONTENT=" + json.dumps({
+                "session": {"thinking": "hide", "grouping": "auto", "verbosity": "low"},
+            })
+            if roots:
+                created = herdr("tab", "create", "--workspace", roots[0]["workspace_id"],
+                                "--cwd", root, "--label", "Project", "--env", cli_profile, "--no-focus")
+            else:
+                created = herdr("workspace", "create", "--cwd", root, "--label", Path(root).name,
+                                "--env", cli_profile, "--no-focus")
+            pane_id = created["root_pane"]["pane_id"]
+        # Keep the reservation after errors so retries do not create orphan tabs.
+        reservation.write_text(json.dumps({"session_id": session["id"], "pane_id": pane_id}))
+        name = "project-" + key[:16]
+        # Herdr validates shell availability, including after a delayed startup.
+        herdr("agent", "start", name, "--kind", "opencode", "--pane", pane_id,
+              "--", "--session", session["id"], root)
+        herdr("agent", "focus", pane_id)
+
+
+def main():
+    if os.environ.get("HERDR_ENV") != "1":
+        raise ValueError("Run this picker inside Herdr.")
+    if sys.argv[1:] == ["list"]:
+        print(json.dumps(list_projects(workspaces_with_roots())))
+    elif len(sys.argv) == 3 and sys.argv[1] == "open":
+        open_project(canonical(sys.argv[2]))
+    else:
+        raise ValueError("Usage: herdr-project-agent list | open <project-root>")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
+        sys.exit(str(error))

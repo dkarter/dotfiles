@@ -24,6 +24,12 @@ contexts = ["workspace"]
 command = ["./open-agent-picker"]
 
 [[actions]]
+id = "open-project-picker"
+title = "Open Project agent"
+contexts = ["workspace"]
+command = ["./open-project-picker"]
+
+[[actions]]
 id = "new-worktree"
 title = "New worktree"
 contexts = ["workspace"]
@@ -70,6 +76,14 @@ placement = "popup"
 width = "80%"
 height = "75%"
 command = ["./agent-picker"]
+
+[[panes]]
+id = "project-picker"
+title = "Projects"
+placement = "popup"
+width = "80%"
+height = "70%"
+command = ["./project-picker"]
 
 [[panes]]
 id = "repo-checkout"

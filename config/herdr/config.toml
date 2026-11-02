@@ -61,6 +61,12 @@ command = "dotfiles.command-palette.open-agent-picker"
 description = "jump to agent"
 
 [[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "dotfiles.command-palette.open-project-picker"
+description = "open Project agent"
+
+[[keys.command]]
 key = "prefix+shift+p"
 type = "plugin_action"
 command = "dotfiles.command-palette.open"

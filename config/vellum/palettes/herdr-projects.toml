@@ -1,0 +1,29 @@
+#:schema https://raw.githubusercontent.com/dkarter/vellum/refs/heads/main/schemas/vellum.schema.json
+
+[search]
+title = "Projects"
+placeholder = "Open a Project agent..."
+
+[source]
+cmd = "herdr-project-agent list"
+
+[actions]
+default = "open"
+
+[[actions.items]]
+name = "open"
+label = "Open Project agent"
+command = ["herdr-project-agent", "open", "$path"]
+on_success = "exit"
+
+[item]
+value = "$path"
+template = [
+  [
+    { token = "$label", bold = true },
+    { token = "$status", fg = "#7dcfff", align = "right", searchable = false },
+  ],
+  [
+    { token = "$display_path", fg = "#565f89" },
+  ],
+]
