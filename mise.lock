@@ -413,61 +413,61 @@ url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-win32-x64.zip"
 url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657277066"
 
 [[tools.hk]]
-version = "2.10.0"
+version = "2.11.0"
 backend = "packslip:github.com/jdx/hk"
 specifiers = ["latest"]
 
 [tools.hk."platforms.linux-arm64"]
-checksum = "sha256:98772b6290cad5ba5fe77a203fd717c82f47bde2a9aa5b295bea22139ba4f602"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:49cbba44159c17a760319ccfcca0fe4a07fa716f217c157ea734923160b8acb9"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-arm64-musl"]
-checksum = "sha256:bc4dd452d409ae4ed3fc58697dfbe5797c5130c0d03cb2694a2ddee3cbed89b7"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:9bb573baf0931bf4cce5c681dcb1b2bcbd5bc9b7fcbd079252a742876a529dfc"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-aarch64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64"]
-checksum = "sha256:3a1d580ba031d684307a88ce07f1751d792325f2fdace7d24dfc59b816766ad5"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:a461eb97df8e60c4447d1fdaa74a3d31598d7aba0d7a68ceebad0ff0405c3b5b"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64-baseline"]
-checksum = "sha256:3a1d580ba031d684307a88ce07f1751d792325f2fdace7d24dfc59b816766ad5"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:a461eb97df8e60c4447d1fdaa74a3d31598d7aba0d7a68ceebad0ff0405c3b5b"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64-musl"]
-checksum = "sha256:bb537bcfe3d949323f4c8fefdd6011d2cff32fd2a22d6ed09ec02eb78f183e02"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:edac507e4fb248a7d0885367b87ec002b073c530bcb07c91334855e54c4b0352"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:bb537bcfe3d949323f4c8fefdd6011d2cff32fd2a22d6ed09ec02eb78f183e02"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:edac507e4fb248a7d0885367b87ec002b073c530bcb07c91334855e54c4b0352"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.macos-arm64"]
-checksum = "sha256:ab54862e724bd4a1ef9180ef535cfeef7f7ff98ace911bd5ea36bb41fa4ebc94"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:65cc3490e93522b55abe8ae42c2b5ffe452f9fe58282455ad59d10bc0deab272"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.windows-x64"]
-checksum = "sha256:0dc2485dcf4542d7be2f37890072e6bc5de664f41295449cae761e78336031d4"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:cb62de9ffb3d8265c513f194769c7b5575671f7bbfad3fab9529db54a0a32e14"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.windows-x64-baseline"]
-checksum = "sha256:0dc2485dcf4542d7be2f37890072e6bc5de664f41295449cae761e78336031d4"
-url = "https://github.com/jdx/hk/releases/download/v2.10.0/hk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:cb62de9ffb3d8265c513f194769c7b5575671f7bbfad3fab9529db54a0a32e14"
+url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
@@ -480,56 +480,67 @@ specifiers = ["latest"]
 checksum = "sha256:42413391c248f99ff4550d6c866ee717d5ea4ca2b966d9d54ad1503af955e22f"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-arm64-musl"]
 checksum = "sha256:42413391c248f99ff4550d6c866ee717d5ea4ca2b966d9d54ad1503af955e22f"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64"]
 checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-baseline"]
 checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-musl"]
 checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-musl-baseline"]
 checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-arm64"]
 checksum = "sha256:349a13dbffdd25376898a256d195806afda08ba97ccc6378cbf2dd11a77ef8e7"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-x64"]
 checksum = "sha256:4c21fce834f8267b65a65b32a527aaa2ec1c321c8f066d44b42d7f038835aa90"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-x64-baseline"]
 checksum = "sha256:4c21fce834f8267b65a65b32a527aaa2ec1c321c8f066d44b42d7f038835aa90"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.windows-x64"]
 checksum = "sha256:4e0c7b428a4faa35bb3b86af6fa65a0ac9797edcd4c64e4f7e16ca886437e172"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_windows_amd64.zip"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.windows-x64-baseline"]
 checksum = "sha256:4e0c7b428a4faa35bb3b86af6fa65a0ac9797edcd4c64e4f7e16ca886437e172"
 url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_windows_amd64.zip"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
+repository_ids = { repository = "1404951382" }
 
 [[tools.lua-language-server]]
 version = "3.19.2"
