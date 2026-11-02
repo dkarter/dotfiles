@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [34.0.0](https://github.com/dkarter/dotfiles/compare/v33.0.0...v34.0.0) (2026-11-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ghostty:** Cmd+P now opens Project agents instead of the command palette. Use Cmd+Shift+P for the command palette.
+
+### Features
+
+* **ghostty:** remap project and command palette shortcuts ([e103051](https://github.com/dkarter/dotfiles/commit/e103051d3adb5019668d16babb5f24bf2c2a931b))
+* **herdr:** add Project agent picker and session reuse ([f4087bf](https://github.com/dkarter/dotfiles/commit/f4087bf367c6eadd8a704156786dd79e43841867))
+* **vellum:** filter projects to open workspaces by default ([4239c03](https://github.com/dkarter/dotfiles/commit/4239c0332ae165be4f0550179d1c2c0a32debe65))
+
+
+### Bug Fixes
+
+* **herdr:** avoid project picker and tab shortcut collision ([b8bcd87](https://github.com/dkarter/dotfiles/commit/b8bcd878fe5366693b28158ce1c19440e4a52003))
+
 ## [33.0.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v33.0.0) (2026-11-01)
 
 <!-- pullfrog-summary:start -->
