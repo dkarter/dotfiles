@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [33.0.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v33.0.0) (2026-11-01)
 
+<!-- pullfrog-summary:start -->
+
+## Overview
+`v33.0.0` makes Herdr and HWT the exclusive terminal workspace and worktree workflow, completes the OpenCode V2 migration, and adds richer navigation and code-review tools.
+
+## Notable Changes
+- **Herdr and Vellum:** Browse GitHub PRs with review/check previews and actions for HWT checkout, review, auto-merge, and closing PRs. New visible-file and URL pickers can open or copy references, and paste file paths into the active pane.
+- **Code review:** Herdr’s command palette can review working-tree or branch changes using Hunk, tuicr, or Neovim CodeDiff. CodeDiff is available at `<leader>gD`; Git’s default pager changes from Delta to `hunk pager`.
+- **HWT:** OpenCode is the default agent, with Linear ticket creation/search commands and a worktree URL palette. On PDQ repositories, interactive worktree removal can offer to mark the associated ticket Done.
+- **Coding agents:** Shared inline shell commands now work across OpenCode, Claude Code, Codex, and Pi. OpenCode’s Vim editing gains visual-line selection, clipboard operations, and native undo/redo. Pi separates synced MCP servers from machine-local configuration.
+- **Neovim:** SQL buffers gain `<leader>dq` to send queries or selections to a nearby Herdr `psql` pane.
+- **Tooling:** Git hooks and checks move from Lefthook to hk; Betterleaks replaces Gitleaks and augments agent credential redaction. The macOS sudo-authentication task adds Apple Watch support alongside Touch ID.
+
+## Breaking Changes And Migration
+- **Tmux, workmux, and sesh are removed**, including their configs, helper scripts, tasks, and editor integrations. Use Herdr/HWT instead; old Vimux runner mappings are also gone.
+- **Ghostty shortcuts change:** `Cmd+K` opens the Herdr agent navigator; `Cmd+Shift+F` opens visible files instead of forking a repository. `Cmd+G` opens the PR palette, and `Cmd+U` opens visible URLs.
+- **OpenCode V2:** Use `opencode`, not the removed `opencode2` wrapper. Move machine-local MCP overlays to `~/.opencode/opencode.jsonc`, remove the old `OPENCODE_CONFIG` export, and restart the service. This overlay applies to projects beneath your home directory. An optional `scripts/import-opencode-sessions.sh` migrates older sessions, defaults to a dry run, and backs up databases when applying.
+- **Raycast:** Replace the parent script-directory registration with `raycast/scripts/shared` plus the applicable `pdq` or `personal` directory.
+- Run `task sync` to update tools, links, and agent hooks. Start fresh Claude/Pi sessions afterward and trust the Codex hook through `/hooks`. Inline shell syntax executes without per-command approval, so only submit commands you intend to run.
+
+<!-- pullfrog-summary:end -->
+
 
 ### ⚠ BREAKING CHANGES
 
