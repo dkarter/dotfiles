@@ -89,7 +89,8 @@ require('lazy').setup({
   --   end,
   -- },
   checker = {
-    enabled = true,
+    -- Check manually with :Lazy check; background checks delay the first input.
+    enabled = false,
     notify = false,
   },
   performance = {

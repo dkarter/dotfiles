@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   'saghen/blink.cmp',
-  event = { 'CmdlineEnter', 'InsertEnter' },
+  event = { 'CmdlineEnter', 'User EditingInsertEnter' },
   -- optional: provides snippets for the snippet source
   dependencies = {
     'rafamadriz/friendly-snippets',

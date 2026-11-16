@@ -4,6 +4,28 @@ local augroup = require('core.utils').augroup
 
 require('pi_editor_context').apply()
 
+augroup('EditingPlugins', {
+  {
+    event = { 'InsertEnter' },
+    command = function(args)
+      -- Picker inputs should not pay the cost of loading editing plugins.
+      if vim.bo[args.buf].buftype ~= '' then
+        return
+      end
+
+      local event = require 'lazy.core.handler.event'
+      local state = event.get_state(args.event, args.buf, args.data)
+      vim.api.nvim_exec_autocmds('User', { pattern = 'EditingInsertEnter', modeline = false })
+
+      -- Run newly registered InsertEnter handlers for this first edit, too.
+      for _, pending in ipairs(state) do
+        event.trigger(pending)
+      end
+      return true
+    end,
+  },
+})
+
 augroup('ConfigSchemas', {
   {
     event = { 'BufNewFile' },

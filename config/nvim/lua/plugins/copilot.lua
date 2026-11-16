@@ -3,7 +3,7 @@
 return {
   'zbirenbaum/copilot.lua',
   cmd = 'Copilot',
-  event = 'InsertEnter',
+  event = 'User EditingInsertEnter',
   ---@module 'copilot'
   ---@type CopilotConfig
   opts = {
