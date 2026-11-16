@@ -3,61 +3,61 @@
 lockfile_version = 3
 
 [[tools.aube]]
-version = "2.8.5"
+version = "2.10.0"
 backend = "packslip:github.com/aubepkg/aube"
 specifiers = ["latest"]
 
 [tools.aube."platforms.linux-arm64"]
-checksum = "sha256:9690b1968d3fdf6c3915d8cbef24ff1c2f7145161b726991b1bd500fead9d90f"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:cce81d91e7468fc784c15b580320c5f94b4867f41e7e097c4ba23b0587937b7e"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-arm64-musl"]
-checksum = "sha256:9ce103ff36d4300d5fb4a087323db9935b1843bc53df6042e0357b09807ee9d2"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:7541658766b989fbb6560c34275b473d7fb96a5d97d21d639e5df7089c1573a5"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-aarch64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-x64"]
-checksum = "sha256:bda6a85ac51b11930f92150d51a2d749ea85d0894195056c9e5a52747b56695a"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:50d76d216495a9fe28f6cc9817d02f6c080c9c483c9f8c6b29a901bd073488ff"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-x64-baseline"]
-checksum = "sha256:bda6a85ac51b11930f92150d51a2d749ea85d0894195056c9e5a52747b56695a"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:50d76d216495a9fe28f6cc9817d02f6c080c9c483c9f8c6b29a901bd073488ff"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-x64-musl"]
-checksum = "sha256:94ee848caeb773325de2ce41ecaedf4460f376d956b9e814d21fce922f9842d2"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:51c88c48f784aa82ca6f9e2ced73aa9c51e5482a5be0e1670b88cc59769fe2eb"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:94ee848caeb773325de2ce41ecaedf4460f376d956b9e814d21fce922f9842d2"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:51c88c48f784aa82ca6f9e2ced73aa9c51e5482a5be0e1670b88cc59769fe2eb"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.macos-arm64"]
-checksum = "sha256:74c22535927c8ecd1ca9937371e9cce40a6b4ae7915ea5e45cfff17eb5dad5ff"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:8b403713af1ee52da4a3d9cdbb9f0e3dbdd1247465b49841c4fefd8e2f1bc83f"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.windows-x64"]
-checksum = "sha256:97cfb2ee932529091f39f6f47933802569e5b38a689f867ee45ae0ee6f2be4cc"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:ff01fc4175d30dc2be40f6145d00decef126a939de0b89522b1178e8cec97c51"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
 [tools.aube."platforms.windows-x64-baseline"]
-checksum = "sha256:97cfb2ee932529091f39f6f47933802569e5b38a689f867ee45ae0ee6f2be4cc"
-url = "https://github.com/aubepkg/aube/releases/download/v2.8.5/aube-v2.8.5-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:ff01fc4175d30dc2be40f6145d00decef126a939de0b89522b1178e8cec97c51"
+url = "https://github.com/aubepkg/aube/releases/download/v2.10.0/aube-v2.10.0-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 repository_ids = { repository = "1214542327" }
 
@@ -253,64 +253,75 @@ url_api = "https://api.github.com/repos/dprint/dprint/releases/assets/667629154"
 provenance = "github-attestations"
 
 [[tools."github:crate-ci/committed"]]
-version = "1.1.11"
+version = "1.1.12"
 backend = "github:crate-ci/committed"
 specifiers = ["latest"]
 
 [tools."github:crate-ci/committed"."platforms.linux-arm64"]
-checksum = "sha256:96d6334ab2dccc0e90b67ebdcaa2af856f29eadef48161926e21a0e35f1ae80d"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361545435"
+checksum = "sha256:2077f9fa0157f3e0bfa7273327aa26c793d05b16620e046e499a982dd6fd2e7c"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711175274"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.linux-arm64-musl"]
-checksum = "sha256:96d6334ab2dccc0e90b67ebdcaa2af856f29eadef48161926e21a0e35f1ae80d"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361545435"
+checksum = "sha256:2077f9fa0157f3e0bfa7273327aa26c793d05b16620e046e499a982dd6fd2e7c"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711175274"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.linux-x64"]
-checksum = "sha256:1e5c20049eeaa4633e6798283913f92dc90a97f2b5c6dfc28e8c4b7e77a67157"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361544963"
+checksum = "sha256:9a860b0a557bc842df663ce923213ff36f077ae2783f8db3123738823279387f"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711174652"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.linux-x64-baseline"]
-checksum = "sha256:1e5c20049eeaa4633e6798283913f92dc90a97f2b5c6dfc28e8c4b7e77a67157"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361544963"
+checksum = "sha256:9a860b0a557bc842df663ce923213ff36f077ae2783f8db3123738823279387f"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711174652"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.linux-x64-musl"]
-checksum = "sha256:1e5c20049eeaa4633e6798283913f92dc90a97f2b5c6dfc28e8c4b7e77a67157"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361544963"
+checksum = "sha256:9a860b0a557bc842df663ce923213ff36f077ae2783f8db3123738823279387f"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711174652"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:1e5c20049eeaa4633e6798283913f92dc90a97f2b5c6dfc28e8c4b7e77a67157"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361544963"
+checksum = "sha256:9a860b0a557bc842df663ce923213ff36f077ae2783f8db3123738823279387f"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711174652"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.macos-arm64"]
-checksum = "sha256:98eae08e1b0715ef6446c4bd08352f21f3a3ce21535a35687a1e132bcb4fcac1"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/362199688"
+checksum = "sha256:293c1825e3dcb9f73e92a1d1cf75b20c9c071cb531ec0eace51cc4deec767867"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711176942"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.macos-x64"]
-checksum = "sha256:b1718d951c8a90539ffb7a81145fdadf81c6c9a1f17560be433a74c5b3f7bfca"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361544941"
+checksum = "sha256:070776b773e5fedeb8bd8c2e53d369357b1900fc11ce66f78b4dcf11dfc63fe3"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711178583"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.macos-x64-baseline"]
-checksum = "sha256:b1718d951c8a90539ffb7a81145fdadf81c6c9a1f17560be433a74c5b3f7bfca"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361544941"
+checksum = "sha256:070776b773e5fedeb8bd8c2e53d369357b1900fc11ce66f78b4dcf11dfc63fe3"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711178583"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.windows-x64"]
-checksum = "sha256:af4f5a65320471751ed1dfbb5502f15f4857cea797b077c6049acb2b995d293b"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361545840"
+checksum = "sha256:9d8608d3622037f19c784bc907903d840c52c1d5e1e4f16daef8653d8a8894b6"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711177042"
+provenance = "github-attestations"
 
 [tools."github:crate-ci/committed"."platforms.windows-x64-baseline"]
-checksum = "sha256:af4f5a65320471751ed1dfbb5502f15f4857cea797b077c6049acb2b995d293b"
-url = "https://github.com/crate-ci/committed/releases/download/v1.1.11/committed-v1.1.11-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/361545840"
+checksum = "sha256:9d8608d3622037f19c784bc907903d840c52c1d5e1e4f16daef8653d8a8894b6"
+url = "https://github.com/crate-ci/committed/releases/download/v1.1.12/committed-v1.1.12-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/crate-ci/committed/releases/assets/711177042"
+provenance = "github-attestations"
 
 [[tools."github:mazznoer/lolcrab"]]
 version = "0.4.1"
@@ -353,192 +364,203 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:nubjs/nub"]]
-version = "0.9.7"
+version = "0.11.0"
 backend = "github:nubjs/nub"
 specifiers = ["latest"]
 
 [tools."github:nubjs/nub"."platforms.linux-arm64"]
-checksum = "sha256:2373f530e5449af22c95108435d907c26e8899734badafda6b45a45860339af7"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276770"
+checksum = "sha256:5a00bd44b016ec16c52bb8eb32cbceeadd55ab7ad49bb142c94b6b302255f2af"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659897"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-arm64-musl"]
-checksum = "sha256:52a73d6117d2c3c3039640a7411e264868b7c5cb05e165a2b9da64b6f7ea0e8b"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-linux-arm64-musl.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276932"
+checksum = "sha256:9b303075acf338689dc8ddabf76fa1a966065a2afafc9868a4e955c8ae891936"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741660004"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64"]
-checksum = "sha256:ee07bc58ad904cee969916e1f1cdd849129e699c87757a3173dbabb6b3f512ee"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276437"
+checksum = "sha256:40d72603442885efc06d26ae0a5dbc114e2c8f7101d4dd332730d5ec14dc0c89"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659659"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64-baseline"]
-checksum = "sha256:ee07bc58ad904cee969916e1f1cdd849129e699c87757a3173dbabb6b3f512ee"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276437"
+checksum = "sha256:40d72603442885efc06d26ae0a5dbc114e2c8f7101d4dd332730d5ec14dc0c89"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659659"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64-musl"]
-checksum = "sha256:a52f28dc189d40b5ff42b2a88cc39abfebfa71c3cbc746493f0869c0a44576ad"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276621"
+checksum = "sha256:cffd29eef58cf1bd24bea1c724cbebcf66a77c8f202e8a795ceed7583686798e"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659782"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:a52f28dc189d40b5ff42b2a88cc39abfebfa71c3cbc746493f0869c0a44576ad"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276621"
+checksum = "sha256:cffd29eef58cf1bd24bea1c724cbebcf66a77c8f202e8a795ceed7583686798e"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659782"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.macos-arm64"]
-checksum = "sha256:9e312ac27f2f816adfd2de2999fc8f415ff06c98949cf94e101c24ceff81bb43"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276149"
+checksum = "sha256:6c6e7f970a0e692ae9e05bda4b235866b8a3315d19ab397e72d465eaeab80776"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659389"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.macos-x64"]
-checksum = "sha256:8852c0f19aba5442a0417b805c8e3e7f5bcd3b4d25ae702561a31ac7c15d148c"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276289"
+checksum = "sha256:c3184ea61c9f6291e1c45149e174df0965c980bc9ccd2218eba7532735c3fc58"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659502"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.macos-x64-baseline"]
-checksum = "sha256:8852c0f19aba5442a0417b805c8e3e7f5bcd3b4d25ae702561a31ac7c15d148c"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657276289"
+checksum = "sha256:c3184ea61c9f6291e1c45149e174df0965c980bc9ccd2218eba7532735c3fc58"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741659502"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.windows-x64"]
-checksum = "sha256:087dc9a0fcca2254bb9d799dc7435f3b88eb7ba7d365e66c43091bcf7c1f5886"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-win32-x64.zip"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657277066"
+checksum = "sha256:14e428c144cb6728287cedee5cd5e5a2b0c359a2fbe2eb0bbc5db5c266d9cee1"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-win32-x64.zip"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741660142"
+provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.windows-x64-baseline"]
-checksum = "sha256:087dc9a0fcca2254bb9d799dc7435f3b88eb7ba7d365e66c43091bcf7c1f5886"
-url = "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-win32-x64.zip"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/657277066"
+checksum = "sha256:14e428c144cb6728287cedee5cd5e5a2b0c359a2fbe2eb0bbc5db5c266d9cee1"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.0/nub-win32-x64.zip"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/741660142"
+provenance = "github-attestations"
 
 [[tools.hk]]
-version = "2.11.0"
+version = "2.12.0"
 backend = "packslip:github.com/jdx/hk"
 specifiers = ["latest"]
 
 [tools.hk."platforms.linux-arm64"]
-checksum = "sha256:49cbba44159c17a760319ccfcca0fe4a07fa716f217c157ea734923160b8acb9"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:0f4e44802c3fcf98461b6608281353ae1944b82fd12f4a683f8e2e6683e562f3"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-arm64-musl"]
-checksum = "sha256:9bb573baf0931bf4cce5c681dcb1b2bcbd5bc9b7fcbd079252a742876a529dfc"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:82758b9671b4b3627f126dc8e9803bb156c23893b4f9ec212797f81c4d242e50"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-aarch64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64"]
-checksum = "sha256:a461eb97df8e60c4447d1fdaa74a3d31598d7aba0d7a68ceebad0ff0405c3b5b"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:db98f893b882f064c1f7abcc96f4ccc31e8154fd1ba0f7f94823d371c2c4fdad"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64-baseline"]
-checksum = "sha256:a461eb97df8e60c4447d1fdaa74a3d31598d7aba0d7a68ceebad0ff0405c3b5b"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:db98f893b882f064c1f7abcc96f4ccc31e8154fd1ba0f7f94823d371c2c4fdad"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64-musl"]
-checksum = "sha256:edac507e4fb248a7d0885367b87ec002b073c530bcb07c91334855e54c4b0352"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:cab1ba30c605444112b4499790a97bd28dda83ffc352baa4aa87d5abfb12c668"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:edac507e4fb248a7d0885367b87ec002b073c530bcb07c91334855e54c4b0352"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:cab1ba30c605444112b4499790a97bd28dda83ffc352baa4aa87d5abfb12c668"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.macos-arm64"]
-checksum = "sha256:65cc3490e93522b55abe8ae42c2b5ffe452f9fe58282455ad59d10bc0deab272"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:269c17d47e884c19adb77144d5957e854fc5fc6a1a6f9c1a0a5b19431e2fabb8"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.windows-x64"]
-checksum = "sha256:cb62de9ffb3d8265c513f194769c7b5575671f7bbfad3fab9529db54a0a32e14"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:052f2ea36dc679cae7fbbd57f75c2b4e5c4cd7bb6711f7bf6b9a147524ffe9f9"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [tools.hk."platforms.windows-x64-baseline"]
-checksum = "sha256:cb62de9ffb3d8265c513f194769c7b5575671f7bbfad3fab9529db54a0a32e14"
-url = "https://github.com/jdx/hk/releases/download/v2.11.0/hk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:052f2ea36dc679cae7fbbd57f75c2b4e5c4cd7bb6711f7bf6b9a147524ffe9f9"
+url = "https://github.com/jdx/hk/releases/download/v2.12.0/hk-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/hk/.github/workflows/release.yml"
 repository_ids = { repository = "922514152" }
 
 [[tools.jactionlint]]
-version = "2.4.0"
+version = "2.6.0"
 backend = "packslip:github.com/jdx/jactionlint"
 specifiers = ["latest"]
 
 [tools.jactionlint."platforms.linux-arm64"]
-checksum = "sha256:42413391c248f99ff4550d6c866ee717d5ea4ca2b966d9d54ad1503af955e22f"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_arm64.tar.gz"
+checksum = "sha256:c726185a85f26d09aa94ea556509a19827979074b35d65f357f3a4947573e934"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_linux_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-arm64-musl"]
-checksum = "sha256:42413391c248f99ff4550d6c866ee717d5ea4ca2b966d9d54ad1503af955e22f"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_arm64.tar.gz"
+checksum = "sha256:c726185a85f26d09aa94ea556509a19827979074b35d65f357f3a4947573e934"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_linux_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64"]
-checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
+checksum = "sha256:d5400967b8f0d3a5ae9a4cee21f56400a50eb3f05d0cbb4ef17184f17f0760c8"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-baseline"]
-checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
+checksum = "sha256:d5400967b8f0d3a5ae9a4cee21f56400a50eb3f05d0cbb4ef17184f17f0760c8"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-musl"]
-checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
+checksum = "sha256:d5400967b8f0d3a5ae9a4cee21f56400a50eb3f05d0cbb4ef17184f17f0760c8"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:26ddba81db28fffc51163175c070ee1a9d1150260de4b5232f01d9b749f32d8e"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_linux_amd64.tar.gz"
+checksum = "sha256:d5400967b8f0d3a5ae9a4cee21f56400a50eb3f05d0cbb4ef17184f17f0760c8"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_linux_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-arm64"]
-checksum = "sha256:349a13dbffdd25376898a256d195806afda08ba97ccc6378cbf2dd11a77ef8e7"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_arm64.tar.gz"
+checksum = "sha256:c3f373c7eac668aacb390b9c802cf4b5e2ad1a11b0b0c0aea6b04ca0cfa0c018"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_darwin_arm64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-x64"]
-checksum = "sha256:4c21fce834f8267b65a65b32a527aaa2ec1c321c8f066d44b42d7f038835aa90"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_amd64.tar.gz"
+checksum = "sha256:aa89c49ad5c9530f2308f18333166050f97f14d420f478a8225d043bef1e2cab"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_darwin_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.macos-x64-baseline"]
-checksum = "sha256:4c21fce834f8267b65a65b32a527aaa2ec1c321c8f066d44b42d7f038835aa90"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_darwin_amd64.tar.gz"
+checksum = "sha256:aa89c49ad5c9530f2308f18333166050f97f14d420f478a8225d043bef1e2cab"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_darwin_amd64.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.windows-x64"]
-checksum = "sha256:4e0c7b428a4faa35bb3b86af6fa65a0ac9797edcd4c64e4f7e16ca886437e172"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_windows_amd64.zip"
+checksum = "sha256:e939dd8c0eeeb620e70d30aa9aa21c671be078876660a831a82d07e372f0fa4d"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_windows_amd64.zip"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
 [tools.jactionlint."platforms.windows-x64-baseline"]
-checksum = "sha256:4e0c7b428a4faa35bb3b86af6fa65a0ac9797edcd4c64e4f7e16ca886437e172"
-url = "https://github.com/jdx/jactionlint/releases/download/v2.4.0/jactionlint_2.4.0_windows_amd64.zip"
+checksum = "sha256:e939dd8c0eeeb620e70d30aa9aa21c671be078876660a831a82d07e372f0fa4d"
+url = "https://github.com/jdx/jactionlint/releases/download/v2.6.0/jactionlint_2.6.0_windows_amd64.zip"
 signer = "sigstore-oidc:https://github.com/jdx/jactionlint/.github/workflows/release.yaml"
 repository_ids = { repository = "1404951382" }
 
@@ -603,53 +625,53 @@ url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.2/lua
 url_api = "https://api.github.com/repos/LuaLS/lua-language-server/releases/assets/635856461"
 
 [[tools.node]]
-version = "26.13.0"
+version = "26.13.1"
 backend = "core:node"
 specifiers = ["26"]
 
 [tools.node."platforms.linux-arm64"]
-checksum = "sha256:439e9c438acdf6a6ffe47418da709153d66c4bed812e30a473faacb107dd2791"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-linux-arm64.tar.gz"
+checksum = "sha256:80a330b35415382878df18d41afbd106ea89bfb3be0087d6608e289a14c5cc7d"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-linux-arm64.tar.gz"
 
 [tools.node."platforms.linux-arm64-musl"]
-checksum = "sha256:f3dda772ba0c1f2cd6fec46f6ec24687584767f2c3f9117a47edf191e7786720"
-url = "https://unofficial-builds.nodejs.org/download/release/v26.13.0/node-v26.13.0-linux-arm64-musl.tar.gz"
+checksum = "sha256:42684e7f1830ef9eaadd040672cba41bbaff9549d834600699f92ee1ee5b1fb1"
+url = "https://unofficial-builds.nodejs.org/download/release/v26.13.1/node-v26.13.1-linux-arm64-musl.tar.gz"
 
 [tools.node."platforms.linux-x64"]
-checksum = "sha256:5848553868b402d3fabb5b09270649977780a390f832155721025a08b5104455"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-linux-x64.tar.gz"
+checksum = "sha256:518674de2b621728a5e4486f5fb3b7d2900bb3cc4aa97969edaa463db99f9778"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-linux-x64.tar.gz"
 
 [tools.node."platforms.linux-x64-baseline"]
-checksum = "sha256:5848553868b402d3fabb5b09270649977780a390f832155721025a08b5104455"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-linux-x64.tar.gz"
+checksum = "sha256:518674de2b621728a5e4486f5fb3b7d2900bb3cc4aa97969edaa463db99f9778"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-linux-x64.tar.gz"
 
 [tools.node."platforms.linux-x64-musl"]
-checksum = "sha256:c6c738fe564c3eb053172bfd4ca1166eec8bc076f84231a2ea70165e316f5809"
-url = "https://unofficial-builds.nodejs.org/download/release/v26.13.0/node-v26.13.0-linux-x64-musl.tar.gz"
+checksum = "sha256:04bf9ed3e32ea139c9af52f6dd06879ff6f8880555a0aa1183ef2d156c0e02d3"
+url = "https://unofficial-builds.nodejs.org/download/release/v26.13.1/node-v26.13.1-linux-x64-musl.tar.gz"
 
 [tools.node."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:c6c738fe564c3eb053172bfd4ca1166eec8bc076f84231a2ea70165e316f5809"
-url = "https://unofficial-builds.nodejs.org/download/release/v26.13.0/node-v26.13.0-linux-x64-musl.tar.gz"
+checksum = "sha256:04bf9ed3e32ea139c9af52f6dd06879ff6f8880555a0aa1183ef2d156c0e02d3"
+url = "https://unofficial-builds.nodejs.org/download/release/v26.13.1/node-v26.13.1-linux-x64-musl.tar.gz"
 
 [tools.node."platforms.macos-arm64"]
-checksum = "sha256:d38bd5e5a2ddce6bbb5ce45e46e208337da4d51fffe611e567fd32073d6439f6"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz"
+checksum = "sha256:aec2514ea1ceb2ba52455e9ec65986f6749a06dd759e5db2a72e6889668c9735"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-arm64.tar.gz"
 
 [tools.node."platforms.macos-x64"]
-checksum = "sha256:525c9b29bb0263d687de60a4cec0e2a6db876a8eb032369e5795eca71e7c358e"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-x64.tar.gz"
+checksum = "sha256:82bb96078a24ca50b9c9a38f2379e6be6d87171fcd400fc14c8934b3bce96e2f"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-x64.tar.gz"
 
 [tools.node."platforms.macos-x64-baseline"]
-checksum = "sha256:525c9b29bb0263d687de60a4cec0e2a6db876a8eb032369e5795eca71e7c358e"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-x64.tar.gz"
+checksum = "sha256:82bb96078a24ca50b9c9a38f2379e6be6d87171fcd400fc14c8934b3bce96e2f"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-x64.tar.gz"
 
 [tools.node."platforms.windows-x64"]
-checksum = "sha256:dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b59150a"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip"
+checksum = "sha256:e2edda75bfb089654705cf65a13b58933bfd5f57148e8ebda916f58a2474f1f7"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip"
 
 [tools.node."platforms.windows-x64-baseline"]
-checksum = "sha256:dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b59150a"
-url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip"
+checksum = "sha256:e2edda75bfb089654705cf65a13b58933bfd5f57148e8ebda916f58a2474f1f7"
+url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip"
 
 [[tools.ripgrep]]
 version = "15.2.0"
@@ -1012,134 +1034,144 @@ url = "https://github.com/go-task/task/releases/download/v3.54.0/task_windows_am
 url_api = "https://api.github.com/repos/go-task/task/releases/assets/604090005"
 
 [[tools.typos]]
-version = "1.51.1"
+version = "1.52.2"
 backend = "aqua:crate-ci/typos"
 specifiers = ["latest"]
 
 [tools.typos."platforms.linux-arm64"]
-checksum = "sha256:2ac5e37b3236b3c07dec5cdf1527acf143aec4674a6089b0bf424d021b35e099"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616652747"
+checksum = "sha256:f2f54b567f5f4688f000f1bf85c585ee22cce3b55befc9418bcdd4c5adc16595"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733786825"
 
 [tools.typos."platforms.linux-arm64-musl"]
-checksum = "sha256:2ac5e37b3236b3c07dec5cdf1527acf143aec4674a6089b0bf424d021b35e099"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616652747"
+checksum = "sha256:f2f54b567f5f4688f000f1bf85c585ee22cce3b55befc9418bcdd4c5adc16595"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733786825"
 
 [tools.typos."platforms.linux-x64"]
-checksum = "sha256:93c301fd4120ff076e2cc2a6d6a61cab4a4bdb81899287c0938b452e56d1f454"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616653682"
+checksum = "sha256:3b13d1291281d39d01822e54035636487a7a0f228e70097899b1e33aeb0e7e93"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733787189"
 
 [tools.typos."platforms.linux-x64-baseline"]
-checksum = "sha256:93c301fd4120ff076e2cc2a6d6a61cab4a4bdb81899287c0938b452e56d1f454"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616653682"
+checksum = "sha256:3b13d1291281d39d01822e54035636487a7a0f228e70097899b1e33aeb0e7e93"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733787189"
 
 [tools.typos."platforms.linux-x64-musl"]
-checksum = "sha256:93c301fd4120ff076e2cc2a6d6a61cab4a4bdb81899287c0938b452e56d1f454"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616653682"
+checksum = "sha256:3b13d1291281d39d01822e54035636487a7a0f228e70097899b1e33aeb0e7e93"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733787189"
 
 [tools.typos."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:93c301fd4120ff076e2cc2a6d6a61cab4a4bdb81899287c0938b452e56d1f454"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616653682"
+checksum = "sha256:3b13d1291281d39d01822e54035636487a7a0f228e70097899b1e33aeb0e7e93"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733787189"
 
 [tools.typos."platforms.macos-arm64"]
-checksum = "sha256:316d50a32c3726a80ab39c6d12141b70080498973c5e8a9b068b12cde78b10c1"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616656668"
+checksum = "sha256:b8e7b8b81f28cc808fd763b6d935536e15ba1ef72613bbb6d628b58a891da7ef"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733789873"
 
 [tools.typos."platforms.macos-x64"]
-checksum = "sha256:f3451079971633a7f769fb958fe06b0d64b5f1dc46df0854aa1ddb9a6f4031d6"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616660774"
+checksum = "sha256:2c1e5cd3be644005d27543d7d83a32dbba36eb285bc12678818709938a63a988"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733789561"
 
 [tools.typos."platforms.macos-x64-baseline"]
-checksum = "sha256:f3451079971633a7f769fb958fe06b0d64b5f1dc46df0854aa1ddb9a6f4031d6"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616660774"
+checksum = "sha256:2c1e5cd3be644005d27543d7d83a32dbba36eb285bc12678818709938a63a988"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733789561"
 
 [tools.typos."platforms.windows-x64"]
-checksum = "sha256:518f759fba43205f17a717656054c1d25bc883455a6296989e9d021c6edb7c59"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616657506"
+checksum = "sha256:ab79036832cea0f2a21aa947731d39512250cc0f7a6a2f6add26262738a8cc11"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733790297"
 
 [tools.typos."platforms.windows-x64-baseline"]
-checksum = "sha256:518f759fba43205f17a717656054c1d25bc883455a6296989e9d021c6edb7c59"
-url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616657506"
+checksum = "sha256:ab79036832cea0f2a21aa947731d39512250cc0f7a6a2f6add26262738a8cc11"
+checksum_source = "mise-versions"
+url = "https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/733790297"
 
 [[tools.uv]]
-version = "0.13.6"
+version = "0.13.8"
 backend = "aqua:astral-sh/uv"
 specifiers = ["latest"]
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:229e194255c7958d86d56e8790d969a6f74736592133f0dfd0076f754c642c1d"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980412"
+checksum = "sha256:74f2f5c6024d397481db228db8fc25eed420db192243f88438c118e7e013e585"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313629"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:819692e404d23e5aae6bc44c0e260f1f5492fd1910ab4693b2c650f926dbe800"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980430"
+checksum = "sha256:0c6f8593fcf1eadfc60e663b685c408267559d7c5d61c689bbb9f3a7e369ba32"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313665"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:f29c3e94ffabd7e6f3ba521dba169a9b7ec12100bf3257087f0f24f6123f3645"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980644"
+checksum = "sha256:5acfd9177cfecf0bf87578f059728215ccc884388988f55f7a65041b57387d91"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313966"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-baseline"]
-checksum = "sha256:f29c3e94ffabd7e6f3ba521dba169a9b7ec12100bf3257087f0f24f6123f3645"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980644"
+checksum = "sha256:5acfd9177cfecf0bf87578f059728215ccc884388988f55f7a65041b57387d91"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313966"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:5d61f26b6c7213779eda90edc6971ea6b0b796bfb8d49a574c8ad69b59838548"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980664"
+checksum = "sha256:61fb26dabc4f0cf1d050fc6c67d40e43e4fae2994af21ebc1e050b233bf2b5ed"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313983"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:5d61f26b6c7213779eda90edc6971ea6b0b796bfb8d49a574c8ad69b59838548"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980664"
+checksum = "sha256:61fb26dabc4f0cf1d050fc6c67d40e43e4fae2994af21ebc1e050b233bf2b5ed"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313983"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:60fbd5c8a1ed681845eea28d9d622fcde03c51e91a43465b64a1e17db1ed3472"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980393"
+checksum = "sha256:6b71028a6b904f2ae3340ef52e595512de807d06c0a20eaef2f692581b246558"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313603"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:63ba17fdda55ad1a230d4b37fc6017ffa10c23688c83818bd3bfdf914c652a02"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980609"
+checksum = "sha256:a04c2ffeac28b2003a2c13caf538ab425fcd7def3e4a41571f4a8fb370a66af3"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313917"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64-baseline"]
-checksum = "sha256:63ba17fdda55ad1a230d4b37fc6017ffa10c23688c83818bd3bfdf914c652a02"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980609"
+checksum = "sha256:a04c2ffeac28b2003a2c13caf538ab425fcd7def3e4a41571f4a8fb370a66af3"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313917"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:a2a8820d5eea32f08ef467ef3b7f66883a9b076d5737a2fc2fbb5f458d1bb50f"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980629"
+checksum = "sha256:529e78a9cec6cd7e3e014f7ecd8bda0c113969d4ed0f2efeedb85c30943325b8"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313927"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64-baseline"]
-checksum = "sha256:a2a8820d5eea32f08ef467ef3b7f66883a9b076d5737a2fc2fbb5f458d1bb50f"
-url = "https://github.com/astral-sh/uv/releases/download/0.13.6/uv-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/679980629"
+checksum = "sha256:529e78a9cec6cd7e3e014f7ecd8bda0c113969d4ed0f2efeedb85c30943325b8"
+url = "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/740313927"
 provenance = "github-attestations"
 
 [[tools.yamllint]]
