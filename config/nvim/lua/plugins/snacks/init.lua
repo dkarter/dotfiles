@@ -6,7 +6,7 @@ local exclude_commit_editmsg = function(item)
 end
 
 local explorer_navigation = {}
-if require('core.utils').in_herdr() then
+if require('core.herdr_navigator').enabled() then
   local keys = {}
   for direction, name in pairs { h = 'left', j = 'down', k = 'up', l = 'right' } do
     keys['<c-' .. direction .. '>'] = {

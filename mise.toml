@@ -82,6 +82,25 @@ press_and_hold = false
 "~/.zshenv" = "zshenv"
 "~/.zshrc" = "zshrc"
 "~/.config/*" = "config/*"
+"~/.config/herdr-app/keys.json/dotfiles" = { source = "config/herdr/native/keys.json", merge = true }
+"~/.config/herdr-app/layouts/terminals-focus.json" = { source = "config/herdr/native/terminals-focus.json", mode = "copy" }
+"~/.config/herdr-app/mods/dotfiles-copy-mode" = "config/herdr/native/copy-mode"
+"~/.config/herdr-app/mods/dotfiles-nav-left/main.js" = "config/herdr/native/navigation/main.js"
+"~/.config/herdr-app/mods/dotfiles-nav-left/mod.json" = "config/herdr/native/navigation/left.json"
+"~/.config/herdr-app/mods/dotfiles-nav-down/main.js" = "config/herdr/native/navigation/main.js"
+"~/.config/herdr-app/mods/dotfiles-nav-down/mod.json" = "config/herdr/native/navigation/down.json"
+"~/.config/herdr-app/mods/dotfiles-nav-up/main.js" = "config/herdr/native/navigation/main.js"
+"~/.config/herdr-app/mods/dotfiles-nav-up/mod.json" = "config/herdr/native/navigation/up.json"
+"~/.config/herdr-app/mods/dotfiles-nav-right/main.js" = "config/herdr/native/navigation/main.js"
+"~/.config/herdr-app/mods/dotfiles-nav-right/mod.json" = "config/herdr/native/navigation/right.json"
+"~/.config/herdr-app/mods/dotfiles-resize-left/main.js" = "config/herdr/native/resize/main.js"
+"~/.config/herdr-app/mods/dotfiles-resize-left/mod.json" = "config/herdr/native/resize/left.json"
+"~/.config/herdr-app/mods/dotfiles-resize-down/main.js" = "config/herdr/native/resize/main.js"
+"~/.config/herdr-app/mods/dotfiles-resize-down/mod.json" = "config/herdr/native/resize/down.json"
+"~/.config/herdr-app/mods/dotfiles-resize-up/main.js" = "config/herdr/native/resize/main.js"
+"~/.config/herdr-app/mods/dotfiles-resize-up/mod.json" = "config/herdr/native/resize/up.json"
+"~/.config/herdr-app/mods/dotfiles-resize-right/main.js" = "config/herdr/native/resize/main.js"
+"~/.config/herdr-app/mods/dotfiles-resize-right/mod.json" = "config/herdr/native/resize/right.json"
 
 [tasks."tart:fresh-install"]
 description = "Run a fresh-install test in an ephemeral Tart macOS VM"
