@@ -1,0 +1,34 @@
+{
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Ctrl-N → Down / Ctrl-P → Up (all apps)",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "n",
+                  "modifiers": { "mandatory": ["control"] }
+                },
+                "to": [{ "key_code": "down_arrow" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "p",
+                  "modifiers": { "mandatory": ["control"] }
+                },
+                "to": [{ "key_code": "up_arrow" }],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Default profile",
+      "selected": true,
+      "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+    }
+  ]
+}
