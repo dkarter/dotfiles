@@ -23,6 +23,29 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Ctrl-Cmd-S → Toggle sidebar (ChatGPT and Claude Desktop)",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": { "mandatory": ["control", "command"] }
+                },
+                "to": [{ "key_code": "b", "modifiers": ["left_command"] }],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.openai\\.codex$",
+                      "^com\\.openai\\.chat$",
+                      "^com\\.anthropic\\.claudefordesktop$"
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
