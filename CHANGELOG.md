@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [34.0.0](https://github.com/dkarter/dotfiles/compare/v33.0.0...v34.0.0) (2026-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ghostty:** Cmd+P now opens Project agents instead of the command palette. Use Cmd+Shift+P for the command palette.
+
+### Features
+
+* add sidebar shortcut for ChatGPT and Claude ([c78db6f](https://github.com/dkarter/dotfiles/commit/c78db6f1fe6eedec4fc91816b58b24edae669052))
+* **ghostty:** remap project and command palette shortcuts ([e103051](https://github.com/dkarter/dotfiles/commit/e103051d3adb5019668d16babb5f24bf2c2a931b))
+* **herdr:** add Project agent picker and session reuse ([f4087bf](https://github.com/dkarter/dotfiles/commit/f4087bf367c6eadd8a704156786dd79e43841867))
+* **herdr:** configure native app shortcuts and layout ([b25f560](https://github.com/dkarter/dotfiles/commit/b25f560c03feafdf12dcde736aa7833fd0f0b94e))
+* sync Karabiner ctrl-n and ctrl-p arrow mappings ([8c9e97f](https://github.com/dkarter/dotfiles/commit/8c9e97f0dc558612706a962c4dd3dffd07d45ed6))
+* **vellum:** filter projects to open workspaces by default ([4239c03](https://github.com/dkarter/dotfiles/commit/4239c0332ae165be4f0550179d1c2c0a32debe65))
+
+
+### Bug Fixes
+
+* **agent-guard:** add exception for codex site publishing ([6a2e9b3](https://github.com/dkarter/dotfiles/commit/6a2e9b3aa7ad7ab1b5a0a8697d516c095df1201a))
+* **herdr:** avoid project picker and tab shortcut collision ([b8bcd87](https://github.com/dkarter/dotfiles/commit/b8bcd878fe5366693b28158ce1c19440e4a52003))
+* **opencode:** remove deprecated "enabled" property from mcps ([b382003](https://github.com/dkarter/dotfiles/commit/b382003e858edfa3abb848cfda0610fcbf411d7a))
+
+
+### Performance Improvements
+
+* **nvim:** reduce startup and picker input latency ([a0afbaa](https://github.com/dkarter/dotfiles/commit/a0afbaab4114ba210319f354b70f02357a600ead))
+
 ## [33.0.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v33.0.0) (2026-11-01)
 
 <!-- pullfrog-summary:start -->
