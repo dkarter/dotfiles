@@ -129,7 +129,7 @@ jobs:
           git checkout --force -B "$DEFAULT_BRANCH" FETCH_HEAD
 
       - name: Install runtimes
-        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+        uses: jdx/mise-action@90f833d396d0cc3674b631d2d225e306476c303a # v5.2.10
 
       - name: Prepare enriched notes
         env:
