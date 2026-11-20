@@ -4,7 +4,7 @@
       "complex_modifications": {
         "rules": [
           {
-            "description": "Ctrl-N → Down / Ctrl-P → Up (all apps)",
+            "description": "Ctrl-N → Down / Ctrl-P → Up (except terminal apps)",
             "manipulators": [
               {
                 "from": {
@@ -12,6 +12,22 @@
                   "modifiers": { "mandatory": ["control"] }
                 },
                 "to": [{ "key_code": "down_arrow" }],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.github\\.wez\\.wezterm$",
+                      "^com\\.cmuxterm\\.app$",
+                      "^dev\\.herdr\\.app$",
+                      "^com\\.termius\\.mac$",
+                      "^com\\.appliedphasor\\.secure-shellfish$",
+                      "^com\\.apple\\.automator\\.TerminalVim$"
+                    ]
+                  }
+                ],
                 "type": "basic"
               },
               {
@@ -20,6 +36,22 @@
                   "modifiers": { "mandatory": ["control"] }
                 },
                 "to": [{ "key_code": "up_arrow" }],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.github\\.wez\\.wezterm$",
+                      "^com\\.cmuxterm\\.app$",
+                      "^dev\\.herdr\\.app$",
+                      "^com\\.termius\\.mac$",
+                      "^com\\.appliedphasor\\.secure-shellfish$",
+                      "^com\\.apple\\.automator\\.TerminalVim$"
+                    ]
+                  }
+                ],
                 "type": "basic"
               }
             ]
