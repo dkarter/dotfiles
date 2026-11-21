@@ -1,6 +1,6 @@
 local navigator = require 'core.herdr_navigator'
 local keys = navigator.keymaps()
-if navigator.in_native_herdr() then
+if navigator.in_native_herdr() or navigator.in_rex() then
   for _, key in ipairs(keys) do
     vim.keymap.set(key.mode, key[1], key[2], { desc = key.desc })
   end

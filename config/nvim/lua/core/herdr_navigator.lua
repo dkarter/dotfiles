@@ -5,11 +5,42 @@ function M.in_native_herdr()
   return not require('core.utils').in_herdr() and vim.env.HC_TERMINAL_ID ~= nil and vim.fn.executable 'herdr-app' == 1
 end
 
-function M.enabled()
-  return require('core.utils').in_herdr() or M.in_native_herdr()
+function M.in_rex()
+  return vim.env.REX_SESSION ~= nil
+    and vim.env.REX_BLOCK ~= nil
+    and not require('core.utils').in_herdr()
+    and not M.in_native_herdr()
+    and vim.fn.executable 'rex' == 1
 end
 
-local function focus_herdr_pane(direction)
+function M.enabled()
+  return require('core.utils').in_herdr() or M.in_native_herdr() or M.in_rex()
+end
+
+local function focus_outer_pane(direction)
+  if M.in_rex() then
+    if handoff_pending then
+      return
+    end
+    handoff_pending = true
+    vim.system({
+      'rex',
+      '--timeout',
+      '1s',
+      'do',
+      '-s',
+      vim.env.REX_SESSION,
+      '-b',
+      vim.env.REX_BLOCK,
+      'seamless_navigate',
+      'direction=' .. direction,
+      'from_editor=true',
+    }, { timeout = 1500 }, function()
+      handoff_pending = false
+    end)
+    return
+  end
+
   if not M.in_native_herdr() then
     require('herdr-navigator').focus_herdr_pane(direction)
     return
@@ -73,7 +104,7 @@ function M.navigate(vim_direction, herdr_direction)
         return vim.fn.win_getid(vim.fn.winnr(vim_direction))
       end)
       if neighbor == anchor then
-        focus_herdr_pane(herdr_direction)
+        focus_outer_pane(herdr_direction)
       else
         vim.api.nvim_set_current_win(neighbor)
       end
@@ -81,15 +112,15 @@ function M.navigate(vim_direction, herdr_direction)
     end
   end
 
-  if not M.in_native_herdr() then
+  if not (M.in_native_herdr() or M.in_rex()) then
     require('herdr-navigator').navigate(vim_direction, herdr_direction)
   elseif pcall(vim.cmd.wincmd, vim_direction) and vim.api.nvim_get_current_win() == window then
-    focus_herdr_pane(herdr_direction)
+    focus_outer_pane(herdr_direction)
   end
 end
 
 function M.navigate_terminal(vim_direction, herdr_direction)
-  if not M.in_native_herdr() then
+  if not (M.in_native_herdr() or M.in_rex()) then
     require('herdr-navigator').navigate_terminal(vim_direction, herdr_direction)
     return
   end
