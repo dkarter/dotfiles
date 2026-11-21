@@ -28,7 +28,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 1
       - name: Run agent
-        uses: pullfrog/pullfrog@895164fc90f5c493e72693c919c6cf269af158eb # v0.1.110
+        uses: pullfrog/pullfrog@ef3a939a663d6eb5701ecbcbb824621076cf10e5 # v0.1.140
         with:
           prompt: ${{ inputs.prompt }}
         env:
