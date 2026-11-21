@@ -1,28 +1,31 @@
--- Herdr shortcuts.
-rex.bind('ctrl+z>shift+x', 'session.close')
-rex.bind('ctrl+z>shift+w', 'session.switch')
-rex.bind('ctrl+z>right', 'client.tab.next')
+-- Capture Ctrl+Z as a one-shot prefix instead of passing it to the terminal.
+rex.mode('herdr_prefix', { exclusive = true })
+rex.bind('ctrl+z', 'client.mode.enter', { name = 'herdr_prefix', once = true })
+rex.bind('herdr_prefix/shift+x', 'session.close')
+rex.bind('herdr_prefix/shift+w', 'session.switch')
+rex.bind('herdr_prefix/right', 'client.tab.next')
 rex.bind('ctrl+]', 'session.next')
-rex.bind('ctrl+z>left', 'client.tab.previous')
+rex.bind('herdr_prefix/left', 'client.tab.previous')
 rex.bind('ctrl+[', 'session.previous')
-rex.bind('ctrl+z>shift+r', 'client.config.reload')
-rex.bind('ctrl+z>shift+,', 'pane.rename')
-rex.bind('ctrl+z>,', 'client.tab.rename')
-rex.bind('ctrl+z>r', 'session.rename')
-rex.bind('ctrl+z>-', 'pane.split', { direction = 'down' })
-rex.bind('ctrl+z>\\', 'pane.split', { direction = 'right' })
-rex.bind('ctrl+z>1', 'client.tab.goto', { index = 1 })
-rex.bind('ctrl+z>2', 'client.tab.goto', { index = 2 })
-rex.bind('ctrl+z>3', 'client.tab.goto', { index = 3 })
-rex.bind('ctrl+z>4', 'client.tab.goto', { index = 4 })
-rex.bind('ctrl+z>5', 'client.tab.goto', { index = 5 })
-rex.bind('ctrl+z>6', 'client.tab.goto', { index = 6 })
-rex.bind('ctrl+z>7', 'client.tab.goto', { index = 7 })
-rex.bind('ctrl+z>8', 'client.tab.goto', { index = 8 })
-rex.bind('ctrl+z>9', 'client.tab.goto', { index = 9 })
+rex.bind('herdr_prefix/shift+r', 'client.config.reload')
+rex.bind('herdr_prefix/shift+,', 'pane.rename')
+rex.bind('herdr_prefix/,', 'client.tab.rename')
+rex.bind('herdr_prefix/r', 'session.rename')
+rex.bind('herdr_prefix/z', 'pane.zoom')
+rex.bind('herdr_prefix/-', 'pane.split', { direction = 'down' })
+rex.bind('herdr_prefix/\\', 'pane.split', { direction = 'right' })
+rex.bind('herdr_prefix/1', 'client.tab.goto', { index = 1 })
+rex.bind('herdr_prefix/2', 'client.tab.goto', { index = 2 })
+rex.bind('herdr_prefix/3', 'client.tab.goto', { index = 3 })
+rex.bind('herdr_prefix/4', 'client.tab.goto', { index = 4 })
+rex.bind('herdr_prefix/5', 'client.tab.goto', { index = 5 })
+rex.bind('herdr_prefix/6', 'client.tab.goto', { index = 6 })
+rex.bind('herdr_prefix/7', 'client.tab.goto', { index = 7 })
+rex.bind('herdr_prefix/8', 'client.tab.goto', { index = 8 })
+rex.bind('herdr_prefix/9', 'client.tab.goto', { index = 9 })
 
 -- Press the prefix twice to send Ctrl+Z to the terminal.
-rex.bind('ctrl+z>ctrl+z', 'pane.send_key', { key = 'ctrl+z' })
+rex.bind('herdr_prefix/ctrl+z', 'pane.send_key', { key = 'ctrl+z' })
 
 -- Neovim moves between its own splits before handing focus back to Rex.
 local navigation_keys = {
@@ -86,6 +89,7 @@ rex.action {
 
 for direction, key in pairs(navigation_keys) do
   rex.bind('ctrl+' .. key, 'seamless_navigate', { direction = direction })
+  rex.bind('alt+' .. key, 'pane.resize', { direction = direction })
 end
 
 rex.bind('ctrl+cmd+s', 'client.sidebar.toggle')
