@@ -1,0 +1,92 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@opencode/browse':
+        specifier: 0.1.5
+        version: 0.1.5
+
+packages:
+
+  '@opencode/browse-darwin-arm64@0.1.5':
+    resolution: {integrity: sha512-c3jdW5KyvTkfLPThVxowNaHydLd8asiUvb85sSvfSrLRaBpECFrpNO+OICUZnebsHc/hDX9rXZ2DahkYN5+dKA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@opencode/browse-darwin-x64@0.1.5':
+    resolution: {integrity: sha512-ZjWAlCYzHdaMntuZeOZbKW9XEZ8sWxvpmeNzc5s5aTIEG6t2VNDmlHrER7oCg2Z+8kzLTOS29qkNhWNnsU+pbQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@opencode/browse-linux-arm64-musl@0.1.5':
+    resolution: {integrity: sha512-omMVCzIg/Xxawvpi86KAcegI57UcxSaFfL58HDvMrmeOeq5RL6cq2QRIMsUSy7ProfnaJCgraltsbm3IRMsbnQ==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@opencode/browse-linux-arm64@0.1.5':
+    resolution: {integrity: sha512-EEOo0Sk4jDtifLW40CHjMiGlRgOW/SSNXtqUnomppXUqIVGDmlXRzPkQrm/26t0lwZOUdSkxro0yAML80Tw9nA==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@opencode/browse-linux-x64-musl@0.1.5':
+    resolution: {integrity: sha512-L+SWZ6EjRa5/WV8E3X7jCWajWm6RZcDmf9eQdKxmYjzvxFgwR7rMPq2AItYV9lGdcBLUigjfEZsx4dfoEpVG9Q==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@opencode/browse-linux-x64@0.1.5':
+    resolution: {integrity: sha512-4C5eUD1WkeozFRTsnSWRCzeMHbVs3FOp2QEI5+/yqJSFy00Sc+E7YvC01lSnEEmdWy85AMUCsrqqwNAFJTGa1A==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@opencode/browse-windows-x64@0.1.5':
+    resolution: {integrity: sha512-oi4lgaBUXGfWJhVKbL4gVPV0lcWUvFL44p5cigjJH0SsSR02hByFXs+9kDuA8j8BNmXFbkrJA59u+hh5yuDxZQ==}
+    cpu: [x64]
+    os: [win32]
+
+  '@opencode/browse@0.1.5':
+    resolution: {integrity: sha512-I26EftfbkDHWXzmPYGZBpdKH91Z23gSFfr7si7zlM7Ezuk7sSab4wCTYAjiZfFTy6Gu4AXQXVhDEVe3ptSrIwA==}
+    engines: {node: '>=22'}
+    hasBin: true
+
+snapshots:
+
+  '@opencode/browse-darwin-arm64@0.1.5':
+    optional: true
+
+  '@opencode/browse-darwin-x64@0.1.5':
+    optional: true
+
+  '@opencode/browse-linux-arm64-musl@0.1.5':
+    optional: true
+
+  '@opencode/browse-linux-arm64@0.1.5':
+    optional: true
+
+  '@opencode/browse-linux-x64-musl@0.1.5':
+    optional: true
+
+  '@opencode/browse-linux-x64@0.1.5':
+    optional: true
+
+  '@opencode/browse-windows-x64@0.1.5':
+    optional: true
+
+  '@opencode/browse@0.1.5':
+    optionalDependencies:
+      '@opencode/browse-darwin-arm64': 0.1.5
+      '@opencode/browse-darwin-x64': 0.1.5
+      '@opencode/browse-linux-arm64': 0.1.5
+      '@opencode/browse-linux-arm64-musl': 0.1.5
+      '@opencode/browse-linux-x64': 0.1.5
+      '@opencode/browse-linux-x64-musl': 0.1.5
+      '@opencode/browse-windows-x64': 0.1.5

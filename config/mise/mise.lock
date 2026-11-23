@@ -2908,6 +2908,15 @@ aube = { path = "locks/npm-fission-ai-openspec/2.1.0", digest = "sha256:2ba5ca3e
 backend = "npm:@fission-ai/openspec"
 specifiers = ["latest"]
 
+[[tools."npm:@opencode/browse"]]
+version = "0.1.5"
+aube = { path = "locks/npm-opencode-browse/0.1.5~fcb60795", digest = "sha256:d4f6dab8d6dc937e0a02392e69a6ce7efdd28294e16ae01092da88c0b071cda5" }
+backend = "npm:@opencode/browse"
+specifiers = ["0.1.5"]
+
+[tools."npm:@opencode/browse".options]
+allow_low_downloads = "true"
+
 [[tools."npm:@opencode/cli"]]
 version = "2.3.2"
 aube = { path = "locks/npm-opencode-cli/2.3.2~009061c2", digest = "sha256:f67371b7894a6b7f810fff23c77cbe2f5b52832421b3b92ce701dad6714a5b56" }

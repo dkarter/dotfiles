@@ -130,6 +130,24 @@ rename_exe = "github-mcp-proxy"
 version = "latest"
 allow_builds = false
 
+# Browse lets agents use a paired Chromium profile. The Aube exception is for
+# this package only; its name was too new when we installed this pinned version.
+#
+# Install the Browse extension only in a dedicated profile (e.g. Helium's
+# "agent" profile), without sensitive sign-ins. In a terminal, run:
+#   OPENCODE_BROWSER_AUTO_UPDATE=off mise exec -- browse pair
+# In that profile, open Browse's extension options, choose "Pair with a code",
+# and enter the one-time code. Verify with `mise exec -- browse pair --list`.
+#
+# Don't run `browse install`: it can copy the binary and edit shared config.
+# Add `browse` under `mcp.servers` in ~/.opencode/opencode.jsonc only.
+# Use a local command of ["mise", "exec", "--", "browse", "mcp"] (use Mise's
+# absolute path if needed), and set OPENCODE_BROWSER_AUTO_UPDATE = "off" in
+# the MCP's environment so Mise stays in charge of updates.
+[tools."npm:@opencode/browse"]
+version = "0.1.5"
+allow_low_downloads = true
+
 # allow specific asdf plugins when there's no other option
 # docs: https://mise.jdx.dev/dev-tools/aliases.html
 # list of asdf plugins that would normally be supported https://mise.jdx.dev/registry.html#tools
