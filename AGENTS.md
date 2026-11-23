@@ -42,6 +42,8 @@ dependency management.
 - **Terminal:** Ghostty, WezTerm as fallback
 - **Shell:** Zsh with custom configuration
 - **Workspace Manager:** Herdr with HWT worktree orchestration
+- **TUI screenshots:** [`tui-shot`](config/herdr/tui-shot.md) exports Herdr panes
+  as PNG, SVG, or themeable HTML.
 - **Version Control:** Git with conventional commits
 
 ### Package Management

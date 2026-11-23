@@ -113,6 +113,7 @@ zoxide = "latest"                           # a modern version of autojump
 "npm:chrome-devtools-mcp" = "latest"
 "github:dkarter/ink" = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
+"packslip:github.com/dkarter/tui-shot" = "latest"
 
 # Like lolcat, but written in Rust and with more features.
 # Upstream only publishes binaries for these OS/architecture combinations.
@@ -173,6 +174,7 @@ minimum_release_age_excludes = [
   "github:dkarter/ghtkn",
   "github:dkarter/vstui",
   "github:dkarter/vellum",
+  "packslip:github.com/dkarter/tui-shot",
   "amp",
   "npm:@opencode/cli",
 ]
