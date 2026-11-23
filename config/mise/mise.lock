@@ -1321,66 +1321,6 @@ checksum_source = "mise-versions"
 url = "https://github.com/junegunn/fzf/releases/download/v0.75.0/fzf-0.75.0-windows_amd64.zip"
 url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/720590885"
 
-[[tools."github:TBXark/mcp-proxy"]]
-version = "1.1.0"
-backend = "github:TBXark/mcp-proxy"
-specifiers = ["latest"]
-
-[tools."github:TBXark/mcp-proxy"."platforms.linux-arm64"]
-checksum = "sha256:f872ff023d76b0a8e770195e684ff547ddc7399ab65362f58cecaa8ab65c8956"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913030"
-
-[tools."github:TBXark/mcp-proxy"."platforms.linux-arm64-musl"]
-checksum = "sha256:f872ff023d76b0a8e770195e684ff547ddc7399ab65362f58cecaa8ab65c8956"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913030"
-
-[tools."github:TBXark/mcp-proxy"."platforms.linux-x64"]
-checksum = "sha256:e093acc33530846b91e4e15158cf1a65524d92a7826ac257802efcf2c6ab6cae"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913037"
-
-[tools."github:TBXark/mcp-proxy"."platforms.linux-x64-baseline"]
-checksum = "sha256:e093acc33530846b91e4e15158cf1a65524d92a7826ac257802efcf2c6ab6cae"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913037"
-
-[tools."github:TBXark/mcp-proxy"."platforms.linux-x64-musl"]
-checksum = "sha256:e093acc33530846b91e4e15158cf1a65524d92a7826ac257802efcf2c6ab6cae"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913037"
-
-[tools."github:TBXark/mcp-proxy"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:e093acc33530846b91e4e15158cf1a65524d92a7826ac257802efcf2c6ab6cae"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913037"
-
-[tools."github:TBXark/mcp-proxy"."platforms.macos-arm64"]
-checksum = "sha256:8a82fab929a4191ea5d929c38200fc5807a85e0fd6c84d10f4f710405bdb4114"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913071"
-
-[tools."github:TBXark/mcp-proxy"."platforms.macos-x64"]
-checksum = "sha256:fdd98ed2a22b179f941e8601cfb77a02c499216ef3df6e8db92cd8fbbcca3076"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913032"
-
-[tools."github:TBXark/mcp-proxy"."platforms.macos-x64-baseline"]
-checksum = "sha256:fdd98ed2a22b179f941e8601cfb77a02c499216ef3df6e8db92cd8fbbcca3076"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913032"
-
-[tools."github:TBXark/mcp-proxy"."platforms.windows-x64"]
-checksum = "sha256:c49ed30518b0a480c8f18de0acbf92c30ee357798a81896b981b521d1c382b09"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913040"
-
-[tools."github:TBXark/mcp-proxy"."platforms.windows-x64-baseline"]
-checksum = "sha256:c49ed30518b0a480c8f18de0acbf92c30ee357798a81896b981b521d1c382b09"
-url = "https://github.com/tbxark/mcp-proxy/releases/download/v1.1.0/mcp-proxy_1.1.0_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/tbxark/mcp-proxy/releases/assets/565913040"
-
 [[tools."github:ast-grep/ast-grep"]]
 version = "0.51.3"
 backend = "github:ast-grep/ast-grep"
@@ -1843,74 +1783,74 @@ url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/678798237"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/mcp-proxy"]]
-version = "1.1.4"
+version = "2.0.1"
 backend = "github:dkarter/mcp-proxy"
-specifiers = ["1.1.4"]
+specifiers = ["latest"]
 
 [tools."github:dkarter/mcp-proxy"."platforms.linux-arm64"]
-checksum = "sha256:ebeba34804f6a9f2511a12d5cc2369b3ba582b8575d12d0b84e01793d003f43b"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429307"
+checksum = "sha256:138e48421662a6f498c8159ef5cdaa93cb0792b522e3323c801c3904b8843cab"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043951"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.linux-arm64-musl"]
-checksum = "sha256:ebeba34804f6a9f2511a12d5cc2369b3ba582b8575d12d0b84e01793d003f43b"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429307"
+checksum = "sha256:138e48421662a6f498c8159ef5cdaa93cb0792b522e3323c801c3904b8843cab"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043951"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.linux-x64"]
-checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+checksum = "sha256:16b551b55ab91f34fee6477247a6740a8271cc0f72fc68893104fc7989265b9a"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043947"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.linux-x64-baseline"]
-checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+checksum = "sha256:16b551b55ab91f34fee6477247a6740a8271cc0f72fc68893104fc7989265b9a"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043947"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.linux-x64-musl"]
-checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+checksum = "sha256:16b551b55ab91f34fee6477247a6740a8271cc0f72fc68893104fc7989265b9a"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043947"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+checksum = "sha256:16b551b55ab91f34fee6477247a6740a8271cc0f72fc68893104fc7989265b9a"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043947"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.macos-arm64"]
-checksum = "sha256:8342af842393f5b38a6ebb0dec18ddb9f34136f2f395b60f25fba7a92499a5a5"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429351"
+checksum = "sha256:16b9b6cd328a9635dbf95181f6d0ea630c7c31c30081090239a4a6833521f10d"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043948"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.macos-x64"]
-checksum = "sha256:33b9af805e564cfb5717b2b54eed459285a9784dcbc78e74e5f7bfd9cce814b7"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429310"
+checksum = "sha256:6bab916c16e98c724c8f53d27275a2b205c089855591680786edf31b2e49a327"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043952"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.macos-x64-baseline"]
-checksum = "sha256:33b9af805e564cfb5717b2b54eed459285a9784dcbc78e74e5f7bfd9cce814b7"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429310"
+checksum = "sha256:6bab916c16e98c724c8f53d27275a2b205c089855591680786edf31b2e49a327"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043952"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.windows-x64"]
-checksum = "sha256:ec4d357172b25053629ca37356499a22163fb4cea06fcb3adac442b6ac85938a"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429304"
+checksum = "sha256:e5891764443f182eb9597a1acacae91eeae465d8422ba976966ae5ea97526c9f"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043953"
 provenance = "github-attestations"
 
 [tools."github:dkarter/mcp-proxy"."platforms.windows-x64-baseline"]
-checksum = "sha256:ec4d357172b25053629ca37356499a22163fb4cea06fcb3adac442b6ac85938a"
-url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429304"
+checksum = "sha256:e5891764443f182eb9597a1acacae91eeae465d8422ba976966ae5ea97526c9f"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v2.0.1/mcp-proxy_2.0.1_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/784043953"
 provenance = "github-attestations"
 
 [[tools."github:dkarter/vellum"]]

@@ -121,7 +121,8 @@ zoxide = "latest"                           # a modern version of autojump
 version = "latest"
 os = ["linux/x64", "macos/arm64", "windows/x64"]
 
-[tools."github:TBXark/mcp-proxy"]
+# This fork supports the array-valued output schema types in GitHub MCP Server 2.x.
+[tools."github:dkarter/mcp-proxy"]
 version = "latest"
 rename_exe = "github-mcp-proxy"
 
@@ -188,6 +189,7 @@ minimum_release_age_excludes = [
   "elixir",
   "github:dkarter/hwt",
   "github:dkarter/lnr",
+  "github:dkarter/mcp-proxy",
   "github:dkarter/ink",
   "github:dkarter/ghtkn",
   "github:dkarter/vstui",
