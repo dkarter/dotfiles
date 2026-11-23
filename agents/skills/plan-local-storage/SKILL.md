@@ -1,6 +1,6 @@
 ---
 name: plan-local-storage
-description: Persist plans to local project storage under .plans and open the saved markdown file in an existing Neovim pane in the current Herdr tab when available. Use when a user asks to save a plan, write a plan file locally, or open a saved plan in Neovim.
+description: Persist plans to local project storage under .plans and open the saved markdown file in the current Herdr tab, creating a Neovim pane if needed. Use when a user asks to save a plan, write a plan file locally, or open a saved plan in Neovim.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 argument-hint: '[plan title or purpose]'
 ---
@@ -41,5 +41,6 @@ zsh ~/.agents/skills/plan-local-storage/scripts/open_in_nvim.zsh <absolute-path-
 ## Neovim Handoff Behavior
 
 - If `HERDR_ENV=1`, search the current Herdr tab.
-- If Herdr is not active or no pane runs `nvim`/`vim`, do nothing.
-- If a matching pane exists, send `:edit <file>` to it.
+- If Herdr is not active, save the plan without opening an editor.
+- Reuse an existing `nvim`/`vim` pane. If none exists, split the current pane
+  and start Neovim with the plan file. Keep the caller's focus.
