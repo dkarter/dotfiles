@@ -39,6 +39,7 @@ return {
         { 'gs', group = 'surround' },
         { 'z', group = 'fold' },
         { '<leader>b', group = 'buffer' },
+        { '<leader>c', group = 'Comments / Code' },
         { '<leader>w', group = 'windows', proxy = '<c-w>' },
         -- better descriptions
         { 'gx', desc = 'Open with system app' },

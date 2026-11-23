@@ -222,6 +222,69 @@ M.navi_mappings = {
   { '<leader>nc', ':NaviClear', desc = '[N]avi [C]lear' },
 }
 
+local thread_ft = 'comment-threads'
+local draft_ft = 'markdown.comment-thread-draft'
+
+M.comment_threads_mappings = {
+  { '<leader>cn', '<cmd>ThreadAdd<cr>', desc = 'New comment thread' },
+  {
+    '<leader>cn',
+    function()
+      require('comment_threads').add_selection()
+    end,
+    mode = 'x',
+    desc = 'Comment on selection',
+  },
+  { '<leader>co', '<cmd>ThreadOpen<cr>', desc = 'Open comment thread' },
+  { '<leader>cl', '<cmd>ThreadList all<cr>', desc = 'List comment threads' },
+  { '<leader>ch', '<cmd>ThreadHandoff<cr>', desc = 'Copy agent handoff' },
+  { '<leader>cr', '<cmd>ThreadReattach<cr>', desc = 'Reattach comment thread' },
+  {
+    '<leader>cr',
+    function()
+      require('comment_threads').reattach_selection()
+    end,
+    mode = 'x',
+    desc = 'Reattach to selection',
+  },
+  {
+    '[v',
+    function()
+      require('comment_threads').jump(-1)
+    end,
+    desc = 'Previous review thread',
+  },
+  {
+    ']v',
+    function()
+      require('comment_threads').jump(1)
+    end,
+    desc = 'Next review thread',
+  },
+  {
+    '<LeftMouse>',
+    function()
+      return require('comment_threads').click()
+    end,
+    expr = true,
+    desc = 'Click comment action',
+  },
+  { '<CR>', '<Plug>(comment-threads-activate)', ft = thread_ft, desc = 'Activate comment action' },
+  { 'o', '<Plug>(comment-threads-open)', ft = thread_ft, desc = 'Open thread from list' },
+  { 'r', '<Plug>(comment-threads-reply)', ft = thread_ft, desc = 'Reply to thread' },
+  { 'x', '<Plug>(comment-threads-toggle)', ft = thread_ft, desc = 'Resolve or reopen thread' },
+  { 'e', '<Plug>(comment-threads-edit)', ft = thread_ft, nowait = true, desc = 'Edit comment' },
+  { 'd', '<Plug>(comment-threads-delete)', ft = thread_ft, nowait = true, desc = 'Delete comment' },
+  { 'R', '<Plug>(comment-threads-refresh)', ft = thread_ft, desc = 'Refresh thread' },
+  { 'q', '<Plug>(comment-threads-close)', ft = { thread_ft, draft_ft }, desc = 'Close comment view' },
+  { 'u', '<Plug>(comment-threads-undo)', ft = thread_ft, desc = 'Undo comment change' },
+  { '<C-r>', '<Plug>(comment-threads-redo)', ft = thread_ft, desc = 'Redo comment change' },
+  { 'za', '<Plug>(comment-threads-fold-toggle)', ft = thread_ft, desc = 'Toggle thread fold' },
+  { 'zo', '<Plug>(comment-threads-fold-open)', ft = thread_ft, desc = 'Expand thread' },
+  { 'zc', '<Plug>(comment-threads-fold-close)', ft = thread_ft, desc = 'Collapse thread' },
+  { '<C-CR>', '<Plug>(comment-threads-post)', ft = draft_ft, mode = { 'n', 'i' }, desc = 'Post comment' },
+}
+
 -- stylua: ignore
 ---@type LazyKeysSpec[]
 M.splitjoin_mappings = {
