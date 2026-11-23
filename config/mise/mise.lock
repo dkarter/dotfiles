@@ -1842,6 +1842,77 @@ url = "https://github.com/dkarter/lnr/releases/download/v3.2.0/lnr_3.2.0_windows
 url_api = "https://api.github.com/repos/dkarter/lnr/releases/assets/678798237"
 provenance = "github-attestations"
 
+[[tools."github:dkarter/mcp-proxy"]]
+version = "1.1.4"
+backend = "github:dkarter/mcp-proxy"
+specifiers = ["1.1.4"]
+
+[tools."github:dkarter/mcp-proxy"."platforms.linux-arm64"]
+checksum = "sha256:ebeba34804f6a9f2511a12d5cc2369b3ba582b8575d12d0b84e01793d003f43b"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429307"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.linux-arm64-musl"]
+checksum = "sha256:ebeba34804f6a9f2511a12d5cc2369b3ba582b8575d12d0b84e01793d003f43b"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429307"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.linux-x64"]
+checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.linux-x64-baseline"]
+checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.linux-x64-musl"]
+checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:e7a62ec79d3858258bed12ff386281ebd012645b3700f852692e9fed2a7dfedd"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429311"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.macos-arm64"]
+checksum = "sha256:8342af842393f5b38a6ebb0dec18ddb9f34136f2f395b60f25fba7a92499a5a5"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429351"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.macos-x64"]
+checksum = "sha256:33b9af805e564cfb5717b2b54eed459285a9784dcbc78e74e5f7bfd9cce814b7"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429310"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.macos-x64-baseline"]
+checksum = "sha256:33b9af805e564cfb5717b2b54eed459285a9784dcbc78e74e5f7bfd9cce814b7"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429310"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.windows-x64"]
+checksum = "sha256:ec4d357172b25053629ca37356499a22163fb4cea06fcb3adac442b6ac85938a"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429304"
+provenance = "github-attestations"
+
+[tools."github:dkarter/mcp-proxy"."platforms.windows-x64-baseline"]
+checksum = "sha256:ec4d357172b25053629ca37356499a22163fb4cea06fcb3adac442b6ac85938a"
+url = "https://github.com/dkarter/mcp-proxy/releases/download/v1.1.4/mcp-proxy_1.1.4_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/dkarter/mcp-proxy/releases/assets/703429304"
+provenance = "github-attestations"
+
 [[tools."github:dkarter/vellum"]]
 version = "1.6.1"
 backend = "github:dkarter/vellum"
@@ -2878,6 +2949,41 @@ version = "1.25.0"
 aube = { path = "locks/npm-varlock/1.25.0", digest = "sha256:8c5e5d24760522d77dd716f1a2f3335969d26b6d9f43e425efe059b7aab4eb75" }
 backend = "npm:varlock"
 specifiers = ["latest"]
+
+[[tools."packslip:github.com/dkarter/tui-shot"]]
+version = "0.1.0"
+backend = "packslip:github.com/dkarter/tui-shot"
+specifiers = ["latest"]
+
+[tools."packslip:github.com/dkarter/tui-shot"."platforms.linux-arm64"]
+checksum = "sha256:d6cfc595b9e9bd105a4a7bf807bd1a58462a2ca181685a214dcce6a610046eb9"
+url = "https://github.com/dkarter/tui-shot/releases/download/v0.1.0/tui-shot-v0.1.0-linux-arm64.tar.gz"
+signer = "sigstore-oidc:https://github.com/dkarter/tui-shot/.github/workflows/release.yml"
+
+[tools."packslip:github.com/dkarter/tui-shot"."platforms.linux-x64"]
+checksum = "sha256:789cb4a7549ed257d73d9caab0d110757671fe27257515df794f7b3b35c31045"
+url = "https://github.com/dkarter/tui-shot/releases/download/v0.1.0/tui-shot-v0.1.0-linux-x64.tar.gz"
+signer = "sigstore-oidc:https://github.com/dkarter/tui-shot/.github/workflows/release.yml"
+
+[tools."packslip:github.com/dkarter/tui-shot"."platforms.linux-x64-baseline"]
+checksum = "sha256:789cb4a7549ed257d73d9caab0d110757671fe27257515df794f7b3b35c31045"
+url = "https://github.com/dkarter/tui-shot/releases/download/v0.1.0/tui-shot-v0.1.0-linux-x64.tar.gz"
+signer = "sigstore-oidc:https://github.com/dkarter/tui-shot/.github/workflows/release.yml"
+
+[tools."packslip:github.com/dkarter/tui-shot"."platforms.macos-arm64"]
+checksum = "sha256:0e85407a9bc03c6285af8b3178b89cbb5411dbc4be1092ae70a416a942504c33"
+url = "https://github.com/dkarter/tui-shot/releases/download/v0.1.0/tui-shot-v0.1.0-macos-arm64.tar.gz"
+signer = "sigstore-oidc:https://github.com/dkarter/tui-shot/.github/workflows/release.yml"
+
+[tools."packslip:github.com/dkarter/tui-shot"."platforms.macos-x64"]
+checksum = "sha256:e830d224954461900da3c42c67e875fb58b7767e3718a19786f68b830fe3dd8f"
+url = "https://github.com/dkarter/tui-shot/releases/download/v0.1.0/tui-shot-v0.1.0-macos-x64.tar.gz"
+signer = "sigstore-oidc:https://github.com/dkarter/tui-shot/.github/workflows/release.yml"
+
+[tools."packslip:github.com/dkarter/tui-shot"."platforms.macos-x64-baseline"]
+checksum = "sha256:e830d224954461900da3c42c67e875fb58b7767e3718a19786f68b830fe3dd8f"
+url = "https://github.com/dkarter/tui-shot/releases/download/v0.1.0/tui-shot-v0.1.0-macos-x64.tar.gz"
+signer = "sigstore-oidc:https://github.com/dkarter/tui-shot/.github/workflows/release.yml"
 
 [[tools.pi]]
 version = "1.5.2"
