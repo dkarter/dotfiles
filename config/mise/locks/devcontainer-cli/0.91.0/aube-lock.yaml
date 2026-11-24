@@ -1,0 +1,24 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@devcontainers/cli':
+        specifier: 0.91.0
+        version: 0.91.0
+
+packages:
+
+  '@devcontainers/cli@0.91.0':
+    resolution: {integrity: sha512-KrrvqwpODvEakJhoXweaAkoMG3+NZilboT4e4SQTf6dxVXLeiyLDKupnEtUMaVe1FJXHO4Yme7TTjqxskSOucg==}
+    engines: {node: '>=20.0.0'}
+    hasBin: true
+
+snapshots:
+
+  '@devcontainers/cli@0.91.0': {}

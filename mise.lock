@@ -6,6 +6,10 @@ lockfile_version = 3
 version = "2.10.1"
 backend = "packslip:github.com/aubepkg/aube"
 specifiers = ["latest"]
+unsupported_platforms = [
+    "macos-x64",
+    "macos-x64-baseline",
+]
 
 [tools.aube."platforms.linux-arm64"]
 checksum = "sha256:c64f55a43ee7ca4a19fbbf3be0eed161c24c9858bdcdaea024b69eafbc71ad15"
@@ -133,53 +137,53 @@ url_api = "https://api.github.com/repos/betterleaks/betterleaks/releases/assets/
 provenance = "cosign"
 
 [[tools.bun]]
-version = "1.4.4"
+version = "1.4.5"
 backend = "core:bun"
 specifiers = ["latest"]
 
 [tools.bun."platforms.linux-arm64"]
-checksum = "sha256:baa6bb36f51d6e58561e02bbea825038a9df454f673d6d776e8bbf86f8c7850e"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-aarch64.zip"
+checksum = "sha256:18656a3bf0ea5641f5796ae4213b75255579a70a0fded2f337933785568cdf84"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-linux-aarch64.zip"
 
 [tools.bun."platforms.linux-arm64-musl"]
-checksum = "sha256:57f01b02ac7113c61c935f28f38c2eab849e3c970dab21f8b640a87b1ef65009"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-aarch64-musl.zip"
+checksum = "sha256:d655765d3a0c0fdf707e27c7aa1a4f2c84f1bbc1f759db7e6e3d3c5be414396c"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-linux-aarch64-musl.zip"
 
 [tools.bun."platforms.linux-x64"]
-checksum = "sha256:bf8ccbfb2b0b80159e0f9a6d15c55317add8077534dbc6130a3edb52fccb395c"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64.zip"
+checksum = "sha256:94559b3b528995a49452f9f2404cec74f2efd7d06e0a000a8cd214b02c3666eb"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-linux-x64.zip"
 
 [tools.bun."platforms.linux-x64-baseline"]
-checksum = "sha256:e0446eb55995772eb9894bebae9a6be368d985a8b9271ee124486f9946eedd76"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64-baseline.zip"
+checksum = "sha256:dcb23a18a1c2fff12d57bcef696dbbb42eb67fde29f43816ecb595459a24c463"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-linux-x64-baseline.zip"
 
 [tools.bun."platforms.linux-x64-musl"]
-checksum = "sha256:a5a8ccc5e74dcb883fe974f125a7bdb3b41e5195ed1b870e73f17effd3eb2b2d"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64-musl.zip"
+checksum = "sha256:9b6bdba1fa0914b6adfe48e4438212e2c106d9199b77ba642a9b8a3968a49a59"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-linux-x64-musl.zip"
 
 [tools.bun."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:6e9c37098b293920aed28bfb51ab240e26d23bfdd9bbfecb3ad428ac166549bc"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-linux-x64-musl-baseline.zip"
+checksum = "sha256:96fb94108eed872ff623ed39007d6b5699a83a5d0086fcfba84921c18145e3e6"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-linux-x64-musl-baseline.zip"
 
 [tools.bun."platforms.macos-arm64"]
-checksum = "sha256:c240d7f0ccb90c263a849fcdb09b7ee62630d921348ed6aafda86b9d577bc510"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-aarch64.zip"
+checksum = "sha256:b5d6bc2e13caf14e57c89661e89efd073ff16165b41bfe43882616410609cd10"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-darwin-aarch64.zip"
 
 [tools.bun."platforms.macos-x64"]
-checksum = "sha256:50a3491f73abc2fe81673171a85762d3bc2cc1680ccecadd983de99adf77977e"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-x64.zip"
+checksum = "sha256:a4972e778cce4b6a194d7d289f326aa61576d71d80b7a53e9da2f3739566e5fd"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-darwin-x64.zip"
 
 [tools.bun."platforms.macos-x64-baseline"]
-checksum = "sha256:d4a155adfbfd09155eb3ba05c9e3a544f39297d7a68616d3c7759f67ab5c47dc"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-darwin-x64-baseline.zip"
+checksum = "sha256:fb0121739a7e80e7511b6bfe4d2116422b48ba18a013acadef0c425348e95891"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-darwin-x64-baseline.zip"
 
 [tools.bun."platforms.windows-x64"]
-checksum = "sha256:cd2c0fccc78f3ede1f50ca827a15f063eda13d4d150a3d0674f4f6e323d864a5"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-windows-x64.zip"
+checksum = "sha256:815ab45ec7f549abf87e6869584b506eab088e24225683957b7e150b47d6de30"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-windows-x64.zip"
 
 [tools.bun."platforms.windows-x64-baseline"]
-checksum = "sha256:0f20ce6674d4f2dbcc8c5d59fdf99f7ba45f8c3b367e0f5781cbfa30a1c78d99"
-url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.4/bun-windows-x64-baseline.zip"
+checksum = "sha256:3c081c73865e7a3453a9d514cc2ba3d699880621bcf67bb17241ff5194cb1d4b"
+url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.5/bun-windows-x64-baseline.zip"
 
 [[tools.dprint]]
 version = "0.65.0"
@@ -364,80 +368,84 @@ url = "https://github.com/mazznoer/lolcrab/releases/download/v0.4.1/lolcrab-x86_
 url_api = "https://api.github.com/repos/mazznoer/lolcrab/releases/assets/249376744"
 
 [[tools."github:nubjs/nub"]]
-version = "0.11.1"
+version = "0.11.2"
 backend = "github:nubjs/nub"
 specifiers = ["latest"]
 
 [tools."github:nubjs/nub"."platforms.linux-arm64"]
-checksum = "sha256:9a27560a48d3cc8eed07e6aaae8506e16271727f31ea5d810c77db613da2ceaf"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722398"
+checksum = "sha256:1d07e4dc60865ca6c9b3fcf09c96ffee01b405916aad76d245a3b9afea18a4dc"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890773"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-arm64-musl"]
-checksum = "sha256:f548c725d2d939b02077d09e2fea55c6c8cd3b0edde4b614678bf0344f5733d3"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-linux-arm64-musl.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722550"
+checksum = "sha256:b497d8db3b0dbd1eab72bdd600b9900acbda9701eb05c172fae6ae0dc2300103"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-linux-arm64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890879"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64"]
-checksum = "sha256:312dcb5b4da9f274bc3ae8e2a8a6eb5ab2302176083dacd6bf3d819d72011567"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722160"
+checksum = "sha256:d327582737d81e640ba49ed11b915b986bb96f9eef8cafd8c005177891163b2b"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890593"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64-baseline"]
-checksum = "sha256:312dcb5b4da9f274bc3ae8e2a8a6eb5ab2302176083dacd6bf3d819d72011567"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722160"
+checksum = "sha256:d327582737d81e640ba49ed11b915b986bb96f9eef8cafd8c005177891163b2b"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890593"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64-musl"]
-checksum = "sha256:7e5504be78f77005b644ee4be1036b8704511e920a12bf4a35c116c8a907a17a"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722265"
+checksum = "sha256:bf5985fa61afe2e39361eaf65306a55b8d46caea98da0e388692529a52f38c99"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890688"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:7e5504be78f77005b644ee4be1036b8704511e920a12bf4a35c116c8a907a17a"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-linux-x64-musl.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722265"
+checksum = "sha256:bf5985fa61afe2e39361eaf65306a55b8d46caea98da0e388692529a52f38c99"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-linux-x64-musl.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890688"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.macos-arm64"]
-checksum = "sha256:14ecb987300fdc4ad8e9cd8db59c9fea4d31973922b0a920507887bfe1f570cb"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752721881"
+checksum = "sha256:6665476a710db59e1bc809f72d97c2a4c3cd21d055494bdeb868a37084e80ce5"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890359"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.macos-x64"]
-checksum = "sha256:67f697b31e7fb95dd62fdb15f6b4f046d01e751aacf66831e44f2bf3385201db"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722047"
+checksum = "sha256:a30fdf3ff8f58b266e9aa3e4b0ae3d299ff7367f7535356cb01bae0532666c28"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890520"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.macos-x64-baseline"]
-checksum = "sha256:67f697b31e7fb95dd62fdb15f6b4f046d01e751aacf66831e44f2bf3385201db"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722047"
+checksum = "sha256:a30fdf3ff8f58b266e9aa3e4b0ae3d299ff7367f7535356cb01bae0532666c28"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890520"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.windows-x64"]
-checksum = "sha256:f78e2baed44b4be35068382a5d9a2cdb54d22c2fd8095058721826df9675ce08"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-win32-x64.zip"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722697"
+checksum = "sha256:eaa63a806501c52dab3a60edd6948dd842c1df9233e0dd02eaddf461271d3c14"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-win32-x64.zip"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890976"
 provenance = "github-attestations"
 
 [tools."github:nubjs/nub"."platforms.windows-x64-baseline"]
-checksum = "sha256:f78e2baed44b4be35068382a5d9a2cdb54d22c2fd8095058721826df9675ce08"
-url = "https://github.com/nubjs/nub/releases/download/v0.11.1/nub-win32-x64.zip"
-url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/752722697"
+checksum = "sha256:eaa63a806501c52dab3a60edd6948dd842c1df9233e0dd02eaddf461271d3c14"
+url = "https://github.com/nubjs/nub/releases/download/v0.11.2/nub-win32-x64.zip"
+url_api = "https://api.github.com/repos/nubjs/nub/releases/assets/780890976"
 provenance = "github-attestations"
 
 [[tools.hk]]
 version = "2.13.0"
 backend = "packslip:github.com/jdx/hk"
 specifiers = ["latest"]
+unsupported_platforms = [
+    "macos-x64",
+    "macos-x64-baseline",
+]
 
 [tools.hk."platforms.linux-arm64"]
 checksum = "sha256:490196a4e638991c671f42941d72ade4d00b14750145f34fc64377b49fc070bb"
@@ -674,64 +682,74 @@ checksum = "sha256:e2edda75bfb089654705cf65a13b58933bfd5f57148e8ebda916f58a2474f
 url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip"
 
 [[tools.ripgrep]]
-version = "15.2.0"
+version = "16.0.0"
 backend = "aqua:BurntSushi/ripgrep"
 specifiers = ["latest"]
 
 [tools.ripgrep."platforms.linux-arm64"]
-checksum = "sha256:a740b91c82eaf9914cfedd353572f2791cbe0162c84101ee0951058f4dcbc90d"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119579"
+checksum = "sha256:0b0bddcfaf42be1f3c56bf929d70defd1a2d96f2577aecbd7029a3734ddb4740"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739969"
 
 [tools.ripgrep."platforms.linux-arm64-musl"]
-checksum = "sha256:a740b91c82eaf9914cfedd353572f2791cbe0162c84101ee0951058f4dcbc90d"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119579"
+checksum = "sha256:0b0bddcfaf42be1f3c56bf929d70defd1a2d96f2577aecbd7029a3734ddb4740"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739969"
 
 [tools.ripgrep."platforms.linux-x64"]
-checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
+checksum = "sha256:165451eaf35f977c0bd6cff1fb93e4fcce0ebd87e90a4b5e976507baf50f4a03"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739448"
 
 [tools.ripgrep."platforms.linux-x64-baseline"]
-checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
+checksum = "sha256:165451eaf35f977c0bd6cff1fb93e4fcce0ebd87e90a4b5e976507baf50f4a03"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739448"
 
 [tools.ripgrep."platforms.linux-x64-musl"]
-checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
+checksum = "sha256:54268ab4643c00a290a29b0086066d64b3f56236dd805ec64629a86f9bd29fd0"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780740424"
 
 [tools.ripgrep."platforms.linux-x64-musl-baseline"]
-checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
+checksum = "sha256:54268ab4643c00a290a29b0086066d64b3f56236dd805ec64629a86f9bd29fd0"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780740424"
 
 [tools.ripgrep."platforms.macos-arm64"]
-checksum = "sha256:3750b2e93f37e0c692657da574d7019a101c0084da05a790c83fd335bad973e4"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478118851"
+checksum = "sha256:5a145656d5067144001bfce6648767fd3254599aa736f1ffdb7fb907760b8ca1"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739338"
 
 [tools.ripgrep."platforms.macos-x64"]
-checksum = "sha256:af7825fcc69a2afc7a7aea55fc9af90e26421d8f20fe59df32e233c0b8a231c1"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119585"
+checksum = "sha256:aa9183b0e0bfac03c5818895ad18b75001c402d230063898abfe5a58cd413caa"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739975"
 
 [tools.ripgrep."platforms.macos-x64-baseline"]
-checksum = "sha256:af7825fcc69a2afc7a7aea55fc9af90e26421d8f20fe59df32e233c0b8a231c1"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119585"
+checksum = "sha256:aa9183b0e0bfac03c5818895ad18b75001c402d230063898abfe5a58cd413caa"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739975"
 
 [tools.ripgrep."platforms.windows-x64"]
-checksum = "sha256:71b2fef860abe467217a538ff31de02f5258807c0129f771846f87bd029aafc5"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119643"
+checksum = "sha256:f418ae83e63046a94a7b5f3a44bf3a169f66e689164856ecee02547131c73931"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739355"
 
 [tools.ripgrep."platforms.windows-x64-baseline"]
-checksum = "sha256:71b2fef860abe467217a538ff31de02f5258807c0129f771846f87bd029aafc5"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119643"
+checksum = "sha256:f418ae83e63046a94a7b5f3a44bf3a169f66e689164856ecee02547131c73931"
+checksum_source = "mise-versions"
+url = "https://github.com/BurntSushi/ripgrep/releases/download/16.0.0/ripgrep-16.0.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/780739355"
 
 [[tools.shellcheck]]
 version = "0.11.0"
