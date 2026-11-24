@@ -178,7 +178,6 @@ tasks:
       DIRS:
         - '~/.cache/zsh/completions'
         - '~/.config'
-        - '~/.config/claude'
         - '~/.local/share/psql'
     cmds:
       - cmd: mkdir -p {{.DIRS | join " "}}
