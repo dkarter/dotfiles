@@ -108,6 +108,130 @@
             ]
           },
           {
+            "description": "Ctrl-U / Ctrl-D → Scroll Raycast AI Chat",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow",
+                    "modifiers": ["left_command"]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": ["^com\\.raycast\\.macos$"]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "accessibility.focused_ui_element.window_title_string",
+                    "value": "AI Chat"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow",
+                    "modifiers": ["left_command"]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": ["^com\\.raycast\\.macos$"]
+                  },
+                  {
+                    "type": "variable_if",
+                    "name": "accessibility.focused_ui_element.window_title_string",
+                    "value": "AI Chat"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Ctrl-U → Page Up / Ctrl-D → Page Down (except terminal apps)",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "u",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "page_up"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.github\\.wez\\.wezterm$",
+                      "^com\\.cmuxterm\\.app$",
+                      "^com\\.superlogical\\.rex$",
+                      "^dev\\.herdr\\.app$",
+                      "^com\\.termius\\.mac$",
+                      "^com\\.appliedphasor\\.secure-shellfish$",
+                      "^com\\.apple\\.automator\\.TerminalVim$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "mandatory": ["control"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "page_down"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$",
+                      "^com\\.apple\\.Terminal$",
+                      "^com\\.googlecode\\.iterm2$",
+                      "^com\\.github\\.wez\\.wezterm$",
+                      "^com\\.cmuxterm\\.app$",
+                      "^com\\.superlogical\\.rex$",
+                      "^dev\\.herdr\\.app$",
+                      "^com\\.termius\\.mac$",
+                      "^com\\.appliedphasor\\.secure-shellfish$",
+                      "^com\\.apple\\.automator\\.TerminalVim$"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Ctrl-Cmd-S → Toggle sidebar (ChatGPT and Claude Desktop)",
             "manipulators": [
               {
