@@ -81,7 +81,8 @@ press_and_hold = false
 "~/.zinitrc" = "zinitrc"
 "~/.zshenv" = "zshenv"
 "~/.zshrc" = "zshrc"
-"~/.config/*" = "config/*"
+# Only link visible entries; Finder creates .DS_Store in both directories.
+"~/.config/[!.]*" = "config/[!.]*"
 "~/.config/herdr-app/keys.json/dotfiles" = { source = "config/herdr/native/keys.json", merge = true }
 "~/.config/herdr-app/layouts/terminals-focus.json" = { source = "config/herdr/native/terminals-focus.json", mode = "copy" }
 "~/.config/herdr-app/mods/dotfiles-copy-mode" = "config/herdr/native/copy-mode"
