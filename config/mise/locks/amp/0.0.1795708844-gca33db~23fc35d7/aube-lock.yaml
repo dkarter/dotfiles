@@ -1,0 +1,71 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@ampcode/cli':
+        specifier: 0.0.1795708844-gca33db
+        version: 0.0.1795708844-gca33db
+
+packages:
+
+  '@ampcode/cli-darwin-arm64@0.0.1795708844-gca33db':
+    resolution: {integrity: sha512-Wn8jesPen9OnAvz5G+mjrJVTXyYxdL9u6v+QH7RE8VHKYParUi4Sifrk/LHQVqJlRfascwg8RSvnPox/YHhlGg==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@ampcode/cli-darwin-x64@0.0.1795708844-gca33db':
+    resolution: {integrity: sha512-WBhmmX5lUgxsUxxIn9K+qb6Cssuum3aILzxoYhlwNEnvcemeAvlfO/EMMsiUmmSzu6bdNZKKyIlmY0PwjHWqsA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@ampcode/cli-linux-arm64@0.0.1795708844-gca33db':
+    resolution: {integrity: sha512-Ba6uNYBPvW30AdNeutEBl3r41I+2F9kN7sCEY1kIV3Ueg8c9Or1SCxUo47/VRaqbC3TWnBcjeApNKBMIQ+0w+g==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@ampcode/cli-linux-x64@0.0.1795708844-gca33db':
+    resolution: {integrity: sha512-WQa3ADtEnN1VDKgvr0haszYLAR0seac+tGz3l1WHVaFxgO9Eeuo+gZSn8K4OEqwcg0pjqkbi8Bnz/2Oxw6X5Ow==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@ampcode/cli-win32-x64@0.0.1795708844-gca33db':
+    resolution: {integrity: sha512-LQCmJ8VXPSMG/BPo+fj0kOeZQ/6EnWtrw6kV0TZdQ1yKriGER7QrMQXoXOtO7jqO65pNFEXGxh+ROVOnrzGVrw==}
+    cpu: [x64]
+    os: [win32]
+
+  '@ampcode/cli@0.0.1795708844-gca33db':
+    resolution: {integrity: sha512-kpNtUi+rAqOLQVO7/5PKeHnws0isHSdDHIJoZTLYikmru2a3EYHZVl5S/h0E4fTtXlq7U+Pp7cFvZgjz2rBEyg==}
+    hasBin: true
+
+snapshots:
+
+  '@ampcode/cli-darwin-arm64@0.0.1795708844-gca33db':
+    optional: true
+
+  '@ampcode/cli-darwin-x64@0.0.1795708844-gca33db':
+    optional: true
+
+  '@ampcode/cli-linux-arm64@0.0.1795708844-gca33db':
+    optional: true
+
+  '@ampcode/cli-linux-x64@0.0.1795708844-gca33db':
+    optional: true
+
+  '@ampcode/cli-win32-x64@0.0.1795708844-gca33db':
+    optional: true
+
+  '@ampcode/cli@0.0.1795708844-gca33db':
+    optionalDependencies:
+      '@ampcode/cli-darwin-arm64': 0.0.1795708844-gca33db
+      '@ampcode/cli-darwin-x64': 0.0.1795708844-gca33db
+      '@ampcode/cli-linux-arm64': 0.0.1795708844-gca33db
+      '@ampcode/cli-linux-x64': 0.0.1795708844-gca33db
+      '@ampcode/cli-win32-x64': 0.0.1795708844-gca33db

@@ -2,6 +2,15 @@
 
 lockfile_version = 2
 
+[[tools.amp]]
+version = "0.0.1795708844-gca33db"
+aube = { path = "locks/amp/0.0.1795708844-gca33db~23fc35d7", digest = "sha256:096ef58109d0f77e52b764d5f835390222b756a87af12b803aafbb7d40a9eb54" }
+backend = "npm:@ampcode/cli"
+specifiers = ["latest"]
+
+[tools.amp.options]
+allow_builds = '["@ampcode/cli"]'
+
 [[tools."aqua:jdx/pitchfork"]]
 version = "2.36.0"
 backend = "aqua:jdx/pitchfork"
