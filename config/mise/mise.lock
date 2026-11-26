@@ -176,9 +176,8 @@ provenance = "github-attestations"
 
 [tools.aube."platforms.macos-arm64"]
 checksum = "sha256:d67dcf1ea36629445595417ea6d7de9859fa723e422394cbbcd677d0164a5fa0"
-url = "https://github.com/endevco/aube/releases/download/v2.7.0/aube-v2.7.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/endevco/aube/releases/assets/619417642"
-provenance = "github-attestations"
+url = "https://github.com/aubepkg/aube/releases/download/v2.7.0/aube-v2.7.0-aarch64-apple-darwin.tar.gz"
+signer = "sigstore-oidc:https://github.com/aubepkg/aube/.github/workflows/release.yml"
 
 [tools.aube."platforms.macos-x64"]
 checksum = "sha256:28deb5612bd570fd96fe0c2c0a320c495223cd3c79b156642e5035f1247b69ee"
