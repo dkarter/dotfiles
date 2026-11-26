@@ -40,55 +40,49 @@
       "extensions": [".ex", ".exs", ".heex", ".eex"]
     }
   },
-  "permission": {
-    "webfetch": "allow",
-    "bash": {
-      "git status": "allow",
-      "git diff": "allow",
-      "npm run build": "allow",
-      "ls": "allow",
-      "pwd": "allow",
-      "kubectl get secrets": "deny",
-      "kubectl get secret": "deny",
-      "kubectl get *": "allow",
-      "rg *": "allow",
-      "rm -rf *": "ask",
-      "rm *": "ask",
-      "fnox *": "ask",
-      "opencode debug config*": "deny"
-    },
-    "external_directory": {
-      "/tmp/**": "allow"
-    }
-  },
-  "agent": {
+  "permissions": [
+    { "action": "webfetch", "resource": "*", "effect": "allow" },
+    { "action": "shell", "resource": "git status", "effect": "allow" },
+    { "action": "shell", "resource": "git diff", "effect": "allow" },
+    { "action": "shell", "resource": "npm run build", "effect": "allow" },
+    { "action": "shell", "resource": "ls", "effect": "allow" },
+    { "action": "shell", "resource": "pwd", "effect": "allow" },
+    { "action": "shell", "resource": "kubectl get *", "effect": "allow" },
+    { "action": "shell", "resource": "kubectl get secrets", "effect": "deny" },
+    { "action": "shell", "resource": "kubectl get secret", "effect": "deny" },
+    { "action": "shell", "resource": "rg *", "effect": "allow" },
+    { "action": "shell", "resource": "rm -rf *", "effect": "ask" },
+    { "action": "shell", "resource": "rm *", "effect": "ask" },
+    { "action": "shell", "resource": "fnox *", "effect": "ask" },
+    { "action": "shell", "resource": "opencode debug config*", "effect": "deny" },
+    { "action": "external_directory", "resource": "/tmp/**", "effect": "allow" }
+  ],
+  "agents": {
     "pair": {
       "description": "AI pair programmer that keeps you in the loop by asking for your confirmation before executing any commands and edits",
-      "permission": {
-        "webfetch": "allow",
-        "edit": "ask",
-        "bash": {
-          "*": "ask",
-          "bun run *": "allow",
-          "git diff *": "allow",
-          "git log *": "allow",
-          "git show *": "allow",
-          "git status": "allow",
-          "kubectl get *": "allow",
-          "kubectl get secret": "deny",
-          "kubectl get secrets": "deny",
-          "ls": "allow",
-          "mix *": "allow",
-          "npm run *": "allow",
-          "pnpm run *": "allow",
-          "pwd": "allow",
-          "rg *": "allow",
-          "head *": "allow",
-          "tail *": "allow",
-          "task *": "allow",
-          "opencode debug config*": "deny"
-        }
-      }
+      "permissions": [
+        { "action": "webfetch", "resource": "*", "effect": "allow" },
+        { "action": "edit", "resource": "*", "effect": "ask" },
+        { "action": "shell", "resource": "*", "effect": "ask" },
+        { "action": "shell", "resource": "bun run *", "effect": "allow" },
+        { "action": "shell", "resource": "git diff *", "effect": "allow" },
+        { "action": "shell", "resource": "git log *", "effect": "allow" },
+        { "action": "shell", "resource": "git show *", "effect": "allow" },
+        { "action": "shell", "resource": "git status", "effect": "allow" },
+        { "action": "shell", "resource": "kubectl get *", "effect": "allow" },
+        { "action": "shell", "resource": "kubectl get secret", "effect": "deny" },
+        { "action": "shell", "resource": "kubectl get secrets", "effect": "deny" },
+        { "action": "shell", "resource": "ls", "effect": "allow" },
+        { "action": "shell", "resource": "mix *", "effect": "allow" },
+        { "action": "shell", "resource": "npm run *", "effect": "allow" },
+        { "action": "shell", "resource": "pnpm run *", "effect": "allow" },
+        { "action": "shell", "resource": "pwd", "effect": "allow" },
+        { "action": "shell", "resource": "rg *", "effect": "allow" },
+        { "action": "shell", "resource": "head *", "effect": "allow" },
+        { "action": "shell", "resource": "tail *", "effect": "allow" },
+        { "action": "shell", "resource": "task *", "effect": "allow" },
+        { "action": "shell", "resource": "opencode debug config*", "effect": "deny" }
+      ]
     }
   },
   "experimental": {}
