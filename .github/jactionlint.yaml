@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jdx/jactionlint/main/schema/jactionlint-config.json
+# All rules of the default profile run, including shellcheck on `run:` scripts
+# (needs shellcheck on PATH; mise.toml installs it).
+profile: default
+
+# Online checks query the GitHub API. jactionlint reads a token from
+# GITHUB_TOKEN, GH_TOKEN or `gh auth token`; without one it is rate limited.
+online: true
+
+rules:
+  unpinned-uses:
+    level: error
+    policies:
+      # Accept the tag of an immutable GitHub release; any other action must be
+      # pinned to a full commit SHA. `jactionlint --online --fix` writes the pin.
+      '*': immutable-release

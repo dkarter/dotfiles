@@ -48,3 +48,6 @@ jobs:
 
       - name: Lint workflows and actions
         run: task ci:workflows:lint
+        env:
+          # .github/jactionlint.yaml turns on the online checks, which query the GitHub API.
+          GITHUB_TOKEN: ${{ github.token }}
