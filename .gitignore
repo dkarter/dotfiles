@@ -6,6 +6,12 @@ config/vifm/vifmimgpdfpage
 
 .build/
 
+# aube dependencies (also in the global gitignore, which orbs do not have)
+node_modules/
+
+# Amp orb portal registrations
+.amp/portals/*
+
 # Share repository-specific worktree setup despite the global ignore rule.
 !.herdr-worktree.yaml
 

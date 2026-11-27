@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# Prepares an Amp orb: mise toolchain from mise.lock, aube dependencies and
+# the hk Git hooks. Runs on fresh and stale snapshots, so every step is
+# idempotent and cheap when its work is already done.
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+step() {
+  local name="$1"
+  shift
+  local start=$SECONDS
+  echo "==> $name"
+  "$@"
+  echo "    $name took $((SECONDS - start))s"
+}
+
+install_apt_packages() {
+  # figlet prints the banner at the end of `task ci:run`.
+  if ! dpkg -s figlet >/dev/null 2>&1; then
+    sudo apt-get update -qq
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq figlet
+  fi
+}
+
+install_mise() {
+  if [[ ! -x $HOME/.local/bin/mise ]]; then
+    curl -fsSL https://mise.run | MISE_QUIET=1 sh
+  fi
+}
+
+persist_path() {
+  # Amp and supervised services start in non-interactive login shells, so put
+  # mise and its shims on PATH there. Shims also apply the [env] of mise.toml.
+  local marker="# dotfiles: mise toolchain"
+  if ! grep -Fqx "$marker" "$HOME/.bash_profile" 2>/dev/null; then
+    cat >>"$HOME/.bash_profile" <<'EOF'
+
+# dotfiles: mise toolchain
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+EOF
+  fi
+}
+
+install_global_tools() {
+  # The hk lua and herdr steps call nvim and herdr, which the global mise
+  # config (config/mise) provides on a workstation. Install the versions its
+  # lockfile records and link them into ~/.local/bin; applying the whole global
+  # config would install ~100 tools, and `mise install --locked` rejects tools
+  # that are missing from the repository's mise.lock.
+  local lock=config/mise/mise.lock tool bin version
+  for tool in aqua:neovim:nvim herdr:herdr; do
+    bin="${tool##*:}"
+    tool="${tool%:*}"
+    version="$(awk -v header="[[tools.\"$tool\"]]" -v bare="[[tools.$tool]]" '
+      $0 == header || $0 == bare { found = 1; next }
+      found && /^version = / { gsub(/"/, "", $3); print $3; exit }
+    ' "$lock")"
+    mise install --quiet "$tool@${version:?no $tool version in $lock}"
+    ln -sfn "$(mise which --tool "$tool@$version" "$bin")" "$HOME/.local/bin/$bin"
+  done
+}
+
+write_agent_guidance() {
+  local file="$HOME/.config/amp/AGENTS.md" marker="# dotfiles orb notes"
+  mkdir -p "$(dirname "$file")"
+  if ! grep -Fqx "$marker" "$file" 2>/dev/null; then
+    cat >>"$file" <<'EOF'
+
+# dotfiles orb notes
+
+- `.agents/setup` installed the mise toolchain from `mise.lock`, plus `nvim` and `herdr` from `config/mise/mise.lock`. The dotfiles are not applied to `$HOME`.
+- Ghostty is a GUI app with no Linux build here, so skip its step: `hk check --all --skip-step ghostty`. `task ci:run` fails on that step.
+EOF
+  fi
+}
+
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+export MISE_YES=1
+
+step "apt packages" install_apt_packages
+step "mise" install_mise
+step "persist PATH" persist_path
+step "mise trust" mise trust --quiet .
+# --locked installs the versions and checksums of mise.lock and needs no
+# GitHub API token. The postinstall hook installs the hk Git hooks.
+step "mise install" mise install --locked
+step "global tools" install_global_tools
+step "aube install" mise exec -- aube install --frozen-lockfile
+step "agent guidance" write_agent_guidance
