@@ -104,9 +104,17 @@ jobs:
             return 1
           }
 
+          # Net count of opening minus closing brackets/braces in a line.
+          bracket_depth() {
+            local opens="${1//[^\[\{]/}"
+            local closes="${1//[^\]\}]/}"
+            echo $(( ${#opens} - ${#closes} ))
+          }
+
           append_tools_from() {
             local source_file="$1"
             local in_tools=0
+            local depth next_line
 
             while IFS= read -r line; do
               if [[ "${line}" == '[tools]' ]]; then
@@ -123,6 +131,13 @@ jobs:
               fi
 
               key="$(trim "${line%%=*}")"
+
+              # Keep multi-line inline tables and arrays whole.
+              depth="$(bracket_depth "${line}")"
+              while (( depth > 0 )) && IFS= read -r next_line; do
+                line+=$'\n'"${next_line}"
+                depth=$(( depth + $(bracket_depth "${next_line}") ))
+              done
 
               if should_skip_tool "${key}" || [[ -n "${seen_tools[${key}]+x}" ]]; then
                 continue
@@ -142,19 +157,40 @@ jobs:
             echo '[settings]'
             echo 'experimental = true'
             echo 'disable_backends = ["asdf"]'
-            echo 'npm.bun = true'
+            echo 'npm.package_manager = "aube"'
             echo 'ruby.compile = false'
             echo 'cargo.binstall = true'
             echo 'python.compile = false'
             echo 'lockfile = true'
           } > "${config_dir}/mise.toml"
 
+          # Keep the project lockfile whole. From the global lockfile, drop its
+          # header and any tool the project already resolves, because mise
+          # rejects duplicate resolutions for the same tool.
           {
             echo '# @generated - combined project/global lockfile for the OCI build'
             echo
-            sed '1,2d' mise.lock
-            sed '1,2d' config/mise/mise.lock
+            awk '
+              FNR == 1 { file++; skip = (file == 2) }
+              FNR <= 2 { next }
+              /^\[\[tools\./ {
+                tool = $0
+                sub(/^\[\[tools\./, "", tool)
+                sub(/\]\]$/, "", tool)
+                if (file == 1) {
+                  project_tools[tool] = 1
+                } else {
+                  skip = (tool in project_tools)
+                }
+              }
+              !skip
+            ' mise.lock config/mise/mise.lock
           } > "${config_dir}/mise.lock"
+
+          # Lock entries point at dependency sidecars relative to their lockfile.
+          mkdir -p "${config_dir}/.mise"
+          cp -R .mise/locks "${config_dir}/.mise/"
+          cp -R config/mise/locks "${config_dir}/"
         env:
           ARCH: ${{ matrix.arch }}
 
