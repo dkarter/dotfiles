@@ -18,7 +18,9 @@ afterEach(() => {
 const setup = () => {
   const layers: Array<() => { enabled: () => boolean; commands: Array<{ bind: string; run: () => void }> }> = [];
   const listeners = new Map<string, (editor: unknown) => void>();
-  const buffer = core.EditBuffer.create('wcwidth');
+  const resources = new core.ResourceContext({ objectCapacity: 1024, renderCellsMax: 4096 });
+  cleanups.push(() => resources.destroy());
+  const buffer = core.EditBuffer.create('wcwidth', resources);
   buffer.setText('hello');
   cleanups.push(() => buffer.destroy());
   let selection: { start: number; end: number } | null = null;
