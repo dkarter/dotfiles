@@ -65,7 +65,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libreadline-dev skopeo
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
         with:
           install: false
 

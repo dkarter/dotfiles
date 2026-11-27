@@ -34,7 +34,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libreadline-dev
 
       - name: Install Runtimes w/ MISE (and cache)
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
   yaml-lint:
     name: 'Lint: Yaml'
@@ -51,7 +51,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
       - name: Run yamllint
         run: task ci:yaml:lint
@@ -71,7 +71,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
       - name: Run aube audit
         run: aube audit
@@ -91,7 +91,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
       - name: Format check
         run: task ci:format:check
@@ -111,7 +111,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
         with:
           reshim: true
 
@@ -133,7 +133,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
       - name: Run Diagnostics Check
         run: task ci:shell:lint
@@ -153,7 +153,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Runtimes w/ MISE
-        uses: jdx/mise-action@abadabdb1fdc80cf6563f9bd749bf473c860bb5e
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
       - name: Run Diagnostics Check
         run: task ci:spelling:lint
