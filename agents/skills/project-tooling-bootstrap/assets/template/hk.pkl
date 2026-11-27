@@ -1,10 +1,27 @@
 amends "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Config.pkl"
 import "package://github.com/jdx/hk/releases/download/v2.0.1/hk@2.0.1#/Builtins.pkl"
 
+// Settings live in .github/jactionlint.yaml (online checks, immutable-release pins).
+local jactionlint = new Step {
+  glob = List(
+    ".github/workflows/*.yaml",
+    ".github/workflows/*.yml",
+    ".github/dependabot.y*ml",
+    "**/action.yml",
+    "**/action.yaml"
+  )
+  batch = true
+  diagnostic_format = "sarif"
+  check = "jactionlint --format sarif {{files}}"
+  check_diff = "hk util sarif-diff -- jactionlint --format sarif {{files}}"
+  fix = "jactionlint --fix {{files}}"
+}
+
 hooks {
   ["check"] {
     steps {
       ["dprint"] = Builtins.dprint
+      ["jactionlint"] = jactionlint
     }
   }
 
@@ -12,6 +29,7 @@ hooks {
     fix = true
     steps {
       ["dprint"] = Builtins.dprint
+      ["jactionlint"] = jactionlint
     }
   }
 

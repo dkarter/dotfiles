@@ -136,6 +136,7 @@ copy_template "dprint.json"
 copy_template "hk.pkl"
 copy_template "committed.toml"
 copy_template "fnox.toml"
+copy_template ".github/jactionlint.yaml"
 
 if [[ $WITH_RENOVATE == "true" ]]; then
   copy_template "renovate.json"

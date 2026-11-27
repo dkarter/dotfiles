@@ -1,6 +1,6 @@
 ---
 name: project-tooling-bootstrap
-description: 'Bootstrap a repository with the Toolkit baseline developer tooling: mise, dprint, hk, committed, betterleaks, pitchfork, and fnox. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, commit-message linting, local command orchestration, or secrets handling in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks.'
+description: 'Bootstrap a repository with the Toolkit baseline developer tooling: mise, dprint, hk, committed, betterleaks, jactionlint, shellcheck, pitchfork, and fnox. Use when a user asks to add or standardize local tooling, Git hooks, formatting checks, commit-message linting, GitHub Actions linting, local command orchestration, or secrets handling in a new or existing project. Applies to polyglot repos that need repeatable local setup and pre-push quality checks.'
 ---
 
 # Project Tooling Bootstrap
@@ -21,6 +21,8 @@ Use these defaults when applying the baseline in a target repository:
 - Keep `committed` on `"github:crate-ci/committed"` to prefer native release assets on arm64 hosts.
 - Keep `pitchfork` available for local command orchestration. See `https://pitchfork.jdx.dev`.
 - Keep `fnox` available for secrets handling and secret-backed command execution.
+- Keep `jactionlint` (`https://jactionlint.jdx.dev`) and `shellcheck` together: jactionlint lints GitHub Actions workflows, Dependabot config, and `action.yml` files, and runs shellcheck on `run:` scripts only when shellcheck is on `PATH`.
+- Install `.github/jactionlint.yaml` with the `default` profile, `online: true`, and `unpinned-uses` policy `'*': immutable-release`: a tag is accepted only when it is an immutable GitHub release, and every other action must be pinned to a full commit SHA.
 - Install `fnox.toml` at the repository root unless the project already has a standardized secrets config.
 - Default `fnox.toml` provider should be `onepass` (1Password) with keychain fallback for local token storage.
 - Use mise built-in tasks as the default task runner.
@@ -106,6 +108,7 @@ Core files copied to the target repository:
 - `hk.pkl`
 - `committed.toml`
 - `fnox.toml`
+- `.github/jactionlint.yaml`
 
 Optional file:
 
@@ -125,6 +128,8 @@ mise run fmt-check
 If commits should be conventionally linted, verify `committed` runs via a test commit message or existing commit hook flow.
 
 For local orchestration and secrets handling, verify `pitchfork` and `fnox` are installed after `mise install`.
+
+The jactionlint online checks call the GitHub API. jactionlint reads a token from `GITHUB_TOKEN`, `GH_TOKEN`, or `gh auth token`; without one it runs rate limited. In CI, pass `GITHUB_TOKEN: ${{ github.token }}` to the step that runs `hk check`. `jactionlint --online --fix` (or `hk fix --all`) pins unpinned actions to their commit SHA with the version in a comment. A repository with existing findings can record them once with `jactionlint --baseline-write`.
 
 ## Idempotence Checks
 

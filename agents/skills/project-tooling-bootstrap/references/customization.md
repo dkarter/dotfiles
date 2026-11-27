@@ -33,6 +33,15 @@ Use these defaults as a baseline, then tune by project needs.
 - Prefer file-aware builtins for checks and formatters.
 - Keep `pre-push` checks fast; avoid long-running test suites there.
 
+- `check` and `fix` run jactionlint on workflow, Dependabot, and `action.yml` files. Its options live in `.github/jactionlint.yaml`, not in `hk.pkl`.
+
+## `.github/jactionlint.yaml`
+
+- Keep `online: true` so immutable releases can be verified; without it `immutable-release` behaves as `hash-pin`.
+- Relax pinning per owner only for trusted repositories, for example `my-org/*: ref-pin` under `rules.unpinned-uses.policies`.
+- List internal actions GitHub cannot resolve under `online-options.deny`.
+- Turn single rules off or down under `rules` instead of switching to the `correctness` profile.
+
 ## `committed.toml`
 
 - Keep `style = "conventional"` for semantic history.
