@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [34.0.0](https://github.com/dkarter/dotfiles/compare/v33.0.0...v34.0.0) (2026-11-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ghostty:** Cmd+P now opens Project agents instead of the command palette. Use Cmd+Shift+P for the command palette.
+
+### Features
+
+* add sidebar shortcut for ChatGPT and Claude ([c78db6f](https://github.com/dkarter/dotfiles/commit/c78db6f1fe6eedec4fc91816b58b24edae669052))
+* **ai:** add browse by Anomaly ([ec9b0c9](https://github.com/dkarter/dotfiles/commit/ec9b0c94601b53bad1c3c3a2d73c5bc0458b75c4))
+* **ghostty:** remap project and command palette shortcuts ([e103051](https://github.com/dkarter/dotfiles/commit/e103051d3adb5019668d16babb5f24bf2c2a931b))
+* **herdr:** add Project agent picker and session reuse ([f4087bf](https://github.com/dkarter/dotfiles/commit/f4087bf367c6eadd8a704156786dd79e43841867))
+* **herdr:** configure native app shortcuts and layout ([b25f560](https://github.com/dkarter/dotfiles/commit/b25f560c03feafdf12dcde736aa7833fd0f0b94e))
+* **karabiner:** add Ctrl-U and Ctrl-D scrolling shortcuts ([d4b74f8](https://github.com/dkarter/dotfiles/commit/d4b74f8cb705d6017deabbcfff6f27e4ea4f475a))
+* **mise:** install Amp by default ([328e5c3](https://github.com/dkarter/dotfiles/commit/328e5c337fd7544803cda110a12abce64ade12b8))
+* **nvim:** add comment-threads.nvim ([71af62c](https://github.com/dkarter/dotfiles/commit/71af62ca1c326c433e0bd94b6f279f8e5a01c9dd))
+* **nvim:** route Sidekick through Herdr ([a52411a](https://github.com/dkarter/dotfiles/commit/a52411a385a96e52cdec94706c9190b1b83d2a93))
+* **rex:** sync terminal shortcuts and pane navigation ([918e203](https://github.com/dkarter/dotfiles/commit/918e2030b2c488ea202e4e5924fd7ab4767e4b2a))
+* **skills:** add github-readme-images ([7d86ee6](https://github.com/dkarter/dotfiles/commit/7d86ee6a5195dc2895e1bcabe8a41243a6a95743))
+* **skills:** add jactionlint to project tooling bootstrap ([dac7a15](https://github.com/dkarter/dotfiles/commit/dac7a1505bfbc452f10ac27f22ef60d8155f62bf))
+* **skills:** add tui-shot skill ([5618a8b](https://github.com/dkarter/dotfiles/commit/5618a8be1005b2c8464bbb55e74aef428379b54d))
+* sync Karabiner ctrl-n and ctrl-p arrow mappings ([8c9e97f](https://github.com/dkarter/dotfiles/commit/8c9e97f0dc558612706a962c4dd3dffd07d45ed6))
+* **tui-shot:** add tui-shot ([88c8588](https://github.com/dkarter/dotfiles/commit/88c85885b33656263ffdcef748970a89539374a6))
+* **vellum:** filter projects to open workspaces by default ([4239c03](https://github.com/dkarter/dotfiles/commit/4239c0332ae165be4f0550179d1c2c0a32debe65))
+
+
+### Bug Fixes
+
+* **agent-guard:** add exception for codex site publishing ([6a2e9b3](https://github.com/dkarter/dotfiles/commit/6a2e9b3aa7ad7ab1b5a0a8697d516c095df1201a))
+* **ci:** keep multi-line tool entries in the Mise OCI config ([9005303](https://github.com/dkarter/dotfiles/commit/9005303d5d9cebffcba9824fa32770256c43b805))
+* **deps:** clear aube audit advisories in opencode plugins ([3a621e9](https://github.com/dkarter/dotfiles/commit/3a621e9435ccd3f9ee987a1ed3eacf106f21982f))
+* **dotfiles:** preserve arrow mappings and remove stale Claude directory ([c88d93f](https://github.com/dkarter/dotfiles/commit/c88d93f9b4296df926a1e6f071a423acf638f2e1))
+* **dotfiles:** skip hidden config entries during sync ([06cfbb7](https://github.com/dkarter/dotfiles/commit/06cfbb78bfc9f74e285b31a4795668cf204e1637))
+* **herdr:** avoid project picker and tab shortcut collision ([b8bcd87](https://github.com/dkarter/dotfiles/commit/b8bcd878fe5366693b28158ce1c19440e4a52003))
+* **herdr:** explicitly enable kitty_graphics ([826f9eb](https://github.com/dkarter/dotfiles/commit/826f9eb428ea5e11d2862a8741b92cd2d559d5de))
+* **karabiner:** preserve terminal Ctrl-P and Ctrl-N shortcuts ([13321b5](https://github.com/dkarter/dotfiles/commit/13321b533d2b05afb44dd4a00d83d41ed805389d))
+* **opencode:** allow read-only project coordination ([fe11f88](https://github.com/dkarter/dotfiles/commit/fe11f88dba31fa478c45f9e58a9e2e1fe3f2c97b))
+* **opencode:** remove deprecated "enabled" property from mcps ([b382003](https://github.com/dkarter/dotfiles/commit/b382003e858edfa3abb848cfda0610fcbf411d7a))
+* **opencode:** update permissions syntax ([e39d20f](https://github.com/dkarter/dotfiles/commit/e39d20feab5db572f9cf87179a3a5ffecee928d5))
+* **rex:** capture prefix and add pane controls ([bfd036b](https://github.com/dkarter/dotfiles/commit/bfd036bad1a439ffb629581e33ded159b074c14f))
+* **skills:** update plan-local-storage ([32b3b3b](https://github.com/dkarter/dotfiles/commit/32b3b3b5265114bc5cf052b29287cda7beee17d5))
+
+
+### Performance Improvements
+
+* **nvim:** reduce startup and picker input latency ([a0afbaa](https://github.com/dkarter/dotfiles/commit/a0afbaab4114ba210319f354b70f02357a600ead))
+
 ## [33.0.0](https://github.com/dkarter/dotfiles/compare/v32.6.0...v33.0.0) (2026-11-01)
 
 <!-- pullfrog-summary:start -->
